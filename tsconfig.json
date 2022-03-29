@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "declaration": false,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "incremental": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noImplicitReturns": true,
+
+    "baseUrl": ".",
+    "rootDir": ".",
+    "paths": {
+      "_utils": ["./docs/.vuepress/utils"],
+      "_components": ["./docs/.vuepress/components"],
+      "@polkadot/types/lookup": ["node_modules/@unique-nft/types/types-lookup"]
+    }
+  },
+  "exclude": ["node_modules", "dist", "test"]
+}
