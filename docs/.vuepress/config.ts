@@ -1,4 +1,6 @@
-import {defineUserConfig, DefaultThemeOptions} from 'vuepress'
+import {defineUserConfig} from 'vuepress'
+import { defaultTheme } from '@vuepress/theme-default'
+const { registerComponentsPlugin } = require('@vuepress/plugin-register-components')
 
 // import type { WebpackBundlerOptions } from '@vuepress/bundler-webpack'
 import * as path from 'path'
@@ -7,7 +9,7 @@ import {sidebar} from "./configs/sidebar";
 // import {Configuration, ProvidePlugin} from 'webpack'
 // import {merge} from 'webpack-merge'
 
-export default defineUserConfig<DefaultThemeOptions>({
+export default {
   lang: 'en-US',
   title: 'Unique docs',
   description: 'Unique network documentation portal',
@@ -24,9 +26,7 @@ export default defineUserConfig<DefaultThemeOptions>({
   },
 
   // theme and its config
-  theme: '@vuepress/theme-default',
-  themeConfig: {
-    favicon: '',
+  theme: defaultTheme({
     logo: '/images/logo/unique.svg',
     contributors: false,
     locales: {
@@ -35,12 +35,11 @@ export default defineUserConfig<DefaultThemeOptions>({
         sidebar: sidebar.en,
       }
     },
-  },
+  }),
   // extendsMarkdown: (md: any) => {md.set({breaks: true})},
   plugins: [
     [
-      '@vuepress/register-components',
-      {componentsDir: path.resolve(__dirname, './components')}
+      registerComponentsPlugin({componentsDir: path.resolve(__dirname, './components')})
     ]
   ],
 
@@ -63,4 +62,4 @@ export default defineUserConfig<DefaultThemeOptions>({
       }
     }
   }
-})
+}

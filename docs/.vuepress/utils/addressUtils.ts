@@ -3,7 +3,7 @@ import '@unique-nft/types/augment-api'
 
 import {EthAddress, SubAddress} from "./typings";
 
-import {importPolkadotUtilCrypto, importWeb3SponsoringProvider, importWeb3} from "./util/lib_imports";
+import {importPolkadotUtilCrypto, importWeb3SponsoringProvider, importWeb3, importBuffer} from "./util/lib_imports";
 
 export const normalizeSubAddress = async (rawSubAddress: string): Promise<SubAddress> => {
   const {validateAddress, encodeAddress, decodeAddress} = await importPolkadotUtilCrypto()
@@ -59,4 +59,36 @@ export const subToSubMirrorOfEth = async (substrateAddress: string): Promise<Sub
 
   const ethAddress = await subToEth(substrateAddress)
   return evmToAddress(ethAddress, 42, 'blake2') as SubAddress
+}
+
+export const collectionIdToEthAddress = async (collectionId: number | string): Promise<string> => {
+  const Web3 = await importWeb3()
+  const Buffer = await importBuffer()
+
+  const cid = typeof collectionId === 'string' ? parseInt(collectionId, 10) : collectionId
+
+  if (cid >= 0xffffffff || cid < 0) throw new Error('id overflow');
+
+  const buf = Buffer.from([0x17, 0xc4, 0xe6, 0x45, 0x3c, 0xc4, 0x9a, 0xaa, 0xae, 0xac, 0xa8, 0x94, 0xe6, 0xd9, 0x68, 0x3e,
+    cid >> 24,
+    (cid >> 16) & 0xff,
+    (cid >> 8) & 0xff,
+    cid & 0xff,
+  ]);
+
+  const result = Web3.utils.toChecksumAddress('0x' + buf.toString('hex'));
+  console.log(result)
+
+  const b2 = Buffer.alloc(20)
+  b2.writeUInt32BE(cid, 16)
+  console.log(Web3.utils.toChecksumAddress('0x' + b2.toString('hex')))
+
+  console.log(Web3.utils.toChecksumAddress('0x17c4e6453cc49aaaaeaca894e6d9683e' + cid.toString(16).padStart(8, '0')))
+
+  return result
+}
+
+export const ethAddressToCollectionId = (address: string): number => {
+  if (!(address.length === 42 || address.length === 40)) throw new Error('address wrong format');
+  return parseInt(address.substr(address.length - 8), 16);
 }

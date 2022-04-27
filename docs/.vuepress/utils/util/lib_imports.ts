@@ -6,14 +6,14 @@ export const importWeb3 = async (): Promise<typeof Web3Class> => {
   return (await import('web3')).default
 }
 
-import type SponsoringProviderType from 'web3-provider-sponsoring';
-
-export const importWeb3SponsoringProvider = async (): Promise<typeof SponsoringProviderType> => {
+export const importWeb3SponsoringProvider = async () => {
   return (await import('web3-provider-sponsoring')).default
 }
 
-import type PolkadotUtilCrypto from '@polkadot/util-crypto'
-
-export const importPolkadotUtilCrypto = async (): Promise<typeof PolkadotUtilCrypto> => {
+export const importPolkadotUtilCrypto = async () => {
   return (await import('@polkadot/util-crypto'))
+}
+
+export const importBuffer = async() => {
+  return (await import('buffer')).Buffer
 }
