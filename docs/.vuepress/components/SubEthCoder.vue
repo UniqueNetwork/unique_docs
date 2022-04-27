@@ -38,12 +38,8 @@ const error = reactive({
 })
 
 const convertInputSubToEth = async () => {
-  console.log('converting')
   const rawAddress = inputRef.value
-
   console.log('rawAddress', rawAddress)
-  // console.log('rawAddress', await normalizeSubAddress('yGJ53wmtsVqF8988Zwb6fVQZjtMsAfwVmXM5934C7d2kjB3Jd'))
-  // console.log('rawAddress', await normalizeSubAddress('yGJ53wmtsVqF8988Zwb6fVQZjtMsAfwVmXM5934C7d2kjB3Jd', 255))
 
   try {
     await validateSubAddress(rawAddress)

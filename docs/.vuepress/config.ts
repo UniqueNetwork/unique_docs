@@ -1,4 +1,4 @@
-import {defineUserConfig} from 'vuepress'
+import {UserConfig, viteBundler} from 'vuepress'
 import { defaultTheme } from '@vuepress/theme-default'
 const { registerComponentsPlugin } = require('@vuepress/plugin-register-components')
 
@@ -9,7 +9,7 @@ import {sidebar} from "./configs/sidebar";
 // import {Configuration, ProvidePlugin} from 'webpack'
 // import {merge} from 'webpack-merge'
 
-export default {
+const config: UserConfig = {
   lang: 'en-US',
   title: 'Unique docs',
   description: 'Unique network documentation portal',
@@ -44,7 +44,7 @@ export default {
   ],
 
 
-  bundlerConfig: {
+  bundler: viteBundler({
     viteOptions: {
       resolve: {
         alias: {
@@ -61,5 +61,7 @@ export default {
         }
       }
     }
-  }
+  })
 }
+
+export default config
