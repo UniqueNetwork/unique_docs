@@ -5,11 +5,11 @@ import {EthAddress, SubAddress} from "./typings";
 
 import {importPolkadotUtilCrypto, importWeb3SponsoringProvider, importWeb3, importBuffer} from "./util/lib_imports";
 
-export const normalizeSubAddress = async (rawSubAddress: string): Promise<SubAddress> => {
+export const normalizeSubAddress = async (rawSubAddress: string, prefix: number = 42): Promise<SubAddress> => {
   const {validateAddress, encodeAddress, decodeAddress} = await importPolkadotUtilCrypto()
 
   validateAddress(rawSubAddress)
-  return encodeAddress(decodeAddress(rawSubAddress)) as SubAddress
+  return encodeAddress(decodeAddress(rawSubAddress), prefix) as SubAddress
 }
 
 export const validateSubAddress = async (rawSubAddress: string): Promise<boolean> => {

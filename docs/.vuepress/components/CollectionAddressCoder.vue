@@ -47,6 +47,7 @@ const convertAddressToCollectionId = wrapWithErrorHandler(async () => {
 <style lang="scss" scoped>
 .inputContainer {
   display: flex;
+  margin-bottom: 1rem;
 
   .input {
     width: 500px;
