@@ -46,6 +46,9 @@ const config: UserConfig = {
 
   bundler: viteBundler({
     viteOptions: {
+      build: {
+        sourcemap: true
+      },
       resolve: {
         alias: {
           process: 'process',

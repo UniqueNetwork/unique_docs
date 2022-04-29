@@ -9,6 +9,10 @@ export const navbar: Record<string, NavbarConfig> = {
         {
           text: 'Addresses',
           link: '/reference/addresses'
+        },
+        {
+          text: 'Ethereum',
+          link: '/reference/ethereum'
         }
       ]
     },

@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vuepress dev docs",
     "build": "vuepress build docs",
-    "serve": "serve dist -p 3000"
+    "serve": "serve dist -p 3000 -n"
   },
   "license": "UNLICENSED",
   "private": true,
@@ -42,7 +42,9 @@
     "@polkadot/api": "^8.2.1",
     "@polkadot/util-crypto": "^9.0.1",
     "@unique-nft/types": "0.4.0",
+    "@urql/core": "^2.4.4",
     "buffer": "^6.0.3",
+    "graphql": "^16.4.0",
     "web3": "^1.7.3",
     "web3-provider-sponsoring": "^0.1.0"
   }
