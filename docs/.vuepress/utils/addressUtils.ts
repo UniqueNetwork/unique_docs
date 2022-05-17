@@ -61,7 +61,7 @@ export const subToSubMirrorOfEth = async (substrateAddress: string): Promise<Sub
   return evmToAddress(ethAddress, 42, 'blake2') as SubAddress
 }
 
-export const collectionIdToEthAddress = async (collectionId: number | string): Promise<string> => {
+const collectionIdToEthAddress__old = async (collectionId: number | string): Promise<string> => {
   const Web3 = await importWeb3()
   const Buffer = await importBuffer()
 
@@ -88,7 +88,26 @@ export const collectionIdToEthAddress = async (collectionId: number | string): P
   return result
 }
 
-export const ethAddressToCollectionId = (address: string): number => {
+const ethAddressToCollectionId__old = (address: string): number => {
   if (!(address.length === 42 || address.length === 40)) throw new Error('address wrong format');
   return parseInt(address.substr(address.length - 8), 16);
+}
+
+
+export const collectionIdToEthAddress = async (collectionId: number | string): Promise<string> => {
+  const Web3 = await importWeb3()
+
+  const cid = typeof collectionId === 'string' ? parseInt(collectionId, 10) : collectionId
+
+  return Web3.utils.toChecksumAddress(
+    '0x17c4e6453cc49aaaaeaca894e6d9683e' +
+    cid.toString(16).padStart(8, '0')
+  )
+}
+
+export const ethAddressToCollectionId = (address: string): number => {
+  if (!([40, 42].includes(address.length))) {
+    throw new Error('address wrong format');
+  }
+  return parseInt(address.slice(-8), 16);
 }

@@ -1,34 +1,57 @@
 # UniqueNFT
 
 [UniqueNFT.sol](https://github.com/UniqueNetwork/unique-chain/blob/develop/pallets/nonfungible/src/stubs/UniqueNFT.sol)
-   Unique network’s NFT representation for our eth facade
+Unique network’s NFT representation for our eth facade
 
 #### Collection Id to Ethereum contract address conversion
 
-Conversion from Collection Id to emulated smart contract Address:
+Conversion from Collection Id to Collection's emulated smart contract Address 
+is actually concatenation of prefix `0x17c4e6453cc49aaaaeaca894e6d9683e` 
+with collection number in hex form, 8 symbols length.
 
-```typescript
+An example:
+
+```typescript:no-line-numbers
 const collectionIdToAddress = (collectionId: number): string => {
-    if (collectionId >= 0xffffffff || collectionId < 0) throw new Error('id overflow');
-    const buf = Buffer.from([0x17, 0xc4, 0xe6, 0x45, 0x3c, 0xc4, 0x9a, 0xaa, 0xae, 0xac, 0xa8, 0x94, 0xe6, 0xd9, 0x68, 0x3e,
-        collectionId >> 24,
-        (collectionId >> 16) & 0xff,
-        (collectionId >> 8) & 0xff,
-        collectionId & 0xff,
-    ]);
-    return Web3.utils.toChecksumAddress('0x' + buf.toString('hex'));
+  if (collectionId >= 0xffffffff || collectionId < 0) {
+    throw new Error('id overflow')
+  }
+  
+  return Web3.utils.toChecksumAddress(
+    '0x17c4e6453cc49aaaaeaca894e6d9683e' + 
+    collectionId.toString(16).padStart(8, '0')
+  )
 }
 ```
 
-Conversion from emulated smart contract Address to Collection Id:
+An example two:
+```typescript:no-line-numbers
+const collectionAddress = Web3.utils.toChecksumAddress(
+  '0x17c4e6453cc49aaaaeaca894e6d9683e' + 
+  collectionId.toString(16).padStart(8, '0')
+)
+```
 
-```typescript
+Conversion from Collection's emulated smart contract Address to Collection Id is 
+the opposite operation, just extracting last 8 symbols from the address and 
+converting it to unsigned integer:
+
+```typescript:no-line-numbers
 const extractCollectionIdFromAddress = (address: string): number => {
-    if (!(address.length === 42 || address.length === 40)) throw new Error('address wrong format');
-    return parseInt(address.substr(address.length - 8), 16);
+  if (!([40, 42].includes(address.length))) {
+    throw new Error('address wrong format')
+  }
+  
+  return parseInt(address.slice(-8), 16)
 }
+```
+
+An example two:
+```typescript:no-line-numbers
+const collectionId = parseInt(address.slice(-8), 16)
 ```
 
 #### Live converter
+
 <br/>
 <CollectionAddressCoder/>

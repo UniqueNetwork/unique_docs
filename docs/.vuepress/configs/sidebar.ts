@@ -11,7 +11,7 @@ export const sidebar: Record<string, SidebarConfig> = {
     '/reference': [
       {
         text: 'Unique Reference',
-        children: ['/reference/README.md', '/reference/addresses.md'],
+        children: ['/reference/README.md', '/reference/addresses.md', "/reference/indexer.md"],
       },
     ],
     '/reference/ethereum': [
