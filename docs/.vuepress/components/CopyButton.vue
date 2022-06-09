@@ -1,5 +1,6 @@
 <template>
-  <div class="button-copy" @click="copyToBuffer(props.data)">
+
+  <div v-show="!!data || showAlways" class="button-copy" @click="copyToBuffer(props.data)">
     <span v-if="!!props.text">{{ props.text }}</span>
     <div class="external-link-icon">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24"
@@ -22,6 +23,7 @@ import {copyToBuffer} from "_utils";
 const props = defineProps<{
   text?: string
   data: string
+  showAlways?: boolean
 }>()
 
 
@@ -31,7 +33,6 @@ let size = 16
 onMounted(() => {
   color = getComputedStyle(document.body).getPropertyValue('--c-text')
 })
-
 
 
 </script>

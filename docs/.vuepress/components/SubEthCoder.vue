@@ -7,11 +7,43 @@
   <p v-show="error.message" class="error">{{error.message}}</p>
 
   <!--  <CopyButton :data="converted.toSubNormalized"/> -->
-  <p>Normalized (prefix 42) address: {{ converted.toSubNormalized }} </p>
-  <p>Quartz format (prefix 255): {{ converted.toQuartz }}</p>
-  <p>Unique format (prefix 7391): {{ converted.toUnique }}</p>
-  <p>Eth mirror: {{ converted.toEth }}</p>
-  <p>Double mirror (sub mirror of eth mirror): {{ converted.toSubDoubleMirror }}</p>
+  <p>
+    Normalized (prefix 42) address:
+    <CopyButton :data="converted.toSubNormalized"/>
+    {{ converted.toSubNormalized }}
+  </p>
+  <p>
+    Quartz format (prefix 255):
+    <CopyButton :data="converted.toQuartz"/>
+    {{ converted.toQuartz }}
+  </p>
+  <p>
+    Unique format (prefix 7391):
+    <CopyButton :data="converted.toUnique"/>
+    {{ converted.toUnique }}
+  </p>
+  <p>
+    Eth mirror:
+    <CopyButton :data="converted.toEth"/>
+    {{ converted.toEth }}
+  </p>
+  <p>
+    Double mirror (sub mirror of eth mirror):
+    <CopyButton :data="converted.toSubDoubleMirror"/>
+    {{ converted.toSubDoubleMirror }}
+  </p>
+
+  <p><i>Additional formats:</i></p>
+  <p>
+    Polkadot:
+    <CopyButton :data="converted.toPolkadot"/>
+    {{converted.toPolkadot}}
+  </p>
+  <p>
+    Kusama:
+    <CopyButton :data="converted.toKusama"/>
+    {{converted.toKusama}}
+  </p>
 </template>
 
 <script setup lang="ts">
@@ -22,12 +54,15 @@ import {
   subToSubMirrorOfEth,
   validateSubAddress
 } from '../utils/addressUtils'
+import CopyButton from "./CopyButton.vue";
 
 const inputRef = ref('')
 const converted = reactive({
   toSub: '',
   toQuartz: '',
   toUnique: '',
+  toKusama: '',
+  toPolkadot: '',
   toEth: '',
   toSubNormalized: '',
   toSubDoubleMirror: '',
@@ -53,12 +88,16 @@ const convertInputSubToEth = async () => {
     converted.toEth,
     converted.toQuartz,
     converted.toUnique,
+    converted.toPolkadot,
+    converted.toKusama,
     converted.toSubNormalized,
     converted.toSubDoubleMirror
   ] = await Promise.all([
     await subToEth(rawAddress),
     await normalizeSubAddress(rawAddress, 255),
     await normalizeSubAddress(rawAddress, 7391),
+    await normalizeSubAddress(rawAddress, 0),
+    await normalizeSubAddress(rawAddress, 2),
     await normalizeSubAddress(rawAddress),
     await subToSubMirrorOfEth(rawAddress)
   ])
