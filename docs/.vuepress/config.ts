@@ -1,15 +1,12 @@
-import {UserConfig, viteBundler} from 'vuepress'
+import {UserConfig, viteBundler, defineUserConfig} from 'vuepress'
 import { defaultTheme } from '@vuepress/theme-default'
 const { registerComponentsPlugin } = require('@vuepress/plugin-register-components')
 
-// import type { WebpackBundlerOptions } from '@vuepress/bundler-webpack'
 import * as path from 'path'
 import {navbar} from "./configs/navbar";
 import {sidebar} from "./configs/sidebar";
-// import {Configuration, ProvidePlugin} from 'webpack'
-// import {merge} from 'webpack-merge'
 
-const config: UserConfig = {
+export default defineUserConfig({
   lang: 'en-US',
   title: 'Unique docs',
   description: 'Unique network documentation portal',
@@ -47,24 +44,9 @@ const config: UserConfig = {
   bundler: viteBundler({
     viteOptions: {
       build: {
-        sourcemap: true
+        sourcemap: true,
+        target: 'es2020',
       },
-      resolve: {
-        alias: {
-          process: 'process',
-          'readable-stream': 'vite-compatible-readable-stream',
-          zlib: "browserify-zlib",
-          util: 'util',
-          https: 'https-browserify',
-          http: 'stream-http',
-          crypto: 'crypto-browserify',
-          assert: 'assert',
-          url: 'url',
-          os: 'os-browserify',
-        }
-      }
     }
   })
-}
-
-export default config
+})

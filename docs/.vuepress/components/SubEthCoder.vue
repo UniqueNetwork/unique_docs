@@ -1,12 +1,31 @@
 <template>
+  <p>
+    {{ initTask.state }}
+  </p>
+  <p>
+    <button @click="requestEthereumAccounts">Request eth accounts</button>
+    <button @click="printEthAccounts">print</button>
+  </p>
+
   <div class="inputContainer">
     <input v-model="inputRef" class="input"/>
     <button @click="convertInputSubToEth">click</button>
   </div>
 
-  <p v-show="error.message" class="error">{{error.message}}</p>
+  <p v-show="error.message" class="error">{{ error.message }}</p>
 
   <!--  <CopyButton :data="converted.toSubNormalized"/> -->
+
+
+  <template v-if="converted.sourceEth">
+    <p>
+    Source ethereum address:
+    <CopyButton :data="converted.sourceEth"/>
+    {{ converted.sourceEth }}
+    </p>
+    <h4>All addresses below are just substrate mirrors of this ethereum address!</h4>
+  </template>
+
   <p>
     Normalized (prefix 42) address:
     <CopyButton :data="converted.toSubNormalized"/>
@@ -27,37 +46,44 @@
     <CopyButton :data="converted.toEth"/>
     {{ converted.toEth }}
   </p>
-  <p>
-    Double mirror (sub mirror of eth mirror):
-    <CopyButton :data="converted.toSubDoubleMirror"/>
-    {{ converted.toSubDoubleMirror }}
-  </p>
 
   <p><i>Additional formats:</i></p>
   <p>
     Polkadot:
     <CopyButton :data="converted.toPolkadot"/>
-    {{converted.toPolkadot}}
+    {{ converted.toPolkadot }}
   </p>
   <p>
     Kusama:
     <CopyButton :data="converted.toKusama"/>
-    {{converted.toKusama}}
+    {{ converted.toKusama }}
   </p>
 </template>
 
 <script setup lang="ts">
-import {ref, reactive} from 'vue'
-import {
-  normalizeSubAddress,
-  subToEth,
-  subToSubMirrorOfEth,
-  validateSubAddress
-} from '../utils/addressUtils'
-import CopyButton from "./CopyButton.vue";
+import {reactive, ref} from 'vue'
+import {utils, WS_RPC} from '@unique-nft/api'
+import CopyButton from './CopyButton.vue'
+
+import {useInit} from 'unique_api_vue'
+import {Substrate} from "@unique-nft/api";
+
+const {chainRef, initTask, ethAccountsRef, requestEthereumAccounts} = useInit()
+
+const printEthAccounts = () => {
+  console.log(ethAccountsRef.value)
+  console.log(chainRef.value)
+
+  console.log(WS_RPC.uniqueRC)
+  console.log(window.u = new Substrate.Unique())
+}
+
+console.log(import.meta.env.DEV)
 
 const inputRef = ref('')
 const converted = reactive({
+  sourceEth: '',
+  address: '',
   toSub: '',
   toQuartz: '',
   toUnique: '',
@@ -65,7 +91,6 @@ const converted = reactive({
   toPolkadot: '',
   toEth: '',
   toSubNormalized: '',
-  toSubDoubleMirror: '',
 })
 
 const error = reactive({
@@ -73,16 +98,20 @@ const error = reactive({
 })
 
 const convertInputSubToEth = async () => {
-  const rawAddress = inputRef.value
+  let rawAddress = inputRef.value
   console.log('rawAddress', rawAddress)
 
-  try {
-    await validateSubAddress(rawAddress)
-    error.message = ''
-  } catch (_err) {
-    error.message = `Substrate address "${rawAddress}" is not valid`
+  converted.sourceEth = ''
+  if (utils.address.is.substrateAddress(rawAddress)) {
+  } else if (utils.address.is.ethereumAddress(rawAddress)) {
+    converted.sourceEth = rawAddress
+    rawAddress = utils.address.ethToSubMirror(rawAddress)
+  } else {
+    error.message = `Address "${rawAddress}" is not valid`
     return
   }
+
+
 
   ;[
     converted.toEth,
@@ -91,15 +120,13 @@ const convertInputSubToEth = async () => {
     converted.toPolkadot,
     converted.toKusama,
     converted.toSubNormalized,
-    converted.toSubDoubleMirror
   ] = await Promise.all([
-    await subToEth(rawAddress),
-    await normalizeSubAddress(rawAddress, 255),
-    await normalizeSubAddress(rawAddress, 7391),
-    await normalizeSubAddress(rawAddress, 0),
-    await normalizeSubAddress(rawAddress, 2),
-    await normalizeSubAddress(rawAddress),
-    await subToSubMirrorOfEth(rawAddress)
+    await utils.address.subToEthMirror(rawAddress),
+    await utils.address.normalizeSubstrateAddress(rawAddress, 255),
+    await utils.address.normalizeSubstrateAddress(rawAddress, 7391),
+    await utils.address.normalizeSubstrateAddress(rawAddress, 0),
+    await utils.address.normalizeSubstrateAddress(rawAddress, 2),
+    await utils.address.normalizeSubstrateAddress(rawAddress),
   ])
 }
 
@@ -117,6 +144,7 @@ const convertInputSubToEth = async () => {
     margin-right: .5rem;
   }
 }
+
 .error {
   color: red;
 }

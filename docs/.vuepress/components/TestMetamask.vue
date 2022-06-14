@@ -8,6 +8,10 @@
 import {reactive} from 'vue'
 import {testMetamask} from '../utils/addressUtils'
 
+import {useInit} from 'unique_api_vue'
+
+useInit()
+
 const error = reactive({
   message: ''
 })

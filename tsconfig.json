@@ -13,7 +13,10 @@
     "noImplicitAny": true,
     "noImplicitThis": true,
     "noImplicitReturns": true,
-
+    "target": "es2020",
+    "module": "es2020",
+    "moduleResolution": "node",
+    "lib": ["dom", "es2020"],
     "baseUrl": ".",
     "rootDir": ".",
     "paths": {
@@ -22,5 +25,5 @@
       "@polkadot/types/lookup": ["node_modules/@unique-nft/types/types-lookup"]
     }
   },
-  "exclude": ["node_modules", "dist", "test"]
+  "include": ["docs/global.d.ts", "docs/**/*.ts", "docs/**/*.d.ts", "docs/**/*.tsx", "docs/**/*.vue"]
 }
