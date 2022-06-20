@@ -891,20 +891,6 @@
   dependencies:
     "@types/node" "*"
 
-"@unique-nft/api@0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@unique-nft/api/-/api-0.0.5.tgz#303e02fabda8e6a769e70aad7f35fdd86442bdd4"
-  integrity sha512-C5ZpBU4vFiFW/IfA3TDEV55LE9GtCSH7EzsMaULMeTIvqNqNiuTg6MJXidgbKuDIjwrmeeQqtpMBcu7yGrX0yQ==
-  dependencies:
-    "@polkadot/api" "8.7.1"
-    "@polkadot/extension-dapp" "0.43.3"
-    "@polkadot/keyring" "9.4.1"
-    "@polkadot/types" "8.7.1"
-    "@polkadot/util" "9.4.1"
-    "@polkadot/util-crypto" "9.4.1"
-    "@unique-nft/types" "0.6.0-4"
-    ethers "5.6.8"
-
 "@unique-nft/api@0.0.8":
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/@unique-nft/api/-/api-0.0.8.tgz#1bc60326b41e75795d9725531a5356d5420f9d25"
