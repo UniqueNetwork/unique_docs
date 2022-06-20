@@ -1,16 +1,17 @@
-import {UserConfig, viteBundler, defineUserConfig} from 'vuepress'
-import { defaultTheme } from '@vuepress/theme-default'
-const { registerComponentsPlugin } = require('@vuepress/plugin-register-components')
-
+import {defineUserConfig, viteBundler} from 'vuepress'
+import {defaultTheme} from '@vuepress/theme-default'
 import * as path from 'path'
 import {navbar} from "./configs/navbar";
 import {sidebar} from "./configs/sidebar";
+import {mermaidPlugin} from "@renovamen/vuepress-plugin-mermaid"
+
+const {registerComponentsPlugin} = require('@vuepress/plugin-register-components')
 
 export default defineUserConfig({
   lang: 'en-US',
   title: 'Unique docs',
   description: 'Unique network documentation portal',
-  head: [['link', { rel: 'icon', href: '/favicon.svg' }]],
+  head: [['link', {rel: 'icon', href: '/favicon.svg'}]],
 
   port: 3000,
 
@@ -35,9 +36,8 @@ export default defineUserConfig({
   }),
   // extendsMarkdown: (md: any) => {md.set({breaks: true})},
   plugins: [
-    [
-      registerComponentsPlugin({componentsDir: path.resolve(__dirname, './components')})
-    ]
+    registerComponentsPlugin({componentsDir: path.resolve(__dirname, './components')}),
+    mermaidPlugin(),
   ],
 
 

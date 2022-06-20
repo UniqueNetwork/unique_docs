@@ -1,0 +1,3 @@
+# Chain
+
+Common chain documentation

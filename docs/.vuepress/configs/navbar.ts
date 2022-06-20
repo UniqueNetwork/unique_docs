@@ -13,7 +13,15 @@ export const navbar: Record<string, NavbarConfig> = {
         {
           text: 'Ethereum',
           link: '/reference/ethereum'
-        }
+        },
+        {
+          text: 'Chain',
+          link: '/reference/chain',
+        },
+        {
+          text: 'SDK',
+          link: '/reference/sdk',
+        },
       ]
     },
     {

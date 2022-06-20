@@ -24,5 +24,22 @@ export const sidebar: Record<string, SidebarConfig> = {
         ],
       }
     ],
+    '/reference/chain': [
+      {
+        text: 'Chain',
+        children: [
+          '/reference/chain/index.md',
+          '/reference/chain/nesting.md',
+        ],
+      }
+    ],
+    '/reference/sdk': [
+      {
+        text: 'SDK',
+        children: [
+          '/reference/sdk/index.md',
+        ],
+      }
+    ],
   }
 }

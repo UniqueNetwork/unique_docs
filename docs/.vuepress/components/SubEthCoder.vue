@@ -1,12 +1,4 @@
 <template>
-  <p>
-    {{ initTask.state }}
-  </p>
-  <p>
-    <button @click="requestEthereumAccounts">Request eth accounts</button>
-    <button @click="printEthAccounts">print</button>
-  </p>
-
   <div class="inputContainer">
     <input v-model="inputRef" class="input"/>
     <button @click="convertInputSubToEth">click</button>
@@ -69,16 +61,6 @@ import {useInit} from 'unique_api_vue'
 import {Substrate} from "@unique-nft/api";
 
 const {chainRef, initTask, ethAccountsRef, requestEthereumAccounts} = useInit()
-
-const printEthAccounts = () => {
-  console.log(ethAccountsRef.value)
-  console.log(chainRef.value)
-
-  console.log(WS_RPC.uniqueRC)
-  console.log(window.u = new Substrate.Unique())
-}
-
-console.log(import.meta.env.DEV)
 
 const inputRef = ref('')
 const converted = reactive({
