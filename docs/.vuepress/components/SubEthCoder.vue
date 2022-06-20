@@ -1,58 +1,114 @@
 <template>
-  <button @click="testMetamask">Test Metamask</button>
   <div class="inputContainer">
     <input v-model="inputRef" class="input"/>
     <button @click="convertInputSubToEth">click</button>
   </div>
 
-  <p>Normalized (prefix 42) address: {{ converted.toSubNormalized }}</p>
-  <p>Eth mirror: {{ converted.toEth }}</p>
-  <p>Double mirror (sub mirror of eth mirror): {{ converted.toSubDoubleMirror }}</p>
+  <p v-show="error.message" class="error">{{ error.message }}</p>
 
-  <p v-show="converted.error" class="error">{{converted.error}}</p>
+  <!--  <CopyButton :data="converted.toSubNormalized"/> -->
+
+
+  <template v-if="converted.sourceEth">
+    <p>
+    Source ethereum address:
+    <CopyButton :data="converted.sourceEth"/>
+    {{ converted.sourceEth }}
+    </p>
+    <h4>All addresses below are just substrate mirrors of this ethereum address!</h4>
+  </template>
+
+  <p>
+    Normalized (prefix 42) address:
+    <CopyButton :data="converted.toSubNormalized"/>
+    {{ converted.toSubNormalized }}
+  </p>
+  <p>
+    Quartz format (prefix 255):
+    <CopyButton :data="converted.toQuartz"/>
+    {{ converted.toQuartz }}
+  </p>
+  <p>
+    Unique format (prefix 7391):
+    <CopyButton :data="converted.toUnique"/>
+    {{ converted.toUnique }}
+  </p>
+  <p>
+    Eth mirror:
+    <CopyButton :data="converted.toEth"/>
+    {{ converted.toEth }}
+  </p>
+
+  <p><i>Additional formats:</i></p>
+  <p>
+    Polkadot:
+    <CopyButton :data="converted.toPolkadot"/>
+    {{ converted.toPolkadot }}
+  </p>
+  <p>
+    Kusama:
+    <CopyButton :data="converted.toKusama"/>
+    {{ converted.toKusama }}
+  </p>
 </template>
 
 <script setup lang="ts">
-import {ref, reactive} from 'vue'
-import {
-  normalizeSubAddress,
-  subToEth,
-  subToSubMirrorOfEth,
-  testMetamask,
-  validateSubAddress
-} from '../utils/addressUtils'
+import {reactive, ref} from 'vue'
+import {utils, WS_RPC} from '@unique-nft/api'
+import CopyButton from './CopyButton.vue'
 
-// const address = '5GbjEGWbTFV7f2XN6z7TBUyW4YidWTHmaw1ekNFCtWGuEmTT'
+import {useInit} from 'unique_api_vue'
+import {Substrate} from "@unique-nft/api";
+
+const {chainRef, initTask, ethAccountsRef, requestEthereumAccounts} = useInit()
 
 const inputRef = ref('')
 const converted = reactive({
+  sourceEth: '',
+  address: '',
   toSub: '',
+  toQuartz: '',
+  toUnique: '',
+  toKusama: '',
+  toPolkadot: '',
   toEth: '',
   toSubNormalized: '',
-  toSubDoubleMirror: '',
-  error: '',
+})
+
+const error = reactive({
+  message: ''
 })
 
 const convertInputSubToEth = async () => {
-  console.log('converting')
-  const rawAddress = inputRef.value
+  let rawAddress = inputRef.value
+  console.log('rawAddress', rawAddress)
 
-  try {
-    await validateSubAddress(rawAddress)
-    converted.error = ''
-  } catch (_err) {
-    converted.error = `Substrate address "${rawAddress}" is not valid`
+  converted.sourceEth = ''
+  if (utils.address.is.substrateAddress(rawAddress)) {
+  } else if (utils.address.is.ethereumAddress(rawAddress)) {
+    converted.sourceEth = rawAddress
+    rawAddress = utils.address.ethToSubMirror(rawAddress)
+  } else {
+    error.message = `Address "${rawAddress}" is not valid`
     return
   }
 
+
+
   ;[
     converted.toEth,
+    converted.toQuartz,
+    converted.toUnique,
+    converted.toPolkadot,
+    converted.toKusama,
     converted.toSubNormalized,
-    converted.toSubDoubleMirror
   ] = await Promise.all([
-    await subToEth(rawAddress),
-    await normalizeSubAddress(rawAddress),
-    await subToSubMirrorOfEth(rawAddress)
+    await utils.address.subToEthMirror(rawAddress),
+    await utils.address.normalizeSubstrateAddress(rawAddress, 255),
+    await utils.address.normalizeSubstrateAddress(rawAddress, 7391),
+    await utils.address.normalizeSubstrateAddress(rawAddress, 0),
+    await utils.address.normalizeSubstrateAddress(rawAddress, 2),
+    await utils.address.normalizeSubstrateAddress(rawAddress),
   ])
 }
 
@@ -70,6 +126,7 @@ const convertInputSubToEth = async () => {
     margin-right: .5rem;
   }
 }
+
 .error {
   color: red;
 }

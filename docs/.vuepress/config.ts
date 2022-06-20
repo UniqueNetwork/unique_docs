@@ -1,17 +1,17 @@
-import {defineUserConfig, DefaultThemeOptions} from 'vuepress'
-
-// import type { WebpackBundlerOptions } from '@vuepress/bundler-webpack'
+import {defineUserConfig, viteBundler} from 'vuepress'
+import {defaultTheme} from '@vuepress/theme-default'
 import * as path from 'path'
 import {navbar} from "./configs/navbar";
 import {sidebar} from "./configs/sidebar";
-// import {Configuration, ProvidePlugin} from 'webpack'
-// import {merge} from 'webpack-merge'
+import {mermaidPlugin} from "@renovamen/vuepress-plugin-mermaid"
 
-export default defineUserConfig<DefaultThemeOptions>({
+const {registerComponentsPlugin} = require('@vuepress/plugin-register-components')
+
+export default defineUserConfig({
   lang: 'en-US',
   title: 'Unique docs',
   description: 'Unique network documentation portal',
-  head: [['link', { rel: 'icon', href: '/favicon.svg' }]],
+  head: [['link', {rel: 'icon', href: '/favicon.svg'}]],
 
   port: 3000,
 
@@ -24,9 +24,7 @@ export default defineUserConfig<DefaultThemeOptions>({
   },
 
   // theme and its config
-  theme: '@vuepress/theme-default',
-  themeConfig: {
-    favicon: '',
+  theme: defaultTheme({
     logo: '/images/logo/unique.svg',
     contributors: false,
     locales: {
@@ -35,32 +33,20 @@ export default defineUserConfig<DefaultThemeOptions>({
         sidebar: sidebar.en,
       }
     },
-  },
+  }),
   // extendsMarkdown: (md: any) => {md.set({breaks: true})},
   plugins: [
-    [
-      '@vuepress/register-components',
-      {componentsDir: path.resolve(__dirname, './components')}
-    ]
+    registerComponentsPlugin({componentsDir: path.resolve(__dirname, './components')}),
+    mermaidPlugin(),
   ],
 
 
-  bundlerConfig: {
+  bundler: viteBundler({
     viteOptions: {
-      resolve: {
-        alias: {
-          process: 'process',
-          'readable-stream': 'vite-compatible-readable-stream',
-          zlib: "browserify-zlib",
-          util: 'util',
-          https: 'https-browserify',
-          http: 'stream-http',
-          crypto: 'crypto-browserify',
-          assert: 'assert',
-          url: 'url',
-          os: 'os-browserify',
-        }
-      }
+      build: {
+        sourcemap: true,
+        target: 'es2020',
+      },
     }
-  }
+  })
 })
