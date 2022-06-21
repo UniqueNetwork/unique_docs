@@ -8,10 +8,21 @@ export const sidebar: Record<string, SidebarConfig> = {
         children: ['/guide/README.md', '/guide/identica.md'],
       }
     ],
+    'repos': [
+      {
+        text: 'GitHub repositories',
+        children: ['/repos/README.md'],
+      }
+    ],
     '/reference': [
       {
         text: 'Unique Reference',
-        children: ['/reference/README.md', '/reference/addresses.md', "/reference/indexer.md"],
+        children: [
+          '/reference/README.md',
+          '/reference/addresses.md',
+          '/reference/wallet-integration.md',
+          '/reference/glossary.md'
+        ],
       },
     ],
     '/reference/ethereum': [

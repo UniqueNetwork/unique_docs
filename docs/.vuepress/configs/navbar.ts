@@ -28,5 +28,9 @@ export const navbar: Record<string, NavbarConfig> = {
       text: 'Guide',
       link: '/guide/',
     },
+    {
+      text: 'GitHub repositories',
+      link: '/repos/',
+    },
   ]
 }
