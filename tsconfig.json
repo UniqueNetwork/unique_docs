@@ -25,5 +25,15 @@
       "@polkadot/types/lookup": ["node_modules/@unique-nft/types/types-lookup"]
     }
   },
-  "include": ["docs/global.d.ts", "docs/**/*.ts", "docs/**/*.d.ts", "docs/**/*.tsx", "docs/**/*.vue"]
+  "typeAcquisition": {
+    "include": ["docs/env.d.ts"]
+  },
+  "include": [
+    "docs/env.d.ts",
+    "docs/**/*.ts",
+    "docs/**/*.d.ts",
+    "docs/**/*.tsx",
+    "docs/**/*.vue",
+    "node_modules/@vuepress/client/types.d.ts"
+  ]
 }

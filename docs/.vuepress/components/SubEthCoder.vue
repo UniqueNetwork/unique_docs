@@ -54,11 +54,10 @@
 
 <script setup lang="ts">
 import {reactive, ref} from 'vue'
-import {utils, WS_RPC} from '@unique-nft/api'
+import {utils} from '@unique-nft/api'
 import CopyButton from './CopyButton.vue'
 
 import {useInit} from 'unique_api_vue'
-import {Substrate} from "@unique-nft/api";
 
 const {chainRef, initTask, ethAccountsRef, requestEthereumAccounts} = useInit()
 

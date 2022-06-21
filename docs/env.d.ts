@@ -1,4 +1,5 @@
 /// <reference types="vite/client" />
+/// <reference types="vuepress/bin/index">
 
 declare module '*.vue' {
   import type { DefineComponent } from 'vue'
@@ -7,10 +8,16 @@ declare module '*.vue' {
   export default component
 }
 
+declare global {
+  declare var __VUEPRESS_SSR__: boolean
 
-interface Window {
-  ethereum: any
+  interface Window {
+    ethereum: any
+  }
 }
+
+
+
 
 
 
