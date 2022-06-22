@@ -6,6 +6,9 @@ export const sidebar: Record<string, SidebarConfig> = {
       {
         text: 'Unique Guide',
         children: ['/guide/README.md',
+          '/guide/create-account.md',
+          '/guide/get-ksm.md',
+          '/guide/marketplace.md',
           '/guide/graphql.md',
           '/guide/identica.md'
         ],

@@ -20,16 +20,16 @@ These are reasons why we decided to create NFT infrastructure and our chain usin
 ## The main components
 
 1. Infrastructure:
-   * NFT Module (see https://github.com/usetech-llc/nft_parachain)
-   * Smart contract module
-   * Wallet and widgets for other wallets
-   * Parachain
+   * NFT Module;
+   * Smart contract module;
+   * Wallet and widgets for other wallets;
+   * Parachain.
 2. Interoperability:
-   * NFT Bridges to other chains (or NFT components of existing bridges)
-   * Unity API (and other APIs)
+   * NFT Bridges to other chains (or NFT components of existing bridges);
+   * Unity API (and other APIs).
 3. NFT SDK and Solutions:
-   * Exchange
-   * Gaming platforms
-   * Identity
-   * Certification
-   * Software Licenses
+   * Exchange;
+   * Gaming platforms;
+   * Identity;
+   * Certification;
+   * Software Licenses.
