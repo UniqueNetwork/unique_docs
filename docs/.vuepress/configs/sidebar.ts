@@ -5,7 +5,10 @@ export const sidebar: Record<string, SidebarConfig> = {
     '/guide': [
       {
         text: 'Unique Guide',
-        children: ['/guide/README.md', '/guide/identica.md'],
+        children: ['/guide/README.md',
+          '/guide/graphql.md',
+          '/guide/identica.md'
+        ],
       }
     ],
     'repos': [
