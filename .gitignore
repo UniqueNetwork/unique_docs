@@ -1,6 +1,8 @@
 node_modules
 .temp
 .cache
+.idea
 dist
 !.vuepress/
 *.log
+yarn.lock

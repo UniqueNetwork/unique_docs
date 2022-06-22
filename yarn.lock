@@ -4305,7 +4305,7 @@ uc.micro@^1.0.1, uc.micro@^1.0.5:
   resolved "https://registry.yarnpkg.com/uc.micro/-/uc.micro-1.0.6.tgz#9c411a802a409a91fc6cf74081baba34b24499ac"
   integrity sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==
 
-unique_api_vue@^0.0.2:
+unique_api_vue@0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/unique_api_vue/-/unique_api_vue-0.0.2.tgz#633e396eeb01fb9ac9fc0b0d53abb9fdf84034b7"
   integrity sha512-2sPtH7kxYE/eVOP87YwrL/wIR+8qgwKLLaqUmUpSB0Y49zaFngfesY35+GKLCRcteigfmbwtyoPo8A0DTKBYYw==

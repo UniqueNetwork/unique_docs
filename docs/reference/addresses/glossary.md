@@ -1,3 +1,5 @@
+# Glossary
+
 **Distributed Database** is a database type where the information is stored in several copies, on devices located in different locations.
 
 **Consistency** is a distributed database property that means that all copies of the data are synchronized and identical with each other.
