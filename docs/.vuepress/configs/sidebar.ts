@@ -26,7 +26,8 @@ export const sidebar: Record<string, SidebarConfig> = {
         children: ['/ecosystem/polkadot.md',
         '/ecosystem/kusama.md',
         '/ecosystem/substrate.md',
-        '/ecosystem/community.md'
+        '/ecosystem/community.md',
+          '/ecosystem/use-cases.md'
         ]
       }
     ],

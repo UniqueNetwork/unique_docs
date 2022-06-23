@@ -10,4 +10,4 @@ Unique Network uses Polkadot, Kusama and the Substrate framework. The details on
 
 [Community](community.md)
 
-Use Cases and Partners
+[Use Cases and Partners](use-cases.md)

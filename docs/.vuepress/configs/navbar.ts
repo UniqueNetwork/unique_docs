@@ -36,5 +36,9 @@ export const navbar: Record<string, NavbarConfig> = {
       text: 'Ecosystem',
       link: '/ecosystem/',
     },
+    {
+      text: 'Contacts',
+      link: '/contacts/',
+    },
   ]
 }
