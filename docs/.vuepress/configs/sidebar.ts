@@ -14,10 +14,20 @@ export const sidebar: Record<string, SidebarConfig> = {
         ],
       }
     ],
-    'repos': [
+    '/repos': [
       {
         text: 'GitHub repositories',
         children: ['/repos/README.md'],
+      }
+    ],
+    '/ecosystem': [
+      {
+        text: 'Ecosytem',
+        children: ['/ecosystem/polkadot.md',
+        '/ecosystem/kusama.md',
+        '/ecosystem/substrate.md',
+        '/ecosystem/community.md'
+        ]
       }
     ],
     '/reference': [

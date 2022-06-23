@@ -17,10 +17,8 @@ You can see the following section in the navigation bar (at the top of the Marke
 
 Click the **Market** tab to see collections of NFTs, tokens and their attributes.
 
-![MarketTab](./images/market-tab.png)
-
 Available on the Market NFTs are displayed in the List panel located in the central part of the Market page. Usually, an NFT has a token card containing the picture, name, and price.
-Click the **View** icon to open the page that allows you to see more details for a particular NFT and buy it.
+Click a NFT item to open the page that allows you to see more details for a particular NFT and buy it.
 
 ![NFTcard](./images/nft-card.png)
 
