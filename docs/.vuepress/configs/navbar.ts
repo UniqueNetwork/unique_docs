@@ -28,13 +28,13 @@ export const navbar: Record<string, NavbarConfig> = {
       text: 'Guide',
       link: '/guide/',
     },
+        {
+      text: 'Ecosystem',
+      link: '/ecosystem/',
+    },
     {
       text: 'GitHub repositories',
       link: '/repos/',
-    },
-    {
-      text: 'Ecosystem',
-      link: '/ecosystem/',
     },
     {
       text: 'Contacts',
