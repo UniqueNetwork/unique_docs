@@ -29,10 +29,10 @@ The Unique Mainnet is the production environment. The UNQ token has value and al
 Unique Network provides an Opal Testnet to it's users in order to play with all blockchain features in a safe and free of network fees environment.&#x20;
 
 | Parameter                      | Value                                                                |
-| ------------------------------ | -------------------------------------------------------------------- |
+| ------------------------------ |----------------------------------------------------------------------|
 | WebSocket URL                  | wss://ws-opal.unique.network                                         |
 | EVM Network URL (RPC Endpoint) | [https://rpc-opal.unique.network/](https://rpc-opal.unique.network/) |
-| Ethereum Chain ID              | 8888                                                                 |
+| Ethereum Chain ID              | 8882                                                                 |
 | Currency Symbol                | OPL                                                                  |
 | Decimals                       | 18                                                                   |
 

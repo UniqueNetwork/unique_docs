@@ -8,8 +8,8 @@ export const sidebar: Record<string, SidebarConfig> = {
         children: ['/guide/README.md',
           '/guide/create-account.md',
           '/guide/get-ksm.md',
-          '/guide/marketplace.md',
           '/guide/graphql.md',
+          '/guide/glossary.md',
           '/guide/identica.md'
         ],
       }
@@ -22,7 +22,7 @@ export const sidebar: Record<string, SidebarConfig> = {
     ],
     '/ecosystem': [
       {
-        text: 'Ecosytem',
+        text: 'Ecosystem',
         children: ['/ecosystem/polkadot.md',
         '/ecosystem/kusama.md',
         '/ecosystem/substrate.md',
@@ -31,13 +31,12 @@ export const sidebar: Record<string, SidebarConfig> = {
         ]
       }
     ],
-    '/reference': [
+    '/reference/addresses': [
       {
-        text: 'Unique Reference',
+        text: 'Accounts and addresses',
         children: [
-          '/reference/addresses/addresses.md',
-          '/reference/addresses/wallet-integration.md',
-          '/reference/addresses/glossary.md'
+          '/reference/addresses/index.md',
+          '/reference/addresses/wallet-integration.md'
         ],
       },
     ],
@@ -68,5 +67,13 @@ export const sidebar: Record<string, SidebarConfig> = {
         ],
       }
     ],
+    '/products/market': [
+      {
+        text: 'Market',
+        children: [
+          '/products/market/index.md',
+        ]
+      }
+    ]
   }
 }

@@ -1,3 +1,5 @@
+# Market
+
 # Marketplace
 
 ## Overview
@@ -10,7 +12,7 @@ You can see the following section in the navigation bar (at the top of the Marke
 * _My tokens_ allow you to view and manage tokens that you own, including NFTs, RFTs, and Fungible tokens. In this tab, you can also transfer or sell your tokens.
 * _Trades_ display the recent trades performed on the Market including your trade transactions.
 * _FAQ_ contains the most frequently asked questions and answers to them.
- 
+
 ![Marketplace](./images/marketplace.png "Marketplace")
 
 ## Viewing Tokens
@@ -24,7 +26,7 @@ Click a NFT item to open the page that allows you to see more details for a part
 
 ## Purchasing an NFT
 
-ou can purchase an NFT in the Detailed token view. For this, follow these steps: 
+ou can purchase an NFT in the Detailed token view. For this, follow these steps:
 
 1. Click the **Buy it** button in the Detailed token view.
 2. In the **Authorize transaction** window, click the **Sign and Submit** button.
@@ -38,9 +40,9 @@ ou can purchase an NFT in the Detailed token view. For this, follow these steps:
 6. In the **Transaction** window, enter your account password (if it was not remembered by the system on step 4) and click **Sign the transaction**.
 7. Now, you are the token owner. The “**You own it!**” message displayed in the detailed view page for your NFT. Please note that you have two new buttons displayed now, which allow you to transfer and sell your token.
    ![YouOwnIt](./images/you-own-it.png)
-8. Click **My tokens** to verify that your token is displayed under the collection name. 
+8. Click **My tokens** to verify that your token is displayed under the collection name.
 
-## Selling an NFT on the Market 
+## Selling an NFT on the Market
 
 You can sell a token you own on the market To sell your token:
 
@@ -51,7 +53,7 @@ You can sell a token you own on the market To sell your token:
    ![Authorize](./images/authorize.png)
 5. In the **Transaction** window, enter your account password and click **Sign the transaction**. To complete the process, you will later need to enter your password again. You may wish to check the **Remember my password for the next 15 minutes** checkbox.
 6. In the screen that follows, enter your token price in KSM. Click **Submit**.
-    ![SetPrice](./images/set-price.png)
+   ![SetPrice](./images/set-price.png)
 7. In the **Authorize transaction** window, click **Sign and Submit**.
 8. In the **Transaction** window, click Sign the transaction **Sign the transaction**.
    ![SignTranscation](./images/sign-trans.png)
@@ -74,7 +76,7 @@ Your token is now removed from sale on the Market. It is now again available to 
 3. In the Detailed token view page, click Transfer.
    ![NFTcard](./images/nft-card.png)
 4. In the **Transfer NFT** token window, enter the address to which you transfer the token and click the **Transfer token** button.
-    :warning: Be careful with this operation as this transaction cannot be reverted!
+   :warning: Be careful with this operation as this transaction cannot be reverted!
 5. In the **Authorize transaction** window, click **Sign and Submit**.
    ![Authorize](./images/authorize.png)
 6. Enter your account password in the **Transaction** window. Click **Sign the transaction**.
@@ -83,4 +85,11 @@ Your token is now removed from sale on the Market. It is now again available to 
 
 ## Build a proof of concept Marketplace
 
-The Marketplace installation guide with detailed instructions. Go to [the Github repository](https://github.com/UniqueNetwork/marketplace-docker/blob/master/README.md).
+We provide two ways to install our Marketplace.
+
+1. _All-in-one docker container_. In this case, you do not need to have anything installed on your machine except Docker and SSL certificates. The Marketplace installation guide with detailed instructions can be found in [our GitHub repository](https://github.com/UniqueNetwork/marketplace-docker/blob/master/README.md).
+2. _Advanced approach_ (the frontend and backend parts are installed separately). In this scenario, you will have to install Nginx manually and configured it accordingly. Also, you will need to set up connection between frontend and backend parts to make them work together. We provide the detailed guid for this approach, as well:
+
+   [Marketplace Backend Installation](https://github.com/UniqueNetwork/unique-marketplace-api)
+
+   [Marketplace Frontend Installation](https://github.com/UniqueNetwork/unique-marketplace-frontend)
