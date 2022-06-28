@@ -8,6 +8,8 @@ export const sidebar: Record<string, SidebarConfig> = {
         children: ['/guide/README.md',
           '/guide/create-account.md',
           '/guide/get-ksm.md',
+          '/guide/choosing-tools.md',
+          '/guide/ethereum-tools.md',
           '/guide/graphql.md',
           '/guide/glossary.md',
           '/guide/identica.md'
@@ -55,6 +57,7 @@ export const sidebar: Record<string, SidebarConfig> = {
         text: 'Chain',
         children: [
           '/reference/chain/index.md',
+          '/reference/chain/governance-only.md',
           '/reference/chain/nesting.md',
         ],
       }
