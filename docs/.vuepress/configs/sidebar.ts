@@ -57,6 +57,8 @@ export const sidebar: Record<string, SidebarConfig> = {
         text: 'Chain',
         children: [
           '/reference/chain/index.md',
+          '/reference/chain/rpc.md',
+          '/reference/chain/extrinsics.md',
           '/reference/chain/governance-only.md',
           '/reference/chain/nesting.md',
         ],
