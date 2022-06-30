@@ -28,7 +28,7 @@
     "@urql/core": "^2.4.4",
     "@vueuse/core": "^8.6.0",
     "mermaid": "^9.1.2",
-    "unique_api_vue": "0.0.2",
+    "unique_api_vue": "0.0.3",
     "web3-provider-sponsoring": "^0.1.0"
   }
 }
