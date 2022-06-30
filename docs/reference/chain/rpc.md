@@ -48,7 +48,7 @@ api.rpc.unique.accountTokens(5, {Ethereum: '0x1C9d253C8f9f4b25d32F107B0460aEEb4b
 
 **Description**
 
-:question: Gets the list of administrators for the specified collection. 
+Gets the list of administrators for the specified collection. 
 
 **Declaration**
 
@@ -60,8 +60,8 @@ api.rpc.unique.accountTokens(5, {Ethereum: '0x1C9d253C8f9f4b25d32F107B0460aEEb4b
 
 **Code Example**
 ```javascript
-api.rpc.unique.accountTokens(2,)
-api.rpc.unique.accountTokens(5, 0x6897ebb348679a45f8adb75f62a80d)
+api.rpc.unique.adminlist(2)
+api.rpc.unique.adminlist(5, 0x6897ebb348679a45f8adb75f62a80d)
 ```
 
 ### :small_blue_diamond:**_allowance_**
@@ -397,8 +397,8 @@ Gets an owner of a token in a collection.
 
 **Code Example**
 ```javascript
-api.rpc.unique.tokenExists(2, 1)
-api.rpc.unique.tokenExists(2, 1, 0x6897ebb348679a45f8adb75f62a80d) 
+api.rpc.unique.tokenOwner(2, 1)
+api.rpc.unique.tokenOwner(2, 1, 0x6897ebb348679a45f8adb75f62a80d) 
 
 ```
 **Result**
