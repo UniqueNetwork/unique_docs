@@ -189,15 +189,6 @@ In summary, the configuration or permissions to create and modify properties of 
 
 ## RPC Methods
 
-### 🔶 collectionById
-
-Collection parameters and access rights to the token parameters can be obtained by calling the collection information method:
-
- ```javascript
- api.rpc.unique.collectionById(collectionId)
- ```
-with keys `properties` and `tokenPropertyPermissions`.
-
 ### 🔶 collectionProperties
 
 Obtain collection properties array.

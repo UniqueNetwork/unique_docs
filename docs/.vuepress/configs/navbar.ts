@@ -55,12 +55,8 @@ export const navbar: Record<string, NavbarConfig> = {
       link: '/ecosystem/',
     },
     {
-      text: 'GitHub repositories',
+      text: 'GitHub',
       link: '/repos/',
-    },
-    {
-      text: 'Contacts',
-      link: '/contacts/',
     },
   ]
 }

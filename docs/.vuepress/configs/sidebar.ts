@@ -18,7 +18,7 @@ export const sidebar: Record<string, SidebarConfig> = {
     ],
     '/repos': [
       {
-        text: 'GitHub repositories',
+        text: 'GitHub',
         children: ['/repos/README.md'],
       }
     ],

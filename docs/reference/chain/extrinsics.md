@@ -192,7 +192,7 @@ api.tx.unique.createCollectionEx({name: 'test', description: 'test description',
 
 **Description**
 
-This method creates a concrete instance the NFT collection which was created using the [CreateCollectionEx](#createCollectionEx) method.
+This method creates an item in the NFT collection and assigns it to the specified owner.
 
 **Declaration**
 
