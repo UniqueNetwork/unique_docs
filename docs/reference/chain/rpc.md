@@ -22,6 +22,12 @@ api.rpc.unique.accountBalance(2, {Substrate: '5CiDszBRQ7jDhPwRNBLc4EZHAgbEwhGMbN
 api.rpc.unique.accountBalance(5, {Ethereum: '0x1C9d253C8f9f4b25d32F107B0460aEEb4b6fefb5'}, 0x6897ebb348679a45f8adb75f62a80d)
 ```
 
+**Result**
+
+```
+3
+```
+
 ### :small_blue_diamond:**_accountTokens_**
 
 **Description**
@@ -44,6 +50,16 @@ api.rpc.unique.accountTokens(2, {Substrate: '5CiDszBRQ7jDhPwRNBLc4EZHAgbEwhGMbNS
 api.rpc.unique.accountTokens(5, {Ethereum: '0x1C9d253C8f9f4b25d32F107B0460aEEb4b6fefb5'}, 0x6897ebb348679a45f8adb75f62a80d)
 ```
 
+**Result**
+
+```
+[
+  1
+  2
+  3
+]
+```
+
 ### :small_blue_diamond:**_adminlist_**
 
 **Description**
@@ -62,6 +78,14 @@ Gets the list of administrators for the specified collection.
 ```javascript
 api.rpc.unique.adminlist(2)
 api.rpc.unique.adminlist(5, 0x6897ebb348679a45f8adb75f62a80d)
+```
+
+**Result**
+
+```
+{
+  Substrate: yGF5zc2jiMXsGTcAzMe6Qq4euW2yGLHTevcyfgoT1riK2zhov
+}
 ```
 
 ### :small_blue_diamond:**_allowance_**
@@ -89,6 +113,12 @@ api.rpc.unique.adminlist(5, 0x6897ebb348679a45f8adb75f62a80d)
 api.rpc.unique.allowance(2, {Substrate: '5CiDszBRQ7jDhPwRNBLc4EZHAgbEwhGMbNSaJDQgmYibzm21'}, {Substrate: '5CiDszFdQ7jDhPwRNBLc4EZHAgbYyhGMbNSaJDQgmYibzm44'}, 1)
 ```
 
+**Result**
+
+```
+0 ? 
+```
+
 ### :small_blue_diamond:**_allowed_**
 
 **Description**
@@ -110,6 +140,12 @@ Check if a user is allowed to use a collection. Returns `true` or `false`.
 api.rpc.unique.allowed(2, {Substrate: '5CiDszBRQ7jDhPwRNBLc4EZHAgbEwhGMbNSaJDQgmYibzm21'}) 
 ```
 
+**Result**
+
+```
+false
+```
+
 ### :small_blue_diamond:**_allowlist_**
 
 **Description**
@@ -127,6 +163,14 @@ Gets the addresses that are in the allow list for the specified collection.
 **Code Example**
 ```javascript
 api.rpc.unique.allowList(2) 
+```
+
+**Result**
+
+```
+{
+  Substrate: yGF5zc2jiMXsGTcAzMe6Qq4euW2yGLHTevcyfgoT1riK2zhov
+}
 ```
 
 ### :small_blue_diamond:**_balance_**
@@ -153,11 +197,32 @@ api.rpc.unique.balance(2, {Substrate: '5CiDszBRQ7jDhPwRNBLc4EZHAgbEwhGMbNSaJDQgm
 api.rpc.unique.balance(2, {Substrate: '5CiDszBRQ7jDhPwRNBLc4EZHAgbEwhGMbNSaJDQgmYibzm21'}, 1, 0x6897ebb348679a45f8adb75f62a80d) 
 ```
 
+**Result**
+
+```
+1
+```
+
 ### :small_blue_diamond:**_collectionById_**
 
 **Description**
 
-Get collection by specified id in the following representation: 
+Get the collection details. 
+
+**Declaration**
+
+`collectionById(collection, at)`
+
+`collection [u32]` - an ID of the collection which will be checked.
+
+`at [hash] Optional` - allows to specify at which moment of the chain (block hash) you need to perform the check. If you leave it empty, the result will be for the last block of the chain.
+
+**Code Example**
+```javascript
+api.rpc.unique.collectionById(2)
+```
+
+**Result**
 
 <details>
   <summary>click to expand</summary>
@@ -209,19 +274,6 @@ Get collection by specified id in the following representation:
 
 </details>
 
-**Declaration**
-
-`collectionById(collection, at)`
-
-`collection [u32]` - an ID of the collection which will be checked.
-
-`at [hash] Optional` - allows to specify at which moment of the chain (block hash) you need to perform the check. If you leave it empty, the result will be for the last block of the chain.
-
-**Code Example**
-```javascript
-api.rpc.unique.collectionById(2)
-```
-
 ### :small_blue_diamond:**_collectionStats_**
 
 **Description**
@@ -269,7 +321,7 @@ Get tokens (IDs) contained in a collection.
 api.rpc.unique.collectionTokens(2)
 ```
 
-**_Result_**
+**Result**
 
 ```
 [
@@ -333,6 +385,12 @@ Gets the last token ID.
 api.rpc.unique.lastTokenId(10)
 ```
 
+**Result**
+
+```
+3
+```
+
 ### :small_blue_diamond:**_nextSponsored_**
 
 **Description**
@@ -357,6 +415,12 @@ api.rpc.unique.nextSponsored(2, {Substrate: '5CiDszBRQ7jDhPwRNBLc4EZHAgbEwhGMbNS
 api.rpc.unique.nextSponsored(2, {Substrate: '5CiDszBRQ7jDhPwRNBLc4EZHAgbEwhGMbNSaJDQgmYibzm21'}, 1, 0x6897ebb348679a45f8adb75f62a80d) 
 ```
 
+**Result**
+
+```
+0 ? 
+```
+
 ### :small_blue_diamond:**_tokenExists_**
 
 **Description**
@@ -377,6 +441,12 @@ Check if a token exists in a collection. Returns `true` or `false`.
 ```javascript
 api.rpc.unique.tokenExists(2, 1)
 api.rpc.unique.tokenExists(2, 1, 0x6897ebb348679a45f8adb75f62a80d) 
+```
+
+**Result**
+
+```
+true
 ```
 
 ### :small_blue_diamond:**_tokenOwner_**
