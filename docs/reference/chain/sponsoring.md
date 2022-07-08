@@ -1,6 +1,6 @@
 # Sponsoring 
 
-In Unique Network, transactions can be sponsored. The main benefit of this is the fact that you can hide crypto usage from an end-user. For example, the Unique marketplace [https://unqnft.io] user does not see UNQ currency.
+In Unique Network, transactions can be sponsored. The main benefit of this is the fact that you can hide crypto usage from an end-user. For example, the [Unique marketplace](https://unqnft.io) user does not see UNQ currency.
 
 However, DOS attacks may deplete sponsor funds by sending too many "free" (for users) transactions. The solution here is to set a rate limit based on NFT.
 For example, an NFT can be transferred once per X hours. Or as alternative, a rate limit can be based on the allow list for smart contracts.
