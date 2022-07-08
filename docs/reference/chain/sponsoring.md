@@ -1,16 +1,41 @@
 # Sponsoring 
 
-## Transaction sponsoring 
+In Unique Network, transactions can be sponsored. The main benefit of this is the fact that you can hide crypto usage from an end-user. For example, the Unique marketplace [https://unqnft.io] user does not see UNQ currency.
 
-Let's imagine that a user has a NFT. But, he/she does not have any money in his/her account at the same time. This would mean that he/she cannot perform any transactions (like token transfer for example), because he/she should pay a transaction fee. 
-
-However, transaction sponsoring changes the rules. This mechanism allows performing a transfer even with a zero balance if a transaction sponsoring is enabled. 
+However, DOS attacks may deplete sponsor funds by sending too many "free" (for users) transactions. The solution here is to set a rate limit based on NFT.
+For example, an NFT can be transferred once per X hours. Or as alternative, a rate limit can be based on the allow list for smart contracts.
 
 ## Collection sponsoring 
 
+The collection sponsoring is determined based on a rate limit. 
 
+First, the rate limit is checked. If everything is OK, then the network choose who pays for a transaction (before its execution). 
+
+> The choose is based on the rate limit, but not on the account balances. 
+
+Then, when transaction is being carried out, the network tries to withdraw fee from the selected account.
+
+If collection sponsoring is enabled, the specified sponsor pays for a transaction in any case. If the sponsor account does not have enough money, then the error will occur, and the transaction will not be carried out. 
+
+> There is no way for another account to pay for the transaction when sponsoring is enabled.  
+
+The [Example](#example) section demonstrates how the collection sponsoring works in a sample scenario. 
+
+## Smart contract sponsoring 
+
+For an Ethereum contract, it is possible to set only the self-sponsoring mode. 
+
+To make sponsoring works, it is needed to add funds to a Substrate address (Ethereum mirror). Please note that it is impossible to add funds on the Ethereum side. However, if the "receive" method is implemented (according to [the Solidity docs](https://docs.soliditylang.org/en/v0.8.14/contracts.html#receive-ether-function)), it will be possible to add funds on the Ethereum side, as well. Please note that this is not related to _payable_ functions anyhow. 
+
+> If the rate limit is OK, the smart contract itself pays for transactions. There is no way for user accounts to pay in this case. 
+
+If the smart contract does not have funds and the sponsoring is enabled, you will not be able to add money since the smart contract will try to sponsor this transaction (but cannot do this). The solution here is to disable sponsoring, add money, and then enable sponsoring again. 
 
 ## Example
+
+Let's imagine that a user has a NFT. But, he/she does not have any money in his/her account at the same time. This would mean that he/she cannot perform any transactions (like token transfer for example), because he/she should pay a transaction fee.
+
+However, transaction sponsoring changes the rules. This mechanism allows performing a transfer even with a zero balance if a transaction sponsoring is enabled.
 
 We have 4 users with the following initial balances: 
  
