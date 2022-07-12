@@ -7,7 +7,7 @@ export const navbar: Record<string, NavbarConfig> = {
       link: '/reference/',
       children: [
         {
-          text: 'Addresses',
+          text: 'Accounts and Addresses',
           link: '/reference/addresses'
         },
         {
@@ -25,8 +25,38 @@ export const navbar: Record<string, NavbarConfig> = {
       ]
     },
     {
+      text: 'Products',
+      link: '/products/',
+      children: [
+        {
+          text: 'Market',
+          link: '/products/market'
+        },
+        {
+          text: 'Wallet',
+          link: '/products/wallet'
+        },
+        {
+          text: 'Minter',
+          link: '/products/minter'
+        },
+        {
+          text: 'Scan',
+          link: '/products/scan'
+        },
+      ]
+    },
+    {
       text: 'Guide',
       link: '/guide/',
+    },
+        {
+      text: 'Ecosystem',
+      link: '/ecosystem/',
+    },
+    {
+      text: 'GitHub',
+      link: '/repos/',
     },
   ]
 }

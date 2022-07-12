@@ -19,7 +19,7 @@
   </template>
 
   <p>
-    Normalized (prefix 42) address:
+    Normalized format (prefix 42):
     <CopyButton :data="converted.toSubNormalized"/>
     {{ converted.toSubNormalized }}
   </p>

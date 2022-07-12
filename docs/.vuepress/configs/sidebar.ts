@@ -5,13 +5,41 @@ export const sidebar: Record<string, SidebarConfig> = {
     '/guide': [
       {
         text: 'Unique Guide',
-        children: ['/guide/README.md', '/guide/identica.md'],
+        children: ['/guide/README.md',
+          '/guide/create-account.md',
+          '/guide/get-ksm.md',
+          '/guide/choosing-tools.md',
+          '/guide/ethereum-tools.md',
+          '/guide/graphql.md',
+          '/guide/glossary.md',
+          '/guide/identica.md'
+        ],
       }
     ],
-    '/reference': [
+    '/repos': [
       {
-        text: 'Unique Reference',
-        children: ['/reference/README.md', '/reference/addresses.md', "/reference/indexer.md"],
+        text: 'GitHub',
+        children: ['/repos/README.md'],
+      }
+    ],
+    '/ecosystem': [
+      {
+        text: 'Ecosystem',
+        children: ['/ecosystem/polkadot.md',
+        '/ecosystem/kusama.md',
+        '/ecosystem/substrate.md',
+        '/ecosystem/community.md',
+          '/ecosystem/use-cases.md'
+        ]
+      }
+    ],
+    '/reference/addresses': [
+      {
+        text: 'Accounts and addresses',
+        children: [
+          '/reference/addresses/index.md',
+          '/reference/addresses/wallet-integration.md'
+        ],
       },
     ],
     '/reference/ethereum': [
@@ -29,6 +57,10 @@ export const sidebar: Record<string, SidebarConfig> = {
         text: 'Chain',
         children: [
           '/reference/chain/index.md',
+          '/reference/chain/rpc.md',
+          '/reference/chain/extrinsics.md',
+          '/reference/chain/sponsoring.md',
+          '/reference/chain/governance-only.md',
           '/reference/chain/nesting.md',
         ],
       }
@@ -47,5 +79,13 @@ export const sidebar: Record<string, SidebarConfig> = {
         ],
       }
     ],
+    '/products/market': [
+      {
+        text: 'Market',
+        children: [
+          '/products/market/index.md',
+        ]
+      }
+    ]
   }
 }
