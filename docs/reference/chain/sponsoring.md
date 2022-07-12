@@ -11,7 +11,7 @@ The collection sponsoring is determined based on a rate limit.
 
 First, the rate limit is checked. If everything is OK, then the network choose who pays for a transaction (before its execution). 
 
-> The choose is based on the rate limit, but not on the account balances. 
+> The choice is based on the rate limit, but not on the account balances. 
 
 Then, when transaction is being carried out, the network tries to withdraw fee from the selected account.
 
