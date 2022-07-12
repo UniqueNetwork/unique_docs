@@ -1,6 +1,25 @@
+# Web Readme
 
+## Table of Contents
 
-# Intro
+- [Intro](#intro)
+- [Getting started](#sdk-deployment---getting-started-guide)
+  - [Install](#install)
+  - [Environment Variables](#environment-variables)
+  - [Swagger](#swagger)
+- [Unique SDK HTTP API Methods:](#methods)
+  - [Main Methods](#main-methods)
+    - [Extrinsic build](#build-unsigned-extrinsic)
+    - [Extrinsic sign](#sign-an-extrinsic)
+    - [Extrinsic verify-sign](#verify-sign)
+    - [Extrinsic submit](#submit-extrinsic)
+  - [Additional Methods](#additional-methods)
+    - [Сhain](#get-chain-properties)
+    - [Balance](#get-balance)
+    - [Collection](#get-collection)
+    - [Token](#get-token)
+
+## Intro
 
 Extrinsic is a request to change data in the blockchain.
 
@@ -16,36 +35,17 @@ To make changes to the blockchain, it is necessary to form a request (extrinsic)
 Once an extrinsic has been generated, it must be signed in order for the chain to complete the requested changes.
 
 
-## Table of Contents
-
-- [Getting started](#sdk-deployment---getting-started-guide)
-  - [Install](#install)
-  - [Environment Variables](#environment-variables)
-  - [Swagger](#swagger)
-
-
-- [Unique SDK HTTP API Methods:](#methods)
-  - [Main Methods](#main-methods)
-    - [Extrinsic build](#build-unsigned-extrinsic)
-    - [Extrinsic sign](#sign-an-extrinsic)
-    - [Extrinsic verify-sign](#verify-sign)
-    - [Extrinsic submit](#submit-extrinsic)
-  - [Additional Methods](#additional-methods)
-    - [Сhain](#get-chain-properties)
-    - [Balance](#get-balance)
-    - [Collection](#get-collection)
-    - [Token](#get-token)
-
-# SDK Deployment - Getting Started Guide
+## SDK Deployment - Getting Started Guide
 
 
 - [How to install](#install)
 - [How to configure – environment variables](#environment-variables)
 - [Where to try - Swagger](#swagger)
-## Install
+
+### Install
 Choose install approach: [Docker](#docker), [Source code](#git) or [Public endpoints](#public-endpoints)
 
-### Docker
+#### Docker
 
 ```bash
 docker run -p 3000:3000 -e CHAIN_WS_URL=wss://quartz.unique.network uniquenetwork/web:latest
@@ -53,7 +53,7 @@ docker run -p 3000:3000 -e CHAIN_WS_URL=wss://quartz.unique.network uniquenetwor
 
 <a href="https://hub.docker.com/r/uniquenetwork/web" target="_blank">See hub.docker.com page</a>
 
-### Git
+#### Git
 
 ```git
 git clone https://github.com/UniqueNetwork/unique-sdk
@@ -63,7 +63,7 @@ npm run build:web
 npm start
 ```
 
-### Public endpoints
+#### Public endpoints
 
 You can use public endpoints for access Unique Web:
 
@@ -77,7 +77,7 @@ https://web-opal.unique.network
 https://web-quartz.unique.network
 ```
 
-## Environment Variables
+### Environment Variables
 
 #### Required
 ```bash
@@ -117,12 +117,12 @@ REDIS_PORT=6379
 REDIS_DB=0
 ```
 
-## Swagger
+### Swagger
 ```
 https://web-quartz.unique.network/swagger
 ```
 
-# Methods
+## Methods
 
 ## Main methods
 
