@@ -1,4 +1,4 @@
-import '@unique-nft/types/augment-api'
+import '@unique-nft/opal-testnet-types/augment-api'
 
 import {libs} from '@unique-nft/api'
 // import SponsoringProvider from 'web3-provider-sponsoring'

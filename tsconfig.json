@@ -22,7 +22,7 @@
     "paths": {
       "_utils": ["./docs/.vuepress/utils"],
       "_components": ["./docs/.vuepress/components"],
-      "@polkadot/types/lookup": ["node_modules/@unique-nft/types/types-lookup"]
+      "@polkadot/types/lookup": ["node_modules/@unique-nft/opal-testnet-types/types-lookup"]
     }
   },
   "typeAcquisition": {
