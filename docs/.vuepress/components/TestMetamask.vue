@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 import {reactive} from 'vue'
-import {testMetamask} from '../utils/testMM'
+import {testMetamask} from '../utils/metamask'
 
 import {useInit} from 'unique_api_vue'
 // import {libs} from "@unique-nft/api";
