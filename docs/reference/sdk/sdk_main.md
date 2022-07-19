@@ -1,3 +1,5 @@
+
+
 # SDK Readme
 
 # Table of Contents
@@ -19,15 +21,11 @@ This SDK may be used as an npm package or REST API.
 
 Add SDK to your JavaScript/TypeScript project with
 
-```
-npm install @unique-nft/sdk
-```
+    npm install @unique-nft/sdk
 
 or deploy your own SDK as HTTP REST Service with
 
-```
-docker run uniquenetwork/web:latest
-```
+    docker run uniquenetwork/web:latest
 
 You can also use [Public endpoints](./web.md#public-endpoints).
 To learn more read [SDK Deployment guide](./web.md#sdk-deployment---getting-started-guide): [Docker](./web.md#docker), [Git](./web.md#git).
