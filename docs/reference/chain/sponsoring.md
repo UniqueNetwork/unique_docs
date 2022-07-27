@@ -11,7 +11,7 @@ The collection sponsoring is determined based on a rate limit.
 
 First, the rate limit is checked. If everything is OK, then the network choose who pays for a transaction (before its execution). 
 
-> The choose is based on the rate limit, but not on the account balances. 
+> The choice is based on the rate limit, but not on the account balances. 
 
 Then, when transaction is being carried out, the network tries to withdraw fee from the selected account.
 
@@ -49,25 +49,25 @@ We have 4 users with the following initial balances:
 
 Then, we carry out the steps below to demonstrate how the balances are changed after transactions and who pays for these transactions in different scenarios. 
  
-1. Alice creates a new collection (e.g. with id 977). Creating a collection is free. The Alice balance is still `1000 UNQ`.
+1. Alice creates a new collection (e.g. with id 977). Creating a collection costs about 2 UNQ. The Alice balance is still `998 UNQ`.
     
-2. Then Alice mints a new token. This is costs 0.091 UNQ. **Alice balance** is `999.9090 UNQ` after minting one new token.
+2. Then Alice mints a new token. This is costs 0.091 UNQ. **Alice balance** is `997.9090 UNQ` after minting one new token.
 
 
 2. Alice sends the created token to Charlie. 
-  This costs Alice 0.1 UNQ, the **Alice** **balance** is `999.8090 UNQ` after the transaction.
+  This costs Alice 0.1 UNQ, the **Alice** **balance** is `997.8090 UNQ` after the transaction.
 
 
 3. Charlie sends the received token to Bob. This costs Charlie 0.1 UNQ. the **Charlie** **balance** is `999.9000 UNQ`. 
 
 
-4. Alice mints one more token and sends it to Bob. The **Alice balance** is `999.6180 UNQ` now.
+4. Alice mints one more token and sends it to Bob. The **Alice balance** is `997.6180 UNQ` now.
 
 
 5. Bob tries to send the received token to Charlie, but he fails. He does not have enough money to pay for the transaction. 
 
 
-6. Alice sets a sponsorship for the collection and specifies Dave as a sponsor. Alice pays for this, and **her balance** is `999.5285 UNQ` now.
+6. Alice sets a sponsorship for the collection and specifies Dave as a sponsor. Alice pays for this, and **her balance** is `997.5285 UNQ` now.
 
     Dave must confirm the sponsorship. Fees of 0.073 UNQ will be applied to the submission. **Dave balance** is `999.9265 UNQ` after this operation.
 
