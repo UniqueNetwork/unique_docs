@@ -1,5 +1,3 @@
-# Accounts
-
 - [Generate new account](#generate-new-account)
 - [Get account from mnemonic](#get-account-from-mnemonic)
 - [Sign](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/accounts/sign)
