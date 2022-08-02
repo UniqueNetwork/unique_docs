@@ -99,6 +99,20 @@ export const uniqueChainsAddEthereumParameters: { [K in UNIQUE_CHAINS]: UniqueEx
 
     //unique custom fields
     websocketUrls: [`wss://ws-opal.unique.network`],
+  },
+  [UNIQUE_CHAINS.sapphire]: {
+    chainId: "0x22b3",
+    chainName: "Sapphire by Unique",
+    nativeCurrency: {
+      name: 'Quartz',
+      symbol: 'QTZ',
+      decimals: 18,
+    },
+    rpcUrls: [`https://rpc-sapphire.unique.network`],
+    iconUrls: [`https://ipfs.unique.network/ipfs/QmUoTq3D5p5a8CjQSFYECmErkpQN9wQWqkBAdyravzAZai`],
+
+    //unique custom fields
+    websocketUrls: [`wss://ws-sapphire.unique.network`],
   }
 }
 
