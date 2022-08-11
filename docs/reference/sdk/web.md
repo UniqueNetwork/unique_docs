@@ -141,6 +141,23 @@ REDIS_PORT=6379
 REDIS_DB=0
 ```
 
+#### Mutation methods
+
+Allow waiting for mutation-method execution result
+```bash
+ALLOW_WAIT_RESULT=true
+```
+
+Enable the ability to send a callback in mutation-methods
+```bash
+MUTATION_ALLOW_CALLBACK_URL=true
+```
+
+Callback timeout in mutation methods
+```bash
+MUTATION_CALLBACK_URL_TIMEOUT=1000
+```
+
 ##### Prefix
 
 PREFIX allows you to add a global prefix to API.

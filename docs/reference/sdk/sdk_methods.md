@@ -8,6 +8,7 @@
 - [Get collection by Id](#get-collection-by-id) 
 - [Get collection by Id (new)](#get-collection-by-id-(new)) 
 - [Collection properties](#collection-properties) 
+- [Collection tokens](#collection-tokens) 
 - [Confirm sponsorship of collection](#confirm-sponsorship-of-collection) 
 - [Create collection](#create-collection) 
 - [Create collection (new)](#create-collection-(new)) 
@@ -18,20 +19,27 @@
 - [Destroy collection](#destroy-collection) 
 - [Get effective limits by collection ID](#get-effective-limits-by-collection-id) 
 - [Get collection stats](#get-collection-stats) 
+- [Get last generated token id](#get-last-generated-token-id) 
 - [Nest token](#nest-token) 
+- [Get number of blocks when sponsored transaction is available](#get-number-of-blocks-when-sponsored-transaction-is-available) 
 - [Property permissions](#property-permissions) 
 - [Remove sponsor of collection](#remove-sponsor-of-collection) 
 - [Set collection limits](#set-collection-limits) 
+- [Set collection permissions](#set-collection-permissions) 
 - [Set collection properties](#set-collection-properties) 
 - [Set sponsor of collection](#set-sponsor-of-collection) 
 - [Set token properties](#set-token-properties) 
 - [Set token property permissions](#set-token-property-permissions) 
+- [Set transfers enabled flag](#set-transfers-enabled-flag) 
 - [Get token](#get-token) 
 - [Token children](#token-children) 
+- [Check is token exists in collection](#check-is-token-exists-in-collection) 
+- [Get token owner](#get-token-owner) 
 - [Token parent](#token-parent) 
 - [Token properties](#token-properties) 
 - [Topmost token owner](#topmost-token-owner) 
 - [Transfer token](#transfer-token) 
+- [Change the owner of the collection](#change-the-owner-of-the-collection) 
 - [Unnest token](#unnest-token) 
 
 ## Get account tokens of the collection
@@ -218,6 +226,28 @@ const args: CollectionPropertiesArguments = {
 const result: CollectionPropertiesResult = await sdk.collections.properties(
   args,
 );
+```
+
+## Collection tokens
+
+Get tokens contained within a collection
+
+#### Arguments
+
+- **collectionId** - Collection ID
+
+#### Returns
+
+Method returns array of tokenIds contained within passed collection.
+
+#### Examples
+
+```ts
+import { CollectionTokensResult } from '@unique-nft/sdk/tokens/types';
+
+const result: CollectionTokensResult = await sdk.collections.tokens({
+  collectionId: 1,
+});
 ```
 
 ## Confirm sponsorship of collection
@@ -518,7 +548,7 @@ const { success } = result.parsed;
 By default, the collection limit is not set (their value is null).
 This limit value can be seen when requesting a collection using [Get collection by ID](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/sdk/tokens/methods/collection-by-id) method.
 If the limit is not set by the user, then the default limit is actually applied to the collection.
-The values of the limits actually applied to the collection (default and user-set) can be obtained using Get effective limits by collection ID method.
+The values of the limits actually applied to the collection (default and user-set) can be obtained using `Get effective limits` by collection ID.
 
 #### Arguments
 
@@ -562,6 +592,28 @@ import { GetStatsResult } from '@unique-nft/sdk/types';
 const stats: GetStatsResult | null = await sdk.collections.getStats();
 ```
 
+## Get last generated token id
+
+#### Arguments
+
+- **collectionId** - ID of collection
+
+#### Returns
+
+Method return last generated token id.
+
+- **tokenId** - id of token
+
+#### Examples
+
+```typescript
+import { LastTokenIdArguments, LastTokenIdResult } from '@unique-nft/sdk/types';
+const args: LastTokenIdArguments = {
+  collectionId: 1,
+};
+const lastTokenIdResult: LastTokenIdResult = await sdk.collections.lastTokenId(args);
+```
+
 ## Nest token
 
 Nesting is a process of forming a structural relationship between two NFTs that form a parent-child relationship in a tree structure. Such a relationship is formed by forwarding token A2 to the address of token A1 by which A2 becomes a child of token A1 (conversely, token A1 becomes the parent of A2).
@@ -600,6 +652,34 @@ const { tokenId, collectionId } = result.parsed;
 console.log(
   `Token ${tokenId} from collection ${collectionId} successfully nested`,
 );
+```
+
+## Get number of blocks when sponsored transaction is available
+
+Returns number of block or none string.
+
+#### Arguments
+
+- **address** - Substrate or Ethereum address
+- **collectionId** - ID of collection
+- **tokenId** - ID of token
+
+#### Returns
+
+Method return number of blocks or none string.
+
+- **blockNumber** - Number of token
+
+#### Examples
+
+```typescript
+import { NextSponsoredArguments, NextSponsoredResult } from '@unique-nft/sdk/types';
+const getSponsoredArgs: NextSponsoredArguments = {
+  address: '<your address>',
+  collectionId: 1,
+  tokenId: 1,
+};
+const nextSponsoredResult: NextSponsoredResult = await sdk.collections.nextSponsored(getSponsoredArgs);
 ```
 
 ## Property permissions
@@ -700,6 +780,54 @@ const limitsArgs: SetCollectionLimitsArguments = {
 };
 const setResult = await sdk.collections.setLimits.submitWaitResult(limitsArgs);
 const { collectionId, limits } = setResult.parsed;
+```
+
+## Set collection permissions
+
+Sets onchain permissions for collection
+
+#### Arguments
+
+- **address** - Owner address
+- **collectionId** - Collection id
+- **permissions** - Struct that contains the permissions for a collection
+  - **access**
+  - **mintMode**
+  - **nesting**
+    - **tokenOwner**
+    - **collectionAdmin**
+    - **restricted**
+
+#### Returns
+
+The method returns a `parsed` object that contains the `{ collectionId: number }`.
+
+#### Examples
+
+```ts
+import {
+  SetCollectionPermissionsArguments,
+  CollectionAccess,
+} from '@unique-nft/sdk/tokens';
+
+const args: SetCollectionPermissionsArguments = {
+  address: account.address,
+  collectionId,
+  permissions: {
+    access: CollectionAccess.Normal,
+    mintMode: true,
+    nesting: {
+      collectionAdmin: true,
+      tokenOwner: true,
+    },
+  },
+};
+
+const result = await sdk.collections.setPermissions.submitWaitResult(args);
+
+console.log(
+  `Collection #${result.parsed.collectionId} permissions successfully updated`,
+);
 ```
 
 ## Set collection properties
@@ -829,6 +957,38 @@ const result =
 console.log(result.parsed);
 ```
 
+## Set transfers enabled flag
+
+#### Arguments
+
+- **address** - The address of collection owner
+- **collectionId** - Collection id
+- **isEnabled** - New flag value
+
+#### Permission
+
+- Collection Owner
+
+#### Returns
+
+Enable / disable transfers for particular collection
+
+#### Examples
+
+```ts
+import { SetTransfersEnabledArguments } from '@unique-nft/sdk/tokens/types';
+ 
+const args: SetTransfersEnabledArguments = {
+  address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
+  collectionId: 1,
+  isEnabled: true,
+};
+
+const result = await sdk.collections.setTransfersEnabled.submitWaitResult(args);
+
+console.log(result.parsed.success);
+```
+
 ## Get token
 
 Returns token info and attributes
@@ -893,6 +1053,57 @@ const args: TokenChildrenArguments = {
 };
 
 const result: TokenChildrenResult = await sdk.tokens.tokenChildren(args);
+```
+
+## Check is token exists in collection
+
+Returns true or false
+
+#### Arguments
+
+- **collectionId** - ID of collection
+- **tokenId** - ID of token
+
+#### Returns
+
+Method returns object:
+- **isExists** - boolean
+
+#### Examples
+
+```typescript
+const { isExists } = await sdk.tokens.exists({ collectionId: 123, tokenId: 321 });
+```
+
+## Get token owner
+
+#### Arguments
+
+- **collectionId** - ID of token collection
+- **tokenId** - ID of token
+- **blockHashAt** _optional_ - hash of execution block
+
+#### Returns
+
+Return substrate address in an object that contains `owner: string`.
+
+#### Examples
+
+```ts
+import {
+  TokenOwnerArguments,
+  TokenOwnerResult,
+} from '@unique-nft/sdk/tokens/types';
+
+const args: TokenOwnerArguments = {
+  collectionId: 1,
+  tokenId: 1,
+  // blockHashAt: '0xff19c2457fa4d7216cfad444615586c4365250e7310e2de7032ded4fcbd36873'
+};
+
+const result: TokenOwnerResult = await sdk.tokens.tokenOwner(
+  args,
+);
 ```
 
 ## Token parent
@@ -971,17 +1182,18 @@ Return substrate address of topmost token owner
 
 #### Returns
 
-Return substrate address as `string`
+Return substrate address in an object that contains `topmostOwner: string`.
+
 
 #### Examples
 
 ```ts
 import {
-  TopmostTokenOwnerArguments,
+  TokenOwnerArguments,
   TopmostTokenOwnerResult,
 } from '@unique-nft/sdk/tokens/types';
 
-const args: TopmostTokenOwnerArguments = {
+const args: TokenOwnerArguments = {
   collectionId: 1,
   tokenId: 1,
   // blockHashAt: '0xff19c2457fa4d7216cfad444615586c4365250e7310e2de7032ded4fcbd36873'
@@ -1022,6 +1234,33 @@ const args: TransferArguments = {
 const result = await sdk.tokens.transfer.submitWaitResult(args);
 
 console.log(result.parsed);
+```
+
+## Change the owner of the collection
+
+#### Arguments
+
+- **collectionId** - ID of the collection to change owner for
+- **from** - The address of collection owner
+- **to** - New collection owner (Substrate address)
+
+#### Returns
+
+The method returns a `parsed` object that contains the `collectionId: number, newOnwer: string`.
+
+#### Examples
+
+```typescript
+import { TransferCollectionArguments } from '@unique-nft/sdk/tokens/methods/transfer-collection';
+
+const args: TransferCollectionArguments = {
+    collectionId: '<ID of the collection>',
+    from: '<collection owner>',
+    to: '<new collection owner>'
+};
+
+const result = await sdk.collections.transfer.submitWaitResult(args);
+const { collectionId, newOnwer } = result.parsed;
 ```
 
 ## Unnest token
