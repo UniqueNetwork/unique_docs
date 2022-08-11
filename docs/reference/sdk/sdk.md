@@ -6,15 +6,14 @@
 
 # Table of Contents
 
-- [@unique-nft/sdk](#@unique-nft/sdk)
+- [@unique-nft/sdk](#unique-nftsdk)
 - [Installation](#Installation)
 - [Initialize](#Initialize-SDK)
 - [Design](#design)
   - [Modules](#modules)
   - [Mutation and Query method](#mutation-and-query-methods)
 
-## @unique-nft/sdk
-
+## unique-nft/sdk
 SDK is a JavaScript/TypeScript library that helps to interact with UniqueNetwork using simple methods instead of low-level API. With SDK you can mint collections and tokens, manage account balance, etc.
 At the moment, the library is a pre-alpha version. We will be grateful for the feedback and ideas for improvement.
 

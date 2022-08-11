@@ -2,20 +2,125 @@
 
 # Table of Contents 
 
+- [Get account tokens of the collection](#get-account-tokens-of-the-collection) 
+- [Approve](#approve) 
+- [Destroys a concrete instance of NFT](#destroys-a-concrete-instance-of-nft) 
 - [Get collection by Id](#get-collection-by-id) 
 - [Get collection by Id (new)](#get-collection-by-id-(new)) 
+- [Collection properties](#collection-properties) 
+- [Confirm sponsorship of collection](#confirm-sponsorship-of-collection) 
 - [Create collection](#create-collection) 
 - [Create collection (new)](#create-collection-(new)) 
 - [Create token (new)](#create-token-(new)) 
+- [Create token (new)](#create-token-(new)) 
+- [Delete collection properties](#delete-collection-properties) 
+- [Delete token properties](#delete-token-properties) 
+- [Destroy collection](#destroy-collection) 
 - [Get effective limits by collection ID](#get-effective-limits-by-collection-id) 
 - [Get collection stats](#get-collection-stats) 
 - [Nest token](#nest-token) 
+- [Property permissions](#property-permissions) 
+- [Remove sponsor of collection](#remove-sponsor-of-collection) 
 - [Set collection limits](#set-collection-limits) 
+- [Set collection properties](#set-collection-properties) 
+- [Set sponsor of collection](#set-sponsor-of-collection) 
+- [Set token properties](#set-token-properties) 
+- [Set token property permissions](#set-token-property-permissions) 
 - [Get token](#get-token) 
 - [Token children](#token-children) 
 - [Token parent](#token-parent) 
+- [Token properties](#token-properties) 
 - [Topmost token owner](#topmost-token-owner) 
+- [Transfer token](#transfer-token) 
 - [Unnest token](#unnest-token) 
+
+## Get account tokens of the collection
+
+Returns array of tokens, owned by address
+
+#### Arguments
+
+- **collectionId** - ID of collection
+- **address** - address of tokens owner
+
+#### Returns
+
+Method returns array of objects with properties:
+
+- **collectionId** - Collection id
+- **tokenId** - Token id
+
+#### Examples
+
+```typescript
+const accountTokens = await sdk.tokens.getAccountTokens({
+    collectionId: 1,
+    address: '<valid _address>',
+});
+
+const [{ tokenId, collectionId }, ...restTokens] = accountTokens;
+```
+
+## Approve
+
+Set, change, or remove approved address to transfer the ownership of the token. The Amount value must be between 0 and owned amount or 1 for NFT.
+
+#### Arguments
+
+- **spender** - Address that is approved to transfer this token
+- **collectionId** - Collection id
+- **tokenId** - Token id
+- **amount** - Must be true (for approval) or false (for disapproval)
+
+#### Returns
+
+The method returns a `parsed` object that contains the `collectionId: number, tokenId: number`.
+
+#### Examples
+
+```typescript
+import { ApproveArguments } from '@unique-nft/sdk/tokens/methods/approve';
+
+const approveArgs: ApproveArguments = {
+    spender: '<Account address for whom token will be approved>',
+    collectionId: '<ID of the collection>',
+    tokenId: '<ID of the token>',
+    amount: true
+};
+
+const result = await sdk.tokens.approve.submitWaitResult(approveArgs);
+const { collectionId, tokenId } = result.parsed;
+```
+
+## Destroys a concrete instance of NFT
+
+#### Arguments
+
+- **address*** - Sender address
+- **collectionId*** - ID of the collection
+- **from** - Address that owns token
+- **tokenId*** - ID of NFT to burn
+- **value** - amount to burn
+  - non-fungible mode: `ignored` (only the whole token can be burned)
+  - fungible mode: `must specify` transferred amount
+  - re-fungible mode: `ignored` (the owned portion is burned completely)
+
+#### Returns
+
+The method returns a `parsed` object that contains the `collectionId: number, tokenId: number, address: string, value: number`.
+
+#### Examples
+
+```ts
+import '@unique-nft/sdk/tokens';
+import { BurnTokenArguments } from '@unique-nft/sdk/tokens/types';
+const burnItemArgs: BurnTokenArguments = {
+  tokenId: 1,
+  collectionId: 1,
+};
+const setResult = await sdk.tokens.burn.submitWaitResult(burnItemArgs);
+const { collectionId, tokenId, address, value } = setResult.parsed;
+```
 
 ## Get collection by Id
 
@@ -67,12 +172,14 @@ Method return collection info:
 - **name** - Collection name (text, up to 64 characters)
 - **description** - Collection description (text, up to 256 characters)
 - **mode** - The collection type (`Nft`, `Fungible`, or `ReFungible`)
+- **readOnly** - collection is read only
 - **tokenPrefix** - Token prefix (text, up to 4 characters)
 - **sponsorship** - This field tells if sponsorship is enabled and what address is the current collection sponsor.
 - **limits** - [Collection limits](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/sdk/tokens/methods/set-collection-limits#arguments)
 - **metaUpdatePermission** - [Permission](#todo) for update meta (ItemOwner, Admin, None)
 - **permissions** - [Collection permissions](#todo)
 - **schema** - [Collection schema](#todo)
+- **properties** - [Collection properties](#todo)
 
 #### Examples
 
@@ -80,6 +187,62 @@ Method return collection info:
 const collection = await sdk.collections.get_new({ collectionId: 2 });
 
 const { id, owner, name, description, mode, tokenPrefix, schema } = collection;
+```
+
+## Collection properties
+
+Get array of collection properties
+
+#### Arguments
+
+- **collectionId** - Collection ID
+- **propertyKeys** _optional_ - Array of property keys
+
+#### Returns
+
+Method return an array of properties `{ key: string, value: string }`
+
+#### Examples
+
+```ts
+import {
+  CollectionPropertiesArguments,
+  CollectionPropertiesResult,
+} from '@unique-nft/sdk/tokens/types';
+
+const args: CollectionPropertiesArguments = {
+  collectionId: 1,
+  // propertyKeys: ['foo', 'bar'],
+};
+
+const result: CollectionPropertiesResult = await sdk.collections.properties(
+  args,
+);
+```
+
+## Confirm sponsorship of collection
+
+#### Arguments
+
+- **address** - The address of collection owner
+- **collectionId** - Collection id
+
+#### Returns
+
+The method returns a `parsed` object that contains the `collectionId: number, sponsor: string`.
+
+#### Examples
+
+```typescript
+import { ConfirmSponsorshipArguments } from '@unique-nft/sdk/tokens/types';
+
+const confirmArgs: ConfirmSponsorshipArguments = {
+  address: '<Account address of owner of collection>',
+  collectionId: '<ID of the collection>',
+};
+
+const result = await sdk.collections.confirmSponsorship.submitWaitResult(confirmArgs);
+const { collectionId, sponsor } = result.parsed;
 ```
 
 ## Create collection
@@ -202,8 +365,7 @@ import {
     UniqueCollectionSchemaToCreate,
     COLLECTION_SCHEMA_NAME,
     AttributeType,
-    AttributeKind,
-} from '@unique-nft/api';
+} from '@unique-nft/sdk/tokens';
 
 const createTokenArgs: CreateTokenNewArguments = {
     address: '<your account address>',
@@ -224,6 +386,131 @@ const result = await sdk.tokens.create_new.submitWaitResult(createArgs);
 const { collectionId, tokenId } = result.parsed;
 
 const token = await sdk.tokens.get_new({ collectionId, tokenId });
+```
+
+## Create token (new)
+
+#### Arguments
+
+- **address** - The address of collection owner
+- **collectionId** - Collection id
+- **owner** - The address of token owner (optional)
+- **data[i].image** - Token image (`url`, `urlInfix` or `ipfsCid`)
+- **data[i].encodedAttributes** - Token attributes
+
+#### Returns
+
+The method returns an array of `parsed` objects that contains `collectionId: number, tokenId: number`.
+
+#### Examples
+
+```typescript
+import { CreateTokensArguments } from '@unique-nft/sdk/tokens';
+
+import {
+    UniqueCollectionSchemaToCreate,
+    COLLECTION_SCHEMA_NAME,
+    AttributeType,
+} from '@unique-nft/sdk/tokens';
+
+const createTokenArgs: CreateTokenNewArguments = {
+    address: '<your account address>',
+    collectionId: 123,
+    data: [{
+        encodedAttributes: {
+            '0': 0,
+            '1': [0],
+            '2': 'foo_bar',
+        },
+        image: {
+            ipfsCid: '<valid_ipfs_cid>',
+        },
+    }],
+};
+
+const result = await sdk.tokens.createMultiple.submitWaitResult(createArgs);
+const [{ collectionId, tokenId }] = result.parsed;
+
+const token = await sdk.tokens.get_new({ collectionId, tokenId });
+```
+
+## Delete collection properties
+
+#### Arguments
+
+- **address** - The address of collection owner
+- **collectionId** - Collection id
+- **propertyKeys** - Array of properties keys
+
+#### Returns
+
+The method returns an array of `CollectionPropertyDeleted` events.
+
+#### Examples
+
+```ts
+const args: DeleteCollectionPropertiesArguments = {
+  address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
+  collectionId: 1,
+  propertyKeys: ['foo', 'bar'],
+};
+
+const result = await sdk.collections.deleteProperties.submitWaitResult(args);
+
+console.log(result.parsed);
+```
+
+## Delete token properties
+
+#### Arguments
+
+- **address** - The address of collection owner
+- **collectionId** - Collection id
+- **tokenId** - Token id
+- **propertyKeys** - Array of properties keys
+
+#### Returns
+
+The method returns an array of `TokenPropertyDeleted` events.
+
+```ts
+const args: DeleteTokenPropertiesArguments = {
+  address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
+  collectionId: 1,
+  tokenId: 1,
+  propertyKeys: ['foo', 'bar'],
+};
+
+const result = await sdk.tokens.deleteProperties.submitWaitResult(args);
+
+console.log(result.parsed);
+```
+
+## Destroy collection
+
+Destroys collection if no tokens within this collection
+
+#### Arguments
+
+- **address** - Owner of collection
+- **collectionId** - Collection id
+
+#### Returns
+
+The method returns a `parsed` object that contains the `success: boolean`.
+
+#### Examples
+
+```typescript
+import { DestroyCollectionArguments } from '@unique-nft/sdk/tokens/types';
+
+const destroyArgs: DestroyCollectionArguments = {
+    address: '<Account address>',
+    collectionId: '<ID of the collection>'
+};
+
+const result = await sdk.collections.destroy.submitWaitResult(destroyArgs);
+const { success } = result.parsed;
 ```
 
 ## Get effective limits by collection ID
@@ -315,6 +602,61 @@ console.log(
 );
 ```
 
+## Property permissions
+
+Get array of collection property permissions
+
+#### Arguments
+
+- **collectionId** - Collection ID
+- **propertyKeys** _optional_ - Array of property keys
+
+#### Returns
+
+Method return an array of property permissions `{ key: string, permission: { mutable: boolean, collectionAdmin: boolean, tokenOwner: boolean } }`
+
+#### Examples
+
+```ts
+import {
+  PropertyPermissionsArguments,
+  PropertyPermissionsResult,
+} from '@unique-nft/sdk/tokens/types';
+
+const args: PropertyPermissionsArguments = {
+  collectionId: 1,
+  // propertyKeys: ['foo', 'bar'],
+};
+
+const result: PropertyPermissionsResult =
+  await sdk.collections.propertyPermissions(args);
+```
+
+## Remove sponsor of collection
+
+#### Arguments
+
+- **address** - The address of collection owner
+- **collectionId** - Collection id
+
+#### Returns
+
+The method returns a `parsed` object that contains the `collectionId: number`.
+
+#### Examples
+
+```typescript
+import { RemoveCollectionSponsorArguments } from '@unique-nft/sdk/tokens/types';
+
+const removeArgs: SetCollectionSponsorArguments = {
+  address: '<Account address of owner of collection>',
+  collectionId: '<ID of the collection>',
+};
+
+const result = await sdk.collections.removeCollectionSponsor.submitWaitResult(removeArgs);
+const { collectionId } = result.parsed;
+```
+
 ## Set collection limits
 
 #### Arguments
@@ -360,6 +702,133 @@ const setResult = await sdk.collections.setLimits.submitWaitResult(limitsArgs);
 const { collectionId, limits } = setResult.parsed;
 ```
 
+## Set collection properties
+
+#### Arguments
+
+- **address** - The address of collection owner
+- **collectionId** - Collection id
+- **properties** - Array of properties `{ key: string, value: string }`
+
+#### Returns
+
+The method returns an array of `CollectionPropertySet` events.
+
+#### Examples
+
+```ts
+const args: SetCollectionPropertiesArguments = {
+  address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
+  collectionId: 1,
+  properties: [
+    {
+      key: 'foo',
+      value: 'bar',
+    },
+  ],
+};
+
+const result = await sdk.collections.setProperties.submitWaitResult(args);
+
+console.log(result.parsed);
+```
+
+## Set sponsor of collection
+
+#### Arguments
+
+- **address** - The address of collection owner
+- **collectionId** - Collection id
+- **newSponsor** - The address of new sponsor of the collection
+
+#### Returns
+
+The method returns a `parsed` object that contains the `collectionId: number, sponsor: string`.
+
+#### Examples
+
+```typescript
+import { SetCollectionSponsorArguments } from '@unique-nft/sdk/tokens/types';
+
+const setSponsorArgs: SetCollectionSponsorArguments = {
+    address: '<Account address of owner of collection>',
+    collectionId: '<ID of the collection>',
+    newSponsor: '<Account addres of new sponsor>',
+};
+
+const result = await sdk.collections.setCollectionSponsor.submitWaitResult(setSponsorArgs);
+const { collectionId, sponsor } = result.parsed;
+```
+
+## Set token properties
+
+#### Arguments
+
+- **address** - The address of collection owner
+- **collectionId** - Collection id
+- **tokenId** - Token id
+- **properties** - Array of properties `{ key: string, value: string }`
+
+#### Returns
+
+The method returns an array of `TokenPropertySet` events.
+
+#### Examples
+
+```ts
+const args: SetTokenPropertiesArguments = {
+  address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
+  collectionId: 1,
+  tokenId: 1,
+  properties: [
+    {
+      key: 'foo',
+      value: 'bar',
+    },
+  ],
+};
+
+const result = await sdk.tokens.setProperties.submitWaitResult(args);
+
+console.log(result.parsed);
+```
+
+## Set token property permissions
+
+#### Arguments
+
+- **address** - The address of collection owner
+- **collectionId** - Collection id
+- **propertyPermissions** - Array of property permissions `{ key: string, permission: { mutable: boolean, collectionAdmin: boolean, tokenOwner: boolean } }`
+
+#### Returns
+
+The method returns an array of `PropertyPermissionSet` events.
+
+#### Examples
+
+```ts
+const args: SetTokenPropertyPermissionsArguments = {
+  address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
+  collectionId: 1,
+  propertyPermissions: [
+    {
+      key: 'foo',
+      permission: {
+        mutable: true,
+        collectionAdmin: true,
+        tokenOwner: true,
+      },
+    },
+  ],
+};
+
+const result =
+  await sdk.collections.setTokenPropertyPermissions.submitWaitResult(args);
+
+console.log(result.parsed);
+```
+
 ## Get token
 
 Returns token info and attributes
@@ -378,6 +847,7 @@ The method returns token info:
 - **owner** - The address of token owner
 - **image** - Token image (`url`, `urlInfix` or `ipfsCid`)
 - **attributes** - Token attributes
+- **parent** - if token is nested contains *collectionId* and *tokenId* of the parent token
 
 #### Examples
 
@@ -458,6 +928,37 @@ const args: TokenParentArguments = {
 const result: TokenParentResult = await sdk.tokens.tokenParent(args);
 ```
 
+## Token properties
+
+Get array of token properties
+
+#### Arguments
+
+- **collectionId** - Collection ID
+- **tokenId** - Token ID
+- **propertyKeys** _optional_ - Array of property keys
+
+#### Returns
+
+Method return an array of properties `{ key: string, value: string }`
+
+#### Examples
+
+```ts
+import {
+  TokenPropertiesArguments,
+  TokenPropertiesResult,
+} from '@unique-nft/sdk/tokens/types';
+
+const args: TokenPropertiesArguments = {
+  collectionId: 1,
+  tokenId: 1,
+  // propertyKeys: ['foo', 'bar'],
+};
+
+const result: TokenPropertiesResult = await sdk.tokens.properties(args);
+```
+
 ## Topmost token owner
 
 Return substrate address of topmost token owner
@@ -489,6 +990,38 @@ const args: TopmostTokenOwnerArguments = {
 const result: TopmostTokenOwnerResult = await sdk.tokens.topmostTokenOwner(
   args,
 );
+```
+
+## Transfer token
+
+#### Arguments
+
+- **address** - Signer address
+- **from** _optional_ - Address that owns token (default is signer address)
+- **to** - Address of token recipient
+- **collectionId** - Collection id
+- **tokenId** - Token id
+- **value** _optional_ - For (re)fungible transfer (default is 1)
+
+#### Returns
+
+The method returns an `Transfer` event.
+
+#### Examples
+
+```ts
+import { TransferArguments } from '@unique-nft/sdk/tokens';
+
+const args: TransferArguments = {
+  address: '<address>',
+  to: '<address>',
+  collectionId: 1,
+  tokenId: 1,
+};
+
+const result = await sdk.tokens.transfer.submitWaitResult(args);
+
+console.log(result.parsed);
 ```
 
 ## Unnest token
