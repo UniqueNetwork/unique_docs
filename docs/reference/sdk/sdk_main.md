@@ -10,6 +10,7 @@
   - [SDK](#sdk)
   - [Accounts](#accounts)
   - [Web](#web)
+  - [Client](#client)
 - [Recipes](#recipes)
 
 ## Intro
@@ -42,11 +43,11 @@ To learn more read [SDK Deployment guide](./web.md#sdk-deployment---getting-star
 
 ### Accounts
 
-[Accounts package](./accounts.md)
+[Accounts package](./accounts.md) allows to connect different accounts and create signatures for them.
 
 ### Web
 
-As an alternative to the whole SDK, you can use proxy http serviсe for SDK to implement server logic - [HTTP API Service](./web.md).
+As an alternative to the whole SDK, you can use proxy http service for SDK to implement server logic - [HTTP API Service](./web.md).
 It is created to interact with the blockchain using simple HTTP requests.
 In general, this service provides the following functions:
 
@@ -56,6 +57,10 @@ In general, this service provides the following functions:
 
 HTTP API Service also allows to upload images using IPFS, can be used with existing public nodes or with your own private nodes.
 Use [service documentation](./web.md#readme) to learn its methods.
+
+### Client
+
+[Client](../packages/client) implements the SDK methods via the REST API.
 
 ## Recipes
 

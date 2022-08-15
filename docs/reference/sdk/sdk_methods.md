@@ -3,6 +3,9 @@
 # Table of Contents 
 
 - [Get account tokens of the collection](#get-account-tokens-of-the-collection) 
+- [Add collection admin](#add-collection-admin) 
+- [Adminlist](#adminlist) 
+- [Check is allowed](#check-is-allowed) 
 - [Approve](#approve) 
 - [Destroys a concrete instance of NFT](#destroys-a-concrete-instance-of-nft) 
 - [Get collection by Id](#get-collection-by-id) 
@@ -23,6 +26,7 @@
 - [Nest token](#nest-token) 
 - [Get number of blocks when sponsored transaction is available](#get-number-of-blocks-when-sponsored-transaction-is-available) 
 - [Property permissions](#property-permissions) 
+- [Remove collection admin](#remove-collection-admin) 
 - [Remove sponsor of collection](#remove-sponsor-of-collection) 
 - [Set collection limits](#set-collection-limits) 
 - [Set collection permissions](#set-collection-permissions) 
@@ -33,7 +37,7 @@
 - [Set transfers enabled flag](#set-transfers-enabled-flag) 
 - [Get token](#get-token) 
 - [Token children](#token-children) 
-- [Check is token exists in collection](#check-is-token-exists-in-collection) 
+- [Checks if token exists in collection](#checks-if-token-exists-in-collection) 
 - [Get token owner](#get-token-owner) 
 - [Token parent](#token-parent) 
 - [Token properties](#token-properties) 
@@ -62,11 +66,91 @@ Method returns array of objects with properties:
 
 ```typescript
 const accountTokens = await sdk.tokens.getAccountTokens({
-    collectionId: 1,
-    address: '<valid _address>',
+  collectionId: 1,
+  address: '<address>',
 });
 
 const [{ tokenId, collectionId }, ...restTokens] = accountTokens;
+```
+
+## Add collection admin
+
+#### Arguments
+
+- **address** - Signer address
+- **collectionId** - Collection id
+- **newAdmin** - New admin address
+
+#### Returns
+
+The method returns an `CollectionAdminAdded` event.
+
+#### Examples
+
+```ts
+import { AddCollectionAdminArguments } from '@unique-nft/sdk/tokens';
+
+const args: AddCollectionAdminArguments = {
+  address: '<address>',
+  collectionId: 1,
+  newAdmin: '<address>',
+};
+
+const result = await sdk.collections.addAdmin.submitWaitResult(args);
+
+console.log(result.parsed);
+```
+
+## Adminlist
+
+Get array of collection admins
+
+#### Arguments
+
+- **collectionId** - ID of token collection
+
+#### Returns
+
+Method return an array of accounts
+
+#### Examples
+
+```ts
+import {
+  AdminlistArguments,
+  AdminlistResult,
+} from '@unique-nft/sdk/tokens/types';
+
+const args: AdminlistArguments = {
+  collectionId: 1,
+};
+
+const result: AdminlistResult = await sdk.collections.admins(args);
+```
+
+## Check is allowed
+
+Check if a user is allowed to use a collection. Returns true or false.
+
+#### Arguments
+
+- **collectionId** - ID of collection
+- **account** - Account address
+- **blockHashAt** _optional_ - hash of execution block
+
+#### Returns
+
+Method returns object:
+
+- **isAllowed** - boolean
+
+#### Examples
+
+```typescript
+const { isAllowed } = await sdk.collection.allowed({
+  collectionId: 1,
+  account: '<address>',
+});
 ```
 
 ## Approve
@@ -712,6 +796,34 @@ const result: PropertyPermissionsResult =
   await sdk.collections.propertyPermissions(args);
 ```
 
+## Remove collection admin
+
+#### Arguments
+
+- **address** - Signer address
+- **collectionId** - Collection id
+- **accountId** - Admin address
+
+#### Returns
+
+The method returns an `CollectionAdminRemoved` event.
+
+#### Examples
+
+```ts
+import { RemoveCollectionAdminArguments } from '@unique-nft/sdk/tokens';
+
+const args: RemoveCollectionAdminArguments = {
+  address: '<address>',
+  collectionId: 1,
+  accountId: '<address>',
+};
+
+const result = await sdk.collections.removeAdmin.submitWaitResult(args);
+
+console.log(result.parsed);
+```
+
 ## Remove sponsor of collection
 
 #### Arguments
@@ -1055,7 +1167,7 @@ const args: TokenChildrenArguments = {
 const result: TokenChildrenResult = await sdk.tokens.tokenChildren(args);
 ```
 
-## Check is token exists in collection
+## Checks if token exists in collection
 
 Returns true or false
 
