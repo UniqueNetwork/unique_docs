@@ -5,6 +5,7 @@
 - [Get account tokens of the collection](#get-account-tokens-of-the-collection) 
 - [Add collection admin](#add-collection-admin) 
 - [Adminlist](#adminlist) 
+- [Get allowance](#get-allowance) 
 - [Check is allowed](#check-is-allowed) 
 - [Approve](#approve) 
 - [Destroys a concrete instance of NFT](#destroys-a-concrete-instance-of-nft) 
@@ -126,6 +127,34 @@ const args: AdminlistArguments = {
 };
 
 const result: AdminlistResult = await sdk.collections.admins(args);
+```
+
+## Get allowance
+
+Get the amount of token pieces approved to transfer
+
+#### Arguments
+
+- **from** - address from
+- **to** - address to
+- **collectionId** - ID of collection
+- **tokenId** - ID of token
+
+#### Returns
+
+Method returns object:
+
+- **isAllowed** - boolean
+
+#### Examples
+
+```typescript
+const { isAllowed } = await sdk.tokens.allowance({
+  from: '<address>',
+  to: '<address>',
+  collectionId: 1,
+  tokenId: 1,
+});
 ```
 
 ## Check is allowed
