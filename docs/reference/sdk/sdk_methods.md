@@ -4,7 +4,9 @@
 
 - [Get account tokens of the collection](#get-account-tokens-of-the-collection) 
 - [Add collection admin](#add-collection-admin) 
+- [Add To Allow List](#add-to-allow-list) 
 - [Adminlist](#adminlist) 
+- [Allow list](#allow-list) 
 - [Get allowance](#get-allowance) 
 - [Check is allowed](#check-is-allowed) 
 - [Approve](#approve) 
@@ -29,6 +31,7 @@
 - [Property permissions](#property-permissions) 
 - [Remove collection admin](#remove-collection-admin) 
 - [Remove sponsor of collection](#remove-sponsor-of-collection) 
+- [Remove an address from allow list](#remove-an-address-from-allow-list) 
 - [Set collection limits](#set-collection-limits) 
 - [Set collection permissions](#set-collection-permissions) 
 - [Set collection properties](#set-collection-properties) 
@@ -102,6 +105,35 @@ const result = await sdk.collections.addAdmin.submitWaitResult(args);
 console.log(result.parsed);
 ```
 
+## Add To Allow List
+
+Adds an address to allow list of a collection.
+
+#### Arguments
+
+- **address** - Sender address
+- **collectionId** - an ID of the collection which will be affected
+- **newAdminId** - the address to be added to the allow list
+
+#### Returns
+
+The method returns a `parsed` object that contains the `collectionId: number, address: string`.
+
+#### Examples
+
+```typescript
+import { AddToAllowListArguments } from '@unique-nft/sdk/tokens/types';
+
+const addToAllowListArgs: AddToAllowListArguments = {
+    address: '<your account address>',
+    collectionId: '<ID of the collection>',
+    newAdminId: '<valid address>'
+};
+
+const { parsed } = await sdk.collections.addToAllowList.submitWaitResult(addToAllowListArgs);
+const { collectionId, address } = parsed;
+```
+
 ## Adminlist
 
 Get array of collection admins
@@ -127,6 +159,32 @@ const args: AdminlistArguments = {
 };
 
 const result: AdminlistResult = await sdk.collections.admins(args);
+```
+
+## Allow list
+
+Gets the addresses that are in to allow list for the specified collection.
+
+#### Arguments
+
+- **collectionId** - an ID of the collection which will be checked
+- **hash** _optional_ - allows to specify at which moment of the chain (block hash) you need to perform the check. If you leave it empty, the result will be for the last block of the chain.
+
+#### Returns
+
+The method returns an object containing array string addresses.
+
+#### Examples
+
+```typescript
+import { AllowListArguments } from '@unique-nft/sdk/tokens/types';
+
+const allowListArgs: AllowListArguments = {
+    collectionId: '<ID of the collection>', 
+    hash: '0xff19c2457fa4d7216cfad444615586c4365250e7310e2de7032ded4fcbd36873'
+};
+
+const addresses = await sdk.collections.allowList(allowListArgs);
 ```
 
 ## Get allowance
@@ -200,7 +258,7 @@ The method returns a `parsed` object that contains the `collectionId: number, to
 #### Examples
 
 ```typescript
-import { ApproveArguments } from '@unique-nft/sdk/tokens/methods/approve';
+import { ApproveArguments } from '@unique-nft/sdk/tokens/types';
 
 const approveArgs: ApproveArguments = {
     spender: '<Account address for whom token will be approved>',
@@ -502,7 +560,7 @@ The method returns a `parsed` object that contains the `collectionId: number, to
 #### Examples
 
 ```typescript
-import { CreateTokenNewArguments } from '@unique-nft/sdk/tokens/methods/create-token';
+import { CreateTokenNewArguments } from '@unique-nft/sdk/tokens/types';
 
 import {
     UniqueCollectionSchemaToCreate,
@@ -876,6 +934,33 @@ const removeArgs: SetCollectionSponsorArguments = {
 
 const result = await sdk.collections.removeCollectionSponsor.submitWaitResult(removeArgs);
 const { collectionId } = result.parsed;
+```
+
+## Remove an address from allow list
+
+#### Arguments
+
+- **address** - Sender address
+- **collectionId** - an ID of the collection which will be affected
+- **addressToDelete** - the address to be removed from the allow list
+
+#### Returns
+
+The method returns a `parsed` object that contains the `collectionId: number, address: string`.
+
+#### Examples
+
+```typescript
+import { RemoveFromAllowListArguments } from '@unique-nft/sdk/tokens/types';
+
+const removeFromAllowListArgs: RemoveFromAllowListArguments = {
+    address: '<your account address>',
+    collectionId: '<ID of the collection>',
+    addressToDelete: '<valid address>'
+};
+
+const { parsed } = await sdk.collections.removeFromAllowList.submitWaitResult(removeFromAllowListArgs);
+const { collectionId, address } = parsed;
 ```
 
 ## Set collection limits
@@ -1392,7 +1477,7 @@ The method returns a `parsed` object that contains the `collectionId: number, ne
 #### Examples
 
 ```typescript
-import { TransferCollectionArguments } from '@unique-nft/sdk/tokens/methods/transfer-collection';
+import { TransferCollectionArguments } from '@unique-nft/sdk/tokens/types';
 
 const args: TransferCollectionArguments = {
     collectionId: '<ID of the collection>',
