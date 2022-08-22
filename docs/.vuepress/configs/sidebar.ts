@@ -5,12 +5,9 @@ export const sidebar: Record<string, SidebarConfig> = {
     '/guide': [
       {
         text: 'Unique Guide',
-        children: ['/guide/README.md',
+        children: [
+          '/guide/README.md',
           '/guide/create-account.md',
-          '/guide/get-ksm.md',
-          '/guide/choosing-tools.md',
-          '/guide/ethereum-tools.md',
-          '/guide/graphql.md',
           '/guide/glossary.md',
           '/guide/identica.md'
         ],
@@ -71,6 +68,7 @@ export const sidebar: Record<string, SidebarConfig> = {
         children: [
           '/reference/sdk/sdk_main.md',
           '/reference/sdk/sdk.md',
+          '/reference/sdk/sdk_2.md',
           '/reference/sdk/sdk_methods.md',
           '/reference/sdk/web.md',
           '/reference/sdk/accounts.md',

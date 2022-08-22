@@ -3,6 +3,14 @@ import {NavbarConfig} from '@vuepress/theme-default'
 export const navbar: Record<string, NavbarConfig> = {
   en: [
     {
+      text: 'SDK',
+      link: '/reference/sdk'
+    },
+    {
+      text: 'Blockchain',
+      link: '/reference/chain'
+    },
+    {
       text: 'Reference',
       link: '/reference/',
       children: [
@@ -50,13 +58,13 @@ export const navbar: Record<string, NavbarConfig> = {
       text: 'Guide',
       link: '/guide/',
     },
-        {
+    {
       text: 'Ecosystem',
       link: '/ecosystem/',
     },
     {
       text: 'GitHub',
-      link: '/repos/',
+      link: 'https://github.com/UniqueNetwork/',
     },
   ]
 }

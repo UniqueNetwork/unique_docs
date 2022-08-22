@@ -74,16 +74,8 @@ Partnership with SupraOracles will combine Unique's white-label NFT technology w
 
 As Unique Network and the community continue building the future of the Metaverse, Unique Network utilizes SupraOracle's technology to locate and collect real-world data feeds so that the dynamic NFTs that people create with our technology will have the most optimized information possible.
 
+
 ## United Nations and DigitalArt4Climate
-
----
-description: >-
-Artists, designers, blockchain and web developers, entrepreneurs, volunteers
-are helping to raise the awareness on the global climate problem with the help
-of modern tech.
----
-
-# United Nations and DigitalArt4Climate
 
 The United Nations has confirmed the selection of Unique Network its NFT platform as a lead tech partner for the [DigitalArt4Climate](https://digitalart4climate.space/) initiative to help spread the word and increase awareness among the population on world's climate change.
 
