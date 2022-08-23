@@ -9,7 +9,8 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/guide/README.md',
           '/guide/create-account.md',
           '/guide/glossary.md',
-          '/guide/identica.md'
+          '/guide/identica.md',
+          '/guide/wallet-integration.md'
         ],
       }
     ],
@@ -30,50 +31,50 @@ export const sidebar: Record<string, SidebarConfig> = {
         ]
       }
     ],
-    '/reference/addresses': [
+    '/concepts': [
       {
-        text: 'Accounts and addresses',
+        text: 'Concepts',
         children: [
-          '/reference/addresses/index.md',
-          '/reference/addresses/wallet-integration.md'
+          '/concepts/addresses/index.md',
+
         ],
       },
     ],
-    '/reference/ethereum': [
+    '/ethereum': [
       {
         text: 'Ethereum',
         children: [
-          '/reference/ethereum/index.md',
-          '/reference/ethereum/Smart contracts.md',
-          '/reference/ethereum/UniqueNFT.md',
+          '/ethereum/index.md',
+          '/ethereum/Smart contracts.md',
+          '/ethereum/UniqueNFT.md',
         ],
       }
     ],
-    '/reference/chain': [
+    '/chain': [
       {
         text: 'Chain',
         children: [
-          '/reference/chain/index.md',
-          '/reference/chain/rpc.md',
-          '/reference/chain/extrinsics.md',
-          '/reference/chain/sponsoring.md',
-          '/reference/chain/governance-only.md',
-          '/reference/chain/nesting.md',
+          '/chain/index.md',
+          '/chain/rpc.md',
+          '/chain/extrinsics.md',
+          '/chain/sponsoring.md',
+          '/chain/governance-only.md',
+          '/chain/nesting.md',
         ],
       }
     ],
-    '/reference/sdk': [
+    '/sdk': [
       {
         text: 'SDK',
         children: [
-          '/reference/sdk/sdk_main.md',
-          '/reference/sdk/sdk.md',
-          '/reference/sdk/sdk_2.md',
-          '/reference/sdk/sdk_methods.md',
-          '/reference/sdk/web.md',
-          '/reference/sdk/accounts.md',
-          '/reference/sdk/recipes/README.md',
-          '/reference/sdk/recipes/nft-trading-for-classic-e-commerce/README.md',
+          '/sdk/sdk_main.md',
+          '/sdk/sdk.md',
+          '/sdk/sdk_2.md',
+          '/sdk/sdk_methods.md',
+          '/sdk/web.md',
+          '/sdk/accounts.md',
+          '/sdk/recipes/README.md',
+          '/sdk/recipes/nft-trading-for-classic-e-commerce/README.md',
         ],
       }
     ],

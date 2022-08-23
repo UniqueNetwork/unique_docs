@@ -3,59 +3,23 @@ import {NavbarConfig} from '@vuepress/theme-default'
 export const navbar: Record<string, NavbarConfig> = {
   en: [
     {
+      text: 'Concepts',
+      link: '/concepts',
+    },
+    {
       text: 'SDK',
-      link: '/reference/sdk'
+      link: '/sdk'
     },
     {
       text: 'Blockchain',
-      link: '/reference/chain'
+      link: '/chain'
     },
     {
-      text: 'Reference',
-      link: '/reference/',
-      children: [
-        {
-          text: 'Accounts and Addresses',
-          link: '/reference/addresses'
-        },
-        {
-          text: 'Ethereum',
-          link: '/reference/ethereum'
-        },
-        {
-          text: 'Chain',
-          link: '/reference/chain',
-        },
-        {
-          text: 'SDK',
-          link: '/reference/sdk',
-        },
-      ]
+      text: 'Ethereum',
+      link: '/ethereum'
     },
     {
-      text: 'Products',
-      link: '/products/',
-      children: [
-        {
-          text: 'Market',
-          link: '/products/market'
-        },
-        {
-          text: 'Wallet',
-          link: '/products/wallet'
-        },
-        {
-          text: 'Minter',
-          link: '/products/minter'
-        },
-        {
-          text: 'Scan',
-          link: '/products/scan'
-        },
-      ]
-    },
-    {
-      text: 'Guide',
+      text: 'Guides',
       link: '/guide/',
     },
     {
