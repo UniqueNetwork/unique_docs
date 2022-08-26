@@ -1,13 +1,75 @@
 # Additional tools description
 
-Что вообще за доп тулзы
+Unique Network also provides some additional tools, which make using our connection tools even more convenient.
 
 ## Accounts
-Перенос описание как из из ридми пакета
 
-## Addresses
-Перенос описание как из из ридми пакета (когда таковое будет)
+### About accounts
+The package is required to connect different accounts and create signatures for them. To get a list of accounts, you need to create an instance of the Accounts class and connect the necessary providers to it:
 
-## Schemas
-Какое описание нужно тут и откуда?
+```typescript
+import { Account, Accounts, SdkSigner } from '@unique-nft/accounts';
+import { KeyringLocalProvider } from '@unique-nft/accounts/keyring-local';
+import { PolkadotProvider } from '@unique-nft/accounts/polkadot';
 
+const accounts = new Accounts();
+await accounts.addProvider(KeyringLocalProvider);
+await accounts.addProvider(PolkadotProvider);
+
+const accountsList = await accounts.getAccounts();
+
+const account: Account = accountsList[0];
+
+const signer: SdkSigner = account.getSigner();
+```
+
+### Providers
+
+If you need to get an account from one specific provider, then it is not necessary to create an Accounts object, you can contact the provider directly:
+
+```typescript
+import { Account } from '@unique-nft/accounts';
+import { KeyringProvider } from '@unique-nft/accounts/keyring';
+import { KeyringOptions } from '@polkadot/keyring/types';
+
+const options: KeyringOptions = {
+  type: 'sr25519',
+};
+const provider = new KeyringProvider(options);
+await provider.init();
+provider.addSeed('<seed of account>');
+
+const account: Account | undefined = await provider.first();
+const signer = account?.getSigner();
+```
+
+The following providers are supported:
+
+* [Keyring](./keyring)
+* [KeyringLocal](./keyring-local)
+* [Polkadot extension](./polkadot)
+* [Metamask extension](./metamask)
+
+### Generate new account
+
+```typescript
+import { generateAccount, SignatureType } from "@unique-nft/accounts";
+
+const account = await generateAccount({
+  password: '123456',
+  pairType: SignatureType.Sr25519,
+  meta: {
+    name: 'my_test_account'
+  }
+})
+```
+
+### Get account from mnemonic
+
+```typescript
+import { getAccountFromMnemonic } from '@unique-nft/accounts';
+
+const account = await getAccountFromMnemonic({
+  mnemonic: 'your mnemonic phrase',
+});
+```

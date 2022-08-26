@@ -132,6 +132,7 @@ graph TD;
 
 By invoking this function with the ids of collection A and  token A1, a response would be:
 
+
 >[{token: A2, collection: A}, {token: B1, collection: B}]
 
 As presented in this example the `tokenChildren` lists only A1 and B2 as they are direct, or first generation, or layer 1 of nesting depth descendants. Token B2 is a second generation descendant, or a layer 2 nested token. However, B2 will appear as a result of a call invoked with ids for collection B and token B1.
