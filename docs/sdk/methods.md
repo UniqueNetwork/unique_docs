@@ -1,53 +1,405 @@
-# SDK Methods 
+# Methods
 
-# Table of Contents 
+## Sponsorship
 
-- [Get account tokens of the collection](#get-account-tokens-of-the-collection) 
-- [Add collection admin](#add-collection-admin) 
-- [Adminlist](#adminlist) 
-- [Get allowance](#get-allowance) 
-- [Check is allowed](#check-is-allowed) 
-- [Approve](#approve) 
-- [Destroys a concrete instance of NFT](#destroys-a-concrete-instance-of-nft) 
-- [Get collection by Id](#get-collection-by-id) 
-- [Get collection by Id (new)](#get-collection-by-id-(new)) 
-- [Collection properties](#collection-properties) 
-- [Collection tokens](#collection-tokens) 
-- [Confirm sponsorship of collection](#confirm-sponsorship-of-collection) 
-- [Create collection](#create-collection) 
-- [Create collection (new)](#create-collection-(new)) 
-- [Create token (new)](#create-token-(new)) 
-- [Create token (new)](#create-token-(new)) 
-- [Delete collection properties](#delete-collection-properties) 
-- [Delete token properties](#delete-token-properties) 
-- [Destroy collection](#destroy-collection) 
-- [Get effective limits by collection ID](#get-effective-limits-by-collection-id) 
-- [Get collection stats](#get-collection-stats) 
-- [Get last generated token id](#get-last-generated-token-id) 
-- [Nest token](#nest-token) 
-- [Get number of blocks when sponsored transaction is available](#get-number-of-blocks-when-sponsored-transaction-is-available) 
-- [Property permissions](#property-permissions) 
-- [Remove collection admin](#remove-collection-admin) 
-- [Remove sponsor of collection](#remove-sponsor-of-collection) 
-- [Set collection limits](#set-collection-limits) 
-- [Set collection permissions](#set-collection-permissions) 
-- [Set collection properties](#set-collection-properties) 
-- [Set sponsor of collection](#set-sponsor-of-collection) 
-- [Set token properties](#set-token-properties) 
-- [Set token property permissions](#set-token-property-permissions) 
-- [Set transfers enabled flag](#set-transfers-enabled-flag) 
-- [Get token](#get-token) 
-- [Token children](#token-children) 
-- [Checks if token exists in collection](#checks-if-token-exists-in-collection) 
-- [Get token owner](#get-token-owner) 
-- [Token parent](#token-parent) 
-- [Token properties](#token-properties) 
-- [Topmost token owner](#topmost-token-owner) 
-- [Transfer token](#transfer-token) 
-- [Change the owner of the collection](#change-the-owner-of-the-collection) 
-- [Unnest token](#unnest-token) 
+### Confirm sponsorship
+<details><summary>Confirm sponsorship description</summary>
 
-## Get account tokens of the collection
+#### Overview
+
+**Sponsor** should use this method to confirm sponsorship after the collection **owner** called [set collection sponsor](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/sdk/tokens/methods/set-collection-sponsor) method.
+
+#### Brief example
+
+```typescript
+    import { ConfirmSponsorshipArguments } from '@unique-nft/sdk/tokens';
+
+    const confirmSponsorshipArgs: ConfirmSponsorshipArguments = {
+        address: '5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp',
+        collectionId: 1,
+    };
+    
+    await sdk.collections.confirmSponsorship.submitWaitResult(confirmSponsorshipArgs);
+
+    const { sponsorship } = await sdk.collections.get_new({ collectionId: 1 });
+
+    // `5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp - true`
+    console.log(`${sponsorship?.address} - ${sponsorship?.isConfirmed}`);
+```
+
+#### Arguments
+
+`address: string` — sponsor address
+
+`collectionId: number` — collection id
+
+#### Behaviour and errors
+
+This method takes collection id and confirms signer to be a collection sponsor.
+
+Collection **owner** should call [set collection sponsor](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/sdk/tokens/methods/set-collection-sponsor) with **sponsor** address, otherwise an error will be thrown.
+
+Only unconfirmed **sponsor** of the collection should call and sign this method.
+
+Throws common errors on insufficient balance and so on.
+
+#### Returns
+
+This method returns `ConfirmSponsorshipResult`
+
+```typescript
+    interface ConfirmSponsorshipResult {
+        /**
+         * id of the collection
+         */
+        collectionId: number;
+    
+        /**
+         * address of the sponsor (Substrate)
+         */
+        sponsor: Address;
+    }
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="SDK">
+
+```typescript
+    import { ConfirmSponsorshipArguments } from '@unique-nft/sdk/tokens';
+
+    const confirmSponsorshipArgs: ConfirmSponsorshipArguments = {
+        address: '5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp',
+        collectionId: 1,
+    };
+    
+    await sdk.collections.confirmSponsorship.submitWaitResult(confirmSponsorshipArgs);
+    
+    const { sponsorship } = await sdk.collections.get_new({ collectionId: 1 });
+    
+    // `5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp - true`
+    console.log(`${sponsorship?.address} - ${sponsorship?.isConfirmed}`);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+
+    curl -X 'POST' \
+    'https://rest.opal.uniquenetwork.dev/collection/sponsorship/confirm' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+    "address": "5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp",
+    "collectionId": 1
+    }'
+    
+    # then we sign, then we call
+    
+    curl -X 'POST' \
+    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+    "signerPayloadJSON": { *from prevous response* },
+    "signature": "0x_your_signature_in_hex"
+    }'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    
+    const result = await client.collections.confirmSponsorship.submitWaitResult({
+        address: '5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp',
+        collectionId: 1,
+    });
+    
+    const { parsed: { sponsor, collectionId } } = result;
+    
+    console.log(`${sponsor} approved sponsorship of ${collectionId} collection`);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+</details>
+
+### Remove collection sponsor
+<details><summary>Remove collection sponsor description</summary>
+
+#### Overview
+
+Collection **owner** can use this method to remove **sponsor** added by [set collection sponsor](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/sdk/tokens/methods/set-collection-sponsor) method.
+
+#### Brief example
+
+```typescript
+    import { RemoveSponsorshipArguments } from '@unique-nft/sdk/tokens';
+
+    const removeSponsorshipArgs: RemoveSponsorshipArguments = {
+        address: '5HgvUDiRm5yjRSrrG9B6q6km7KLzkXMxvFLHPZpA13pmwCJQ',
+        collectionId: 1,
+    };
+    
+    await sdk.collections.removeSponsorship.submitWaitResult(removeSponsorshipArgs);
+
+    const { sponsorship } = await sdk.collections.get_new({ collectionId: 1 });
+
+    // `null`
+    console.log(sponsorship);
+```
+
+#### Arguments
+
+`address: string` — collection owner address
+
+`collectionId: number` — collection id
+
+#### Behaviour and errors
+
+This method takes collection id and removes collection sponsor.
+
+Only collection **owner** allowed to call this method.
+
+Throws common errors on insufficient balance and so on.
+
+#### Returns
+
+This method returns `RemoveSponsorshipResult`
+
+```typescript
+    interface RemoveSponsorshipResult {
+        /**
+         * id of the collection
+         */
+        collectionId: number;
+    }
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="SDK">
+
+```typescript
+    import { RemoveSponsorshipArguments } from '@unique-nft/sdk/tokens';
+
+    const removeSponsorshipArgs: RemoveSponsorshipArguments = {
+        address: '5HgvUDiRm5yjRSrrG9B6q6km7KLzkXMxvFLHPZpA13pmwCJQ',
+        collectionId: 1,
+    };
+    
+    await sdk.collections.removeSponsorship.submitWaitResult(removeSponsorshipArgs);
+    
+    const { sponsorship } = await sdk.collections.get_new({ collectionId: 1 });
+    
+    // `null`
+    console.log(sponsorship);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+
+    curl -X 'DELETE' \
+    'https://rest.opal.uniquenetwork.dev/collection/sponsorship' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+    "address": "5HgvUDiRm5yjRSrrG9B6q6km7KLzkXMxvFLHPZpA13pmwCJQ",
+    "collectionId": 1
+    }'
+    
+    # then we sign, then we call
+    
+    curl -X 'POST' \
+    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+    "signerPayloadJSON": { *from prevous response* },
+    "signature": "0x_your_signature_in_hex"
+    }'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    
+    const result = await client.collections.removeSponsorship.submitWaitResult({
+        address: '5HgvUDiRm5yjRSrrG9B6q6km7KLzkXMxvFLHPZpA13pmwCJQ',
+        collectionId: 1,
+    });
+    
+    const { parsed: { collectionId } } = result;
+    
+    console.log(`${collectionId} now works without sponsoring`);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+</details>
+
+### Set collection sponsor
+<details><summary>Set collection sponsor description</summary>
+
+#### Overview
+
+Collection **owner** can use this method to set **sponsor** of the collection.
+
+After that **sponsor** should [confirm sponsorship](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/sdk/tokens/methods/confirm-sponsorship) and the sponsoring mechanism will be enabled.
+
+Collection **owner** can also [remove collection sponsor](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/sdk/tokens/methods/remove-collection-sponsor).
+
+#### Brief example
+
+```typescript
+    import { SetCollectionSponsorArguments } from '@unique-nft/sdk/tokens/types';
+    
+    const setSponsorArgs: SetCollectionSponsorArguments = {
+        address: '5HgvUDiRm5yjRSrrG9B6q6km7KLzkXMxvFLHPZpA13pmwCJQ',
+        collectionId: 1,
+        newSponsor: '5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp',
+    };
+    
+    await sdk.collections.setCollectionSponsor.submitWaitResult(setSponsorArgs);
+
+    const { sponsorship } = await sdk.collections.get_new({ collectionId: 1 });
+
+    // `5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp - false`
+    console.log(`${sponsorship?.address} - ${sponsorship?.isConfirmed}`);
+```
+
+#### Arguments
+
+`address: string` — collection owner address
+
+`collectionId: number` — collection id
+
+`newSponsor: string` — address of new sponsor
+
+
+#### Behaviour and errors
+
+The method takes an address and set as collection sponsor.
+
+Signer must be admin of the collection.
+
+Be aware that if address is already a sponsor of given collection no exception will be thrown, but fee will be charged.
+
+And also throws common errors on insufficient balance and so on.
+
+#### Returns
+
+This method returns `SetSponsorshipResult`
+
+```typescript
+    interface SetSponsorshipResult {
+        /**
+         * id of the collection
+         */
+        collectionId: number;
+    
+        /**
+         * address of the sponsor (Substrate)
+         */
+        sponsor: Address;
+    }
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="SDK">
+
+```typescript
+    import { SetCollectionSponsorArguments } from '@unique-nft/sdk/tokens';
+    
+    const setSponsorArgs: SetCollectionSponsorArguments = {
+        address: '5HgvUDiRm5yjRSrrG9B6q6km7KLzkXMxvFLHPZpA13pmwCJQ',
+        collectionId: 1,
+        newSponsor: '5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp',
+    };
+    
+    await sdk.collections.setCollectionSponsor.submitWaitResult(setSponsorArgs);
+    
+    const { sponsorship } = await sdk.collections.get_new({ collectionId: 1 });
+    
+    // `5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp - false`
+    console.log(`${sponsorship?.address} - ${sponsorship?.isConfirmed}`);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+
+    curl -X 'POST' \
+    'https://rest.opal.uniquenetwork.dev/collection/sponsorship' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+    "address": "5HgvUDiRm5yjRSrrG9B6q6km7KLzkXMxvFLHPZpA13pmwCJQ",
+    "collectionId": 1,
+    "newSponsor": "5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp"
+    }'
+    
+    # then we sign, then we call
+    
+    curl -X 'POST' \
+    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+    "signerPayloadJSON": { *from prevous response* },
+    "signature": "0x_your_signature_in_hex"
+    }'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    
+    const result = await client.collections.setSponsorship.submitWaitResult({
+        address: '5HgvUDiRm5yjRSrrG9B6q6km7KLzkXMxvFLHPZpA13pmwCJQ',
+        collectionId: 1,
+        newSponsor: '5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp',
+    });
+    
+    const { parsed: { sponsor, collectionId } } = result;
+    
+    console.log(`${sponsor} should now approve sponsorship of ${collectionId} collection`);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+</details>
+
+## Other
+
+### Get account tokens of the collection
+<details><summary>Get account tokens of the collection description</summary>
 
 Returns array of tokens, owned by address
 
@@ -73,8 +425,10 @@ const accountTokens = await sdk.tokens.getAccountTokens({
 
 const [{ tokenId, collectionId }, ...restTokens] = accountTokens;
 ```
+</details>
 
-## Add collection admin
+### Add collection admin
+<details><summary>Add collection admin description</summary>
 
 #### Arguments
 
@@ -101,8 +455,41 @@ const result = await sdk.collections.addAdmin.submitWaitResult(args);
 
 console.log(result.parsed);
 ```
+</details>
 
-## Adminlist
+### Add To Allow List
+<details><summary>Add To Allow List description</summary>
+
+Adds an address to allow list of a collection.
+
+#### Arguments
+
+- **address** - Sender address
+- **collectionId** - an ID of the collection which will be affected
+- **newAdminId** - the address to be added to the allow list
+
+#### Returns
+
+The method returns a `parsed` object that contains the `collectionId: number, address: string`.
+
+#### Examples
+
+```typescript
+import { AddToAllowListArguments } from '@unique-nft/sdk/tokens/types';
+
+const addToAllowListArgs: AddToAllowListArguments = {
+    address: '<your account address>',
+    collectionId: '<ID of the collection>',
+    newAdminId: '<valid address>'
+};
+
+const { parsed } = await sdk.collections.addToAllowList.submitWaitResult(addToAllowListArgs);
+const { collectionId, address } = parsed;
+```
+</details>
+
+### Adminlist
+<details><summary>Adminlist description</summary>
 
 Get array of collection admins
 
@@ -128,8 +515,38 @@ const args: AdminlistArguments = {
 
 const result: AdminlistResult = await sdk.collections.admins(args);
 ```
+</details>
 
-## Get allowance
+### Allow list
+<details><summary>Allow list description</summary>
+
+Gets the addresses that are in to allow list for the specified collection.
+
+#### Arguments
+
+- **collectionId** - an ID of the collection which will be checked
+- **hash** _optional_ - allows to specify at which moment of the chain (block hash) you need to perform the check. If you leave it empty, the result will be for the last block of the chain.
+
+#### Returns
+
+The method returns an object containing array string addresses.
+
+#### Examples
+
+```typescript
+import { AllowListArguments } from '@unique-nft/sdk/tokens/types';
+
+const allowListArgs: AllowListArguments = {
+    collectionId: '<ID of the collection>', 
+    hash: '0xff19c2457fa4d7216cfad444615586c4365250e7310e2de7032ded4fcbd36873'
+};
+
+const addresses = await sdk.collections.allowList(allowListArgs);
+```
+</details>
+
+### Get allowance
+<details><summary>Get allowance description</summary>
 
 Get the amount of token pieces approved to transfer
 
@@ -156,8 +573,10 @@ const { isAllowed } = await sdk.tokens.allowance({
   tokenId: 1,
 });
 ```
+</details>
 
-## Check is allowed
+### Check is allowed
+<details><summary>Check is allowed description</summary>
 
 Check if a user is allowed to use a collection. Returns true or false.
 
@@ -181,8 +600,10 @@ const { isAllowed } = await sdk.collection.allowed({
   account: '<address>',
 });
 ```
+</details>
 
-## Approve
+### Approve
+<details><summary>Approve description</summary>
 
 Set, change, or remove approved address to transfer the ownership of the token. The Amount value must be between 0 and owned amount or 1 for NFT.
 
@@ -200,7 +621,7 @@ The method returns a `parsed` object that contains the `collectionId: number, to
 #### Examples
 
 ```typescript
-import { ApproveArguments } from '@unique-nft/sdk/tokens/methods/approve';
+import { ApproveArguments } from '@unique-nft/sdk/tokens/types';
 
 const approveArgs: ApproveArguments = {
     spender: '<Account address for whom token will be approved>',
@@ -212,8 +633,10 @@ const approveArgs: ApproveArguments = {
 const result = await sdk.tokens.approve.submitWaitResult(approveArgs);
 const { collectionId, tokenId } = result.parsed;
 ```
+</details>
 
-## Destroys a concrete instance of NFT
+### Destroys a concrete instance of NFT
+<details><summary>Destroys a concrete instance of NFT description</summary>
 
 #### Arguments
 
@@ -242,8 +665,10 @@ const burnItemArgs: BurnTokenArguments = {
 const setResult = await sdk.tokens.burn.submitWaitResult(burnItemArgs);
 const { collectionId, tokenId, address, value } = setResult.parsed;
 ```
+</details>
 
-## Get collection by Id
+### Get collection by Id
+<details><summary>Get collection by Id description</summary>
 
 Returns collection info in human format.
 
@@ -275,8 +700,10 @@ import { CollectionIdArguments, CollectionInfo } from '@unique-nft/sdk/types';
 const getCollectionArgs: CollectionIdArguments = { collectionId: 123 };
 const collection: CollectionInfo = await sdk.collections.get(getCollectionArgs);
 ```
+</details>
 
-## Get collection by Id (new)
+### Get collection by Id (new)
+<details><summary>Get collection by Id (new) description</summary>
 
 Returns collection info (with Unique schema)
 
@@ -309,8 +736,10 @@ const collection = await sdk.collections.get_new({ collectionId: 2 });
 
 const { id, owner, name, description, mode, tokenPrefix, schema } = collection;
 ```
+</details>
 
-## Collection properties
+### Collection properties
+<details><summary>Collection properties description</summary>
 
 Get array of collection properties
 
@@ -340,8 +769,10 @@ const result: CollectionPropertiesResult = await sdk.collections.properties(
   args,
 );
 ```
+</details>
 
-## Collection tokens
+### Collection tokens
+<details><summary>Collection tokens description</summary>
 
 Get tokens contained within a collection
 
@@ -362,33 +793,10 @@ const result: CollectionTokensResult = await sdk.collections.tokens({
   collectionId: 1,
 });
 ```
+</details>
 
-## Confirm sponsorship of collection
-
-#### Arguments
-
-- **address** - The address of collection owner
-- **collectionId** - Collection id
-
-#### Returns
-
-The method returns a `parsed` object that contains the `collectionId: number, sponsor: string`.
-
-#### Examples
-
-```typescript
-import { ConfirmSponsorshipArguments } from '@unique-nft/sdk/tokens/types';
-
-const confirmArgs: ConfirmSponsorshipArguments = {
-  address: '<Account address of owner of collection>',
-  collectionId: '<ID of the collection>',
-};
-
-const result = await sdk.collections.confirmSponsorship.submitWaitResult(confirmArgs);
-const { collectionId, sponsor } = result.parsed;
-```
-
-## Create collection
+### Create collection
+<details><summary>Create collection description</summary>
 
 #### Arguments
 
@@ -423,8 +831,10 @@ const createResult = await sdk.collections.creation.submitWaitResult(createArgs)
 const { collectionId } = createResult.parsed;
 const collection = await sdk.collections.get({ collectionId });
 ```
+</details>
 
-## Create collection (new)
+### Create collection (new)
+<details><summary>Create collection (new) description</summary>
 
 #### Arguments
 
@@ -484,8 +894,10 @@ const { collectionId } = createResult.parsed;
 
 const collection = await sdk.collections.get({ collectionId });
 ```
+</details>
 
-## Create token (new)
+### Create token (new)
+<details><summary>Create token (new) description</summary>
 
 #### Arguments
 
@@ -502,7 +914,7 @@ The method returns a `parsed` object that contains the `collectionId: number, to
 #### Examples
 
 ```typescript
-import { CreateTokenNewArguments } from '@unique-nft/sdk/tokens/methods/create-token';
+import { CreateTokenNewArguments } from '@unique-nft/sdk/tokens/types';
 
 import {
     UniqueCollectionSchemaToCreate,
@@ -530,8 +942,10 @@ const { collectionId, tokenId } = result.parsed;
 
 const token = await sdk.tokens.get_new({ collectionId, tokenId });
 ```
+</details>
 
-## Create token (new)
+### Create tokens (new)
+<details><summary>Create tokens (new) description</summary>
 
 #### Arguments
 
@@ -576,8 +990,10 @@ const [{ collectionId, tokenId }] = result.parsed;
 
 const token = await sdk.tokens.get_new({ collectionId, tokenId });
 ```
+</details>
 
-## Delete collection properties
+### Delete collection properties
+<details><summary>Delete collection properties description</summary>
 
 #### Arguments
 
@@ -602,8 +1018,10 @@ const result = await sdk.collections.deleteProperties.submitWaitResult(args);
 
 console.log(result.parsed);
 ```
+</details>
 
-## Delete token properties
+### Delete token properties
+<details><summary>Delete token properties description</summary>
 
 #### Arguments
 
@@ -628,8 +1046,10 @@ const result = await sdk.tokens.deleteProperties.submitWaitResult(args);
 
 console.log(result.parsed);
 ```
+</details>
 
-## Destroy collection
+### Destroy collection
+<details><summary>Destroy collection description</summary>
 
 Destroys collection if no tokens within this collection
 
@@ -655,8 +1075,10 @@ const destroyArgs: DestroyCollectionArguments = {
 const result = await sdk.collections.destroy.submitWaitResult(destroyArgs);
 const { success } = result.parsed;
 ```
+</details>
 
-## Get effective limits by collection ID
+### Get effective limits by collection ID
+<details><summary>Get effective limits by collection ID description</summary>
 
 By default, the collection limit is not set (their value is null).
 This limit value can be seen when requesting a collection using [Get collection by ID](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/sdk/tokens/methods/collection-by-id) method.
@@ -680,8 +1102,10 @@ import { CollectionIdArguments, GetCollectionLimitsResult } from '@unique-nft/sd
 const getCollectionArgs: CollectionIdArguments = { collectionId: 123 };
 const collection: CollectionInfo = await sdk.collections.getLimits(getCollectionArgs);
 ```
+</details>
 
-## Get collection stats
+### Get collection stats
+<details><summary>Get collection stats description</summary>
 
 Returns blockchain collection statistics.
 
@@ -704,8 +1128,37 @@ import { GetStatsResult } from '@unique-nft/sdk/types';
 
 const stats: GetStatsResult | null = await sdk.collections.getStats();
 ```
+</details>
 
-## Get last generated token id
+### Is Bundle
+<details><summary>Is Bundle description</summary>
+
+Returns whether token in part of the bundle or not.
+
+#### Arguments
+
+- **collectionId** - Collection Id
+- **tokenId** - Token Id
+
+#### Returns
+
+The method returns boolean true or false:
+
+#### Examples
+
+```typescript
+// false
+const isBundle = await sdk.tokens.isBundle({
+  collectionId: 2,
+  tokenId: 1,
+});
+
+
+```
+</details>
+
+### Get last generated token id
+<details><summary>Get last generated token id description</summary>
 
 #### Arguments
 
@@ -726,10 +1179,27 @@ const args: LastTokenIdArguments = {
 };
 const lastTokenIdResult: LastTokenIdResult = await sdk.collections.lastTokenId(args);
 ```
+</details>
 
-## Nest token
+### Nest token
+<details><summary>Nest token description</summary>
 
 Nesting is a process of forming a structural relationship between two NFTs that form a parent-child relationship in a tree structure. Such a relationship is formed by forwarding token A2 to the address of token A1 by which A2 becomes a child of token A1 (conversely, token A1 becomes the parent of A2).
+
+#### Prerequisites
+
+Nesting can be applied only if token collection has a permission for nesting. If collection has no permission for nesting - "UserIsNotAllowedToNest" Error will be thrown.
+
+```ts
+sdk.collections.creation.submitWaitResult({
+  // ...
+  permissions: {
+    nesting: {
+      tokenOwner: true,
+      collectionAdmin: true,
+    },
+  },
+```
 
 #### Arguments
 
@@ -739,7 +1209,7 @@ Nesting is a process of forming a structural relationship between two NFTs that 
 
 #### Returns
 
-The method returns a `parsed` object that contains `{ collectionId: number, tokenId: number }`
+The method returns a `parsed` object that contains `{ collectionId: number, tokenId: number }` of nested token
 
 #### Examples
 
@@ -766,8 +1236,10 @@ console.log(
   `Token ${tokenId} from collection ${collectionId} successfully nested`,
 );
 ```
+</details>
 
-## Get number of blocks when sponsored transaction is available
+### Get number of blocks when sponsored transaction is available
+<details><summary>Get number of blocks when sponsored transaction is available description</summary>
 
 Returns number of block or none string.
 
@@ -794,8 +1266,10 @@ const getSponsoredArgs: NextSponsoredArguments = {
 };
 const nextSponsoredResult: NextSponsoredResult = await sdk.collections.nextSponsored(getSponsoredArgs);
 ```
+</details>
 
-## Property permissions
+### Property permissions
+<details><summary>Property permissions description</summary>
 
 Get array of collection property permissions
 
@@ -824,8 +1298,10 @@ const args: PropertyPermissionsArguments = {
 const result: PropertyPermissionsResult =
   await sdk.collections.propertyPermissions(args);
 ```
+</details>
 
-## Remove collection admin
+### Remove collection admin
+<details><summary>Remove collection admin description</summary>
 
 #### Arguments
 
@@ -852,33 +1328,39 @@ const result = await sdk.collections.removeAdmin.submitWaitResult(args);
 
 console.log(result.parsed);
 ```
+</details>
 
-## Remove sponsor of collection
+### Remove an address from allow list
+<details><summary>Remove an address from allow list description</summary>
 
 #### Arguments
 
-- **address** - The address of collection owner
-- **collectionId** - Collection id
+- **address** - Sender address
+- **collectionId** - an ID of the collection which will be affected
+- **addressToDelete** - the address to be removed from the allow list
 
 #### Returns
 
-The method returns a `parsed` object that contains the `collectionId: number`.
+The method returns a `parsed` object that contains the `collectionId: number, address: string`.
 
 #### Examples
 
 ```typescript
-import { RemoveCollectionSponsorArguments } from '@unique-nft/sdk/tokens/types';
+import { RemoveFromAllowListArguments } from '@unique-nft/sdk/tokens/types';
 
-const removeArgs: SetCollectionSponsorArguments = {
-  address: '<Account address of owner of collection>',
-  collectionId: '<ID of the collection>',
+const removeFromAllowListArgs: RemoveFromAllowListArguments = {
+    address: '<your account address>',
+    collectionId: '<ID of the collection>',
+    addressToDelete: '<valid address>'
 };
 
-const result = await sdk.collections.removeCollectionSponsor.submitWaitResult(removeArgs);
-const { collectionId } = result.parsed;
+const { parsed } = await sdk.collections.removeFromAllowList.submitWaitResult(removeFromAllowListArgs);
+const { collectionId, address } = parsed;
 ```
+</details>
 
-## Set collection limits
+### Set collection limits
+<details><summary>Set collection limits description</summary>
 
 #### Arguments
 
@@ -893,7 +1375,7 @@ const { collectionId } = result.parsed;
   - **sponsorApproveTimeout** - Time interval in blocks that defines once per how long a non-privileged user approve transaction can be sponsored
   - **ownerCanTransfer** - Boolean value that tells if collection owner or admins can transfer or burn tokens owned by other non-privileged users
   - **ownerCanDestroy** - Boolean value that tells if collection owner can destroy it
-  - **transfersEnabled** - Flag that defines whether token transfers between users are currently enabled 
+  - **transfersEnabled** - Flag that defines whether token transfers between users are currently enabled
 
 #### Returns
 
@@ -922,8 +1404,10 @@ const limitsArgs: SetCollectionLimitsArguments = {
 const setResult = await sdk.collections.setLimits.submitWaitResult(limitsArgs);
 const { collectionId, limits } = setResult.parsed;
 ```
+</details>
 
-## Set collection permissions
+### Set collection permissions
+<details><summary>Set collection permissions description</summary>
 
 Sets onchain permissions for collection
 
@@ -970,8 +1454,10 @@ console.log(
   `Collection #${result.parsed.collectionId} permissions successfully updated`,
 );
 ```
+</details>
 
-## Set collection properties
+### Set collection properties
+<details><summary>Set collection properties description</summary>
 
 #### Arguments
 
@@ -1001,35 +1487,10 @@ const result = await sdk.collections.setProperties.submitWaitResult(args);
 
 console.log(result.parsed);
 ```
+</details>
 
-## Set sponsor of collection
-
-#### Arguments
-
-- **address** - The address of collection owner
-- **collectionId** - Collection id
-- **newSponsor** - The address of new sponsor of the collection
-
-#### Returns
-
-The method returns a `parsed` object that contains the `collectionId: number, sponsor: string`.
-
-#### Examples
-
-```typescript
-import { SetCollectionSponsorArguments } from '@unique-nft/sdk/tokens/types';
-
-const setSponsorArgs: SetCollectionSponsorArguments = {
-    address: '<Account address of owner of collection>',
-    collectionId: '<ID of the collection>',
-    newSponsor: '<Account addres of new sponsor>',
-};
-
-const result = await sdk.collections.setCollectionSponsor.submitWaitResult(setSponsorArgs);
-const { collectionId, sponsor } = result.parsed;
-```
-
-## Set token properties
+### Set token properties
+<details><summary>Set token properties description</summary>
 
 #### Arguments
 
@@ -1061,8 +1522,10 @@ const result = await sdk.tokens.setProperties.submitWaitResult(args);
 
 console.log(result.parsed);
 ```
+</details>
 
-## Set token property permissions
+### Set token property permissions
+<details><summary>Set token property permissions description</summary>
 
 #### Arguments
 
@@ -1097,8 +1560,10 @@ const result =
 
 console.log(result.parsed);
 ```
+</details>
 
-## Set transfers enabled flag
+### Set transfers enabled flag
+<details><summary>Set transfers enabled flag description</summary>
 
 #### Arguments
 
@@ -1129,8 +1594,10 @@ const result = await sdk.collections.setTransfersEnabled.submitWaitResult(args);
 
 console.log(result.parsed.success);
 ```
+</details>
 
-## Get token
+### Get token
+<details><summary>Get token description</summary>
 
 Returns token info and attributes
 
@@ -1166,8 +1633,10 @@ const {
     attributes,
 } = token;
 ```
+</details>
 
-## Token children
+### Token children
+<details><summary>Token children description</summary>
 
 Get array of nested tokens
 
@@ -1195,8 +1664,10 @@ const args: TokenChildrenArguments = {
 
 const result: TokenChildrenResult = await sdk.tokens.tokenChildren(args);
 ```
+</details>
 
-## Checks if token exists in collection
+### Checks if token exists in collection
+<details><summary>Checks if token exists in collection description</summary>
 
 Returns true or false
 
@@ -1215,8 +1686,10 @@ Method returns object:
 ```typescript
 const { isExists } = await sdk.tokens.exists({ collectionId: 123, tokenId: 321 });
 ```
+</details>
 
-## Get token owner
+### Get token owner
+<details><summary>Get token owner description</summary>
 
 #### Arguments
 
@@ -1246,8 +1719,10 @@ const result: TokenOwnerResult = await sdk.tokens.tokenOwner(
   args,
 );
 ```
+</details>
 
-## Token parent
+### Token parent
+<details><summary>Token parent description</summary>
 
 Return info about token parent
 
@@ -1279,8 +1754,10 @@ const args: TokenParentArguments = {
 
 const result: TokenParentResult = await sdk.tokens.tokenParent(args);
 ```
+</details>
 
-## Token properties
+### Token properties
+<details><summary>Token properties description</summary>
 
 Get array of token properties
 
@@ -1310,8 +1787,10 @@ const args: TokenPropertiesArguments = {
 
 const result: TokenPropertiesResult = await sdk.tokens.properties(args);
 ```
+</details>
 
-## Topmost token owner
+### Topmost token owner
+<details><summary>Topmost token owner description</summary>
 
 Return substrate address of topmost token owner
 
@@ -1344,8 +1823,10 @@ const result: TopmostTokenOwnerResult = await sdk.tokens.topmostTokenOwner(
   args,
 );
 ```
+</details>
 
-## Transfer token
+### Transfer token
+<details><summary>Transfer token description</summary>
 
 #### Arguments
 
@@ -1376,8 +1857,10 @@ const result = await sdk.tokens.transfer.submitWaitResult(args);
 
 console.log(result.parsed);
 ```
+</details>
 
-## Change the owner of the collection
+### Change the owner of the collection
+<details><summary>Change the owner of the collection description</summary>
 
 #### Arguments
 
@@ -1392,7 +1875,7 @@ The method returns a `parsed` object that contains the `collectionId: number, ne
 #### Examples
 
 ```typescript
-import { TransferCollectionArguments } from '@unique-nft/sdk/tokens/methods/transfer-collection';
+import { TransferCollectionArguments } from '@unique-nft/sdk/tokens/types';
 
 const args: TransferCollectionArguments = {
     collectionId: '<ID of the collection>',
@@ -1403,8 +1886,10 @@ const args: TransferCollectionArguments = {
 const result = await sdk.collections.transfer.submitWaitResult(args);
 const { collectionId, newOnwer } = result.parsed;
 ```
+</details>
 
-## Unnest token
+### Unnest token
+<details><summary>Unnest token description</summary>
 
 Nesting is a process of forming a structural relationship between two NFTs that form a parent-child relationship in a tree structure. Such a relationship is formed by forwarding token A2 to the address of token A1 by which A2 becomes a child of token A1 (conversely, token A1 becomes the parent of A2).
 
@@ -1443,4 +1928,5 @@ console.log(
   `Token ${tokenId} from collection ${collectionId} successfully unnested`,
 );
 ```
+</details>
 

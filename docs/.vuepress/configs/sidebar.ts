@@ -61,14 +61,11 @@ export const sidebar: Record<string, SidebarConfig> = {
       {
         text: 'SDK',
         children: [
-          '/sdk/sdk_main.md',
-          '/sdk/sdk.md',
-          '/sdk/sdk_2.md',
-          '/sdk/sdk_methods.md',
-          '/sdk/web.md',
-          '/sdk/accounts.md',
-          '/sdk/recipes/README.md',
-          '/sdk/recipes/nft-trading-for-classic-e-commerce/README.md',
+          '/sdk/index.md',
+          '/sdk/architecture.md',
+          '/sdk/installation.md',
+          '/sdk/methods.md',
+          '/sdk/tools.md',
         ],
       }
     ]
