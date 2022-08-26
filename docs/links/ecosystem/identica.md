@@ -50,7 +50,7 @@ const data = {
   },
   polkadot: {
     ipfsPin: 'QmPP5uAZA5EStDLVKCRRehD5gFzu8av5PCZqBws7CoYxky',
-    color: '#E6007A'
+    color: '#000000'
   },
   kusama: {
     ipfsPin: 'QmTTXAFyq63cVt5Nqb644VvtwojEDdbRdZsiCVKeJyLVgv',
