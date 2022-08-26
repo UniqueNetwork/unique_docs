@@ -1,7 +1,0 @@
-{
-  "name": "Generate account and export keyfile",
-  "type": "module",
-  "dependencies": {
-    "@polkadot/api": "^7.8.1"
-  }
-}

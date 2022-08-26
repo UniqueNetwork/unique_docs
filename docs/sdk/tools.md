@@ -1,15 +1,10 @@
+# Additional tools description
 
+Unique Network also provides some additional tools, which make using our connection tools even more convenient.
 
-# Accounts
+## Accounts
 
-#  Table of Contents
-
-- [Accounts](#about-accounts)
-- [Providers](#providers)
-- [Generate new account](#generate-new-account)
-- [Get account from mnemonic](#get-account-from-mnemonic)
-
-## About accounts
+### About accounts
 The package is required to connect different accounts and create signatures for them. To get a list of accounts, you need to create an instance of the Accounts class and connect the necessary providers to it:
 
 ```typescript
@@ -28,7 +23,7 @@ const account: Account = accountsList[0];
 const signer: SdkSigner = account.getSigner();
 ```
 
-## Providers
+### Providers
 
 If you need to get an account from one specific provider, then it is not necessary to create an Accounts object, you can contact the provider directly:
 
@@ -50,12 +45,12 @@ const signer = account?.getSigner();
 
 The following providers are supported:
 
-* [Keyring](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/accounts/keyring)
-* [KeyringLocal](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/accounts/keyring-local)
-* [Polkadot extension](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/accounts/polkadot)
-* [Metamask extension](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/accounts/metamask)
+* [Keyring](./keyring)
+* [KeyringLocal](./keyring-local)
+* [Polkadot extension](./polkadot)
+* [Metamask extension](./metamask)
 
-## Generate new account
+### Generate new account
 
 ```typescript
 import { generateAccount, SignatureType } from "@unique-nft/accounts";
@@ -69,7 +64,7 @@ const account = await generateAccount({
 })
 ```
 
-## Get account from mnemonic
+### Get account from mnemonic
 
 ```typescript
 import { getAccountFromMnemonic } from '@unique-nft/accounts';
