@@ -22,7 +22,7 @@ import {copyToBuffer} from "_utils";
 
 const props = defineProps<{
   text?: string
-  data: string
+  data: string | number
   showAlways?: boolean
 }>()
 
