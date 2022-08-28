@@ -30,7 +30,6 @@
     "mermaid": "^9.1.2",
     "unique_api_vue": "0.0.3",
     "vue": "^3.2.37",
-    "vue-toastification": "^1.7.14",
     "web3-provider-sponsoring": "^0.1.0"
   },
   "repository": "https://github.com/UniqueNetwork/unique_docs.git"

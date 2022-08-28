@@ -1,5 +1,4 @@
 <template>
-
   <div v-show="!!data || showAlways" class="button-copy" @click="copyToBuffer(props.data)">
     <span v-if="!!props.text">{{ props.text }}</span>
     <div class="external-link-icon">

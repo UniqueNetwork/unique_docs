@@ -99,7 +99,7 @@ export const uniqueChainsParameters: Record<UNIQUE_CHAINS, ChainData> = {
     //unique custom fields
     websocketUrls: [`wss://ws-sapphire.unique.network`],
     ss58Prefix: 8883,
-    logoIpfsCid: `QmPCqY7Lmxerm8cLKmB18kT1RxkwnpasPVksA8XLhViVT7`,
+    logoIpfsCid: '',//`QmPCqY7Lmxerm8cLKmB18kT1RxkwnpasPVksA8XLhViVT7`,
     color: `#0F52BA`,
   }
 }
