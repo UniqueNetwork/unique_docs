@@ -1,5 +1,5 @@
 import {Ethereum, libs, init} from '@unique-nft/api'
-import {UNIQUE_CHAINS} from "./constants"
+import {UNIQUE_CHAINS, AddEthereumChainParameter, uniqueChainsParameters} from './constants'
 // import SponsoringProvider from 'web3-provider-sponsoring'
 
 export const testMetamask = async () => {
@@ -40,81 +40,6 @@ export const connectToMetamask = async (): Promise<string[]> => {
   }
 }
 
-interface AddEthereumChainParameter {
-  chainId: string // A 0x-prefixed hexadecimal string
-  chainName: string
-  nativeCurrency: {
-    name: string
-    symbol: string // 2-6 characters long
-    decimals: 18
-  }
-  rpcUrls: string[]
-  blockExplorerUrls?: string[]
-  iconUrls?: string[] // Currently ignored.
-}
-
-interface UniqueExtendedAddEthereumChainParameter extends AddEthereumChainParameter {
-  websocketUrls: string[]
-}
-
-export const uniqueChainsAddEthereumParameters: { [K in UNIQUE_CHAINS]: UniqueExtendedAddEthereumChainParameter } = {
-  [UNIQUE_CHAINS.unique]: {
-    chainId: "0x22b0",
-    chainName: 'Unique',
-    nativeCurrency: {
-      name: 'Unique',
-      symbol: 'UNQ',
-      decimals: 18,
-    },
-    rpcUrls: [`https://rpc.unique.network`],
-    iconUrls: [`https://ipfs.unique.network/ipfs/QmPCqY7Lmxerm8cLKmB18kT1RxkwnpasPVksA8XLhViVT7`],
-
-    //unique custom fields
-    websocketUrls: [`wss://ws.unique.network`],
-  },
-  [UNIQUE_CHAINS.quartz]: {
-    chainId: "0x22b1",
-    chainName: "Quartz by Unique",
-    nativeCurrency: {
-      name: 'Quartz',
-      symbol: 'QTZ',
-      decimals: 18,
-    },
-    rpcUrls: [`https://rpc-quartz.unique.network`],
-    iconUrls: [`https://ipfs.unique.network/ipfs/QmUoTq3D5p5a8CjQSFYECmErkpQN9wQWqkBAdyravzAZai`],
-
-    //unique custom fields
-    websocketUrls: [`wss://ws-quartz.unique.network`],
-  },
-  [UNIQUE_CHAINS.opal]: {
-    chainId: "0x22b2",
-    chainName: "Opal by Unique",
-    nativeCurrency: {
-      name: 'Opal',
-      symbol: 'OPL',
-      decimals: 18,
-    },
-    rpcUrls: [`https://rpc-opal.unique.network`],
-    iconUrls: [`https://ipfs.unique.network/ipfs/QmWivYecQTys2mz72QTbved8AZmfqG6ereTBPJpmThjY4Q`],
-
-    //unique custom fields
-    websocketUrls: [`wss://ws-opal.unique.network`],
-  },
-  [UNIQUE_CHAINS.sapphire]: {
-    chainId: "0x22b3",
-    chainName: "Sapphire by Unique",
-    nativeCurrency: {
-      name: 'Quartz',
-      symbol: 'QTZ',
-      decimals: 18,
-    },
-    rpcUrls: [`https://rpc-sapphire.unique.network`],
-    iconUrls: [`https://ipfs.unique.network/ipfs/QmUoTq3D5p5a8CjQSFYECmErkpQN9wQWqkBAdyravzAZai`],
-
-    //unique custom fields
-    websocketUrls: [`wss://ws-sapphire.unique.network`],
-  }
-}
 
 export const addChainToMetamask = async (chainName: UNIQUE_CHAINS) => {
   if (chainName !== UNIQUE_CHAINS.unique && chainName !== UNIQUE_CHAINS.quartz && chainName !== UNIQUE_CHAINS.opal) {
@@ -127,7 +52,7 @@ export const addChainToMetamask = async (chainName: UNIQUE_CHAINS) => {
   }
   const ethereum = (window as any).ethereum
 
-  if (ethereum.chainId === uniqueChainsAddEthereumParameters[chainName].chainId) {
+  if (ethereum.chainId === uniqueChainsParameters[chainName].metamask.chainId) {
     console.log(`No need to add the chain to wallet - wallet already has ${chainName}'s chainId: ${ethereum.chainId} (${parseInt(ethereum.chainId)})`)
     return
   }
@@ -135,7 +60,7 @@ export const addChainToMetamask = async (chainName: UNIQUE_CHAINS) => {
   console.log(`trying to switch chain to ${chainName}`)
 
   try {
-    const param: AddEthereumChainParameter = {...uniqueChainsAddEthereumParameters[chainName]}
+    const param: AddEthereumChainParameter = {...uniqueChainsParameters[chainName].metamask}
     delete (param as any).websocketUrls
 
     await ethereum.request({

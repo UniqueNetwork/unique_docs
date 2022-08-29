@@ -1,4 +1,6 @@
-# Creating a Unique Network Account with Pokadot{.js} Extension
+# Creating Substrate Account
+
+#### Creating Substrate (Polkadot ecosystem) account For Unique Network
 
 Unique Network, like most blockchains, is based on [accounts or addresses](/reference/addresses/addresses.md). An address can own  some QTZ or UNQ token, NFTs or some ERC-20 tokens. It can sign transactions to transfer these valuable assets to other addresses or to make some actions in Decentralized Apps (dApps). For example, an address can buy and sell NFTs on the NFT Marketplace.
 

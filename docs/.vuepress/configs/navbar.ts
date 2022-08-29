@@ -4,31 +4,28 @@ export const navbar: Record<string, NavbarConfig> = {
   en: [
     {
       text: 'Concepts',
-      link: '/concepts',
+      link: '/concepts/',
     },
     {
       text: 'SDK',
-      link: '/sdk'
+      link: '/sdk/'
     },
     {
       text: 'Blockchain',
-      link: '/chain'
+      link: '/chain/'
     },
     {
       text: 'Ethereum',
-      link: '/ethereum'
+      link: '/ethereum/'
     },
     {
-      text: 'Guides',
+      text: 'Examples',
       link: '/guide/',
     },
     {
-      text: 'Ecosystem',
-      link: '/ecosystem/',
-    },
-    {
-      text: 'GitHub',
-      link: 'https://github.com/UniqueNetwork/',
+      text: 'Links',
+      link: '/links/',
+      // link: 'https://github.com/UniqueNetwork/',
     },
   ]
 }
