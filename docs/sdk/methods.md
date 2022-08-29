@@ -7,12 +7,12 @@
 
 #### Overview
 
-**Sponsor** should use this method to confirm sponsorship after the collection **owner** called [set collection sponsor](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/sdk/tokens/methods/set-collection-sponsor) method.
+**Sponsor** should use this method to confirm sponsorship after the collection **owner** called [set collection sponsor](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/set-collection-sponsor) method.
 
 #### Brief example
 
 ```typescript
-    import { ConfirmSponsorshipArguments } from '@unique-nft/sdk/tokens';
+    import { ConfirmSponsorshipArguments } from '@unique-nft/substrate-client/tokens';
 
     const confirmSponsorshipArgs: ConfirmSponsorshipArguments = {
         address: '5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp',
@@ -37,7 +37,7 @@
 
 This method takes collection id and confirms signer to be a collection sponsor.
 
-Collection **owner** should call [set collection sponsor](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/sdk/tokens/methods/set-collection-sponsor) with **sponsor** address, otherwise an error will be thrown.
+Collection **owner** should call [set collection sponsor](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/set-collection-sponsor) with **sponsor** address, otherwise an error will be thrown.
 
 Only unconfirmed **sponsor** of the collection should call and sign this method.
 
@@ -68,7 +68,7 @@ This method returns `ConfirmSponsorshipResult`
   <CodeGroupItem title="SDK">
 
 ```typescript
-    import { ConfirmSponsorshipArguments } from '@unique-nft/sdk/tokens';
+    import { ConfirmSponsorshipArguments } from '@unique-nft/substrate-client/tokens';
 
     const confirmSponsorshipArgs: ConfirmSponsorshipArguments = {
         address: '5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp',
@@ -137,12 +137,12 @@ This method returns `ConfirmSponsorshipResult`
 
 #### Overview
 
-Collection **owner** can use this method to remove **sponsor** added by [set collection sponsor](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/sdk/tokens/methods/set-collection-sponsor) method.
+Collection **owner** can use this method to remove **sponsor** added by [set collection sponsor](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/set-collection-sponsor) method.
 
 #### Brief example
 
 ```typescript
-    import { RemoveSponsorshipArguments } from '@unique-nft/sdk/tokens';
+    import { RemoveSponsorshipArguments } from '@unique-nft/substrate-client/tokens';
 
     const removeSponsorshipArgs: RemoveSponsorshipArguments = {
         address: '5HgvUDiRm5yjRSrrG9B6q6km7KLzkXMxvFLHPZpA13pmwCJQ',
@@ -191,7 +191,7 @@ This method returns `RemoveSponsorshipResult`
   <CodeGroupItem title="SDK">
 
 ```typescript
-    import { RemoveSponsorshipArguments } from '@unique-nft/sdk/tokens';
+    import { RemoveSponsorshipArguments } from '@unique-nft/substrate-client/tokens';
 
     const removeSponsorshipArgs: RemoveSponsorshipArguments = {
         address: '5HgvUDiRm5yjRSrrG9B6q6km7KLzkXMxvFLHPZpA13pmwCJQ',
@@ -262,14 +262,14 @@ This method returns `RemoveSponsorshipResult`
 
 Collection **owner** can use this method to set **sponsor** of the collection.
 
-After that **sponsor** should [confirm sponsorship](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/sdk/tokens/methods/confirm-sponsorship) and the sponsoring mechanism will be enabled.
+After that **sponsor** should [confirm sponsorship](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/confirm-sponsorship) and the sponsoring mechanism will be enabled.
 
-Collection **owner** can also [remove collection sponsor](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/sdk/tokens/methods/remove-collection-sponsor).
+Collection **owner** can also [remove collection sponsor](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/remove-collection-sponsor).
 
 #### Brief example
 
 ```typescript
-    import { SetCollectionSponsorArguments } from '@unique-nft/sdk/tokens/types';
+    import { SetCollectionSponsorArguments } from '@unique-nft/substrate-client/tokens/types';
     
     const setSponsorArgs: SetCollectionSponsorArguments = {
         address: '5HgvUDiRm5yjRSrrG9B6q6km7KLzkXMxvFLHPZpA13pmwCJQ',
@@ -329,7 +329,7 @@ This method returns `SetSponsorshipResult`
   <CodeGroupItem title="SDK">
 
 ```typescript
-    import { SetCollectionSponsorArguments } from '@unique-nft/sdk/tokens';
+    import { SetCollectionSponsorArguments } from '@unique-nft/substrate-client/tokens';
     
     const setSponsorArgs: SetCollectionSponsorArguments = {
         address: '5HgvUDiRm5yjRSrrG9B6q6km7KLzkXMxvFLHPZpA13pmwCJQ',
@@ -443,7 +443,7 @@ The method returns an `CollectionAdminAdded` event.
 #### Examples
 
 ```ts
-import { AddCollectionAdminArguments } from '@unique-nft/sdk/tokens';
+import { AddCollectionAdminArguments } from '@unique-nft/substrate-client/tokens';
 
 const args: AddCollectionAdminArguments = {
   address: '<address>',
@@ -475,7 +475,7 @@ The method returns a `parsed` object that contains the `collectionId: number, ad
 #### Examples
 
 ```typescript
-import { AddToAllowListArguments } from '@unique-nft/sdk/tokens/types';
+import { AddToAllowListArguments } from '@unique-nft/substrate-client/tokens/types';
 
 const addToAllowListArgs: AddToAllowListArguments = {
     address: '<your account address>',
@@ -507,7 +507,7 @@ Method return an array of accounts
 import {
   AdminlistArguments,
   AdminlistResult,
-} from '@unique-nft/sdk/tokens/types';
+} from '@unique-nft/substrate-client/tokens/types';
 
 const args: AdminlistArguments = {
   collectionId: 1,
@@ -534,7 +534,7 @@ The method returns an object containing array string addresses.
 #### Examples
 
 ```typescript
-import { AllowListArguments } from '@unique-nft/sdk/tokens/types';
+import { AllowListArguments } from '@unique-nft/substrate-client/tokens/types';
 
 const allowListArgs: AllowListArguments = {
     collectionId: '<ID of the collection>', 
@@ -621,7 +621,7 @@ The method returns a `parsed` object that contains the `collectionId: number, to
 #### Examples
 
 ```typescript
-import { ApproveArguments } from '@unique-nft/sdk/tokens/types';
+import { ApproveArguments } from '@unique-nft/substrate-client/tokens/types';
 
 const approveArgs: ApproveArguments = {
     spender: '<Account address for whom token will be approved>',
@@ -656,8 +656,8 @@ The method returns a `parsed` object that contains the `collectionId: number, to
 #### Examples
 
 ```ts
-import '@unique-nft/sdk/tokens';
-import { BurnTokenArguments } from '@unique-nft/sdk/tokens/types';
+import '@unique-nft/substrate-client/tokens';
+import { BurnTokenArguments } from '@unique-nft/substrate-client/tokens/types';
 const burnItemArgs: BurnTokenArguments = {
   tokenId: 1,
   collectionId: 1,
@@ -687,7 +687,7 @@ Method return collection info:
 - **mode** - The collection type (`Nft`, `Fungible`, or `ReFungible`)
 - **tokenPrefix** - Token prefix (text, up to 4 characters)
 - **sponsorship** - This field tells if sponsorship is enabled and what address is the current collection sponsor.
-- **limits** - [Collection limits](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/sdk/tokens/methods/set-collection-limits#arguments)
+- **limits** - [Collection limits](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/set-collection-limits#arguments)
 - **metaUpdatePermission** - [Permission](#todo) for update meta (ItemOwner, Admin, None)
 - **properties** - [Collection properties](#todo)
 - **permissions** - [Collection permissions](#todo)
@@ -696,7 +696,7 @@ Method return collection info:
 #### Examples
 
 ```typescript
-import { CollectionIdArguments, CollectionInfo } from '@unique-nft/sdk/types';
+import { CollectionIdArguments, CollectionInfo } from '@unique-nft/substrate-client/types';
 const getCollectionArgs: CollectionIdArguments = { collectionId: 123 };
 const collection: CollectionInfo = await sdk.collections.get(getCollectionArgs);
 ```
@@ -723,7 +723,7 @@ Method return collection info:
 - **readOnly** - collection is read only
 - **tokenPrefix** - Token prefix (text, up to 4 characters)
 - **sponsorship** - This field tells if sponsorship is enabled and what address is the current collection sponsor.
-- **limits** - [Collection limits](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/sdk/tokens/methods/set-collection-limits#arguments)
+- **limits** - [Collection limits](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/set-collection-limits#arguments)
 - **metaUpdatePermission** - [Permission](#todo) for update meta (ItemOwner, Admin, None)
 - **permissions** - [Collection permissions](#todo)
 - **schema** - [Collection schema](#todo)
@@ -758,7 +758,7 @@ Method return an array of properties `{ key: string, value: string }`
 import {
   CollectionPropertiesArguments,
   CollectionPropertiesResult,
-} from '@unique-nft/sdk/tokens/types';
+} from '@unique-nft/substrate-client/tokens/types';
 
 const args: CollectionPropertiesArguments = {
   collectionId: 1,
@@ -787,7 +787,7 @@ Method returns array of tokenIds contained within passed collection.
 #### Examples
 
 ```ts
-import { CollectionTokensResult } from '@unique-nft/sdk/tokens/types';
+import { CollectionTokensResult } from '@unique-nft/substrate-client/tokens/types';
 
 const result: CollectionTokensResult = await sdk.collections.tokens({
   collectionId: 1,
@@ -806,7 +806,7 @@ const result: CollectionTokensResult = await sdk.collections.tokens({
 - **mode** - The collection type (`Nft`, `Fungible`, or `ReFungible`)
 - **tokenPrefix** - Token prefix (text, up to 4 characters)
 - **sponsorship** - This field tells if sponsorship is enabled and what address is the current collection sponsor.
-- **limits** - [Collection limits](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/sdk/tokens/methods/set-collection-limits#arguments)
+- **limits** - [Collection limits](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/set-collection-limits#arguments)
 - **metaUpdatePermission** - [Permission](#todo) for update meta (ItemOwner, Admin, None)
 - **properties** - [Collection properties](#todo)
 - **permissions** - [Collection permissions](#todo)
@@ -819,7 +819,7 @@ The method returns a `parsed` object that contains the `collectionId: number`.
 #### Examples
 
 ```typescript
-import { CreateCollectionArguments } from '@unique-nft/sdk/types';
+import { CreateCollectionArguments } from '@unique-nft/substrate-client/types';
 const createArgs: CreateCollectionArguments = {
   address: '<your account address>',
   name: `FOO`,
@@ -844,7 +844,7 @@ const collection = await sdk.collections.get({ collectionId });
 - **mode** - The collection type (`Nft`, `Fungible`, or `ReFungible`)
 - **tokenPrefix** - Token prefix (text, up to 4 characters)
 - **sponsorship** - This field tells if sponsorship is enabled and what address is the current collection sponsor.
-- **limits** - [Collection limits](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/sdk/tokens/methods/set-collection-limits#arguments)
+- **limits** - [Collection limits](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/set-collection-limits#arguments)
 - **metaUpdatePermission** - [Permission](#todo) for update meta (ItemOwner, Admin, None)
 - **permissions** - [Collection permissions](#todo)
 - **schema** - [Collection schema](#todo)
@@ -862,7 +862,7 @@ import {
     AttributeType,
     AttributeKind,
     CreateCollectionNewArguments,
-} from '@unique-nft/sdk/tokens';
+} from '@unique-nft/substrate-client/tokens';
 
 const collectionSchema: UniqueCollectionSchemaToCreate = {
     schemaName: COLLECTION_SCHEMA_NAME.unique,
@@ -914,13 +914,13 @@ The method returns a `parsed` object that contains the `collectionId: number, to
 #### Examples
 
 ```typescript
-import { CreateTokenNewArguments } from '@unique-nft/sdk/tokens/types';
+import { CreateTokenNewArguments } from '@unique-nft/substrate-client/tokens/types';
 
 import {
     UniqueCollectionSchemaToCreate,
     COLLECTION_SCHEMA_NAME,
     AttributeType,
-} from '@unique-nft/sdk/tokens';
+} from '@unique-nft/substrate-client/tokens';
 
 const createTokenArgs: CreateTokenNewArguments = {
     address: '<your account address>',
@@ -962,13 +962,13 @@ The method returns an array of `parsed` objects that contains `collectionId: num
 #### Examples
 
 ```typescript
-import { CreateTokensArguments } from '@unique-nft/sdk/tokens';
+import { CreateTokensArguments } from '@unique-nft/substrate-client/tokens';
 
 import {
     UniqueCollectionSchemaToCreate,
     COLLECTION_SCHEMA_NAME,
     AttributeType,
-} from '@unique-nft/sdk/tokens';
+} from '@unique-nft/substrate-client/tokens';
 
 const createTokenArgs: CreateTokenNewArguments = {
     address: '<your account address>',
@@ -1065,7 +1065,7 @@ The method returns a `parsed` object that contains the `success: boolean`.
 #### Examples
 
 ```typescript
-import { DestroyCollectionArguments } from '@unique-nft/sdk/tokens/types';
+import { DestroyCollectionArguments } from '@unique-nft/substrate-client/tokens/types';
 
 const destroyArgs: DestroyCollectionArguments = {
     address: '<Account address>',
@@ -1081,7 +1081,7 @@ const { success } = result.parsed;
 <details><summary>Get effective limits by collection ID description</summary>
 
 By default, the collection limit is not set (their value is null).
-This limit value can be seen when requesting a collection using [Get collection by ID](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/sdk/tokens/methods/collection-by-id) method.
+This limit value can be seen when requesting a collection using [Get collection by ID](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/collection-by-id) method.
 If the limit is not set by the user, then the default limit is actually applied to the collection.
 The values of the limits actually applied to the collection (default and user-set) can be obtained using `Get effective limits` by collection ID.
 
@@ -1094,13 +1094,60 @@ The values of the limits actually applied to the collection (default and user-se
 Method return collection info:
 
 - **id** - Collection id
-- **limits** - [Collection limits](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/sdk/tokens/methods/set-collection-limits#arguments)
+- **limits** - [Collection limits](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/set-collection-limits#arguments)
 #### Examples
 
 ```typescript
-import { CollectionIdArguments, GetCollectionLimitsResult } from '@unique-nft/sdk/types';
+import { CollectionIdArguments, GetCollectionLimitsResult } from '@unique-nft/substrate-client/types';
 const getCollectionArgs: CollectionIdArguments = { collectionId: 123 };
 const collection: CollectionInfo = await sdk.collections.getLimits(getCollectionArgs);
+```
+</details>
+
+### Get bundle
+<details><summary>Get bundle description</summary>
+
+Returns full tree of a nested tokens. You can request it with any token from the bundle, result will be the same for all.
+
+#### Arguments
+
+- **collectionId** - Collection Id
+- **tokenId** - Token Id
+
+#### Returns
+
+Topmost token with nestedChildTokens filled.
+
+- **collectionId** - Collection Id
+- **tokenId** - Token Id
+- **owner** - The address of token owner
+- **image** - Token image (`url`, `urlInfix` or `ipfsCid`)
+- **attributes** - Token attributes
+- **nestingChildTokens** - Array of nested tokens in the same format
+
+#### Examples
+
+```typescript
+import { GetBundle } from '@unique-nft/substrate-client/types';
+
+const bundle: GetStatsResult | null = await sdk.tokens.GetBundle({
+  collectionId: 2,
+  tokenId: 5,
+});
+
+/*
+bundle: 
+{
+    tokenId: 1,
+    collectionId: 1,
+    nestingChildTokens: [
+    {tokenId: 2, collectionId 1, childs: []},
+    ...
+    {tokenId: 5, collectionId 1, childs: []},       <------- this is the requested token
+    ]
+}
+*/
+
 ```
 </details>
 
@@ -1124,7 +1171,7 @@ Blockchain collection stats:
 #### Examples
 
 ```typescript
-import { GetStatsResult } from '@unique-nft/sdk/types';
+import { GetStatsResult } from '@unique-nft/substrate-client/types';
 
 const stats: GetStatsResult | null = await sdk.collections.getStats();
 ```
@@ -1173,7 +1220,7 @@ Method return last generated token id.
 #### Examples
 
 ```typescript
-import { LastTokenIdArguments, LastTokenIdResult } from '@unique-nft/sdk/types';
+import { LastTokenIdArguments, LastTokenIdResult } from '@unique-nft/substrate-client/types';
 const args: LastTokenIdArguments = {
   collectionId: 1,
 };
@@ -1214,7 +1261,7 @@ The method returns a `parsed` object that contains `{ collectionId: number, toke
 #### Examples
 
 ```ts
-import { NestTokenArguments } from '@unique-nft/sdk/tokens/types';
+import { NestTokenArguments } from '@unique-nft/substrate-client/tokens/types';
 
 const args: NestTokenArguments = {
   address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
@@ -1258,7 +1305,7 @@ Method return number of blocks or none string.
 #### Examples
 
 ```typescript
-import { NextSponsoredArguments, NextSponsoredResult } from '@unique-nft/sdk/types';
+import { NextSponsoredArguments, NextSponsoredResult } from '@unique-nft/substrate-client/types';
 const getSponsoredArgs: NextSponsoredArguments = {
   address: '<your address>',
   collectionId: 1,
@@ -1288,7 +1335,7 @@ Method return an array of property permissions `{ key: string, permission: { mut
 import {
   PropertyPermissionsArguments,
   PropertyPermissionsResult,
-} from '@unique-nft/sdk/tokens/types';
+} from '@unique-nft/substrate-client/tokens/types';
 
 const args: PropertyPermissionsArguments = {
   collectionId: 1,
@@ -1316,7 +1363,7 @@ The method returns an `CollectionAdminRemoved` event.
 #### Examples
 
 ```ts
-import { RemoveCollectionAdminArguments } from '@unique-nft/sdk/tokens';
+import { RemoveCollectionAdminArguments } from '@unique-nft/substrate-client/tokens';
 
 const args: RemoveCollectionAdminArguments = {
   address: '<address>',
@@ -1346,7 +1393,7 @@ The method returns a `parsed` object that contains the `collectionId: number, ad
 #### Examples
 
 ```typescript
-import { RemoveFromAllowListArguments } from '@unique-nft/sdk/tokens/types';
+import { RemoveFromAllowListArguments } from '@unique-nft/substrate-client/tokens/types';
 
 const removeFromAllowListArgs: RemoveFromAllowListArguments = {
     address: '<your account address>',
@@ -1366,7 +1413,7 @@ const { collectionId, address } = parsed;
 
 - **address** - The address of collection owner
 - **collectionId** - ID of the collection to set limits for
-- **limits** - [the effective limits of the collection](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/sdk/tokens/methods/effective-collection-limits). List of optional fields:
+- **limits** - [the effective limits of the collection](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/effective-collection-limits). List of optional fields:
   - **accountTokenOwnershipLimit** - Maximum number of tokens that one address can own
   - **sponsoredDataSize** - Maximum byte size of custom token data that can be sponsored when tokens are minted in sponsored mode
   - **sponsoredDataRateLimit** - Defines how many blocks need to pass between setVariableMetadata transactions in order for them to be sponsored
@@ -1375,7 +1422,7 @@ const { collectionId, address } = parsed;
   - **sponsorApproveTimeout** - Time interval in blocks that defines once per how long a non-privileged user approve transaction can be sponsored
   - **ownerCanTransfer** - Boolean value that tells if collection owner or admins can transfer or burn tokens owned by other non-privileged users
   - **ownerCanDestroy** - Boolean value that tells if collection owner can destroy it
-  - **transfersEnabled** - Flag that defines whether token transfers between users are currently enabled
+  - **transfersEnabled** - Flag that defines whether token transfers between users are currently enabled 
 
 #### Returns
 
@@ -1384,8 +1431,8 @@ The method returns a `parsed` object that contains the `collectionId: number`.
 #### Examples
 
 ```typescript
-import '@unique-nft/sdk/tokens';
-import { SetCollectionLimitsArguments } from '@unique-nft/sdk/tokens/types';
+import '@unique-nft/substrate-client/tokens';
+import { SetCollectionLimitsArguments } from '@unique-nft/substrate-client/tokens/types';
 const limitsArgs: SetCollectionLimitsArguments = {
   address: '<your account address>',
   collectionId: '<ID of the collection>',
@@ -1433,7 +1480,7 @@ The method returns a `parsed` object that contains the `{ collectionId: number }
 import {
   SetCollectionPermissionsArguments,
   CollectionAccess,
-} from '@unique-nft/sdk/tokens';
+} from '@unique-nft/substrate-client/tokens';
 
 const args: SetCollectionPermissionsArguments = {
   address: account.address,
@@ -1582,7 +1629,7 @@ Enable / disable transfers for particular collection
 #### Examples
 
 ```ts
-import { SetTransfersEnabledArguments } from '@unique-nft/sdk/tokens/types';
+import { SetTransfersEnabledArguments } from '@unique-nft/substrate-client/tokens/types';
  
 const args: SetTransfersEnabledArguments = {
   address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
@@ -1655,7 +1702,7 @@ Method return an array of tokens `{ collectionId: number, tokenId: number }`
 import {
   TokenChildrenArguments,
   TokenChildrenResult,
-} from '@unique-nft/sdk/tokens/types';
+} from '@unique-nft/substrate-client/tokens/types';
 
 const args: TokenChildrenArguments = {
   collectionId: 1,
@@ -1707,7 +1754,7 @@ Return substrate address in an object that contains `owner: string`.
 import {
   TokenOwnerArguments,
   TokenOwnerResult,
-} from '@unique-nft/sdk/tokens/types';
+} from '@unique-nft/substrate-client/tokens/types';
 
 const args: TokenOwnerArguments = {
   collectionId: 1,
@@ -1745,7 +1792,7 @@ Method return an object of token parent
 import {
   TokenParentArguments,
   TokenParentResult,
-} from '@unique-nft/sdk/tokens/types';
+} from '@unique-nft/substrate-client/tokens/types';
 
 const args: TokenParentArguments = {
   collectionId: 1,
@@ -1777,7 +1824,7 @@ Method return an array of properties `{ key: string, value: string }`
 import {
   TokenPropertiesArguments,
   TokenPropertiesResult,
-} from '@unique-nft/sdk/tokens/types';
+} from '@unique-nft/substrate-client/tokens/types';
 
 const args: TokenPropertiesArguments = {
   collectionId: 1,
@@ -1811,7 +1858,7 @@ Return substrate address in an object that contains `topmostOwner: string`.
 import {
   TokenOwnerArguments,
   TopmostTokenOwnerResult,
-} from '@unique-nft/sdk/tokens/types';
+} from '@unique-nft/substrate-client/tokens/types';
 
 const args: TokenOwnerArguments = {
   collectionId: 1,
@@ -1822,6 +1869,37 @@ const args: TokenOwnerArguments = {
 const result: TopmostTokenOwnerResult = await sdk.tokens.topmostTokenOwner(
   args,
 );
+```
+</details>
+
+### Total supply
+<details><summary>Total supply description</summary>
+
+Returns the number of tokens in the collection
+
+#### Arguments
+
+- **collectionId** - ID of collection
+- **blockHashAt** _optional_ - hash of execution block
+
+#### Returns
+
+Return number of tokens `totalSupply: number`.
+
+#### Examples
+
+```ts
+import {
+  TotalSupplyArguments,
+  TotalSupplyResult,
+} from '@unique-nft/sdk/tokens/types';
+
+const args: TotalSupplyArguments = {
+  collectionId: 1,
+  // blockHashAt: '0xff19c2457fa4d7216cfad444615586c4365250e7310e2de7032ded4fcbd36873'
+};
+
+const result: TotalSupplyResult = await sdk.collections.totalSupply(args);
 ```
 </details>
 
@@ -1844,7 +1922,7 @@ The method returns an `Transfer` event.
 #### Examples
 
 ```ts
-import { TransferArguments } from '@unique-nft/sdk/tokens';
+import { TransferArguments } from '@unique-nft/substrate-client/tokens';
 
 const args: TransferArguments = {
   address: '<address>',
@@ -1875,7 +1953,7 @@ The method returns a `parsed` object that contains the `collectionId: number, ne
 #### Examples
 
 ```typescript
-import { TransferCollectionArguments } from '@unique-nft/sdk/tokens/types';
+import { TransferCollectionArguments } from '@unique-nft/substrate-client/tokens/types';
 
 const args: TransferCollectionArguments = {
     collectionId: '<ID of the collection>',
@@ -1906,7 +1984,7 @@ The method returns a `parsed` object that contains `{ collectionId: number, toke
 #### Examples
 
 ```ts
-import { UnnestTokenArguments } from '@unique-nft/sdk/tokens/types';
+import { UnnestTokenArguments } from '@unique-nft/substrate-client/tokens/types';
 
 const args: UnnestTokenArguments = {
   address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
