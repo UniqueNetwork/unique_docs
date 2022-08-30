@@ -1,4 +1,4 @@
-# Architecture design
+# Design
 
 ## Table of content
 
