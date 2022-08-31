@@ -1,5 +1,841 @@
 # Methods
 
+## Nesting
+
+### Get bundle
+<details><summary>Get bundle description</summary>
+
+#### Overview
+
+Returns full tree of a nested tokens. You can request it with any token from the bundle, result will be the same for all.
+
+#### Brief example
+
+```typescript
+import { NestedToken } from '@unique-nft/substrate-client/types';
+
+const result: NestedToken = await sdk.tokens.getBundle({
+  collectionId: 2,
+  tokenId: 5,
+});
+
+console.log(result);
+
+/*
+{
+    tokenId: 1,
+    collectionId: 1,
+    nestingChildTokens: [
+    {tokenId: 2, collectionId 1, childs: []},
+    ...
+    {tokenId: 5, collectionId 1, childs: []},       <------- this is the requested token
+    ]
+}
+*/
+```
+
+#### Arguments
+
+`collectionId: number` - collection id
+
+`tokenId: number` - token id
+
+#### Behaviour and errors
+
+Throw errors:
+
+- If topmost token of a bundle has no nested tokens
+- Recursion depth exceeded
+- Token not found during search for nested childs
+
+#### Returns
+
+This method returns `NestedToken`
+
+```typescript
+type NestedToken = Omit<TokenByIdResult, 'nestingChildTokens'> & {
+  nestingChildTokens: NestedToken[];
+};
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="SDK">
+
+```typescript
+import { GetBundleArguments } from '@unique-nft/substrate-client/tokens';
+
+const args: GetBundleArguments = {
+  collectionId: 2,
+  tokenId: 5,
+};
+
+const bundle = await sdk.tokens.getBundle(args);
+
+console.log(bundle);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+curl -X 'GET' \
+  'https://rest.opal.uniquenetwork.dev/token/get-bundle?collectionId=2&tokenId=5' \
+  -H 'accept: application/json'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+
+const bundle = await client.tokens.getBundle({
+  collectionId: 2,
+  tokenId: 5,
+});
+
+console.log(bundle);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+</details>
+
+### Is Bundle
+<details><summary>Is Bundle description</summary>
+
+#### Overview
+
+Returns whether token in part of the bundle or not.
+
+#### Brief example
+
+```typescript
+const isBundle = await sdk.tokens.isBundle({
+  collectionId: 2,
+  tokenId: 1,
+});
+
+console.log(isBundle);
+
+// false
+```
+
+#### Arguments
+
+`collectionId: number` - collection id
+
+`tokenId: number` - token id
+
+#### Returns
+
+This method returns `IsBundleResult`
+
+```typescript
+type IsBundleResult = boolean;
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="SDK">
+
+```typescript
+import { IsBundleArguments } from '@unique-nft/substrate-client/tokens';
+
+const args: IsBundleArguments = {
+  collectionId: 2,
+  tokenId: 1,
+};
+
+const bundle = await sdk.tokens.isBundle(args);
+
+console.log(bundle);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+curl -X 'GET' \
+  'https://rest.opal.uniquenetwork.dev/token/is-bundle?collectionId=2&tokenId=1' \
+  -H 'accept: application/json'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+
+const result = await client.tokens.isBundle({
+  collectionId: 2,
+  tokenId: 1,
+});
+
+console.log(result.isBundle);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+</details>
+
+### Nest token
+<details><summary>Nest token description</summary>
+
+#### Overview
+
+Nesting is a process of forming a structural relationship between two NFTs that form a parent-child relationship in a tree structure. Such a relationship is formed by forwarding token A2 to the address of token A1 by which A2 becomes a child of token A1 (conversely, token A1 becomes the parent of A2).
+
+#### Brief example
+
+```typescript
+import { NestTokenArguments } from '@unique-nft/substrate-client/tokens/types';
+
+const args: NestTokenArguments = {
+  address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
+  parent: {
+    collectionId: 1,
+    tokenId: 1,
+  },
+  nested: {
+    collectionId: 1,
+    tokenId: 2,
+  },
+};
+
+const result = await sdk.tokens.nestToken.submitWaitResult(args);
+
+const { tokenId, collectionId } = result.parsed;
+
+console.log(
+  `Token ${tokenId} from collection ${collectionId} successfully nested`,
+);
+```
+
+#### Arguments
+
+`address: string` - Token owner address
+
+`parent: { collectionId: number, tokenId: number }` - Parent token object
+
+`nested: { collectionId: number, tokenId: number }` - Nested token object
+
+#### Behaviour and errors
+
+Nesting can be applied only if token collection has a permission for nesting. If collection has no permission for nesting - "UserIsNotAllowedToNest" Error will be thrown.
+
+```typescript
+await sdk.collections.creation.submitWaitResult({
+  // ...
+  permissions: {
+    nesting: {
+      tokenOwner: true,
+      collectionAdmin: true,
+    },
+  },
+```
+
+#### Returns
+
+The method returns `NestTokenResult`
+
+```typescript
+type NestTokenResult = {
+  /**
+   * id of the collection
+   */
+  collectionId: number;
+  /**
+   * id of the token
+   */
+  tokenId: number;
+};
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="SDK">
+
+```typescript
+import { NestTokenArguments } from '@unique-nft/substrate-client/tokens/types';
+
+const args: NestTokenArguments = {
+  address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
+  parent: {
+    collectionId: 1,
+    tokenId: 1,
+  },
+  nested: {
+    collectionId: 1,
+    tokenId: 2,
+  },
+};
+
+const result = await sdk.tokens.nestToken.submitWaitResult(args);
+
+const { tokenId, collectionId } = result.parsed;
+
+console.log(
+  `Token ${tokenId} from collection ${collectionId} successfully nested`,
+);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+
+    curl -X 'POST' \
+      'https://rest.opal.uniquenetwork.dev/token/nest' \
+      -H 'accept: application/json' \
+      -H 'Content-Type: application/json' \
+      -d '{
+      "address": "yGCyN3eydMkze4EPtz59Tn7obwbUbYNZCz48dp8FRdemTaLwm",
+      "parent": {
+        "collectionId": 1,
+        "tokenId": 1
+      },
+      "nested": {
+        "collectionId": 1,
+        "tokenId": 2
+      }
+    }'
+
+    # then we sign, then we call
+
+    curl -X 'POST' \
+    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+    "signerPayloadJSON": { *from prevous response* },
+    "signature": "0x_your_signature_in_hex"
+    }'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+
+const result = await client.tokens.nest.submitWaitResult({
+  address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
+  parent: {
+    collectionId: 1,
+    tokenId: 1,
+  },
+  nested: {
+    collectionId: 1,
+    tokenId: 2,
+  },
+});
+
+const {
+  parsed: { sponsor, collectionId },
+} = result;
+
+console.log(
+  `Token ${tokenId} from collection ${collectionId} successfully nested`,
+);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+</details>
+
+### Token children
+<details><summary>Token children description</summary>
+
+#### Overview
+
+Get array of nested tokens. If token has no children return empty array.
+
+#### Brief example
+
+```typescript
+import {
+  TokenChildrenArguments,
+  TokenChildrenResult,
+} from '@unique-nft/substrate-client/tokens/types';
+
+const args: TokenChildrenArguments = {
+  collectionId: 1,
+  tokenId: 1,
+};
+
+const result: TokenChildrenResult = await sdk.tokens.children(args);
+
+console.log(result);
+
+/*
+{
+  children: [
+    {
+      collectionId: 1,
+      token: 2
+    },
+    {
+      collection: 1,
+      token: 3
+    }
+  ]
+}
+*/
+```
+
+#### Arguments
+
+`collectionId: number` - collection id
+
+`tokenId: number` - token id
+
+#### Returns
+
+This method returns `TokenChildrenResult`
+
+```typescript
+type TokenChildrenArguments = {
+  collectionId: number;
+  tokenId: number;
+};
+
+type TokenChildrenResult = {
+  children: TokenChildrenArguments[];
+};
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="SDK">
+
+```typescript
+import {
+  TokenChildrenArguments,
+  TokenChildrenResult,
+} from '@unique-nft/substrate-client/tokens/types';
+
+const args: TokenChildrenArguments = {
+  collectionId: 1,
+  tokenId: 1,
+};
+
+const result: TokenChildrenResult = await sdk.tokens.children(args);
+
+console.log(result);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+curl -X 'GET' \
+  'https://rest.opal.uniquenetwork.dev/token/children?collectionId=1&tokenId=1' \
+  -H 'accept: application/json'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+
+const result = await client.tokens.children({
+  collectionId: 1,
+  tokenId: 1,
+});
+
+console.log(result.children);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+</details>
+
+### Token parent
+<details><summary>Token parent description</summary>
+
+#### Overview
+
+Return info about token parent. Call the `tokenOwner` method. If the owner is not a nesting token return `null`.
+
+#### Brief example
+
+```typescript
+import {
+  TokenParentArguments,
+  TokenParentResult,
+} from '@unique-nft/substrate-client/tokens/types';
+
+const args: TokenParentArguments = {
+  collectionId: 1,
+  tokenId: 2,
+};
+
+const result: TokenParentResult = await sdk.tokens.parent(args);
+
+console.log(result);
+
+/*
+{
+  collectionId: 1;
+  tokenId: 1;
+  address: "5HpZHYXjV23eEdVzhvYD2D3H6g1kM3aRGYwrmuGe9zaod6od";
+}
+*/
+```
+
+#### Arguments
+
+`collectionId: number` - collection id
+
+`tokenId: number` - token id
+
+#### Returns
+
+This method returns `TokenParentResult`
+
+```typescript
+type TokenParentResult = {
+  collectionId: number;
+  tokenId: number;
+  address: Address;
+};
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="SDK">
+
+```typescript
+import {
+  TokenParentArguments,
+  TokenParentResult,
+} from '@unique-nft/substrate-client/tokens/types';
+
+const args: TokenParentArguments = {
+  collectionId: 1,
+  tokenId: 2,
+};
+
+const result: TokenParentResult = await sdk.tokens.parent(args);
+
+console.log(result);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+curl -X 'GET' \
+  'https://rest.opal.uniquenetwork.dev/token/parent?collectionId=1&tokenId=2' \
+  -H 'accept: application/json'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+
+const result = await client.tokens.parent({
+  collectionId: 1,
+  tokenId: 2,
+});
+
+console.log(result);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+</details>
+
+### Topmost token owner
+<details><summary>Topmost token owner description</summary>
+
+#### Overview
+
+Return substrate address of topmost token owner.
+
+#### Brief example
+
+```typescript
+import {
+  TokenOwnerArguments,
+  TopmostTokenOwnerResult,
+} from '@unique-nft/substrate-client/tokens/types';
+
+const args: TokenOwnerArguments = {
+  collectionId: 1,
+  tokenId: 1,
+  // blockHashAt: '0xff19c2457fa4d7216cfad444615586c4365250e7310e2de7032ded4fcbd36873'
+};
+
+const result: TopmostTokenOwnerResult = await sdk.tokens.topmostOwner(args);
+
+console.log(result);
+
+/*
+{
+  topmostOwner: "5HpZHYXjV23eEdVzhvYD2D3H6g1kM3aRGYwrmuGe9zaod6od"
+}
+*/
+```
+
+#### Arguments
+
+`collectionId: number` - collection id
+
+`tokenId: number` - token id
+
+`blockHashAt: string` - _optional_ - hash of execution block
+
+#### Returns
+
+This method returns `TopmostTokenOwnerResult`
+
+```typescript
+type TopmostTokenOwnerResult = { topmostOwner: Address };
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="SDK">
+
+```typescript
+import {
+  TokenOwnerArguments,
+  TopmostTokenOwnerResult,
+} from '@unique-nft/substrate-client/tokens/types';
+
+const args: TokenOwnerArguments = {
+  collectionId: 1,
+  tokenId: 1,
+  // blockHashAt: '0xff19c2457fa4d7216cfad444615586c4365250e7310e2de7032ded4fcbd36873'
+};
+
+const result: TopmostTokenOwnerResult = await sdk.tokens.topmostOwner(args);
+
+console.log(result);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+curl -X 'GET' \
+  'https://rest.opal.uniquenetwork.dev/token/topmost-owner?collectionId=1&tokenId=2' \
+  -H 'accept: application/json'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+
+const result = await client.tokens.topmostOwner({
+  collectionId: 1,
+  tokenId: 2,
+});
+
+console.log(result.topmostOwner);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+</details>
+
+### Unnest token
+<details><summary>Unnest token description</summary>
+
+#### Overview
+
+Nesting is a process of forming a structural relationship between two NFTs that form a parent-child relationship in a tree structure. Such a relationship is formed by forwarding token A2 to the address of token A1 by which A2 becomes a child of token A1 (conversely, token A1 becomes the parent of A2).
+
+#### Brief example
+
+```typescript
+import { UnnestTokenArguments } from '@unique-nft/substrate-client/tokens/types';
+
+const args: UnnestTokenArguments = {
+  address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
+  parent: {
+    collectionId: 1,
+    tokenId: 1,
+  },
+  nested: {
+    collectionId: 1,
+    tokenId: 2,
+  },
+};
+
+const result = await sdk.tokens.unnestToken.submitWaitResult(args);
+
+const { tokenId, collectionId } = result.parsed;
+
+console.log(
+  `Token ${tokenId} from collection ${collectionId} successfully unnested`,
+);
+```
+
+#### Arguments
+
+`address: string` - Token owner address
+
+`parent: { collectionId: number, tokenId: number }` - Parent token object
+
+`nested: { collectionId: number, tokenId: number }` - Nested token object
+
+#### Behaviour and errors
+
+Сan only be executed if the token already nested.
+
+#### Returns
+
+The method returns `UnnestTokenResult`
+
+```typescript
+type UnnestTokenResult = {
+  /**
+   * id of the collection
+   */
+  collectionId: number;
+  /**
+   * id of the token
+   */
+  tokenId: number;
+};
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="SDK">
+
+```typescript
+import { UnnestTokenArguments } from '@unique-nft/substrate-client/tokens/types';
+
+const args: UnnestTokenArguments = {
+  address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
+  parent: {
+    collectionId: 1,
+    tokenId: 1,
+  },
+  nested: {
+    collectionId: 1,
+    tokenId: 2,
+  },
+};
+
+const result = await sdk.tokens.unnestToken.submitWaitResult(args);
+
+const { tokenId, collectionId } = result.parsed;
+
+console.log(
+  `Token ${tokenId} from collection ${collectionId} successfully unnested`,
+);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+
+    curl -X 'POST' \
+      'https://rest.opal.uniquenetwork.dev/token/unnest' \
+      -H 'accept: application/json' \
+      -H 'Content-Type: application/json' \
+      -d '{
+      "address": "yGCyN3eydMkze4EPtz59Tn7obwbUbYNZCz48dp8FRdemTaLwm",
+      "parent": {
+        "collectionId": 1,
+        "tokenId": 1
+      },
+      "nested": {
+        "collectionId": 1,
+        "tokenId": 2
+      }
+    }'
+
+    # then we sign, then we call
+
+    curl -X 'POST' \
+    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+    "signerPayloadJSON": { *from prevous response* },
+    "signature": "0x_your_signature_in_hex"
+    }'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+
+const result = await client.tokens.unnest.submitWaitResult({
+  address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
+  parent: {
+    collectionId: 1,
+    tokenId: 1,
+  },
+  nested: {
+    collectionId: 1,
+    tokenId: 2,
+  },
+});
+
+const {
+  parsed: { sponsor, collectionId },
+} = result;
+
+console.log(
+  `Token ${tokenId} from collection ${collectionId} successfully unnested`,
+);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>8
+</details>
+
 ## Sponsorship
 
 ### Confirm sponsorship
@@ -1104,53 +1940,6 @@ const collection: CollectionInfo = await sdk.collections.getLimits(getCollection
 ```
 </details>
 
-### Get bundle
-<details><summary>Get bundle description</summary>
-
-Returns full tree of a nested tokens. You can request it with any token from the bundle, result will be the same for all.
-
-#### Arguments
-
-- **collectionId** - Collection Id
-- **tokenId** - Token Id
-
-#### Returns
-
-Topmost token with nestedChildTokens filled.
-
-- **collectionId** - Collection Id
-- **tokenId** - Token Id
-- **owner** - The address of token owner
-- **image** - Token image (`url`, `urlInfix` or `ipfsCid`)
-- **attributes** - Token attributes
-- **nestingChildTokens** - Array of nested tokens in the same format
-
-#### Examples
-
-```typescript
-import { GetBundle } from '@unique-nft/substrate-client/types';
-
-const bundle: GetStatsResult | null = await sdk.tokens.GetBundle({
-  collectionId: 2,
-  tokenId: 5,
-});
-
-/*
-bundle: 
-{
-    tokenId: 1,
-    collectionId: 1,
-    nestingChildTokens: [
-    {tokenId: 2, collectionId 1, childs: []},
-    ...
-    {tokenId: 5, collectionId 1, childs: []},       <------- this is the requested token
-    ]
-}
-*/
-
-```
-</details>
-
 ### Get collection stats
 <details><summary>Get collection stats description</summary>
 
@@ -1177,33 +1966,6 @@ const stats: GetStatsResult | null = await sdk.collections.getStats();
 ```
 </details>
 
-### Is Bundle
-<details><summary>Is Bundle description</summary>
-
-Returns whether token in part of the bundle or not.
-
-#### Arguments
-
-- **collectionId** - Collection Id
-- **tokenId** - Token Id
-
-#### Returns
-
-The method returns boolean true or false:
-
-#### Examples
-
-```typescript
-// false
-const isBundle = await sdk.tokens.isBundle({
-  collectionId: 2,
-  tokenId: 1,
-});
-
-
-```
-</details>
-
 ### Get last generated token id
 <details><summary>Get last generated token id description</summary>
 
@@ -1225,63 +1987,6 @@ const args: LastTokenIdArguments = {
   collectionId: 1,
 };
 const lastTokenIdResult: LastTokenIdResult = await sdk.collections.lastTokenId(args);
-```
-</details>
-
-### Nest token
-<details><summary>Nest token description</summary>
-
-Nesting is a process of forming a structural relationship between two NFTs that form a parent-child relationship in a tree structure. Such a relationship is formed by forwarding token A2 to the address of token A1 by which A2 becomes a child of token A1 (conversely, token A1 becomes the parent of A2).
-
-#### Prerequisites
-
-Nesting can be applied only if token collection has a permission for nesting. If collection has no permission for nesting - "UserIsNotAllowedToNest" Error will be thrown.
-
-```ts
-sdk.collections.creation.submitWaitResult({
-  // ...
-  permissions: {
-    nesting: {
-      tokenOwner: true,
-      collectionAdmin: true,
-    },
-  },
-```
-
-#### Arguments
-
-- **address** - Owner address
-- **parent** - Parent token object `{ collectionId: number, tokenId: number }`
-- **nested** - Nested token object `{ collectionId: number, tokenId: number }`
-
-#### Returns
-
-The method returns a `parsed` object that contains `{ collectionId: number, tokenId: number }` of nested token
-
-#### Examples
-
-```ts
-import { NestTokenArguments } from '@unique-nft/substrate-client/tokens/types';
-
-const args: NestTokenArguments = {
-  address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
-  parent: {
-    collectionId: 1,
-    tokenId: 1,
-  },
-  nested: {
-    collectionId: 1,
-    tokenId: 2,
-  },
-};
-
-const result = await sdk.tokens.nestToken.submitWaitResult(args);
-
-const { tokenId, collectionId } = result.parsed;
-
-console.log(
-  `Token ${tokenId} from collection ${collectionId} successfully nested`,
-);
 ```
 </details>
 
@@ -1682,37 +2387,6 @@ const {
 ```
 </details>
 
-### Token children
-<details><summary>Token children description</summary>
-
-Get array of nested tokens
-
-#### Arguments
-
-- **collectionId** - ID of token collection
-- **tokenId** - ID of token
-
-#### Returns
-
-Method return an array of tokens `{ collectionId: number, tokenId: number }`
-
-#### Examples
-
-```ts
-import {
-  TokenChildrenArguments,
-  TokenChildrenResult,
-} from '@unique-nft/substrate-client/tokens/types';
-
-const args: TokenChildrenArguments = {
-  collectionId: 1,
-  tokenId: 1,
-};
-
-const result: TokenChildrenResult = await sdk.tokens.tokenChildren(args);
-```
-</details>
-
 ### Checks if token exists in collection
 <details><summary>Checks if token exists in collection description</summary>
 
@@ -1768,41 +2442,6 @@ const result: TokenOwnerResult = await sdk.tokens.tokenOwner(
 ```
 </details>
 
-### Token parent
-<details><summary>Token parent description</summary>
-
-Return info about token parent
-
-#### Arguments
-
-- **collectionId** - ID of token collection
-- **tokenId** - ID of token
-
-#### Returns
-
-Method return an object of token parent
-
-- **collectionId** - ID of parent collection
-- **tokenId** - ID of parent token
-- **address** - Token owner address
-
-#### Examples
-
-```ts
-import {
-  TokenParentArguments,
-  TokenParentResult,
-} from '@unique-nft/substrate-client/tokens/types';
-
-const args: TokenParentArguments = {
-  collectionId: 1,
-  tokenId: 1,
-};
-
-const result: TokenParentResult = await sdk.tokens.tokenParent(args);
-```
-</details>
-
 ### Token properties
 <details><summary>Token properties description</summary>
 
@@ -1833,42 +2472,6 @@ const args: TokenPropertiesArguments = {
 };
 
 const result: TokenPropertiesResult = await sdk.tokens.properties(args);
-```
-</details>
-
-### Topmost token owner
-<details><summary>Topmost token owner description</summary>
-
-Return substrate address of topmost token owner
-
-#### Arguments
-
-- **collectionId** - ID of token collection
-- **tokenId** - ID of token
-- **blockHashAt** _optional_ - hash of execution block
-
-#### Returns
-
-Return substrate address in an object that contains `topmostOwner: string`.
-
-
-#### Examples
-
-```ts
-import {
-  TokenOwnerArguments,
-  TopmostTokenOwnerResult,
-} from '@unique-nft/substrate-client/tokens/types';
-
-const args: TokenOwnerArguments = {
-  collectionId: 1,
-  tokenId: 1,
-  // blockHashAt: '0xff19c2457fa4d7216cfad444615586c4365250e7310e2de7032ded4fcbd36873'
-};
-
-const result: TopmostTokenOwnerResult = await sdk.tokens.topmostTokenOwner(
-  args,
-);
 ```
 </details>
 
@@ -1963,48 +2566,6 @@ const args: TransferCollectionArguments = {
 
 const result = await sdk.collections.transfer.submitWaitResult(args);
 const { collectionId, newOnwer } = result.parsed;
-```
-</details>
-
-### Unnest token
-<details><summary>Unnest token description</summary>
-
-Nesting is a process of forming a structural relationship between two NFTs that form a parent-child relationship in a tree structure. Such a relationship is formed by forwarding token A2 to the address of token A1 by which A2 becomes a child of token A1 (conversely, token A1 becomes the parent of A2).
-
-#### Arguments
-
-- **address** - Owner address
-- **parent** - Parent token object `{ collectionId: number, tokenId: number }`
-- **nested** - Nested token object `{ collectionId: number, tokenId: number }`
-
-#### Returns
-
-The method returns a `parsed` object that contains `{ collectionId: number, tokenId: number }`
-
-#### Examples
-
-```ts
-import { UnnestTokenArguments } from '@unique-nft/substrate-client/tokens/types';
-
-const args: UnnestTokenArguments = {
-  address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
-  parent: {
-    collectionId: 1,
-    tokenId: 1,
-  },
-  nested: {
-    collectionId: 1,
-    tokenId: 2,
-  },
-};
-
-const result = await sdk.tokens.unnestToken.submitWaitResult(args);
-
-const { tokenId, collectionId } = result.parsed;
-
-console.log(
-  `Token ${tokenId} from collection ${collectionId} successfully unnested`,
-);
 ```
 </details>
 
