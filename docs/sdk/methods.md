@@ -1815,7 +1815,7 @@ const createTokenArgs: CreateTokenNewArguments = {
 const result = await sdk.tokens.createMultiple.submitWaitResult(createArgs);
 const [{ collectionId, tokenId }] = result.parsed;
 
-const token = await sdk.tokens.get_new({ collectionId, tokenId });
+const token = await sdk.tokens.get({ collectionId, tokenId });
 ```
 
 #### Arguments
@@ -1883,7 +1883,7 @@ const createTokenArgs: CreateTokenNewArguments = {
 const result = await sdk.tokens.createMultiple.submitWaitResult(createArgs);
 const [{ collectionId, tokenId }] = result.parsed;
 
-const token = await sdk.tokens.get_new({ collectionId, tokenId });
+const token = await sdk.tokens.get({ collectionId, tokenId });
 ```
 
   </CodeGroupItem>
@@ -1998,10 +1998,10 @@ const createTokenArgs: CreateTokenNewArguments = {
   },
 };
 
-const result = await sdk.tokens.create_new.submitWaitResult(createArgs);
+const result = await sdk.tokens.create.submitWaitResult(createArgs);
 const { collectionId, tokenId } = result.parsed;
 
-const token = await sdk.tokens.get_new({ collectionId, tokenId });   
+const token = await sdk.tokens.get({ collectionId, tokenId });   
 ```
 
 #### Arguments
@@ -2095,10 +2095,10 @@ const createTokenArgs: CreateTokenNewArguments = {
     },
 };
 
-const result = await sdk.tokens.create_new.submitWaitResult(createArgs);
+const result = await sdk.tokens.create.submitWaitResult(createArgs);
 const { collectionId, tokenId } = result.parsed;
 
-const token = await sdk.tokens.get_new({ collectionId, tokenId });
+const token = await sdk.tokens.get({ collectionId, tokenId });
 ```
 
   </CodeGroupItem>
@@ -2284,7 +2284,7 @@ Returns information about the NFT token of a specific collection.
 #### Brief example
 
 ```typescript
-const token = await sdk.tokens.get_new({
+const token = await sdk.tokens.get({
   collectionId: 2,
   tokenId: 1,
 });
@@ -2329,7 +2329,7 @@ type TokenByIdResult = Omit<UniqueTokenDecoded, 'owner'> & {
   <CodeGroupItem title="SDK">
 
 ```typescript
-const token = await sdk.tokens.get_new({
+const token = await sdk.tokens.get({
   collectionId: 2,
   tokenId: 1,
 });
