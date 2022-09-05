@@ -941,7 +941,7 @@ This method returns `ConfirmSponsorshipResult`
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
-    "signerPayloadJSON": { *from prevous response* },
+    "signerPayloadJSON": { *from previous response* },
     "signature": "0x_your_signature_in_hex"
     }'
 ```
@@ -1064,7 +1064,7 @@ This method returns `RemoveSponsorshipResult`
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
-    "signerPayloadJSON": { *from prevous response* },
+    "signerPayloadJSON": { *from previous response* },
     "signature": "0x_your_signature_in_hex"
     }'
 ```
@@ -1204,7 +1204,7 @@ This method returns `SetSponsorshipResult`
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
-    "signerPayloadJSON": { *from prevous response* },
+    "signerPayloadJSON": { *from previous response* },
     "signature": "0x_your_signature_in_hex"
     }'
 ```
@@ -1225,6 +1225,1022 @@ This method returns `SetSponsorshipResult`
     const { parsed: { sponsor, collectionId } } = result;
     
     console.log(`${sponsor} should now approve sponsorship of ${collectionId} collection`);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+</details>
+
+## Token
+
+### Burn token
+<details><summary>Burn token description</summary>
+
+#### Overview
+
+This method destroys a concrete instance of NFT or amount of Fungible token.
+
+If the **from** parameter is specified, then the token is destroyed on behalf of **the owner of item**.
+
+Only **Collection Owner**, **Collection Admin**, or **Current NFT owner** has permission to call this method.
+
+#### Brief example
+
+```typescript
+import '@unique-nft/substrate-client/tokens';
+import { BurnTokenArguments } from '@unique-nft/substrate-client/tokens/types';
+const burnItemArgs: BurnTokenArguments = {
+  tokenId: 1,
+  collectionId: 1,
+};
+const setResult = await sdk.tokens.burn.submitWaitResult(burnItemArgs);
+const { collectionId, tokenId, address, value } = setResult.parsed;
+```
+
+#### Arguments
+
+`address: string` - Signer address
+
+`collectionId: number` - ID of the collection
+
+`tokenId: number` - ID of NFT to burn
+
+Optional Arguments
+
+`from?: string` - The owner of item on whose behalf the token is destroyed
+
+`value?: number` - Amount to burn
+  - Non-Fungible Mode: Ignored
+  - Fungible Mode: Must specify transferred amount
+  - Re-Fungible Mode: Must specify transferred portion (between 0 and 1)
+
+#### Behaviour and errors
+
+Throw errors:
+
+- Collection or token not found
+- The **Signer** or **from** addresses do not have permission to call this method
+- If **the owner of the collection** (but not the owner of the token) wants to burn the token and the **ownerCanDestroy** flag is set to false. Check the set limits using the method [effectiveCollectionLimits](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/../effective-collection-limits)
+- Insufficient balance
+
+#### Returns
+
+This method returns `BurnTokenResult`
+
+```typescript
+  interface BurnTokenResult {
+    collectionId: number;
+    tokenId: number;
+    address: Address;
+    value: number;
+  }
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="SDK">
+
+```typescript
+import '@unique-nft/substrate-client/tokens';
+import { BurnTokenArguments } from '@unique-nft/substrate-client/tokens/types';
+const burnItemArgs: BurnTokenArguments = {
+  tokenId: 1,
+  collectionId: 1,
+};
+const setResult = await sdk.tokens.burn.submitWaitResult(burnItemArgs);
+const { collectionId, tokenId, address, value } = setResult.parsed;
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+
+  curl -X 'DELETE' \
+    'http://rest.opal.uniquenetwork.dev/token-new?use=Build&withFee=false&verify=false' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+    "collectionId": 183,
+    "tokenId": 5,
+    "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty"
+  }'
+    
+    # then we sign, then we call
+    
+    curl -X 'POST' \
+    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+    "signerPayloadJSON": { *from previous response* },
+    "signature": "0x_your_signature_in_hex"
+    }'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    
+    const result = await client.tokens.burn.submitWaitResult({
+      "collectionId": 1,
+      "tokenId": 1,
+      "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty"
+    });
+    
+    const { parsed: { collectionId, tokenId } } = result;
+    
+    console.log(`burned token ${tokenId} collection ${collectionId}`);
+
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+</details>
+
+### Create multiple tokens
+<details><summary>Create multiple tokens description</summary>
+
+#### Overview
+
+This method creates multiple items in a collection.
+
+Only the **Collection Owner**, **Collection admin**, addresses from the **Allow List** (if **Allow List** is enabled and **MintPermission** is enabled) can mint tokens.
+
+#### Brief example
+
+```typescript
+import { CreateMultipleTokensArguments } from '@unique-nft/substrate-client/tokens';
+
+import {
+  UniqueCollectionSchemaToCreate,
+  COLLECTION_SCHEMA_NAME,
+  AttributeType,
+} from '@unique-nft/substrate-client/tokens';
+
+const createTokenArgs: CreateTokenNewArguments = {
+  address: '<your account address>',
+  collectionId: 123,
+  data: [{
+    encodedAttributes: {
+      '0': 0,
+      '1': [0],
+      '2': 'foo_bar',
+    },
+    image: {
+      ipfsCid: '<valid_ipfs_cid>',
+    },
+  }],
+};
+
+const result = await sdk.tokens.createMultiple.submitWaitResult(createArgs);
+const [{ collectionId, tokenId }] = result.parsed;
+
+const token = await sdk.tokens.get_new({ collectionId, tokenId });
+```
+
+#### Arguments
+
+`address: Address` - The address of collection owner
+
+`collectionId: number` - Collection id
+
+`data: Array<UniqueTokenToCreate & { owner?: string} >` - The content of the tokens:
+
+- Description **UniqueTokenToCreate** available in [Create token](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/create-token)
+
+- `owner?: string` - The address of token owner (optional)
+
+#### Behaviour and errors
+
+Throw errors:
+
+- Collection not found
+- Signer must be **Collection Owner** or **Collection admin** or in **Allow List** of the collection
+- Collection is set **TokenLimit** and creating a new token will exceed the token limit
+- Insufficient balance
+
+#### Returns
+
+This method returns `TokenIdArguments[]`
+
+```typescript
+interface TokenIdArguments {
+  collectionId: number;
+  tokenId: number;
+}
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="SDK">
+
+```typescript
+import { CreateMultipleTokensArguments } from '@unique-nft/substrate-client/tokens';
+
+import {
+  UniqueCollectionSchemaToCreate,
+  COLLECTION_SCHEMA_NAME,
+  AttributeType,
+} from '@unique-nft/substrate-client/tokens';
+
+const createTokenArgs: CreateTokenNewArguments = {
+  address: '<your account address>',
+  collectionId: 123,
+  data: [{
+    encodedAttributes: {
+      '0': 0,
+      '1': [0],
+      '2': 'foo_bar',
+    },
+    image: {
+      ipfsCid: '<valid_ipfs_cid>',
+    },
+  }],
+};
+
+const result = await sdk.tokens.createMultiple.submitWaitResult(createArgs);
+const [{ collectionId, tokenId }] = result.parsed;
+
+const token = await sdk.tokens.get_new({ collectionId, tokenId });
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+
+  curl -X 'POST' \
+    'http://rest.opal.uniquenetwork.dev/token-new/create-multiple?use=Build&withFee=false&verify=false' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+    "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
+    "collectionId": 183,
+    "data": [
+      {
+        "image": {
+          "url": "https://ipfs.unique.network/ipfs/QmcAcH4F9HYQtpqKHxBFwGvkfKb8qckXj2YWUrcc8yd24G/image1.png"
+        }
+      },
+      {
+        "image": {
+          "url": "https://ipfs.unique.network/ipfs/QmcAcH4F9HYQtpqKHxBFwGvkfKb8qckXj2YWUrcc8yd24G/image2.png"
+        }    
+      }
+    ]
+  }'
+    
+    # then we sign, then we call
+    
+    curl -X 'POST' \
+    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+    "signerPayloadJSON": { *from previous response* },
+    "signature": "0x_your_signature_in_hex"
+    }'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+  const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+  
+  const result = await client.tokens.createMultiple.submitWaitResult({
+    "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
+    "collectionId": 183,
+    "data": [
+      {
+        "image": {
+          "url": "https://ipfs.unique.network/ipfs/QmcAcH4F9HYQtpqKHxBFwGvkfKb8qckXj2YWUrcc8yd24G/image1.png"
+        }
+      },
+      {
+        "image": {
+          "url": "https://ipfs.unique.network/ipfs/QmcAcH4F9HYQtpqKHxBFwGvkfKb8qckXj2YWUrcc8yd24G/image2.png"
+        }
+      }
+    ]
+  });
+  
+  const { parsed } = result;
+  
+  console.log(`minted ${parsed.length} tokens`);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+</details>
+
+### Create token (mint)
+<details><summary>Create token (mint) description</summary>
+
+#### Overview
+
+This method creates a concrete instance of NFT collection.
+
+Collection can be created with [Create collection](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/../create-collection-ex-new) method.
+
+Only the **Collection Owner**, **Collection admin**, addresses from the **Allow List** (if **Allow List** is enabled and **MintPermission** is enabled) can mint token.
+
+The **owner** of the token is specified in the **owner** field. If the owner field is not set, then the **Signer** becomes the owner of the token.
+
+#### Brief example
+
+```typescript
+import { CreateTokenNewArguments } from '@unique-nft/substrate-client/tokens/types';
+
+import {
+  UniqueCollectionSchemaToCreate,
+  COLLECTION_SCHEMA_NAME,
+  AttributeType,
+} from '@unique-nft/substrate-client/tokens';
+
+const createTokenArgs: CreateTokenNewArguments = {
+  address: '<your account address>',
+  collectionId: 123,
+  data: {
+    encodedAttributes: {
+      '0': 0,
+      '1': [0],
+      '2': 'foo_bar',
+    },
+    image: {
+      ipfsCid: '<valid_ipfs_cid>',
+    },
+  },
+};
+
+const result = await sdk.tokens.create_new.submitWaitResult(createArgs);
+const { collectionId, tokenId } = result.parsed;
+
+const token = await sdk.tokens.get_new({ collectionId, tokenId });   
+```
+
+#### Arguments
+
+`address: string` - The address of collection owner
+
+`collectionId: number` - Collection id
+
+`owner?: string` - The address of token owner (optional)
+
+`data: UniqueTokenToCreate` - The content of the token is stored in the fields of the object:
+
+- `name?: LocalizedStringWithDefault*`
+  
+- `description?: LocalizedStringWithDefault*`
+
+- `image: GenericInfixUrlOrCidWithHash**` - Token image (`url`, `urlInfix` or `ipfsCid`)
+
+- `imagePreview?: GenericInfixUrlOrCidWithHash**`
+
+- `video?: GenericInfixUrlOrCidWithHash**`
+
+- `audio?: GenericInfixUrlOrCidWithHash**`
+
+- `spatialObject?: GenericInfixUrlOrCidWithHash**`
+
+- `encodedAttributes?: EncodedTokenAttributes` - Token attributes
+
+&ast; Type **LocalizedStringWithDefault**
+
+```typescript
+{
+  _: string;
+  [K: string]: string;
+}
+```
+
+&ast; Type **GenericInfixUrlOrCidWithHash**
+```typescript
+  { urlInfix?: string; hash?: string | null }
+  | { url?: string; hash?: string | null }
+  | { ipfsCid?: string; hash?: string | null };
+```
+
+#### Behaviour and errors
+
+Throw errors:
+
+- Collection not found
+- Signer must be **Collection Owner** or **Collection admin** or in **Allow List** of the collection
+- Collection is set **TokenLimit** and creating a new token will exceed the token limit
+- Insufficient balance
+
+#### Returns
+
+This method returns `TokenIdArguments`
+
+```typescript
+  interface TokenIdArguments extends CollectionIdArguments {
+    tokenId: number;
+  }   
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="SDK">
+
+```typescript
+import { CreateTokenNewArguments } from '@unique-nft/substrate-client/tokens/types';
+
+import {
+    UniqueCollectionSchemaToCreate,
+    COLLECTION_SCHEMA_NAME,
+    AttributeType,
+} from '@unique-nft/substrate-client/tokens';
+
+const createTokenArgs: CreateTokenNewArguments = {
+    address: '<your account address>',
+    collectionId: 123,
+    data: {
+        encodedAttributes: {
+            '0': 0,
+            '1': [0],
+            '2': 'foo_bar',
+        },
+        image: {
+            ipfsCid: '<valid_ipfs_cid>',
+        },
+    },
+};
+
+const result = await sdk.tokens.create_new.submitWaitResult(createArgs);
+const { collectionId, tokenId } = result.parsed;
+
+const token = await sdk.tokens.get_new({ collectionId, tokenId });
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+
+  curl -X 'POST' \
+    'http://rest.opal.uniquenetwork.dev/token-new?use=Build&withFee=false&verify=false' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+    "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
+    "collectionId": 183,
+    "data": {
+      "image": {
+        "url": "https://ipfs.unique.network/ipfs/QmcAcH4F9HYQtpqKHxBFwGvkfKb8qckXj2YWUrcc8yd24G/image1.png"
+      },
+      "name": {
+        "_": "Hello!"
+      },
+      "description": {
+        "_": "Hello!"
+      }
+    }
+  }'
+
+# then we sign, then we call
+
+    curl -X 'POST' \
+    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+    "signerPayloadJSON": { *from previous response* },
+    "signature": "0x_your_signature_in_hex"
+    }'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    
+    const result = await client.tokens.create.submitWaitResult({
+      "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
+      "collectionId": 183,
+      "data": {
+        "image": {
+          "url": "https://ipfs.unique.network/ipfs/QmcAcH4F9HYQtpqKHxBFwGvkfKb8qckXj2YWUrcc8yd24G/image1.png"
+        },
+        "name": {
+          "_": "Hello!"
+        },
+        "description": {
+          "_": "Hello!"
+        }
+      }
+    });
+    
+    const { parsed: { collectionId, tokenId } } = result;
+    
+    console.log(`created token ${tokenId} in collection ${collectionId}`);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+
+</details>
+
+### Delete token properties
+<details><summary>Delete token properties description</summary>
+
+#### Arguments
+
+- **address** - The address of collection owner
+- **collectionId** - Collection id
+- **tokenId** - Token id
+- **propertyKeys** - Array of properties keys
+
+#### Returns
+
+The method returns an array of `TokenPropertyDeleted` events.
+
+```ts
+const args: DeleteTokenPropertiesArguments = {
+  address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
+  collectionId: 1,
+  tokenId: 1,
+  propertyKeys: ['foo', 'bar'],
+};
+
+const result = await sdk.tokens.deleteProperties.submitWaitResult(args);
+
+console.log(result.parsed);
+```
+</details>
+
+### Set token properties
+<details><summary>Set token properties description</summary>
+
+#### Arguments
+
+- **address** - The address of collection owner
+- **collectionId** - Collection id
+- **tokenId** - Token id
+- **properties** - Array of properties `{ key: string, value: string }`
+
+#### Returns
+
+The method returns an array of `TokenPropertySet` events.
+
+#### Examples
+
+```ts
+const args: SetTokenPropertiesArguments = {
+  address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
+  collectionId: 1,
+  tokenId: 1,
+  properties: [
+    {
+      key: 'foo',
+      value: 'bar',
+    },
+  ],
+};
+
+const result = await sdk.tokens.setProperties.submitWaitResult(args);
+
+console.log(result.parsed);
+```
+</details>
+
+### Set token property permissions
+<details><summary>Set token property permissions description</summary>
+
+#### Arguments
+
+- **address** - The address of collection owner
+- **collectionId** - Collection id
+- **propertyPermissions** - Array of property permissions `{ key: string, permission: { mutable: boolean, collectionAdmin: boolean, tokenOwner: boolean } }`
+
+#### Returns
+
+The method returns an array of `PropertyPermissionSet` events.
+
+#### Examples
+
+```ts
+const args: SetTokenPropertyPermissionsArguments = {
+  address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
+  collectionId: 1,
+  propertyPermissions: [
+    {
+      key: 'foo',
+      permission: {
+        mutable: true,
+        collectionAdmin: true,
+        tokenOwner: true,
+      },
+    },
+  ],
+};
+
+const result =
+  await sdk.collections.setTokenPropertyPermissions.submitWaitResult(args);
+
+console.log(result.parsed);
+```
+</details>
+
+### Get token
+<details><summary>Get token description</summary>
+
+#### Overview
+
+Returns information about the NFT token of a specific collection.
+
+#### Brief example
+
+```typescript
+const token = await sdk.tokens.get_new({
+  collectionId: 2,
+  tokenId: 1,
+});
+    
+const {
+    collectionId,
+    tokenId,
+    owner,
+    image,
+    attributes,
+} = token;
+```
+
+#### Arguments
+
+`collectionId: number` — collection id
+
+`tokenId: number` — token id
+
+#### Behaviour and errors
+
+Throw errors:
+
+- Collection not found (not created or destroyed)
+- Token not found (not created or burned)
+- Check path chain (CHAIN_WS_URL)
+
+## Returns
+
+This method returns `TokenByIdResult`
+
+```typescript
+type TokenByIdResult = Omit<UniqueTokenDecoded, 'owner'> & {
+  owner: Address;
+};
+```
+
+## Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="SDK">
+
+```typescript
+const token = await sdk.tokens.get_new({
+  collectionId: 2,
+  tokenId: 1,
+});
+    
+const {
+    collectionId,
+    tokenId,
+    owner,
+    image,
+    attributes,
+} = token;
+```
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+curl -X 'GET' \
+  'https://rest.opal.uniquenetwork.dev/token-new?collectionId=2&tokenId=1' \
+  -H 'accept: application/json'
+```
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+
+    const result = await client.tokens.get({
+      collectionId: 2,
+      tokenId: 1,
+    });
+    
+    const { tokenId, owner } = result;
+    
+    console.log(`token ${tokenId} is owned by address ${owner}`);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+</details>
+
+### Get token owner
+<details><summary>Get token owner description</summary>
+
+#### Overview
+
+This method allows you to get the current NFT **owner**.
+
+The initial owner of the token are set to the address that signed the token creation extrinsic.
+
+You can change the owner of the token using [transfer token](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/transfer) method.
+
+#### Brief example
+
+```typescript
+import {
+  TokenOwnerArguments,
+  TokenOwnerResult,
+} from '@unique-nft/substrate-client/tokens/types';
+
+const args: TokenOwnerArguments = {
+  collectionId: 1,
+  tokenId: 1,
+  // blockHashAt: '0xff19c2457fa4d7216cfad444615586c4365250e7310e2de7032ded4fcbd36873'
+};
+
+const result: TokenOwnerResult = await sdk.tokens.tokenOwner(
+  args,
+);
+```
+
+#### Arguments
+
+`collectionId: number` — collection ID
+
+`tokenId: number` — token ID
+
+`blockHashAt?: string` — hash of execution block
+
+
+#### Behaviour and errors
+
+Throw errors:
+
+- Collection not found (not created or destroyed)
+- Token not found (not created or burned)
+- Check path chain (CHAIN_WS_URL)
+
+#### Returns
+
+The method returns `TokenOwnerResult`
+
+```typescript
+type TokenOwnerResult = { owner: Address }
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="SDK">
+
+```typescript
+import {
+  TokenOwnerArguments,
+  TokenOwnerResult,
+} from '@unique-nft/substrate-client/tokens/types';
+
+const args: TokenOwnerArguments = {
+  collectionId: 1,
+  tokenId: 1,
+  // blockHashAt: '0xff19c2457fa4d7216cfad444615586c4365250e7310e2de7032ded4fcbd36873'
+};
+
+const result: TokenOwnerResult = await sdk.tokens.tokenOwner(
+  args,
+);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+
+    curl -X 'GET' \
+  'https://rest.opal.uniquenetwork.dev/token-new/owner?collectionId=1&tokenId=1' \
+  -H 'accept: application/json'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    
+    const { owner } = await client.tokens.owner({
+      collectionId: 1,
+      tokenId: 1,
+    });
+    
+    console.log(`token owner ${owner}`);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+</details>
+
+### Token properties
+<details><summary>Token properties description</summary>
+
+Get array of token properties
+
+#### Arguments
+
+- **collectionId** - Collection ID
+- **tokenId** - Token ID
+- **propertyKeys** _optional_ - Array of property keys
+
+#### Returns
+
+Method return an array of properties `{ key: string, value: string }`
+
+#### Examples
+
+```ts
+import {
+  TokenPropertiesArguments,
+  TokenPropertiesResult,
+} from '@unique-nft/substrate-client/tokens/types';
+
+const args: TokenPropertiesArguments = {
+  collectionId: 1,
+  tokenId: 1,
+  // propertyKeys: ['foo', 'bar'],
+};
+
+const result: TokenPropertiesResult = await sdk.tokens.properties(args);
+```
+</details>
+
+### Transfer token
+<details><summary>Transfer token description</summary>
+
+#### Overview
+
+Change ownership of the token.
+
+Only **Collection Owner**, **Collection Admin**, or **Current NFT owner** has permission to call this method.
+
+The **Current NFT owner** can be found using [Get token owner](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/token-owner) method.
+
+#### Brief example
+
+```typescript
+import { TransferArguments } from '@unique-nft/substrate-client/tokens';
+
+const args: TransferArguments = {
+  address: '<address>',
+  to: '<address>',
+  collectionId: 1,
+  tokenId: 1,
+};
+
+const result = await sdk.tokens.transfer.submitWaitResult(args);
+
+console.log(result.parsed);
+```
+
+#### Arguments
+
+`address: string` - Signer address
+
+`to: string` - Address of token recipient
+
+`collectionId: number` - Collection id
+
+`tokenId: number` - Token id
+
+Optional Arguments
+
+`from: string` - Address that owns token (default is signer address)
+
+`value: number` - Amount to transfer (default is 1):
+  - Non-Fungible Mode: Ignored
+  - Fungible Mode: Must specify transferred amount
+  - Re-Fungible Mode: Must specify transferred portion (between 0 and 1)
+
+#### Behaviour and errors
+
+Throw errors:
+
+- Collection or token not found
+- Signer is not a **Collection Owner**, **Collection Admin**, or **Current NFT owner**
+- The restrictions set by the **transfersEnabled** or **ownerCanTransfer** flags apply. Check the set limits using the method [effectiveCollectionLimits](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/../effective-collection-limits)
+- Insufficient balance
+
+#### Returns
+
+This method returns `TransferResult`
+
+```typescript
+interface TransferResult {
+  collectionId: number;
+  tokenId: number;
+  from: Address;
+  to: Address;
+  value: number;
+}
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="SDK">
+
+```typescript
+import { TransferArguments } from '@unique-nft/substrate-client/tokens';
+
+const args: TransferArguments = {
+  address: '<address>',
+  to: '<address>',
+  collectionId: 1,
+  tokenId: 1,
+};
+
+const result = await sdk.tokens.transfer.submitWaitResult(args);
+
+console.log(result.parsed);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+
+  curl -X 'PATCH' \
+    'http://rest.opal.uniquenetwork.dev/token-new/transfer?use=Build&withFee=false&verify=false' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+    "collectionId": 183,
+    "tokenId": 1,
+    "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
+    "to": "5HGjWAeFDfFCWPsjFQdVV2Msvz2XtMktvgocEZcCj68kUMaw"
+  }'
+    
+    # then we sign, then we call
+    
+    curl -X 'POST' \
+    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+    "signerPayloadJSON": { *from previous response* },
+    "signature": "0x_your_signature_in_hex"
+    }'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    
+    const result = await client.tokens.transfer.submitWaitResult({
+      "collectionId": 183,
+      "tokenId": 1,
+      "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
+      "to": "5HGjWAeFDfFCWPsjFQdVV2Msvz2XtMktvgocEZcCj68kUMaw"
+    });
+    
+    const { parsed: { collectionId, tokenId, to } } = result;
+    
+    console.log(`${to} is the new owner of token ${tokenId} from collection ${collectionId}`);
 ```
 
   </CodeGroupItem>
@@ -1471,38 +2487,6 @@ const { collectionId, tokenId } = result.parsed;
 ```
 </details>
 
-### Destroys a concrete instance of NFT
-<details><summary>Destroys a concrete instance of NFT description</summary>
-
-#### Arguments
-
-- **address*** - Sender address
-- **collectionId*** - ID of the collection
-- **from** - Address that owns token
-- **tokenId*** - ID of NFT to burn
-- **value** - amount to burn
-  - non-fungible mode: `ignored` (only the whole token can be burned)
-  - fungible mode: `must specify` transferred amount
-  - re-fungible mode: `ignored` (the owned portion is burned completely)
-
-#### Returns
-
-The method returns a `parsed` object that contains the `collectionId: number, tokenId: number, address: string, value: number`.
-
-#### Examples
-
-```ts
-import '@unique-nft/substrate-client/tokens';
-import { BurnTokenArguments } from '@unique-nft/substrate-client/tokens/types';
-const burnItemArgs: BurnTokenArguments = {
-  tokenId: 1,
-  collectionId: 1,
-};
-const setResult = await sdk.tokens.burn.submitWaitResult(burnItemArgs);
-const { collectionId, tokenId, address, value } = setResult.parsed;
-```
-</details>
-
 ### Get collection by Id
 <details><summary>Get collection by Id description</summary>
 
@@ -1732,102 +2716,6 @@ const collection = await sdk.collections.get({ collectionId });
 ```
 </details>
 
-### Create token (new)
-<details><summary>Create token (new) description</summary>
-
-#### Arguments
-
-- **address** - The address of collection owner
-- **collectionId** - Collection id
-- **owner** - The address of token owner (optional)
-- **data.image** - Token image (`url`, `urlInfix` or `ipfsCid`)
-- **data.encodedAttributes** - Token attributes
-
-#### Returns
-
-The method returns a `parsed` object that contains the `collectionId: number, tokenId: number`.
-
-#### Examples
-
-```typescript
-import { CreateTokenNewArguments } from '@unique-nft/substrate-client/tokens/types';
-
-import {
-    UniqueCollectionSchemaToCreate,
-    COLLECTION_SCHEMA_NAME,
-    AttributeType,
-} from '@unique-nft/substrate-client/tokens';
-
-const createTokenArgs: CreateTokenNewArguments = {
-    address: '<your account address>',
-    collectionId: 123,
-    data: {
-        encodedAttributes: {
-            '0': 0,
-            '1': [0],
-            '2': 'foo_bar',
-        },
-        image: {
-            ipfsCid: '<valid_ipfs_cid>',
-        },
-    },
-};
-
-const result = await sdk.tokens.create_new.submitWaitResult(createArgs);
-const { collectionId, tokenId } = result.parsed;
-
-const token = await sdk.tokens.get_new({ collectionId, tokenId });
-```
-</details>
-
-### Create tokens (new)
-<details><summary>Create tokens (new) description</summary>
-
-#### Arguments
-
-- **address** - The address of collection owner
-- **collectionId** - Collection id
-- **owner** - The address of token owner (optional)
-- **data[i].image** - Token image (`url`, `urlInfix` or `ipfsCid`)
-- **data[i].encodedAttributes** - Token attributes
-
-#### Returns
-
-The method returns an array of `parsed` objects that contains `collectionId: number, tokenId: number`.
-
-#### Examples
-
-```typescript
-import { CreateTokensArguments } from '@unique-nft/substrate-client/tokens';
-
-import {
-    UniqueCollectionSchemaToCreate,
-    COLLECTION_SCHEMA_NAME,
-    AttributeType,
-} from '@unique-nft/substrate-client/tokens';
-
-const createTokenArgs: CreateTokenNewArguments = {
-    address: '<your account address>',
-    collectionId: 123,
-    data: [{
-        encodedAttributes: {
-            '0': 0,
-            '1': [0],
-            '2': 'foo_bar',
-        },
-        image: {
-            ipfsCid: '<valid_ipfs_cid>',
-        },
-    }],
-};
-
-const result = await sdk.tokens.createMultiple.submitWaitResult(createArgs);
-const [{ collectionId, tokenId }] = result.parsed;
-
-const token = await sdk.tokens.get_new({ collectionId, tokenId });
-```
-</details>
-
 ### Delete collection properties
 <details><summary>Delete collection properties description</summary>
 
@@ -1851,34 +2739,6 @@ const args: DeleteCollectionPropertiesArguments = {
 };
 
 const result = await sdk.collections.deleteProperties.submitWaitResult(args);
-
-console.log(result.parsed);
-```
-</details>
-
-### Delete token properties
-<details><summary>Delete token properties description</summary>
-
-#### Arguments
-
-- **address** - The address of collection owner
-- **collectionId** - Collection id
-- **tokenId** - Token id
-- **propertyKeys** - Array of properties keys
-
-#### Returns
-
-The method returns an array of `TokenPropertyDeleted` events.
-
-```ts
-const args: DeleteTokenPropertiesArguments = {
-  address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
-  collectionId: 1,
-  tokenId: 1,
-  propertyKeys: ['foo', 'bar'],
-};
-
-const result = await sdk.tokens.deleteProperties.submitWaitResult(args);
 
 console.log(result.parsed);
 ```
@@ -2241,79 +3101,6 @@ console.log(result.parsed);
 ```
 </details>
 
-### Set token properties
-<details><summary>Set token properties description</summary>
-
-#### Arguments
-
-- **address** - The address of collection owner
-- **collectionId** - Collection id
-- **tokenId** - Token id
-- **properties** - Array of properties `{ key: string, value: string }`
-
-#### Returns
-
-The method returns an array of `TokenPropertySet` events.
-
-#### Examples
-
-```ts
-const args: SetTokenPropertiesArguments = {
-  address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
-  collectionId: 1,
-  tokenId: 1,
-  properties: [
-    {
-      key: 'foo',
-      value: 'bar',
-    },
-  ],
-};
-
-const result = await sdk.tokens.setProperties.submitWaitResult(args);
-
-console.log(result.parsed);
-```
-</details>
-
-### Set token property permissions
-<details><summary>Set token property permissions description</summary>
-
-#### Arguments
-
-- **address** - The address of collection owner
-- **collectionId** - Collection id
-- **propertyPermissions** - Array of property permissions `{ key: string, permission: { mutable: boolean, collectionAdmin: boolean, tokenOwner: boolean } }`
-
-#### Returns
-
-The method returns an array of `PropertyPermissionSet` events.
-
-#### Examples
-
-```ts
-const args: SetTokenPropertyPermissionsArguments = {
-  address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
-  collectionId: 1,
-  propertyPermissions: [
-    {
-      key: 'foo',
-      permission: {
-        mutable: true,
-        collectionAdmin: true,
-        tokenOwner: true,
-      },
-    },
-  ],
-};
-
-const result =
-  await sdk.collections.setTokenPropertyPermissions.submitWaitResult(args);
-
-console.log(result.parsed);
-```
-</details>
-
 ### Set transfers enabled flag
 <details><summary>Set transfers enabled flag description</summary>
 
@@ -2348,45 +3135,6 @@ console.log(result.parsed.success);
 ```
 </details>
 
-### Get token
-<details><summary>Get token description</summary>
-
-Returns token info and attributes
-
-#### Arguments
-
-- **collectionId** - Collection Id
-- **tokenId** - Token Id
-
-#### Returns
-
-The method returns token info:
-
-- **collectionId** - Collection Id
-- **tokenId** - Token Id
-- **owner** - The address of token owner
-- **image** - Token image (`url`, `urlInfix` or `ipfsCid`)
-- **attributes** - Token attributes
-- **parent** - if token is nested contains *collectionId* and *tokenId* of the parent token
-
-#### Examples
-
-```typescript
-const token = await sdk.tokens.get_new({
-  collectionId: 2,
-  tokenId: 1,
-});
-    
-const {
-    collectionId,
-    tokenId,
-    owner,
-    image,
-    attributes,
-} = token;
-```
-</details>
-
 ### Checks if token exists in collection
 <details><summary>Checks if token exists in collection description</summary>
 
@@ -2406,72 +3154,6 @@ Method returns object:
 
 ```typescript
 const { isExists } = await sdk.tokens.exists({ collectionId: 123, tokenId: 321 });
-```
-</details>
-
-### Get token owner
-<details><summary>Get token owner description</summary>
-
-#### Arguments
-
-- **collectionId** - ID of token collection
-- **tokenId** - ID of token
-- **blockHashAt** _optional_ - hash of execution block
-
-#### Returns
-
-Return substrate address in an object that contains `owner: string`.
-
-#### Examples
-
-```ts
-import {
-  TokenOwnerArguments,
-  TokenOwnerResult,
-} from '@unique-nft/substrate-client/tokens/types';
-
-const args: TokenOwnerArguments = {
-  collectionId: 1,
-  tokenId: 1,
-  // blockHashAt: '0xff19c2457fa4d7216cfad444615586c4365250e7310e2de7032ded4fcbd36873'
-};
-
-const result: TokenOwnerResult = await sdk.tokens.tokenOwner(
-  args,
-);
-```
-</details>
-
-### Token properties
-<details><summary>Token properties description</summary>
-
-Get array of token properties
-
-#### Arguments
-
-- **collectionId** - Collection ID
-- **tokenId** - Token ID
-- **propertyKeys** _optional_ - Array of property keys
-
-#### Returns
-
-Method return an array of properties `{ key: string, value: string }`
-
-#### Examples
-
-```ts
-import {
-  TokenPropertiesArguments,
-  TokenPropertiesResult,
-} from '@unique-nft/substrate-client/tokens/types';
-
-const args: TokenPropertiesArguments = {
-  collectionId: 1,
-  tokenId: 1,
-  // propertyKeys: ['foo', 'bar'],
-};
-
-const result: TokenPropertiesResult = await sdk.tokens.properties(args);
 ```
 </details>
 
@@ -2503,40 +3185,6 @@ const args: TotalSupplyArguments = {
 };
 
 const result: TotalSupplyResult = await sdk.collections.totalSupply(args);
-```
-</details>
-
-### Transfer token
-<details><summary>Transfer token description</summary>
-
-#### Arguments
-
-- **address** - Signer address
-- **from** _optional_ - Address that owns token (default is signer address)
-- **to** - Address of token recipient
-- **collectionId** - Collection id
-- **tokenId** - Token id
-- **value** _optional_ - For (re)fungible transfer (default is 1)
-
-#### Returns
-
-The method returns an `Transfer` event.
-
-#### Examples
-
-```ts
-import { TransferArguments } from '@unique-nft/substrate-client/tokens';
-
-const args: TransferArguments = {
-  address: '<address>',
-  to: '<address>',
-  collectionId: 1,
-  tokenId: 1,
-};
-
-const result = await sdk.tokens.transfer.submitWaitResult(args);
-
-console.log(result.parsed);
 ```
 </details>
 
