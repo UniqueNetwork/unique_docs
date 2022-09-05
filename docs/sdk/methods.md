@@ -2176,102 +2176,275 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
 ### Delete token properties
 <details><summary>Delete token properties description</summary>
 
+#### Overview
+
+Deletes **properties** (see [Token properties](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/token-properties)) from token.
+
+#### Brief example
+
+```typescript
+  const args: DeleteTokenPropertiesArguments = {
+    address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
+    collectionId: 1,
+    tokenId: 1,
+    propertyKeys: ['foo', 'bar'],
+  };
+  
+  const result = await sdk.tokens.deleteProperties.submitWaitResult(args);
+  
+  console.log(result.parsed);
+```
+
 #### Arguments
 
-- **address** - The address of collection owner
-- **collectionId** - Collection id
-- **tokenId** - Token id
-- **propertyKeys** - Array of properties keys
+`address: string` - Signer, the address of **Collection Owner**, **Collection admin** or **Token Owner**
+
+`collectionId: number` - Collection id
+
+`tokenId: number` - Token id
+
+`propertyKeys: string[]` - Array of properties keys
+
+#### Behaviour and errors
+
+Throw errors:
+
+- Collection or token not found
+- Signer is **Collection admin** or **Token Owner** and does not have **permission** to call the method (see [Set token property permissions](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/../set-token-property-permissions) for details).
+- Keys not in **tokenPropertyPermissions** list
 
 #### Returns
 
-The method returns an array of `TokenPropertyDeleted` events.
+This method returns `DeleteTokenPropertiesResult`
 
-```ts
-const args: DeleteTokenPropertiesArguments = {
-  address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
-  collectionId: 1,
-  tokenId: 1,
-  propertyKeys: ['foo', 'bar'],
-};
-
-const result = await sdk.tokens.deleteProperties.submitWaitResult(args);
-
-console.log(result.parsed);
+```typescript
+  type DeleteTokenPropertiesResult = {
+    properties: Array<{
+      collectionId: number;
+      tokenId: number;
+      propertyKey: string;
+    }>;
+  }
 ```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="SDK">
+
+```typescript
+  const args: DeleteTokenPropertiesArguments = {
+    address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
+    collectionId: 1,
+    tokenId: 1,
+    propertyKeys: ['foo', 'bar'],
+  };
+  
+  const result = await sdk.tokens.deleteProperties.submitWaitResult(args);
+  
+  console.log(result.parsed);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+
+  curl -X 'DELETE' \
+    'http://rest.opal.uniquenetwork.dev/token-new/properties?use=Build&withFee=false&verify=false' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+    "address": "5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX",
+    "collectionId": 1,
+    "tokenId": 1,
+    "propertyKeys": ['\''foo'\'', '\''bar'\'']
+  }'
+  
+    # then we sign, then we call
+    
+    curl -X 'POST' \
+    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+    "signerPayloadJSON": { *from previous response* },
+    "signature": "0x_your_signature_in_hex"
+    }'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    
+    const { parsed: { properties } } = await client.tokens.deleteProperties.submitWaitResult({
+      "address": "5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX",
+      "collectionId": 1,
+      "tokenId": 1,
+      "propertyKeys": [
+        "foo",
+        "bar"
+      ]
+    });
+    
+    console.log(`removed properties  ${properties.map(t => t.propertyKey).join(', ')}`);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
 </details>
 
 ### Set token properties
 <details><summary>Set token properties description</summary>
 
-#### Arguments
+#### Overview
 
-- **address** - The address of collection owner
-- **collectionId** - Collection id
-- **tokenId** - Token id
-- **properties** - Array of properties `{ key: string, value: string }`
+Sets (create or overwrite) [**properties**](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/token-properties) for token.
 
-#### Returns
+#### Brief example
 
-The method returns an array of `TokenPropertySet` events.
-
-#### Examples
-
-```ts
-const args: SetTokenPropertiesArguments = {
-  address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
-  collectionId: 1,
-  tokenId: 1,
-  properties: [
-    {
-      key: 'foo',
-      value: 'bar',
-    },
-  ],
-};
-
-const result = await sdk.tokens.setProperties.submitWaitResult(args);
-
-console.log(result.parsed);
-```
-</details>
-
-### Set token property permissions
-<details><summary>Set token property permissions description</summary>
-
-#### Arguments
-
-- **address** - The address of collection owner
-- **collectionId** - Collection id
-- **propertyPermissions** - Array of property permissions `{ key: string, permission: { mutable: boolean, collectionAdmin: boolean, tokenOwner: boolean } }`
-
-#### Returns
-
-The method returns an array of `PropertyPermissionSet` events.
-
-#### Examples
-
-```ts
-const args: SetTokenPropertyPermissionsArguments = {
-  address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
-  collectionId: 1,
-  propertyPermissions: [
-    {
-      key: 'foo',
-      permission: {
-        mutable: true,
-        collectionAdmin: true,
-        tokenOwner: true,
+```typescript
+  const args: SetTokenPropertiesArguments = {
+    address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
+    collectionId: 1,
+    tokenId: 1,
+    properties: [
+      {
+        key: 'foo',
+        value: 'bar',
       },
-    },
-  ],
-};
-
-const result =
-  await sdk.collections.setTokenPropertyPermissions.submitWaitResult(args);
-
-console.log(result.parsed);
+    ],
+  };
+  
+  const result = await sdk.tokens.setProperties.submitWaitResult(args);
+  
+  console.log(result.parsed);
 ```
+
+#### Arguments
+
+`address: string` - Signer, the address of **Collection Owner**, **Collection admin** or **Token Owner**
+
+`collectionId: number` - Collection id
+
+`tokenId: number` - Token id
+
+`properties: Array<{
+  key: string;
+  value: string;
+  }>` - Array of properties
+
+#### Behaviour and errors
+
+Throw errors:
+
+- Collection or token not found
+- Signer is **Collection admin** or **Token Owner** and does not have permission to call the method (see [Set token property permissions](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/../set-token-property-permissions) for details).
+- Keys not in **tokenPropertyPermissions** list
+
+#### Returns
+
+This method returns `SetTokenPropertiesResult`
+
+```typescript
+  type SetTokenPropertiesResult = {
+    properties: Array<{
+      collectionId: number;
+      tokenId: number;
+      propertyKey: string;
+    }>;
+  };
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="SDK">
+
+```typescript
+  const args: SetTokenPropertiesArguments = {
+    address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
+    collectionId: 1,
+    tokenId: 1,
+    properties: [
+      {
+        key: 'foo',
+        value: 'bar',
+      },
+    ],
+  };
+  
+  const result = await sdk.tokens.setProperties.submitWaitResult(args);
+  
+  console.log(result.parsed);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+
+    curl -X 'POST' \
+      'https://rest.opal.uniquenetwork.dev/token-new/properties?use=Build&withFee=false&verify=false' \
+      -H 'accept: application/json' \
+      -H 'Content-Type: application/json' \
+      -d '{
+      "address": "5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX",
+      "collectionId": 1,
+      "tokenId": 1,
+      "properties": [
+        {
+          "key": "foo",
+          "value": "bar"
+        }
+      ]
+    }'
+    
+    # then we sign, then we call
+    
+    curl -X 'POST' \
+    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+    "signerPayloadJSON": { *from previous response* },
+    "signature": "0x_your_signature_in_hex"
+    }'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+
+    const { parsed: { properties } } = await client.tokens.setProperties.submitWaitResult({
+      "address": "5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX",
+      "collectionId": 1,
+      "tokenId": 1,
+      "properties": [
+        {
+          "key": "foo",
+          "value": "bar"
+        }
+      ]
+    });
+
+    console.log(`the values of the keys ${properties.map(t => t.propertyKey).join(', ')} are set`);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
 </details>
 
 ### Get token
@@ -2312,7 +2485,7 @@ Throw errors:
 - Token not found (not created or burned)
 - Check path chain (CHAIN_WS_URL)
 
-## Returns
+#### Returns
 
 This method returns `TokenByIdResult`
 
@@ -2322,7 +2495,7 @@ type TokenByIdResult = Omit<UniqueTokenDecoded, 'owner'> & {
 };
 ```
 
-## Examples
+#### Examples
 
 <CodeGroup>
 
@@ -2485,21 +2658,13 @@ const result: TokenOwnerResult = await sdk.tokens.tokenOwner(
 ### Token properties
 <details><summary>Token properties description</summary>
 
-Get array of token properties
+#### Overview
 
-#### Arguments
+Get array of token **properties**. Property keys must be in the **tokenPropertyPermissions** list (see [Set token property permissions](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/../set-token-property-permissions)).
 
-- **collectionId** - Collection ID
-- **tokenId** - Token ID
-- **propertyKeys** _optional_ - Array of property keys
+#### Brief example
 
-#### Returns
-
-Method return an array of properties `{ key: string, value: string }`
-
-#### Examples
-
-```ts
+```typescript
 import {
   TokenPropertiesArguments,
   TokenPropertiesResult,
@@ -2513,6 +2678,83 @@ const args: TokenPropertiesArguments = {
 
 const result: TokenPropertiesResult = await sdk.tokens.properties(args);
 ```
+
+#### Arguments
+
+`collectionId: number` - Collection ID
+
+`tokenId: number` - Token ID
+
+Additional arguments
+
+`propertyKeys?: string[]` - Array of property keys
+
+#### Behaviour and errors
+
+Throw errors:
+
+- Collection or token not found
+
+#### Returns
+
+This method returns `TokenPropertiesResult`
+
+```typescript
+type TokenPropertiesResult = {
+  properties: Array<{
+    key: string;
+    value: string;
+  }>;
+};
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="SDK">
+
+```typescript
+import {
+  TokenPropertiesArguments,
+  TokenPropertiesResult,
+} from '@unique-nft/substrate-client/tokens/types';
+
+const args: TokenPropertiesArguments = {
+  collectionId: 1,
+  tokenId: 1,
+  // propertyKeys: ['foo', 'bar'],
+};
+
+const result: TokenPropertiesResult = await sdk.tokens.properties(args);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+  curl -X 'GET' \
+    'https://rest.opal.uniquenetwork.dev/token-new/properties?collectionId=1&tokenId=1' \
+    -H 'accept: application/json'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+
+    const { properties } = await client.tokens.properties({
+      collectionId: 1,
+      tokenId: 1,
+    });
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
 </details>
 
 ### Transfer token
@@ -3404,6 +3646,44 @@ const args: SetCollectionPropertiesArguments = {
 };
 
 const result = await sdk.collections.setProperties.submitWaitResult(args);
+
+console.log(result.parsed);
+```
+</details>
+
+### Set token property permissions
+<details><summary>Set token property permissions description</summary>
+
+#### Arguments
+
+- **address** - The address of collection owner
+- **collectionId** - Collection id
+- **propertyPermissions** - Array of property permissions `{ key: string, permission: { mutable: boolean, collectionAdmin: boolean, tokenOwner: boolean } }`
+
+#### Returns
+
+The method returns an array of `PropertyPermissionSet` events.
+
+#### Examples
+
+```ts
+const args: SetTokenPropertyPermissionsArguments = {
+  address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
+  collectionId: 1,
+  propertyPermissions: [
+    {
+      key: 'foo',
+      permission: {
+        mutable: true,
+        collectionAdmin: true,
+        tokenOwner: true,
+      },
+    },
+  ],
+};
+
+const result =
+  await sdk.collections.setTokenPropertyPermissions.submitWaitResult(args);
 
 console.log(result.parsed);
 ```
