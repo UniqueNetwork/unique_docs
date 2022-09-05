@@ -1232,6 +1232,417 @@ This method returns `SetSponsorshipResult`
 </CodeGroup>
 </details>
 
+## Statistics
+
+### Get account tokens of the collection
+<details><summary>Get account tokens of the collection description</summary>
+
+#### Overview
+Returns array of tokens, owned by address
+
+#### Brief example
+
+```typescript
+import { AccountTokensResult } from '@unique-nft/substrate-client/tokens';
+
+const tokensResult: AccountTokensResult = await sdk.tokens.getAccountTokens({
+  collectionId: 1,
+  address: '<address>',
+});
+
+const token = tokensResult.tokens[0];
+const { collectionId, tokenId } = token;
+```
+
+#### Arguments
+
+`collectionId: number` - ID of collection 
+
+`address: string` - address of tokens owner
+
+#### Behaviour and errors
+
+#### Returns
+
+This method returns `AccountTokensResult`
+
+```typescript
+import { TokenIdArguments } from '@unique-nft/substrate-client/tokens';
+
+interface AccountTokensResult {
+  tokens: TokenIdArguments[];
+}
+```
+
+#### Examples
+
+
+<CodeGroup>
+  <CodeGroupItem title="SDK">
+
+```typescript
+  import { AccountTokensArguments, AccountTokensResult } from '@unique-nft/substrate-client/tokens';
+  
+  const accountTokensArguments: AccountTokensArguments = {
+      address: '5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp',
+      collectionId: 1,
+  };
+  
+  const tokensResult: AccountTokensResult = await sdk.tokens.getAccountTokens(accountTokensArguments);
+  
+  const token = tokensResult.tokens[0];
+  const { collectionId, tokenId } = token;
+  
+  console.log(`${collectionId} - ${tokenId}`);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+    curl -X 'GET' \
+    'https://rest.opal.uniquenetwork.dev/token-new/account-tokens?address=5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp&collectionId=1'
+```
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    
+    const tokensResult = await client.tokens.accountTokens({
+        address: '5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp',
+        collectionId: 1,
+    });
+
+    const token = tokensResult.tokens[0];
+    const { collectionId, tokenId } = token;
+    
+    console.log(`${collectionId} - ${tokenId}`);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+</details>
+
+# Get collection tokens
+
+#### Overview
+
+Get tokens contained within a collection
+
+#### Brief example
+
+```typescript
+import { CollectionTokensResult } from '@unique-nft/substrate-client/tokens/types';
+
+const result: CollectionTokensResult = await sdk.collections.tokens({
+  collectionId: 1,
+});
+```
+
+#### Arguments
+
+`collectionId: number` - Collection ID
+
+#### Behaviour and errors
+
+#### Returns
+
+This method returns `CollectionTokensResult`
+
+```typescript
+interface CollectionTokensResult {
+  ids: number[];
+}
+```
+
+Method returns array of tokenIds contained within passed collection.
+
+#### Examples
+
+<CodeGroup>
+  <CodeGroupItem title="SDK">
+
+```typescript
+  import { CollectionTokensResult } from '@unique-nft/substrate-client/tokens';
+
+  const tokensResult: CollectionTokensResult = await sdk.collections.tokens({
+    collectionId: 1,
+  });
+  
+  const { ids } = tokensResult;
+  
+  console.log(`ids - ${ids}`);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+    curl -X 'GET' \
+    'https://rest.opal.uniquenetwork.dev/collection/tokens?collectionId=1'
+```
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    
+    const tokensResult = await client.collections.tokens({
+        collectionId: 1,
+    });
+
+    const { ids } = tokensResult;
+    
+    console.log(`ids - ${ids}`);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+
+
+# Get collection stats
+
+#### Overview
+
+Returns blockchain collection statistics:
+ - The number of total collections created
+ - The number of destroyed collections
+ - The number of collections that are still alive
+
+#### Brief example
+
+```typescript
+import { GetStatsResult } from '@unique-nft/substrate-client/types';
+
+const stats: GetStatsResult = await sdk.collections.getStats();
+
+console.log(`stats: ${stats.created}, ${stats.destroyed}, ${stats.alive}`);
+```
+
+
+#### Arguments
+
+No arguments required.
+
+#### Returns
+
+This method returns `GetStatsResult`
+```typescript
+interface GetStatsResult {
+  created: number;
+  destroyed: number;
+  alive: number;
+}
+```
+
+#### Examples
+
+<CodeGroup>
+  <CodeGroupItem title="SDK">
+
+```typescript
+  import { CollectionTokensResult } from '@unique-nft/substrate-client/tokens';
+
+  const stats: GetStatsResult = await sdk.collections.getStats();
+  
+  const { created, destroyed, alive } = stats;
+  
+  console.log(`stats - ${created}, ${destroyed}, ${alive}`);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+    curl -X 'GET' \
+    'https://rest.opal.uniquenetwork.dev/collection/stats'
+```
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    
+    const stats = await client.collections.stats();
+
+    const { created, destroyed, alive } = stats;
+
+    console.log(`stats - ${created}, ${destroyed}, ${alive}`);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+
+## Last token id
+
+#### Overview
+
+Get last generated token id
+
+#### Brief example
+
+```typescript
+import { LastTokenIdResult } from '@unique-nft/substrate-client/types';
+
+const lastTokenIdResult: LastTokenIdResult = await sdk.collections.lastTokenId({
+  collectionId: 1,
+});
+
+const { tokenId } = lastTokenIdResult;
+
+console.log(`tokenId - ${tokenId}`);
+```
+
+#### Arguments
+
+`collectionId: number` - ID of collection
+
+#### Returns
+
+This method returns `LastTokenIdResult`
+```typescript
+interface LastTokenIdResult {
+  tokenId: number;
+};
+```
+
+#### Examples
+
+
+<CodeGroup>
+  <CodeGroupItem title="SDK">
+
+```typescript
+  import { LastTokenIdResult } from '@unique-nft/substrate-client/types';
+
+  const lastTokenIdResult: LastTokenIdResult = await sdk.collections.lastTokenId({
+    collectionId: 1,
+  });
+  
+  const { tokenId } = lastTokenIdResult;
+  
+  console.log(`tokenId - ${tokenId}`);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+    curl -X 'GET' \
+    'https://rest.opal.uniquenetwork.dev/collection/last-token-id?collectionId=1'
+```
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    
+    const lastTokenId = await client.collections.lastTokenId();
+
+    const { tokenId } = lastTokenId;
+
+    console.log(`lastTokenId - ${tokenId}`);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+
+
+## Total supply
+
+#### Overview
+
+Returns the number of tokens in the collection
+
+#### Brief example
+
+```typescript
+import {
+  TotalSupplyResult,
+} from '@unique-nft/substrate-client/tokens/types';
+
+const result: TotalSupplyResult = await sdk.collections.totalSupply({
+  collectionId: 1
+});
+const { totalSupply } = result;
+
+console.log(`totalSupply - ${totalSupply}`);
+```
+
+
+#### Arguments
+
+`collectionId: number` - ID of collection
+`blockHashAt?: number` - hash of execution block, is optional
+
+#### Returns
+
+This method returns `LastTokenIdResult`
+
+```typescript
+interface TotalSupplyResult {
+  totalSupply: number;
+}
+```
+
+#### Examples
+
+
+<CodeGroup>
+  <CodeGroupItem title="SDK">
+
+```typescript
+  import {
+    TotalSupplyResult,
+  } from '@unique-nft/substrate-client/tokens/types';
+  
+  const result: TotalSupplyResult = await sdk.collections.totalSupply({
+    collectionId: 1
+  });
+  const { totalSupply } = result;
+  
+  console.log(`totalSupply - ${totalSupply}`);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+    curl -X 'GET' \
+    'https://rest.opal.uniquenetwork.dev/collection/total-supply?collectionId=1'
+```
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    
+    const result = await client.collections.totalSupply();
+
+    const { totalSupply } = result;
+
+    console.log(`totalSupply - ${totalSupply}`);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+
 ## Token
 
 ### Burn token
@@ -2250,35 +2661,6 @@ console.log(result.parsed);
 
 ## Other
 
-### Get account tokens of the collection
-<details><summary>Get account tokens of the collection description</summary>
-
-Returns array of tokens, owned by address
-
-#### Arguments
-
-- **collectionId** - ID of collection
-- **address** - address of tokens owner
-
-#### Returns
-
-Method returns array of objects with properties:
-
-- **collectionId** - Collection id
-- **tokenId** - Token id
-
-#### Examples
-
-```typescript
-const accountTokens = await sdk.tokens.getAccountTokens({
-  collectionId: 1,
-  address: '<address>',
-});
-
-const [{ tokenId, collectionId }, ...restTokens] = accountTokens;
-```
-</details>
-
 ### Add collection admin
 <details><summary>Add collection admin description</summary>
 
@@ -2591,30 +2973,6 @@ const result: CollectionPropertiesResult = await sdk.collections.properties(
 ```
 </details>
 
-### Collection tokens
-<details><summary>Collection tokens description</summary>
-
-Get tokens contained within a collection
-
-#### Arguments
-
-- **collectionId** - Collection ID
-
-#### Returns
-
-Method returns array of tokenIds contained within passed collection.
-
-#### Examples
-
-```ts
-import { CollectionTokensResult } from '@unique-nft/substrate-client/tokens/types';
-
-const result: CollectionTokensResult = await sdk.collections.tokens({
-  collectionId: 1,
-});
-```
-</details>
-
 ### Create collection
 <details><summary>Create collection description</summary>
 
@@ -2797,56 +3155,6 @@ Method return collection info:
 import { CollectionIdArguments, GetCollectionLimitsResult } from '@unique-nft/substrate-client/types';
 const getCollectionArgs: CollectionIdArguments = { collectionId: 123 };
 const collection: CollectionInfo = await sdk.collections.getLimits(getCollectionArgs);
-```
-</details>
-
-### Get collection stats
-<details><summary>Get collection stats description</summary>
-
-Returns blockchain collection statistics.
-
-#### Arguments
-
-No arguments required.
-
-#### Returns
-
-Blockchain collection stats:
-
-- **created** - The number of total collections created
-- **destroyed** - The number of destroyed collections
-- **alive** - The number of collections that are still alive
-
-#### Examples
-
-```typescript
-import { GetStatsResult } from '@unique-nft/substrate-client/types';
-
-const stats: GetStatsResult | null = await sdk.collections.getStats();
-```
-</details>
-
-### Get last generated token id
-<details><summary>Get last generated token id description</summary>
-
-#### Arguments
-
-- **collectionId** - ID of collection
-
-#### Returns
-
-Method return last generated token id.
-
-- **tokenId** - id of token
-
-#### Examples
-
-```typescript
-import { LastTokenIdArguments, LastTokenIdResult } from '@unique-nft/substrate-client/types';
-const args: LastTokenIdArguments = {
-  collectionId: 1,
-};
-const lastTokenIdResult: LastTokenIdResult = await sdk.collections.lastTokenId(args);
 ```
 </details>
 
@@ -3154,37 +3462,6 @@ Method returns object:
 
 ```typescript
 const { isExists } = await sdk.tokens.exists({ collectionId: 123, tokenId: 321 });
-```
-</details>
-
-### Total supply
-<details><summary>Total supply description</summary>
-
-Returns the number of tokens in the collection
-
-#### Arguments
-
-- **collectionId** - ID of collection
-- **blockHashAt** _optional_ - hash of execution block
-
-#### Returns
-
-Return number of tokens `totalSupply: number`.
-
-#### Examples
-
-```ts
-import {
-  TotalSupplyArguments,
-  TotalSupplyResult,
-} from '@unique-nft/sdk/tokens/types';
-
-const args: TotalSupplyArguments = {
-  collectionId: 1,
-  // blockHashAt: '0xff19c2457fa4d7216cfad444615586c4365250e7310e2de7032ded4fcbd36873'
-};
-
-const result: TotalSupplyResult = await sdk.collections.totalSupply(args);
 ```
 </details>
 
