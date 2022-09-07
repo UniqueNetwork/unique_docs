@@ -28,6 +28,14 @@ export const sidebar: Record<string, SidebarConfig> = {
         text: 'Concepts',
         children: [
           '/concepts/addresses/index.md',
+          {
+            text: 'Schemas',
+            children: [
+              '/concepts/schemas/index.md',
+              '/concepts/schemas/unique.md',
+              '/concepts/schemas/ERC721Metadata.md',
+            ]
+          },
           '/concepts/glossary.md',
           '/concepts/substrate.md',
           '/concepts/polkadot.md',
