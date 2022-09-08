@@ -1,6 +1,7 @@
 # Architecture design
 
 
+
 ## Extrinsic
 
 While working with the blockchain using any provided connection tool, the main instrument for changing blockchain data is an **extrinsic**. Extrinsic is a request with certain parameters, which consists of 3 parts:
@@ -66,3 +67,5 @@ TBD
 | [Submit extrinsic](https://github.com/UniqueNetwork/unique-sdk/blob/0cbdab33512e6e712d3e2c5cbcd54807ec6354a1/packages/substrate-client/errors/src/submit-extrinsic.ts)       | TBD                    |
 | [Validation](https://github.com/UniqueNetwork/unique-sdk/blob/0cbdab33512e6e712d3e2c5cbcd54807ec6354a1/packages/substrate-client/errors/src/validation.ts)                   | TBD                    |
 | [Verification failed](https://github.com/UniqueNetwork/unique-sdk/blob/0cbdab33512e6e712d3e2c5cbcd54807ec6354a1/packages/substrate-client/errors/src/verification-failed.ts) | TBD                    |
+=======
+
