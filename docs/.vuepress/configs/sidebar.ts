@@ -67,6 +67,7 @@ export const sidebar: Record<string, SidebarConfig> = {
       {
         text: 'SDK',
         children: [
+          '/sdk/about_sdk.md',
           '/sdk/index.md',
           '/sdk/architecture.md',
           '/sdk/installation.md',
