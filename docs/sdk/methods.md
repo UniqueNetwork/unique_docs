@@ -968,6 +968,111 @@ This method returns `ConfirmSponsorshipResult`
 </CodeGroup>
 </details>
 
+# Next sponsored
+
+#### Overview
+
+Return number of blocks when sponsored transaction is available. Returns null if sponsorship hasn't been set.
+
+#### Brief example
+
+```typescript
+import {
+  NextSponsoredArguments,
+  NextSponsoredResult,
+} from '@unique-nft/substrate-client/types';
+
+const args: NextSponsoredArguments = {
+  collectionId: 1,
+  tokenId: 1,
+  address: '5G4M7RCt8PvtFPFm4XSwu85eK9Z8n9c6rygHZawHVALUvgcd',
+  // at: "0xa37d1c0155bda5877f4bc64c62cd37022c1b6db201c8225da7d169336d38b257"
+};
+
+const result: NextSponsoredResult = await sdk.collections.nextSponsored(args);
+
+console.log(result);
+/*
+{
+  "blockNumber": 0
+}
+*/
+```
+
+#### Arguments
+
+`collectionId: number` - ID of collection
+
+`tokenId: number` - ID of token
+
+`address: string` - Address of transaction account
+
+`at: string` - _optional_ - Hash of execution block
+
+#### Returns
+
+This method returns `NextSponsoredResult`
+
+```typescript
+type NextSponsoredResult = {
+  blockNumber: number | null;
+};
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="SDK">
+
+```typescript
+import {
+  NextSponsoredArguments,
+  NextSponsoredResult,
+} from '@unique-nft/substrate-client/types';
+
+const args: NextSponsoredArguments = {
+  collectionId: 1,
+  tokenId: 1,
+  address: '5G4M7RCt8PvtFPFm4XSwu85eK9Z8n9c6rygHZawHVALUvgcd',
+  // at: "0xa37d1c0155bda5877f4bc64c62cd37022c1b6db201c8225da7d169336d38b257"
+};
+
+const result: NextSponsoredResult = await sdk.collections.nextSponsored(args);
+
+console.log(result);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+curl -X 'GET' \
+  'https://rest.opal.uniquenetwork.dev/collection/next-sponsored?collectionId=934&address=5GbRWxdwL8eHAgVaeXW3GUBffyLaKaLRhXXPwcnZbbzKDUU8&tokenId=1' \
+  -H 'accept: application/json'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+
+const result = await client.tokens.nextSponsored({
+  collectionId: 1,
+  tokenId: 1,
+  address: '5G4M7RCt8PvtFPFm4XSwu85eK9Z8n9c6rygHZawHVALUvgcd',
+});
+
+console.log(result);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+
 ### Remove collection sponsor
 <details><summary>Remove collection sponsor description</summary>
 
@@ -3397,36 +3502,6 @@ Method return collection info:
 import { CollectionIdArguments, GetCollectionLimitsResult } from '@unique-nft/substrate-client/types';
 const getCollectionArgs: CollectionIdArguments = { collectionId: 123 };
 const collection: CollectionInfo = await sdk.collections.getLimits(getCollectionArgs);
-```
-</details>
-
-### Get number of blocks when sponsored transaction is available
-<details><summary>Get number of blocks when sponsored transaction is available description</summary>
-
-Returns number of block or none string.
-
-#### Arguments
-
-- **address** - Substrate or Ethereum address
-- **collectionId** - ID of collection
-- **tokenId** - ID of token
-
-#### Returns
-
-Method return number of blocks or none string.
-
-- **blockNumber** - Number of token
-
-#### Examples
-
-```typescript
-import { NextSponsoredArguments, NextSponsoredResult } from '@unique-nft/substrate-client/types';
-const getSponsoredArgs: NextSponsoredArguments = {
-  address: '<your address>',
-  collectionId: 1,
-  tokenId: 1,
-};
-const nextSponsoredResult: NextSponsoredResult = await sdk.collections.nextSponsored(getSponsoredArgs);
 ```
 </details>
 
