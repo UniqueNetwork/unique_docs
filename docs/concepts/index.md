@@ -1,35 +1,48 @@
 # Concepts
 
-## Our vision of NFT
+#### NFT 
 
-While there are already tens of thousands of tokens created using blockchain, and thousands of them actively used (or traded), Non-Fungible Tokens are still in their infancy. We believe this will change.
+#### RFT (fractional tokens)
 
-## The Unique Network team considers the following use cases as main ones:
+The Fractional tokens provide a way for many users to own a part of an NFT. It democratizes premium digital assets through shared ownership powered by Re-Fungibile Token technology.
 
-* Gaming – we see most activity in the NFT space in game items.
-* Art – there are already experiments with digital art on blockchain, and it is matter of time until it sees wide adoption. When Web 3.0 becomes a reality, all digital files that we see on the internet will be NFT.
-* Government – identity cards, real estate registers, vehicle registration - all of this is unique and will be digitally presented as an NFT as soon as the infrastructure becomes reliable and efficient enough to replace existing systems.
-* Certificates – educational or any other certificates also need a unique digital representation.
+#### Nesting 
+An NFT can contain another NFT or RFT inside. Also, you can create a bundle that contains NFT + RFT + USDT. When you send the parent NFT to someone, he/she will receive the entire bundle just in one transaction.
 
-While Ethereum network is still favoured by NFT creators, other blockchains get traction, as well. We will get a lot of good implementations that are stuck in their ecosystem in near future. Interoperability is in its very early phases.
+#### Transaction sponsoring
 
-Web3.0 is required to make the above-mentioned use cases real. Web 3.0 is powerful, interoperable, scalable solution that provides flexible economic models. Ethereum will not be the NFT platform world-wide, because of its strict economic system – each transaction requires gas fees, and we cannot imagine this approach will be used by anyone.
+Usually, an end-user have to pay a transaction fees when creating a collection, selling or purchasing NFTs. But, where he should get a native currency of network for this.
 
-These are reasons why we decided to create NFT infrastructure and our chain using Substrate to be deployed on Kusama and Polkadot.
+We, in Unique Network, solves this issue. Using sponsoring, the market (app) owner can pay these insignificant fees for the users, and he/she should not carry about this.
 
-## The main components
+#### Free form collections 
+A possibility to set any properties and put any values in them. 
 
-1. Infrastructure:
-  * NFT Module;
-  * Smart contract module;
-  * Wallet and widgets for other wallets;
-  * Parachain.
-2. Interoperability:
-  * NFT Bridges to other chains (or NFT components of existing bridges);
-  * Unity API (and other APIs).
-3. NFT SDK and Solutions:
-  * Exchange;
-  * Gaming platforms;
-  * Identity;
-  * Certification;
-  * Software Licenses.
+#### Collections with adjusted permissions 
+You can manage white list, admin list for collections. Also, you specify for each property who can manage or change it. 
+
+#### EVM integration 
+* Support for standard EVM smart-contracts with benefits of whitelisting and sponsoring 
+  * Collection sponsoring (transferring, approving, minting) by specific address balance
+* Native collections - ERC721Metadata (with ERC721Metadata support)
+  * presented as contracts (ERC721-like) and may be interacted via Ethereum clients (like Metamask) and other smart contracts
+* Possibility to create collections without smart contract deployment
+* Admins - opportunity to assign and revoke up to 5 collection Administrators in any moment
+* Seamless interop between Substrate and Ethereum API 
+  * possibility to create and manage collection from the Substrate API and interact via Ethereum API and vice versa
+* Nesting - examples, description.
+* RFT. ERC20 and ERC1633-compatible. Specifics, description.  
+* Ready to use solidity interfaces which are emulated
+
+#### User-ready tools
+
+* UniqueWallet 
+* UniqueMarketplace 
+* UniqueScan 
+
+#### Ways to interact
+* Ethereum API (RPC)
+* SDK - thin client
+* Substrate REST
+* Substrate Client - thick client
+* Polkadot JS
