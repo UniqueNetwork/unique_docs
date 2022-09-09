@@ -1,3 +1,7 @@
+
+
+
+
 # How to install
 
 # Table of Contents
@@ -50,9 +54,10 @@ npm install @unique-nft/accounts
 Pass the `singer` in the parameters when creating the `Client` object
 ```typescript
 import { KeyringProvider } from '@unique-nft/accounts/keyring';
-import { Client } from "@unique-nft/client";
+import { KeyringOptions } from '@polkadot/keyring/types';
+import { Client, Options } from "@unique-nft/client";
 
-const options = {
+const options: KeyringOptions = {
   type: 'sr25519',
 };
 const provider = new KeyringProvider(options);
@@ -60,7 +65,7 @@ await provider.init();
 const account = provider.addSeed('<seed of account>');
 const signer = account.getSigner();
 
-const clientOptions = {
+const clientOptions: Options = {
   baseUrl: 'REST API URL',
   signer
 };

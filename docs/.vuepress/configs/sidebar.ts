@@ -6,29 +6,21 @@ export const sidebar: Record<string, SidebarConfig> = {
       {
         text: 'Unique Guide',
         children: [
-          '/guide/README.md',
+          '/guide/index.md',
           '/guide/create-account.md',
-          '/guide/glossary.md',
-          '/guide/identica.md',
           '/guide/wallet-integration.md'
         ],
       }
     ],
-    '/repos': [
+    '/links': [
       {
-        text: 'GitHub',
-        children: ['/repos/README.md'],
-      }
-    ],
-    '/ecosystem': [
-      {
-        text: 'Ecosystem',
-        children: ['/ecosystem/polkadot.md',
-        '/ecosystem/kusama.md',
-        '/ecosystem/substrate.md',
-        '/ecosystem/community.md',
-          '/ecosystem/use-cases.md'
-        ]
+        text: 'Links',
+        children: [
+          '/links/index.md',
+          '/links/ecosystem/community.md',
+          '/links/ecosystem/use-cases.md',
+          '/links/ecosystem/identica.md',
+        ],
       }
     ],
     '/concepts': [
@@ -36,7 +28,19 @@ export const sidebar: Record<string, SidebarConfig> = {
         text: 'Concepts',
         children: [
           '/concepts/addresses/index.md',
-
+          {
+            text: 'Schemas',
+            children: [
+              '/concepts/schemas/index.md',
+              '/concepts/schemas/unique.md',
+              '/concepts/schemas/ERC721Metadata.md',
+            ]
+          },
+          '/concepts/glossary.md',
+          '/concepts/collection-limits.md',
+          '/concepts/collection-permissions.md',
+          '/concepts/substrate.md',
+          '/concepts/polkadot.md',
         ],
       },
     ],
@@ -67,20 +71,13 @@ export const sidebar: Record<string, SidebarConfig> = {
       {
         text: 'SDK',
         children: [
+          '/sdk/about_sdk.md',
           '/sdk/index.md',
           '/sdk/architecture.md',
           '/sdk/installation.md',
           '/sdk/methods.md',
           '/sdk/tools.md',
         ],
-      }
-    ],
-    '/products/market': [
-      {
-        text: 'Market',
-        children: [
-          '/products/market/index.md',
-        ]
       }
     ]
   }

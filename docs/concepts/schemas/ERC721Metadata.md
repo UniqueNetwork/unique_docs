@@ -1,0 +1,1 @@
+# ERC721Metadata schema
