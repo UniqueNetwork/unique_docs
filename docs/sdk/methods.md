@@ -1883,90 +1883,353 @@ This method returns `TransferCollectionResult`
 ### Add collection admin
 <details><summary>Add collection admin description</summary>
 
+#### Overview
+
+Adds an **admin** of the Collection. 
+
+**Admin** description available in [Get admin list](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/admin-list).
+
+Only **Collection Owner** or **Collection Admin** has permission to call this method.
+
+#### Brief example
+
+```typescript
+    import { AddCollectionAdminArguments } from '@unique-nft/substrate-client/tokens';
+    
+    const args: AddCollectionAdminArguments = {
+      address: '<address>',
+      collectionId: 1,
+      newAdmin: '<address>',
+    };
+    
+    const result = await sdk.collections.addAdmin.submitWaitResult(args);
+    
+    console.log(result.parsed);
+```
+
 #### Arguments
 
-- **address** - Signer address
-- **collectionId** - Collection id
-- **newAdmin** - New admin address
+`address: string` - Signer, the address of **Collection Owner** or **Collection Admin**
+
+`collectionId: number` - ID of the Collection to add **admin** for
+
+`newAdmin: string` - Address of new admin to add
+
+#### Behaviour and errors
+
+Throw errors:
+
+- Collection not found
+- Signer is not **Collection Owner** or **Collection Admin**
 
 #### Returns
 
-The method returns an `CollectionAdminAdded` event.
+This method returns `AddCollectionAdminResult`
+
+```typescript
+    interface AddCollectionAdminResult {
+      collectionId: number;
+      newAdmin: string;
+    }
+```
 
 #### Examples
 
-```ts
-import { AddCollectionAdminArguments } from '@unique-nft/substrate-client/tokens';
+<CodeGroup>
 
-const args: AddCollectionAdminArguments = {
-  address: '<address>',
-  collectionId: 1,
-  newAdmin: '<address>',
-};
+  <CodeGroupItem title="SDK">
 
-const result = await sdk.collections.addAdmin.submitWaitResult(args);
-
-console.log(result.parsed);
+```typescript
+    import { AddCollectionAdminArguments } from '@unique-nft/substrate-client/tokens';
+    
+    const args: AddCollectionAdminArguments = {
+      address: '<address>',
+      collectionId: 1,
+      newAdmin: '<address>',
+    };
+    
+    const result = await sdk.collections.addAdmin.submitWaitResult(args);
+    
+    console.log(result.parsed);
 ```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+
+    curl -X 'POST' \
+      'https://rest.opal.uniquenetwork.dev/collection-new/admins?use=Build&withFee=false&verify=false' \
+      -H 'accept: application/json' \
+      -H 'Content-Type: application/json' \
+      -d '{
+      "address": "5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y",
+      "collectionId": 1,
+      "newAdmin": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty"
+    }'
+    
+    # then we sign, then we call
+    
+    curl -X 'POST' \
+    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+    "signerPayloadJSON": { *from previous response* },
+    "signature": "0x_your_signature_in_hex"
+    }'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    
+    const result = await client.collections.addAdmin.submitWaitResult({
+      "address": "5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y",
+      "collectionId": 1,
+      "newAdmin": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty"
+    });
+    
+    const { parsed: { collectionId, newAdmin } } = result;
+    
+    console.log(`collection ${collectionId} has admin ${newAdmin}`);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
 </details>
 
-### Adminlist
-<details><summary>Adminlist description</summary>
+### Get admin list
+<details><summary>Get admin list description</summary>
 
-Get array of collection admins
+#### Overview
+
+Get array of **Collection Admins**.
+
+NFT Collection can be controlled by multiple **admin** addresses (some which can also be servers, for example).
+
+**Admins** can issue and burn NFTs, as well as add and remove other **admins**, but cannot change NFT or Collection ownership.
+
+List of admins may become empty. 
+
+To add a **Collection Admin**, use the **[Add collection admin](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/add-collection-admin)** method.
+
+#### Brief example
+
+```typescript
+    import {
+      AdminlistArguments,
+      AdminlistResult,
+    } from '@unique-nft/substrate-client/tokens/types';
+    
+    const args: AdminlistArguments = {
+      collectionId: 1,
+    };
+    
+    const result: AdminlistResult = await sdk.collections.admins(args);
+```
 
 #### Arguments
 
-- **collectionId** - ID of token collection
+`collectionId: number``collectionId: number`
+
+`at?: string;` - Allows to specify at which moment of the chain (block hash) you need to perform the check. If you leave it empty, the result will be for the last block of the chain.
+
+#### Behaviour and errors
+
+Throw errors:
+
+- Collection not found
 
 #### Returns
 
-Method return an array of accounts
+This method returns `AdminlistResult`
+
+```typescript
+    type AdminlistResult = {
+      admins: string[];
+    };
+```
 
 #### Examples
 
-```ts
-import {
-  AdminlistArguments,
-  AdminlistResult,
-} from '@unique-nft/substrate-client/tokens/types';
+<CodeGroup>
 
-const args: AdminlistArguments = {
-  collectionId: 1,
-};
+  <CodeGroupItem title="SDK">
 
-const result: AdminlistResult = await sdk.collections.admins(args);
+```typescript
+    import {
+      AdminlistArguments,
+      AdminlistResult,
+    } from '@unique-nft/substrate-client/tokens/types';
+    
+    const args: AdminlistArguments = {
+      collectionId: 1,
+    };
+    
+    const result: AdminlistResult = await sdk.collections.admins(args);
 ```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+    curl -X 'GET' \
+      'https://rest.opal.uniquenetwork.dev/collection/admins?collectionId=1' \
+      -H 'accept: application/json'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    
+    const result = await client.collections.admins({
+        collectionId: 1,
+    });
+    
+    const { admins } = result;
+    
+    console.log(`${admins.join()} - collection admins`);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
 </details>
 
 ### Remove collection admin
 <details><summary>Remove collection admin description</summary>
 
+#### Overview
+
+Remove **admin** address of the Collection. An **admin** address can remove itself.
+
+List of admins may become empty, in which case only **Collection Owner** will be able to add an **Admin**.
+
+**Admin** description available in [Get admin list](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/admin-list).
+
+Only **Collection Owner** or **Collection Admin** has permission to call this method.
+
+#### Brief example
+
+```typescript
+    import { RemoveCollectionAdminArguments } from '@unique-nft/substrate-client/tokens';
+    
+    const args: RemoveCollectionAdminArguments = {
+      address: '<address>',
+      collectionId: 1,
+      accountId: '<address>',
+    };
+    
+    const result = await sdk.collections.removeAdmin.submitWaitResult(args);
+    
+    console.log(result.parsed);
+```
+
 #### Arguments
 
-- **address** - Signer address
-- **collectionId** - Collection id
-- **accountId** - Admin address
+`address: string` - Signer, the address of **Collection Owner** or **Collection Admin**
+
+`collectionId: number` - ID of the Collection to remove admin for
+
+`admin: string` - Address of admin to remove
+
+#### Behaviour and errors
+
+Throw errors:
+
+- Collection not found
+- Signer is not **Collection Owner** or **Collection Admin**
 
 #### Returns
 
-The method returns an `CollectionAdminRemoved` event.
+This method returns `RemoveCollectionAdminResult`
+
+```typescript
+    interface RemoveCollectionAdminResult {
+      collectionId: number;
+      admin: string;
+    }
+```
 
 #### Examples
 
-```ts
-import { RemoveCollectionAdminArguments } from '@unique-nft/substrate-client/tokens';
+<CodeGroup>
 
-const args: RemoveCollectionAdminArguments = {
-  address: '<address>',
-  collectionId: 1,
-  accountId: '<address>',
-};
+  <CodeGroupItem title="SDK">
 
-const result = await sdk.collections.removeAdmin.submitWaitResult(args);
-
-console.log(result.parsed);
+```typescript
+    import { RemoveCollectionAdminArguments } from '@unique-nft/substrate-client/tokens';
+    
+    const args: RemoveCollectionAdminArguments = {
+      address: '<address>',
+      collectionId: 1,
+      accountId: '<address>',
+    };
+    
+    const result = await sdk.collections.removeAdmin.submitWaitResult(args);
+    
+    console.log(result.parsed);
 ```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+
+    curl -X 'DELETE' \
+      'https://rest.opal.uniquenetwork.dev/collection-new/admins?use=Build&withFee=false&verify=false' \
+      -H 'accept: application/json' \
+      -H 'Content-Type: application/json' \
+      -d '{
+          "address": "5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y",
+          "collectionId": 1,
+          "admin": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty"
+        }'
+        
+    # then we sign, then we call
+    
+    curl -X 'POST' \
+    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+    "signerPayloadJSON": { *from previous response* },
+    "signature": "0x_your_signature_in_hex"
+    }'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+
+    const result = await client.collections.removeAdmin.submitWaitResult({
+      "address": "5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y",
+      "collectionId": 1,
+      "admin": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty"
+    });
+    
+    const { parsed: { collectionId, admin } } = result;
+    
+    console.log(`admin ${admin} removed from collection ${collectionId}`);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
 </details>
 
 ## Collections allow list
