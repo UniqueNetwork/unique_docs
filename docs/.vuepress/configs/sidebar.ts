@@ -37,6 +37,8 @@ export const sidebar: Record<string, SidebarConfig> = {
             ]
           },
           '/concepts/glossary.md',
+          '/concepts/collection-limits.md',
+          '/concepts/collection-permissions.md',
           '/concepts/substrate.md',
           '/concepts/polkadot.md',
         ],

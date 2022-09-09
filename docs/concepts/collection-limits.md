@@ -1,3 +1,5 @@
+# Collection limits
+
 **accountTokenOwnershipLimit: u32**
 
 Maximum number of tokens that one address can own

@@ -1,3 +1,5 @@
+# Collection permissions
+
 **access: UpDataStructsAccessMode**
 
 **mintMode: bool**
