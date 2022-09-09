@@ -2237,19 +2237,11 @@ This method returns `RemoveCollectionAdminResult`
 ### Add To Allow List
 <details><summary>Add To Allow List description</summary>
 
+#### Overview
+
 Adds an address to allow list of a collection.
 
-#### Arguments
-
-- **address** - Sender address
-- **collectionId** - an ID of the collection which will be affected
-- **newAdminId** - the address to be added to the allow list
-
-#### Returns
-
-The method returns a `parsed` object that contains the `collectionId: number, address: string`.
-
-#### Examples
+#### Brief example
 
 ```typescript
 import { AddToAllowListArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -2263,34 +2255,167 @@ const addToAllowListArgs: AddToAllowListArguments = {
 const { parsed } = await sdk.collections.addToAllowList.submitWaitResult(addToAllowListArgs);
 const { collectionId, address } = parsed;
 ```
+
+#### Arguments
+
+- **address** - Sender address
+- **collectionId** - an ID of the collection which will be affected
+- **newAdminId** - the address to be added to the allow list
+
+#### Behaviour and errors
+
+#### Returns
+
+This method returns `AddToAllowListResult`
+
+```typescript
+interface AccountTokensResult {
+  address: Address;
+  collectionId: number;
+}
+```
+
+#### Examples
+
+<CodeGroup>
+  <CodeGroupItem title="SDK">
+
+```typescript
+import { AddToAllowListArguments } from '@unique-nft/substrate-client/tokens/types';
+
+const addToAllowListArgs: AddToAllowListArguments = {
+    address: '<your account address>',
+    collectionId: '<ID of the collection>',
+    newAdminId: '<valid address>'
+};
+
+const { parsed } = await sdk.collections.addToAllowList.submitWaitResult(addToAllowListArgs);
+
+const { collectionId, address } = parsed;
+
+console.log(
+  `Address ${address} is allowed in collection ${collectionId}`,
+);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+    curl -X 'POST' \
+      'https://rest.opal.uniquenetwork.dev/collection/add-to-allow-list' \
+      -H 'accept: application/json' \
+      -H 'Content-Type: application/json' \
+      -d '{
+      "address": "<address>",
+      "collectionId": 1,
+      "newAdminId": "<address>"
+    }'
+```
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+
+const { parsed } = await client.collections.addToAllowList.submitWaitResult({
+  address: '<your account address>',
+  collectionId: '<ID of the collection>',
+  newAdminId: '<valid address>'
+});
+
+const { address, collectionId } = parsed;
+
+console.log(
+  `Address ${address} is allowed in collection ${collectionId}`,
+);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+
 </details>
 
 ### Allow list
 <details><summary>Allow list description</summary>
 
+#### Overview
 Gets the addresses that are in to allow list for the specified collection.
 
-#### Arguments
-
-- **collectionId** - an ID of the collection which will be checked
-- **hash** _optional_ - allows to specify at which moment of the chain (block hash) you need to perform the check. If you leave it empty, the result will be for the last block of the chain.
-
-#### Returns
-
-The method returns an object containing array string addresses.
-
-#### Examples
+#### Brief example
 
 ```typescript
 import { AllowListArguments } from '@unique-nft/substrate-client/tokens/types';
 
 const allowListArgs: AllowListArguments = {
-    collectionId: '<ID of the collection>', 
-    hash: '0xff19c2457fa4d7216cfad444615586c4365250e7310e2de7032ded4fcbd36873'
+  collectionId: 1,
 };
 
 const addresses = await sdk.collections.allowList(allowListArgs);
 ```
+
+
+#### Arguments
+
+- **collectionId** - an ID of the collection which will be checked
+
+#### Returns
+
+This method returns `AllowListResult`
+
+```typescript
+interface AllowListResult {
+  addresses: Address[];
+}
+```
+
+#### Examples
+
+<CodeGroup>
+  <CodeGroupItem title="SDK">
+
+```typescript
+  import { AllowListArguments } from '@unique-nft/substrate-client/tokens/types';
+  
+  const allowListArgs: AllowListArguments = {
+    collectionId: 1,
+  };
+
+  const { addresses } = await sdk.collections.allowList(allowListArgs);
+  
+  console.log(`addresses: ${addresses}`);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+    curl -X 'GET' \
+    'https://rest.opal.uniquenetwork.dev/collection-new/allow-list?collectionId=1'
+```
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    
+    const { addresses } = await client.collections.allowList({
+        collectionId: 1,
+    });
+
+    console.log(`addresses: ${addresses}`);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+
+
 </details>
 
 ### Get allowance
@@ -2323,20 +2448,89 @@ const { isAllowed } = await sdk.tokens.allowance({
 ```
 </details>
 
-### Remove an address from allow list
-<details><summary>Remove an address from allow list description</summary>
+### Check is allowed
+<details><summary>Check is allowed description</summary>
+
+#### Overview
+Check if a user is allowed to use a collection. Returns true or false.
+
+#### Brief example
+```typescript
+const { isAllowed } = await sdk.collection.allowed({
+  collectionId: 1,
+  account: '<address>',
+});
+
+console.log(`isAllowed: ${isAllowed}`);
+```
 
 #### Arguments
 
-- **address** - Sender address
-- **collectionId** - an ID of the collection which will be affected
-- **addressToDelete** - the address to be removed from the allow list
+- **collectionId** - ID of collection
+- **account** - Account address
+- **at** _optional_ - hash of execution block
 
 #### Returns
 
-The method returns a `parsed` object that contains the `collectionId: number, address: string`.
+This method returns `AllowedResult`
+
+```typescript
+interface AllowedResult {
+  isAllowed: boolean;
+}
+```
 
 #### Examples
+
+<CodeGroup>
+  <CodeGroupItem title="SDK">
+
+```typescript
+  const { isAllowed } = await sdk.collection.allowed({
+    collectionId: 1,
+    account: '<address>',
+  });
+  
+  console.log(`isAllowed: ${isAllowed}`);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+    curl -X 'GET' \
+    'https://rest.opal.uniquenetwork.dev/collection-new/allowed?collectionId=1&address=<address>'
+```
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    
+    const { isAllowed } = await client.collections.allowed({
+        collectionId: 1,
+        account: '<address>',
+    });
+
+    console.log(`isAllowed: ${isAllowed}`);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+
+</details>
+
+### Remove from allow list
+<details><summary>Remove from allow list description</summary>
+
+#### Overview
+
+Remove account from the allow list
+
+#### Brief example
 
 ```typescript
 import { RemoveFromAllowListArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -2350,6 +2544,86 @@ const removeFromAllowListArgs: RemoveFromAllowListArguments = {
 const { parsed } = await sdk.collections.removeFromAllowList.submitWaitResult(removeFromAllowListArgs);
 const { collectionId, address } = parsed;
 ```
+
+
+#### Arguments
+
+- **address** - Sender address
+- **collectionId** - an ID of the collection which will be affected
+- **addressToDelete** - the address to be removed from the allow list
+
+#### Returns
+
+This method returns `RemoveFromAllowListResult`
+
+```typescript
+interface RemoveFromAllowListResult {
+  address: Address;
+  collectionId: number;
+}
+```
+
+#### Examples
+
+<CodeGroup>
+  <CodeGroupItem title="SDK">
+
+```typescript
+    import { RemoveFromAllowListArguments } from '@unique-nft/substrate-client/tokens/types';
+    
+    const removeFromAllowListArgs: RemoveFromAllowListArguments = {
+        address: '<your account address>',
+        collectionId: '<ID of the collection>',
+        addressToDelete: '<valid address>'
+    };
+    
+    const { parsed } = await sdk.collections.removeFromAllowList.submitWaitResult(removeFromAllowListArgs);
+    
+    const { collectionId, address } = parsed;
+    
+    console.log(
+      `Address ${address} removed from allow list in collection ${collectionId}`,
+    );
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+    curl -X 'POST' \
+      'https://rest.opal.uniquenetwork.dev/collection/remove-from-allow-list' \
+      -H 'accept: application/json' \
+      -H 'Content-Type: application/json' \
+      -d '{
+      "address": "<address>",
+      "collectionId": 1,
+      "addressToDelete": "<address>"
+    }'
+```
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    
+    const { parsed } = await client.collections.removeFromAllowList.submitWaitResult({
+      address: '<your account address>',
+      collectionId: '<ID of the collection>',
+      addressToDelete: '<valid address>'
+    });
+    
+    const { collectionId, address } = parsed;
+    
+    console.log(
+      `Address ${address} removed from allow list in collection ${collectionId}`,
+    );
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
 </details>
 
 ## Nesting
@@ -5359,33 +5633,6 @@ console.log(result.parsed);
 </details>
 
 ## Other
-
-### Check is allowed
-<details><summary>Check is allowed description</summary>
-
-Check if a user is allowed to use a collection. Returns true or false.
-
-#### Arguments
-
-- **collectionId** - ID of collection
-- **account** - Account address
-- **blockHashAt** _optional_ - hash of execution block
-
-#### Returns
-
-Method returns object:
-
-- **isAllowed** - boolean
-
-#### Examples
-
-```typescript
-const { isAllowed } = await sdk.collection.allowed({
-  collectionId: 1,
-  account: '<address>',
-});
-```
-</details>
 
 ### Approve
 <details><summary>Approve description</summary>
