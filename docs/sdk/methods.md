@@ -67,7 +67,7 @@ const collection: CollectionInfo = await sdk.collections.get(getCollectionArgs);
 
 ```bash
 curl -X 'GET' \
-'https://rest.opal.uniquenetwork.dev/collection?collectionId=1' \
+'https://rest.unique.network/opal/collection?collectionId=1' \
 -H 'accept: application/json'
 ```
 
@@ -76,14 +76,15 @@ curl -X 'GET' \
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
 
 const collection = await client.collections.get({ collectionId: 1 });
 ```
 
   </CodeGroupItem>
 
-</CodeGroup></details>
+</CodeGroup>
+</details>
 
 ### Get collection by Id new
 <details><summary>Get collection by Id new description</summary>
@@ -152,7 +153,7 @@ const collection: CollectionInfo = await sdk.collections.get_new(getCollectionAr
 
 ```bash
 curl -X 'GET' \
-  'https://rest.opal.uniquenetwork.dev/collection-new?collectionId=1' \
+  'https://rest.unique.network/opal/collection?collectionId=1' \
   -H 'accept: application/json'
 ```
 
@@ -161,14 +162,15 @@ curl -X 'GET' \
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
 
 const collection = await client.collections.get_new({ collectionId: 1 });
 ```
 
   </CodeGroupItem>
 
-</CodeGroup></details>
+</CodeGroup>
+</details>
 
 ### Get collection properties
 <details><summary>Get collection properties description</summary>
@@ -245,7 +247,7 @@ const result: CollectionPropertiesResult = await sdk.collections.properties(args
 
 ```bash
 curl -X 'GET' \
-  'https://rest.opal.uniquenetwork.dev/collection/properties?collectionId=1' \
+  'https://rest.unique.network/opal/collection/properties?collectionId=1' \
   -H 'accept: application/json'
 ```
 
@@ -254,7 +256,7 @@ curl -X 'GET' \
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
 
 const { properties } = await client.collections.properties({ collectionId: 1 });
 ```
@@ -356,7 +358,7 @@ const collection = await sdk.collections.get({ collectionId });
 
 ```bash
 curl -X 'POST' \
-  'https://rest.opal.uniquenetwork.dev/collection' \
+  'https://rest.unique.network/opal/collection' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -370,7 +372,7 @@ curl -X 'POST' \
 # then we sign, then we call
 
 curl -X 'POST' \
-'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+'https://rest.unique.network/opal/extrinsic/submit' \
 -H 'accept: application/json' \
 -H 'Content-Type: application/json' \
 -d '{
@@ -384,7 +386,7 @@ curl -X 'POST' \
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
 
 const result = await client.collections.creation.submitWaitResult({
     address: '<your address>',
@@ -503,7 +505,7 @@ console.log(`Created new collection with id ${collectionId}`)
 
 ```bash
 curl -X 'POST' \
-  'https://rest.opal.uniquenetwork.dev/collection-new' \
+  'https://rest.unique.network/opal/collection' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -527,7 +529,7 @@ curl -X 'POST' \
 # then we sign, then we call
 
 curl -X 'POST' \
-'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+'https://rest.unique.network/opal/extrinsic/submit' \
 -H 'accept: application/json' \
 -H 'Content-Type: application/json' \
 -d '{
@@ -541,7 +543,7 @@ curl -X 'POST' \
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
 
 const result = await client.collections.creation.submitWaitResult({
     address: '<your address>',
@@ -645,7 +647,7 @@ console.log(`Deleted ${deletedKeys.join()}`);
 
 ```bash
 curl -X 'DELETE' \
-  'https://rest.opal.uniquenetwork.dev/collection/properties' \
+  'https://rest.unique.network/opal/collection/properties' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -659,7 +661,7 @@ curl -X 'DELETE' \
 # then we sign, then we call
 
 curl -X 'POST' \
-'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+'https://rest.unique.network/opal/extrinsic/submit' \
 -H 'accept: application/json' \
 -H 'Content-Type: application/json' \
 -d '{
@@ -673,7 +675,7 @@ curl -X 'POST' \
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
 
 await client.collections.deleteProperties.submitWaitResult({
     address: '<your address>',
@@ -751,7 +753,7 @@ const { success } = result.parsed;
 
 ```bash
 curl -X 'DELETE' \
-  'https://rest.opal.uniquenetwork.dev/collection' \
+  'https://rest.unique.network/opal/collection' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -761,7 +763,7 @@ curl -X 'DELETE' \
 ### then we sign, then we call
 
 curl -X 'POST' \
-'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+'https://rest.unique.network/opal/extrinsic/submit' \
 -H 'accept: application/json' \
 -H 'Content-Type: application/json' \
 -d '{
@@ -775,7 +777,7 @@ curl -X 'POST' \
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
 
 client.collections.destroy.submitWaitResult({
     address: '<your address>',
@@ -864,7 +866,7 @@ console.log(`Collection ${collectionId} limits: ${JSON.stringify(limits)}`);
 
 ```bash
 curl -X 'GET' \
-  'https://rest.opal.uniquenetwork.dev/collection/limits?collectionId=1' \
+  'https://rest.unique.network/opal/collection/limits?collectionId=1' \
   -H 'accept: application/json'
 ```
 
@@ -873,7 +875,7 @@ curl -X 'GET' \
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
 
 const { collectionId, limits } = await client.collections.getLimits({ collectionId: 1 });
 
@@ -968,7 +970,7 @@ This method returns `PropertyPermissionsResult`
 ```bash
 
     curl -X 'GET' \
-      'http://rest.opal.uniquenetwork.dev/collection-new/property-permissions?collectionId=1' \
+      'http://rest.unique.network/opal/collection/property-permissions?collectionId=1' \
       -H 'accept: application/json'
       
 ```
@@ -978,7 +980,7 @@ This method returns `PropertyPermissionsResult`
   <CodeGroupItem title="Client">
 
 ```typescript
-  const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+  const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
   
   const result = await client.collections.propertyPermissions({
     collectionId: 1,
@@ -1098,7 +1100,7 @@ This method returns `SetCollectionLimitsResult`
 ```bash
 
     curl -X 'POST' \
-      'https://rest.opal.uniquenetwork.dev/collection-new/set-limits?use=Build&withFee=false&verify=false' \
+      'https://rest.unique.network/opal/collection/set-limits?use=Build&withFee=false&verify=false' \
       -H 'accept: application/json' \
       -H 'Content-Type: application/json' \
       -d '{
@@ -1120,7 +1122,7 @@ This method returns `SetCollectionLimitsResult`
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    'https://rest.unique.network/opal/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -1134,7 +1136,7 @@ This method returns `SetCollectionLimitsResult`
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
     
     const result = await client.collections.setLimits.submitWaitResult({
       "limits": {
@@ -1263,7 +1265,7 @@ This method returns `SetCollectionPermissionsResult`
 
 ```bash
     curl -X 'POST' \
-      'https://rest.opal.uniquenetwork.dev/collection/permissions?use=Build&withFee=false&verify=false' \
+      'https://rest.unique.network/opal/collection/permissions?use=Build&withFee=false&verify=false' \
       -H 'accept: application/json' \
       -H 'Content-Type: application/json' \
       -d '{
@@ -1282,7 +1284,7 @@ This method returns `SetCollectionPermissionsResult`
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    'https://rest.unique.network/opal/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -1296,7 +1298,7 @@ This method returns `SetCollectionPermissionsResult`
   <CodeGroupItem title="Client">
 
 ```typescript
-  const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+  const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
   
   const result = await client.collections.setPermissions.submitWaitResult({
     "collectionId": 1,
@@ -1411,7 +1413,7 @@ This method returns `SetCollectionPermissionsResult`
 ```bash
 
     curl -X 'POST' \
-      'https://rest.opal.uniquenetwork.dev/collection-new/properties?use=Build&withFee=false&verify=false' \
+      'https://rest.unique.network/opal/collection/properties?use=Build&withFee=false&verify=false' \
       -H 'accept: application/json' \
       -H 'Content-Type: application/json' \
       -d '{
@@ -1428,7 +1430,7 @@ This method returns `SetCollectionPermissionsResult`
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    'https://rest.unique.network/opal/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -1442,7 +1444,7 @@ This method returns `SetCollectionPermissionsResult`
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
     
     const result = await client.collections.setProperties.submitWaitResult({
       "address": "5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX",
@@ -1577,7 +1579,7 @@ This method returns `SetTokenPropertyPermissionsResult`
 ```bash
 
     curl -X 'POST' \
-      'https://rest.opal.uniquenetwork.dev/collection-new/property-permissions?use=Build&withFee=false&verify=false' \
+      'https://rest.unique.network/opal/collection/property-permissions?use=Build&withFee=false&verify=false' \
       -H 'accept: application/json' \
       -H 'Content-Type: application/json' \
       -d '{
@@ -1598,7 +1600,7 @@ This method returns `SetTokenPropertyPermissionsResult`
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    'https://rest.unique.network/opal/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -1612,7 +1614,7 @@ This method returns `SetTokenPropertyPermissionsResult`
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
     
     const result = await client.collections.setPropertyPermissions.submitWaitResult({
       "address": "5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX",
@@ -1718,7 +1720,7 @@ This method returns `SetTransfersEnabledResult`
 ```bash
 
     curl -X 'POST' \
-      'https://rest.opal.uniquenetwork.dev/collection-new/transfers-enabled?use=Build&withFee=false&verify=false' \
+      'https://rest.unique.network/opal/collection/transfers-enabled?use=Build&withFee=false&verify=false' \
       -H 'accept: application/json' \
       -H 'Content-Type: application/json' \
       -d '{
@@ -1730,7 +1732,7 @@ This method returns `SetTransfersEnabledResult`
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    'https://rest.unique.network/opal/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -1744,7 +1746,7 @@ This method returns `SetTransfersEnabledResult`
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
     
     const result = await client.collections.setTransfersEnabled.submitWaitResult({
       "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
@@ -1834,7 +1836,7 @@ This method returns `TransferCollectionResult`
 ```bash
 
     curl -X 'PATCH' \
-      'https://rest.opal.uniquenetwork.dev/collection-new/transfer?use=Build&withFee=false&verify=false' \
+      'https://rest.unique.network/opal/collection/transfer?use=Build&withFee=false&verify=false' \
       -H 'accept: application/json' \
       -H 'Content-Type: application/json' \
       -d '{
@@ -1846,7 +1848,7 @@ This method returns `TransferCollectionResult`
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    'https://rest.unique.network/opal/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -1860,7 +1862,7 @@ This method returns `TransferCollectionResult`
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
     
     const result = await client.collections.transfer.submitWaitResult({
       "collectionId": 1,
@@ -1960,7 +1962,7 @@ This method returns `AddCollectionAdminResult`
 ```bash
 
     curl -X 'POST' \
-      'https://rest.opal.uniquenetwork.dev/collection-new/admins?use=Build&withFee=false&verify=false' \
+      'https://rest.unique.network/opal/collection/admins?use=Build&withFee=false&verify=false' \
       -H 'accept: application/json' \
       -H 'Content-Type: application/json' \
       -d '{
@@ -1972,7 +1974,7 @@ This method returns `AddCollectionAdminResult`
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    'https://rest.unique.network/opal/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -1986,7 +1988,7 @@ This method returns `AddCollectionAdminResult`
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
     
     const result = await client.collections.addAdmin.submitWaitResult({
       "address": "5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y",
@@ -2081,7 +2083,7 @@ This method returns `AdminlistResult`
 
 ```bash
     curl -X 'GET' \
-      'https://rest.opal.uniquenetwork.dev/collection/admins?collectionId=1' \
+      'https://rest.unique.network/opal/collection/admins?collectionId=1' \
       -H 'accept: application/json'
 ```
 
@@ -2090,7 +2092,7 @@ This method returns `AdminlistResult`
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
     
     const result = await client.collections.admins({
         collectionId: 1,
@@ -2188,7 +2190,7 @@ This method returns `RemoveCollectionAdminResult`
 ```bash
 
     curl -X 'DELETE' \
-      'https://rest.opal.uniquenetwork.dev/collection-new/admins?use=Build&withFee=false&verify=false' \
+      'https://rest.unique.network/opal/collection/admins?use=Build&withFee=false&verify=false' \
       -H 'accept: application/json' \
       -H 'Content-Type: application/json' \
       -d '{
@@ -2200,7 +2202,7 @@ This method returns `RemoveCollectionAdminResult`
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    'https://rest.unique.network/opal/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -2214,7 +2216,7 @@ This method returns `RemoveCollectionAdminResult`
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
 
     const result = await client.collections.removeAdmin.submitWaitResult({
       "address": "5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y",
@@ -2304,7 +2306,7 @@ console.log(
 
 ```bash
     curl -X 'POST' \
-      'https://rest.opal.uniquenetwork.dev/collection/add-to-allow-list' \
+      'https://rest.unique.network/opal/collection/add-to-allow-list' \
       -H 'accept: application/json' \
       -H 'Content-Type: application/json' \
       -d '{
@@ -2318,7 +2320,7 @@ console.log(
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
 
 const { parsed } = await client.collections.addToAllowList.submitWaitResult({
   address: '<your account address>',
@@ -2395,14 +2397,14 @@ interface AllowListResult {
 
 ```bash
     curl -X 'GET' \
-    'https://rest.opal.uniquenetwork.dev/collection-new/allow-list?collectionId=1'
+    'https://rest.unique.network/opal/collection/allow-list?collectionId=1'
 ```
   </CodeGroupItem>
 
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
     
     const { addresses } = await client.collections.allowList({
         collectionId: 1,
@@ -2500,14 +2502,14 @@ interface AllowedResult {
 
 ```bash
     curl -X 'GET' \
-    'https://rest.opal.uniquenetwork.dev/collection-new/allowed?collectionId=1&address=<address>'
+    'https://rest.unique.network/opal/collection/allowed?collectionId=1&address=<address>'
 ```
   </CodeGroupItem>
 
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
     
     const { isAllowed } = await client.collections.allowed({
         collectionId: 1,
@@ -2592,7 +2594,7 @@ interface RemoveFromAllowListResult {
 
 ```bash
     curl -X 'POST' \
-      'https://rest.opal.uniquenetwork.dev/collection/remove-from-allow-list' \
+      'https://rest.unique.network/opal/collection/remove-from-allow-list' \
       -H 'accept: application/json' \
       -H 'Content-Type: application/json' \
       -d '{
@@ -2606,7 +2608,7 @@ interface RemoveFromAllowListResult {
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
     
     const { parsed } = await client.collections.removeFromAllowList.submitWaitResult({
       address: '<your account address>',
@@ -2709,7 +2711,7 @@ console.log(bundle);
 
 ```bash
 curl -X 'GET' \
-  'https://rest.opal.uniquenetwork.dev/token/get-bundle?collectionId=2&tokenId=5' \
+  'https://rest.unique.network/opal/token/get-bundle?collectionId=2&tokenId=5' \
   -H 'accept: application/json'
 ```
 
@@ -2718,7 +2720,7 @@ curl -X 'GET' \
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
 
 const bundle = await client.tokens.getBundle({
   collectionId: 2,
@@ -2792,7 +2794,7 @@ console.log(bundle);
 
 ```bash
 curl -X 'GET' \
-  'https://rest.opal.uniquenetwork.dev/token/is-bundle?collectionId=2&tokenId=1' \
+  'https://rest.unique.network/opal/token/is-bundle?collectionId=2&tokenId=1' \
   -H 'accept: application/json'
 ```
 
@@ -2801,7 +2803,7 @@ curl -X 'GET' \
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
 
 const result = await client.tokens.isBundle({
   collectionId: 2,
@@ -2926,7 +2928,7 @@ console.log(
 ```bash
 
     curl -X 'POST' \
-      'https://rest.opal.uniquenetwork.dev/token/nest' \
+      'https://rest.unique.network/opal/token/nest' \
       -H 'accept: application/json' \
       -H 'Content-Type: application/json' \
       -d '{
@@ -2944,7 +2946,7 @@ console.log(
     # then we sign, then we call
 
     curl -X 'POST' \
-    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    'https://rest.unique.network/opal/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -2958,7 +2960,7 @@ console.log(
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
 
 const result = await client.tokens.nest.submitWaitResult({
   address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
@@ -3075,7 +3077,7 @@ console.log(result);
 
 ```bash
 curl -X 'GET' \
-  'https://rest.opal.uniquenetwork.dev/token/children?collectionId=1&tokenId=1' \
+  'https://rest.unique.network/opal/token/children?collectionId=1&tokenId=1' \
   -H 'accept: application/json'
 ```
 
@@ -3084,7 +3086,7 @@ curl -X 'GET' \
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
 
 const result = await client.tokens.children({
   collectionId: 1,
@@ -3178,7 +3180,7 @@ console.log(result);
 
 ```bash
 curl -X 'GET' \
-  'https://rest.opal.uniquenetwork.dev/token/parent?collectionId=1&tokenId=2' \
+  'https://rest.unique.network/opal/token/parent?collectionId=1&tokenId=2' \
   -H 'accept: application/json'
 ```
 
@@ -3187,7 +3189,7 @@ curl -X 'GET' \
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
 
 const result = await client.tokens.parent({
   collectionId: 1,
@@ -3279,7 +3281,7 @@ console.log(result);
 
 ```bash
 curl -X 'GET' \
-  'https://rest.opal.uniquenetwork.dev/token/topmost-owner?collectionId=1&tokenId=2' \
+  'https://rest.unique.network/opal/token/topmost-owner?collectionId=1&tokenId=2' \
   -H 'accept: application/json'
 ```
 
@@ -3288,7 +3290,7 @@ curl -X 'GET' \
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
 
 const result = await client.tokens.topmostOwner({
   collectionId: 1,
@@ -3402,7 +3404,7 @@ console.log(
 ```bash
 
     curl -X 'POST' \
-      'https://rest.opal.uniquenetwork.dev/token/unnest' \
+      'https://rest.unique.network/opal/token/unnest' \
       -H 'accept: application/json' \
       -H 'Content-Type: application/json' \
       -d '{
@@ -3420,7 +3422,7 @@ console.log(
     # then we sign, then we call
 
     curl -X 'POST' \
-    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    'https://rest.unique.network/opal/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -3434,7 +3436,7 @@ console.log(
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
 
 const result = await client.tokens.unnest.submitWaitResult({
   address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
@@ -3552,7 +3554,7 @@ This method returns `ConfirmSponsorshipResult`
 ```bash
 
     curl -X 'POST' \
-    'https://rest.opal.uniquenetwork.dev/collection/sponsorship/confirm' \
+    'https://rest.unique.network/opal/collection/sponsorship/confirm' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -3563,7 +3565,7 @@ This method returns `ConfirmSponsorshipResult`
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    'https://rest.unique.network/opal/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -3577,7 +3579,7 @@ This method returns `ConfirmSponsorshipResult`
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
     
     const result = await client.collections.confirmSponsorship.submitWaitResult({
         address: '5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp',
@@ -3675,7 +3677,7 @@ console.log(result);
 
 ```bash
 curl -X 'GET' \
-  'https://rest.opal.uniquenetwork.dev/collection/next-sponsored?collectionId=934&address=5GbRWxdwL8eHAgVaeXW3GUBffyLaKaLRhXXPwcnZbbzKDUU8&tokenId=1' \
+  'https://rest.unique.network/opal/collection/next-sponsored?collectionId=934&address=5GbRWxdwL8eHAgVaeXW3GUBffyLaKaLRhXXPwcnZbbzKDUU8&tokenId=1' \
   -H 'accept: application/json'
 ```
 
@@ -3684,7 +3686,7 @@ curl -X 'GET' \
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
 
 const result = await client.tokens.nextSponsored({
   collectionId: 1,
@@ -3780,7 +3782,7 @@ This method returns `RemoveSponsorshipResult`
 ```bash
 
     curl -X 'DELETE' \
-    'https://rest.opal.uniquenetwork.dev/collection/sponsorship' \
+    'https://rest.unique.network/opal/collection/sponsorship' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -3791,7 +3793,7 @@ This method returns `RemoveSponsorshipResult`
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    'https://rest.unique.network/opal/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -3805,7 +3807,7 @@ This method returns `RemoveSponsorshipResult`
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
     
     const result = await client.collections.removeSponsorship.submitWaitResult({
         address: '5HgvUDiRm5yjRSrrG9B6q6km7KLzkXMxvFLHPZpA13pmwCJQ',
@@ -3919,7 +3921,7 @@ This method returns `SetSponsorshipResult`
 ```bash
 
     curl -X 'POST' \
-    'https://rest.opal.uniquenetwork.dev/collection/sponsorship' \
+    'https://rest.unique.network/opal/collection/sponsorship' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -3931,7 +3933,7 @@ This method returns `SetSponsorshipResult`
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    'https://rest.unique.network/opal/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -3945,7 +3947,7 @@ This method returns `SetSponsorshipResult`
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
     
     const result = await client.collections.setSponsorship.submitWaitResult({
         address: '5HgvUDiRm5yjRSrrG9B6q6km7KLzkXMxvFLHPZpA13pmwCJQ',
@@ -4033,14 +4035,14 @@ interface AccountTokensResult {
 
 ```bash
     curl -X 'GET' \
-    'https://rest.opal.uniquenetwork.dev/token-new/account-tokens?address=5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp&collectionId=1'
+    'https://rest.unique.network/opal/token/account-tokens?address=5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp&collectionId=1'
 ```
   </CodeGroupItem>
 
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
     
     const tokensResult = await client.tokens.accountTokens({
         address: '5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp',
@@ -4115,14 +4117,14 @@ Method returns array of tokenIds contained within passed collection.
 
 ```bash
     curl -X 'GET' \
-    'https://rest.opal.uniquenetwork.dev/collection/tokens?collectionId=1'
+    'https://rest.unique.network/opal/collection/tokens?collectionId=1'
 ```
   </CodeGroupItem>
 
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
     
     const tokensResult = await client.collections.tokens({
         collectionId: 1,
@@ -4194,14 +4196,14 @@ interface GetStatsResult {
 
 ```bash
     curl -X 'GET' \
-    'https://rest.opal.uniquenetwork.dev/collection/stats'
+    'https://rest.unique.network/opal/collection/stats'
 ```
   </CodeGroupItem>
 
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
     
     const stats = await client.collections.stats();
 
@@ -4271,14 +4273,14 @@ interface LastTokenIdResult {
 
 ```bash
     curl -X 'GET' \
-    'https://rest.opal.uniquenetwork.dev/collection/last-token-id?collectionId=1'
+    'https://rest.unique.network/opal/collection/last-token-id?collectionId=1'
 ```
   </CodeGroupItem>
 
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
     
     const lastTokenId = await client.collections.lastTokenId();
 
@@ -4354,14 +4356,14 @@ interface TotalSupplyResult {
 
 ```bash
     curl -X 'GET' \
-    'https://rest.opal.uniquenetwork.dev/collection/total-supply?collectionId=1'
+    'https://rest.unique.network/opal/collection/total-supply?collectionId=1'
 ```
   </CodeGroupItem>
 
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
     
     const result = await client.collections.totalSupply();
 
@@ -4463,7 +4465,7 @@ const { collectionId, tokenId, address, value } = setResult.parsed;
 ```bash
 
   curl -X 'DELETE' \
-    'http://rest.opal.uniquenetwork.dev/token-new?use=Build&withFee=false&verify=false' \
+    'http://rest.unique.network/opal/token?use=Build&withFee=false&verify=false' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -4475,7 +4477,7 @@ const { collectionId, tokenId, address, value } = setResult.parsed;
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    'https://rest.unique.network/opal/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -4489,7 +4491,7 @@ const { collectionId, tokenId, address, value } = setResult.parsed;
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
     
     const result = await client.tokens.burn.submitWaitResult({
       "collectionId": 1,
@@ -4624,7 +4626,7 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
 ```bash
 
   curl -X 'POST' \
-    'http://rest.opal.uniquenetwork.dev/token-new/create-multiple?use=Build&withFee=false&verify=false' \
+    'http://rest.unique.network/opal/token/create-multiple?use=Build&withFee=false&verify=false' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -4647,7 +4649,7 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    'https://rest.unique.network/opal/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -4661,7 +4663,7 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
   <CodeGroupItem title="Client">
 
 ```typescript
-  const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+  const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
   
   const result = await client.tokens.createMultiple.submitWaitResult({
     "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
@@ -4839,7 +4841,7 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
 ```bash
 
   curl -X 'POST' \
-    'http://rest.opal.uniquenetwork.dev/token-new?use=Build&withFee=false&verify=false' \
+    'http://rest.unique.network/opal/token?use=Build&withFee=false&verify=false' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -4861,7 +4863,7 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
 # then we sign, then we call
 
     curl -X 'POST' \
-    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    'https://rest.unique.network/opal/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -4875,7 +4877,7 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
     
     const result = await client.tokens.create.submitWaitResult({
       "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
@@ -4984,7 +4986,7 @@ This method returns `DeleteTokenPropertiesResult`
 ```bash
 
   curl -X 'DELETE' \
-    'http://rest.opal.uniquenetwork.dev/token-new/properties?use=Build&withFee=false&verify=false' \
+    'http://rest.unique.network/opal/token/properties?use=Build&withFee=false&verify=false' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -4997,7 +4999,7 @@ This method returns `DeleteTokenPropertiesResult`
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    'https://rest.unique.network/opal/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -5011,7 +5013,7 @@ This method returns `DeleteTokenPropertiesResult`
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
     
     const { parsed: { properties } } = await client.tokens.deleteProperties.submitWaitResult({
       "address": "5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX",
@@ -5124,7 +5126,7 @@ This method returns `SetTokenPropertiesResult`
 ```bash
 
     curl -X 'POST' \
-      'https://rest.opal.uniquenetwork.dev/token-new/properties?use=Build&withFee=false&verify=false' \
+      'https://rest.unique.network/opal/token/properties?use=Build&withFee=false&verify=false' \
       -H 'accept: application/json' \
       -H 'Content-Type: application/json' \
       -d '{
@@ -5142,7 +5144,7 @@ This method returns `SetTokenPropertiesResult`
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    'https://rest.unique.network/opal/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -5156,7 +5158,7 @@ This method returns `SetTokenPropertiesResult`
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
 
     const { parsed: { properties } } = await client.tokens.setProperties.submitWaitResult({
       "address": "5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX",
@@ -5252,7 +5254,7 @@ const {
 
 ```bash
 curl -X 'GET' \
-  'https://rest.opal.uniquenetwork.dev/token-new?collectionId=2&tokenId=1' \
+  'https://rest.unique.network/opal/token?collectionId=2&tokenId=1' \
   -H 'accept: application/json'
 ```
   </CodeGroupItem>
@@ -5260,7 +5262,7 @@ curl -X 'GET' \
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
 
     const result = await client.tokens.get({
       collectionId: 2,
@@ -5362,7 +5364,7 @@ const result: TokenOwnerResult = await sdk.tokens.tokenOwner(
 ```bash
 
     curl -X 'GET' \
-  'https://rest.opal.uniquenetwork.dev/token-new/owner?collectionId=1&tokenId=1' \
+  'https://rest.unique.network/opal/token/owner?collectionId=1&tokenId=1' \
   -H 'accept: application/json'
 ```
 
@@ -5371,7 +5373,7 @@ const result: TokenOwnerResult = await sdk.tokens.tokenOwner(
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
     
     const { owner } = await client.tokens.owner({
       collectionId: 1,
@@ -5466,7 +5468,7 @@ const result: TokenPropertiesResult = await sdk.tokens.properties(args);
 
 ```bash
   curl -X 'GET' \
-    'https://rest.opal.uniquenetwork.dev/token-new/properties?collectionId=1&tokenId=1' \
+    'https://rest.unique.network/opal/token/properties?collectionId=1&tokenId=1' \
     -H 'accept: application/json'
 ```
 
@@ -5475,7 +5477,7 @@ const result: TokenPropertiesResult = await sdk.tokens.properties(args);
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
 
     const { properties } = await client.tokens.properties({
       collectionId: 1,
@@ -5586,7 +5588,7 @@ console.log(result.parsed);
 ```bash
 
   curl -X 'PATCH' \
-    'http://rest.opal.uniquenetwork.dev/token-new/transfer?use=Build&withFee=false&verify=false' \
+    'http://rest.unique.network/opal/token/transfer?use=Build&withFee=false&verify=false' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -5599,7 +5601,7 @@ console.log(result.parsed);
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.opal.uniquenetwork.dev/extrinsic/submit' \
+    'https://rest.unique.network/opal/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -5613,7 +5615,7 @@ console.log(result.parsed);
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.opal.uniquenetwork.dev' });
+    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
     
     const result = await client.tokens.transfer.submitWaitResult({
       "collectionId": 183,
