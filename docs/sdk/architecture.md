@@ -1,5 +1,7 @@
-# Architecture design
 
+
+
+# Architecture design
 
 
 ## Extrinsic
@@ -14,7 +16,7 @@ Once an extrinsic has been generated, it must be signed for the chain to complet
 
 Use [Substrate](https://docs.substrate.io/v3/concepts/extrinsics/) and [Substrate](https://polkadot.js.org/docs/substrate/extrinsics/) documentation to learn more about extrinsics in general.
 
-## Extrinsic lifecycle in Unique Network connection tools 
+## Extrinsic lifecycle in Unique Network connection tools
 
 Using SDK as a connection tool involves the following sequence of actions to change something in the blockchain:
 
@@ -49,6 +51,9 @@ sequenceDiagram
 
 TBD
 
+
+
+
 ## Common errors
 
 
@@ -67,5 +72,3 @@ TBD
 | [Submit extrinsic](https://github.com/UniqueNetwork/unique-sdk/blob/0cbdab33512e6e712d3e2c5cbcd54807ec6354a1/packages/substrate-client/errors/src/submit-extrinsic.ts)       | TBD                    |
 | [Validation](https://github.com/UniqueNetwork/unique-sdk/blob/0cbdab33512e6e712d3e2c5cbcd54807ec6354a1/packages/substrate-client/errors/src/validation.ts)                   | TBD                    |
 | [Verification failed](https://github.com/UniqueNetwork/unique-sdk/blob/0cbdab33512e6e712d3e2c5cbcd54807ec6354a1/packages/substrate-client/errors/src/verification-failed.ts) | TBD                    |
-=======
-
