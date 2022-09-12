@@ -15,14 +15,14 @@
 
 ### npm
 ```shell
-npm install @unique-nft/client
+npm install @unique-nft/sdk
 ```
 
 ### Initialization
 
 #### Node.js
 ```typescript
-import { Client, Options } from '@unique-nft/client';
+import { Client, Options } from '@unique-nft/sdk';
 const options: Options = {
     baseUrl: '<REST API URL>'
 };
@@ -55,7 +55,7 @@ Pass the `singer` in the parameters when creating the `Client` object
 ```typescript
 import { KeyringProvider } from '@unique-nft/accounts/keyring';
 import { KeyringOptions } from '@polkadot/keyring/types';
-import { Client, Options } from "@unique-nft/client";
+import { Client, Options } from "@unique-nft/sdk";
 
 const options: KeyringOptions = {
   type: 'sr25519',
