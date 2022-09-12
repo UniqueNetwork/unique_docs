@@ -76,9 +76,9 @@ curl -X 'GET' \
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-const collection = await client.collections.get({ collectionId: 1 });
+const collection = await sdk.collections.get({ collectionId: 1 });
 ```
 
   </CodeGroupItem>
@@ -162,9 +162,9 @@ curl -X 'GET' \
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-const collection = await client.collections.get_new({ collectionId: 1 });
+const collection = await sdk.collections.get_new({ collectionId: 1 });
 ```
 
   </CodeGroupItem>
@@ -256,9 +256,9 @@ curl -X 'GET' \
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-const { properties } = await client.collections.properties({ collectionId: 1 });
+const { properties } = await sdk.collections.properties({ collectionId: 1 });
 ```
 
   </CodeGroupItem>
@@ -386,9 +386,9 @@ curl -X 'POST' \
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-const result = await client.collections.creation.submitWaitResult({
+const result = await sdk.collections.creation.submitWaitResult({
     address: '<your address>',
     name: 'FOO',
     description: 'BAR',
@@ -543,9 +543,9 @@ curl -X 'POST' \
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-const result = await client.collections.creation.submitWaitResult({
+const result = await sdk.collections.creation.submitWaitResult({
     address: '<your address>',
     name: 'Foo',
     description: 'Bar',
@@ -675,9 +675,9 @@ curl -X 'POST' \
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-await client.collections.deleteProperties.submitWaitResult({
+await sdk.collections.deleteProperties.submitWaitResult({
     address: '<your address>',
     collectionId: 1,
     propertyKeys: ['foo', 'bar'],
@@ -777,7 +777,7 @@ curl -X 'POST' \
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
 client.collections.destroy.submitWaitResult({
     address: '<your address>',
@@ -875,9 +875,9 @@ curl -X 'GET' \
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-const { collectionId, limits } = await client.collections.getLimits({ collectionId: 1 });
+const { collectionId, limits } = await sdk.collections.getLimits({ collectionId: 1 });
 
 console.log(`Collection ${collectionId} limits: ${JSON.stringify(limits)}`);
 ```
@@ -980,9 +980,9 @@ This method returns `PropertyPermissionsResult`
   <CodeGroupItem title="Client">
 
 ```typescript
-  const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+  const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
   
-  const result = await client.collections.propertyPermissions({
+  const result = await sdk.collections.propertyPermissions({
     collectionId: 1,
   });
 ```
@@ -1136,9 +1136,9 @@ This method returns `SetCollectionLimitsResult`
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
     
-    const result = await client.collections.setLimits.submitWaitResult({
+    const result = await sdk.collections.setLimits.submitWaitResult({
       "limits": {
         "accountTokenOwnershipLimit": 1000,
         "sponsoredDataSize": 1024,
@@ -1298,9 +1298,9 @@ This method returns `SetCollectionPermissionsResult`
   <CodeGroupItem title="Client">
 
 ```typescript
-  const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+  const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
   
-  const result = await client.collections.setPermissions.submitWaitResult({
+  const result = await sdk.collections.setPermissions.submitWaitResult({
     "collectionId": 1,
     "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
     "permissions": {
@@ -1444,9 +1444,9 @@ This method returns `SetCollectionPermissionsResult`
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
     
-    const result = await client.collections.setProperties.submitWaitResult({
+    const result = await sdk.collections.setProperties.submitWaitResult({
       "address": "5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX",
       "collectionId": 1,
       "properties": [
@@ -1614,9 +1614,9 @@ This method returns `SetTokenPropertyPermissionsResult`
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
     
-    const result = await client.collections.setPropertyPermissions.submitWaitResult({
+    const result = await sdk.collections.setPropertyPermissions.submitWaitResult({
       "address": "5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX",
       "collectionId": 1,
       "propertyPermissions": [
@@ -1746,9 +1746,9 @@ This method returns `SetTransfersEnabledResult`
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
     
-    const result = await client.collections.setTransfersEnabled.submitWaitResult({
+    const result = await sdk.collections.setTransfersEnabled.submitWaitResult({
       "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
       "collectionId": 1,
       "isEnabled": true
@@ -1862,9 +1862,9 @@ This method returns `TransferCollectionResult`
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
     
-    const result = await client.collections.transfer.submitWaitResult({
+    const result = await sdk.collections.transfer.submitWaitResult({
       "collectionId": 1,
       "from": "5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y",
       "to": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty"
@@ -1988,9 +1988,9 @@ This method returns `AddCollectionAdminResult`
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
     
-    const result = await client.collections.addAdmin.submitWaitResult({
+    const result = await sdk.collections.addAdmin.submitWaitResult({
       "address": "5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y",
       "collectionId": 1,
       "newAdmin": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty"
@@ -2092,9 +2092,9 @@ This method returns `AdminlistResult`
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
     
-    const result = await client.collections.admins({
+    const result = await sdk.collections.admins({
         collectionId: 1,
     });
     
@@ -2216,9 +2216,9 @@ This method returns `RemoveCollectionAdminResult`
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-    const result = await client.collections.removeAdmin.submitWaitResult({
+    const result = await sdk.collections.removeAdmin.submitWaitResult({
       "address": "5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y",
       "collectionId": 1,
       "admin": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty"
@@ -2320,9 +2320,9 @@ console.log(
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-const { parsed } = await client.collections.addToAllowList.submitWaitResult({
+const { parsed } = await sdk.collections.addToAllowList.submitWaitResult({
   address: '<your account address>',
   collectionId: '<ID of the collection>',
   newAdminId: '<valid address>'
@@ -2404,9 +2404,9 @@ interface AllowListResult {
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
     
-    const { addresses } = await client.collections.allowList({
+    const { addresses } = await sdk.collections.allowList({
         collectionId: 1,
     });
 
@@ -2509,9 +2509,9 @@ interface AllowedResult {
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
     
-    const { isAllowed } = await client.collections.allowed({
+    const { isAllowed } = await sdk.collections.allowed({
         collectionId: 1,
         account: '<address>',
     });
@@ -2608,9 +2608,9 @@ interface RemoveFromAllowListResult {
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
     
-    const { parsed } = await client.collections.removeFromAllowList.submitWaitResult({
+    const { parsed } = await sdk.collections.removeFromAllowList.submitWaitResult({
       address: '<your account address>',
       collectionId: '<ID of the collection>',
       addressToDelete: '<valid address>'
@@ -2720,9 +2720,9 @@ curl -X 'GET' \
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-const bundle = await client.tokens.getBundle({
+const bundle = await sdk.tokens.getBundle({
   collectionId: 2,
   tokenId: 5,
 });
@@ -2803,9 +2803,9 @@ curl -X 'GET' \
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-const result = await client.tokens.isBundle({
+const result = await sdk.tokens.isBundle({
   collectionId: 2,
   tokenId: 1,
 });
@@ -2960,9 +2960,9 @@ console.log(
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-const result = await client.tokens.nest.submitWaitResult({
+const result = await sdk.tokens.nest.submitWaitResult({
   address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
   parent: {
     collectionId: 1,
@@ -3086,9 +3086,9 @@ curl -X 'GET' \
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-const result = await client.tokens.children({
+const result = await sdk.tokens.children({
   collectionId: 1,
   tokenId: 1,
 });
@@ -3189,9 +3189,9 @@ curl -X 'GET' \
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-const result = await client.tokens.parent({
+const result = await sdk.tokens.parent({
   collectionId: 1,
   tokenId: 2,
 });
@@ -3290,9 +3290,9 @@ curl -X 'GET' \
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-const result = await client.tokens.topmostOwner({
+const result = await sdk.tokens.topmostOwner({
   collectionId: 1,
   tokenId: 2,
 });
@@ -3436,9 +3436,9 @@ console.log(
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-const result = await client.tokens.unnest.submitWaitResult({
+const result = await sdk.tokens.unnest.submitWaitResult({
   address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
   parent: {
     collectionId: 1,
@@ -3579,9 +3579,9 @@ This method returns `ConfirmSponsorshipResult`
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
     
-    const result = await client.collections.confirmSponsorship.submitWaitResult({
+    const result = await sdk.collections.confirmSponsorship.submitWaitResult({
         address: '5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp',
         collectionId: 1,
     });
@@ -3686,9 +3686,9 @@ curl -X 'GET' \
   <CodeGroupItem title="Client">
 
 ```typescript
-const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-const result = await client.tokens.nextSponsored({
+const result = await sdk.tokens.nextSponsored({
   collectionId: 1,
   tokenId: 1,
   address: '5G4M7RCt8PvtFPFm4XSwu85eK9Z8n9c6rygHZawHVALUvgcd',
@@ -3807,9 +3807,9 @@ This method returns `RemoveSponsorshipResult`
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
     
-    const result = await client.collections.removeSponsorship.submitWaitResult({
+    const result = await sdk.collections.removeSponsorship.submitWaitResult({
         address: '5HgvUDiRm5yjRSrrG9B6q6km7KLzkXMxvFLHPZpA13pmwCJQ',
         collectionId: 1,
     });
@@ -3947,9 +3947,9 @@ This method returns `SetSponsorshipResult`
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
     
-    const result = await client.collections.setSponsorship.submitWaitResult({
+    const result = await sdk.collections.setSponsorship.submitWaitResult({
         address: '5HgvUDiRm5yjRSrrG9B6q6km7KLzkXMxvFLHPZpA13pmwCJQ',
         collectionId: 1,
         newSponsor: '5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp',
@@ -4042,9 +4042,9 @@ interface AccountTokensResult {
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
     
-    const tokensResult = await client.tokens.accountTokens({
+    const tokensResult = await sdk.tokens.accountTokens({
         address: '5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp',
         collectionId: 1,
     });
@@ -4124,9 +4124,9 @@ Method returns array of tokenIds contained within passed collection.
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
     
-    const tokensResult = await client.collections.tokens({
+    const tokensResult = await sdk.collections.tokens({
         collectionId: 1,
     });
 
@@ -4203,9 +4203,9 @@ interface GetStatsResult {
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
     
-    const stats = await client.collections.stats();
+    const stats = await sdk.collections.stats();
 
     const { created, destroyed, alive } = stats;
 
@@ -4280,9 +4280,9 @@ interface LastTokenIdResult {
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
     
-    const lastTokenId = await client.collections.lastTokenId();
+    const lastTokenId = await sdk.collections.lastTokenId();
 
     const { tokenId } = lastTokenId;
 
@@ -4363,9 +4363,9 @@ interface TotalSupplyResult {
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
     
-    const result = await client.collections.totalSupply();
+    const result = await sdk.collections.totalSupply();
 
     const { totalSupply } = result;
 
@@ -4491,9 +4491,9 @@ const { collectionId, tokenId, address, value } = setResult.parsed;
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
     
-    const result = await client.tokens.burn.submitWaitResult({
+    const result = await sdk.tokens.burn.submitWaitResult({
       "collectionId": 1,
       "tokenId": 1,
       "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty"
@@ -4663,9 +4663,9 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
   <CodeGroupItem title="Client">
 
 ```typescript
-  const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+  const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
   
-  const result = await client.tokens.createMultiple.submitWaitResult({
+  const result = await sdk.tokens.createMultiple.submitWaitResult({
     "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
     "collectionId": 183,
     "data": [
@@ -4877,9 +4877,9 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
     
-    const result = await client.tokens.create.submitWaitResult({
+    const result = await sdk.tokens.create.submitWaitResult({
       "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
       "collectionId": 183,
       "data": {
@@ -5013,9 +5013,9 @@ This method returns `DeleteTokenPropertiesResult`
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
     
-    const { parsed: { properties } } = await client.tokens.deleteProperties.submitWaitResult({
+    const { parsed: { properties } } = await sdk.tokens.deleteProperties.submitWaitResult({
       "address": "5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX",
       "collectionId": 1,
       "tokenId": 1,
@@ -5158,9 +5158,9 @@ This method returns `SetTokenPropertiesResult`
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-    const { parsed: { properties } } = await client.tokens.setProperties.submitWaitResult({
+    const { parsed: { properties } } = await sdk.tokens.setProperties.submitWaitResult({
       "address": "5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX",
       "collectionId": 1,
       "tokenId": 1,
@@ -5262,9 +5262,9 @@ curl -X 'GET' \
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-    const result = await client.tokens.get({
+    const result = await sdk.tokens.get({
       collectionId: 2,
       tokenId: 1,
     });
@@ -5373,9 +5373,9 @@ const result: TokenOwnerResult = await sdk.tokens.tokenOwner(
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
     
-    const { owner } = await client.tokens.owner({
+    const { owner } = await sdk.tokens.owner({
       collectionId: 1,
       tokenId: 1,
     });
@@ -5477,9 +5477,9 @@ const result: TokenPropertiesResult = await sdk.tokens.properties(args);
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-    const { properties } = await client.tokens.properties({
+    const { properties } = await sdk.tokens.properties({
       collectionId: 1,
       tokenId: 1,
     });
@@ -5615,9 +5615,9 @@ console.log(result.parsed);
   <CodeGroupItem title="Client">
 
 ```typescript
-    const client = new Client({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
     
-    const result = await client.tokens.transfer.submitWaitResult({
+    const result = await sdk.tokens.transfer.submitWaitResult({
       "collectionId": 183,
       "tokenId": 1,
       "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
