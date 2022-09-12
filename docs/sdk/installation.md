@@ -62,12 +62,12 @@ const options: KeyringOptions = {
 };
 const provider = new KeyringProvider(options);
 await provider.init();
-const account = provider.addSeed('<seed of account>');
-const signer = account.getSigner();
+
+const signer = provider.addSeed('<seed of account>');
 
 const clientOptions: Options = {
   baseUrl: 'REST API URL',
-  signer
+  signer,
 };
 const client = new Client(clientOptions);
 ```
