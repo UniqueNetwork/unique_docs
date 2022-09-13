@@ -2,90 +2,6 @@
 
 ## Collection
 
-### Get collection by Id
-<details><summary>Get collection by Id description</summary>
-
-#### Overview
-
-Method returns collection info in human format.
-
-#### Brief example
-
-```typescript
-import { CollectionIdArguments, CollectionInfo } from '@unique-nft/substrate-client/types';
-const getCollectionArgs: CollectionIdArguments = { collectionId: 123 };
-
-const collection: CollectionInfo = await sdk.collections.get(getCollectionArgs);
-```
-
-#### Arguments
-
-`collectionId: number` — collection id
-
-#### Behaviour and errors
-
-Returns null if collection does not exists.
-
-#### Returns
-
-```typescript
-interface CollectionInfo {
-    id: number;
-    owner: string;
-    mode?: CollectionMode;
-    decimals?: number;
-    name: string;
-    description: string;
-    tokenPrefix: string;
-    sponsorship?: CollectionSponsorship;
-    limits?: CollectionLimits;
-    metaUpdatePermission?: MetaUpdatePermission;
-    readOnly?: boolean;
-    permissions?: CollectionPermissions;
-    properties: CollectionOldProperties;
-    tokenPropertyPermissions?: TokenPropertiesPermissions;
-}
-```
-
-
-#### Examples
-
-<CodeGroup>
-
-  <CodeGroupItem title="SDK">
-
-```typescript
-import { CollectionIdArguments, CollectionInfo } from '@unique-nft/substrate-client/types';
-const getCollectionArgs: CollectionIdArguments = { collectionId: 123 };
-
-const collection: CollectionInfo = await sdk.collections.get(getCollectionArgs);
-```
-
-  </CodeGroupItem>
-
-  <CodeGroupItem title="REST">
-
-```bash
-curl -X 'GET' \
-'https://rest.unique.network/opal/collection?collectionId=1' \
--H 'accept: application/json'
-```
-
-  </CodeGroupItem>
-
-  <CodeGroupItem title="Client">
-
-```typescript
-const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
-
-const collection = await sdk.collections.get({ collectionId: 1 });
-```
-
-  </CodeGroupItem>
-
-</CodeGroup>
-</details>
-
 ### Get collection by Id new
 <details><summary>Get collection by Id new description</summary>
 
@@ -99,7 +15,7 @@ Method returns collection info with parsed unique schema.
 import { CollectionIdArguments, CollectionInfoWithSchema } from '@unique-nft/substrate-client/types';
 const getCollectionArgs: CollectionIdArguments = { collectionId: 123 };
 
-const collection: CollectionInfoWithSchema = await sdk.collections.get_new(getCollectionArgs);
+const collection: CollectionInfoWithSchema = await sdk.collections.get(getCollectionArgs);
 ```
 
 #### Arguments
@@ -144,7 +60,7 @@ interface CollectionInfoWithSchema {
 import { CollectionIdArguments, CollectionInfoWithSchema } from '@unique-nft/substrate-client/types';
 const getCollectionArgs: CollectionIdArguments = { collectionId: 123 };
 
-const collection: CollectionInfo = await sdk.collections.get_new(getCollectionArgs);
+const collection: CollectionInfo = await sdk.collections.get(getCollectionArgs);
 ```
 
   </CodeGroupItem>
@@ -164,7 +80,7 @@ curl -X 'GET' \
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-const collection = await sdk.collections.get_new({ collectionId: 1 });
+const collection = await sdk.collections.get({ collectionId: 1 });
 ```
 
   </CodeGroupItem>
@@ -266,146 +182,6 @@ const { properties } = await sdk.collections.properties({ collectionId: 1 });
 </CodeGroup>
 </details>
 
-### Create collection
-<details><summary>Create collection description</summary>
-
-#### Overview
-
-Method creates new collection.
-
-#### Brief example
-
-```typescript
-import { CreateCollectionArguments } from '@unique-nft/substrate-client/types';
-
-const createArgs: CreateCollectionArguments = {
-  address: '<your account address>',
-  name: `FOO`,
-  description: 'BAR',
-  tokenPrefix: 'BAZ',
-  properties: {},
-};
-
-const createResult = await sdk.collections.creation.submitWaitResult(createArgs);
-const { collectionId } = createResult.parsed;
-
-const collection = await sdk.collections.get({ collectionId });
-```
-
-#### Arguments
-
-`address` - The address of collection owner
-
-`name` - Collection name (text, up to 64 characters)
-
-`description` - Collection description (text, up to 256 characters)
-
-`mode` - The collection type (`Nft`, `Fungible`, or `ReFungible`)
-
-`tokenPrefix` - Token prefix (text, up to 4 characters)
-
-`sponsorship` - This field tells if sponsorship is enabled and what address is the current collection sponsor.
-
-`limits` - [Collection limits](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/set-collection-limits#arguments)
-
-`metaUpdatePermission` - [Permission](#todo) for update meta (ItemOwner, Admin, None)
-
-`properties` - [Collection properties](#todo)
-
-`permissions` - [Collection permissions](#todo)
-
-`tokenPropertyPermissions` - [Collection tokens permissions](#todo)
-
-#### Behaviour and errors
-
-Throws common errors on insufficient balance and so on.
-
-#### Returns
-
-```typescript
-interface CollectionIdArguments {
-  collectionId: number;
-}
-```
-
-
-#### Examples
-
-<CodeGroup>
-
-  <CodeGroupItem title="SDK">
-
-```typescript
-import { CreateCollectionArguments } from '@unique-nft/substrate-client/types';
-
-const createArgs: CreateCollectionArguments = {
-  address: '<your account address>',
-  name: `FOO`,
-  description: 'BAR',
-  tokenPrefix: 'BAZ',
-  properties: {},
-};
-
-const createResult = await sdk.collections.creation.submitWaitResult(createArgs);
-const { collectionId } = createResult.parsed;
-
-const collection = await sdk.collections.get({ collectionId });
-```
-
-  </CodeGroupItem>
-
-  <CodeGroupItem title="REST">
-
-```bash
-curl -X 'POST' \
-  'https://rest.unique.network/opal/collection' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{
-  "mode": "Nft",
-  "name": "Sample collection name",
-  "description": "sample collection description",
-  "tokenPrefix": "TEST",
-  "address": "yGCyN3eydMkze4EPtz59Tn7obwbUbYNZCz48dp8FRdemTaLwm"
-}'
-
-# then we sign, then we call
-
-curl -X 'POST' \
-'https://rest.unique.network/opal/extrinsic/submit' \
--H 'accept: application/json' \
--H 'Content-Type: application/json' \
--d '{
-"signerPayloadJSON": { *from previous response* },
-"signature": "0x_your_signature_in_hex"
-}'
-```
-
-  </CodeGroupItem>
-
-  <CodeGroupItem title="Client">
-
-```typescript
-const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
-
-const result = await sdk.collections.creation.submitWaitResult({
-    address: '<your address>',
-    name: 'FOO',
-    description: 'BAR',
-    tokenPrefix: 'BAZ',
-    readOnly: false,
-});
-
-const { parsed: { collectionId } } = result;
-
-console.log(`Created collection with id ${collectionId}`);
-```
-
-  </CodeGroupItem>
-
-</CodeGroup>
-</details>
-
 ### Create collection with unique schema
 <details><summary>Create collection with unique schema description</summary>
 
@@ -418,7 +194,7 @@ Method creates new collection with unique schema.
 ```typescript
 import { CreateCollectionNewArguments } from '@unique-nft/substrate-client/tokens';
 
-const result = await sdk.collections.creation_new.submitWaitResult({
+const result = await sdk.collections.creation.submitWaitResult({
     address: '<your address>',
     name: 'Foo',
     description: 'Bar',
@@ -481,7 +257,7 @@ interface CollectionIdArguments {
 ```typescript
 import { CreateCollectionNewArguments } from '@unique-nft/substrate-client/tokens';
 
-const result = await sdk.collections.creation_new.submitWaitResult({
+const result = await sdk.collections.creation.submitWaitResult({
     address: '<your address>',
     name: 'Foo',
     description: 'Bar',
@@ -3485,7 +3261,7 @@ console.log(
     
     await sdk.collections.confirmSponsorship.submitWaitResult(confirmSponsorshipArgs);
 
-    const { sponsorship } = await sdk.collections.get_new({ collectionId: 1 });
+    const { sponsorship } = await sdk.collections.get({ collectionId: 1 });
 
     // `5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp - true`
     console.log(`${sponsorship?.address} - ${sponsorship?.isConfirmed}`);
@@ -3541,7 +3317,7 @@ This method returns `ConfirmSponsorshipResult`
     
     await sdk.collections.confirmSponsorship.submitWaitResult(confirmSponsorshipArgs);
     
-    const { sponsorship } = await sdk.collections.get_new({ collectionId: 1 });
+    const { sponsorship } = await sdk.collections.get({ collectionId: 1 });
     
     // `5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp - true`
     console.log(`${sponsorship?.address} - ${sponsorship?.isConfirmed}`);
@@ -3596,7 +3372,8 @@ This method returns `ConfirmSponsorshipResult`
 </CodeGroup>
 </details>
 
-# Next sponsored
+### Next sponsored
+<details><summary>Next sponsored description</summary>
 
 #### Overview
 
@@ -3700,6 +3477,7 @@ console.log(result);
   </CodeGroupItem>
 
 </CodeGroup>
+</details>
 
 ### Remove collection sponsor
 <details><summary>Remove collection sponsor description</summary>
@@ -3720,7 +3498,7 @@ Collection **owner** can use this method to remove **sponsor** added by [set col
     
     await sdk.collections.removeSponsorship.submitWaitResult(removeSponsorshipArgs);
 
-    const { sponsorship } = await sdk.collections.get_new({ collectionId: 1 });
+    const { sponsorship } = await sdk.collections.get({ collectionId: 1 });
 
     // `null`
     console.log(sponsorship);
@@ -3769,7 +3547,7 @@ This method returns `RemoveSponsorshipResult`
     
     await sdk.collections.removeSponsorship.submitWaitResult(removeSponsorshipArgs);
     
-    const { sponsorship } = await sdk.collections.get_new({ collectionId: 1 });
+    const { sponsorship } = await sdk.collections.get({ collectionId: 1 });
     
     // `null`
     console.log(sponsorship);
@@ -3848,7 +3626,7 @@ Collection **owner** can also [remove collection sponsor](https://github.com/Uni
     
     await sdk.collections.setCollectionSponsor.submitWaitResult(setSponsorArgs);
 
-    const { sponsorship } = await sdk.collections.get_new({ collectionId: 1 });
+    const { sponsorship } = await sdk.collections.get({ collectionId: 1 });
 
     // `5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp - false`
     console.log(`${sponsorship?.address} - ${sponsorship?.isConfirmed}`);
@@ -3908,7 +3686,7 @@ This method returns `SetSponsorshipResult`
     
     await sdk.collections.setCollectionSponsor.submitWaitResult(setSponsorArgs);
     
-    const { sponsorship } = await sdk.collections.get_new({ collectionId: 1 });
+    const { sponsorship } = await sdk.collections.get({ collectionId: 1 });
     
     // `5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp - false`
     console.log(`${sponsorship?.address} - ${sponsorship?.isConfirmed}`);
@@ -3967,8 +3745,7 @@ This method returns `SetSponsorshipResult`
 
 ## Statistics
 
-### Get account tokens of the collection
-<details><summary>Get account tokens of the collection description</summary>
+# Get account tokens of the collection
 
 #### Overview
 Returns array of tokens, owned by address
@@ -4058,7 +3835,6 @@ interface AccountTokensResult {
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
 
 # Get collection tokens
 
@@ -4216,7 +3992,7 @@ interface GetStatsResult {
 
 </CodeGroup>
 
-## Last token id
+#### Last token id
 
 #### Overview
 
