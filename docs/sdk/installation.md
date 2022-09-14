@@ -15,18 +15,18 @@
 
 ### npm
 ```shell
-npm install @unique-nft/client
+npm install @unique-nft/sdk
 ```
 
 ### Initialization
 
 #### Node.js
 ```typescript
-import { Client, Options } from '@unique-nft/client';
+import { Sdk, Options } from '@unique-nft/sdk';
 const options: Options = {
     baseUrl: '<REST API URL>'
 };
-const client = new Client(options);
+const sdk = new Sdk(options);
 ```
 In the `baseUrl` parameter, you must pass one of the paths to the [`Unique Network`](../web)
 
@@ -55,21 +55,21 @@ Pass the `singer` in the parameters when creating the `Client` object
 ```typescript
 import { KeyringProvider } from '@unique-nft/accounts/keyring';
 import { KeyringOptions } from '@polkadot/keyring/types';
-import { Client, Options } from "@unique-nft/client";
+import { Sdk, Options } from "@unique-nft/sdk";
 
 const options: KeyringOptions = {
   type: 'sr25519',
 };
 const provider = new KeyringProvider(options);
 await provider.init();
-const account = provider.addSeed('<seed of account>');
-const signer = account.getSigner();
+
+const signer = provider.addSeed('<seed of account>');
 
 const clientOptions: Options = {
   baseUrl: 'REST API URL',
-  signer
+  signer,
 };
-const client = new Client(clientOptions);
+const sdk = new Sdk(clientOptions);
 ```
 
 

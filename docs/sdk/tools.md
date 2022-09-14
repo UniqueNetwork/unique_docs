@@ -25,9 +25,7 @@ await accounts.addProvider(PolkadotProvider);
 
 const accountsList = await accounts.getAccounts();
 
-const account: Account = accountsList[0];
-
-const signer: SdkSigner = account.getSigner();
+const signer = accountsList[0];
 ```
 
 #### Providers
@@ -44,10 +42,7 @@ const options: KeyringOptions = {
 };
 const provider = new KeyringProvider(options);
 await provider.init();
-provider.addSeed('<seed of account>');
-
-const account: Account | undefined = await provider.first();
-const signer = account?.getSigner();
+const signer = provider.addSeed('<seed of account>');
 ```
 
 The following providers are supported:
