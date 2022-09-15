@@ -32,17 +32,17 @@ In the `baseUrl` parameter, you must pass one of the paths to the [`Unique Netwo
 
 #### Opal
 ```shell
-https://web-opal.unique.network
+https://rest.unique.network/opal/v1
 ```
 
 #### Quartz
 ```shell
-https://web-quartz.unique.network
+https://rest.unique.network/quartz/v1
 ```
 
 #### Unique
 ```shell
-https://web-unique.unique.network
+https://rest.unique.network/unique/v1
 ```
 
 #### Set a signer
