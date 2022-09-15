@@ -44,7 +44,7 @@ export const sidebar: Record<string, SidebarConfig> = {
         ],
       },
     ],
-    '/evm_docs': [
+    '/evm-docs': [
       {
         text: 'EVM docs',
         children: [
@@ -67,7 +67,7 @@ export const sidebar: Record<string, SidebarConfig> = {
         ],
       }
     ],
-    '/sdk_docs': [
+    '/sdk-docs': [
       {
         text: 'SDK docs',
         children: [
