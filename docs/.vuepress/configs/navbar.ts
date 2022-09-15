@@ -14,7 +14,6 @@ export const navbar: Record<string, NavbarConfig> = {
       text: 'SDK docs',
       link: '/sdk-docs/'
     },
-
     {
       text: 'SDK guides',
       link: '/sdk-guides/',
