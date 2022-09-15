@@ -5419,7 +5419,8 @@ Set, change, or remove approved address to transfer the ownership of the token. 
 
 #### Arguments
 
-- **spender** - Address that is approved to transfer this token
+- **address** - Sender address
+- **spender** - Account address for whom token will be approved
 - **collectionId** - Collection id
 - **tokenId** - Token id
 - **amount** - Must be true (for approval) or false (for disapproval)
@@ -5434,7 +5435,8 @@ The method returns a `parsed` object that contains the `collectionId: number, to
 import { ApproveArguments } from '@unique-nft/substrate-client/tokens/types';
 
 const approveArgs: ApproveArguments = {
-    spender: '<Account address for whom token will be approved>',
+    address: '<address>',
+    spender: '<address>',
     collectionId: '<ID of the collection>',
     tokenId: '<ID of the token>',
     amount: true
