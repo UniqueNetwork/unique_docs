@@ -15,7 +15,7 @@
     <CopyButton :data="converted.sourceEth"/>
     {{ converted.sourceEth }}
     </p>
-    <h4>All addresses below are just substrate mirrors of this ethereum address!</h4>
+    <h4>All addresses below are just the substrate mirror of this ethereum address!</h4>
   </template>
 
   <p>
@@ -37,6 +37,16 @@
     Eth mirror:
     <CopyButton :data="converted.toEth"/>
     {{ converted.toEth }}
+
+    <template v-if="converted.sourceEth">
+      <br/>
+      <i>Please, pay attention that this address is a <b>double</b> mirror, not the origin Ethereum address!</i>
+    </template>
+  </p>
+  <p>
+    Substrate address public key:
+    <CopyButton :data="converted.toSubstratePublicKey"/>
+    {{ converted.toSubstratePublicKey }}
   </p>
 
   <p><i>Additional formats:</i></p>
@@ -54,12 +64,9 @@
 
 <script setup lang="ts">
 import {reactive, ref} from 'vue'
-import {utils} from '@unique-nft/api'
 import CopyButton from './CopyButton.vue'
 
-import {useInit} from 'unique_api_vue'
-
-const {chainRef, initTask, ethAccountsRef, requestEthereumAccounts} = useInit()
+import {Address} from '@unique-nft/utils/address'
 
 const inputRef = ref('')
 const converted = reactive({
@@ -72,6 +79,7 @@ const converted = reactive({
   toPolkadot: '',
   toEth: '',
   toSubNormalized: '',
+  toSubstratePublicKey: '',
 })
 
 const error = reactive({
@@ -82,17 +90,17 @@ const convertInputSubToEth = async () => {
   let rawAddress = inputRef.value
   console.log('rawAddress', rawAddress)
 
+  error.message = ''
+
   converted.sourceEth = ''
-  if (utils.address.is.substrateAddress(rawAddress)) {
-  } else if (utils.address.is.ethereumAddress(rawAddress)) {
+  if (Address.is.substrateAddress(rawAddress)) {
+  } else if (Address.is.ethereumAddress(rawAddress)) {
     converted.sourceEth = rawAddress
-    rawAddress = utils.address.ethToSubMirror(rawAddress)
+    rawAddress = Address.mirror.ethereumToSubstrate(rawAddress)
   } else {
     error.message = `Address "${rawAddress}" is not valid`
     return
   }
-
-
 
   ;[
     converted.toEth,
@@ -101,14 +109,16 @@ const convertInputSubToEth = async () => {
     converted.toPolkadot,
     converted.toKusama,
     converted.toSubNormalized,
-  ] = await Promise.all([
-    await utils.address.subToEthMirror(rawAddress),
-    await utils.address.normalizeSubstrateAddress(rawAddress, 255),
-    await utils.address.normalizeSubstrateAddress(rawAddress, 7391),
-    await utils.address.normalizeSubstrateAddress(rawAddress, 0),
-    await utils.address.normalizeSubstrateAddress(rawAddress, 2),
-    await utils.address.normalizeSubstrateAddress(rawAddress),
-  ])
+    converted.toSubstratePublicKey,
+  ] = [
+    Address.mirror.substrateToEthereum(rawAddress),
+    Address.normalize.substrateAddress(rawAddress, 255),
+    Address.normalize.substrateAddress(rawAddress, 7391),
+    Address.normalize.substrateAddress(rawAddress, 0),
+    Address.normalize.substrateAddress(rawAddress, 2),
+    Address.normalize.substrateAddress(rawAddress),
+    Address.substrate.decode(rawAddress).hex
+  ]
 }
 
 </script>

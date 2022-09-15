@@ -23,7 +23,6 @@ interface ChainData {
 
   websocketUrls: string[]
   ss58Prefix: number
-  logoIpfsCid: string
   color: string
 }
 
@@ -39,11 +38,11 @@ export const uniqueChainsParameters: Record<UNIQUE_CHAINS, ChainData> = {
       },
       rpcUrls: [`https://rpc.unique.network`],
       iconUrls: [`https://ipfs.unique.network/ipfs/QmPCqY7Lmxerm8cLKmB18kT1RxkwnpasPVksA8XLhViVT7`],
+      blockExplorerUrls: ['https://uniquescan.io/UNIQUE/'],
     },
 
     websocketUrls: [`wss://ws.unique.network`],
     ss58Prefix: 7391,
-    logoIpfsCid: `QmPCqY7Lmxerm8cLKmB18kT1RxkwnpasPVksA8XLhViVT7`,
     color: `#00BFFF`,
   },
   [UNIQUE_CHAINS.quartz]: {
@@ -57,12 +56,12 @@ export const uniqueChainsParameters: Record<UNIQUE_CHAINS, ChainData> = {
       },
       rpcUrls: [`https://rpc-quartz.unique.network`],
       iconUrls: [`https://ipfs.unique.network/ipfs/QmUoTq3D5p5a8CjQSFYECmErkpQN9wQWqkBAdyravzAZai`],
+      blockExplorerUrls: ['https://uniquescan.io/QUARTZ/'],
     },
 
     //unique custom fields
     websocketUrls: [`wss://ws-quartz.unique.network`],
     ss58Prefix: 255,
-    logoIpfsCid: `QmUoTq3D5p5a8CjQSFYECmErkpQN9wQWqkBAdyravzAZai`,
     color: `#FF4D6A`,
   },
   [UNIQUE_CHAINS.opal]: {
@@ -75,13 +74,13 @@ export const uniqueChainsParameters: Record<UNIQUE_CHAINS, ChainData> = {
         decimals: 18,
       },
       rpcUrls: [`https://rpc-opal.unique.network`],
-      iconUrls: [`https://ipfs.unique.network/ipfs/QmWivYecQTys2mz72QTbved8AZmfqG6ereTBPJpmThjY4Q`],
+      iconUrls: [`https://ipfs.unique.network/ipfs/QmR69JKMmknxb3UVN4Ecq36WZbWzVqJdGFcj2CnBvXBT7z`],
+      blockExplorerUrls: ['https://uniquescan.io/OPAL/'],
     },
 
     websocketUrls: [`wss://ws-opal.unique.network`],
     ss58Prefix: 42,
-    logoIpfsCid: `QmWivYecQTys2mz72QTbved8AZmfqG6ereTBPJpmThjY4Q`,
-    color: `#5942C8`,
+    color: `#0CB6B8`,
   },
   [UNIQUE_CHAINS.sapphire]: {
     metamask: {
@@ -93,14 +92,14 @@ export const uniqueChainsParameters: Record<UNIQUE_CHAINS, ChainData> = {
         decimals: 18,
       },
       rpcUrls: [`https://rpc-sapphire.unique.network`],
-      iconUrls: [`https://ipfs.unique.network/ipfs/QmUoTq3D5p5a8CjQSFYECmErkpQN9wQWqkBAdyravzAZai`],
+      iconUrls: [`https://ipfs.unique.network/ipfs/QmPW1KS5SaQX2jX91iDPm11rqtDNyfk6hiHMXKAJysEbdc`],
+      blockExplorerUrls: ['https://uniquescan.io/SAPPHIRE/'],
     },
 
     //unique custom fields
     websocketUrls: [`wss://ws-sapphire.unique.network`],
     ss58Prefix: 8883,
-    logoIpfsCid: '',//`QmPCqY7Lmxerm8cLKmB18kT1RxkwnpasPVksA8XLhViVT7`,
-    color: `#0F52BA`,
+    color: `#5D59FF`,
   }
 }
 

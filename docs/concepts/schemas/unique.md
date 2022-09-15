@@ -51,7 +51,7 @@ _Example of token image_:
 collection
 ```
 { key: coverPicture.ipfsCid value: QmNiBHiAhsjBXj5cXShDUc5q1dX23CJYrqGGPBNjQCCSXQ } # image of collection
-{ key: image.urlTemplate value: https://ipfs.uniquenetwork.dev/ipfs/{infix} } # template for token image
+{ key: image.urlTemplate value: https://ipfs.unique.network/ipfs/{infix} } # template for token image
 ```
 token
 ```

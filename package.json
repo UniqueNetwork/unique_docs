@@ -25,10 +25,11 @@
   },
   "dependencies": {
     "@renovamen/vuepress-plugin-mermaid": "^2.0.0-alpha.25",
+    "@unique-nft/utils": "^0.0.1",
     "@urql/core": "^2.4.4",
     "@vueuse/core": "^8.6.0",
+    "ethers": "^5.7.1",
     "mermaid": "^9.1.2",
-    "unique_api_vue": "0.0.3",
     "vue": "^3.2.37",
     "web3-provider-sponsoring": "^0.1.0"
   },

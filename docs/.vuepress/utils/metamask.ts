@@ -1,13 +1,13 @@
-import {Ethereum, libs, init} from '@unique-nft/api'
 import {UNIQUE_CHAINS, AddEthereumChainParameter, uniqueChainsParameters} from './constants'
+import {requestEthereumAccounts, safeGetAccounts} from "./ethereumExtensionTools";
 // import SponsoringProvider from 'web3-provider-sponsoring'
 
+const getEthers = async () => {
+  const {ethers} = (await import('ethers'))
+  return ethers
+}
 export const testMetamask = async () => {
-  let ethers = libs.getEthers()
-  if (!ethers) {
-    await init()
-  }
-  ethers = libs.getEthers()
+  const ethers = await getEthers()
 
   console.log(`[COMMON WEB3 TEST] Starting Web3...`)
   const rpcProvider = new ethers.providers.JsonRpcProvider('https://rpc-opal.unique.network/')
@@ -28,17 +28,7 @@ export const testMetamask = async () => {
   }
 }
 
-export const connectToMetamask = async (): Promise<string[]> => {
-  let getAccountsResult = await Ethereum.extension.safeGetAccounts()
-  if (!getAccountsResult.extensionFound) {
-    return []
-  }
-  if (getAccountsResult.accounts.length) {
-    return getAccountsResult.accounts
-  } else {
-    return await Ethereum.extension.requestAccounts()
-  }
-}
+
 
 
 export const addChainToMetamask = async (chainName: UNIQUE_CHAINS) => {
@@ -46,7 +36,7 @@ export const addChainToMetamask = async (chainName: UNIQUE_CHAINS) => {
     throw new Error(`chainName should be "unique", "quartz" or "opal", received "${chainName}"`)
   }
 
-  const safeGetAccountsResult = await Ethereum.extension.safeGetAccounts()
+  const safeGetAccountsResult = await safeGetAccounts()
   if (!safeGetAccountsResult.extensionFound) {
     throw new Error(`No browser extension found`)
   }
