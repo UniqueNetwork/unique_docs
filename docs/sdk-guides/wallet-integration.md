@@ -4,9 +4,9 @@
 
 To connect a wallet, you can use our Hasura-based GraphQL API.
 
-[Testnet - Opal GraphQL API endpoint](https://hasura-opal.unique.network/v1/graphql)
+[Testnet - Opal GraphQL API endpoint](https://api-opal.uniquescan.io/v1/graphql)
 
-[Mainnet for Kusama - Quartz GraphQL API endpoint](https://hasura-quartz.unique.network/v1/graphql)
+[Mainnet for Kusama - Quartz GraphQL API endpoint](https://api-quartz.uniquescan.io/v1/graphql)
 
 
 [//]: # ([Mainnet for Polkadot - Unique GraphQL API endpoint]&#40;https://hasura.unique.network/v1/graphql&#41;)

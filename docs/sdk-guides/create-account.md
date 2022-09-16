@@ -2,7 +2,7 @@
 
 #### Creating Substrate (Polkadot ecosystem) account For Unique Network
 
-Unique Network, like most blockchains, is based on [accounts or addresses](/reference/addresses/addresses.md). An address can own  some QTZ or UNQ token, NFTs or some ERC-20 tokens. It can sign transactions to transfer these valuable assets to other addresses or to make some actions in Decentralized Apps (dApps). For example, an address can buy and sell NFTs on the NFT Marketplace.
+Unique Network, like most blockchains, is based on [accounts or addresses](/concepts/addresses/index.md). An address can own some QTZ or UNQ tokens, NFTs or some ERC-20 tokens. It can sign transactions to transfer these valuable assets to other addresses or to make some actions in Decentralized Apps (dApps). For example, an address can buy and sell NFTs on the NFT Marketplace.
 
 A typical Quartz address looks like this: `yGHuU9CWnrHMUz8GJRmpA9MowmtMKZvnq2tLc5mk3zMFizW5X`
 
@@ -15,7 +15,7 @@ To create a Unique Network account:
 4. Click the **Add Account** icon (**+**) and then click **Create new account**. This will generate your wallet address and the 12-word mnemonic seed – the series of words that can be used to restore your wallet. :warning: Copy this seed and keep it a safe place. :warning:
  ![Seed](./images/seed.png)
 5. Select "I have saved my mnemonic seed safely" and click **Next step**.
-6. On the next screen,in the _NETWORK_ drop-down menu, select **Allow use on any chain**. Add a name for your account and create a new password by entering the password twice.
+6. On the next screen, in the _NETWORK_ drop-down menu, select **Allow use on any chain**. Add a name for your account and create a new password by entering the password twice.
  ![AccountName](./images/acc-name.png)
 7. Click **Add the account with the generated seed**. Your newly created account is now displayed in the Accounts window.               
    ![AccountList](./images/acc-list.png)
