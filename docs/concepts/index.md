@@ -11,15 +11,15 @@ An NFT can contain another NFT or RFT inside. Also, you can create a bundle that
 
 #### Transaction sponsoring
 
-Usually, an end-user have to pay a transaction fees when creating a collection, selling or purchasing NFTs. But, where he should get a native currency of network for this.
+Usually, an end-user has to pay transaction fees when creating a collection, selling or purchasing NFTs. But, where he should get a native currency of network for this?
 
-We, in Unique Network, solves this issue. Using sponsoring, the market (app) owner can pay these insignificant fees for the users, and he/she should not carry about this.
+We, in Unique Network, solve this issue. Using sponsoring, the market (app) owner can pay these insignificant fees for the users, and he/she should not carry about this.
 
 #### Free form collections 
-A possibility to set any properties and put any values in them. 
+The possibility to set any properties and put any values in them. 
 
 #### Collections with adjusted permissions 
-You can manage white list, admin list for collections. Also, you specify for each property who can manage or change it. 
+You can manage the white list and admin list for collections. Also, you specify for each property who can manage or change it. 
 
 #### EVM integration 
 * Support for standard EVM smart-contracts with benefits of whitelisting and sponsoring 
@@ -32,7 +32,7 @@ You can manage white list, admin list for collections. Also, you specify for eac
   * possibility to create and manage collection from the Substrate API and interact via Ethereum API and vice versa
 * Nesting - examples, description.
 * RFT. ERC20 and ERC1633-compatible. Specifics, description.  
-* Ready to use solidity interfaces which are emulated
+* Ready-to-use solidity interfaces that are emulated. 
 
 #### User-ready tools
 
