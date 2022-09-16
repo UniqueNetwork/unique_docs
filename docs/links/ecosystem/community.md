@@ -2,15 +2,15 @@
 
 ## Partnerships and collaborations
 
-[SupraOracles](https://supraoracles.com/) partnership with Unique Network will combine Unique's white-label NFT technology with SupraOracle's novel oracle toolset to improve the composition of the dynamic NFTs. [Read more](../use-cases-and-partners/technology-partners/supraoracles.md).
+[SupraOracles](https://supraoracles.com/) partnership with Unique Network will combine Unique's white-label NFT technology with SupraOracle's novel oracle toolset to improve the composition of the dynamic NFTs. [Read more](use-cases.md##supraoracles).
 
-[Vernissage](broken-reference) is next generation of community-focused Marketplace, where developers and artists from different skill sets and backgrounds can become a part of Art innovations. [Read more.](broken-reference) &#x20;
+[Vernissage](https://unique.network/usecases/vernisage/) is next generation of community-focused Marketplace, where developers and artists from different skill sets and backgrounds can become a part of Art innovations. &#x20;
 
-[DigitalArt4Climate](https://digitalart4climate.space/) is an initiative to help spread the word and increase awareness among the population on world's climate change. [Read more.](../use-cases-and-partners/technology-partners/united-nations-and-digitalart4climate.md)
+[DigitalArt4Climate](https://digitalart4climate.space/) is an initiative to help spread the word and increase awareness among the population on world's climate change. [Read more.](../use-cases.md#united-nations-and-digitalart4climate)
 
-[Artpool](https://www.artpool.xyz/) is an NFT discovery curation platform and art discovery social network [Art Curator Grid](https://www.artcuratorgrid.com/). [Read more](../use-cases-and-partners/artpool.md).
+[Artpool](https://www.artpool.xyz/) is an NFT discovery curation platform and art discovery social network [Art Curator Grid](https://www.artcuratorgrid.com/). [Read more](use-cases.md#artpool).
 
-[Forever has Fallen](https://foreverhasfallen.com/) is a new form of entertainment that combines storytelling with interactive gameplay. [Read more](broken-reference).
+[Forever has Fallen](https://foreverhasfallen.com/) is a new form of entertainment that combines storytelling with interactive gameplay.
 
 ## Winner of Hackusama 2020🥇
 
@@ -28,7 +28,7 @@
 
 [PostgreSQL Indexer and Consensus Insurer](https://github.com/usetech-llc/) - Completed ✅
 
-[NFT Tracking Module](https://github.com/usetech-llc/nft\_parachain) - Completed ✅&#x20;
+[NFT Tracking Module](https://github.com/w3f/General-Grants-Program/blob/ed1f00acb5cd105f426cf5d9baa40237a145d961/grants/speculative/nft_tracker.md) - Completed ✅&#x20;
 
 ## Ambassador program
 
