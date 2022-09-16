@@ -6,7 +6,7 @@
 
 Nesting is a process of forming a structural relationship between two NFTs that form a parent-child relationship in a tree structure. Such a relationship is formed by forwarding token A2 to the address of token A1 by which A2 becomes a child of token A1 (conversely, token A1 becomes the parent of A2).
 
-We can use the `tokenIdToAddress` function to obtain a token's address. As it will become apparent form the example code given below, we are constructing a valid and unique ethereum address by incorporating the collection and token IDs into a 'root' ethereum address.
+We can use the `tokenIdToAddress` function to obtain a token's address. As it will become apparent from the example code given below, we are constructing a valid and unique Ethereum address by incorporating the collection and token IDs into a 'root' Ethereum address.
 
 <details>
     <summary> (click to expand)</summary>
@@ -41,7 +41,7 @@ Unnesting can be performed via a regular transfer call (transferFrom):
 api.tx.unique.transferFrom({Ethereum: tokenIdToAddress(ACollectionId, A1TokenId)}, {Substrate: newOwnerAddress}, ACollectionId, A2TokenId, 1)
 ```
 
-Only the owner of the parent NFT (A1) can perform a withdrawal of the NFT from a bundle. By withdrawing a parent NFT, the whole branch of descendant tokens nested under it are also transferred (A1 can thus be viewed as a branch root).
+Only the owner of the parent NFT (A1) can perform a withdrawal of the NFT from a bundle. By withdrawing a parent NFT, the whole branch of descendant tokens nested under is are also transferred (A1 can thus be viewed as a branch root).
 
 The nesting depth of a bundle is limited to 5 generations (or 5 layers deep). As previously mentioned, a nested token must share a common owner with the root token.
 
@@ -57,7 +57,7 @@ api.tx.unique.setCollectionPermissions(ACollectionId, {
 });
 ```
 
-With the nesting enabled, tokens can be nested as long as they share a comnon owner, but they can belong to different collections. So in a case where tokens A1 and  B1 share a common owner, a token from collection B (B1) can be nested under a token in collection A (A1). To reiterate and important point, the collections need not have a common owner.
+With the nesting enabled, tokens can be nested as long as they share a common owner, but they can belong to different collections. So in a case where tokens A1 and  B1 share a common owner, a token from collection B (B1) can be nested under a token in collection A (A1). To reiterate an important point, the collections need not have a common owner.
 
 However, this behavior can be restricted by imposing a list of allowed collections. This would ensure that only tokens from a restricted list of collections (defined by the collection IDs) can be nested:
 
@@ -107,7 +107,7 @@ Obtain the root token owner for a token in a nested branch.
 api.rpc.unique.topmostTokenOwner(collectionId, tokenId)
 ```
 
-Example: If in a case where _User_ is a the owner of token A that has a nested child token B, that in turn has a nested child token C, this function is invoked with token C as the argument, it would return as the result the owner of token A, i.e. _User_.
+Example: If in a case where _User_ is the owner of token A that has a nested child token B, that in turn has a nested child token C, this function is invoked with token C as the argument, it would return as the result the owner of token A, i.e. _User_.
 
 
 ### 🔶 tokenChildren
@@ -161,13 +161,13 @@ Non-empty collections cannot be burned.
 
 Properties (hereinafter also referred to as 'parameters') of NFT collections and tokens are implemented in the blockchain as a BTreeMap data storage block.
 
-Furthermore this BTreeMap consists of an unique set of keys and values which are defined by the owner or administrator of a collection.
+Furthermore, this BTreeMap consists of a unique set of keys and values which are defined by the owner or administrator of a collection.
 
 Each token of a collection inherits a list of common key/value pairs that can be attributed/set for that token and that are defined for that collection (listed in `tokenPropertyPermissions` - see below). A token cannot be attributed an arbitrary key, only a key from this list. But setting of an attribute's value is optional. An attribute can remain 'unset', i.e. there is no default value that is automatically set for a newly created token. If the user has the permissions that allow setting of properties, they may set and change the values of the token's keys.
 
 The parameter block is restricted by both the data size and the number of keys. The maximum number of keys is 64 for both the collections and tokens. The maximum size of a parameter data block (keys and values) for a collection is 40kB and for a token 32kB.
 
-Naming of keys is restricted to a limited set of the following characters: latin letter any case, numbers, dot, hyphen and underscore (regex: ^[0-9a-zA-Z\.\-_]).
+Key naming is restricted to a limited set of the following characters: Latin letter any case, numbers, dot, hyphen and underscore (regex: ^[0-9a-zA-Z\.\-_]).
 
 Only the owner and designated administrators can modify the properties of a collection.
 
@@ -175,7 +175,7 @@ Access to changing token parameters is based on access rights to token keys stor
 
 Only the owner and designated administrators of a collection can add and modify keys.
 
-Keys can only be added. In order to avoid token corruption, a key cannot be removed once it is created/added. Although keys can't be deleted we can delete the values attributed to a key if the key is mutable.
+Keys can only be added. To avoid token corruption, a key cannot be removed once it is created/added. Although keys can't be deleted we can delete the values attributed to a key if the key is mutable.
 
 A value of a key can be changed by the owner/administrator only if it has not been declared as an immutable key ('mutable' attribute set to _false_).
 
@@ -223,7 +223,7 @@ with key `properties`.
 
 ### 🔶 tokenProperties
 
-Token properties can also be obtained via dedicated method `tokenProperties`:
+Token properties can also be obtained via the dedicated `tokenProperties` method:
 
 ```javascript
 api.rpc.unique.tokenProperties(collectionId, tokenId)
@@ -239,11 +239,11 @@ These collection fields have been deprecated and are not supported with the most
 - `constOnChainSchema`
 - `variableOnChainSchema`
 
-For the existing collections these fields have been moved to the corresponding property keys prefixed by '\_old\_'.
+For the existing collections, these fields have been moved to the corresponding property keys prefixed by '\_old\_'.
 
 The following token fields have been deprecated and are no longer supported with the new properties schema:
 - `variableData`
 - `constData`
 
-For the existing tokens `constData` has been moved to `_old_constData`.
+For the existing tokens, `constData` has been moved to `_old_constData`.
   

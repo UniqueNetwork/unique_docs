@@ -1,4 +1,4 @@
-# Networks
+# Chain
 
 ## Unique - Polkadot parachain
 
@@ -31,7 +31,7 @@ It is the mainnet with the quickest time to market (usually, 1 week after Opal t
 
 <ChainTable :chainName="UNIQUE_CHAINS.sapphire" disableMetamask/>
 
-Sapphire network shares QTZ token with the Quartz mainnet. I. e. transaction fees on Sapphire can be paid only with QTZ,
+Sapphire network shares QTZ token with the Quartz mainnet. I.e. transaction fees on Sapphire can be paid only with QTZ,
 which can be obtained via transferring tokens from Quartz.
 
 QTZ token can be obtained on [MEXC](https://www.mexc.com/ru-RU/exchange/QTZ_USDT) or
@@ -40,7 +40,7 @@ with [Karura SWAP](https://apps.karura.network/swap).
 
 ## Opal - testnet
 
-Unique Network provides an Opal Testnet to it's users in order to play with all blockchain features in a safe and free
+Unique Network provides an Opal Testnet to its users to play with all blockchain features in a safe and free
 of network fees environment.&#x20;
 
 <ChainTable :chainName="UNIQUE_CHAINS.opal"/>
