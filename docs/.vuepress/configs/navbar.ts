@@ -4,24 +4,23 @@ export const navbar: Record<string, NavbarConfig> = {
   en: [
     {
       text: 'About',
-      link: '/concepts/',
+      link: '/about/',
     },
     {
       text: 'Networks',
-      link: '/chain/'
+      link: '/networks/'
     },
     {
       text: 'SDK docs',
-      link: '/sdk/'
+      link: '/sdk-docs/'
     },
-
     {
       text: 'SDK guides',
-      link: '/guide/',
+      link: '/sdk-guides/',
     },
     {
       text: 'EVM docs',
-      link: '/ethereum/'
+      link: '/evm-docs/'
     },
     {
       text: 'Links',

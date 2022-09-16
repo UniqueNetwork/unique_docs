@@ -2,13 +2,13 @@ import {SidebarConfig} from '@vuepress/theme-default'
 
 export const sidebar: Record<string, SidebarConfig> = {
   en: {
-    '/guide': [
+    '/sdk-guides': [
       {
-        text: 'Unique Guide',
+        text: 'SDK guides',
         children: [
-          '/guide/index.md',
-          '/guide/create-account.md',
-          '/guide/wallet-integration.md'
+          '/sdk-guides/index.md',
+          '/sdk-guides/create-account.md',
+          '/sdk-guides/wallet-integration.md'
         ],
       }
     ],
@@ -23,59 +23,59 @@ export const sidebar: Record<string, SidebarConfig> = {
         ],
       }
     ],
-    '/concepts': [
+    '/about': [
       {
-        text: 'Concepts',
+        text: 'About',
         children: [
-          '/concepts/addresses/index.md',
+          '/about/addresses/index.md',
           {
             text: 'Schemas',
             children: [
-              '/concepts/schemas/index.md',
-              '/concepts/schemas/unique.md',
-              '/concepts/schemas/ERC721Metadata.md',
+              '/about/schemas/index.md',
+              '/about/schemas/unique.md',
+              '/about/schemas/ERC721Metadata.md',
             ]
           },
-          '/concepts/glossary.md',
-          '/concepts/collection-limits.md',
-          '/concepts/collection-permissions.md',
-          '/concepts/substrate.md',
-          '/concepts/polkadot.md',
+          '/about/glossary.md',
+          '/about/collection-limits.md',
+          '/about/collection-permissions.md',
+          '/about/substrate.md',
+          '/about/polkadot.md',
         ],
       },
     ],
-    '/ethereum': [
+    '/evm-docs': [
       {
-        text: 'Ethereum',
+        text: 'EVM docs',
         children: [
-          '/ethereum/index.md',
-          '/ethereum/Smart contracts.md',
-          '/ethereum/UniqueNFT.md',
+          '/evm-docs/index.md',
+          '/evm-docs/Smart contracts.md',
+          '/evm-docs/UniqueNFT.md',
         ],
       }
     ],
-    '/chain': [
+    '/networks': [
       {
-        text: 'Chain',
+        text: 'Networks',
         children: [
-          '/chain/index.md',
-          '/chain/rpc.md',
-          '/chain/extrinsics.md',
-          '/chain/sponsoring.md',
-          '/chain/governance-only.md',
-          '/chain/nesting.md',
+          '/networks/index.md',
+          '/networks/rpc.md',
+          '/networks/extrinsics.md',
+          '/networks/sponsoring.md',
+          '/networks/governance-only.md',
+          '/networks/nesting.md',
         ],
       }
     ],
-    '/sdk': [
+    '/sdk-docs': [
       {
-        text: 'SDK',
+        text: 'SDK docs',
         children: [
-          '/sdk/index.md',
-          '/sdk/architecture.md',
-          '/sdk/installation.md',
-          '/sdk/methods.md',
-          '/sdk/tools.md',
+          '/sdk-docs/index.md',
+          '/sdk-docs/architecture.md',
+          '/sdk-docs/installation.md',
+          '/sdk-docs/methods.md',
+          '/sdk-docs/tools.md',
         ],
       }
     ]
