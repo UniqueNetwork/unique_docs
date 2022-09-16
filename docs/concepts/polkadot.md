@@ -10,7 +10,7 @@ Polkadot is built to connect and secure unique blockchains, whether they are pub
 
 **Scale**
 
-Isolated blockchains can only process a limited amount of traffic. Polkadot is a sharded multi chain network, which means it can process many transactions on several chains in parallel.
+Isolated blockchains can only process a limited amount of traffic. Polkadot is a sharded multichain network, which means it can process many transactions on several chains in parallel.
 
 **Specialize**
 
@@ -26,7 +26,7 @@ The communities on Polkadot manage their network the way they need to and are ve
 
 **Upgrade easily**
 
-Like all software, blockchains need upgrade to stay relevant and improve over time. However, upgrading conventional chains requires what are called “hard forks”, which create two separate transaction histories that can devide a community in two parts and often take months of work. Polkadot enables forkless upgrades, allowing blockchains to evolve and adapt easily as soon as better technology becomes available.
+Like all software, blockchains need upgrades to stay relevant and improve over time. However, upgrading conventional chains requires what are called “hard forks”, which create two separate transaction histories that can divide a community into two parts and often take months of work. Polkadot enables forkless upgrades, allowing blockchains to evolve and adapt easily as soon as better technology becomes available.
 
 **Bridges**
 
@@ -43,7 +43,7 @@ Any questions remain? Please watch [this video](https://www.youtube.com/watch?v=
 Kusama is a network built as a risk-taking, fast-moving ‘canary in the coal mine’ for its cousin Polkadot.
 
 **Fast Iteration**
-Move fast and ship your product. Kusama’s risk-taking and nimble mentality allows developers to move swiftly through the governance and upgrade process, enabling rapid development and growth.
+Move fast and ship your product. Kusama’s risk-taking and nimble mentality allow developers to move swiftly through the governance and upgrade process, enabling rapid development and growth.
 
 **Low Economic Barriers**
 
@@ -66,7 +66,7 @@ Kusama is built by the same teams as Polkadot, using nearly the same code and to
 
 **Scalability**
 
-Kusama’s sharded blockchains and open governance provide a scalable and future-proof infrastructure for businesses, marketplaces and applications to deploy and grow.
+Kusama’s sharded blockchains and open governance provide a scalable and future-proof infrastructure for businesses, marketplaces, and applications to deploy and grow.
 
 **Compatibility**
 
@@ -81,5 +81,5 @@ More resources about Kusama:
 [Official blog](https://polkadot.network/tag/kusama/)
 [Community Hub](https://www.notion.so/Polkadot-Kusama-Community-Hub-ee1fd077ff6c42c381940404f6aa9f1c)
 [Meetup Hub](https://www.notion.so/Polkadot-Meetup-Hub-4511c156770e4ba9936386d8be5fe5be)
-[Ambassador Program](https://share.hsforms.com/7051618/2ed06e3a-2d5b-4acf-a9f1-71970bf868cb)
+[Ambassador Program](https://unique.network/ambassador-application/)
 [Github](https://github.com/paritytech/polkadot/)
