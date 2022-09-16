@@ -2,7 +2,7 @@
 
 #### Creating Substrate (Polkadot ecosystem) account For Unique Network
 
-Unique Network, like most blockchains, is based on [accounts or addresses](/reference/addresses/addresses.md). An address can own  some QTZ or UNQ token, NFTs or some ERC-20 tokens. It can sign transactions to transfer these valuable assets to other addresses or to make some actions in Decentralized Apps (dApps). For example, an address can buy and sell NFTs on the NFT Marketplace.
+Unique Network, like most blockchains, is based on [accounts or addresses](/concepts/addresses/addresses.md). An address can own  some QTZ or UNQ token, NFTs or some ERC-20 tokens. It can sign transactions to transfer these valuable assets to other addresses or to make some actions in Decentralized Apps (dApps). For example, an address can buy and sell NFTs on the NFT Marketplace.
 
 A typical Quartz address looks like this: `yGHuU9CWnrHMUz8GJRmpA9MowmtMKZvnq2tLc5mk3zMFizW5X`
 
