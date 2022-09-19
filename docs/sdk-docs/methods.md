@@ -1795,7 +1795,9 @@ NFT Collection can be controlled by multiple **admin** addresses (some of which 
 
 **Admins** can issue and burn NFTs, as well as add and remove other **admins**, but cannot change NFT or Collection ownership.
 
+
 The list of admins may be or become empty.
+
 
 To add a **Collection Admin**, use the **[Add collection admin](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/add-collection-admin)** method.
 
@@ -4301,9 +4303,11 @@ Optional Arguments
 `from?: string` - The owner of the item on whose behalf the token is destroyed
 
 `value?: number` - Amount to burn
+
 - Non-Fungible Mode: Ignored
 - Fungible Mode: Must specify the transferred amount
 - Re-Fungible Mode: Must specify transferred portion (between 0 and 1)
+
 
 #### Behaviour and errors
 
@@ -5656,6 +5660,7 @@ const { collectionId, tokenId } = result.parsed;
 
 Checks if token exists in collection. Returns true or false.
 
+
 #### Brief example
 
 ```typescript
@@ -5692,6 +5697,7 @@ type TokenExistsResult = {
 
   <CodeGroupItem title="SDK">
 
+
 ```typescript
 const { isExists } = await sdk.tokens.exists({ collectionId: 1, tokenId: 1 });
 ```
@@ -5717,9 +5723,33 @@ const { isExists } = await sdk.tokens.exists({
     collectionId: 1,
     tokenId: 1
 });
+
+  </CodeGroupItem>
+
+
+  <CodeGroupItem title="REST">
+
+```bash
+    curl -X 'GET' \
+      'https://rest.unique.network/opal/v1/tokens/exists?collectionId=1&tokenId=1' \
+      -H 'accept: application/json'
 ```
 
   </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+
+const { isExists } = await sdk.tokens.exists({
+    collectionId: 1,
+    tokenId: 1
+});
+```
+
+  </CodeGroupItem>
+
 
 </CodeGroup>
 </details>
