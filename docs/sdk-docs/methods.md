@@ -7,7 +7,7 @@
 
 #### Overview
 
-Method returns collection info with parsed unique schema.
+The method returns collection info with parsed unique schema.
 
 #### Brief example
 
@@ -24,7 +24,7 @@ const collection: CollectionInfoWithSchema = await sdk.collections.get(getCollec
 
 #### Behaviour and errors
 
-Returns null if collection does not exists.
+Returns null if the collection does not exist.
 
 If collection properties can not be presented as unique schema, `schema` property will be empty.
 
@@ -54,7 +54,7 @@ interface CollectionInfoWithSchema {
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { CollectionIdArguments, CollectionInfoWithSchema } from '@unique-nft/substrate-client/types';
@@ -75,7 +75,7 @@ curl -X 'GET' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -93,7 +93,7 @@ const collection = await sdk.collections.get({ collectionId: 1 });
 
 #### Overview
 
-Get array of **Collection properties**.  More details about **Collection properties** can be found in [Set collection properties](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/set-collection-properties).
+Gets the array of **Collection properties**.  More details about **Collection properties** can be found in [Set collection properties](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/set-collection-properties).
 
 #### Brief example
 
@@ -140,7 +140,7 @@ interface CollectionPropertiesResult {
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import {
@@ -169,7 +169,7 @@ curl -X 'GET' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -187,7 +187,7 @@ const { properties } = await sdk.collections.properties({ collectionId: 1 });
 
 #### Overview
 
-Method creates new collection with unique schema.
+The method creates a new collection with the Unique schema.
 
 #### Brief example
 
@@ -215,7 +215,7 @@ console.log(`Created new collection with id ${collectionId}`)
 #### Arguments
 
 
-`address` - The address of collection owner
+`address` - The address of the collection owner
 
 `name` - Collection name (text, up to 64 characters)
 
@@ -252,7 +252,7 @@ interface CollectionIdArguments {
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { CreateCollectionNewArguments } from '@unique-nft/substrate-client/tokens';
@@ -316,7 +316,7 @@ curl -X 'POST' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -349,7 +349,7 @@ console.log(`Created collection with id ${collectionId}`);
 
 #### Overview
 
-Method to delete collection properties.
+This method deletes collection properties.
 
 #### Brief example
 
@@ -399,7 +399,7 @@ interface DeleteCollectionPropertiesResult {
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { DeleteCollectionPropertiesArguments} from '@unique-nft/substrate-client/tokens';
@@ -448,7 +448,7 @@ curl -X 'POST' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -470,7 +470,7 @@ await sdk.collections.deleteProperties.submitWaitResult({
 
 #### Overview
 
-Destroys collection if no tokens within this collection
+The method destroys collection if no tokens within this collection.
 
 #### Brief example
 
@@ -508,7 +508,7 @@ interface DestroyCollectionResult {
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { DestroyCollectionArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -550,7 +550,7 @@ curl -X 'POST' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -571,7 +571,7 @@ client.collections.destroy.submitWaitResult({
 
 #### Overview
 
-Method to get collection effective limits.
+The method gets collection effective limits.
 
 #### Brief example
 
@@ -592,7 +592,7 @@ console.log(`Collection ${collectionId} limits: ${JSON.stringify(limits)}`);
 
 By default, the collection limit is not set (their value is null).
 
-This limit value can be seen when requesting a collection using [Get collection by ID](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/collection-by-id) method.
+This limit value can be seen when requesting a collection using the [Get collection by ID](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/collection-by-id) method.
 
 If the limit is not set by the user, then the default limit is actually applied to the collection.
 
@@ -625,7 +625,7 @@ interface GetCollectionLimitsResult {
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { CollectionIdArguments, GetCollectionLimitsResult } from '@unique-nft/substrate-client/types';
@@ -648,7 +648,7 @@ curl -X 'GET' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -668,7 +668,7 @@ console.log(`Collection ${collectionId} limits: ${JSON.stringify(limits)}`);
 
 #### Overview
 
-Get array of **collection property permissions** (see [Set token property permissions](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/set-token-property-permissions)).
+The method gets an array of **collection property permissions** (see [Set token property permissions](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/set-token-property-permissions)).
 
 #### Brief example
 
@@ -693,7 +693,7 @@ Get array of **collection property permissions** (see [Set token property permis
 
 `propertyKeys?: string[]` - Array of property keys to get values for
 
-`at?: HexString;` - Allows to specify at which moment of the chain (block hash) you need to perform the check. If you leave it empty, the result will be for the last block of the chain.
+`at?: HexString;` - Allows specifying at which moment of the chain (block hash) you need to perform the check. If you leave it empty, the result will be for the last block of the chain.
 
 #### Behaviour and errors
 
@@ -722,7 +722,7 @@ This method returns `PropertyPermissionsResult`
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
   import {
@@ -753,7 +753,7 @@ This method returns `PropertyPermissionsResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
   const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -773,11 +773,11 @@ This method returns `PropertyPermissionsResult`
 
 #### Overview
 
-Sets some **collection limits** and starts enforcing them immediately.
+The method sets some **collection limits** and starts enforcing them immediately.
 
 You can get the current **collection limits** using the [Get effective limits by collection Id](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/effective-collection-limits) method.
 
-Only **Collection Owner** has permission to call this method.
+Only the **Collection Owner** has permission to call this method.
 
 #### Brief example
 
@@ -805,25 +805,27 @@ Only **Collection Owner** has permission to call this method.
 
 #### Arguments
 
-`address: string`- Signer, the address of **Collection Owner**
+`address: string`- Signer, the address of the **Collection Owner**
 
 `collectionId: number` - ID of the collection to set limits for
 
-`limits: CollectionLimits*` - The **Effective Limits** of the collection. Difference between the **Effective Limits** and the limits returned by [Get collection by Id](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/collection-by-id) are explained in [the effective limits of the collection](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/effective-collection-limits).
+`limits: CollectionLimits*` - The **Effective Limits** of the collection. The difference between the **Effective Limits** and the limits returned by [Get collection by Id](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/collection-by-id) is explained in [the effective limits of the collection](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/effective-collection-limits).
 
 &ast; Interface **CollectionLimits**
 
 - `accountTokenOwnershipLimit?: number | null` - Maximum number of tokens that one address can own
 - `sponsoredDataSize?: number | null` - Maximum byte size of custom token data that can be sponsored when tokens are minted in sponsored mode
 - `sponsoredDataRateLimit?: number | null` - Defines how many blocks need to pass between setVariableMetadata transactions in order for them to be sponsored
-- `tokenLimit?: number | null` - Total amount of tokens that can be minted in this collection
-- `sponsorTransferTimeout?: number | null` - Time interval in blocks that defines once per how long a non-privileged user transfer or mint transaction can be sponsored
+- `tokenLimit?: number | null` - Total amount of tokens that can be minted in this collection.
+- `sponsorTransferTimeout?: number | null` - Time interval in blocks that defines once per how long a non-privileged user transfer or the mint transaction can be sponsored
 - `sponsorApproveTimeout?: number | null` - Time interval in blocks that defines once per how long a non-privileged user approve transaction can be sponsored
-- `ownerCanTransfer?: boolean | null` - Boolean value that tells if collection owner or admins can transfer or burn tokens owned by other non-privileged users
-- `ownerCanDestroy?: boolean | null` - Boolean value that tells if collection owner can destroy it
+- `ownerCanTransfer?: boolean | null` - A boolean value that tells if collection owner or admins can transfer or burn tokens owned by other non-privileged users
+- `ownerCanDestroy?: boolean | null` - A boolean value that tells if collection owner can destroy it
 - `transfersEnabled?: boolean | null` - Flag that defines whether token transfers between users are currently enabled
 
 #### Behaviour and errors
+
+**Attention!** Total amount of tokens includes also the tokens that have been minted and burned after that. So if tokenLimit=3, 2 tokens were minted and 1 of them was burned, only 1 more token can be minted.
 
 Throw errors:
 
@@ -845,7 +847,7 @@ This method returns `SetCollectionLimitsResult`
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
     import '@unique-nft/substrate-client/tokens';
@@ -909,7 +911,7 @@ This method returns `SetCollectionLimitsResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -943,7 +945,7 @@ This method returns `SetCollectionLimitsResult`
 
 #### Overview
 
-Sets onchain permissions for collection
+This method sets on-chain permissions for collection
 
 #### Brief example
 
@@ -980,12 +982,12 @@ Sets onchain permissions for collection
 `collectionId: number` - Collection id
 
 `permissions: CollectionPermissions` - Struct that contains the permissions for a collection
-  - `access?: CollectionAccess` - 'Normal' (for public access) or 'WhiteList' (for restricted access)
-  - `mintMode?: boolean`- True, if anyone is allowed to mint. False otherwise
-  - `nesting?:`
-    - `tokenOwner?: boolean`
-    - `collectionAdmin?: boolean`
-    - `restricted?: number[]`
+- `access?: CollectionAccess` - 'Normal' (for public access) or 'WhiteList' (for restricted access)
+- `mintMode?: boolean`- True, if anyone is allowed to mint. False otherwise
+- `nesting?:`
+  - `tokenOwner?: boolean`
+  - `collectionAdmin?: boolean`
+  - `restricted?: number[]`
 
 #### Behaviour and errors
 
@@ -1007,7 +1009,7 @@ This method returns `SetCollectionPermissionsResult`
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
   import {
@@ -1071,7 +1073,7 @@ This method returns `SetCollectionPermissionsResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
   const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -1110,7 +1112,7 @@ Only the **Collection Owner** and **Collection Admin** can modify the **Collecti
 
 Property **keys** can only be added, they cannot be removed.
 
-Naming of keys is restricted to a limited set of the following characters: latin letter any case, numbers, dot, hyphen and underscore (regex: ^[0-9a-zA-Z.-_]).
+The naming of keys is restricted to a limited set of the following characters: Latin letter any case, numbers, dot, hyphen and underscore (regex: ^[0-9a-zA-Z.-_]).
 
 #### Brief example
 
@@ -1133,7 +1135,7 @@ Naming of keys is restricted to a limited set of the following characters: latin
 
 #### Arguments
 
-`address: Address` - Signer, the address of **Collection Owner** or **Collection Admin**
+`address: Address` - Signer, the address of the **Collection Owner** or **Collection Admin**
 
 `collectionId: number` - Collection id
 
@@ -1163,7 +1165,7 @@ This method returns `SetCollectionPermissionsResult`
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
     const args: SetCollectionPropertiesArguments = {
@@ -1217,7 +1219,7 @@ This method returns `SetCollectionPermissionsResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -1248,13 +1250,13 @@ This method returns `SetCollectionPermissionsResult`
 
 #### Overview
 
-Sets some **tokenPropertyPermissions** values. The current value of **tokenPropertyPermissions** can be found using [Property permissions](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/property-permissions).
+The method sets some **tokenPropertyPermissions** values. The current value of **tokenPropertyPermissions** can be found using [Property permissions](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/property-permissions).
 
 The token cannot be attributed to an arbitrary key, only to a key from the **tokenPropertyPermissions** list.
 
 Only the **Collection Owner** and **Collection Admin** can add and modify keys.
 
-The permissions to create and modify properties of a collection is carried out using three keys - **mutable**, **collectionAdmin** and **tokenOwner**.
+The permissions to create and modify properties of a collection are carried out using three keys - **mutable**, **collectionAdmin** and **tokenOwner**.
 
 - **mutable** attribute sets the immutability attribute.
 - **collectionAdmin** grants the designated collection administrator and the collection owner 'write/modify' access
@@ -1286,7 +1288,7 @@ The permissions to create and modify properties of a collection is carried out u
 
 #### Arguments
 
-`address: string` - Signer, the address of **Collection Owner** or **Collection Admin**
+`address: string` - Signer, the address of the **Collection Owner** or **Collection Admin**
 
 `collectionId: number` - Collection id
 
@@ -1324,7 +1326,7 @@ This method returns `SetTokenPropertyPermissionsResult`
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
     const args: SetTokenPropertyPermissionsArguments = {
@@ -1387,7 +1389,7 @@ This method returns `SetTokenPropertyPermissionsResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -1422,11 +1424,11 @@ This method returns `SetTokenPropertyPermissionsResult`
 
 #### Overview
 
-Enable or disable transfers in a collection.
+The method enables or disables transfers in a collection.
 
-The method can call the **Collection Owner**.
+Only the **Collection Owner** can call this method.
 
-Set **transfersEnabled** flag for particular collection. The current value of the **transfersEnabled** flag can be found using the method [**Get effective limits**](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/effective-collection-limits)
+The method sets **transfersEnabled** flag for particular collection. The current value of the **transfersEnabled** flag can be found using the method [**Get effective limits**](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/effective-collection-limits)
 
 #### Brief example
 
@@ -1446,7 +1448,7 @@ Set **transfersEnabled** flag for particular collection. The current value of th
 
 #### Arguments
 
-`address: string`- Signer, the address of **Collection Owner**
+`address: string`- Signer, the address of the **Collection Owner**
 
 `collectionId: number` - Collection id
 
@@ -1473,7 +1475,7 @@ This method returns `SetTransfersEnabledResult`
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
     import { SetTransfersEnabledArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -1519,7 +1521,7 @@ This method returns `SetTransfersEnabledResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -1543,7 +1545,7 @@ This method returns `SetTransfersEnabledResult`
 
 #### Overview
 
-Assign a new collection owner. The method can call the **Collection Owner**
+This method assigns a new collection owner. Only the **Collection Owner** can call this method.
 
 #### Brief example
 
@@ -1564,7 +1566,7 @@ Assign a new collection owner. The method can call the **Collection Owner**
 
 `collectionId: number` - ID of the collection to change owner for
 
-`from: string` - The address of **Collection Owner**
+`from: string` - The address of the **Collection Owner**
 
 `to: string` - New collection owner (Substrate address)
 
@@ -1590,7 +1592,7 @@ This method returns `TransferCollectionResult`
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
     import { TransferCollectionArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -1635,7 +1637,7 @@ This method returns `TransferCollectionResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -1663,9 +1665,9 @@ This method returns `TransferCollectionResult`
 
 #### Overview
 
-Adds an **admin** of the Collection. 
+Adds an **admin** of the Collection.
 
-**Admin** description available in [Get admin list](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/admin-list).
+**Admin** description is available in [Get admin list](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/admin-list).
 
 Only **Collection Owner** or **Collection Admin** has permission to call this method.
 
@@ -1687,7 +1689,7 @@ Only **Collection Owner** or **Collection Admin** has permission to call this me
 
 #### Arguments
 
-`address: string` - Signer, the address of **Collection Owner** or **Collection Admin**
+`address: string` - Signer, the address of the **Collection Owner** or **Collection Admin**
 
 `collectionId: number` - ID of the Collection to add **admin** for
 
@@ -1715,7 +1717,7 @@ This method returns `AddCollectionAdminResult`
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
     import { AddCollectionAdminArguments } from '@unique-nft/substrate-client/tokens';
@@ -1761,7 +1763,7 @@ This method returns `AddCollectionAdminResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -1787,13 +1789,13 @@ This method returns `AddCollectionAdminResult`
 
 #### Overview
 
-Get array of **Collection Admins**.
+Gets an array of **Collection Admins**.
 
-NFT Collection can be controlled by multiple **admin** addresses (some which can also be servers, for example).
+NFT Collection can be controlled by multiple **admin** addresses (some of which can also be servers, for example).
 
 **Admins** can issue and burn NFTs, as well as add and remove other **admins**, but cannot change NFT or Collection ownership.
 
-List of admins may become empty. 
+The list of admins may be or become empty.
 
 To add a **Collection Admin**, use the **[Add collection admin](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/add-collection-admin)** method.
 
@@ -1814,7 +1816,7 @@ To add a **Collection Admin**, use the **[Add collection admin](https://github.c
 
 #### Arguments
 
-`collectionId: number``collectionId: number`
+`collectionId: number` - Collection id
 
 `at?: string;` - Allows to specify at which moment of the chain (block hash) you need to perform the check. If you leave it empty, the result will be for the last block of the chain.
 
@@ -1838,7 +1840,7 @@ This method returns `AdminlistResult`
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
     import {
@@ -1865,7 +1867,7 @@ This method returns `AdminlistResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -1889,13 +1891,13 @@ This method returns `AdminlistResult`
 
 #### Overview
 
-Remove **admin** address of the Collection. An **admin** address can remove itself.
+The method removes the **admin** address of the Collection. An **admin** address can remove itself.
 
-List of admins may become empty, in which case only **Collection Owner** will be able to add an **Admin**.
+The list of admins may be or become empty, in which case only **Collection Owner** will be able to add an **Admin**.
 
-**Admin** description available in [Get admin list](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/admin-list).
+**Admin** description is available in [Get admin list](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/admin-list).
 
-Only **Collection Owner** or **Collection Admin** has permission to call this method.
+Only the **Collection Owner** or **Collection Admin** has permission to call this method.
 
 #### Brief example
 
@@ -1915,7 +1917,7 @@ Only **Collection Owner** or **Collection Admin** has permission to call this me
 
 #### Arguments
 
-`address: string` - Signer, the address of **Collection Owner** or **Collection Admin**
+`address: string` - Signer, the address of the **Collection Owner** or **Collection Admin**
 
 `collectionId: number` - ID of the Collection to remove admin for
 
@@ -1943,7 +1945,7 @@ This method returns `RemoveCollectionAdminResult`
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
     import { RemoveCollectionAdminArguments } from '@unique-nft/substrate-client/tokens';
@@ -1989,7 +1991,7 @@ This method returns `RemoveCollectionAdminResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -2037,8 +2039,8 @@ const { collectionId, address } = parsed;
 #### Arguments
 
 - **address** - Sender address
-- **collectionId** - an ID of the collection which will be affected
-- **newAdminId** - the address to be added to the allow list
+- **collectionId** - An ID of the collection which will be affected
+- **newAdminId** - The address to be added to the allow list
 
 #### Behaviour and errors
 
@@ -2056,7 +2058,7 @@ interface AccountTokensResult {
 #### Examples
 
 <CodeGroup>
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { AddToAllowListArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -2093,7 +2095,7 @@ console.log(
 ```
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -2121,7 +2123,8 @@ console.log(
 <details><summary>Allow list description</summary>
 
 #### Overview
-Gets the addresses that are in to allow list for the specified collection.
+
+Gets the addresses from allow list of the specified collection.
 
 #### Brief example
 
@@ -2153,7 +2156,7 @@ interface AllowListResult {
 #### Examples
 
 <CodeGroup>
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
   import { AllowListArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -2177,7 +2180,7 @@ interface AllowListResult {
 ```
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -2199,7 +2202,7 @@ interface AllowListResult {
 ### Get allowance
 <details><summary>Get allowance description</summary>
 
-Get the amount of token pieces approved to transfer
+The method gets the number of token pieces approved to transfer
 
 #### Arguments
 
@@ -2230,7 +2233,7 @@ const { isAllowed } = await sdk.tokens.allowance({
 <details><summary>Check is allowed description</summary>
 
 #### Overview
-Check if a user is allowed to use a collection. Returns true or false.
+Checks if user is allowed to use the collection. Returns true or false.
 
 #### Brief example
 ```typescript
@@ -2261,7 +2264,7 @@ interface AllowedResult {
 #### Examples
 
 <CodeGroup>
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
   const { isAllowed } = await sdk.collection.allowed({
@@ -2282,7 +2285,7 @@ interface AllowedResult {
 ```
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -2306,7 +2309,7 @@ interface AllowedResult {
 
 #### Overview
 
-Remove account from the allow list
+Removes an account from the allow list.
 
 #### Brief example
 
@@ -2344,7 +2347,7 @@ interface RemoveFromAllowListResult {
 #### Examples
 
 <CodeGroup>
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
     import { RemoveFromAllowListArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -2381,7 +2384,7 @@ interface RemoveFromAllowListResult {
 ```
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -2411,7 +2414,7 @@ interface RemoveFromAllowListResult {
 
 #### Overview
 
-Returns full tree of a nested tokens. You can request it with any token from the bundle, result will be the same for all.
+Returns full tree of a nested tokens. You can request it with any token from the bundle, the result will be the same for all.
 
 #### Brief example
 
@@ -2448,9 +2451,9 @@ console.log(result);
 
 Throw errors:
 
-- If topmost token of a bundle has no nested tokens
+- If the topmost token of a bundle has no nested tokens
 - Recursion depth exceeded
-- Token not found during search for nested childs
+- Token not found during search for nested children
 
 #### Returns
 
@@ -2466,7 +2469,7 @@ type NestedToken = Omit<TokenByIdResult, 'nestingChildTokens'> & {
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { GetBundleArguments } from '@unique-nft/substrate-client/tokens';
@@ -2493,7 +2496,7 @@ curl -X 'GET' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -2516,7 +2519,7 @@ console.log(bundle);
 
 #### Overview
 
-Returns whether token in part of the bundle or not.
+The method returns whether the token is in part of the bundle or not.
 
 #### Brief example
 
@@ -2549,7 +2552,7 @@ type IsBundleResult = boolean;
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { IsBundleArguments } from '@unique-nft/substrate-client/tokens';
@@ -2576,7 +2579,7 @@ curl -X 'GET' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -2637,7 +2640,7 @@ console.log(
 
 #### Behaviour and errors
 
-Nesting can be applied only if token collection has a permission for nesting. If collection has no permission for nesting - "UserIsNotAllowedToNest" Error will be thrown.
+Nesting can be applied only if the token collection has permission for nesting. If the collection has no permission for nesting - "UserIsNotAllowedToNest" Error will be thrown.
 
 ```typescript
 await sdk.collections.creation.submitWaitResult({
@@ -2671,7 +2674,7 @@ type NestTokenResult = {
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { NestTokenArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -2733,7 +2736,7 @@ console.log(
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -2769,7 +2772,7 @@ console.log(
 
 #### Overview
 
-Get array of nested tokens. If token has no children return empty array.
+Gets an array of nested tokens. If the token has no children returns an empty array.
 
 #### Brief example
 
@@ -2829,7 +2832,7 @@ type TokenChildrenResult = {
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import {
@@ -2859,7 +2862,7 @@ curl -X 'GET' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -2882,7 +2885,7 @@ console.log(result.children);
 
 #### Overview
 
-Return info about token parent. Call the `tokenOwner` method. If the owner is not a nesting token return `null`.
+Returns info about the token parent. Call the `tokenOwner` method. If the owner is not a nesting token returns `null`.
 
 #### Brief example
 
@@ -2932,7 +2935,7 @@ type TokenParentResult = {
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import {
@@ -2962,7 +2965,7 @@ curl -X 'GET' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -2985,7 +2988,7 @@ console.log(result);
 
 #### Overview
 
-Return substrate address of topmost token owner.
+Returns substrate address of the topmost token owner.
 
 #### Brief example
 
@@ -3032,7 +3035,7 @@ type TopmostTokenOwnerResult = { topmostOwner: Address };
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import {
@@ -3063,7 +3066,7 @@ curl -X 'GET' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -3124,7 +3127,7 @@ console.log(
 
 #### Behaviour and errors
 
-Сan only be executed if the token already nested.
+This method can only be executed if the token is nested.
 
 #### Returns
 
@@ -3147,7 +3150,7 @@ type UnnestTokenResult = {
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { UnnestTokenArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -3209,7 +3212,7 @@ console.log(
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -3237,7 +3240,7 @@ console.log(
 
   </CodeGroupItem>
 
-</CodeGroup>8
+</CodeGroup>
 </details>
 
 ## Sponsorship
@@ -3247,7 +3250,7 @@ console.log(
 
 #### Overview
 
-**Sponsor** should use this method to confirm sponsorship after the collection **owner** called [set collection sponsor](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/set-collection-sponsor) method.
+**Sponsors** should use this method to confirm sponsorship after the collection **owner** called the [set collection sponsor](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/set-collection-sponsor) method.
 
 #### Brief example
 
@@ -3275,11 +3278,11 @@ console.log(
 
 #### Behaviour and errors
 
-This method takes collection id and confirms signer to be a collection sponsor.
+This method takes collection id and confirms the signer to be a collection sponsor.
 
-Collection **owner** should call [set collection sponsor](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/set-collection-sponsor) with **sponsor** address, otherwise an error will be thrown.
+The collection **owner** should call the [set collection sponsor](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/set-collection-sponsor) with the **sponsor** address, otherwise, an error will be thrown.
 
-Only unconfirmed **sponsor** of the collection should call and sign this method.
+Only an unconfirmed **sponsor** of the collection should call and sign this method.
 
 Throws common errors on insufficient balance and so on.
 
@@ -3305,7 +3308,7 @@ This method returns `ConfirmSponsorshipResult`
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
     import { ConfirmSponsorshipArguments } from '@unique-nft/substrate-client/tokens';
@@ -3352,7 +3355,7 @@ This method returns `ConfirmSponsorshipResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -3377,7 +3380,7 @@ This method returns `ConfirmSponsorshipResult`
 
 #### Overview
 
-Return number of blocks when sponsored transaction is available. Returns null if sponsorship hasn't been set.
+This method returns the number of blocks when the sponsored transaction is available. Returns null if sponsorship hasn't been set.
 
 #### Brief example
 
@@ -3428,7 +3431,7 @@ type NextSponsoredResult = {
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import {
@@ -3460,7 +3463,7 @@ curl -X 'GET' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -3484,7 +3487,7 @@ console.log(result);
 
 #### Overview
 
-Collection **owner** can use this method to remove **sponsor** added by [set collection sponsor](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/set-collection-sponsor) method.
+The collection **owner** can use this method to remove **sponsors** added by the [set collection sponsor](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/set-collection-sponsor) method.
 
 #### Brief example
 
@@ -3512,9 +3515,9 @@ Collection **owner** can use this method to remove **sponsor** added by [set col
 
 #### Behaviour and errors
 
-This method takes collection id and removes collection sponsor.
+This method takes the collection id and removes the collection sponsor.
 
-Only collection **owner** allowed to call this method.
+Only collection **owners** are allowed to call this method.
 
 Throws common errors on insufficient balance and so on.
 
@@ -3535,7 +3538,7 @@ This method returns `RemoveSponsorshipResult`
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
     import { RemoveSponsorshipArguments } from '@unique-nft/substrate-client/tokens';
@@ -3582,7 +3585,7 @@ This method returns `RemoveSponsorshipResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -3607,11 +3610,11 @@ This method returns `RemoveSponsorshipResult`
 
 #### Overview
 
-Collection **owner** can use this method to set **sponsor** of the collection.
+The collection **owner** can use this method to set the **sponsor** of the collection.
 
 After that **sponsor** should [confirm sponsorship](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/confirm-sponsorship) and the sponsoring mechanism will be enabled.
 
-Collection **owner** can also [remove collection sponsor](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/remove-collection-sponsor).
+The collection **owner** can also [remove collection sponsor](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/remove-collection-sponsor).
 
 #### Brief example
 
@@ -3643,13 +3646,13 @@ Collection **owner** can also [remove collection sponsor](https://github.com/Uni
 
 #### Behaviour and errors
 
-The method takes an address and set as collection sponsor.
+The method takes an address and sets it as a collection sponsor.
 
-Signer must be admin of the collection.
+The signer must be an admin of the collection.
 
-Be aware that if address is already a sponsor of given collection no exception will be thrown, but fee will be charged.
+Be aware that if the address is already a sponsor of the given collection no exception will be thrown, but a fee will be charged.
 
-And also throws common errors on insufficient balance and so on.
+Throws common errors on insufficient balance.
 
 #### Returns
 
@@ -3673,7 +3676,7 @@ This method returns `SetSponsorshipResult`
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
     import { SetCollectionSponsorArguments } from '@unique-nft/substrate-client/tokens';
@@ -3722,7 +3725,7 @@ This method returns `SetSponsorshipResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -3745,10 +3748,11 @@ This method returns `SetSponsorshipResult`
 
 ## Statistics
 
-# Get account tokens of the collection
+### Get account tokens of the collection
+<details><summary>Get account tokens of the collection description</summary>
 
 #### Overview
-Returns array of tokens, owned by address
+Returns an array of tokens, owned by address.
 
 #### Brief example
 
@@ -3766,7 +3770,7 @@ const { collectionId, tokenId } = token;
 
 #### Arguments
 
-`collectionId: number` - ID of collection 
+`collectionId: number` - ID of collection
 
 `address: string` - address of tokens owner
 
@@ -3788,7 +3792,7 @@ interface AccountTokensResult {
 
 
 <CodeGroup>
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
   import { AccountTokensArguments, AccountTokensResult } from '@unique-nft/substrate-client/tokens';
@@ -3816,7 +3820,7 @@ interface AccountTokensResult {
 ```
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -3835,12 +3839,14 @@ interface AccountTokensResult {
   </CodeGroupItem>
 
 </CodeGroup>
+</details>
 
-# Get collection tokens
+### Get collection tokens
+<details><summary>Get collection tokens description</summary>
 
 #### Overview
 
-Get tokens contained within a collection
+This method gets tokens contained within a collection.
 
 #### Brief example
 
@@ -3860,7 +3866,7 @@ const result: CollectionTokensResult = await sdk.collections.tokens({
 
 #### Returns
 
-This method returns `CollectionTokensResult`
+This method returns `CollectionTokensResult` - an array of token Ids contained within the passed collection.
 
 ```typescript
 interface CollectionTokensResult {
@@ -3868,12 +3874,11 @@ interface CollectionTokensResult {
 }
 ```
 
-Method returns array of tokenIds contained within passed collection.
 
 #### Examples
 
 <CodeGroup>
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
   import { CollectionTokensResult } from '@unique-nft/substrate-client/tokens';
@@ -3897,7 +3902,7 @@ Method returns array of tokenIds contained within passed collection.
 ```
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -3915,15 +3920,17 @@ Method returns array of tokenIds contained within passed collection.
 
 </CodeGroup>
 
+</details>
 
-# Get collection stats
+### Get collection stats
+<details><summary>Get collection stats description</summary>
 
 #### Overview
 
 Returns blockchain collection statistics:
- - The number of total collections created
- - The number of destroyed collections
- - The number of collections that are still alive
+- The number of total collections created
+- The number of destroyed collections
+- The number of collections that are still alive
 
 #### Brief example
 
@@ -3954,7 +3961,7 @@ interface GetStatsResult {
 #### Examples
 
 <CodeGroup>
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
   import { CollectionTokensResult } from '@unique-nft/substrate-client/tokens';
@@ -3976,7 +3983,7 @@ interface GetStatsResult {
 ```
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -3991,12 +3998,14 @@ interface GetStatsResult {
   </CodeGroupItem>
 
 </CodeGroup>
+</details>
 
-#### Last token id
+### Last token id
+<details><summary>Last token id description</summary>
 
 #### Overview
 
-Get last generated token id
+The method gets the last generated token id.
 
 #### Brief example
 
@@ -4029,7 +4038,7 @@ interface LastTokenIdResult {
 
 
 <CodeGroup>
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
   import { LastTokenIdResult } from '@unique-nft/substrate-client/types';
@@ -4053,7 +4062,7 @@ interface LastTokenIdResult {
 ```
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -4069,12 +4078,14 @@ interface LastTokenIdResult {
 
 </CodeGroup>
 
+</details>
 
-## Total supply
+### Total supply
+<details><summary>Total supply description</summary>
 
 #### Overview
 
-Returns the number of tokens in the collection
+Returns the number of tokens in the collection.
 
 #### Brief example
 
@@ -4095,6 +4106,7 @@ console.log(`totalSupply - ${totalSupply}`);
 #### Arguments
 
 `collectionId: number` - ID of collection
+
 `blockHashAt?: number` - hash of execution block, is optional
 
 #### Returns
@@ -4111,7 +4123,7 @@ interface TotalSupplyResult {
 
 
 <CodeGroup>
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
   import {
@@ -4136,7 +4148,7 @@ interface TotalSupplyResult {
 ```
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -4151,8 +4163,106 @@ interface TotalSupplyResult {
   </CodeGroupItem>
 
 </CodeGroup>
+</details>
 
 ## Token
+
+### Get allowance
+<details><summary>Get allowance description</summary>
+
+#### Overview
+
+Get the amount of token pieces approved to transfer
+
+#### Brief example
+
+```typescript
+import { AllowanceArguments } from '@unique-nft/substrate-client/tokens/types';
+
+const AllowanceArgs: AllowanceArguments = {
+    from: '<address>',
+    to: '<address>',
+    collectionId: 1,
+    tokenId: 1,
+};
+
+const { isAllowed } = await sdk.tokens.allowance(AllowanceArgs);
+```
+
+
+#### Arguments
+
+`from: string` - address from
+
+`to: string` - address to
+
+`collectionId: number` - ID of collection
+
+`tokenId: number` - ID of token
+
+`at?: string` — hash of execution block
+
+#### Behaviour and errors
+
+Throw errors:
+
+- Collection or token not found
+
+#### Returns
+
+This method returns `AllowanceResult`
+
+```typescript
+type AllowanceResult = {
+    isAllowed: boolean;
+}
+```
+
+#### Examples
+
+<CodeGroup>
+  <CodeGroupItem title="SDK">
+
+```typescript
+import { AllowanceArguments } from '@unique-nft/substrate-client/tokens/types';
+
+const AllowanceArgs: AddToAllowListArguments = {
+    from: '<address>',
+    to: '<address>',
+    collectionId: 1,
+    tokenId: 1,
+};
+
+const { isAllowed } = await sdk.tokens.allowance(AllowanceArgs);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+curl -X 'GET' \
+  'http://localhost:3000/token/allowance?collectionId=1&tokenId=1&from=<address>&to=<address>' \
+  -H 'accept: application/json'
+```
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+
+const { isAllowed } = await sdk.tokens.allowance({
+    address: '<your account address>',
+    collectionId: '<ID of the collection>',
+    newAdminId: '<valid address>'
+});
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+</details>
 
 ### Burn token
 <details><summary>Burn token description</summary>
@@ -4161,9 +4271,9 @@ interface TotalSupplyResult {
 
 This method destroys a concrete instance of NFT or amount of Fungible token.
 
-If the **from** parameter is specified, then the token is destroyed on behalf of **the owner of item**.
+If the **from** parameter is specified, then the token is destroyed on behalf of **the owner of the item**.
 
-Only **Collection Owner**, **Collection Admin**, or **Current NFT owner** has permission to call this method.
+Only the **Collection Owner**, **Collection Admin**, or **Current NFT owner** has permission to call this method.
 
 #### Brief example
 
@@ -4188,12 +4298,12 @@ const { collectionId, tokenId, address, value } = setResult.parsed;
 
 Optional Arguments
 
-`from?: string` - The owner of item on whose behalf the token is destroyed
+`from?: string` - The owner of the item on whose behalf the token is destroyed
 
 `value?: number` - Amount to burn
-  - Non-Fungible Mode: Ignored
-  - Fungible Mode: Must specify transferred amount
-  - Re-Fungible Mode: Must specify transferred portion (between 0 and 1)
+- Non-Fungible Mode: Ignored
+- Fungible Mode: Must specify the transferred amount
+- Re-Fungible Mode: Must specify transferred portion (between 0 and 1)
 
 #### Behaviour and errors
 
@@ -4221,7 +4331,7 @@ This method returns `BurnTokenResult`
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import '@unique-nft/substrate-client/tokens';
@@ -4264,7 +4374,7 @@ const { collectionId, tokenId, address, value } = setResult.parsed;
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -4293,7 +4403,7 @@ const { collectionId, tokenId, address, value } = setResult.parsed;
 
 This method creates multiple items in a collection.
 
-Only the **Collection Owner**, **Collection Admin**, addresses from the **Allow List** (if **Allow List** is enabled and **MintPermission** is enabled) can mint tokens.
+Only the **Collection Owner**, **Collection Admin** and addresses from the **Allow List** (if **Allow List** is enabled and **MintPermission** is enabled) can mint tokens.
 
 #### Brief example
 
@@ -4329,7 +4439,7 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
 
 #### Arguments
 
-`address: Address` - The address of collection owner
+`address: Address` - The address of the collection owner
 
 `collectionId: number` - Collection id
 
@@ -4344,8 +4454,8 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
 Throw errors:
 
 - Collection not found
-- Signer must be **Collection Owner** or **Collection Admin** or in **Allow List** of the collection
-- Collection is set **TokenLimit** and creating a new token will exceed the token limit
+- The signer must be **Collection Owner** or **Collection Admin** or in **Allow List** of the collection
+- The collection is set **TokenLimit** and creating a new token will exceed the token limit
 - Insufficient balance
 
 #### Returns
@@ -4363,7 +4473,7 @@ interface TokenIdArguments {
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { CreateMultipleTokensArguments } from '@unique-nft/substrate-client/tokens';
@@ -4436,7 +4546,7 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
   const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -4477,7 +4587,7 @@ This method creates a concrete instance of NFT collection.
 
 Collection can be created with [Create collection](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/../create-collection-ex-new) method.
 
-Only the **Collection Owner**, **Collection Admin**, addresses from the **Allow List** (if **Allow List** is enabled and **MintPermission** is enabled) can mint token.
+Only the **Collection Owner**, **Collection Admin** and addresses from the **Allow List** (if **Allow List** is enabled and **MintPermission** is enabled) can mint token.
 
 The **owner** of the token is specified in the **owner** field. If the owner field is not set, then the **Signer** becomes the owner of the token.
 
@@ -4524,7 +4634,7 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
 `data: UniqueTokenToCreate` - The content of the token is stored in the fields of the object:
 
 - `name?: LocalizedStringWithDefault*`
-  
+
 - `description?: LocalizedStringWithDefault*`
 
 - `image: GenericInfixUrlOrCidWithHash**` - Token image (`url`, `urlInfix` or `ipfsCid`)
@@ -4560,8 +4670,8 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
 Throw errors:
 
 - Collection not found
-- Signer must be **Collection Owner** or **Collection Admin** or in **Allow List** of the collection
-- Collection is set **TokenLimit** and creating a new token will exceed the token limit
+- The signer must be **Collection Owner** or **Collection Admin** or in **Allow List** of the collection
+- The collection is set **TokenLimit** and creating a new token will exceed the token limit (TokenLimit includes all the tokens that have been minted, even if some of them were burned after)
 - Insufficient balance
 
 #### Returns
@@ -4578,7 +4688,7 @@ This method returns `TokenIdArguments`
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { CreateTokenNewArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -4650,7 +4760,7 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -4687,7 +4797,7 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
 
 #### Overview
 
-Deletes **properties** (see [Token properties](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/token-properties)) from token.
+Deletes **properties** (see [Token properties](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/token-properties)) from a token.
 
 #### Brief example
 
@@ -4706,7 +4816,7 @@ Deletes **properties** (see [Token properties](https://github.com/UniqueNetwork/
 
 #### Arguments
 
-`address: string` - Signer, the address of **Collection Owner**, **Collection Admin** or **Token Owner**
+`address: string` - Signer, the address of the **Collection Owner**, **Collection Admin** or **Token Owner**
 
 `collectionId: number` - Collection id
 
@@ -4740,7 +4850,7 @@ This method returns `DeleteTokenPropertiesResult`
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
   const args: DeleteTokenPropertiesArguments = {
@@ -4786,7 +4896,7 @@ This method returns `DeleteTokenPropertiesResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -4814,7 +4924,7 @@ This method returns `DeleteTokenPropertiesResult`
 
 #### Overview
 
-Sets (create or overwrite) [**properties**](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/token-properties) for token.
+Sets (creates or overwrites) [**properties**](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/token-properties) for token.
 
 #### Brief example
 
@@ -4838,16 +4948,16 @@ Sets (create or overwrite) [**properties**](https://github.com/UniqueNetwork/uni
 
 #### Arguments
 
-`address: string` - Signer, the address of **Collection Owner**, **Collection Admin** or **Token Owner**
+`address: string` - Signer, the address of the **Collection Owner**, **Collection Admin** or **Token Owner**
 
 `collectionId: number` - Collection id
 
 `tokenId: number` - Token id
 
 `properties: Array<{
-  key: string;
-  value: string;
-  }>` - Array of properties
+key: string;
+value: string;
+}>` - Array of properties
 
 #### Behaviour and errors
 
@@ -4875,7 +4985,7 @@ This method returns `SetTokenPropertiesResult`
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
   const args: SetTokenPropertiesArguments = {
@@ -4931,7 +5041,7 @@ This method returns `SetTokenPropertiesResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -4961,7 +5071,7 @@ This method returns `SetTokenPropertiesResult`
 
 #### Overview
 
-Returns information about the NFT token of a specific collection.
+Returns information about the NFT of a specific collection.
 
 #### Brief example
 
@@ -5008,7 +5118,7 @@ type TokenByIdResult = Omit<UniqueTokenDecoded, 'owner'> & {
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
 const token = await sdk.tokens.get({
@@ -5035,7 +5145,7 @@ curl -X 'GET' \
 ```
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -5062,9 +5172,9 @@ curl -X 'GET' \
 
 This method allows you to get the current NFT **owner**.
 
-The initial owner of the token are set to the address that signed the token creation extrinsic.
+The initial owner of the token is set to the address that signed the token creation extrinsic.
 
-You can change the owner of the token using [transfer token](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/transfer) method.
+You can change the owner of the token using the [transfer token](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/transfer) method.
 
 #### Brief example
 
@@ -5114,7 +5224,7 @@ type TokenOwnerResult = { owner: Address }
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import {
@@ -5146,7 +5256,7 @@ const result: TokenOwnerResult = await sdk.tokens.tokenOwner(
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -5169,7 +5279,7 @@ const result: TokenOwnerResult = await sdk.tokens.tokenOwner(
 
 #### Overview
 
-Get array of token **properties**. Property keys must be in the **tokenPropertyPermissions** list (see [Set token property permissions](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/../collection/set-token-property-permissions)).
+Gets an array of token **properties**. Property keys must be in the **tokenPropertyPermissions** list (see [Set token property permissions](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/../collection/set-token-property-permissions)).
 
 #### Brief example
 
@@ -5221,7 +5331,7 @@ type TokenPropertiesResult = {
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import {
@@ -5250,7 +5360,7 @@ const result: TokenPropertiesResult = await sdk.tokens.properties(args);
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -5271,9 +5381,9 @@ const result: TokenPropertiesResult = await sdk.tokens.properties(args);
 
 #### Overview
 
-Change ownership of the token.
+This method changes the ownership of the token.
 
-Only **Collection Owner**, **Collection Admin**, or **Current NFT owner** has permission to call this method.
+Only the **Collection Owner**, **Collection Admin**, or **Current NFT owner** has permission to call this method.
 
 The **Current NFT owner** can be found using [Get token owner](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/token-owner) method.
 
@@ -5309,9 +5419,9 @@ Optional Arguments
 `from: string` - Address that owns token (default is signer address)
 
 `value: number` - Amount to transfer (default is 1):
-  - Non-Fungible Mode: Ignored
-  - Fungible Mode: Must specify transferred amount
-  - Re-Fungible Mode: Must specify transferred portion (between 0 and 1)
+- Non-Fungible Mode: Ignored
+- Fungible Mode: Must specify transferred amount
+- Re-Fungible Mode: Must specify transferred portion (between 0 and 1)
 
 #### Behaviour and errors
 
@@ -5340,7 +5450,7 @@ interface TransferResult {
 
 <CodeGroup>
 
-  <CodeGroupItem title="SDK">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { TransferArguments } from '@unique-nft/substrate-client/tokens';
@@ -5388,7 +5498,7 @@ console.log(result.parsed);
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
@@ -5415,57 +5525,202 @@ console.log(result.parsed);
 ### Approve
 <details><summary>Approve description</summary>
 
-Set, change, or remove approved address to transfer the ownership of the token. The Amount value must be between 0 and owned amount or 1 for NFT.
+#### Overview
 
-#### Arguments
+Set, change, or remove approved address to transfer the ownership of the token.
 
-- **address** - Sender address
-- **spender** - Account address for whom token will be approved
-- **collectionId** - Collection id
-- **tokenId** - Token id
-- **amount** - Must be true (for approval) or false (for disapproval)
-
-#### Returns
-
-The method returns a `parsed` object that contains the `collectionId: number, tokenId: number`.
-
-#### Examples
+#### Brief example
 
 ```typescript
 import { ApproveArguments } from '@unique-nft/substrate-client/tokens/types';
 
 const approveArgs: ApproveArguments = {
-    address: '<address>',
-    spender: '<address>',
+    address: '<Signer address>',
+    spender: '<Account address for whom token will be approved>',
     collectionId: '<ID of the collection>',
     tokenId: '<ID of the token>',
-    amount: true
+    isApprove: true
 };
 
 const result = await sdk.tokens.approve.submitWaitResult(approveArgs);
 const { collectionId, tokenId } = result.parsed;
 ```
-</details>
-
-### Checks if token exists in collection
-<details><summary>Checks if token exists in collection description</summary>
-
-Returns true or false
 
 #### Arguments
 
-- **collectionId** - ID of collection
-- **tokenId** - ID of token
+`address: string` - **Signer** address
+
+`spender: string` - Address that is approved to transfer this token
+
+`collectionId: number` - Collection id
+
+`tokenId: number` - Token id
+
+`isApprove: boolean` - Must be true (for approval) or false (for disapproval)
+
+#### Behaviour and errors
+
+Throw errors:
+
+- Collection ot token not found
+- **Signer** is not **Collection Owner**, **Collection Admin** or **Token Owner**
 
 #### Returns
 
-Method returns object:
-- **isExists** - boolean
+This method returns `ApproveResult`
+
+```typescript
+interface ApproveResult {
+    collectionId: number;
+    tokenId: number;
+}
+```
 
 #### Examples
 
+<CodeGroup>
+
+  <CodeGroupItem title="SDK">
+
 ```typescript
-const { isExists } = await sdk.tokens.exists({ collectionId: 123, tokenId: 321 });
+import { ApproveArguments } from '@unique-nft/substrate-client/tokens/types';
+
+const approveArgs: ApproveArguments = {
+    address: '<Signer address>',
+    spender: '<Account address for whom token will be approved>',
+    collectionId: '<ID of the collection>',
+    tokenId: '<ID of the token>',
+    isApprove: true
+};
+
+const result = await sdk.tokens.approve.submitWaitResult(approveArgs);
+const { collectionId, tokenId } = result.parsed;
 ```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+    curl -X 'POST' \
+      'http://localhost:3000/v1/tokens/approve?use=Build&withFee=false&verify=false' \
+      -H 'accept: application/json' \
+      -H 'Content-Type: application/json' \
+      -d '{
+      "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
+      "spender": "5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y",
+      "collectionId": 1,
+      "tokenId": 1,
+      "isApprove": true
+    }'
+
+    # then we sign, then we call
+    
+    curl -X 'POST' \
+    'https://rest.unique.network/opal/extrinsic/submit' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+    "signerPayloadJSON": { *from previous response* },
+    "signature": "0x_your_signature_in_hex"
+    }'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+    
+    const result = await sdk.tokens.approve.submitWaitResult({
+        address: '5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty',
+        spender: '5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty',
+        collectionId: 1,
+        tokenId: 1,
+        isApprove: true
+    });
+    
+    const { collectionId, tokenId } = result.parsed;
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+</details>
+
+### Token exists
+<details><summary>Token exists description</summary>
+
+#### Overview
+
+Checks if token exists in collection. Returns true or false.
+
+#### Brief example
+
+```typescript
+const { isExists } = await sdk.tokens.exists({ collectionId: 1, tokenId: 1 });
+```
+
+#### Arguments
+
+`collectionId: number` - ID of collection
+
+`tokenId: number` - ID of token
+
+`at: string` - _optional_ - Hash of execution block
+
+#### Behaviour and errors
+
+Throw errors:
+
+- Collection or token not found
+
+#### Returns
+
+This method returns `TokenExistsResult`
+
+```typescript
+type TokenExistsResult = {
+    isExists: boolean;
+}
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="SDK">
+
+```typescript
+const { isExists } = await sdk.tokens.exists({ collectionId: 1, tokenId: 1 });
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+    curl -X 'GET' \
+      'https://rest.unique.network/opal/v1/tokens/exists?collectionId=1&tokenId=1' \
+      -H 'accept: application/json'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+
+const { isExists } = await sdk.tokens.exists({
+    collectionId: 1,
+    tokenId: 1
+});
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
 </details>
 
