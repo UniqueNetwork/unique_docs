@@ -4,6 +4,7 @@ import * as path from 'path'
 import {navbar} from "./configs/navbar";
 import {sidebar} from "./configs/sidebar";
 import {mermaidPlugin} from "@renovamen/vuepress-plugin-mermaid"
+import {searchPlugin} from "@vuepress/plugin-search"
 
 const {registerComponentsPlugin} = require('@vuepress/plugin-register-components')
 
@@ -38,6 +39,7 @@ export default defineUserConfig({
   plugins: [
     registerComponentsPlugin({componentsDir: path.resolve(__dirname, './components')}),
     mermaidPlugin(),
+    searchPlugin({})
   ],
 
 
