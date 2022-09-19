@@ -1816,7 +1816,7 @@ To add a **Collection Admin**, use the **[Add collection admin](https://github.c
 
 #### Arguments
 
-`collectionId: number``collectionId: number`
+`collectionId: number` - Collection id
 
 `at?: string;` - Allows to specify at which moment of the chain (block hash) you need to perform the check. If you leave it empty, the result will be for the last block of the chain.
 
@@ -3240,7 +3240,7 @@ console.log(
 
   </CodeGroupItem>
 
-</CodeGroup>8
+</CodeGroup>
 </details>
 
 ## Sponsorship
@@ -3375,7 +3375,8 @@ This method returns `ConfirmSponsorshipResult`
 </CodeGroup>
 </details>
 
-# Next sponsored
+### Next sponsored
+<details><summary>Next sponsored description</summary>
 
 #### Overview
 
@@ -3479,6 +3480,7 @@ console.log(result);
   </CodeGroupItem>
 
 </CodeGroup>
+</details>
 
 ### Remove collection sponsor
 <details><summary>Remove collection sponsor description</summary>
@@ -3839,7 +3841,8 @@ interface AccountTokensResult {
 </CodeGroup>
 </details>
 
-# Get collection tokens
+### Get collection tokens
+<details><summary>Get collection tokens description</summary>
 
 #### Overview
 
@@ -3917,8 +3920,10 @@ interface CollectionTokensResult {
 
 </CodeGroup>
 
+</details>
 
-# Get collection stats
+### Get collection stats
+<details><summary>Get collection stats description</summary>
 
 #### Overview
 
@@ -3993,8 +3998,10 @@ interface GetStatsResult {
   </CodeGroupItem>
 
 </CodeGroup>
+</details>
 
-## Last token id
+### Last token id
+<details><summary>Last token id description</summary>
 
 #### Overview
 
@@ -4071,8 +4078,10 @@ interface LastTokenIdResult {
 
 </CodeGroup>
 
+</details>
 
-## Total supply
+### Total supply
+<details><summary>Total supply description</summary>
 
 #### Overview
 
@@ -4154,8 +4163,106 @@ interface TotalSupplyResult {
   </CodeGroupItem>
 
 </CodeGroup>
+</details>
 
 ## Token
+
+### Get allowance
+<details><summary>Get allowance description</summary>
+
+#### Overview
+
+Get the amount of token pieces approved to transfer
+
+#### Brief example
+
+```typescript
+import { AllowanceArguments } from '@unique-nft/substrate-client/tokens/types';
+
+const AllowanceArgs: AllowanceArguments = {
+    from: '<address>',
+    to: '<address>',
+    collectionId: 1,
+    tokenId: 1,
+};
+
+const { isAllowed } = await sdk.tokens.allowance(AllowanceArgs);
+```
+
+
+#### Arguments
+
+`from: string` - address from
+
+`to: string` - address to
+
+`collectionId: number` - ID of collection
+
+`tokenId: number` - ID of token
+
+`at?: string` — hash of execution block
+
+#### Behaviour and errors
+
+Throw errors:
+
+- Collection or token not found
+
+#### Returns
+
+This method returns `AllowanceResult`
+
+```typescript
+type AllowanceResult = {
+    isAllowed: boolean;
+}
+```
+
+#### Examples
+
+<CodeGroup>
+  <CodeGroupItem title="SDK">
+
+```typescript
+import { AllowanceArguments } from '@unique-nft/substrate-client/tokens/types';
+
+const AllowanceArgs: AddToAllowListArguments = {
+    from: '<address>',
+    to: '<address>',
+    collectionId: 1,
+    tokenId: 1,
+};
+
+const { isAllowed } = await sdk.tokens.allowance(AllowanceArgs);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+curl -X 'GET' \
+  'http://localhost:3000/token/allowance?collectionId=1&tokenId=1&from=<address>&to=<address>' \
+  -H 'accept: application/json'
+```
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+
+const { isAllowed } = await sdk.tokens.allowance({
+    address: '<your account address>',
+    collectionId: '<ID of the collection>',
+    newAdminId: '<valid address>'
+});
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+</details>
 
 ### Burn token
 <details><summary>Burn token description</summary>
@@ -5418,57 +5525,202 @@ console.log(result.parsed);
 ### Approve
 <details><summary>Approve description</summary>
 
-Sets, changes, or removes the approved address to transfer the ownership of the token. The Amount value must be between 0 and owned amount or 1 for NFT.
+#### Overview
 
-#### Arguments
+Set, change, or remove approved address to transfer the ownership of the token.
 
-- **address** - Sender address
-- **spender** - Account address for whom token will be approved
-- **collectionId** - Collection id
-- **tokenId** - Token id
-- **amount** - Must be true (for approval) or false (for disapproval)
-
-#### Returns
-
-The method returns a `parsed` object that contains the `collectionId: number, tokenId: number`.
-
-#### Examples
+#### Brief example
 
 ```typescript
 import { ApproveArguments } from '@unique-nft/substrate-client/tokens/types';
 
 const approveArgs: ApproveArguments = {
-    address: '<address>',
-    spender: '<address>',
+    address: '<Signer address>',
+    spender: '<Account address for whom token will be approved>',
     collectionId: '<ID of the collection>',
     tokenId: '<ID of the token>',
-    amount: true
+    isApprove: true
 };
 
 const result = await sdk.tokens.approve.submitWaitResult(approveArgs);
 const { collectionId, tokenId } = result.parsed;
 ```
-</details>
-
-### Checks if token exists in collection
-<details><summary>Checks if token exists in collection description</summary>
-
-Returns true or false
 
 #### Arguments
 
-- **collectionId** - ID of collection
-- **tokenId** - ID of token
+`address: string` - **Signer** address
+
+`spender: string` - Address that is approved to transfer this token
+
+`collectionId: number` - Collection id
+
+`tokenId: number` - Token id
+
+`isApprove: boolean` - Must be true (for approval) or false (for disapproval)
+
+#### Behaviour and errors
+
+Throw errors:
+
+- Collection ot token not found
+- **Signer** is not **Collection Owner**, **Collection Admin** or **Token Owner**
 
 #### Returns
 
-Method returns object:
-- **isExists** - boolean
+This method returns `ApproveResult`
+
+```typescript
+interface ApproveResult {
+    collectionId: number;
+    tokenId: number;
+}
+```
 
 #### Examples
 
+<CodeGroup>
+
+  <CodeGroupItem title="SDK">
+
 ```typescript
-const { isExists } = await sdk.tokens.exists({ collectionId: 123, tokenId: 321 });
+import { ApproveArguments } from '@unique-nft/substrate-client/tokens/types';
+
+const approveArgs: ApproveArguments = {
+    address: '<Signer address>',
+    spender: '<Account address for whom token will be approved>',
+    collectionId: '<ID of the collection>',
+    tokenId: '<ID of the token>',
+    isApprove: true
+};
+
+const result = await sdk.tokens.approve.submitWaitResult(approveArgs);
+const { collectionId, tokenId } = result.parsed;
 ```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+    curl -X 'POST' \
+      'http://localhost:3000/v1/tokens/approve?use=Build&withFee=false&verify=false' \
+      -H 'accept: application/json' \
+      -H 'Content-Type: application/json' \
+      -d '{
+      "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
+      "spender": "5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y",
+      "collectionId": 1,
+      "tokenId": 1,
+      "isApprove": true
+    }'
+
+    # then we sign, then we call
+    
+    curl -X 'POST' \
+    'https://rest.unique.network/opal/extrinsic/submit' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+    "signerPayloadJSON": { *from previous response* },
+    "signature": "0x_your_signature_in_hex"
+    }'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+    
+    const result = await sdk.tokens.approve.submitWaitResult({
+        address: '5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty',
+        spender: '5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty',
+        collectionId: 1,
+        tokenId: 1,
+        isApprove: true
+    });
+    
+    const { collectionId, tokenId } = result.parsed;
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+</details>
+
+### Token exists
+<details><summary>Token exists description</summary>
+
+#### Overview
+
+Checks if token exists in collection. Returns true or false.
+
+#### Brief example
+
+```typescript
+const { isExists } = await sdk.tokens.exists({ collectionId: 1, tokenId: 1 });
+```
+
+#### Arguments
+
+`collectionId: number` - ID of collection
+
+`tokenId: number` - ID of token
+
+`at: string` - _optional_ - Hash of execution block
+
+#### Behaviour and errors
+
+Throw errors:
+
+- Collection or token not found
+
+#### Returns
+
+This method returns `TokenExistsResult`
+
+```typescript
+type TokenExistsResult = {
+    isExists: boolean;
+}
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="SDK">
+
+```typescript
+const { isExists } = await sdk.tokens.exists({ collectionId: 1, tokenId: 1 });
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+    curl -X 'GET' \
+      'https://rest.unique.network/opal/v1/tokens/exists?collectionId=1&tokenId=1' \
+      -H 'accept: application/json'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+
+const { isExists } = await sdk.tokens.exists({
+    collectionId: 1,
+    tokenId: 1
+});
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
 </details>
 
