@@ -1,5 +1,0 @@
-# Overview
-
-
-Tech demo:
-<TestMetamask/>
