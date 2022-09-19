@@ -28,20 +28,20 @@ SDK package has several advantages compared to other connection tools:
 - It is a very small package (58 kB only).
 - There is no need for the WSS connection, which means no connection delay.
 - The highest possible level of backward compatibility.
-- No need for infrastructure support (in case of using public endpoints).
+- No need for infrastructure support (in the case of using public endpoints).
 - No need to implement the transaction signature logic.
 
 Use [how to install chapter](../sdk/installation.md) to learn how to add SDK to your project.
 
 On our [repository page](https://github.com/UniqueNetwork/unique-sdk/blob/master/packages/sdk/README.md) you can learn more about SDK.
 
-[The methods list chapter](../sdk/methods.md) contains a description for all methods you can use with SDK.
+[The methods list chapter](../sdk/methods.md) contains a description of all methods you can use with SDK.
 
 ### Substrate REST
 
 As an alternative to other connection tools, you can use a proxy HTTP service (Substrate REST) to implement server logic.
 It is created to interact with the blockchain using simple HTTP requests.
-In general, this package is pretty close to the SDK, but it gives you more freedom to work with extrisics on your side, such as:
+In general, this package is pretty close to the SDK, but it gives you more freedom to work with extrisic on your side, such as:
 
 1. Building an unsigned extrinsic
 2. Extrinsic signing and verification using service (These functions should be implemented on a client for safety)

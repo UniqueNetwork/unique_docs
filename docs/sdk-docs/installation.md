@@ -183,7 +183,7 @@ REDIS_DB=0
 ##### Prefix
 
 PREFIX allows you to add a global prefix to API.
-By default, prefix is empty.
+By default, the prefix is empty.
 
 ### Secondary endpoints
 
