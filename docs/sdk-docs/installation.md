@@ -24,7 +24,7 @@ npm install @unique-nft/sdk
 ```typescript
 import { Sdk, Options } from '@unique-nft/sdk';
 const options: Options = {
-    baseUrl: '<REST API URL>'
+  baseUrl: '<REST API URL>'
 };
 const sdk = new Sdk(options);
 ```
@@ -183,7 +183,7 @@ REDIS_DB=0
 ##### Prefix
 
 PREFIX allows you to add a global prefix to API.
-By default, prefix is empty.
+By default, the prefix is empty.
 
 ### Secondary endpoints
 
