@@ -14,9 +14,7 @@
 
 <script setup lang="ts">
 import {ref} from 'vue'
-import {
-  utils
-} from '@unique-nft/api'
+import {UniqueUtils} from '@unique-nft/api'
 
 const collectionIdInputRef = ref('')
 const addressInputRef = ref('')
@@ -35,10 +33,10 @@ const wrapWithErrorHandler = <P extends Array<unknown>, R>(fn: (...params: P) =>
 }
 
 const convertCollectionIdToAddress = wrapWithErrorHandler(async () => {
-  addressInputRef.value = await utils.address.collectionIdToEthAddress(collectionIdInputRef.value)
+  addressInputRef.value = await UniqueUtils.Address.collectionIdToEthAddress(collectionIdInputRef.value)
 })
 const convertAddressToCollectionId = wrapWithErrorHandler(async () => {
-  collectionIdInputRef.value = utils.address.ethAddressToCollectionId(addressInputRef.value).toString()
+  collectionIdInputRef.value = UniqueUtils.Address.ethAddressToCollectionId(addressInputRef.value).toString()
 })
 
 </script>
