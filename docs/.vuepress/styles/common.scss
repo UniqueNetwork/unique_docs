@@ -1,0 +1,42 @@
+.unique-details {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: Raleway;
+    font-weight: 700;
+  }
+  p {
+    font-family: Inter;
+  }
+  background-color: #fff;
+  border-bottom: 1px solid #d2d3d6;
+  padding: 24px 16px;
+  position: relative;
+  .unique-summary {
+    font-size: 24px;
+    font-weight: 700;
+    &::marker {
+      content: "";
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      right: 24px;
+      width: 24px;
+      height: 24px;
+      transition: 0.2s;
+      background-image: url("/images/icons/arrow.svg");
+    }
+  }
+  &[open] {
+    background-color: #f5f6f7;
+    .unique-summary {
+      &::after {
+        content: "";
+        position: absolute;
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

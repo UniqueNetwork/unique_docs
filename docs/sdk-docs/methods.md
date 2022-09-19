@@ -3,7 +3,10 @@
 ## Collection
 
 ### Get collection by Id new
-<details><summary>Get collection by Id new description</summary>
+<details class="unique-details">
+<summary class="unique-summary">
+Get collection by Id new description
+</summary>
 
 #### Overview
 
