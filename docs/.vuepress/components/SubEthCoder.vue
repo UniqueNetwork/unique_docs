@@ -54,7 +54,7 @@
 
 <script setup lang="ts">
 import {reactive, ref} from 'vue'
-import {utils} from '@unique-nft/api'
+import {UniqueUtils} from '@unique-nft/api'
 import CopyButton from './CopyButton.vue'
 
 import {useInit} from 'unique_api_vue'
@@ -83,10 +83,10 @@ const convertInputSubToEth = async () => {
   console.log('rawAddress', rawAddress)
 
   converted.sourceEth = ''
-  if (utils.address.is.substrateAddress(rawAddress)) {
-  } else if (utils.address.is.ethereumAddress(rawAddress)) {
+  if (UniqueUtils.Address.is.substrateAddress(rawAddress)) {
+  } else if (UniqueUtils.Address.is.ethereumAddress(rawAddress)) {
     converted.sourceEth = rawAddress
-    rawAddress = utils.address.ethToSubMirror(rawAddress)
+    rawAddress = UniqueUtils.Address.ethToSubMirror(rawAddress)
   } else {
     error.message = `Address "${rawAddress}" is not valid`
     return
@@ -102,12 +102,12 @@ const convertInputSubToEth = async () => {
     converted.toKusama,
     converted.toSubNormalized,
   ] = await Promise.all([
-    await utils.address.subToEthMirror(rawAddress),
-    await utils.address.normalizeSubstrateAddress(rawAddress, 255),
-    await utils.address.normalizeSubstrateAddress(rawAddress, 7391),
-    await utils.address.normalizeSubstrateAddress(rawAddress, 0),
-    await utils.address.normalizeSubstrateAddress(rawAddress, 2),
-    await utils.address.normalizeSubstrateAddress(rawAddress),
+    await UniqueUtils.Address.mirror.substrateToEthereum(rawAddress),
+    await UniqueUtils.Address.normalize.substrateAddress(rawAddress, 255),
+    await UniqueUtils.Address.normalize.substrateAddress(rawAddress, 7391),
+    await UniqueUtils.Address.normalize.substrateAddress(rawAddress, 0),
+    await UniqueUtils.Address.normalize.substrateAddress(rawAddress, 2),
+    await UniqueUtils.Address.normalize.substrateAddress(rawAddress),
   ])
 }
 
