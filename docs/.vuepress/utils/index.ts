@@ -1,8 +1,9 @@
-export const copyToBuffer = (data: string | number) => {
-  if (data) {
-    navigator.clipboard.writeText(typeof data === "number" ? String(data) : data)
+export const copyToBuffer = async (data: string | number) => {
+  try {
+    await navigator.clipboard.writeText(typeof data === "number" ? String(data) : data)
     console.log('data copied!', data)
-  } else {
+  } catch(e) {
+    console.error(e)
     console.log('data was not copied', data)
   }
 }
