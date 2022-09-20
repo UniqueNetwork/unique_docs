@@ -982,12 +982,12 @@ This method sets on-chain permissions for collection
 `collectionId: number` - Collection id
 
 `permissions: CollectionPermissions` - Struct that contains the permissions for a collection
-- `access?: CollectionAccess` - 'Normal' (for public access) or 'WhiteList' (for restricted access)
-- `mintMode?: boolean`- True, if anyone is allowed to mint. False otherwise
-- `nesting?:`
-  - `tokenOwner?: boolean`
-  - `collectionAdmin?: boolean`
-  - `restricted?: number[]`
+  - `access?: CollectionAccess` - 'Normal' (for public access) or 'WhiteList' (for restricted access)
+  - `mintMode?: boolean`- True, if anyone is allowed to mint. False otherwise
+  - `nesting?:`
+    - `tokenOwner?: boolean`
+    - `collectionAdmin?: boolean`
+    - `restricted?: number[]`
 
 #### Behaviour and errors
 
@@ -1665,7 +1665,7 @@ This method returns `TransferCollectionResult`
 
 #### Overview
 
-Adds an **admin** of the Collection.
+Adds an **admin** of the Collection. 
 
 **Admin** description is available in [Get admin list](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/admin-list).
 
@@ -1795,9 +1795,7 @@ NFT Collection can be controlled by multiple **admin** addresses (some of which 
 
 **Admins** can issue and burn NFTs, as well as add and remove other **admins**, but cannot change NFT or Collection ownership.
 
-
-The list of admins may be or become empty.
-
+The list of admins may be or become empty. 
 
 To add a **Collection Admin**, use the **[Add collection admin](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/add-collection-admin)** method.
 
@@ -3772,7 +3770,7 @@ const { collectionId, tokenId } = token;
 
 #### Arguments
 
-`collectionId: number` - ID of collection
+`collectionId: number` - ID of collection 
 
 `address: string` - address of tokens owner
 
@@ -3930,9 +3928,9 @@ interface CollectionTokensResult {
 #### Overview
 
 Returns blockchain collection statistics:
-- The number of total collections created
-- The number of destroyed collections
-- The number of collections that are still alive
+ - The number of total collections created
+ - The number of destroyed collections
+ - The number of collections that are still alive
 
 #### Brief example
 
@@ -4303,11 +4301,9 @@ Optional Arguments
 `from?: string` - The owner of the item on whose behalf the token is destroyed
 
 `value?: number` - Amount to burn
-
-- Non-Fungible Mode: Ignored
-- Fungible Mode: Must specify the transferred amount
-- Re-Fungible Mode: Must specify transferred portion (between 0 and 1)
-
+  - Non-Fungible Mode: Ignored
+  - Fungible Mode: Must specify the transferred amount
+  - Re-Fungible Mode: Must specify transferred portion (between 0 and 1)
 
 #### Behaviour and errors
 
@@ -4638,7 +4634,7 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
 `data: UniqueTokenToCreate` - The content of the token is stored in the fields of the object:
 
 - `name?: LocalizedStringWithDefault*`
-
+  
 - `description?: LocalizedStringWithDefault*`
 
 - `image: GenericInfixUrlOrCidWithHash**` - Token image (`url`, `urlInfix` or `ipfsCid`)
@@ -4959,9 +4955,9 @@ Sets (creates or overwrites) [**properties**](https://github.com/UniqueNetwork/u
 `tokenId: number` - Token id
 
 `properties: Array<{
-key: string;
-value: string;
-}>` - Array of properties
+  key: string;
+  value: string;
+  }>` - Array of properties
 
 #### Behaviour and errors
 
@@ -5423,9 +5419,9 @@ Optional Arguments
 `from: string` - Address that owns token (default is signer address)
 
 `value: number` - Amount to transfer (default is 1):
-- Non-Fungible Mode: Ignored
-- Fungible Mode: Must specify transferred amount
-- Re-Fungible Mode: Must specify transferred portion (between 0 and 1)
+  - Non-Fungible Mode: Ignored
+  - Fungible Mode: Must specify transferred amount
+  - Re-Fungible Mode: Must specify transferred portion (between 0 and 1)
 
 #### Behaviour and errors
 
@@ -5660,7 +5656,6 @@ const { collectionId, tokenId } = result.parsed;
 
 Checks if token exists in collection. Returns true or false.
 
-
 #### Brief example
 
 ```typescript
@@ -5697,7 +5692,6 @@ type TokenExistsResult = {
 
   <CodeGroupItem title="SDK">
 
-
 ```typescript
 const { isExists } = await sdk.tokens.exists({ collectionId: 1, tokenId: 1 });
 ```
@@ -5723,33 +5717,9 @@ const { isExists } = await sdk.tokens.exists({
     collectionId: 1,
     tokenId: 1
 });
-
-  </CodeGroupItem>
-
-
-  <CodeGroupItem title="REST">
-
-```bash
-    curl -X 'GET' \
-      'https://rest.unique.network/opal/v1/tokens/exists?collectionId=1&tokenId=1' \
-      -H 'accept: application/json'
 ```
 
   </CodeGroupItem>
-
-  <CodeGroupItem title="Client">
-
-```typescript
-const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
-
-const { isExists } = await sdk.tokens.exists({
-    collectionId: 1,
-    tokenId: 1
-});
-```
-
-  </CodeGroupItem>
-
 
 </CodeGroup>
 </details>

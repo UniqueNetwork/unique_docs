@@ -24,7 +24,7 @@ npm install @unique-nft/sdk
 ```typescript
 import { Sdk, Options } from '@unique-nft/sdk';
 const options: Options = {
-  baseUrl: '<REST API URL>'
+    baseUrl: '<REST API URL>'
 };
 const sdk = new Sdk(options);
 ```
