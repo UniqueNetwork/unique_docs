@@ -4,24 +4,33 @@
   <p v-show="error.message" class="error">{{ error.message }}</p>
 
   <p>
-    <button @click="checkEthAccs" :disabled="!initTask.isResolved">Request eth accounts</button>
+    <button @click="checkEthAccs">Request eth accounts</button>
   </p>
 
 </template>
 
 <script setup lang="ts">
-import {reactive} from 'vue'
+import {onMounted, reactive, ref} from 'vue'
 import {testMetamask} from '../utils/metamask'
+import {connectToMetamask, safeGetAccounts} from "../utils/ethereumExtensionTools";
 
-import {useInit} from 'unique_api_vue'
-// import {libs} from "@unique-nft/api";
+const ethAccountsRef = ref<string[]>([])
 
-const {requestEthereumAccounts, ethAccountsRef, initTask} = useInit()
+onMounted(async () => {
+  const result = await safeGetAccounts()
+  if (result.extensionFound) {
+    ethAccountsRef.value = result.accounts
+  }
+})
 
 const checkEthAccs = async () => {
   console.log(1, ethAccountsRef.value)
-  const result = await requestEthereumAccounts()
-  console.log(2, result, ethAccountsRef.value)
+  try {
+    ethAccountsRef.value = await connectToMetamask()
+  } catch(e) {
+    console.error(e)
+  }
+  console.log(2, ethAccountsRef.value)
 }
 
 const error = reactive({

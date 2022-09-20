@@ -1,6 +1,6 @@
 # Unique Schema 1.0.0
 
-Unique schema defines how to store information about NFTs on chain. All the information is stored inside token properties and can be split into two groups:
+The Unique schema defines how to store information about NFTs on the chain. All the information is stored inside token properties and can be split into two groups:
 - Attributes - all the metadata for NFT
 - Media - defines where and how media is stored (image/audio/video urls)
 
@@ -13,7 +13,7 @@ To check chain properties you can use: ```rpc.unique.collectionProperties``` and
 - attributes - added at the root of collection.properties as ```a.*index*```
 - URL_TEMPLATE? - added at the root as ``` { key: image.urlTemplate } ```. Optional, since can be ignored for fullUrl media type.
 
-We might update our schemas to change how some parts of them are defined or add new one. In that case we will update corresponding versions for schemas.
+We might update our schemas to change how some parts of them are defined or add a new one. In that case, we will update corresponding versions for schemas.
 
 ### Token properties should have:
 - attributes? - only if described in collection.schema
@@ -22,9 +22,9 @@ We might update our schemas to change how some parts of them are defined or add 
 More detailed information on types can be found [here](https://github.com/UniqueNetwork/ts_api/blob/master/src/schema/types.ts)
 
 ## Media
-We use more complex way to store links to our NFTs compared to other such as ERC721. We achieve that by stroing all the data on chian inside tokens and by using strict URL defining rules. These rules define how to treat links to NFTs. Instead of only using plain url we provide more robust and flexible solutions:
+We use a more complex way to store links to our NFTs compared to others such as ERC721. We achieve that by storing all the data on the chain inside tokens and by using strict URL defining rules. These rules define how to treat links to NFTs. Instead of only using plain url we provide more robust and flexible solutions:
 
-Our schema is designed to support next ```media.type```'s:
+Our schema is designed to support the following  ```media.type```'s:
 - Image
 - Video
 - Audio
@@ -32,64 +32,58 @@ Our schema is designed to support next ```media.type```'s:
 We provide 3 ways of setting up media:
 
 ### Infix
-Url is predetermened for all tokens, but a part of it will be replaced with value from the token.
+Url is predetermined for all tokens, but a part of it will be replaced with the token value.
 
-Very usefull to work with big collections. Name all images as "1.png", "2.png" etc. then place it somewhere and use ifnixes to dynamicly set urls for your media.
+Very useful to work with big collections. Name all images as "1.png", "2.png" etc. then place them somewhere and use infixes to dynamically set urls for your media.
 
-<details><summary>Infix url:</summary>
-<CodeGroup>
-<CodeGroupItem title="SDK">
+<details>
+<summary>Infix url:</summary>
 
-Prerequisits: requires property "```media.type```.urlTemplate" to be prefilled in collection. The end of urlTemplate should contain ```{infix}``` that will be replaced by value provided in token properties.
+Prerequisites: requires property "```media.type```.urlTemplate" to be prefilled in collection. The end of urlTemplate should contain ```{infix}``` that will be replaced by the value provided in token properties.
 
-**i.c** stands for "image cover". Image that should be used for display.
+**i.c** stands for "image cover". An image that should be used for display.
 
-**h.c** stands for "video cover". Image that should be used as a preview for videos. This one is optional.
+**h.c** stands for "video cover". An image that should be used as a preview for videos. This one is optional.
 
 
 _Example of token image_:
 collection
-```
+```typescript
 { key: coverPicture.ipfsCid value: QmNiBHiAhsjBXj5cXShDUc5q1dX23CJYrqGGPBNjQCCSXQ } # image of collection
-{ key: image.urlTemplate value: https://ipfs.uniquenetwork.dev/ipfs/{infix} } # template for token image
+{ key: image.urlTemplate value: https://ipfs.unique.network/ipfs/{infix} } # template for token image
 ```
 token
-```
+```typescript
 { key: i.c value: QmUivANsMSGhPtdkEaJH5XMVwuXmYWsm6qrbsMgj8CzLJB }
 ```
 
 _Example of token video with image preview_
 collection
-```
+```typescript
 { key: image.urlTemplate value: https://ipfs.unique.network/ipfs/{infix} }
 { key: video.urlTemplate value: https://bafybeib5lxymirwhmoj6ofppxealqh7eyw5bu7wmvk64mll5dvcqfzykwu.ipfs.nftstorage.link/videos/{infix}.mp4 }
 ```
 token
-```
+```typescript
 { key: i.c value: QmQrC7a1yiYLMHGABBBc4VxqCEpWe7Y8HWrfHLiZxLrQj5 }
 { key: v.i value: 22 }
 ```
-</CodeGroupItem>
-</CodeGroup>
 </details>
 
 ### Url
-Full url to be used as is. Provided in token properties and requires no prerequisites in collection.
+Full url to be used as is. Provided in token properties and requires no prerequisites in the collection.
 
-Simpliest of solutions.
+Simplest of solutions.
 <details><summary>Plain url:</summary>
-<CodeGroup>
-<CodeGroupItem title="SDK">
 
 _Example_:
-```
+
+```typescript
 image: { url: example.com }
 ```
 
 Should be converted to: ```example.com```
 
-</CodeGroupItem>
-</CodeGroup>
 </details>
 
 ### IpfsCid
@@ -97,39 +91,39 @@ If collection.urlTemplate is not provided - should be used with "ipfs://" from t
 
 If provided - behaves exactly the same is infix, replacing {infix} inside collection.templateUrl
 
-<details><summary>Ipfs cid:</summary>
-<CodeGroup>
-<CodeGroupItem title="SDK">
+<details>
+<summary>Ipfs cid:</summary>
+
 Prerequisite: collection should not have any image properties provided.
 Just provide a Cid string to token.image.ipfsCid and it will be converted to full url.
 
 _Example_:
-```
+```typescript
 image: {
   ipfsCid:  image.cid,
 }
 ```
 
-Shuold be converted to:
-```
+Should be converted to:
+```typescript
 `ipfs://${token.image.ipfsCid}`
 ```
-</CodeGroupItem>
-</CodeGroup>
 </details>
 
 ## Attributes
-Attributes define some unique properties for each NFT. They should be defined on collection.schema and used on token[a.*index*] afterwards.
+Attributes define some unique properties for each NFT. They should be defined on collection.schema and used on token[a.*index*] afterward.
 
-**Note that all "string" properties in tokens should have localization key provided at all times. For default use "_".**
+**Note that all "string" properties in tokens should have a localization key provided at all times. For default use "_".**
 
 ### Schema
-Schema defines which attributes can be stored on any token of the collection. Attributes in tokens that are not provided in collection.schema can't be used. Attributes should respect "optional" param from collection attribute as well as type - if condition not met NFT can't be created. 
+The schema defines which attributes can be stored on any token of the collection. Attributes in tokens that are not provided in collection.schema can't be used. Attributes should respect "optional" param from collection attribute as well as type - if condition not met NFT can't be created. 
 
-<details><summary>Attributes schema definition:</summary>
-<CodeGroup>
-<CodeGroupItem title="SDK">
-On chain schema for attributes _in collection_ is defined as ```
+<details>
+<summary>Attributes schema definition:</summary>
+
+On chain schema for attributes _in collection_ is defined as 
+
+```typescript
 { key: attributeSchema.*index*, 
   value: { 
     name: string, 
@@ -138,17 +132,20 @@ On chain schema for attributes _in collection_ is defined as ```
     type: AttributeType, 
     enumValues?: {  [K: number]: LocalizedStringOrBoxedNumberWithDefault } 
   }
-} ```
+} 
+```
 
 _name_ - attribute name. Note, that we reference attributes by index, not by name.
 _optional_ - whether value is required in tokens or can be skipped
-_isArray_ - defines whether can store multiple values
+_isArray_ - defines whether you can store multiple values
 _type_ - which type can be stored, see supported types below
 _enumValues_ - if provided, can't use values only from provided list
 
-<details><summary>Supported attribute types:</summary>
-<CodeGroup>
-<CodeGroupItem title="SDK">
+<details>
+<summary>Supported attribute types:</summary>
+
+
+```typescript
 - integer
 - float
 - boolean
@@ -158,14 +155,17 @@ _enumValues_ - if provided, can't use values only from provided list
 - isoDate
 - time
 - colorRgba
-</CodeGroupItem>
-</CodeGroup>
+```
+
 </details>
 
-<details><summary>Attributes schema in collection example:</summary>
+<details>
+<summary>Attributes schema in collection example:</summary>
+
 <CodeGroup>
 <CodeGroupItem title="SDK">
-```
+
+```typescript
 [
   {
     key: attributesSchema.0
@@ -210,10 +210,13 @@ On chain schema for attributes _in token_ is defined as ```
   value: "value based on collection.attributeSchema.*index*"
 } ```
 
-<details><summary>Attributes usage in NFT example:</summary>
+<details>
+<summary>Attributes usage in NFT example:</summary>
+
 <CodeGroup>
 <CodeGroupItem title="SDK">
-```
+
+```typescript
 [
   {
     key: a.0
@@ -253,54 +256,30 @@ On chain schema for attributes _in token_ is defined as ```
 </CodeGroup>
 </details>
 
-</CodeGroupItem>
-</CodeGroup>
 </details>
 
-___________________________________________________
-___________________________________________________
-___________________________________________________
-___________________________________________________
-___________________________________________________
-___________________________________________________
-___________________________________________________
-___________________________________________________
-___________________________________________________
-___________________________________________________
-___________________________________________________
-___________________________________________________
-___________________________________________________
-___________________________________________________
-___________________________________________________
-___________________________________________________
-___________________________________________________
-___________________________________________________
-___________________________________________________
-___________________________________________________
-
-___________________________________________________
-___________________________________________________
-Extra notes that I incorrectly started. May be usefull for other parts of documentation
+Extra notes that I incorrectly started. May be useful for other parts of documentation
 
 # Unique schema
 
-All NFTs on Unique Network have flixble properties that can be set in any way with ltitle to none exceptions. In order to bring some standartisation over most popular NFT use-cases we created a standard called "Unique schema" that covers how should properties of image/video/audio NFTs look like. It is adviced to be used on any type of project/idea you are working on to ensure compitability with our and community projects.
+All NFTs on Unique Network have flexible properties that can be set in any way with title to no exceptions. To bring some standardization over most popular NFT use-cases, we created a standard called "Unique schema" that covers how should properties of image/video/audio NFTs look like. It is advised to be used on any type of project/idea you are working on to ensure compatibility with our and community projects.
 
-The main goals of unique schema:
-1. Flexibility. Should cover as many use-cases as possible by default
-2. Versioning - we should be able to adjust it overtime without breaking the old ones
-3. To be as user-friendly as possible
-4. Aim on it on all of our products
+The main goals of the Unique schema:
+
+1. Flexibility. Should cover as many use-cases as possible by default.
+2. Versioning - we should be able to adjust it over time without breaking the old ones.
+3. To be as user-friendly as possible.
+4. Aim on it on all of our products.
 
 ## Who is it for
-First of all - Unique Schema is integrated into SDK and our products (wallet/scan/market) by default. If NFT token doesn't follow Unique Schema - it is not expected to be properly shown on any of our products. If, for example, you are using our wallet to create NFTs it already follows the Unique Schema therefore can be observed on scan, wallet and potentially sold on a market.
+First of all - Unique Schema is integrated into SDK and our products (wallet/scan/market) by default. If an NFT token doesn't follow Unique Schema - it is not expected to be properly shown on any of our products. If, for example, you are using our wallet to create NFTs it already follows the Unique Schema and therefore can be observed on scan, wallet and potentially sold on a market.
 
-It is adviced to follow this schema for any situation, unless very specific exception prevents from doing so.
+It is advised to follow this schema for any situation unless very a specific exception prevents from doing so.
 
 ## How to use
 The best way to use it is SDK. Internally schema is not intuitive. SDK helps translate it into human-readable form as well as translate human-readable form into proper data for blockchain.
 
-SDK uses both - data from collection and token to build human-readable and convinient format to work with:
+SDK uses both - data from collection and token to build a human-readable and convenient format to work with:
 <details><summary>Unique scheme SDK parsed example</summary>
 <CodeGroup>
 <CodeGroupItem title="SDK">
@@ -346,7 +325,7 @@ SDK uses both - data from collection and token to build human-readable and convi
 </CodeGroup>
 </details>
 
-Schema on chain is more complicated. It consist of two parts - collectionProperties and tokenProperties
+The schema on the chain is more complicated. It consists of two parts - collectionProperties and tokenProperties
 
 <details><summary>Unique scheme of a collection on chain example</summary>
 <CodeGroup>
@@ -357,35 +336,35 @@ Schema on chain is more complicated. It consist of two parts - collectionPropert
   {
     key: attributesSchema.0
     value: {type:string,name:{_:Artist},isArray:false,optional:false}
-  }
+  },
   {
     key: attributesSchema.1
     value: {type:string,name:{_:Title},isArray:false,optional:false}
-  }
+  },
   {
     key: attributesSchema.2
     value: {type:string,name:{_:GloCha Registry number},isArray:false,optional:false}
-  }
+  },
   {
     key: attributesSchemaVersion
     value: 1.0.0
-  }
+  },
   {
     key: coverPicture.ipfsCid
     value: QmfPYQHHZtADPAP5nC7cFZmvFwYZCyuVpT7GUjFTxuWyxa
-  }
+  },
   {
     key: image.urlTemplate
     value: https://ipfs.unique.network/ipfs/{infix}
-  }
+  },
   {
     key: schemaName
     value: unique
-  }
+  },
   {
     key: schemaVersion
     value: 1.0.0
-  }
+  },
   {
     key: video.urlTemplate
     value: https://ipfs.unique.network/ipfs/{infix}
@@ -429,7 +408,7 @@ This description is related to SDK structure.
 
 ### Unique attribute schema consist of:
 - mode (optional)
-Optional parameter. Defines whether collection will contain NFT, Fungible or RFT 
+Optional parameter. Defines whether a collection will contain NFT, Fungible, or RFT 
 - decimals (optional)
 Used for Fungibles
 - name
@@ -441,7 +420,7 @@ Collection prefix. Usually used to provide names for tokens as `${collection.tok
 
 
 ## SDK
-Work with Unique schema is integrated on SDK by default and very easy to use. Here is an example on how to create a collection and token using "@unique-nft/substrate-client"
+Work with Unique schema is integrated on SDK by default, and it is very easy to use. Here is an example of how to create a collection and token using "@unique-nft/substrate-client"
 
 <details><summary>Unique scheme of a token on chain example</summary>
 <CodeGroup>
@@ -452,5 +431,5 @@ Work with Unique schema is integrated on SDK by default and very easy to use. He
 </details>
 
 ## Misc
-We have been using other schemas in the past. They were migrated to _old_schema and are parsed by SDK into new schema format. 
-// TODO: add a link on parser to convert from old schemas to new ones
+We have been using other schemas in the past. They were migrated to _old_schema and are parsed by SDK into a new schema format. 
+// TODO: add a link on the parser to convert from old schemas to new ones

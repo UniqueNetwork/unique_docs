@@ -1,4 +1,4 @@
-## Our vision of NFT
+# Our vision of NFT
 
 While there are already tens of thousands of tokens created using blockchain, and thousands of them actively used (or traded), Non-Fungible Tokens are still in their infancy. We believe this will change.
 

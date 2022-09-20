@@ -55,23 +55,19 @@
         <div class="logoLine">
           <span class="title">Logo:</span>
 
-          <template v-if="chain.logoIpfsCid">
-            <a :href="getIpfsLinkByCid(chain.logoIpfsCid)" target="_blank" class="logo">
-              <img :src="logoLink" height="24">
-            </a>
-            <Link :href="getIpfsLinkByCid(chain.logoIpfsCid)"
-                  text="Link"
-                  newWindow
-            />
-            <ExternalLinkIcon/>
-            <CopyButton :data="logoLink"/>
-            &nbsp;
-            <CopyButton :data="chain.logoIpfsCid" text="IPFS cid"/>
-          </template>
+          <a :href="chain.metamask.iconUrls[0]" target="_blank" class="logo">
+            <img :src="withBase(`/images/logo/${chainName}.svg`)" height="24">
+          </a>
+<!--          <ExternalLinkIcon/>-->
+<!--          <Link :href="chain.metamask.iconUrls[0]"-->
+<!--                text="Link"-->
+<!--                newWindow-->
+<!--          />-->
 
-          <template v-else>
-            soon
-          </template>
+          <CopyButton :data="chain.metamask.iconUrls[0]" text="Link"/>
+
+          <CopyButton :data="logoIpfsCid" text="IPFS cid"/>
+          <br/>
         </div>
       </td>
     </tr>
@@ -80,10 +76,11 @@
 
 <script setup lang="ts">
 import {defineProps, computed} from 'vue'
-import {UNIQUE_CHAINS, uniqueChainsParameters, getIpfsLinkByCid} from '../utils/constants'
+import {UNIQUE_CHAINS, uniqueChainsParameters} from '../utils/constants'
 import {addChainToMetamask} from '../utils/metamask'
 import CopyButton from './CopyButton.vue'
 import Link from "./Link.vue";
+import {withBase} from "@vuepress/client";
 
 const props = defineProps<{
   chainName: UNIQUE_CHAINS
@@ -91,7 +88,7 @@ const props = defineProps<{
 }>()
 
 const chain = computed(() => uniqueChainsParameters[props.chainName])
-const logoLink = computed(() => getIpfsLinkByCid(chain.value.logoIpfsCid))
+const logoIpfsCid = computed(() => chain.value.metamask.iconUrls?.[0]?.split('/').pop())
 </script>
 
 <script lang="ts">

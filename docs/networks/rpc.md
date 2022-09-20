@@ -1,10 +1,10 @@
-# Unique Palett - RPC calls 
+# Unique Palette - RPC calls 
 
 ### :small_blue_diamond:**_accountBalance_**
 
 **Description**
 
-Gets amount of tokens that belong to the specified account in the specified collection. 
+Gets the number of tokens that belong to the specified account in the specified collection. 
 
 **Declaration**
 
@@ -150,7 +150,7 @@ false
 
 **Description**
 
-Gets the addresses that are in the allow list for the specified collection. 
+Gets the addresses that are in the specified collection allow list. 
 
 **Declaration**
 
@@ -395,7 +395,7 @@ api.rpc.unique.lastTokenId(10)
 
 **Description**
 
-:question: Get number of blocks when sponsored transaction is available
+Get the number of blocks when the sponsored transaction is available. 
 
 **Declaration**
 

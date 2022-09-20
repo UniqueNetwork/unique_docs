@@ -24,7 +24,7 @@ api.tx.unique.addColletionAdmin(5, {Ethereum: '0x1C9d253C8f9f4b25d32F107B0460aEE
 
 **Description**
 
-Adds an address to allow list of a collection. 
+Adds an address to collection allow list. 
 
 **Declaration**
 
@@ -240,7 +240,7 @@ _Deprecated_. Please use the [createMultipleItemsEx](#createMultipleItemsEx) met
 
 **Description**
 
-Creates several new tokens at once in the specified collection (up to a 100 at a time). All properties keys must be present in collection. Returns an object with the transaction result.
+Creates several new tokens at once in the specified collection (up to 100 at a time). All property keys must be present in the collection. Returns an object with the transaction result.
 
 **Declaration**
 
@@ -273,7 +273,7 @@ api.tx.unique.createMultipleItemsEx(1, [
 
 **Description**
 
-Deletes onchain properties from the collection. Returns bool true on success.
+Deletes on-chain properties from the collection. Returns bool true on success.
 
 **Declaration** 
 
@@ -292,7 +292,7 @@ api.tx.unique.deleteCollectionProperties(1, ['is_substrate'])
 
 **Description**
 
-Deletes properties from a NFT token. Returns bool true on success.
+Deletes properties from an NFT token. Returns bool true on success.
 
 **Declaration**
 
@@ -313,7 +313,7 @@ api.tx.unique.deleteTokenProperties(6, 200, ['name'])
 
 **Description**
 
-Destroys a collection if there are tokens in it, and if the signer has sufficient permissions. 
+Destroys a collection if there are tokens in it and if the signer has sufficient permissions. 
 
 **Declaration** 
 
@@ -350,7 +350,7 @@ api.tx.unique.removeCollectionAdmin(5, {Ethereum: '0x1C9d253C8f9f4b25d32F107B046
 
 **Description**
 
-Removes the collection sponsor. Switch back to pay-per-own-transaction model.
+Removes the collection sponsor. Switch back to the pay-per-own-transaction model.
 
 **Declaration**
 
@@ -367,7 +367,7 @@ api.tx.unique.removeCollectionSponsor(7)
 
 **Description**
 
-Remove an address from allow list.
+Remove an address from the allow list.
 
 **Declaration**
 
@@ -424,7 +424,7 @@ api.tx.unique.setCollectionLimits(7, {transfersEnabled: false})
 
 **Description**
 
-Sets onchain permissions for selected collection. Returns bool true on success.
+Sets on-chain permissions for selected collection. Returns bool true on success.
 
 **Declaration**
 
@@ -455,7 +455,7 @@ api.tx.unique.setCollectionPermissions(6, {mintMode: false})
 
 **Description**
 
-Sets onchain properties for the specified collection. Returns bool true on success.
+Sets on-chain properties for the specified collection. Returns bool true on success.
 
 **Declaration**
 
@@ -563,7 +563,7 @@ api.tx.unique.setTokenPropertyPermissions(1, [{key: 'name', permission: {mutable
 
 **Description**
 
-Transfers NFT token from signer to given address (Substrate or Ethereum). Returns bool true on success.
+Transfers an NFT token from signer to a given address (Substrate or Ethereum). Returns bool true on success.
 
 **Declaration**
 
@@ -586,7 +586,7 @@ api.tx.unique.transfer({Substrate: '5CiDszBRQ7jDhPwRNBLc4EZHAgbEwhGMbNSaJDQgmYib
 
 **Description**
 
-Transfers NFT token from given address (Substrate or Ethereum) to given address (Substrate or Ethereum). The signer must have rights to do this. Returns bool true on success.
+Transfers NFT token from given address (Substrate or Ethereum) to given address (Substrate or Ethereum). The signer must be authorized to do so. Returns bool true on success.
 
 **Declaration**
 `transferFrom(from, recipient, collectionId, itemId, value)`
