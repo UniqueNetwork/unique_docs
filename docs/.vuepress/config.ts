@@ -4,9 +4,9 @@ import * as path from 'path'
 import {navbar} from "./configs/navbar";
 import {sidebar} from "./configs/sidebar";
 import {mermaidPlugin} from "@renovamen/vuepress-plugin-mermaid"
-import {searchPlugin} from "@vuepress/plugin-search"
+// import {searchPlugin} from "@vuepress/plugin-search"
 
-const {registerComponentsPlugin} = require('@vuepress/plugin-register-components')
+import {registerComponentsPlugin} from '@vuepress/plugin-register-components'
 
 export default defineUserConfig({
   lang: 'en-US',
@@ -38,8 +38,8 @@ export default defineUserConfig({
   // extendsMarkdown: (md: any) => {md.set({breaks: true})},
   plugins: [
     registerComponentsPlugin({componentsDir: path.resolve(__dirname, './components')}),
-    mermaidPlugin(),
-    searchPlugin({})
+    mermaidPlugin() as any, //todo: remove any and deal with type check and what could change in the vuepress@2
+    // searchPlugin({})
   ],
 
 
