@@ -1,5 +1,33 @@
 # Methods
 
+<Details>
+
+<template v-slot:header>
+
+## Test
+
+</template>
+
+<template v-slot:body>
+
+
+### Test: A
+
+Enable or disable transfers in a collection. The method can call the Collection Owner. Set transfersEnabled flag for particular collection. The current value of the transfersEnabled flag can be found using the method Get effective limits
+
+```typescript
+import { CollectionIdArguments, CollectionInfoWithSchema } from '@unique-nft/substrate-client/types';
+const getCollectionArgs: CollectionIdArguments = { collectionId: 123 };
+
+const collection: CollectionInfoWithSchema = await sdk.collections.get(getCollectionArgs);
+```
+
+### Test: Bу
+
+</template>
+
+</Details>
+
 ## Collection
 
 ### Get collection by Id new

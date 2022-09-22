@@ -10,6 +10,7 @@
   --c-bg-navbar: var(--c-bg);
   --c-bg-sidebar: var(--c-bg);
   --c-bg-arrow: #cccccc;
+  --c-bg-dark: #f5f6f7;
 
   // text colors
   --c-text: #2c3e50;
@@ -22,6 +23,7 @@
   // border colors
   --c-border: #eaecef;
   --c-border-dark: #dfe2e5;
+  --c-border-collapse: #d2d3d6;
 
   // custom container colors
   --c-tip: #42b983;
@@ -57,9 +59,9 @@
   --code-ln-wrapper-width: 3.5rem;
 
   // font vars
-  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-  Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  --font-family-code: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  --font-family-code: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
 
   // layout vars
   --navbar-height: 3.6rem;
@@ -69,6 +71,8 @@
   --sidebar-width-mobile: calc(var(--sidebar-width) * 0.82);
   --content-width: 740px;
   --homepage-width: 960px;
+
+  --icon-bright-level: 0;
 }
 
 // plugin-back-to-top
