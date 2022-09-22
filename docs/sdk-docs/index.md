@@ -35,7 +35,7 @@ Use [how to install chapter](../sdk/installation.md) to learn how to add SDK to 
 
 On our [repository page](https://github.com/UniqueNetwork/unique-sdk/blob/master/packages/sdk/README.md) you can learn more about SDK.
 
-[The methods list chapter](../sdk-docs/methods.md) contains a description of all methods you can use with SDK.
+[The methods list chapter](../sdk/methods.md) contains a description of all methods you can use with SDK.
 
 ### Substrate REST
 
