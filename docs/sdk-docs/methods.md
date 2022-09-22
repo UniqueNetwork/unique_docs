@@ -1,33 +1,5 @@
 # Methods
 
-<Details>
-
-<template v-slot:header>
-
-## Test
-
-</template>
-
-<template v-slot:body>
-
-
-### Test: A
-
-Enable or disable transfers in a collection. The method can call the Collection Owner. Set transfersEnabled flag for particular collection. The current value of the transfersEnabled flag can be found using the method Get effective limits
-
-```typescript
-import { CollectionIdArguments, CollectionInfoWithSchema } from '@unique-nft/substrate-client/types';
-const getCollectionArgs: CollectionIdArguments = { collectionId: 123 };
-
-const collection: CollectionInfoWithSchema = await sdk.collections.get(getCollectionArgs);
-```
-
-### Test: Bу
-
-</template>
-
-</Details>
-
 ## Collection
 
 ### Get collection by Id new
@@ -223,25 +195,26 @@ The method creates a new collection with the Unique schema.
 import { CreateCollectionNewArguments } from '@unique-nft/substrate-client/tokens';
 
 const result = await sdk.collections.creation.submitWaitResult({
-    address: '<your address>',
-    name: 'Foo',
-    description: 'Bar',
-    tokenPrefix: 'Baz',
-    schema: {
-        schemaName: 'unique',
-        schemaVersion: '1.0.0',
-        image: { urlTemplate: '{infix}' },
-        coverPicture: { ipfsCid: '<ipfs cid>' },
-    },
+  address: '<your address>',
+  name: 'Foo',
+  description: 'Bar',
+  tokenPrefix: 'Baz',
+  schema: {
+    schemaName: 'unique',
+    schemaVersion: '1.0.0',
+    image: { urlTemplate: '{infix}' },
+    coverPicture: { ipfsCid: '<ipfs cid>' },
+  },
 });
 
-const { parsed: { collectionId } } = result;
+const {
+  parsed: { collectionId },
+} = result;
 
-console.log(`Created new collection with id ${collectionId}`)
+console.log(`Created new collection with id ${collectionId}`);
 ```
 
 #### Arguments
-
 
 `address` - The address of the collection owner
 
@@ -275,7 +248,6 @@ interface CollectionIdArguments {
 }
 ```
 
-
 #### Examples
 
 <CodeGroup>
@@ -286,21 +258,23 @@ interface CollectionIdArguments {
 import { CreateCollectionNewArguments } from '@unique-nft/substrate-client/tokens';
 
 const result = await sdk.collections.creation.submitWaitResult({
-    address: '<your address>',
-    name: 'Foo',
-    description: 'Bar',
-    tokenPrefix: 'Baz',
-    schema: {
-        schemaName: 'unique',
-        schemaVersion: '1.0.0',
-        image: { urlTemplate: '{infix}' },
-        coverPicture: { ipfsCid: '<ipfs cid>' },
-    },
+  address: '<your address>',
+  name: 'Foo',
+  description: 'Bar',
+  tokenPrefix: 'Baz',
+  schema: {
+    schemaName: 'unique',
+    schemaVersion: '1.0.0',
+    image: { urlTemplate: '{infix}' },
+    coverPicture: { ipfsCid: '<ipfs cid>' },
+  },
 });
 
-const { parsed: { collectionId } } = result;
+const {
+  parsed: { collectionId },
+} = result;
 
-console.log(`Created new collection with id ${collectionId}`)
+console.log(`Created new collection with id ${collectionId}`);
 ```
 
   </CodeGroupItem>
@@ -350,19 +324,21 @@ curl -X 'POST' \
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
 const result = await sdk.collections.creation.submitWaitResult({
-    address: '<your address>',
-    name: 'Foo',
-    description: 'Bar',
-    tokenPrefix: 'Baz',
-    schema: {
-        schemaName: 'unique',
-        schemaVersion: '1.0.0',
-        image: { urlTemplate: '{infix}' },
-        coverPicture: { ipfsCid: '<ipfs cid>' },
-    },
+  address: '<your address>',
+  name: 'Foo',
+  description: 'Bar',
+  tokenPrefix: 'Baz',
+  schema: {
+    schemaName: 'unique',
+    schemaVersion: '1.0.0',
+    image: { urlTemplate: '{infix}' },
+    coverPicture: { ipfsCid: '<ipfs cid>' },
+  },
 });
 
-const { parsed: { collectionId } } = result;
+const {
+  parsed: { collectionId },
+} = result;
 
 console.log(`Created collection with id ${collectionId}`);
 ```
