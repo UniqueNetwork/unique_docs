@@ -7,8 +7,10 @@ export const sidebar: Record<string, SidebarConfig> = {
         text: 'SDK guides',
         children: [
           '/sdk-guides/index.md',
-          '/sdk-guides/create-account.md',
-          '/sdk-guides/wallet-integration.md'
+          '/sdk-guides/createAccount.md',
+          '/sdk-guides/examplesREST.md',
+          '/sdk-guides/examplesSDK.md',
+          '/sdk-guides/wallet-integration.md',
         ],
       }
     ],

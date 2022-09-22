@@ -14,29 +14,31 @@
 
 <script setup lang="ts">
 import {ref} from 'vue'
-import {UniqueUtils} from '@unique-nft/api'
 
 const collectionIdInputRef = ref('')
 const addressInputRef = ref('')
 const errorMessageRef = ref('')
 
-const wrapWithErrorHandler = <P extends Array<unknown>, R>(fn: (...params: P) => Promise<R>) => {
-  return async(...params: P) => {
+import {Address} from '@unique-nft/utils/address'
+
+const wrapWithErrorHandler = <P extends Array<unknown>, R>(fn: (...params: P) => R) => {
+  return (...params: P) => {
     try {
       errorMessageRef.value = ''
-      return await fn(...params)
+      return fn(...params)
     } catch (e: any) {
+      console.log('IN CATCH')
       errorMessageRef.value = e.message
       throw e
     }
   }
 }
 
-const convertCollectionIdToAddress = wrapWithErrorHandler(async () => {
-  addressInputRef.value = await UniqueUtils.Address.collectionIdToEthAddress(collectionIdInputRef.value)
+const convertCollectionIdToAddress = wrapWithErrorHandler(() => {
+  addressInputRef.value = Address.collection.idToAddress(parseInt(collectionIdInputRef.value)) || ''
 })
-const convertAddressToCollectionId = wrapWithErrorHandler(async () => {
-  collectionIdInputRef.value = UniqueUtils.Address.ethAddressToCollectionId(addressInputRef.value).toString()
+const convertAddressToCollectionId = wrapWithErrorHandler(() => {
+  collectionIdInputRef.value = Address.collection.addressToId(addressInputRef.value)?.toString() || ''
 })
 
 </script>
