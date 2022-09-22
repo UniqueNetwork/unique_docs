@@ -27,6 +27,7 @@
       height: 24px;
       transition: 0.2s;
       background-image: url("/images/icons/arrow.svg");
+      filter: brightness(var(--icon-bright-level));
     }
   }
   &[open] {
