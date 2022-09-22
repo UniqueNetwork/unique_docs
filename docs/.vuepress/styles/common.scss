@@ -1,21 +1,21 @@
 .unique-details {
-  h1,
-  h2,
-  h3,
-  h4 {
-    font-family: Raleway;
-    font-weight: 700;
-  }
-  p {
-    font-family: Inter;
-  }
-  background-color: #fff;
-  border-bottom: 1px solid #d2d3d6;
+  background-color: var(--c-bg);
+  border-bottom: 1px solid var(--c-border-dark);
   padding: 24px 16px;
   position: relative;
   .unique-summary {
     font-size: 24px;
     font-weight: 700;
+    position: relative;
+    display: flex;
+    align-items: center;
+    h1,
+    h2,
+    h3,
+    h4 {
+      margin: 0;
+      border-bottom: unset;
+    }
     &::marker {
       content: "";
     }
@@ -26,11 +26,11 @@
       width: 24px;
       height: 24px;
       transition: 0.2s;
-      background-image: url("/images/icons/arrow.svg");
+      background-image: var(--arrow-collapse);
     }
   }
   &[open] {
-    background-color: #f5f6f7;
+    background-color: var(--c-bg-light);
     .unique-summary {
       &::after {
         content: "";
@@ -38,5 +38,8 @@
         transform: rotate(180deg);
       }
     }
+  }
+  &-body {
+    margin-top: 50px;
   }
 }
