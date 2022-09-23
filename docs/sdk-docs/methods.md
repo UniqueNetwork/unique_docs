@@ -2,8 +2,11 @@
 
 ## Collection
 
+<Details><template v-slot:header>
+
 ### Get collection by Id new
-<details><summary>Get collection by Id new description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -86,10 +89,14 @@ const collection = await sdk.collections.get({ collectionId: 1 });
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Get collection properties
-<details><summary>Get collection properties description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -180,10 +187,14 @@ const { properties } = await sdk.collections.properties({ collectionId: 1 });
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Create collection with unique schema
-<details><summary>Create collection with unique schema description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -195,25 +206,26 @@ The method creates a new collection with the Unique schema.
 import { CreateCollectionNewArguments } from '@unique-nft/substrate-client/tokens';
 
 const result = await sdk.collections.creation.submitWaitResult({
-    address: '<your address>',
-    name: 'Foo',
-    description: 'Bar',
-    tokenPrefix: 'Baz',
-    schema: {
-        schemaName: 'unique',
-        schemaVersion: '1.0.0',
-        image: { urlTemplate: '{infix}' },
-        coverPicture: { ipfsCid: '<ipfs cid>' },
-    },
+  address: '<your address>',
+  name: 'Foo',
+  description: 'Bar',
+  tokenPrefix: 'Baz',
+  schema: {
+    schemaName: 'unique',
+    schemaVersion: '1.0.0',
+    image: { urlTemplate: '{infix}' },
+    coverPicture: { ipfsCid: '<ipfs cid>' },
+  },
 });
 
-const { parsed: { collectionId } } = result;
+const {
+  parsed: { collectionId },
+} = result;
 
-console.log(`Created new collection with id ${collectionId}`)
+console.log(`Created new collection with id ${collectionId}`);
 ```
 
 #### Arguments
-
 
 `address` - The address of the collection owner
 
@@ -247,7 +259,6 @@ interface CollectionIdArguments {
 }
 ```
 
-
 #### Examples
 
 <CodeGroup>
@@ -258,21 +269,23 @@ interface CollectionIdArguments {
 import { CreateCollectionNewArguments } from '@unique-nft/substrate-client/tokens';
 
 const result = await sdk.collections.creation.submitWaitResult({
-    address: '<your address>',
-    name: 'Foo',
-    description: 'Bar',
-    tokenPrefix: 'Baz',
-    schema: {
-        schemaName: 'unique',
-        schemaVersion: '1.0.0',
-        image: { urlTemplate: '{infix}' },
-        coverPicture: { ipfsCid: '<ipfs cid>' },
-    },
+  address: '<your address>',
+  name: 'Foo',
+  description: 'Bar',
+  tokenPrefix: 'Baz',
+  schema: {
+    schemaName: 'unique',
+    schemaVersion: '1.0.0',
+    image: { urlTemplate: '{infix}' },
+    coverPicture: { ipfsCid: '<ipfs cid>' },
+  },
 });
 
-const { parsed: { collectionId } } = result;
+const {
+  parsed: { collectionId },
+} = result;
 
-console.log(`Created new collection with id ${collectionId}`)
+console.log(`Created new collection with id ${collectionId}`);
 ```
 
   </CodeGroupItem>
@@ -322,19 +335,21 @@ curl -X 'POST' \
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
 const result = await sdk.collections.creation.submitWaitResult({
-    address: '<your address>',
-    name: 'Foo',
-    description: 'Bar',
-    tokenPrefix: 'Baz',
-    schema: {
-        schemaName: 'unique',
-        schemaVersion: '1.0.0',
-        image: { urlTemplate: '{infix}' },
-        coverPicture: { ipfsCid: '<ipfs cid>' },
-    },
+  address: '<your address>',
+  name: 'Foo',
+  description: 'Bar',
+  tokenPrefix: 'Baz',
+  schema: {
+    schemaName: 'unique',
+    schemaVersion: '1.0.0',
+    image: { urlTemplate: '{infix}' },
+    coverPicture: { ipfsCid: '<ipfs cid>' },
+  },
 });
 
-const { parsed: { collectionId } } = result;
+const {
+  parsed: { collectionId },
+} = result;
 
 console.log(`Created collection with id ${collectionId}`);
 ```
@@ -342,10 +357,14 @@ console.log(`Created collection with id ${collectionId}`);
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Delete collection properties
-<details><summary>Delete collection properties description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -463,10 +482,14 @@ await sdk.collections.deleteProperties.submitWaitResult({
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Destroy collection
-<details><summary>Destroy collection description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -564,10 +587,14 @@ client.collections.destroy.submitWaitResult({
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Get effective limits by collection Id
-<details><summary>Get effective limits by collection Id description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -661,10 +688,14 @@ console.log(`Collection ${collectionId} limits: ${JSON.stringify(limits)}`);
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Property permissions
-<details><summary>Property permissions description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -766,10 +797,14 @@ This method returns `PropertyPermissionsResult`
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Set collection limits
-<details><summary>Set collection limits description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -938,10 +973,14 @@ This method returns `SetCollectionLimitsResult`
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Set collection permissions
-<details><summary>Set collection permissions description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -1099,10 +1138,14 @@ This method returns `SetCollectionPermissionsResult`
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Set collection properties
-<details><summary>Set collection properties description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -1243,10 +1286,14 @@ This method returns `SetCollectionPermissionsResult`
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Set token property permissions
-<details><summary>Set token property permissions description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -1417,10 +1464,14 @@ This method returns `SetTokenPropertyPermissionsResult`
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Set transfers enabled flag
-<details><summary>Set transfers enabled flag description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -1538,10 +1589,14 @@ This method returns `SetTransfersEnabledResult`
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Change the owner of the collection
-<details><summary>Change the owner of the collection description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -1656,12 +1711,16 @@ This method returns `TransferCollectionResult`
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
 
 ## Collections admin
 
+<Details><template v-slot:header>
+
 ### Add collection admin
-<details><summary>Add collection admin description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -1782,10 +1841,14 @@ This method returns `AddCollectionAdminResult`
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Get admin list
-<details><summary>Get admin list description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -1884,10 +1947,14 @@ This method returns `AdminlistResult`
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Remove collection admin
-<details><summary>Remove collection admin description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -2010,12 +2077,16 @@ This method returns `RemoveCollectionAdminResult`
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
 
 ## Collections allow list
 
+<Details><template v-slot:header>
+
 ### Add To Allow List
-<details><summary>Add To Allow List description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -2117,10 +2188,14 @@ console.log(
 
 </CodeGroup>
 
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Allow list
-<details><summary>Allow list description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -2197,10 +2272,14 @@ interface AllowListResult {
 </CodeGroup>
 
 
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Get allowance
-<details><summary>Get allowance description</summary>
+
+</template><template v-slot:body>
 
 The method gets the number of token pieces approved to transfer
 
@@ -2227,10 +2306,14 @@ const { isAllowed } = await sdk.tokens.allowance({
   tokenId: 1,
 });
 ```
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Check is allowed
-<details><summary>Check is allowed description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 Checks if user is allowed to use the collection. Returns true or false.
@@ -2302,10 +2385,14 @@ interface AllowedResult {
 
 </CodeGroup>
 
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Remove from allow list
-<details><summary>Remove from allow list description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -2405,12 +2492,16 @@ interface RemoveFromAllowListResult {
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
 
 ## Nesting
 
+<Details><template v-slot:header>
+
 ### Get bundle
-<details><summary>Get bundle description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -2512,10 +2603,14 @@ console.log(bundle);
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Is Bundle
-<details><summary>Is Bundle description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -2595,10 +2690,14 @@ console.log(result.isBundle);
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Nest token
-<details><summary>Nest token description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -2765,10 +2864,14 @@ console.log(
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Token children
-<details><summary>Token children description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -2878,10 +2981,14 @@ console.log(result.children);
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Token parent
-<details><summary>Token parent description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -2981,10 +3088,14 @@ console.log(result);
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Topmost token owner
-<details><summary>Topmost token owner description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -3082,10 +3193,14 @@ console.log(result.topmostOwner);
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Unnest token
-<details><summary>Unnest token description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -3241,12 +3356,16 @@ console.log(
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
 
 ## Sponsorship
 
+<Details><template v-slot:header>
+
 ### Confirm sponsorship
-<details><summary>Confirm sponsorship description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -3373,10 +3492,14 @@ This method returns `ConfirmSponsorshipResult`
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Next sponsored
-<details><summary>Next sponsored description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -3480,10 +3603,14 @@ console.log(result);
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Remove collection sponsor
-<details><summary>Remove collection sponsor description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -3603,10 +3730,14 @@ This method returns `RemoveSponsorshipResult`
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Set collection sponsor
-<details><summary>Set collection sponsor description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -3744,12 +3875,16 @@ This method returns `SetSponsorshipResult`
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
 
 ## Statistics
 
+<Details><template v-slot:header>
+
 ### Get account tokens of the collection
-<details><summary>Get account tokens of the collection description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 Returns an array of tokens, owned by address.
@@ -3839,10 +3974,14 @@ interface AccountTokensResult {
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Get collection tokens
-<details><summary>Get collection tokens description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -3920,10 +4059,14 @@ interface CollectionTokensResult {
 
 </CodeGroup>
 
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Get collection stats
-<details><summary>Get collection stats description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -3998,10 +4141,14 @@ interface GetStatsResult {
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Last token id
-<details><summary>Last token id description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -4078,10 +4225,14 @@ interface LastTokenIdResult {
 
 </CodeGroup>
 
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Total supply
-<details><summary>Total supply description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -4163,12 +4314,16 @@ interface TotalSupplyResult {
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
 
 ## Token
 
+<Details><template v-slot:header>
+
 ### Get allowance
-<details><summary>Get allowance description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -4262,10 +4417,14 @@ const { isAllowed } = await sdk.tokens.allowance({
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Burn token
-<details><summary>Burn token description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -4394,10 +4553,14 @@ const { collectionId, tokenId, address, value } = setResult.parsed;
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Create multiple tokens
-<details><summary>Create multiple tokens description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -4576,10 +4739,14 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Create token (mint)
-<details><summary>Create token (mint) description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -4790,10 +4957,14 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
 
 </CodeGroup>
 
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Delete token properties
-<details><summary>Delete token properties description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -4917,10 +5088,14 @@ This method returns `DeleteTokenPropertiesResult`
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Set token properties
-<details><summary>Set token properties description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -5064,10 +5239,14 @@ This method returns `SetTokenPropertiesResult`
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Get token
-<details><summary>Get token description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -5163,10 +5342,14 @@ curl -X 'GET' \
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Get token owner
-<details><summary>Get token owner description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -5272,10 +5455,14 @@ const result: TokenOwnerResult = await sdk.tokens.tokenOwner(
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Token properties
-<details><summary>Token properties description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -5374,10 +5561,14 @@ const result: TokenPropertiesResult = await sdk.tokens.properties(args);
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Transfer token
-<details><summary>Transfer token description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -5518,12 +5709,16 @@ console.log(result.parsed);
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
 
 ## Other
 
+<Details><template v-slot:header>
+
 ### Approve
-<details><summary>Approve description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -5647,10 +5842,14 @@ const { collectionId, tokenId } = result.parsed;
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
+
+<Details><template v-slot:header>
 
 ### Token exists
-<details><summary>Token exists description</summary>
+
+</template><template v-slot:body>
 
 #### Overview
 
@@ -5722,5 +5921,6 @@ const { isExists } = await sdk.tokens.exists({
   </CodeGroupItem>
 
 </CodeGroup>
-</details>
+
+</template></Details>
 
