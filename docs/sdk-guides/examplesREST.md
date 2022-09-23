@@ -1,28 +1,22 @@
 # REST API examples
 
-Here we will show how to create collection with pure REST service,
-without any specific programming language.
+REST service calls are a language independent set of methods that facilitate communication between a client and a server. Unique Network provides such a REST service as a language-independent means to interact with the blockchain.
 
-The main tool here will be curl. Also we will use node to parse JSON and extract necessary data from response.
+To see this in action, let's create a Collection using pure REST service calls. The main tool that will be used to accomplish this will be *curl*. Out of convenience Node.js will be utilized to parse the JSON formatted server responses and extract necessary data from them.
 
-Important: some tool is needed to sign the extrinsic (a transaction) with SR25519 algorithm.
-It can be done with some user tool for noncustodial solution, 
-or REST service can sign an extrinsic if a custodial solution is appropriate in some case. 
+Important note: interacting with the blockchain requires user interaction in cases where signing of an extrinsic (a transaction) is necessary. Signing requires a client-side utility that can invoke SR25519 encryption methods needed to perform this in case of non-custodial solutions. For custodial solutions there are cases where the REST service can be invoked to perform this action.
 
-Also we will need a Substrate account (mnemonic seed phrase and address) 
-which can be created with the Polkadot.js extension
-as it shown [here](/sdk-guides/createAccount).
-This account should have some balance to create collection (2-2.5 OPL). [Our faucet telegram bot](https://t.me/unique2faucet_opal_bot) 
+But before we dive into the code we'll need to create a Substrate account to use in this example. Since we will need to provide the *mnemonic seed* and the *wallet address* at some point remember to make a note of these two data items during the creation process. The instructions for creating an account with the Polkadot.js wallet browser extension can be found [here](/sdk-guides/createAccount). And, since some Opal tokens are required to pay for the transaction fees as well(around 2 to 2.5 OPL) these can be obtained via a [Telegram faucet bot](https://t.me/unique2faucet_opal_bot).
 
 ## Pure REST (curl) example
 
-The lifecycle of a extrinsic (or transaction in non-Substrate terminology) contains of:
-1. request the REST service to build extrinsic
-2. sign extrinsic
-3. submit signed extrinsic
+The lifecycle of an extrinsic is:
 
-Here we will use custodial solution to make the example as simple as possible.
-Let's see how to perform these steps one by one.
+1. request the REST service to build the extrinsic
+2. sign the extrinsic
+3. submit the signed extrinsic
+
+For this example a custodial solution will be considered as it provides the most straightforward approach.
 
 ```bash
 apiUrl="https://rest.unique.network/opal/v1"
@@ -72,22 +66,17 @@ hash=`node -e "console.log(JSON.parse('$submitResult').hash)"`
 echo "status: $apiUrl/extrinsic/status?hash=$hash"
 ```
 
-After, we need to wait some time (maybe check in cycle with some delay) and check the status with the link
-from the last script
+At this point the transaction is submitted for processing and if needed a periodic status request can be looped in a cycle.
 
 ## Programming language example
 
-We have an JS/TS SDK and some other languages are coming soon.  
-But what if you use some language that there still is no SDK for?
+It would be tempting to show an example of how easy it is to apply an Unique JS/TS SDK to accomplish this (this also stands in the case of future SDKs for languages other than JS/TS), but a much more compelling case for a programming language example would be to illustrate how to use the REST service in a 'pure' language case with no SDK support.
 
-Here is an example how to work with the REST API in pure Javascript.  
-While we provide a ready to use JS/TS SDK, Javascript is current lingua franca, 
-so let's use it as an example to show how to use the REST API in any language.
+A fitting language for this is Javascript as it is a very widely adopted language and will provide a good basis for understanding the example code as it provides the structure for implementing this approach in any other language.
 
-Only one thing you will need is a SR25519 signer to sign extrinsic.  
-Here we use `@polkadot/util-crypto` on purpose, to avoid signing with `@polkadot/api`
-because it is a highlevel solutuin, while util-crypto provides just several atomic operations
-to show it used here only for signing some binary data as blackbox, without dealing with its contents.
+As was mentioned earlier, a non-custodial approach will require an SR25519 signer procedure to sign an extrinsic.
+
+To illustrate this functionality at the core level we will avoid using the high-level `@polkadot/api` library and opt for the low-level `@polkadot/util-crypto` one instead to perform the signing. It is, in contrast to the api, rudimentary and contains just a set of atomic functions which will be invoked to sign a binary data chunk (treating it as a black box, ignoring its contents).
 
 Packages used in this example:
 - [@polkadot/node-fetch](https://www.npmjs.com/package/@polkadot/node-fetch)
