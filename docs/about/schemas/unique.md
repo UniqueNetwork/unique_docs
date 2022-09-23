@@ -163,7 +163,6 @@ _enumValues_ - if provided, can't use values only from provided list
 <summary>Attributes schema in collection example:</summary>
 
 <CodeGroup>
-<CodeGroupItem title="SDK">
 
 ```typescript
 [
@@ -201,7 +200,6 @@ _enumValues_ - if provided, can't use values only from provided list
   }
 ]
 ```
-</CodeGroupItem>
 </CodeGroup>
 </details>
 
@@ -214,7 +212,6 @@ On chain schema for attributes _in token_ is defined as ```
 <summary>Attributes usage in NFT example:</summary>
 
 <CodeGroup>
-<CodeGroupItem title="SDK">
 
 ```typescript
 [
@@ -252,184 +249,7 @@ On chain schema for attributes _in token_ is defined as ```
   }
 ]
 ```
-</CodeGroupItem>
 </CodeGroup>
 </details>
 
 </details>
-
-Extra notes that I incorrectly started. May be useful for other parts of documentation
-
-# Unique schema
-
-All NFTs on Unique Network have flexible properties that can be set in any way with title to no exceptions. To bring some standardization over most popular NFT use-cases, we created a standard called "Unique schema" that covers how should properties of image/video/audio NFTs look like. It is advised to be used on any type of project/idea you are working on to ensure compatibility with our and community projects.
-
-The main goals of the Unique schema:
-
-1. Flexibility. Should cover as many use-cases as possible by default.
-2. Versioning - we should be able to adjust it over time without breaking the old ones.
-3. To be as user-friendly as possible.
-4. Aim on it on all of our products.
-
-## Who is it for
-First of all - Unique Schema is integrated into SDK and our products (wallet/scan/market) by default. If an NFT token doesn't follow Unique Schema - it is not expected to be properly shown on any of our products. If, for example, you are using our wallet to create NFTs it already follows the Unique Schema and therefore can be observed on scan, wallet and potentially sold on a market.
-
-It is advised to follow this schema for any situation unless very a specific exception prevents from doing so.
-
-## How to use
-The best way to use it is SDK. Internally schema is not intuitive. SDK helps translate it into human-readable form as well as translate human-readable form into proper data for blockchain.
-
-SDK uses both - data from collection and token to build a human-readable and convenient format to work with:
-<details><summary>Unique scheme SDK parsed example</summary>
-<CodeGroup>
-<CodeGroupItem title="SDK">
-
-```typescript
-{
-  owner: '5GbjEGWbTFV7f2XN6z7TBUyW4YidWTHmaw1ekNFCtWGuEmTT',
-  tokenId: 4,
-  collectionId: 883,
-  attributes: {
-    '0': {
-      name: { _: 'Artist' },
-      value: { _: 'AmazingDevya' },
-      isArray: false,
-      type: 'string',
-      rawValue: { _: 'AmazingDevya' },
-      isEnum: false
-    },
-    '1': {
-      name: { _: 'Title' },
-      value: { _: 'Cut Trees Polar Bear Sad' },
-      isArray: false,
-      type: 'string',
-      rawValue: { _: 'Cut Trees Polar Bear Sad' },
-      isEnum: false
-    },
-    '2': {
-      name: { _: 'GloCha Registry number' },
-      value: { _: '0004DA4C2022' },
-      isArray: false,
-      type: 'string',
-      rawValue: { _: '0004DA4C2022' },
-      isEnum: false
-    }
-  },
-  image: {
-    ipfsCid: 'QmZ6RyXcXhAF42BKGm1VvRgRhHSRuYfXphgHN9ktYciduf',
-    fullUrl: 'https://ipfs.unique.network/ipfs/QmZ6RyXcXhAF42BKGm1VvRgRhHSRuYfXphgHN9ktYciduf'
-  }
-}
-```
-</CodeGroupItem>
-</CodeGroup>
-</details>
-
-The schema on the chain is more complicated. It consists of two parts - collectionProperties and tokenProperties
-
-<details><summary>Unique scheme of a collection on chain example</summary>
-<CodeGroup>
-<CodeGroupItem title="SDK">
-
-```typescript
-[
-  {
-    key: attributesSchema.0
-    value: {type:string,name:{_:Artist},isArray:false,optional:false}
-  },
-  {
-    key: attributesSchema.1
-    value: {type:string,name:{_:Title},isArray:false,optional:false}
-  },
-  {
-    key: attributesSchema.2
-    value: {type:string,name:{_:GloCha Registry number},isArray:false,optional:false}
-  },
-  {
-    key: attributesSchemaVersion
-    value: 1.0.0
-  },
-  {
-    key: coverPicture.ipfsCid
-    value: QmfPYQHHZtADPAP5nC7cFZmvFwYZCyuVpT7GUjFTxuWyxa
-  },
-  {
-    key: image.urlTemplate
-    value: https://ipfs.unique.network/ipfs/{infix}
-  },
-  {
-    key: schemaName
-    value: unique
-  },
-  {
-    key: schemaVersion
-    value: 1.0.0
-  },
-  {
-    key: video.urlTemplate
-    value: https://ipfs.unique.network/ipfs/{infix}
-  }
-]
-```
-</CodeGroupItem>
-</CodeGroup>
-</details>
-
-<details><summary>Unique scheme of a token on chain example</summary>
-<CodeGroup>
-<CodeGroupItem title="SDK">
-
-```typescript
-[
-  {
-    key: a.0
-    value: {_:AmazingDevya}
-  }
-  {
-    key: a.1
-    value: {_:Cut Trees Polar Bear Sad}
-  }
-  {
-    key: a.2
-    value: {_:0004DA4C2022}
-  }
-  {
-    key: i.c
-    value: QmZ6RyXcXhAF42BKGm1VvRgRhHSRuYfXphgHN9ktYciduf
-  }
-]
-```
-</CodeGroupItem>
-</CodeGroup>
-</details>
-
-## Details on schema sctructure
-This description is related to SDK structure.
-
-### Unique attribute schema consist of:
-- mode (optional)
-Optional parameter. Defines whether a collection will contain NFT, Fungible, or RFT 
-- decimals (optional)
-Used for Fungibles
-- name
-Collection Name
-- description
-Collection description
-- tokenPrefix
-Collection prefix. Usually used to provide names for tokens as `${collection.tokenPrefix} #${token.tokenId}`
-
-
-## SDK
-Work with Unique schema is integrated on SDK by default, and it is very easy to use. Here is an example of how to create a collection and token using "@unique-nft/substrate-client"
-
-<details><summary>Unique scheme of a token on chain example</summary>
-<CodeGroup>
-<CodeGroupItem title="SDK">
-
-</CodeGroupItem>
-</CodeGroup>
-</details>
-
-## Misc
-We have been using other schemas in the past. They were migrated to _old_schema and are parsed by SDK into a new schema format. 
-// TODO: add a link on the parser to convert from old schemas to new ones
