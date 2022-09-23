@@ -38,7 +38,7 @@ export const uniqueChainsParameters: Record<UNIQUE_CHAINS, ChainData> = {
       },
       rpcUrls: [`https://rpc.unique.network`],
       iconUrls: [`https://ipfs.unique.network/ipfs/QmPCqY7Lmxerm8cLKmB18kT1RxkwnpasPVksA8XLhViVT7`],
-      blockExplorerUrls: ['https://uniquescan.io/UNIQUE/'],
+      blockExplorerUrls: ['https://uniquescan.io/unique/'],
     },
 
     websocketUrls: [`wss://ws.unique.network`],
@@ -56,7 +56,7 @@ export const uniqueChainsParameters: Record<UNIQUE_CHAINS, ChainData> = {
       },
       rpcUrls: [`https://rpc-quartz.unique.network`],
       iconUrls: [`https://ipfs.unique.network/ipfs/QmUoTq3D5p5a8CjQSFYECmErkpQN9wQWqkBAdyravzAZai`],
-      blockExplorerUrls: ['https://uniquescan.io/QUARTZ/'],
+      blockExplorerUrls: ['https://uniquescan.io/quartz/'],
     },
 
     //unique custom fields
@@ -75,7 +75,7 @@ export const uniqueChainsParameters: Record<UNIQUE_CHAINS, ChainData> = {
       },
       rpcUrls: [`https://rpc-opal.unique.network`],
       iconUrls: [`https://ipfs.unique.network/ipfs/QmR69JKMmknxb3UVN4Ecq36WZbWzVqJdGFcj2CnBvXBT7z`],
-      blockExplorerUrls: ['https://uniquescan.io/OPAL/'],
+      blockExplorerUrls: ['https://uniquescan.io/opal/'],
     },
 
     websocketUrls: [`wss://ws-opal.unique.network`],
@@ -93,7 +93,7 @@ export const uniqueChainsParameters: Record<UNIQUE_CHAINS, ChainData> = {
       },
       rpcUrls: [`https://rpc-sapphire.unique.network`],
       iconUrls: [`https://ipfs.unique.network/ipfs/QmPW1KS5SaQX2jX91iDPm11rqtDNyfk6hiHMXKAJysEbdc`],
-      blockExplorerUrls: ['https://uniquescan.io/SAPPHIRE/'],
+      blockExplorerUrls: ['https://uniquescan.io/sapphire/'],
     },
 
     //unique custom fields
