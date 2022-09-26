@@ -37,7 +37,7 @@ export const uniqueChainsParameters: Record<UNIQUE_CHAINS, ChainData> = {
         decimals: 18,
       },
       rpcUrls: [`https://rpc.unique.network`],
-      iconUrls: [`https://ipfs.unique.network/ipfs/QmPCqY7Lmxerm8cLKmB18kT1RxkwnpasPVksA8XLhViVT7`],
+      iconUrls: [`https://ipfs.unique.network/ipfs/QmbJ7CGZ2GxWMp7s6jy71UGzRsMe4w3KANKXDAExYWdaFR`],
       blockExplorerUrls: ['https://uniquescan.io/unique/'],
     },
 
@@ -55,7 +55,7 @@ export const uniqueChainsParameters: Record<UNIQUE_CHAINS, ChainData> = {
         decimals: 18,
       },
       rpcUrls: [`https://rpc-quartz.unique.network`],
-      iconUrls: [`https://ipfs.unique.network/ipfs/QmUoTq3D5p5a8CjQSFYECmErkpQN9wQWqkBAdyravzAZai`],
+      iconUrls: [`https://ipfs.unique.network/ipfs/QmaGPdccULQEFcCGxzstnmE8THfac2kSiGwvWRAiaRq4dp`],
       blockExplorerUrls: ['https://uniquescan.io/quartz/'],
     },
 
@@ -74,7 +74,7 @@ export const uniqueChainsParameters: Record<UNIQUE_CHAINS, ChainData> = {
         decimals: 18,
       },
       rpcUrls: [`https://rpc-opal.unique.network`],
-      iconUrls: [`https://ipfs.unique.network/ipfs/QmR69JKMmknxb3UVN4Ecq36WZbWzVqJdGFcj2CnBvXBT7z`],
+      iconUrls: [`https://ipfs.unique.network/ipfs/QmYJDpmWyjDa3H6BxweFmQXk4fU8b1GU7M9EqYcaUNvXzc`],
       blockExplorerUrls: ['https://uniquescan.io/opal/'],
     },
 
@@ -92,7 +92,7 @@ export const uniqueChainsParameters: Record<UNIQUE_CHAINS, ChainData> = {
         decimals: 18,
       },
       rpcUrls: [`https://rpc-sapphire.unique.network`],
-      iconUrls: [`https://ipfs.unique.network/ipfs/QmPW1KS5SaQX2jX91iDPm11rqtDNyfk6hiHMXKAJysEbdc`],
+      iconUrls: [`https://ipfs.unique.network/ipfs/Qmd1PGt4cDRjFbh4ihP5QKEd4XQVwN1MkebYKdF56V74pf`],
       blockExplorerUrls: ['https://uniquescan.io/sapphire/'],
     },
 

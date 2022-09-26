@@ -58,15 +58,15 @@
           <a :href="chain.metamask.iconUrls[0]" target="_blank" class="logo">
             <img :src="withBase(`/images/logo/${chainName}.svg`)" height="24">
           </a>
-<!--          <ExternalLinkIcon/>-->
-<!--          <Link :href="chain.metamask.iconUrls[0]"-->
-<!--                text="Link"-->
-<!--                newWindow-->
-<!--          />-->
-
-          <CopyButton :data="chain.metamask.iconUrls[0]" text="Link"/>
+          <!--          <ExternalLinkIcon/>-->
+          <!--          <Link :href="chain.metamask.iconUrls[0]"-->
+          <!--                text="Link"-->
+          <!--                newWindow-->
+          <!--          />-->
 
           <CopyButton :data="logoIpfsCid" text="IPFS cid"/>
+
+          <CopyButton :data="chain.metamask.iconUrls[0]" text="Full link"/>
           <br/>
         </div>
       </td>
@@ -75,11 +75,10 @@
 </template>
 
 <script setup lang="ts">
-import {defineProps, computed} from 'vue'
+import {computed} from 'vue'
 import {UNIQUE_CHAINS, uniqueChainsParameters} from '../utils/constants'
 import {addChainToMetamask} from '../utils/metamask'
 import CopyButton from './CopyButton.vue'
-import Link from "./Link.vue";
 import {withBase} from "@vuepress/client";
 
 const props = defineProps<{

@@ -1,5 +1,5 @@
 <template>
-  <div v-show="!!data || showAlways" class="button-copy" @click="copyToBuffer(props.data)">
+  <div v-show="!!data || showAlways" class="button-copy" @click="copy">
     <span v-if="!!props.text">{{ props.text }}</span>
     <div class="external-link-icon">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24"
@@ -16,7 +16,9 @@
 </template>
 
 <script lang="ts" setup>
-import {onMounted} from 'vue'
+import {useToast} from 'vue-toast-notification'
+
+import {onBeforeUnmount, onMounted} from 'vue'
 import {copyToBuffer} from "_utils";
 
 const props = defineProps<{
@@ -29,10 +31,27 @@ const props = defineProps<{
 let color = 'currentColor'
 let size = 16
 
+const $toast = useToast({
+  position: 'top-right',
+  duration: 2000,
+  type: 'default',
+  pauseOnHover: true,
+})
+
 onMounted(() => {
   color = getComputedStyle(document.body).getPropertyValue('--c-text')
 })
 
+onBeforeUnmount(() => {
+  $toast.clear()
+})
+
+
+const copy = async () => {
+  $toast.success(`Copied "${props.data}"`, {type: 'info'});
+
+  await copyToBuffer(props.data)
+}
 
 </script>
 

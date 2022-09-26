@@ -31,6 +31,7 @@
     "ethers": "^5.7.1",
     "mermaid": "^9.1.2",
     "vue": "^3.2.37",
+    "vue-toast-notification": "^3.0.4",
     "web3-provider-sponsoring": "^0.2.0"
   },
   "repository": "https://github.com/UniqueNetwork/unique_docs.git"
