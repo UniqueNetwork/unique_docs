@@ -2737,6 +2737,8 @@ console.log(
 
 `nested: { collectionId: number, tokenId: number }` - Nested token object
 
+`value: number` - _optional_ (default: 1) - Amount of pieces (For Refungible token)
+
 #### Behaviour and errors
 
 Nesting can be applied only if the token collection has permission for nesting. If the collection has no permission for nesting - "UserIsNotAllowedToNest" Error will be thrown.
@@ -3239,6 +3241,8 @@ console.log(
 `parent: { collectionId: number, tokenId: number }` - Parent token object
 
 `nested: { collectionId: number, tokenId: number }` - Nested token object
+
+`value: number` - _optional_ (default: 1) - Amount of pieces (For Refungible token)
 
 #### Behaviour and errors
 
