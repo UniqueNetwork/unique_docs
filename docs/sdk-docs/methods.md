@@ -202,21 +202,30 @@ The method creates a new collection with the Unique schema.
 
 #### Brief example
 
+Example without attributes
 ```typescript
-import { CreateCollectionNewArguments } from '@unique-nft/substrate-client/tokens';
+import {
+  COLLECTION_SCHEMA_NAME,
+  CreateCollectionNewArguments,
+} from '@unique-nft/substrate-client/tokens';
+import { UniqueCollectionSchemaToCreate } from '@unique-nft/api';
 
-const result = await sdk.collections.creation.submitWaitResult({
+const collectionSchema: UniqueCollectionSchemaToCreate = {
+  schemaName: COLLECTION_SCHEMA_NAME.unique,
+  schemaVersion: '1.0.0',
+  image: { urlTemplate: 'some_url/{infix}.extension' },
+  coverPicture: {
+    ipfsCid: '<valid_ipfs_cid>',
+  },
+};
+const args: CreateCollectionNewArguments = {
   address: '<your address>',
   name: 'Foo',
   description: 'Bar',
   tokenPrefix: 'Baz',
-  schema: {
-    schemaName: 'unique',
-    schemaVersion: '1.0.0',
-    image: { urlTemplate: '{infix}' },
-    coverPicture: { ipfsCid: '<ipfs cid>' },
-  },
-});
+  schema: collectionSchema,
+};
+const result = await sdk.collections.creation.submitWaitResult(args);
 
 const {
   parsed: { collectionId },
@@ -224,6 +233,82 @@ const {
 
 console.log(`Created new collection with id ${collectionId}`);
 ```
+
+Example with attributes
+```typescript
+import {
+  AttributeType,
+  COLLECTION_SCHEMA_NAME,
+  CreateCollectionNewArguments,
+} from '@unique-nft/substrate-client/tokens';
+import { UniqueCollectionSchemaToCreate } from '@unique-nft/api';
+
+const collectionSchema: UniqueCollectionSchemaToCreate = {
+  schemaName: COLLECTION_SCHEMA_NAME.unique,
+  schemaVersion: '1.0.0',
+  attributesSchemaVersion: '1.0.0',
+  image: { urlTemplate: 'https://ipfs.unique.network/ipfs/{infix}' },
+  attributesSchema: {
+    '0': {
+      name: {
+        _: 'Facial features',
+      },
+      type: AttributeType.string,
+      optional: true,
+      isArray: true,
+      enumValues: {
+        '0': {
+          _: 'Regular Head',
+        },
+        '1': {
+          _: 'Normal Eyes',
+        },
+        '2': {
+          _: 'Tired Eyes',
+        },
+      },
+    },
+    '1': {
+      name: {
+        _: 'Name',
+      },
+      type: AttributeType.string,
+      isArray: false,
+      optional: false,
+    },
+  },
+  audio: {
+    urlTemplate: 'https://ipfs.unique.network/ipfs/{infix}.ext',
+    format: 'string',
+    isLossless: true,
+  },
+  spatialObject: {
+    urlTemplate: 'https://ipfs.unique.network/ipfs/{infix}.ext',
+    format: 'string',
+  },
+  video: {
+    urlTemplate: 'https://ipfs.unique.network/ipfs/{infix}.ext',
+  },
+  coverPicture: {
+    ipfsCid: '<valid_ipfs_cid>',
+  },
+};
+const args: CreateCollectionNewArguments = {
+  address: '<your address>',
+  name: 'Foo',
+  description: 'Bar',
+  tokenPrefix: 'Baz',
+  schema: collectionSchema,
+};
+const result = await sdk.collections.creation.submitWaitResult(args);
+
+const {
+  parsed: { collectionId },
+} = result;
+
+console.log(`Created new collection with id ${collectionId}`);
+```
+
 
 #### Arguments
 
@@ -274,10 +359,12 @@ const result = await sdk.collections.creation.submitWaitResult({
   description: 'Bar',
   tokenPrefix: 'Baz',
   schema: {
-    schemaName: 'unique',
+    schemaName: COLLECTION_SCHEMA_NAME.unique,
     schemaVersion: '1.0.0',
-    image: { urlTemplate: '{infix}' },
-    coverPicture: { ipfsCid: '<ipfs cid>' },
+    image: { urlTemplate: 'some_url/{infix}.extension' },
+    coverPicture: {
+      ipfsCid: '<valid_ipfs_cid>',
+    },
   },
 });
 
@@ -304,14 +391,12 @@ curl -X 'POST' \
   "tokenPrefix": "TEST",
   "address": "yGCyN3eydMkze4EPtz59Tn7obwbUbYNZCz48dp8FRdemTaLwm",
   "schema": {
-    "coverPicture": {
-"ipfsCid": ""
+    schemaName: COLLECTION_SCHEMA_NAME.unique,
+    schemaVersion: '1.0.0',
+    image: { urlTemplate: 'some_url/{infix}.extension' },
+    coverPicture: {
+      ipfsCid: '<valid_ipfs_cid>',
     },
-    "image": {
-      "urlTemplate": "{infix}"
-    },
-    "schemaName": "unique",
-    "schemaVersion": "1.0.0"
   }
 }'
 
@@ -340,10 +425,12 @@ const result = await sdk.collections.creation.submitWaitResult({
   description: 'Bar',
   tokenPrefix: 'Baz',
   schema: {
-    schemaName: 'unique',
+    schemaName: COLLECTION_SCHEMA_NAME.unique,
     schemaVersion: '1.0.0',
-    image: { urlTemplate: '{infix}' },
-    coverPicture: { ipfsCid: '<ipfs cid>' },
+    image: { urlTemplate: 'some_url/{infix}.extension' },
+    coverPicture: {
+      ipfsCid: '<valid_ipfs_cid>',
+    },
   },
 });
 
@@ -453,7 +540,7 @@ curl -X 'DELETE' \
   ]
 }'
 
-# then we sign, then we call
+### then we sign, then we call
 
 curl -X 'POST' \
 'https://rest.unique.network/opal/extrinsic/submit' \
@@ -559,7 +646,7 @@ curl -X 'DELETE' \
   "address": "yGCyN3eydMkze4EPtz59Tn7obwbUbYNZCz48dp8FRdemTaLwm",
   "collectionId": 1
 }'
-### then we sign, then we call
+# then we sign, then we call
 
 curl -X 'POST' \
 'https://rest.unique.network/opal/extrinsic/submit' \
