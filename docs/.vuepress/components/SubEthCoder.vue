@@ -1,7 +1,7 @@
 <template>
   <div class="inputContainer">
     <input v-model="inputRef" class="input"/>
-    <button @click="convertInputSubToEth">click</button>
+    <button @click="convertInputSubToEth">Convert</button>
   </div>
 
   <p v-show="error.message" class="error">{{ error.message }}</p>
@@ -32,6 +32,11 @@
     Unique format (prefix 7391):
     <CopyButton :data="converted.toUnique"/>
     {{ converted.toUnique }}
+  </p>
+  <p>
+    Sapphire format (prefix 8883):
+    <CopyButton :data="converted.toSapphire"/>
+    {{ converted.toSapphire }}
   </p>
   <p>
     Eth mirror:
@@ -66,7 +71,7 @@
 import {reactive, ref} from 'vue'
 import CopyButton from './CopyButton.vue'
 
-import {Address} from '@unique-nft/utils/address'
+import {Address} from '@unique-nft/utils/'
 
 const inputRef = ref('')
 const converted = reactive({
@@ -75,6 +80,7 @@ const converted = reactive({
   toSub: '',
   toQuartz: '',
   toUnique: '',
+  toSapphire: '',
   toKusama: '',
   toPolkadot: '',
   toEth: '',
@@ -106,6 +112,7 @@ const convertInputSubToEth = async () => {
     converted.toEth,
     converted.toQuartz,
     converted.toUnique,
+    converted.toSapphire,
     converted.toPolkadot,
     converted.toKusama,
     converted.toSubNormalized,
@@ -114,6 +121,7 @@ const convertInputSubToEth = async () => {
     Address.mirror.substrateToEthereum(rawAddress),
     Address.normalize.substrateAddress(rawAddress, 255),
     Address.normalize.substrateAddress(rawAddress, 7391),
+    Address.normalize.substrateAddress(rawAddress, 8883),
     Address.normalize.substrateAddress(rawAddress, 0),
     Address.normalize.substrateAddress(rawAddress, 2),
     Address.normalize.substrateAddress(rawAddress),
