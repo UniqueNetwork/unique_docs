@@ -55,6 +55,18 @@ export const sidebar: Record<string, SidebarConfig> = {
           },
           '/about/wallet-integration.md',
           {
+            text: 'SDK',
+            children: [
+              '/about/sdk/index.md',
+              '/about/sdk/about_sdk.md',
+              '/about/sdk/installation.md',
+              '/about/sdk/architecture.md',
+              '/about/sdk/methods.md',
+              '/about/sdk/tools.md',
+            ]
+
+          },
+          {
             text: 'Network Features',
             children: [
               '/about/network-features/index.md',
@@ -99,17 +111,5 @@ export const sidebar: Record<string, SidebarConfig> = {
         ],
       }
     ],
-    '/sdk-docs': [
-      {
-        text: 'SDK docs',
-        children: [
-          '/sdk-docs/index.md',
-          '/sdk-docs/architecture.md',
-          '/sdk-docs/installation.md',
-          '/sdk-docs/methods.md',
-          '/sdk-docs/tools.md',
-        ],
-      }
-    ]
   }
 }
