@@ -1,9 +1,16 @@
 # Sponsoring 
 
-In Unique Network, transactions can be sponsored. The main benefit of this is the fact that you can hide crypto usage from an end-user. For example, the [Unique marketplace](https://unqnft.io) user does not see UNQ currency.
+In Unique Network, transactions can be sponsored. This allows for shielding of end-users from the hassles of fee processing. As an example, in the Unique Marketplace users do not to pay any fees for listing NFTs. This eliminates the need for the user to obtain or own any native fungible token amount just to be able to take part in the market. And since minting can be sponsored as well, it could cost you zero in fees to list a gifted token.
 
 However, DOS attacks may deplete sponsor funds by sending too many "free" (for users) transactions. The solution here is to set a rate limit based on NFT.
 For example, an NFT can be transferred once per X hours. Or as an alternative, a rate limit can be based on the allow list for smart contracts.
+
+The following types of transactions can be sponsored:
+* Minting NFTs
+* NFT transfers
+* Smart contract calls, etc.
+
+Here is [the link](https://github.com/UniqueNetwork/pallet-sponsoring) to the pallet that allows dapp builders to create effective onboarding mechanisms for new users.
 
 ## Collection sponsoring 
 
