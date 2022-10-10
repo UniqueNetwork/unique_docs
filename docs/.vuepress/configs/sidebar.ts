@@ -15,6 +15,7 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/sdk-guides/getAccountAndBalance.md',
           '/sdk-guides/nfts-ways-to-create.md',
           '/sdk-guides/easy-market.md',
+          '/sdk-guides/nfts-how-to-mint.md',
         ],
       }
     ],
