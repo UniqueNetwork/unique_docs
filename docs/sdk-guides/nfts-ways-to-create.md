@@ -66,22 +66,20 @@ And then use those response entities to create collections/tokens.
 ## Create collection
 
 ```typescript
-import { CreateCollectionArguments } from '@unique-nft/substrate-client/types';
 import '@unique-nft/substrate-client/tokens';
 import { sdk } from './sdk.servicce.ts';
 
-const myCollection: CreateCollectionArguments = {
+const myCollection = {
   address: 'unjKJQJrRd238pkUZZvzDQrfKuM39zBSnQ5zjAGAGcdRhaJTx',
   description: 'Just sample collection',
   name: 'Sample',
   tokenPrefix: 'SMPL',
-  properties: {},
-  shema: {
+  schema: {
     schemaName: 'unique',
     schemaVersion: '1.0.0',
-    image: { urlTemplate: 'some_url/{infix}.extension' },
+    image: { urlTemplate: 'https://ipfs.uniquenetwork.dev/ipfs/{infix}.ext' },
     coverPicture: {
-      ipfsCid: '<valid_ipfs_cid>',
+      ipfsCid: 'QmZ6J9dVMa7B1Xd8PWXALyV8pQUSX5TNNSTpxxWuGH4ZRi',
     },
   },
 };
@@ -142,16 +140,10 @@ import { sdk } from './sdk.servicce.ts';
 const createTokensArgs = {
   owner,
   data: {
-    encodedAttributes: {
-      '0': 0,
-      '1': [0],
-      '2': 'foo_bar',
-    },
     image: {
       ipfsCid: '<valid_ipfs_cid>',
     },
   },
-  properties: [{key: 'a', value: 'b'}],
   address,
   collectionId,
 };
