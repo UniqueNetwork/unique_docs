@@ -48,6 +48,7 @@ export const sidebar: Record<string, SidebarConfig> = {
               '/about/schemas/ERC721Metadata.md',
             ]
           },
+          '/about/wallet-integration.md',
           {
             text: 'Network Features',
             children: [
