@@ -30,6 +30,12 @@ export const sidebar: Record<string, SidebarConfig> = {
       {
         text: 'About',
         children: [
+          {
+            text: 'Tokens & collections types',
+            children: [
+              '/about/types/rft.md',
+            ]
+          },
           '/about/addresses/index.md',
           {
             text: 'Schemas',
