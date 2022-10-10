@@ -26,7 +26,7 @@
 
 **UNQ** is the Unique token, the cryptocurrency of the Unique network. Used to pay commissions on the Unique network.
 
-**QTZ** is the Quartz token, the cryptocurrency of the Quartz network. Used to pay commissions on the Quartz network.
+**QTZ** is the Quartz token, the cryptocurrency of the Quartz network. Used to pay commissions on the Quartz and Sapphire networks.
 
 **NFT** (or Non-Fungible Token) is a unique indivisible token. It reflects some unique indivisible essence of the real or virtual world. For example, a car, an apartment, a diamond, a cryptocurrency, a cryptobank, or any game item. The Ethereum blockchain has an NFT token standard known as ERC-721.
 
@@ -37,6 +37,10 @@
 **Native Network Token**. The blockchain usually has some kind of Fungible token for paying network fees, which is “stitched” in its code and cannot be changed (or it will be very difficult and expensive to change). It regulates the entire economy of the network. For example, KSM tokens for the Kusama network, DOT for the Polkadot network, and UNQ for the Unique Network.
 
 **Application Token** is a token created and managed by some specific application, for example, a game. The economy of the entire network does not depend on it, but only the economy of a particular application, if the application author wants this.
+
+**Sponsoring** is a feature allows freeing the user from working with native fungible token. 
+
+**Royalties** are payments that compensate original NFT creators for the use of their non-fungible tokens (NFTs).
 
 **Minting** is the operation of creating a divisible or an indivisible token.
 
@@ -50,8 +54,14 @@
 
 **Sell (list)** means to put an NFT token for sale (in the terms of a marketplace).
 
+**SDK** is ready-to-use application programming interfaces (APIs) in the form of on-device libraries of reusable functions. 
+
 **SS58** is the extensible address format for the Substrate chains. A key characteristic when considering cross-chain interoperability and account derivation. Read more [here](https://docs.substrate.io/v3/advanced/ss58/).
 
 **Buy (delist)** means to buy an NFT token (in the terms of a marketplace). 
 
 **Cancel** - in the context of a marketplace, it means to cancel the sale of a token, and remove it from the sale.
+
+**DID** is a new type of identifier that enables verifiable, decentralized digital identity.
+
+**Rate limits** is a strategy for limiting network traffic. Rate limiting can help stop certain kinds of malicious bot activity. It can also reduce strain on web servers.

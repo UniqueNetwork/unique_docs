@@ -11,6 +11,7 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/sdk-guides/examplesREST.md',
           '/sdk-guides/examplesSDK.md',
           '/sdk-guides/wallet-integration.md',
+          '/sdk-guides/nfts-ways-to-create.md',
         ],
       }
     ],
@@ -38,6 +39,21 @@ export const sidebar: Record<string, SidebarConfig> = {
               '/about/schemas/ERC721Metadata.md',
             ]
           },
+          {
+            text: 'Network Features',
+            children: [
+              '/about/network-features/index.md',
+              '/about/network-features/evm.md',
+              '/about/network-features/sponsoring.md',
+              '/about/network-features/onchain-metadata.md',
+              '/about/network-features/nesting-bundling.md',
+              '/about/network-features/refungibility.md',
+              '/about/network-features/scheduling.md',
+              '/about/network-features/rate-limits.md',
+              '/about/network-features/royalties.md',
+              '/about/network-features/did.md',
+            ]
+          },
           '/about/glossary.md',
           '/about/collection-limits.md',
           '/about/collection-permissions.md',
@@ -63,7 +79,6 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/networks/index.md',
           '/networks/rpc.md',
           '/networks/extrinsics.md',
-          '/networks/sponsoring.md',
           '/networks/governance-only.md',
           '/networks/nesting.md',
         ],
