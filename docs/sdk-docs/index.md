@@ -31,17 +31,17 @@ SDK package has several advantages compared to other connection tools:
 - No need for infrastructure support (in the case of using public endpoints).
 - No need to implement the transaction signature logic.
 
-Use [how to install chapter](./installation.md) to learn how to add SDK to your project.
+Use [how to install chapter](../sdk/installation.md) to learn how to add SDK to your project.
 
 On our [repository page](https://github.com/UniqueNetwork/unique-sdk/blob/master/packages/sdk/README.md) you can learn more about SDK.
 
-[The methods list chapter](./methods.md) contains a description of all methods you can use with SDK.
+[The methods list chapter](../sdk/methods.md) contains a description of all methods you can use with SDK.
 
 ### Substrate REST
 
 As an alternative to other connection tools, you can use a proxy HTTP service (Substrate REST) to implement server logic.
 It is created to interact with the blockchain using simple HTTP requests.
-In general, this package is pretty close to the SDK, but it gives you more freedom to work with extrinsic on your side, such as:
+In general, this package is pretty close to the SDK, but it gives you more freedom to work with extrisic on your side, such as:
 
 1. Building an unsigned extrinsic
 2. Extrinsic signing and verification using service (These functions should be implemented on a client for safety)
@@ -52,21 +52,19 @@ With Substrate REST you can use public or self-hosted endpoints, which gives you
 Substrate REST has both some advantages and disadvantages compared to other connection tools.
 
 Advantages:
-
 - This package can be used with any programming language (SDK and Substrate Client are supporting only JS for now).
 - Using public endpoints allows you to use public IPFS nodes.
 - Using private endpoints allows you to increase the level of security for transaction signing and to use your IPFS nodes.
 
 Disadvantages:
-
 - Substrate REST contains fewer use cases than Substrate client.
 - Unlike SDK, Substrate REST means you have to have your  infrastructure.
 - Public endpoints don't allow you to implement safe transaction signing without JS (it is compatible only with browsers).
 - Private endpoints don't allow you to use public IPFS and require you to build transaction signing logic in your project.
 
-Use [how to install chapter](./installation.md) to learn how to add SDK to your project.
+Use [how to install chapter](../sdk/installation.md) to learn how to add SDK to your project.
 
-On our [repository page](https://github.com/UniqueNetwork/unique-sdk/blob/master/packages/sdk/README.md) you can learn more about SDK.
+On our [repository page](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/web/README.md) you can learn more about SDK.
 
 ### Substrate Client
 
@@ -82,19 +80,17 @@ However, Substrate Client can be used with any network based on the
 Substrate Client is a low-lower connection tool that is easier than WSS connection but requires more development and infrastructure support, than SDK or Substrate REST.
 
 Advantages:
-
 - Compared to WSS, Substrate Client already contains all the dependencies.
 - The package contains all core blockchain features and methods.
 - Contains verification of the sufficiency of money on the account for a specific transaction or verification of ownership of the transferred token.
 
 Disadvantages:
-
 - New features are implemented in this package later, then in WSS.
 - Relatively large package (0,5 MB), which could be critical for browser applications.
 - Doesn't contain IPFS, which means you have to upload images by yourself.
 - Releases come out more often and have less backward compatibility.
 - Contains an inner WSS connection, which means connection delays are possible.
 
-Use [how to install chapter](./installation.md) to learn how to add SDK to your project.
+Use [how to install chapter](../sdk/installation.md) to learn how to add SDK to your project.
 
-On our [repository page](https://github.com/UniqueNetwork/unique-sdk/blob/master/packages/sdk/README.md) you can learn more about SubstrateClient.
+On our [repository page](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/sdk/README.md) you can learn more about SubstrateClient.
