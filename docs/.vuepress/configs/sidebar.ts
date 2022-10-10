@@ -13,6 +13,7 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/sdk-guides/examplesSDK.md',
           '/sdk-guides/wallet-integration.md',
           '/sdk-guides/getAccountAndBalance.md',
+          '/sdk-guides/nfts-ways-to-create.md',
         ],
       }
     ],
