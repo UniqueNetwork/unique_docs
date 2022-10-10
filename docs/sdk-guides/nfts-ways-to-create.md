@@ -77,26 +77,11 @@ const myCollection: CreateCollectionArguments = {
   tokenPrefix: 'SMPL',
   properties: {},
   shema: {
-    coverPicture: {
-      urlInfix: 'string',
-      hash: 'string'
-    },
-    image: {
-      urlTemplate: 'https://ipfs.unique.network/ipfs/{infix}.ext'
-    },
     schemaName: 'unique',
     schemaVersion: '1.0.0',
-    coverPicturePreview: {
-      urlInfix: 'string',
-      hash: 'string'
-    },
-    imagePreview: {
-      urlTemplate: 'https://ipfs.unique.network/ipfs/{infix}.ext'
-    },
-    audio: {
-      urlTemplate: 'https://ipfs.unique.network/ipfs/{infix}.ext',
-      format: 'string',
-      isLossless: true
+    image: { urlTemplate: 'some_url/{infix}.extension' },
+    coverPicture: {
+      ipfsCid: '<valid_ipfs_cid>',
     },
   },
 };
@@ -131,19 +116,19 @@ const newCollection$ = sdk.collections.creation.submitWatch(myCollection);
 
 #### Collection settings methods
 
-1) setLimits
-2) setProperties
+1) setLimits - sets some collection limits
+2) setProperties - sets some collection properties
 3) deleteProperties
 4) setPropertyPermissions
-5) setSponsorship
-6) confirmSponsorship
+5) setSponsorship - set sponsor of collection
+6) confirmSponsorship - confirms sponsorship of a collection
 7) removeSponsorship
-8) setPermissions
-9) destroy
-10) setTransfersEnabled
-11) transfer
-12) addAdmin
-13) removeAdmin
+8) setPermissions - sets onchain permissions for a collection
+9) destroy - destroys collection if no tokens within this collection
+10) setTransfersEnabled - enables or disables transfers in a collection
+11) transfer - сhanges the owner of the collection
+12) addAdmin - adds an administrator of a collection
+13) removeAdmin - Removes administrator of a collection
 14) addToAllowList
 15) removeFromAllowList
 
@@ -153,56 +138,19 @@ const newCollection$ = sdk.collections.creation.submitWatch(myCollection);
 import '@unique-nft/substrate-client/tokens';
 import { sdk } from './sdk.servicce.ts';
 
-const tokenData =   {
-    "image": {
-      "urlInfix": "string",
-      "hash": "string"
-    },
-    "attributes": {
-      "gender": "Male",
-      "traits": [
-        "Black Lipstick",
-        "Red Lipstick"
-      ]
-    },
-    "encodedAttributes": {
-      "0": 0,
-      "1": [
-        0,
-        1
-      ]
-    },
-    "name": {
-      "_": "Hello!",
-      "en": "Hello!",
-      "fr": "Bonjour!"
-    },
-    "audio": {
-      "urlInfix": "string",
-      "hash": "string"
-    },
-    "description": {
-      "_": "Hello!",
-      "en": "Hello!",
-      "fr": "Bonjour!"
-    },
-    "imagePreview": {
-      "urlInfix": "string",
-      "hash": "string"
-    },
-    "spatialObject": {
-      "urlInfix": "string",
-      "hash": "string"
-    },
-    "video": {
-      "urlInfix": "string",
-      "hash": "string"
-    }
-}
-
+// example ot token arguments
 const createTokensArgs = {
   owner,
-  data: tokenData,
+  data: {
+    encodedAttributes: {
+      '0': 0,
+      '1': [0],
+      '2': 'foo_bar',
+    },
+    image: {
+      ipfsCid: '<valid_ipfs_cid>',
+    },
+  },
   properties: [{key: 'a', value: 'b'}],
   address,
   collectionId,
