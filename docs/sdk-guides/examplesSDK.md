@@ -1,24 +1,19 @@
 # SDK examples
 
-Here we will show how to create collection and token with Unique JS SDK.
+The following example illustrates how to use the Unique JS SDK library to create a collection and add a token to it.
 
-#### Steps
+The lifecycle of an extrinsic is:
 
-The lifecycle of a extrinsic (or transaction in non-Substrate terminology) contains of:
-1. build extrinsic
-2. sign extrinsic
-3. submit signed extrinsic
+1. request the REST service to build the extrinsic
+2. sign the extrinsic
+3. submit the signed extrinsic
 
-Also we will need a Substrate account (mnemonic seed phrase and address)
-which can be created with the Polkadot.js extension
-as it shown [here](/sdk-guides/createAccount)  
-This account should have some balance to create collection (2-2.5 OPL).
-[Our faucet telegram bot](https://t.me/unique2faucet_opal_bot)
+ We'll need a Substrate account to use in this example. Since we need to provide the *mnemonic seed* and the *wallet address* at some point remember to have these two data items handy if you are using an already existing account or make a note of these two data items during the account creation process if you will be creating a new account for the sake of this exercise. The instructions for creating an account with the Polkadot.js wallet browser extension can be found [here](/sdk-guides/createAccount). And, since some Opal tokens are required to pay for the transaction fees as well (around 2 to 2.5 OPL) note that these can be obtained via the [Telegram faucet bot](https://t.me/unique2faucet_opal_bot).
 
 Packages used in this example:
- - [@unique-nft/sdk](https://www.npmjs.com/package/@unique-nft/sdk)
- - [@unique-nft/accounts](https://www.npmjs.com/package/@unique-nft/accounts)
 
+- [@unique-nft/sdk](https://www.npmjs.com/package/@unique-nft/sdk)
+- [@unique-nft/accounts](https://www.npmjs.com/package/@unique-nft/accounts)
 
 ```ts
 import { Sdk } from '@unique-nft/sdk';
@@ -29,7 +24,7 @@ const mnemonic = 'bus ahead nation nice damp recall place dance guide media clap
 
 
 ////////////////////////////////////////////
-// Creating SDK client
+// Creating an SDK client
 ////////////////////////////////////////////
 function createSdk(account) {
   const options = {
@@ -40,8 +35,8 @@ function createSdk(account) {
 }
 
 ////////////////////////////////////////////////////////////////////////////
-// Creating sample collection
-// For the signature, the signer specified in the SDK constructor is used
+// Creating a sample collection
+// The signer specified in the SDK constructor is used to sign an extrinsic
 ////////////////////////////////////////////////////////////////////////////
 export async function createCollection(sdk, address) {
   const { parsed, error } = await sdk.collections.creation.submitWaitResult({
@@ -62,8 +57,8 @@ export async function createCollection(sdk, address) {
 }
 
 ////////////////////////////////////////////////////////////////////////////
-// Creating sample token in collection
-// For the signature, the signer specified in the SDK constructor is used
+// Creating a sample token in the newly created collection
+// The signer specified in the SDK constructor is used to sign an extrinsic
 ////////////////////////////////////////////////////////////////////////////
 export async function createToken(sdk, address, collectionId) {
   const { parsed, error } = await sdk.tokens.create.submitWaitResult({
@@ -83,7 +78,7 @@ export async function createToken(sdk, address, collectionId) {
 
 
 ////////////////////////////////////////////
-// entrypoint
+// Entrypoint 
 ////////////////////////////////////////////
 async function main() {
   const signer = await KeyringProvider.fromMnemonic(mnemonic);

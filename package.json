@@ -12,7 +12,7 @@
   "license": "UNLICENSED",
   "private": true,
   "devDependencies": {
-    "@vuepress/client": "^2.0.0-beta.46",
+    "@vuepress/client": "2.0.0-beta.46",
     "@vuepress/plugin-external-link-icon": "2.0.0-beta.46",
     "@vuepress/plugin-register-components": "2.0.0-beta.46",
     "@vuepress/theme-default": "2.0.0-beta.46",
