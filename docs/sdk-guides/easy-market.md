@@ -6,7 +6,7 @@ Full demo can be found [here](https://github.com/UniqueNetwork/insert-your-marke
 
 ## Main idea
 
-NFT marketplace is similar to a regular real-world marketplace of digital goods. The main difference is that user doesn't pay, but instead transfers tokens (money) to marketplace account and receives "goods" (NFT) at the address used to transfer money.
+NFT marketplace is similar to a regular real-world marketplace of digital goods. The main difference is that user doesn't pay, but instead transfers tokens (money) to marketplace account (aka escrow aka marketplaceWallet) and receives "goods" (NFT) at the address used to transfer money.
 
 Below we will describe main operations that you will need in order to create a marketplace. Keep in mind that it's just a simplified concept to give you an idea of how to execute main actions using blockchain.
 
@@ -27,22 +27,21 @@ Before we begin we need a way to manage accounts. Select an account that will be
 import { web3Accounts, web3Enable, web3EnablePromise } from '@polkadot/extension-dapp';
 
 const getAccounts = async () => {
-  // check that library is initialized and ready to read extension data
-  if (!web3EnablePromise) {
-      // check that extension is installed and working
-      let extensions = await web3Enable('my cool dapp');
-      if (extensions.length !== 0) {
-        // get accounts from polkadot's extension
-        const _accounts = await web3Accounts();
-        return _accounts;
-      }
+  import { PolkadotAccount, PolkadotProvider } from '@unique-nft/accounts/polkadot';
+  const provider = new PolkadotProvider({ accountType: ['sr25519']});
+  await provider.init();
+  // get accounts from polkadot's extension
+  const _accountsList = await provider.getAccounts() as PolkadotAccount[];
+  if (_accountsList.length !== 0) {
+      const _accounts = await web3Accounts();
+      return _accounts;
   }
   throw new Error('Polkadotjs extension is not installed');
 }
 
 const getBalance = async (account) => {
-    if (!account?.address) return;
-    const { address } = account;
+    if (!account) return;
+    const address = account.getAddress();
     const { availableBalance } = await sdkClient.balance.get({ address })
     setBalance(`${availableBalance.formatted} ${tokenSymbol}`);
 };
@@ -55,9 +54,6 @@ const selectAccountBalance = await getBalance(selectedAccount);
 
 Before some one can buy a token it should be placed on sale. Sale is represented as "offer" which is basically a token on an account and a record in DB about the price.
 
-```ts
-// TODO: link to guide on how to sign transactions with extension when using SDK
-```
 1. Get user tokens.
 For that matter we will be using unique-scan API since there's no on-chain solution to get all user tokens.
 ```ts
@@ -111,14 +107,22 @@ const sdkClient = new Sdk({ baseUrl, signer: null });
 const selectedAccount = '...';
 const marketplaceWalletAddress = '...';
 
-const { signerPayloadJSON } = await sdkClient.tokens.transfer.build({ address: selectedAccount?.address, collectionId, tokenId, from: selectedAccount?.address, to: escrowAddress, value: 1 }) || {};
+const { hash } = await sdkClient.tokens.transfer.submitWatch({ 
+      address: selectedAccount?.address, 
+      collectionId, 
+      tokenId, 
+      from: selectedAccount?.address, 
+      to: escrowAddress, 
+      value: 1 
+    }, {
+      signer: {
+        sign: async ({ signerPayloadJSON }) => {
+          // sign transaction
+          return { signature: await signTx(signerPayloadJSON, selectedAccount) || '', signatureType };
+        }
+      }
+    }) || {};
 
-// sign transaction
-const signature = await signTx(signerPayloadJSON, selectedAccount);
-if(!signature) return;
-
-// submit transaction
-const { hash } = await sdkClient.extrinsics.submit({ signerPayloadJSON, signature }) || {};
 if(!hash) return;
 
 // !IMPORTANT!
@@ -144,17 +148,24 @@ await fetch(`${config.marketApiUrl}/offers`, {
 ```
 Back-end
 ```ts
+import { hexToNumber } from "@polkadot/util";
 // validate transaction
-const { parsed } = await sdkClient.extrinsics.status({ hash: txHash });
+const { parsed, blockHash } = await sdkClient.extrinsics.status({ hash: txHash });
 
 if (!parsed) throw new Error('Extrinsic is not complited or doesn\'t exist');
 
-const { from, to, collectionId, tokenId, value } = parsed;
+const { args } = await sdkClient.extrinsics.get({ blockHashOrNumber: blockHash, extrinsicHash: txHash });
 
-    if (from !== seller
-      || to !== getEscrowAddress() // marketplace wallet address
-      || value !== 1
-      ) throw new Error('Extrinsic is not valid');
+const [from, to, collectionIdEncoded, tokenIdEncoded, valueEncoded] = args || [];
+
+const collectionId = hexToNumber(collectionIdEncoded);
+const tokenId = hexToNumber(tokenIdEncoded);
+const value = hexToNumber(valueEncoded);
+
+if (from.substrate !== seller
+  || to.substrate !== getEscrowAddress() // marketplace wallet address
+  || value !== 1
+  ) throw new Error('Extrinsic is not valid');
 
 // save offer to DB
 const collection = await sdkClient.collections.get({ collectionId });
@@ -179,20 +190,20 @@ const marketplaceWallet = '...';
 const buyToken = async (offerId, price) => {
     if(!selectedAccount?.address) return;
 
-    const { signerPayloadJSON } = await sdkClient.balance.transfer.build({
+    const { hash } = await sdkClient.balance.transfer.submitWatch({ 
       address: selectedAccount.address,
       destination: marketplaceWallet,
       amount: price
+    }, {
+      signer: {
+        sign: async ({ signerPayloadJSON }) => {
+          // sign transaction
+          return { signature: await signTx(signerPayloadJSON, selectedAccount) || '', signatureType };
+        }
+      }
     }) || {};
-    if (!signerPayloadJSON) return;
-
-    // sign transaction
-    const signature = await signTx(signerPayloadJSON, selectedAccount);
-    if(!signature) return;
-
-    // submit transaction
-    const { hash } = await sdkClient.extrinsics.submit({ signerPayloadJSON, signature }) || {};
     if(!hash) return;
+}
 
 // Once again - we will use { hash } in next step
 ```
@@ -231,8 +242,13 @@ const [destination, amountRaw] = args || [];
 // validate user transfer: it exist, it send money to crrect address and amount is higher than the price
 
 // Don't forget to account chain decimals when calculating transfered amounts
-if (destination !== getEscrowAddress()
-  || BigInt(amountRaw) !== BigInt(price * (10 ** decimals))
+const { decimals, ...rest } = await sdkClient.chain.properties();
+
+const amount = hexToBn(amountRaw);
+const priceBN = (new BN(price)).mul((new BN(10)).pow(new BN(decimals)));
+
+if (destination.id !== getEscrowAddress()
+    || !amount.eq(priceBN)
   ) throw new Error('Extrinsic is not valid');
 ```
 3. Backend should send NFT to buyer
