@@ -8,10 +8,14 @@ export const sidebar: Record<string, SidebarConfig> = {
         children: [
           '/sdk-guides/index.md',
           '/sdk-guides/createAccount.md',
+          '/sdk-guides/accounts/ways-to-create.md',
           '/sdk-guides/examplesREST.md',
           '/sdk-guides/examplesSDK.md',
           '/sdk-guides/wallet-integration.md',
           '/sdk-guides/easy-market.md'
+          '/sdk-guides/getAccountAndBalance.md',
+          '/sdk-guides/nfts-ways-to-create.md',
+          '/sdk-guides/easy-market.md',
         ],
       }
     ],
@@ -30,6 +34,12 @@ export const sidebar: Record<string, SidebarConfig> = {
       {
         text: 'About',
         children: [
+          {
+            text: 'Tokens & collections types',
+            children: [
+              '/about/types/rft.md',
+            ]
+          },
           '/about/addresses/index.md',
           {
             text: 'Schemas',
@@ -37,6 +47,22 @@ export const sidebar: Record<string, SidebarConfig> = {
               '/about/schemas/index.md',
               '/about/schemas/unique.md',
               '/about/schemas/ERC721Metadata.md',
+            ]
+          },
+          '/about/wallet-integration.md',
+          {
+            text: 'Network Features',
+            children: [
+              '/about/network-features/index.md',
+              '/about/network-features/evm.md',
+              '/about/network-features/sponsoring.md',
+              '/about/network-features/onchain-metadata.md',
+              '/about/network-features/nesting-bundling.md',
+              '/about/network-features/refungibility.md',
+              '/about/network-features/scheduling.md',
+              '/about/network-features/rate-limits.md',
+              '/about/network-features/royalties.md',
+              '/about/network-features/did.md',
             ]
           },
           '/about/glossary.md',
@@ -64,7 +90,6 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/networks/index.md',
           '/networks/rpc.md',
           '/networks/extrinsics.md',
-          '/networks/sponsoring.md',
           '/networks/governance-only.md',
           '/networks/nesting.md',
         ],
