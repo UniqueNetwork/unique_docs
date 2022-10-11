@@ -16,7 +16,7 @@ enum COLLECTION_SCHEMA_NAME {
 }
 ```
 
-Actually you have two options, because you should NOT use **old** schema name because of it's deprecation.
+Actually you have only two options, because you should NOT use **old** schema name because of it's deprecation.
 
 Let's create simple collection with **unique** schema:
 
