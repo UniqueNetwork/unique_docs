@@ -2,7 +2,7 @@
 
 To create NFT collection you need to have initialized SDK client. [Here](./examplesSDK.md) you can learn how to get it. Also there you can find how to get the signer address, that you'll need to sign collection creation transaction.
 
-And for optional collection cover you'll need a _valid ipfs cid_ of your cover image. Read more about storing images, videos, etc [here](#todo).
+And for optional collection cover you'll need a _valid ipfs cid_ of your cover image. Read more about storing images, videos etc [here](./store-files.md).
 
 ## Simple collection creation
 
