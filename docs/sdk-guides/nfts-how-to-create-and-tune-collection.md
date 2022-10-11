@@ -2,7 +2,7 @@
 
 To create NFT collection you need to have initialized SDK client. [Here](./examplesSDK.md) you can learn how to get it. Also there you can find how to get the signer address, that you'll need to sign collection creation transaction.
 
-And for optional collection cover you'll need a _valid ipfs cid_ or your cover image. Read more about storing images, videos, etc [here](#todo).
+And for optional collection cover you'll need a _valid ipfs cid_ of your cover image. Read more about storing images, videos, etc [here](#todo).
 
 ## Simple collection creation
 
@@ -134,4 +134,4 @@ const {
 } = result;
 ```
 
-The complete list of sdk.collections module you can check right (in the sources)[https://github.com/UniqueNetwork/unique-sdk/blob/master/packages/substrate-client/tokens/sdk-collections.ts] of @unique/substrate-client package, or exploring three of docs in the open source GitHub [UniqueNetwork/unique-sdk repo](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens).
+The complete list of sdk.collections module you can check right [in the sources](https://github.com/UniqueNetwork/unique-sdk/blob/master/packages/substrate-client/tokens/sdk-collections.ts) of @unique/substrate-client package (See _SdkCollections_ class definition), or exploring tree of docs in the _UniqueNetwork/unique-sdk_ GitHub [repo](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens).
