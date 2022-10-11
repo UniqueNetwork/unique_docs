@@ -292,9 +292,8 @@ await fetch(`${config.marketApiUrl}/offers`, {
     buyer: selectedAccount.address,
     txHash: hash })
 });
-</details>
-
 ```
+</details>
 
 <details>
 <summary>Back-end:</summary>
