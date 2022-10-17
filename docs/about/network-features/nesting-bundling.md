@@ -14,7 +14,7 @@ For example, we can create a main-game-character NFT and then nest in-game items
     <summary> (click to expand)</summary>
 
 ```javascript
-const { ethers } = require('ethers');
+import { ethers } from 'ethers';
  
 const tokenIdToAddress = (collectionId, tokenId) => {
  if (collectionId >= 0xffffffff || collectionId < 0) throw new Error('collectionId overflow');
