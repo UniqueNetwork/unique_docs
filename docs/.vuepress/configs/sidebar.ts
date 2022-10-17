@@ -12,9 +12,12 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/sdk-guides/examplesREST.md',
           '/sdk-guides/examplesSDK.md',
           '/sdk-guides/wallet-integration.md',
+          '/sdk-guides/easy-market.md',
           '/sdk-guides/getAccountAndBalance.md',
           '/sdk-guides/nfts-ways-to-create.md',
           '/sdk-guides/store-files.md',
+          '/sdk-guides/how-to-get-collections-tokens.md',
+          '/sdk-guides/nfts-fetching.md',
         ],
       }
     ],
@@ -48,6 +51,7 @@ export const sidebar: Record<string, SidebarConfig> = {
               '/about/schemas/ERC721Metadata.md',
             ]
           },
+          '/about/wallet-integration.md',
           {
             text: 'Network Features',
             children: [

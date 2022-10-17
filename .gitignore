@@ -6,3 +6,4 @@ dist
 !.vuepress/
 *.log
 package-lock.json
+.vscode
