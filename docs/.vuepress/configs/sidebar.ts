@@ -41,6 +41,8 @@ export const sidebar: Record<string, SidebarConfig> = {
           {
             text: 'Tokens & collections types',
             children: [
+              '/about/types/nft.md',
+              '/about/types/fungible.md',
               '/about/types/rft.md',
             ]
           },
