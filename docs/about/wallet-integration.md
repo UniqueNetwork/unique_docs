@@ -2,13 +2,13 @@
 
 ### Scan API
 
-[Scan API for Unique parachain](https://api-unique.uniquescan.io/v1/graphql) <CopyButton data="https://api-unique.uniquescan.io/v1/graphql"/>
+[Scan API for Unique parachain](https://api-unique.uniquescan.io/v1/graphql)
 
-[Scan API for Quartz parachain](https://api-quartz.uniquescan.io/v1/graphql) <CopyButton data="https://api-quartz.uniquescan.io/v1/graphql"/>
+[Scan API for Quartz parachain](https://api-quartz.uniquescan.io/v1/graphql)
 
-[Scan API for Opal testnet](https://api-opal.uniquescan.io/v1/graphql) <CopyButton data="https://api-opal.uniquescan.io/v1/graphql"/>
+[Scan API for Opal testnet](https://api-opal.uniquescan.io/v1/graphql)
 
-[Scan API for Sapphire solochain](https://api-sapphire.uniquescan.io/v1/graphql) <CopyButton data="https://api-sapphire.uniquescan.io/v1/graphql"/>
+[Scan API for Sapphire solochain](https://api-sapphire.uniquescan.io/v1/graphql)
 
 Every endpoint provides a GraphQL playground.
 
