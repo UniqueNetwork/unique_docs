@@ -20,6 +20,7 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/sdk-guides/nfts-ways-to-create.md',
           '/sdk-guides/store-files.md',
           '/sdk-guides/getAccountAndBalance.md',
+          '/sdk-guides/getNFTsAndTokens.md',
         ],
       }
     ],
