@@ -2,10 +2,10 @@
 
 In this section, you can find the description of our products, and also some useful information on how to use them. 
 
-[**Market**](./market/index.md)
+[**Market**](./products/market/index.md)
 
-[**Minter**](./minter/index.md)
+[**Minter**](./products/minter/index.md)
 
-[**Scan**](./scan/index.md)
+[**Scan**](./products/scan/index.md)
 
-[**Wallet**](./wallet/index.md)
+[**Wallet**](./priducts/wallet/index.md)
