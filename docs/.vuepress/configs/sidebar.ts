@@ -18,9 +18,9 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/sdk-guides/nfts-how-to-create-and-tune-collection.md',
           '/sdk-guides/nfts-how-to-mint.md',
           '/sdk-guides/nfts-ways-to-create.md',
-          '/sdk-guides/how-to-use-nesting-and-bundling.md',
           '/sdk-guides/store-files.md',
           '/sdk-guides/getAccountAndBalance.md',
+          '/sdk-guides/how-to-use-nesting-and-bundling.md',
         ],
       }
     ],

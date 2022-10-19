@@ -82,9 +82,9 @@ export async function createToken(sdk, address, collectionId) {
 ////////////////////////////////////////////
 async function main() {
   const signer = await KeyringProvider.fromMnemonic(mnemonic);
-  const address = account.instance.address;
+  const address = signer.instance.address;
 
-  const sdk = createSdk(account);
+  const sdk = createSdk(signer);
 
   const collection = await createCollection(sdk, address);
   console.log('collection', collection);
