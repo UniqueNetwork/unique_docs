@@ -6,13 +6,15 @@ In this guide, we will go through the entire process of destroy collection using
 
 To get started, you need to have:
 
-1. [Substrate account](/sdk-guides/accounts/ways-to-create)
-2. [Collection ID](/sdk-guides/nfts-how-to-mint.md)
+1. [Substrate account](/docs/sdk-guides/createAccount.md)
+2. [Collection ID](https://github.com/UniqueNetwork/unique_docs/blob/feature/how-to-mint-nfts/docs/sdk-guides/nfts-ways-to-create.md)
 
 ## Destroy yours collection
 
 There are limits to deleting a collection:
 
+
+- collection not found
 - enough balance to destroy the collection
 - collection must not contain tokens
 - your account is the owner of the collection
