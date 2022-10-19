@@ -8,4 +8,4 @@ In this section, you can find the description of our products, and also some use
 
 [**Scan**](./products/scan/index.md)
 
-[**Wallet**](./priducts/wallet/index.md)
+[**Wallet**](./products/wallet/index.md)
