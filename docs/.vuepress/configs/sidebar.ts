@@ -12,6 +12,10 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/sdk-guides/examplesSDK.md',
           '/sdk-guides/wallet-integration.md',
           '/sdk-guides/nfts-ways-to-create.md',
+          '/sdk-guides/destroyCollection.md',
+          '/sdk-guides/burnNFT.md',
+          
+          
         ],
       }
     ],
