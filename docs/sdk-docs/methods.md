@@ -2807,7 +2807,7 @@ const args: NestTokenArguments = {
   },
 };
 
-const result = await sdk.tokens.nestToken.submitWaitResult(args);
+const result = await sdk.tokens.nest.submitWaitResult(args);
 
 const { tokenId, collectionId } = result.parsed;
 
@@ -2879,7 +2879,7 @@ const args: NestTokenArguments = {
   },
 };
 
-const result = await sdk.tokens.nestToken.submitWaitResult(args);
+const result = await sdk.tokens.nest.submitWaitResult(args);
 
 const { tokenId, collectionId } = result.parsed;
 
@@ -3312,7 +3312,7 @@ const args: UnnestTokenArguments = {
   },
 };
 
-const result = await sdk.tokens.unnestToken.submitWaitResult(args);
+const result = await sdk.tokens.unnest.submitWaitResult(args);
 
 const { tokenId, collectionId } = result.parsed;
 
@@ -3373,7 +3373,7 @@ const args: UnnestTokenArguments = {
   },
 };
 
-const result = await sdk.tokens.unnestToken.submitWaitResult(args);
+const result = await sdk.tokens.unnest.submitWaitResult(args);
 
 const { tokenId, collectionId } = result.parsed;
 

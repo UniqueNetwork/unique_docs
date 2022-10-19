@@ -12,6 +12,7 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/sdk-guides/examplesSDK.md',
           '/sdk-guides/wallet-integration.md',
           '/sdk-guides/nfts-ways-to-create.md',
+          '/sdk-guides/how-to-use-nesting-and-bundling.md',
         ],
       }
     ],
@@ -81,6 +82,17 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/networks/extrinsics.md',
           '/networks/governance-only.md',
           '/networks/nesting.md',
+        ],
+      }
+    ],
+    '/products': [
+      {
+        text: 'Products',
+        children: [
+          '/products/market/index.md',
+          '/products/minter/index.md',
+          '/products/scan/index.md',
+          '/products/wallet/index.md',
         ],
       }
     ],
