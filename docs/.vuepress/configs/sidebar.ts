@@ -23,6 +23,7 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/sdk-guides/getAccountAndBalance.md',
           '/sdk-guides/destroyCollection.md',
           '/sdk-guides/burnNFT.md',
+          '/sdk-guides/how-to-use-nesting-and-bundling.md',
         ],
       }
     ],

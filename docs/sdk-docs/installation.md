@@ -51,7 +51,7 @@ To be able to sign extrinsics, you need to install the [`Accounts`](../accounts)
 ```shell
 npm install @unique-nft/accounts
 ```
-Pass the `singer` in the parameters when creating the `Client` object
+Pass the `signer` in the parameters when creating the `Client` object
 ```typescript
 import { KeyringProvider } from '@unique-nft/accounts/keyring';
 import { KeyringOptions } from '@polkadot/keyring/types';
