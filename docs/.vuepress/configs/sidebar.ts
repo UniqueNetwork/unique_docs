@@ -102,17 +102,6 @@ export const sidebar: Record<string, SidebarConfig> = {
         ],
       }
     ],
-    '/products': [
-      {
-        text: 'Products',
-        children: [
-          '/products/market/index.md',
-          '/products/minter/index.md',
-          '/products/scan/index.md',
-          '/products/wallet/index.md',
-        ],
-      }
-    ],
     '/sdk-docs': [
       {
         text: 'SDK docs',
