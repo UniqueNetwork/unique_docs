@@ -39,7 +39,7 @@ export const getSigner = async (seed = '//Alice') => {
 
 ```typescript
 // sdk.servicce.ts
-const { Sdk } = require('@unique-nft/substrate-client');
+import { Sdk } from '@unique-nft/substrate-client';
 import { getSigner } from './signer';
 
 export const sdk = await Sdk.create({
