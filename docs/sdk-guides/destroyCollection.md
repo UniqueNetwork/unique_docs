@@ -1,4 +1,4 @@
-# Collection. Destroy collection
+# Destroy collection
 
 In this guide, we will go through the entire process of destroy collection using the Unique Network SDK.
 
@@ -6,10 +6,10 @@ In this guide, we will go through the entire process of destroy collection using
 
 To get started, you need to have:
 
-1. [Substrate account](/docs/sdk-guides/createAccount.md)
-2. [Collection ID](https://github.com/UniqueNetwork/unique_docs/blob/feature/how-to-mint-nfts/docs/sdk-guides/nfts-ways-to-create.md)
+1. [Substrate account](/sdk-guides/createAccount.html)
+2. [Collection ID](/sdk-guides/nfts-ways-to-create.html#create-collection)
 
-## Destroy yours collection
+## Destroy collection
 
 There are limits to deleting a collection:
 
