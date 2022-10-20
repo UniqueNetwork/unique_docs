@@ -1,4 +1,4 @@
-# NFS. Burn NFS
+# Burn NFT
 
 In this guide, we will go through the entire process of burn NFS using the Unique Network SDK.
 
@@ -6,11 +6,11 @@ In this guide, we will go through the entire process of burn NFS using the Uniqu
 
 To get started, you need to have:
 
-1. [Substrate account](/docs/sdk-guides/createAccount.md)
-2. [Collection ID](https://github.com/UniqueNetwork/unique_docs/blob/feature/how-to-mint-nfts/docs/sdk-guides/nfts-ways-to-create.md)
-3. [NFS](/docs/sdk-guides/nfts-ways-to-create.md)
+1. [Substrate account](/sdk-guides/createAccount.html)
+2. [Collection ID](/sdk-guides/nfts-ways-to-create.html#create-collection)
+3. [NFT](/sdk-guides/nfts-ways-to-create.html#create-token)
 
-## Burn NFS,RFT,Bundle
+## Burn NFT,RFT,Bundle
 
 This method destroys a concrete instance of NFT or amount of Fungible token, RFT, Bundle.
 
@@ -23,6 +23,8 @@ Only the Collection Owner, Collection Admin, or Current NFT owner has permission
 - Re-Fungible Mode: Must specify transferred portion (between 0 and 1)
 - Bundle: You can fire only those tokens in the bundle that do not contain other tokens. If you still really want to burn the token, then you must first pull out    all the tokens from it.
 
+## Brief example
+
 ```typescript
 import '@unique-nft/substrate-client/tokens';
 import { BurnTokenArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -34,7 +36,20 @@ const setResult = await sdk.tokens.burn.submitWaitResult(burnItemArgs);
 const { collectionId, tokenId, address, value } = setResult.parsed;
 ```
 
-Arguments
+Returns
+
+This method returns BurnTokenResult
+
+```typescript
+interface BurnTokenResult {
+    collectionId: number;
+    tokenId: number;
+    address: Address;
+    value: number;
+  }
+```
+
+## Arguments
 `address: string` - Signer address
 
 `collectionId: number` - ID of the collection
@@ -47,18 +62,6 @@ Optional Arguments
 
 `value?: number` - Amount to burn
 
-## Returns
-
-This method returns BurnTokenResult
-
-```typescript
-interface BurnTokenResult {
-    collectionId: number;
-    tokenId: number;
-    address: Address;
-    value: number;
-  }
-```
 ## Examples
 
 ```typescript
