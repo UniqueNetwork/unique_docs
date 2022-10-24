@@ -14,14 +14,14 @@ Below we will describe main operations that you will need in order to create a m
 - Then we will look on _how to put NFT on sale_ - how to transfer token to marketplace wallet and validate that transfer
 
 - Finally we will learn _how to puchase_ previously placed NFT. How to provide bought NFT to buyer and give money to the seller.
-# __Content__
+### __Content__
 - [Managing accounts](#Accounts)
 - [How to place NFT on sale](#Sale)
 - [How to process NFT purchase](#Buy)
 
 __Different usecases and advanced implementations will be described in later chapters of this guide-series__
 
-## __⚠️  Prerequisites:__
+### __⚠️  Prerequisites:__
 <details>
 <summary> Important parts of application that are neccessary for marketplace</summary>
 
@@ -40,7 +40,7 @@ __Different usecases and advanced implementations will be described in later cha
 
 <a name="Accounts"></a>
 
-# __Manage accounts__ 
+## __Manage accounts__ 
 
 Before we begin we need a way to manage users accounts. User should be able to select an account that will be used for buying/selling. We also would like to present the balance of selected account.
 
@@ -81,11 +81,11 @@ let selectedAccount = accounts[0];
 
 <a name="Sell"></a>
 
-# __How to sell__ 
+## __Sell NFT__ 
 
 Before some one can buy a token it should be placed on sale. Sale is represented as `offer` which is basically a token on `marketplace wallet` and a record in DB about the price of this token.
 
-## __1. Get user tokens.__
+### __1. Get user tokens.__
 
 For that matter we will be using unique-scan API since there's no on-chain solution to get all user tokens.
 
@@ -155,7 +155,7 @@ const getTokens = async (address: string): Promise<ScanTokenEntity[]> => {
 ```
 </details>
 
-## __2. Transfer token to marketplace wallet__
+### __2. Transfer token to marketplace wallet__
 Before we, as marketplace, can do anything with token - we need to obtain ownership over it. Which will be achieved by transfering token by user to our `marketplace wallet`.
 
 <details>
@@ -177,7 +177,7 @@ const { hash } = await sdk.tokens.transfer.submitWatch({
 ```
 </details>
 
-## __3. Setup a price for selling NFT__
+### __3. Setup a price for selling NFT__
 Put NFT price to DB. It is unwise to keep pricing inside nft, so we will handle it offchain.
 
 ⚠️ We will send `hash` obtained in previouse step to back-end, so we can validate transfer on server side before saving it to DB
@@ -237,11 +237,11 @@ await appendOffer({ collectionId, tokenId, seller, price, tokenDescription: { co
 
 <a name="Buy"></a>
 
-# __Purchase NFT__
+## __Purchase NFT__
 
 When purchasing NFT keep in mind that we need not only to send NFT to buyer, but also send money to seller. At this step you can also manage comissions if you want to.
 
-## __1. Send funds to marketplace wallet__
+### __1. Send funds to marketplace wallet__
 As a purchase - we should give money to marketplace. It can be done simply by transfering funds to `marketplaceWallet` by buyer.
 
 <details>
@@ -265,7 +265,7 @@ const payForToken = async (offerId, price) => {
 ```
 </details>
 
-## __2. Call REST api to confirm purchase__
+### __2. Call REST api to confirm purchase__
 Send transaction info to back-end for validation. Backend will verify that sufficient amount of funds was provided to confirm purchase.
 
 ⚠️ We will send `hash` obtained in previouse step to back-end, so we can validate transfer on server side before saving it to DB
@@ -328,7 +328,7 @@ if (destination.id !== getEscrowAddress()
 
 </details>
 
-## __3. Backend should send NFT to buyer__
+### __3. Backend should send NFT to buyer__
 Now, when everything verified - we need to finish up the trade. First - give NFT to buyer.
 
 <details>
@@ -348,7 +348,7 @@ await sdk.tokens.transfer.submit({
 ```
 </details>
 
-## __4. Backend should send funds to seller__
+### __4. Backend should send funds to seller__
 Second - send money to buyer. 
 
 💡At that step you can keep a portion of money as a market fee:
@@ -369,7 +369,7 @@ await sdk.balance.transfer.submit({
 ```
 </details>
 
-## __5. Close/complete offer in DB__
+### __5. Close/complete offer in DB__
 Don't forget to mark offer as completed in DB.
 ```ts
 await setOfferStatus(offerId, 'closed');
