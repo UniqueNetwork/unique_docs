@@ -377,6 +377,6 @@ await setOfferStatus(offerId, 'closed');
 
 # Usefull links for further reading
 1. [SDK](/sdk-docs) - see how to use all SDK methods and more
-2. [EVM and smartcontracts](/evm-docs/ethereum/Smart%20contracts\.html) - checkout out how you can use ethereum smart contracts and an example of how we did it with our market
-3. [Adresses](/concepts/addresses/) - general information about accounts
+2. [EVM and smartcontracts](/evm-docs/Smart%20contracts.html) - checkout out how you can use ethereum smart contracts and an example of how we did it with our market
+3. [Adresses](/about/addresses/) - general information about accounts
 4. Whitelabel marketplace by UniqueNetwork [FE](https://github.com/UniqueNetwork/unique-marketplace-frontend)/[BE](https://github.com/UniqueNetwork/unique-marketplace-api) - our implementation for marketplace. Be warned - this one is very complex and utilizes custom smartcontract as well as built-in scan solution for TX validations.
