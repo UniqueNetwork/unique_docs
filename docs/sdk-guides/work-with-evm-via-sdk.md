@@ -157,7 +157,7 @@ You can read a string property `myStrValue` using the following code:
 import { Sdk } from '@unique-nft/sdk';
 
 const sdk = new Sdk({
-  baseUrl: 'https://rest.opal.uniquenetwork.dev/v1'
+  baseUrl: 'https://rest.unique.network/opal/v1'
 });
 
 const abi = ['<ABI JSON here>'];
@@ -187,7 +187,7 @@ You can execute a function that does not require a transaction(marked `view`) us
 import { Sdk } from '@unique-nft/sdk';
 
 const sdk = new Sdk({
-  baseUrl: 'https://rest.opal.uniquenetwork.dev/v1'
+  baseUrl: 'https://rest.unique.network/opal/v1'
 });
 
 const abi = ['<ABI JSON here>'];
@@ -217,7 +217,7 @@ import { Sdk, Options } from '@unique-nft/sdk';
 import {KeyringProvider} from '@unique-nft/accounts/keyring';
 
 const options: Options = {
-  baseUrl: 'https://rest.opal.uniquenetwork.dev/v1'
+  baseUrl: 'https://rest.unique.network/opal/v1'
 };
 const sdk = new Sdk(options);
 
@@ -281,7 +281,7 @@ import { Sdk } from '@unique-nft/sdk';
 import {KeyringProvider} from '@unique-nft/accounts/keyring';
 
 const sdk = new Sdk({
-  baseUrl: 'https://rest.opal.uniquenetwork.dev/v1'
+  baseUrl: 'https://rest.unique.network/opal/v1'
 });
 
 const abi = ['<ABI JSON here>'];
