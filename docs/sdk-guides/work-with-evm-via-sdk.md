@@ -164,7 +164,7 @@ const abi = ['<ABI JSON here>'];
 const contractAddress = '0x60639DB997DAAeD16111998a45a4D6450809aB6A';
 
 async function main() {
-  const value = await sdk.evm.call({
+  const value = await sdk.evm.call({  
     address: '5HNUuEAYMWEo4cuBW7tuL9mLHR9zSA8H7SdNKsNnYRB9M5TX',
     abi,
     contractAddress,
@@ -216,16 +216,17 @@ For example, to execute the `updateMyUint` method, use the following code:
 import { Sdk, Options } from '@unique-nft/sdk';
 import {KeyringProvider} from '@unique-nft/accounts/keyring';
 
+const seed = '<your seed>';
+
 const options: Options = {
   baseUrl: 'https://rest.unique.network/opal/v1'
 };
 const sdk = new Sdk(options);
 
-async function main3() {
+async function main() {
   const provider = new KeyringProvider({type: 'sr25519'});
   await provider.init();
   
-  const seed = 'bus ahead nation nice damp recall place dance guide media clap language';
   const account = provider.addSeed(seed);
 
   const result = await sdk.evm.send.submitWaitResult({
@@ -234,18 +235,44 @@ async function main3() {
     contractAddress,
     funcName: 'updateMyUint',
     args: [1],
-    maxFeePerGas: 2_089_483_274_941,
   }, {
     signer: account,
   });
 
   console.log('result', result);
-
-
 }
 
 main();
 ```
+
+#### Arguments
+
+```typescript
+
+interface EvmSendArguments {
+  address: string;
+  abi: Abi;
+  contractAddress: string;
+  funcName: string;
+  args?: any[];
+  
+  value?: number | string;
+  gasLimit?: number | string;
+  maxFeePerGas?: number | string;
+  maxPriorityFeePerGas?: number | string;
+}
+```
+
+* `address` - Substrate address for sign
+* `abi` - ABI JSON file your smart contract
+* `contractAddress` - Ethereum your smart contract
+* `funcName` - Function name in smart contract
+* `args` - Array of arguments to pass to the function
+* `value` - The amount of money that needs to be transferred to the smart contract
+* `gasLimit` - The gas limit you are willing to spend on a function
+* `maxFeePerGas` - EIP-1559 Max base fee the caller is willing to pay
+* `maxPriorityFeePerGas` - EIP-1559 Priority fee the caller is paying to the block author
+
 
 ### Parse Events
  
@@ -286,13 +313,13 @@ const sdk = new Sdk({
 
 const abi = ['<ABI JSON here>'];
 const contractAddress = '0x60639DB997DAAeD16111998a45a4D6450809aB6A';
+const seed = '<your seed>';
 
 async function main() {
   const provider = new KeyringProvider({type: 'sr25519'});
   await provider.init();
 
-
-  const seed = 'bus ahead nation nice damp recall place dance guide media clap language';
+  
   const account = provider.addSeed(seed);
 
   const sendData = {
@@ -301,7 +328,6 @@ async function main() {
     contractAddress,
     funcName: 'dropError',
     args: [0],
-    maxFeePerGas: 2_089_483_274_941,
   };
 
   const result = await sdk.evm.send.submitWaitResult(sendData, {
