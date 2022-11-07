@@ -87,10 +87,6 @@ export const sidebar: Record<string, SidebarConfig> = {
             ]
           },
           '/about/glossary.md',
-          '/about/collection-limits.md',
-          '/about/collection-permissions.md',
-          '/about/substrate.md',
-          '/about/polkadot.md',
         ],
       },
     ],
@@ -113,6 +109,13 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/networks/extrinsics.md',
           '/networks/governance-only.md',
           '/networks/nesting.md',
+          {
+            text: 'Ecosystem',
+            children: [
+              '/networks/ecosystem/substrate.md',
+              '/networks/ecosystem/polkadot.md',
+            ]
+          },
         ],
       }
     ],

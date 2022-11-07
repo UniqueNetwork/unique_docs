@@ -4,12 +4,12 @@ An address represents an identity - usually of a person or an organization - tha
 Although addresses are most often used to represent a person, that doesn't have to be the case. An address can be used to perform operations 
 on behalf of a user or another entity, or to perform operations autonomously. In addition, any single person or entity could have multiple
 addresses for different purposes. All [our networks](/networks/index.md) are Substrate-based blockchains, and you can have specialized addresses for holding funds that 
-are separate from accounts used for making transactions.
+are separate from addresses used for making transactions.
 
 ### Substrate addresses
 
 Substrate enables you to use a single public key to derive multiple addresses, so you can interact with multiple chains without creating separate 
-public and private key pairs for each network. By default, the addresses associated with the public key for an account use 
+public and private key pairs for each network. By default, the addresses associated with the public key for an address use 
 the Substrate [SS58 address format](https://docs.substrate.io/reference/glossary/#ss58-address-format). This address format is based on base-58 encoding. 
 In addition to allowing you to derive multiple addresses from the same public key, [base-58 encoding](https://digitalbazaar.github.io/base58-spec/) has the following benefits:
 
@@ -104,7 +104,7 @@ There are two types of addresses in Ethereum: Externally Owned Address (EOA) and
 
 Externally Owned Address refers to an account with a public and private key pair that holds your funds.
 
-An Ethereum address is a 42-character hexadecimal address derived from the last 20 bytes of the public key controlling the account with 0x appended in front. e.g., _0x71C7656EC7ab88b098defB751B7401B5f6d8976F_.
+An Ethereum address is a 42-character hexadecimal address derived from the last 20 bytes of the public key controlling the address with 0x appended in front. e.g., _0x71C7656EC7ab88b098defB751B7401B5f6d8976F_.
 
 The Ethereum address is the "public" address that you would need to receive funds from another party. To access funds in the address, you must have its private key. 
 Kindly exercise duty of care when handling your private key as they can be used to access all the funds in an address.
