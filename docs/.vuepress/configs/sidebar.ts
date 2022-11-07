@@ -52,6 +52,14 @@ export const sidebar: Record<string, SidebarConfig> = {
               '/about/types/rft.md',
             ]
           },
+          {
+            text: 'Collections',
+            children: [
+              '/about/collections/collection-schemas.md',
+              '/about/collections/collection-limits.md',
+              '/about/collections/collection-permissions.md',
+            ]
+          },
           '/about/addresses/index.md',
           {
             text: 'Schemas',
