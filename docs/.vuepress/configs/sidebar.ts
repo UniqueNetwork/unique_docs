@@ -113,6 +113,13 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/networks/extrinsics.md',
           '/networks/governance-only.md',
           '/networks/nesting.md',
+          {
+            text: 'Ecosystem',
+            children: [
+              '/networks/ecosystem/substrate.md',
+              '/networks/ecosystem/polkadot.md',
+            ]
+          },
         ],
       }
     ],
