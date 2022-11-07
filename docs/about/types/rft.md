@@ -1,4 +1,4 @@
-# Re-Fungible Tokens (RFTs)
+# RFT
 
 ## What is it? 
 

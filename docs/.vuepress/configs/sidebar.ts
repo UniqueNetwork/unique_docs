@@ -48,15 +48,24 @@ export const sidebar: Record<string, SidebarConfig> = {
             text: 'Tokens & collections types',
             children: [
               '/about/types/nft.md',
-              '/about/types/fungible.md',
               '/about/types/rft.md',
+              '/about/types/fungible.md',
+            ]
+          },
+          {
+            text: 'Collections',
+            children: [
+              '/about/collections/collection-schemas.md',
+              '/about/collections/collection-properties.md',
+              '/about/collections/token-properties.md',
+              '/about/collections/collection-permissions.md',
+              '/about/collections/collection-limits.md',
             ]
           },
           '/about/addresses/index.md',
           {
             text: 'Schemas',
             children: [
-              '/about/schemas/index.md',
               '/about/schemas/unique.md',
               '/about/schemas/ERC721Metadata.md',
             ]

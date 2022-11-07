@@ -1,4 +1,4 @@
-# Fungible Tokens (Fungible)
+# Fungible
 
 ## What is it? 
 
