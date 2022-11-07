@@ -1,4 +1,4 @@
-# Non-fungible tokens (NFTs)
+# NFT
 
 ## Main terms
 ---
