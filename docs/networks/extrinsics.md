@@ -111,7 +111,7 @@ api.tx.unique.burnItem(10, 200, 1)
 
 **Description**
 
-Changes the collection owner to the specified account.  
+Changes the collection owner to the specified address.  
 
 **Declaration**
 
@@ -474,7 +474,7 @@ api.tx.unique.setCollectionProperties(6, [{key: 'name', value: 'Alice'}, {key: '
 
 **Description**
 
-Sets a sponsor account for a collection. 
+Sets a sponsor address for a collection. 
 
 **Declaration**
 

@@ -18,13 +18,13 @@ The collection sponsoring is determined based on a rate limit.
 
 First, the rate limit is checked. If everything is OK, then the network chooses who pays for a transaction (before its execution). 
 
-> The choice is based on the rate limit, but not on the account balances. 
+> The choice is based on the rate limit, but not on the address balances. 
 
-Then, when the transaction is being carried out, the network tries to withdraw the fee from the selected account.
+Then, when the transaction is being carried out, the network tries to withdraw the fee from the selected address.
 
-If collection sponsoring is enabled, the specified sponsor pays for a transaction in any case. If the sponsor account does not have enough money, then the error will occur, and the transaction will not be carried out. 
+If collection sponsoring is enabled, the specified sponsor pays for a transaction in any case. If the sponsor address does not have enough money, then the error will occur, and the transaction will not be carried out. 
 
-> There is no way for another account to pay for the transaction when sponsoring is enabled.  
+> There is no way for another address to pay for the transaction when sponsoring is enabled.  
 
 The [Example](#example) section demonstrates how the collection sponsoring works in a sample scenario. 
 
@@ -34,13 +34,13 @@ For an Ethereum contract, it is possible to set only the self-sponsoring mode.
 
 To make sponsoring work, it is needed to add funds to a Substrate address (Ethereum mirror). Please note that it is impossible to add funds on the Ethereum side. However, if the "receive" method is implemented (according to [the Solidity docs](https://docs.soliditylang.org/en/v0.8.14/contracts.html#receive-ether-function)), it will be possible to add funds on the Ethereum side, as well. Please note that this is not related to _payable_ functions anyhow. 
 
-> If the rate limit is OK, the smart contract itself pays for transactions. There is no way for user accounts to pay in this case. 
+> If the rate limit is OK, the smart contract itself pays for transactions. There is no way for user addresses to pay in this case. 
 
 If the smart contract does not have funds and the sponsoring is enabled, you will not be able to add money since the smart contract will try to sponsor this transaction (but cannot do this). The solution here is to disable sponsoring, add money, and then enable sponsoring again. 
 
 ## Example
 
-Let's imagine that a user has an NFT. But, he/she does not have any money in his/her account at the same time. This would mean that he/she cannot perform any transactions (like token transfer for example) because he/she should pay a transaction fee.
+Let's imagine that a user has an NFT. But, he/she does not have any money in his/her address at the same time. This would mean that he/she cannot perform any transactions (like token transfer for example) because he/she should pay a transaction fee.
 
 However, transaction sponsoring changes the rules. This mechanism allows performing a transfer even with a zero balance if a transaction sponsoring is enabled.
 

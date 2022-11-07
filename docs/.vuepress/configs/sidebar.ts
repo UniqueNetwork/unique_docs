@@ -87,10 +87,6 @@ export const sidebar: Record<string, SidebarConfig> = {
             ]
           },
           '/about/glossary.md',
-          '/about/collection-limits.md',
-          '/about/collection-permissions.md',
-          '/about/substrate.md',
-          '/about/polkadot.md',
         ],
       },
     ],

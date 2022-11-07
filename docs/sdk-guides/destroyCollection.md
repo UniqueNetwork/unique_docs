@@ -17,7 +17,7 @@ There are limits to deleting a collection:
 - collection not found
 - enough balance to destroy the collection
 - collection must not contain tokens
-- your account is the owner of the collection
+- your address is the owner of the collection
 - collection can't be destroyed it is specified when the collection is created
 
 ## Brief example

@@ -56,7 +56,7 @@
 
 **SDK** is ready-to-use application programming interfaces (APIs) in the form of on-device libraries of reusable functions. 
 
-**SS58** is the extensible address format for the Substrate chains. A key characteristic when considering cross-chain interoperability and account derivation. Read more [here](https://docs.substrate.io/v3/advanced/ss58/).
+**SS58** is the extensible address format for the Substrate chains. A key characteristic when considering cross-chain interoperability and address derivation. Read more [here](https://docs.substrate.io/v3/advanced/ss58/).
 
 **Buy (delist)** means to buy an NFT token (in the terms of a marketplace). 
 
