@@ -8,7 +8,7 @@ The lifecycle of an extrinsic is:
 2. sign the extrinsic
 3. submit the signed extrinsic
 
- We'll need a Substrate account to use in this example. Since we need to provide the *mnemonic seed* and the *wallet address* at some point remember to have these two data items handy if you are using an already existing account or make a note of these two data items during the account creation process if you will be creating a new account for the sake of this exercise. The instructions for creating an account with the Polkadot.js wallet browser extension can be found [here](/sdk-guides/createAccount). And, since some Opal tokens are required to pay for the transaction fees as well (around 2 to 2.5 OPL) note that these can be obtained via the [Telegram faucet bot](https://t.me/unique2faucet_opal_bot).
+ We'll need a Substrate address to use in this example. Since we need to provide the *mnemonic seed* and the *wallet address* at some point remember to have these two data items handy if you are using an already existing account or make a note of these two data items during the account creation process if you will be creating a new account for the sake of this exercise. The instructions for creating an account with the Polkadot.js wallet browser extension can be found [here](/sdk-guides/createAccount). And, since some Opal tokens are required to pay for the transaction fees as well (around 2 to 2.5 OPL) note that these can be obtained via the [Telegram faucet bot](https://t.me/unique2faucet_opal_bot).
 
 Packages used in this example:
 

@@ -6,7 +6,7 @@ In this guide, we will go through the entire process of destroy collection using
 
 To get started, you need to have:
 
-1. [Substrate account](/sdk-guides/createAccount.html)
+1. [Substrate address](/sdk-guides/createAccount.html)
 2. [Collection ID](/sdk-guides/nfts-ways-to-create.html#create-collection)
 
 ## Destroy collection
