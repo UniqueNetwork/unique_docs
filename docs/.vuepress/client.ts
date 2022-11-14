@@ -1,14 +1,19 @@
 import {defineClientConfig} from '@vuepress/client'
 
-import ToastPlugin from 'vue-toast-notification'
-import 'vue-toast-notification/dist/theme-sugar.css'
+import Toast, {POSITION} from 'vue-toastification'
+import "vue-toastification/dist/index.css";
+import {ToastOptions} from "vue-toastification/dist/types/types";
 
-const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
-
+const toastOptions: ToastOptions = {
+  timeout: 2000,
+  position: POSITION.TOP_RIGHT,
+  pauseOnHover: true,
+  hideProgressBar: true,
+}
 export default defineClientConfig({
   enhance({app}) {
     // app.use()
-    app.use(ToastPlugin)
+    app.use(Toast, toastOptions)
   },
   async setup() {
     if (typeof window !== 'undefined') {

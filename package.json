@@ -12,24 +12,24 @@
   "license": "UNLICENSED",
   "private": true,
   "devDependencies": {
-    "@vuepress/client": "2.0.0-beta.46",
-    "@vuepress/plugin-external-link-icon": "2.0.0-beta.46",
-    "@vuepress/plugin-register-components": "2.0.0-beta.46",
-    "@vuepress/theme-default": "2.0.0-beta.46",
+    "@vuepress/client": "2.0.0-beta.53",
+    "@vuepress/plugin-external-link-icon": "2.0.0-beta.53",
+    "@vuepress/plugin-register-components": "2.0.0-beta.53",
+    "@vuepress/theme-default": "2.0.0-beta.53",
     "autoprefixer": "^10.4.4",
     "postcss": "^8.4.12",
-    "serve": "^14.0.1",
+    "serve": "^14.1.1",
     "typescript": "^4.8.3",
     "vite": "^2.9.15",
-    "vuepress": "2.0.0-beta.46"
+    "vuepress": "2.0.0-beta.53"
   },
   "dependencies": {
-    "@unique-nft/utils": "^0.0.1",
+    "@unique-nft/utils": "^0.3.1",
     "@urql/core": "^3.0.3",
     "@vueuse/core": "^9.2.0",
     "ethers": "^5.7.1",
-    "vue": "^3.2.37",
-    "vue-toast-notification": "^3.0.4",
+    "vue": "^3.2.45",
+    "vue-toastification": "^2.0.0-rc.5",
     "web3-provider-sponsoring": "^0.2.0"
   },
   "repository": "https://github.com/UniqueNetwork/unique_docs.git"

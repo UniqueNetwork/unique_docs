@@ -47,6 +47,9 @@ export default defineUserConfig({
         sourcemap: true,
         target: 'es2020',
       },
+      ssr: {
+        noExternal: ['vue-toastification']
+      }
     }
   })
 })
