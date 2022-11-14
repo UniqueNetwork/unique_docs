@@ -78,12 +78,14 @@ The response obtained by invoking the call has the format:
 
 Example: Let's consider a nested structure where tokens A1 and A2 belong to collection A and token B1 belongs to collection B
 
-```mermaidjs
-graph TD;
-    A1-->A2;
-    A1-->B1;
-    B1-->B2;
-```
+[//]: # (```mermaidjs)
+[//]: # (graph TD;)
+[//]: # (    A1-->A2;)
+[//]: # (    A1-->B1;)
+[//]: # (    B1-->B2;)
+[//]: # (```)
+
+![Nesting diagram 1](./nesting_diagram_01.png)
 
 By invoking this function with the ids of collection A and  token A1, a response would be:
 
@@ -98,15 +100,17 @@ Only a leaf node token in a bundle can be burned. A leaf node is a token that be
 
 So in the example provided below, to burn the token A3 which is the root of a branch of descendants A5, A4, B1 and B2 it would be necessary to disassemble the branch, i.e. to burn the tokens in a specific order: B2, B1, A4, A5, A3.
 
-```mermaidjs
-graph TD;
-    A1-->A2;
-    A1-->A3;
-    A3-->A4;
-    A3-->A5;
-    A3-->B1;
-    B1-->B2;
-```
+[//]: # (```mermaidjs)
+[//]: # (graph TD;)
+[//]: # (    A1-->A2;)
+[//]: # (    A1-->A3;)
+[//]: # (    A3-->A4;)
+[//]: # (    A3-->A5;)
+[//]: # (    A3-->B1;)
+[//]: # (    B1-->B2;)
+[//]: # (```)
+
+![Nesting diagram 2](./nesting_diagram_02.png)
 
 Non-empty collections cannot be burned.
 

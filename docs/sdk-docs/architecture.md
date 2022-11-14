@@ -28,24 +28,22 @@ Using SDK as a connection tool involves the following sequence of actions to cha
 6. Blockchain changes its condition according to the signed extrinsic.
 7. SDK can request new blockchain state / extrinsic status.
 
-
-```mermaidjs
-
-sequenceDiagram
-    participant SDK
-    participant Accounts
-    participant SubstrateREST
-    participant SubstrateClient
-    participant Blockchain
-    SDK->>SubstrateREST: request parameters
-    SubstrateREST->>SubstrateClient: request parameters
-    SubstrateClient->>Accounts: unsigned extrisic
-    Accounts->>SDK: unsigned extrisic + account details
-    SDK->>SubstrateREST: signed extrinsic
-    SubstrateREST->>Blockchain: signed extrinsic
-    SDK->>Blockchain: status request
-    
-```
+[//]: # ()
+[//]: # (```mermaidjs)
+[//]: # (sequenceDiagram)
+[//]: # (    participant SDK)
+[//]: # (    participant Accounts)
+[//]: # (    participant SubstrateREST)
+[//]: # (    participant SubstrateClient)
+[//]: # (    participant Blockchain)
+[//]: # (    SDK->>SubstrateREST: request parameters)
+[//]: # (    SubstrateREST->>SubstrateClient: request parameters)
+[//]: # (    SubstrateClient->>Accounts: unsigned extrisic)
+[//]: # (    Accounts->>SDK: unsigned extrisic + account details)
+[//]: # (    SDK->>SubstrateREST: signed extrinsic)
+[//]: # (    SubstrateREST->>Blockchain: signed extrinsic)
+[//]: # (    SDK->>Blockchain: status request)
+[//]: # (```)
 
 ## Input and output data
 
