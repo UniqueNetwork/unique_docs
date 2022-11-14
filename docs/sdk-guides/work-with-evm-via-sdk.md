@@ -160,14 +160,18 @@ const sdk = new Sdk({
   baseUrl: 'https://rest.unique.network/opal/v1'
 });
 
+const address = '<your substrate address>';
 const abi = ['<ABI JSON here>'];
 const contractAddress = '0x60639DB997DAAeD16111998a45a4D6450809aB6A';
 
 async function main() {
-  const value = await sdk.evm.call({  
-    address: '5HNUuEAYMWEo4cuBW7tuL9mLHR9zSA8H7SdNKsNnYRB9M5TX',
-    abi,
+  const contract = await client.evm.contractConnect(
     contractAddress,
+    abi,
+  );
+  
+  const value = await contract.call({  
+    address,
     funcName: 'myStrValue',
   });
 
@@ -175,9 +179,9 @@ async function main() {
 }
 main();
 ```
-1) `address` - Your substrate address
-2) `abi` - ABI JSON of your contract
-3) `contractAddress` - Ethereum address of your contract
+1) `abi` - ABI JSON of your contract
+2) `contractAddress` - Ethereum address of your contract
+3) `address` - Your substrate address
 4) `funcName` - Property name in your contract
 
 ### Call function
@@ -190,14 +194,18 @@ const sdk = new Sdk({
   baseUrl: 'https://rest.unique.network/opal/v1'
 });
 
+const address = '<your substrate address>';
 const abi = ['<ABI JSON here>'];
 const contractAddress = '0x60639DB997DAAeD16111998a45a4D6450809aB6A';
 
 async function main() {
-  const value = await sdk.evm.call({
-    address: '5HNUuEAYMWEo4cuBW7tuL9mLHR9zSA8H7SdNKsNnYRB9M5TX',
-    abi,
+  const contract = await client.evm.contractConnect(
     contractAddress,
+    abi,
+  );
+  
+  const value = await contract.call({
+    address,
     funcName: 'getMyUint',
   });
 
@@ -229,10 +237,13 @@ async function main() {
   
   const account = provider.addSeed(seed);
 
-  const result = await sdk.evm.send.submitWaitResult({
-    address: account.getAddress(),
-    abi,
+  const contract = await client.evm.contractConnect(
     contractAddress,
+    abi,
+  );
+
+  const result = await contract.send.submitWaitResult({
+    address: account.getAddress(),
     funcName: 'updateMyUint',
     args: [1],
   }, {
@@ -251,8 +262,6 @@ main();
 
 interface EvmSendArguments {
   address: string;
-  abi: Abi;
-  contractAddress: string;
   funcName: string;
   args?: any[];
   
@@ -264,8 +273,6 @@ interface EvmSendArguments {
 ```
 
 * `address` - Substrate address for sign
-* `abi` - ABI JSON file your smart contract
-* `contractAddress` - Ethereum your smart contract
 * `funcName` - Function name in smart contract
 * `args` - Array of arguments to pass to the function
 * `value` - The amount of money that needs to be transferred to the smart contract
@@ -275,85 +282,43 @@ interface EvmSendArguments {
 
 
 ### Parse Events
- 
-### Parse Errors
 
-If an error occurred while executing the send method in the contract, you will get a property as a result of executing the method indicating that the transaction has failed:
-
-```javascript
-const params = {...};
-const result = await sdk.evm.send.submitWaitResult(params);
-console.log('executed failed:', result.parsed.isExecutedFailed);
-```
-
-To find out the cause of the crash, you must execute a call request with the same parameters:
+If your smart contract emits events, you will be able to receive them after the transaction in the properties:
+* result.parsed.parsedEvents - Events that managed to be read and translated into a readable form
+* result.parsed.unknownEvents - Events that could not be read. Events may not be read, for example, if there is no description of this event in the ABI file, or the description is incorrect
 
 ```javascript
-const params = {...};
-const result = await sdk.evm.send.submitWaitResult(params);
-if (result.parsed.isExecutedFailed) {
-  try {
-    await sdk.evm.call(params);
-  } catch(err) {
-    console.log('error', err.message, err.details);
-  }
-}
-```
-
-
-For example, if in our contract you call the dropError method with a parameter of 0, we will get an error:
-
-```javascript
-import { Sdk } from '@unique-nft/sdk';
-import {KeyringProvider} from '@unique-nft/accounts/keyring';
-
-const sdk = new Sdk({
-  baseUrl: 'https://rest.unique.network/opal/v1'
+const result = await contract.send.submitWaitResult({
+  address: account.getAddress(),
+  funcName: 'updateMyUint',
+  args: [1],
 });
 
-const abi = ['<ABI JSON here>'];
-const contractAddress = '0x60639DB997DAAeD16111998a45a4D6450809aB6A';
-const seed = '<your seed>';
+console.log('parsedEvents', result.parsed.parsedEvents);
+console.log('unknownEvents', result.parsed.unknownEvents);
+```
 
-async function main() {
-  const provider = new KeyringProvider({type: 'sr25519'});
-  await provider.init();
+ 
+### Error types
 
-  
-  const account = provider.addSeed(seed);
+#### EvmArgumentsError
+The error is due to the fact that the arguments passed to the function do not match the description in the ABI, or the specified function name is simply missing in the ABI file.
 
-  const sendData = {
-    address: account.getAddress(),
-    abi,
-    contractAddress,
-    funcName: 'dropError',
-    args: [0],
-  };
+#### EvmCallError
+An error was thrown in a smart contract using the `revert()` method with no arguments, or a string describing the error was passed as an argument.
 
-  const result = await sdk.evm.send.submitWaitResult(sendData, {
-    signer: account,
-  });
-
-  if (result.parsed.isExecutedFailed) {
-    try {
-      await sdk.evm.call(sendData);
-    } catch(err) {
-      console.log(err.message, err.details);
+#### EvmCustomError
+This is a custom error from the smart contract that can be thrown in solidity in the following way:
+```solidity
+revert MyCustomError({
+    errorMessage: "my custom error message",
+    myData: {
+        ...  
     }
-  }
-}
+});
+``` 
 
-main();
-```
-
-Result:
-```text
-Divide or modulo by zero. {
-  data: '0x4e487b710000000000000000000000000000000000000000000000000000000000000012',
-  code: -32603,
-  name: 'RpcError',
-  callData: { funcName: 'dropError', args: [ 0 ] }
-}
-```
-
-:warning: If you are not sure that your transaction will be successfully completed, in order not to waste gas on an erroneous transaction, you can execute a call request before the send transaction, and if the request did not fail, then execute the send request.
+#### EvmPanicError
+An unexpected error in a smart contract, an example of such an error could be, for example, division by 0 or accessing an array with an index greater than the size of the array.
+A complete list of such errors and their codes can be found in the Solidity documentation:
+https://docs.soliditylang.org/en/v0.8.16/control-structures.html#panic-via-assert-and-error-via-require
