@@ -1,4 +1,4 @@
-# Unique Palette - RPC calls 
+# Unique Pallet - RPC calls 
 
 ### :small_blue_diamond:**_accountBalance_**
 

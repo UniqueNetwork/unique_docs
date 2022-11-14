@@ -107,6 +107,7 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/networks/index.md',
           '/networks/rpc.md',
           '/networks/extrinsics.md',
+          '/networks/events.md',
           '/networks/governance-only.md',
           '/networks/nesting.md',
           {
