@@ -4,6 +4,8 @@ import Toast, {POSITION} from 'vue-toastification'
 import "vue-toastification/dist/index.css";
 import {ToastOptions} from "vue-toastification/dist/types/types";
 
+import HomePageLayout from './layouts/HomePageLayout.vue'
+
 const toastOptions: ToastOptions = {
   timeout: 2000,
   position: POSITION.TOP_RIGHT,
@@ -19,5 +21,8 @@ export default defineClientConfig({
     if (typeof window !== 'undefined') {
       window.global = window;
     }
-  }
+  },
+  layouts: {
+    HomePageLayout,
+  },
 })
