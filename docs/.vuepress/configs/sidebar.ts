@@ -29,9 +29,9 @@ export const sidebar: Record<string, SidebarConfig> = {
         ],
       }
     ],
-    '/links': [
+    '/business': [
       {
-        text: 'Links',
+        text: 'Business',
         children: [
           '/business/index.md',
           '/business/ecosystem/community.md',
