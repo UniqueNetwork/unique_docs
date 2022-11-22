@@ -67,6 +67,5 @@ The estimated minting price is about $ 0.001. So, to mint an NFT collection with
 
 ### Economy model
 
-Ethereum has a number of disadvantages that make it very slow and expensive. High costs ($ 0.09 per transaction) and slow transaction speeds (15 seconds per block), proof-of-work mechanisms and limited scalability along with sparsely distributed Solidity programming language make Ethereum are not economically efficeint.
-
-Unique Network solve all these issues and provide the best economic model that is possible at the moment.
+Unique Network provides the NFT-oriented features and provide the EVM compatibility with Ethereum API and toolchain.
+We provide low costs, high transaction speeds, minimal climate impact and good scalability, this makes us very economically efficient.
