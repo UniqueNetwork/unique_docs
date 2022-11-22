@@ -6,7 +6,7 @@ Polkadot is a next-generation blockchain protocol connecting multiple specialize
 
 Polkadot is built to connect and secure unique blockchains, whether they are public, permissionless networks, private consortium chains, or oracles and other Web3 technologies. This allows to have an Internet where independent blockchains can exchange information with common security guarantees.
 
-![Polkadot](../../about/images/polkadot.png)
+![Polkadot](../../concepts/images/polkadot.png)
 
 **Scale**
 

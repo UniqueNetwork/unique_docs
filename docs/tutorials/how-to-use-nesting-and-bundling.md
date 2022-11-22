@@ -252,4 +252,4 @@ const unNestedToken = await createUnNestedToken(sdk, {
   after unnesting you will see that the token with tokenId=2 is no longer part of the bundle. Neither is the token with tokenId=1 - because it no longer has any attached tokens.
 
 
-Read more about this and other nesting functions [**here**](../sdk-docs/methods.md)
+Read more about this and other nesting functions [**here**](../sdk/methods.md)
