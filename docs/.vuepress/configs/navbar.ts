@@ -11,12 +11,12 @@ export const navbar: Record<string, NavbarConfig> = {
       link: '/concepts/',
     },
     {
-      text: 'EVM',
-      link: '/evm/'
-    },
-    {
       text: 'SDK',
       link: '/sdk/'
+    },
+    {
+      text: 'EVM',
+      link: '/evm/'
     },
     {
       text: 'Tutorials',
