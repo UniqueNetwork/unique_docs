@@ -2,96 +2,100 @@ import {SidebarConfig} from '@vuepress/theme-default'
 
 export const sidebar: Record<string, SidebarConfig> = {
   en: {
-    '/sdk-guides': [
+    '/tutorials': [
       {
-        text: 'SDK guides',
+        text: 'Tutorials',
         children: [
-          '/sdk-guides/index.md',
-          '/sdk-guides/createAccount.md',
-          '/sdk-guides/accounts/ways-to-create.md',
-          '/sdk-guides/examplesREST.md',
-          '/sdk-guides/examplesSDK.md',
-          '/sdk-guides/wallet-integration.md',
-          '/sdk-guides/how-to-get-collections-tokens.md',
-          '/sdk-guides/live-nft-example.md',
-          '/sdk-guides/nfts-fetching.md',
-          '/sdk-guides/getNFTsAndTokens.md',
-          '/sdk-guides/easy-market.md',
-          '/sdk-guides/work-with-evm-via-sdk.md',
-          '/sdk-guides/nfts-how-to-create-and-tune-collection.md',
-          '/sdk-guides/nfts-how-to-mint.md',
-          '/sdk-guides/nfts-ways-to-create.md',
-          '/sdk-guides/store-files.md',
-          '/sdk-guides/getAccountAndBalance.md',
-          '/sdk-guides/destroyCollection.md',
-          '/sdk-guides/burnNFT.md',
-          '/sdk-guides/how-to-use-nesting-and-bundling.md',
+          '/tutorials/index.md',
+          '/tutorials/createAccount.md',
+          '/tutorials/accounts/ways-to-create.md',
+          '/tutorials/examplesREST.md',
+          '/tutorials/examplesSDK.md',
+          '/tutorials/wallet-integration.md',
+          '/tutorials/how-to-get-collections-tokens.md',
+          '/tutorials/live-nft-example.md',
+          '/tutorials/nfts-fetching.md',
+          '/tutorials/getNFTsAndTokens.md',
+          '/tutorials/easy-market.md',
+          '/tutorials/work-with-evm-via-sdk.md',
+          '/tutorials/nfts-how-to-create-and-tune-collection.md',
+          '/tutorials/nfts-how-to-mint.md',
+          '/tutorials/nfts-ways-to-create.md',
+          '/tutorials/store-files.md',
+          '/tutorials/getAccountAndBalance.md',
+          '/tutorials/destroyCollection.md',
+          '/tutorials/burnNFT.md',
+          '/tutorials/how-to-use-nesting-and-bundling.md',
         ],
       }
     ],
-    '/links': [
+    '/business': [
       {
-        text: 'Links',
+        text: 'Business',
         children: [
-          '/links/index.md',
-          '/links/ecosystem/community.md',
-          '/links/ecosystem/use-cases.md',
-          '/links/ecosystem/identica.md',
+          '/business/index.md',
+          '/business/ecosystem/community.md',
+          '/business/ecosystem/use-cases.md',
         ],
       }
     ],
-    '/about': [
+    '/concepts': [
       {
-        text: 'About',
+        text: 'Concepts',
         children: [
           {
             text: 'Tokens & collections types',
             children: [
-              '/about/types/nft.md',
-              '/about/types/fungible.md',
-              '/about/types/rft.md',
+              '/concepts/types/nft.md',
+              '/concepts/types/rft.md',
+              '/concepts/types/fungible.md',
             ]
           },
-          '/about/addresses/index.md',
+          {
+            text: 'Collections',
+            children: [
+              '/concepts/collections/collection-schemas.md',
+              '/concepts/collections/collection-properties.md',
+              '/concepts/collections/token-properties.md',
+              '/concepts/collections/collection-permissions.md',
+              '/concepts/collections/collection-limits.md',
+            ]
+          },
+          '/concepts/addresses/index.md',
           {
             text: 'Schemas',
             children: [
-              '/about/schemas/index.md',
-              '/about/schemas/unique.md',
-              '/about/schemas/ERC721Metadata.md',
+              '/concepts/schemas/unique.md',
+              '/concepts/schemas/ERC721Metadata.md',
             ]
           },
-          '/about/wallet-integration.md',
+          '/concepts/wallet-integration.md',
           {
             text: 'Network Features',
             children: [
-              '/about/network-features/index.md',
-              '/about/network-features/evm.md',
-              '/about/network-features/sponsoring.md',
-              '/about/network-features/onchain-metadata.md',
-              '/about/network-features/nesting-bundling.md',
-              '/about/network-features/refungibility.md',
-              '/about/network-features/scheduling.md',
-              '/about/network-features/rate-limits.md',
-              '/about/network-features/royalties.md',
-              '/about/network-features/did.md',
+              '/concepts/network-features/index.md',
+              '/concepts/network-features/evm.md',
+              '/concepts/network-features/sponsoring.md',
+              '/concepts/network-features/onchain-metadata.md',
+              '/concepts/network-features/nesting-bundling.md',
+              '/concepts/network-features/refungibility.md',
+              '/concepts/network-features/scheduling.md',
+              '/concepts/network-features/rate-limits.md',
+              '/concepts/network-features/royalties.md',
+              '/concepts/network-features/did.md',
             ]
           },
-          '/about/glossary.md',
-          '/about/collection-limits.md',
-          '/about/collection-permissions.md',
-          '/about/substrate.md',
-          '/about/polkadot.md',
+          '/concepts/glossary.md',
         ],
       },
     ],
-    '/evm-docs': [
+    '/evm': [
       {
         text: 'EVM docs',
         children: [
-          '/evm-docs/index.md',
-          '/evm-docs/Smart contracts.md',
-          '/evm-docs/UniqueNFT.md',
+          '/evm/index.md',
+          '/evm/Smart contracts.md',
+          '/evm/UniqueNFT.md',
         ],
       }
     ],
@@ -102,20 +106,28 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/networks/index.md',
           '/networks/rpc.md',
           '/networks/extrinsics.md',
+          '/networks/events.md',
           '/networks/governance-only.md',
           '/networks/nesting.md',
+          {
+            text: 'Ecosystem',
+            children: [
+              '/networks/ecosystem/substrate.md',
+              '/networks/ecosystem/polkadot.md',
+            ]
+          },
         ],
       }
     ],
-    '/sdk-docs': [
+    '/sdk': [
       {
         text: 'SDK docs',
         children: [
-          '/sdk-docs/index.md',
-          '/sdk-docs/architecture.md',
-          '/sdk-docs/installation.md',
-          '/sdk-docs/methods.md',
-          '/sdk-docs/tools.md',
+          '/sdk/index.md',
+          '/sdk/architecture.md',
+          '/sdk/installation.md',
+          '/sdk/methods.md',
+          '/sdk/tools.md',
         ],
       }
     ]

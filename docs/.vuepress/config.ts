@@ -3,7 +3,6 @@ import {defaultTheme} from '@vuepress/theme-default'
 import * as path from 'path'
 import {navbar} from "./configs/navbar";
 import {sidebar} from "./configs/sidebar";
-import {mermaidPlugin} from "@renovamen/vuepress-plugin-mermaid"
 // import {searchPlugin} from "@vuepress/plugin-search"
 
 import {registerComponentsPlugin} from '@vuepress/plugin-register-components'
@@ -38,7 +37,6 @@ export default defineUserConfig({
   // extendsMarkdown: (md: any) => {md.set({breaks: true})},
   plugins: [
     registerComponentsPlugin({componentsDir: path.resolve(__dirname, './components')}),
-    mermaidPlugin() as any, //todo: remove any and deal with type check and what could change in the vuepress@2
     // searchPlugin({})
   ],
 
@@ -49,6 +47,9 @@ export default defineUserConfig({
         sourcemap: true,
         target: 'es2020',
       },
+      ssr: {
+        noExternal: ['vue-toastification']
+      }
     }
   })
 })
