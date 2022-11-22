@@ -1,4 +1,8 @@
-# Unique Network Documentation	
+---
+layout: HomePageLayout
+---
+
+# Unique Network Documentation
 
 ## What are Quartz and Unique?
 Unique Network has built the first NFT blockchain in the Polkadot and Kusama ecosystems.
@@ -6,6 +10,7 @@ Unique Network has built the first NFT blockchain in the Polkadot and Kusama eco
 Quartz and Unique are NFT parachains in Kusama and Polkadot. They handle Non-Fungible, Re-Fungible, and Fungible tokens natively, which means they are very efficient, scalable, and flexible.
 
 ## Key features
+
 Unique brings the shared state security from the proof of stake relay chain. Experience the power of granular authorization levels, flexible economic models, and implement a fully tokenized ecosystem with the open source & white label tools.
 
 The main difference among many other NFT projects out there is that Unique Network is a blockchain that allows building completely new generation NFT dApps on top of it or migrating the existing NFT solutions that are being on the market to achieve more scalability, new functionality and interoperability.
