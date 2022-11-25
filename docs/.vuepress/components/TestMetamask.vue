@@ -1,10 +1,10 @@
 <template>
-  <button @click="testMetamask">Test Metamask</button>
+<unique-button @click="testMetamask">Test Metamask</unique-button>
 
   <p v-show="error.message" class="error">{{ error.message }}</p>
 
   <p>
-    <button @click="checkEthAccs">Request eth accounts</button>
+    <unique-button @click="checkEthAccs">Request eth accounts</unique-button>
   </p>
 
 </template>
@@ -13,6 +13,7 @@
 import {onMounted, reactive, ref} from 'vue'
 import {testMetamask} from '../utils/metamask'
 import {connectToMetamask, safeGetAccounts} from "../utils/ethereumExtensionTools";
+import UniqueButton from '../components/UI/UniqueButton.vue'
 
 const ethAccountsRef = ref<string[]>([])
 
