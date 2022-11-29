@@ -132,7 +132,6 @@ td.identica {
 
   .logoLine {
     margin-top: .25rem;
-
     .logo {
       vertical-align: middle;
       margin-left: 0.125rem;
@@ -140,6 +139,4 @@ td.identica {
     }
   }
 }
-
-
 </style>
