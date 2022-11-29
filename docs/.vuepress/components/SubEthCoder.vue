@@ -1,7 +1,7 @@
 <template>
   <div class="inputContainer">
-    <unique-input v-model="inputRef" class="input" placeholder="Input an address"/>
-    <unique-button @click="convertInputSubToEth">Convert</unique-button>
+    <UniqueInput v-model="inputRef" class="input" placeholder="Input an address"/>
+    <UniqueButton @click="convertInputSubToEth">Convert</UniqueButton>
   </div>
 
   <p v-show="error.message" class="error">{{ error.message }}</p>

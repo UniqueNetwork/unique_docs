@@ -1,10 +1,10 @@
 <template>
-<unique-button @click="testMetamask">Test Metamask</unique-button>
+  <UniqueButton @click="testMetamask">Test Metamask</UniqueButton>
 
   <p v-show="error.message" class="error">{{ error.message }}</p>
 
   <p>
-    <unique-button @click="checkEthAccs">Request eth accounts</unique-button>
+    <UniqueButton @click="checkEthAccs">Request eth accounts</UniqueButton>
   </p>
 
 </template>

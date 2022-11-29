@@ -10,12 +10,20 @@
 <style scoped lang="scss">
 .unq-btn {
   font-family: var(--font-family);
+  cursor: pointer;
   border-radius: 30px;
   padding: 12px;
   font-weight: 600;
   border: 1px black;
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+  }
   &:hover {
     color: #6699cc;
+    &:disabled {
+      color: #999;
+    }
   }
 }
 </style>

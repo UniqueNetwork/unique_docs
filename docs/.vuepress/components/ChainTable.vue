@@ -23,7 +23,6 @@
       <td>Currency</td>
       <td>{{ chain.metamask.nativeCurrency.symbol }} ({{ chain.metamask.nativeCurrency.decimals }} decimals)</td>
     </tr>
-    </tbody>
     <tr>
       <td>Ethereum RPC</td>
       <td>{{ chain.metamask.rpcUrls[0] }}
@@ -36,11 +35,10 @@
         {{ chain.metamask.chainId }}
         ({{ parseInt(chain.metamask.chainId) }})
         <CopyButton :data="chain.metamask.chainId"/>
-        <Button
-          title="Add to metamask"
+        <unique-button
           :disabled="disableMetamask"
           :onClick="() => addChainToMetamask(chainName)"
-        />
+        > Add to metamask</unique-button>
       </td>
     </tr>
     <tr>
@@ -71,6 +69,7 @@
         </div>
       </td>
     </tr>
+    </tbody>
   </table>
 </template>
 
@@ -79,6 +78,7 @@ import {computed} from 'vue'
 import {UNIQUE_CHAINS, uniqueChainsParameters} from '../utils/constants'
 import {addChainToMetamask} from '../utils/metamask'
 import CopyButton from './CopyButton.vue'
+import UniqueButton from '../components/UI/UniqueButton.vue'
 import {withBase} from "@vuepress/client";
 
 const props = defineProps<{
@@ -101,6 +101,18 @@ export default {
 table {
   display: table;
   width: 100%;
+  border-radius: 20px !important;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+th {
+  border-bottom: 3px solid #999 !important;
+  font-size: 20px;
+}
+
+th, tr, td {
+  border: thin;
+  border-radius: 20px;
 }
 
 .colorSquare {
@@ -127,7 +139,6 @@ td.identica {
       margin-right: 0.5rem;
     }
   }
-
 }
 
 
