@@ -3,9 +3,7 @@
 ## Collection
 
 <Details><template v-slot:header>
-
-### Get collection by Id new
-
+Get collection by Id new
 </template><template v-slot:body>
 
 #### Overview
@@ -93,9 +91,7 @@ const collection = await sdk.collections.get({ collectionId: 1 });
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Get collection properties
-
+Get collection properties
 </template><template v-slot:body>
 
 #### Overview
@@ -191,9 +187,7 @@ const { properties } = await sdk.collections.properties({ collectionId: 1 });
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Create collection with unique schema
-
+Create collection with unique schema
 </template><template v-slot:body>
 
 #### Overview
@@ -448,9 +442,7 @@ console.log(`Created collection with id ${collectionId}`);
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Delete collection properties
-
+Delete collection properties
 </template><template v-slot:body>
 
 #### Overview
@@ -573,9 +565,7 @@ await sdk.collections.deleteProperties.submitWaitResult({
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Destroy collection
-
+Destroy collection
 </template><template v-slot:body>
 
 #### Overview
@@ -678,9 +668,7 @@ client.collections.destroy.submitWaitResult({
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Get effective limits by collection Id
-
+Get effective limits by collection Id
 </template><template v-slot:body>
 
 #### Overview
@@ -779,9 +767,7 @@ console.log(`Collection ${collectionId} limits: ${JSON.stringify(limits)}`);
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Property permissions
-
+Property permissions
 </template><template v-slot:body>
 
 #### Overview
@@ -888,9 +874,7 @@ This method returns `PropertyPermissionsResult`
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Set collection limits
-
+Set collection limits
 </template><template v-slot:body>
 
 #### Overview
@@ -1064,9 +1048,7 @@ This method returns `SetCollectionLimitsResult`
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Set collection permissions
-
+Set collection permissions
 </template><template v-slot:body>
 
 #### Overview
@@ -1229,9 +1211,7 @@ This method returns `SetCollectionPermissionsResult`
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Set collection properties
-
+Set collection properties
 </template><template v-slot:body>
 
 #### Overview
@@ -1377,9 +1357,7 @@ This method returns `SetCollectionPermissionsResult`
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Set token property permissions
-
+Set token property permissions
 </template><template v-slot:body>
 
 #### Overview
@@ -1555,9 +1533,7 @@ This method returns `SetTokenPropertyPermissionsResult`
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Set transfers enabled flag
-
+Set transfers enabled flag
 </template><template v-slot:body>
 
 #### Overview
@@ -1680,9 +1656,7 @@ This method returns `SetTransfersEnabledResult`
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Change the owner of the collection
-
+Change the owner of the collection
 </template><template v-slot:body>
 
 #### Overview
@@ -1804,9 +1778,7 @@ This method returns `TransferCollectionResult`
 ## Collections admin
 
 <Details><template v-slot:header>
-
-### Add collection admin
-
+Add collection admin
 </template><template v-slot:body>
 
 #### Overview
@@ -1932,9 +1904,7 @@ This method returns `AddCollectionAdminResult`
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Get admin list
-
+Get admin list
 </template><template v-slot:body>
 
 #### Overview
@@ -2038,9 +2008,7 @@ This method returns `AdminlistResult`
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Remove collection admin
-
+Remove collection admin
 </template><template v-slot:body>
 
 #### Overview
@@ -2170,9 +2138,7 @@ This method returns `RemoveCollectionAdminResult`
 ## Collections allow list
 
 <Details><template v-slot:header>
-
-### Add To Allow List
-
+Add To Allow List
 </template><template v-slot:body>
 
 #### Overview
@@ -2279,9 +2245,7 @@ console.log(
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Allow list
-
+Allow list
 </template><template v-slot:body>
 
 #### Overview
@@ -2363,9 +2327,7 @@ interface AllowListResult {
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Get allowance
-
+Get allowance
 </template><template v-slot:body>
 
 The method gets the number of token pieces approved to transfer
@@ -2397,9 +2359,7 @@ const { isAllowed } = await sdk.tokens.allowance({
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Check is allowed
-
+Check is allowed
 </template><template v-slot:body>
 
 #### Overview
@@ -2476,9 +2436,7 @@ interface AllowedResult {
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Remove from allow list
-
+Remove from allow list
 </template><template v-slot:body>
 
 #### Overview
@@ -2585,9 +2543,7 @@ interface RemoveFromAllowListResult {
 ## Nesting
 
 <Details><template v-slot:header>
-
-### Get bundle
-
+Get bundle
 </template><template v-slot:body>
 
 #### Overview
@@ -2694,9 +2650,7 @@ console.log(bundle);
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Is Bundle
-
+Is Bundle
 </template><template v-slot:body>
 
 #### Overview
@@ -2781,9 +2735,7 @@ console.log(result.isBundle);
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Nest token
-
+Nest token
 </template><template v-slot:body>
 
 #### Overview
@@ -2957,9 +2909,7 @@ console.log(
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Token children
-
+Token children
 </template><template v-slot:body>
 
 #### Overview
@@ -3074,9 +3024,7 @@ console.log(result.children);
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Token parent
-
+Token parent
 </template><template v-slot:body>
 
 #### Overview
@@ -3181,9 +3129,7 @@ console.log(result);
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Topmost token owner
-
+Topmost token owner
 </template><template v-slot:body>
 
 #### Overview
@@ -3286,9 +3232,7 @@ console.log(result.topmostOwner);
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Unnest token
-
+Unnest token
 </template><template v-slot:body>
 
 #### Overview
@@ -3453,9 +3397,7 @@ console.log(
 ## Sponsorship
 
 <Details><template v-slot:header>
-
-### Confirm sponsorship
-
+Confirm sponsorship
 </template><template v-slot:body>
 
 #### Overview
@@ -3587,9 +3529,7 @@ This method returns `ConfirmSponsorshipResult`
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Next sponsored
-
+Next sponsored
 </template><template v-slot:body>
 
 #### Overview
@@ -3698,9 +3638,7 @@ console.log(result);
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Remove collection sponsor
-
+Remove collection sponsor
 </template><template v-slot:body>
 
 #### Overview
@@ -3825,9 +3763,7 @@ This method returns `RemoveSponsorshipResult`
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Set collection sponsor
-
+Set collection sponsor
 </template><template v-slot:body>
 
 #### Overview
@@ -3972,9 +3908,7 @@ This method returns `SetSponsorshipResult`
 ## Statistics
 
 <Details><template v-slot:header>
-
-### Get account tokens of the collection
-
+Get account tokens of the collection
 </template><template v-slot:body>
 
 #### Overview
@@ -4069,9 +4003,7 @@ interface AccountTokensResult {
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Get collection tokens
-
+Get collection tokens
 </template><template v-slot:body>
 
 #### Overview
@@ -4154,9 +4086,7 @@ interface CollectionTokensResult {
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Get collection stats
-
+Get collection stats
 </template><template v-slot:body>
 
 #### Overview
@@ -4236,9 +4166,7 @@ interface GetStatsResult {
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Last token id
-
+Last token id
 </template><template v-slot:body>
 
 #### Overview
@@ -4320,9 +4248,7 @@ interface LastTokenIdResult {
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Total supply
-
+Total supply
 </template><template v-slot:body>
 
 #### Overview
@@ -4411,9 +4337,7 @@ interface TotalSupplyResult {
 ## Token
 
 <Details><template v-slot:header>
-
-### Get allowance
-
+Get allowance
 </template><template v-slot:body>
 
 #### Overview
@@ -4512,9 +4436,7 @@ const { isAllowed } = await sdk.tokens.allowance({
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Burn token
-
+Burn token
 </template><template v-slot:body>
 
 #### Overview
@@ -4648,9 +4570,7 @@ const { collectionId, tokenId, address, value } = setResult.parsed;
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Create multiple tokens
-
+Create multiple tokens
 </template><template v-slot:body>
 
 #### Overview
@@ -4834,9 +4754,7 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Create token (mint)
-
+Create token (mint)
 </template><template v-slot:body>
 
 #### Overview
@@ -5052,9 +4970,7 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Delete token properties
-
+Delete token properties
 </template><template v-slot:body>
 
 #### Overview
@@ -5183,9 +5099,7 @@ This method returns `DeleteTokenPropertiesResult`
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Set token properties
-
+Set token properties
 </template><template v-slot:body>
 
 #### Overview
@@ -5334,9 +5248,7 @@ This method returns `SetTokenPropertiesResult`
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Get token
-
+Get token
 </template><template v-slot:body>
 
 #### Overview
@@ -5437,9 +5349,7 @@ curl -X 'GET' \
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Get token owner
-
+Get token owner
 </template><template v-slot:body>
 
 #### Overview
@@ -5550,9 +5460,7 @@ const result: TokenOwnerResult = await sdk.tokens.tokenOwner(
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Token properties
-
+Token properties
 </template><template v-slot:body>
 
 #### Overview
@@ -5656,9 +5564,7 @@ const result: TokenPropertiesResult = await sdk.tokens.properties(args);
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Transfer token
-
+Transfer token
 </template><template v-slot:body>
 
 #### Overview
@@ -5806,9 +5712,7 @@ console.log(result.parsed);
 ## Other
 
 <Details><template v-slot:header>
-
-### Approve
-
+Approve
 </template><template v-slot:body>
 
 #### Overview
@@ -5937,9 +5841,7 @@ const { collectionId, tokenId } = result.parsed;
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Token exists
-
+Token exists
 </template><template v-slot:body>
 
 #### Overview
