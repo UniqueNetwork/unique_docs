@@ -4,12 +4,7 @@
 
 ### Accounts
 
-####  Table of Contents
-
-- [Accounts](#about-accounts)
-- [Providers](#providers)
-- [Generate new account](#generate-new-account)
-- [Get account from mnemonic](#get-account-from-mnemonic)
+[[toc]]
 
 #### About accounts
 The package is required to connect different accounts and create signatures for them. To get a list of accounts, you need to create an instance of the Accounts class and connect the necessary providers to it:

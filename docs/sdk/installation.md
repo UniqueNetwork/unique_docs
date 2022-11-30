@@ -4,12 +4,7 @@
 
 # How to install
 
-# Table of Contents
-
-- [SDK](#sdk)
-- [Substrate REST](#substrate-rest)
-- [Substrate Client](#substrate-client)
-
+[[toc]]
 
 ## SDK
 
