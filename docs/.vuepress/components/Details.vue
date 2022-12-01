@@ -17,7 +17,7 @@
   padding: 10px 15px 10px;
   .unique-summary {
     padding: 10px 0 10px 30px;
-    //padding-bottom: 70px;
+    background: rgba(0, 0, 0, 0.05);;
     margin-bottom: 5px;
     height: 35px !important;
     color:  #6699cc;

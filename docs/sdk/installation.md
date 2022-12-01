@@ -8,46 +8,66 @@
 
 ## SDK
 
-### npm
-```shell
+### Installation
+
+<CodeGroup>
+  <CodeGroupItem title="NPM"  active>
+
+```bash:no-line-numbers
 npm install @unique-nft/sdk
 ```
 
+  </CodeGroupItem>
+  <CodeGroupItem title="YARN">
+
+```bash:no-line-numbers
+yarn add @unique-nft/sdk
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
 ### Initialization
 
-#### Node.js
-```typescript
+```typescript:no-line-numbers
 import { Sdk, Options } from '@unique-nft/sdk';
 const options: Options = {
     baseUrl: '<REST API URL>'
 };
 const sdk = new Sdk(options);
 ```
-In the `baseUrl` parameter, you must pass one of the paths to the [`Unique Network`](../web)
+In the `baseUrl` parameter, you must pass one of the paths to [our networks](../networks/index.md):
 
-#### Opal
-```shell
-https://rest.unique.network/opal/v1
-```
+**Opal** : ``https://rest.unique.network/opal/v1``
 
-#### Quartz
-```shell
-https://rest.unique.network/quartz/v1
-```
+**Quartz** : ``https://rest.unique.network/quartz/v1``
 
-#### Unique
-```shell
-https://rest.unique.network/unique/v1
-```
+**Unique** : ``https://rest.unique.network/unique/v1``
 
-#### Set a signer
+### Set a signer
 
-To be able to sign extrinsics, you need to install the [`Accounts`](../accounts) package
-```shell
+To be able to sign extrinsics, you need to install the [`Accounts`](https://www.npmjs.com/package/@unique-nft/accounts) package.
+
+<CodeGroup>
+  <CodeGroupItem title="NPM"  active>
+
+```bash:no-line-numbers
 npm install @unique-nft/accounts
 ```
-Pass the `signer` in the parameters when creating the `Client` object
-```typescript
+
+</CodeGroupItem>
+<CodeGroupItem title="YARN">
+
+```bash:no-line-numbers
+yarn add @unique-nft/accounts
+```
+
+</CodeGroupItem>
+</CodeGroup>
+
+Pass the `signer` in the parameters when creating the `Client` object.
+
+```typescript:no-line-numbers
 import { KeyringProvider } from '@unique-nft/accounts/keyring';
 import { KeyringOptions } from '@polkadot/keyring/types';
 import { Sdk, Options } from "@unique-nft/sdk";
@@ -67,30 +87,25 @@ const clientOptions: Options = {
 const sdk = new Sdk(clientOptions);
 ```
 
-
 ## Substrate REST
 
-Substrate REST Deployment - Getting Started Guide
-
-- [How to install](#install)
-- [How to configure – environment variables](#environment-variables)
-- [How to configure – secondary environment variables](#secondary-environment-variables)
-
-
-### Install
-Choose install approach: [Docker](#docker), [Source code](#git) or [Public endpoints](#public-endpoints)
+### Installation
+Choose install approach: [Docker](#docker), [Source code](#git) or [Public endpoints](#public-endpoints).
 
 #### Docker
 
-```bash
+```bash:no-line-numbers
 docker run -p 3000:3000 -e CHAIN_WS_URL=wss://ws-opal.unique.network uniquenetwork/web:latest
 ```
 
-<a href="https://hub.docker.com/r/uniquenetwork/web" target="_blank">See hub.docker.com page</a>
+See the [hub.docker.com](https://hub.docker.com/r/uniquenetwork/web) page for more details.
 
 #### Git
 
-```git
+<CodeGroup>
+  <CodeGroupItem title="NPM"  active>
+
+```bash:no-line-numbers
 git clone https://github.com/UniqueNetwork/unique-sdk
 cd unique-sdk
 npm install
@@ -98,84 +113,87 @@ npm run build:web
 npm start
 ```
 
+  </CodeGroupItem>
+  <CodeGroupItem title="YARN">
+
+```bash:no-line-numbers
+git clone https://github.com/UniqueNetwork/unique-sdk
+cd unique-sdk
+yarn
+yarn run build:web
+yarn start
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
+
 #### Public endpoints
 
 You can use public endpoints for access Unique Web:
 
-#### Opal
-```
-https://web-opal.unique.network
-```
+**Opal** : ``https://web-opal.unique.network``
 
-#### Quartz
-```
-https://web-quartz.unique.network
-```
+**Quartz** : ``https://web-quartz.unique.network``
 
-#### Unique
-```
-https://web-unique.unique.network/
-```
+**Unique** : ``https://web-unique.unique.network/``
 
 
-### Environment Variables
+### Environment variables
 
-#### Required
+##### CHAIN_WS_URL (required)
 
-#### Opal
-```bash
-CHAIN_WS_URL=wss://ws-opal.unique.network
+```ts:no-line-numbers
+// Opal
+CHAIN_WS_URL = 'wss://ws-opal.unique.network'
+// Quartz
+CHAIN_WS_URL = 'wss://ws-quartz.unique.network'
+// Unique
+CHAIN_WS_URL = 'wss://ws.unique.network'
 ```
 
-#### Quartz
-```bash
-CHAIN_WS_URL=wss://ws-quartz.unique.network
+##### SIGNER_SEED (optional)
+
+The `SIGNER_SEED` value is used for the signing the transactions.
+
+```ts:no-line-numbers
+// type mnemonic here
+SIGNER_SEED = 'nest have have have brave have nest nest nest body have amazing'
 ```
 
-#### Unique
-```bash
-CHAIN_WS_URL=wss://ws.unique.network
+##### Port (optional, default value is 3000)
+```ts:no-line-numbers
+PORT = 3000
 ```
 
-#### Optional
-
-##### Use `SIGNER_SEED` for [sign](#sign-an-extrinsic) method
-```bash
-SIGNER_SEED=type mnemonic here
-SIGNER_SEED=//Alice
+##### IPFS Gateway (optional)
+```ts:no-line-numbers
+IPFS_GATEWAY_URL = 'https://ipfs.unique.network/ipfs/'
 ```
 
-##### Port (default 3000)
-```bash
-PORT=3000
-```
-
-##### IPFS Gateway
-```bash
-IPFS_GATEWAY_URL=https://ipfs.unique.network/ipfs/
-```
-
-##### IPFS upload URL
+##### IPFS upload URL (optional)
 
 IPFS_UPLOAD_URL allows you to specify a setting for uploading files via IPFS.
-```bash
-IPFS_UPLOAD_URL=http://192.168.100.183:5001/api/v0
+```ts:no-line-numbers
+IPFS_UPLOAD_URL = 'http://192.168.100.183:5001/api/v0'
 ```
 
-##### Cache manager
-Extrinsics results cache time:
-```bash
-CACHE_TTL=600
+##### Cache manager (optional)
+
+Extrinsics results cache time
+
+```ts:no-line-numbers
+CACHE_TTL = 600
 ```
 
-To set up the Redis store to cache extrinsics:
-```bash
-REDIS_HOST=localhost
-REDIS_PORT=6379
-REDIS_DB=0
+To set up the Redis store to cache extrinsics
+```ts:no-line-numbers
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+REDIS_DB = 0
 ```
 
-##### Prefix
+##### Prefix (optional)
 
 PREFIX allows you to add a global prefix to API.
 By default, the prefix is empty.
@@ -185,60 +203,97 @@ By default, the prefix is empty.
 You can also use a secondary connection for substrate, which allows you to use secondary endpoints.
 
 Substrate endpoints
-```
+
+```ts:no-line-numbers
+// Unique
 https://web-unique.unique.network/swagger/dot/
+// Quartz
 https://web-quartz.unique.network/swagger/ksm/
 ```
 
 #### Secondary environment variables
 
-```bash
-SECONDARY_CHAIN_WS_URL=wss://kusama-rpc.polkadot.io
-SECONDARY_CHAIN_NAME=ksm
-```
-or
+```ts:no-line-numbers
+SECONDARY_CHAIN_WS_URL = 'wss://kusama-rpc.polkadot.io'
+SECONDARY_CHAIN_NAME = 'ksm'
 
-```bash
-SECONDARY_CHAIN_WS_URL=wss://rpc.polkadot.io
-SECONDARY_CHAIN_NAME=ksm
-```
+// or
 
+SECONDARY_CHAIN_WS_URL = 'wss://rpc.polkadot.io'
+SECONDARY_CHAIN_NAME = 'ksm'
+```
 
 ## Substrate Client
 
-#### npm
+### Installation
 
-```shell
-npm install @unique-nft/sdk
+<CodeGroup>
+  <CodeGroupItem title="NPM"  active>
+
+```bash:no-line-numbers
+npm install @unique-nft/substrate-client
 ```
 
-#### yarn
+</CodeGroupItem>
+<CodeGroupItem title="YARN">
 
-```shell
-yarn add @unique-nft/sdk
+```bash:no-line-numbers
+yarn add @unique-nft/substrate-client
 ```
 
-#### git
+</CodeGroupItem>
+</CodeGroup>
 
-```shell
+**via Git:**
+
+<CodeGroup>
+  <CodeGroupItem title="NPM"  active>
+
+```bash:no-line-numbers
 git clone https://github.com/UniqueNetwork/unique-sdk
 cd unique-sdk
 npm install
-npm run build:sdk
+npm run build:substrate-client
 ```
 
-### Initialize Substrate Client
+</CodeGroupItem>
+<CodeGroupItem title="YARN">
 
-```typescript
-import { createSigner } from '@unique-nft/sdk/sign';
-import { Sdk } from '@unique-nft/sdk';
+```bash:no-line-numbers
+git clone https://github.com/UniqueNetwork/unique-sdk
+cd unique-sdk
+yarn
+yarn build:substrate-client
+```
+
+</CodeGroupItem>
+</CodeGroup>
+
+### Initialization
+
+```typescript:no-line-numbers
+import { createSigner } from '@unique-nft/substrate-client/sign';
+import { Client } from '@unique-nft/substrate-client';
+import fetch from 'node-fetch';
 
 (async () => {
-  const sdk = await Sdk.create({
+  const client = await Client.create({
     chainWsUrl: 'wss://quartz.unique.network',
     signer: await createSigner({
       seed: '//Alice', // Signer seed phrase if you want to sign extrinsics
-    }),
+      }),
+    erc721: { // enable this option to parse ERC721 tokens
+      fetch: async (url: string) => {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(response.statusText);
+        try {
+          return await response.json();
+        } catch (e) {
+          return true;
+        }
+      },
+      ipfsGateways: ['https://ipfs.io', 'https://gateway.ipfs.io'],
+    },
   });
 })();
 ```
