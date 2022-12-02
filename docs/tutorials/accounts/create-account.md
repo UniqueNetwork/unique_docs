@@ -1,24 +1,18 @@
-# Ways to create
+# Create an account
 
-In this guide, we will go through the entire process of creating an account using the Unique Network SDK.
+In this tutorial, we will go through the entire process of creating an account using the Unique Network SDK.
 
-Consider using how you can create or get an account using the NPM package [@unique-nft/account](https://www.npmjs.com/package/@unique-nft/accounts)
+Consider using how you can create or get an account using the [Accounts]((https://www.npmjs.com/package/@unique-nft/accounts)) package.
 
-You already know that you will need to come up with or generate a mnemonic phrase (this is a set of words that can be used to create and restore your wallet)
+You will need to come up with or generate a mnemonic phrase (this is a set of words that can be used to create and restore your wallet).
 
-**WARNING**: Never share your mnemonic phrase with anyone. If someone gets access to your mnemonic phrase, they can steal your funds.
+:warning: Never share your mnemonic phrase with anyone. If someone gets access to your mnemonic phrase, they can steal your funds.
 
+### Generate a new account
 
+An easy way to create a new account is to use the `generateAccount` function from the `Accounts` package:
 
-_**So the ways of creation**_
-- [Generate new account](#generate-new-account)
-- [Get account from mnemonic](#get-account-from-mnemonic)
-- [Providers](#providers)
-
-## Generate new account
-An easy way to create a new account is to use the `generateAccount` function from the `@unique-nft/accounts` package:
-
-```typescript
+```typescript:no-line-numbers
 import { generateAccount, SignatureType } from "@unique-nft/accounts";
 
 const account = await generateAccount({
@@ -29,10 +23,14 @@ const account = await generateAccount({
 })
 
 console.log(account);
-```
-<details><summary>Console log output</summary>
 
-``` 
+```
+
+<Details><template v-slot:header>
+  Console log output
+</template><template v-slot:body>
+
+```typescript:no-line-numbers
 {
   mnemonic: 'alter eternal wolf cash picture print orange drink exact vendor arch bulb',
   seed: '0xcf9eff78eecb3cebcea5645c5376f4693d3b419deb8e8ee58551c3f7e69f1cb6',
@@ -42,22 +40,24 @@ console.log(account);
     encoding: { content: [Array], type: [Array], version: '3' },
     address: '5DXu7NRcFPSVEF3WcYkbrrZfFBE4rnkaYeP8721WEcystBxj',
     meta: { name: 'my_test_account' }
-  }  
+  }
 }
 
 ```
-</details>
+</template>
+</Details>
 
-## Get account from mnemonic
+### Get an account from mnemoni
 
-If you already have a mnemonic phrase, you can use it to get an account.
-Example:
-```
+If you already have a mnemonic phrase, you can use it to get an account. Here is how the phrase looks like:
+
+``
 affair spoon other impact target solve extra range cute myself float panda
-```
-But we consider how to create the simplest code.
+``
 
-```typescript
+Here is how we can use it to get an account.
+
+```typescript:no-line-numbers
 import { getAccountFromMnemonic } from '@unique-nft/accounts';
 
 const account = await getAccountFromMnemonic({
@@ -65,9 +65,12 @@ const account = await getAccountFromMnemonic({
 });
 console.log(account);
 ```
-<details><summary>Console log output</summary>
 
-```
+<Details><template v-slot:header>
+Console log output
+</template><template v-slot:body>
+
+```typescript:no-line-numbers
 {
   mnemonic: 'affair spoon other impact target solve extra range cute myself float panda',
   seed: '0x2a5dd888c0fb536c7c82ee53bb44ca49825ab134dd5a9c09e62423eeba30847b',
@@ -80,11 +83,13 @@ console.log(account);
   }
 }
 ```
-</details>
 
-Or use a phrase generator:
+</template>
+</Details>
 
-```typescript
+Or, we can generate a mnemonic phrase and then get an account using it:
+
+```typescript:no-line-numbers
 import { getAccountFromMnemonic } from '@unique-nft/accounts';
 import { mnemonicGenerate } from '@polkadot/util-crypto';
 
@@ -94,11 +99,11 @@ const account = await getAccountFromMnemonic({
 });
 ```
 
-## Providers
+### Providers
 
 If you need to get an account from one specific provider, then it is not necessary to create an Accounts object, you can contact the provider directly:
 
-```typescript
+```typescript:no-line-numbers
 import { Account } from '@unique-nft/accounts';
 import { KeyringProvider } from '@unique-nft/accounts/keyring';
 import { KeyringOptions } from '@polkadot/keyring/types';
@@ -113,68 +118,70 @@ const signer = provider.addSeed('<seed of account>');
 
 The following providers are supported:
 
-<details><summary>Keyring</summary>
+<CodeGroup>
+  <CodeGroupItem title="Keyring">
 
-The provider works directly with the chain using `KeyringPair` from the `@polkadotkeyring` package.
-```typescript
+```typescript:no-line-numbers
+// The provider works directly with the chain using `KeyringPair` from the `@polkadotkeyring` package.
 import { Account } from '@unique-nft/accounts';
 import { KeyringProvider } from '@unique-nft/accounts/keyring';
 import { KeyringOptions } from '@polkadot/keyring/types';
 
 const options: KeyringOptions = {
-type: 'sr25519',
-};
-const provider = new KeyringProvider(options);
-await provider.init();
+  type: 'sr25519',
+  };
+  const provider = new KeyringProvider(options);
+  await provider.init();
 
 const signer1 = provider.addSeed('<seed of account>');
 const signer2 = provider.addKeyfile('<json keyfile>');
 ```
-</details>
-<details><summary>KeyringLocal</summary>
+  </CodeGroupItem>
+  <CodeGroupItem title="Keyring Local">
 
-```typescript
+```typescript:no-line-numbers
 import { Account } from '@unique-nft/accounts';
 import { KeyringPair } from '@polkadot/keyring/types';
 import {
   KeyringLocalOptions,
   KeyringLocalProvider,
-} from '@unique-nft/accounts/keyring-local';
+  } from '@unique-nft/accounts/keyring-local';
 
 const options: KeyringLocalOptions = {
   type: 'sr25519',
   passwordCallback: async (keyring: KeyringPair) => {
     return '<password>';
-  },
-};
-const provider = new KeyringLocalProvider(options);
-await provider.init();
+      },
+      };
+      const provider = new KeyringLocalProvider(options);
+      await provider.init();
 
 const signer = provider.addUri('<uri of account>', '<password>');
 ```
-</details>
-<details><summary>Polkadot extension</summary>
 
-The provider uses [Polkadot extension](https://polkadot.js.org/extension) for the browser.
-```typescript
+  </CodeGroupItem>
+  <CodeGroupItem title="Polkadot Extension">
+
+```typescript:no-line-numbers
+// The provider uses the Polkadot extension (https://polkadot.js.org/extension) for the browser.
 import { Web3AccountsOptions } from '@polkadot/extension-inject/types';
 import { Account } from '@unique-nft/accounts';
 import { PolkadotProvider } from '@unique-nft/accounts/polkadot';
 
 const options: Web3AccountsOptions = {
   accountType: ['sr25519'],
-};
-const provider = new PolkadotProvider(options);
-await provider.init();
+  };
+  const provider = new PolkadotProvider(options);
+  await provider.init();
 
 const signer = await provider.first();
 ```
 
-</details>
-<details><summary>Metamask extension</summary>
+  </CodeGroupItem>
+  <CodeGroupItem title="Metamask Extension">
 
-The provider uses the [Metamask extension](https://metamask.io/download) for the browser.
-```typescript
+```typescript:no-line-numbers
+// The provider uses the Metamask extension (https://metamask.io/download) for the browser.
 import { Account } from '@unique-nft/accounts';
 import { MetamaskProvider } from '@unique-nft/accounts/metamask';
 
@@ -184,5 +191,5 @@ await provider.init();
 const signer = await provider.first();
 ```
 
-</details>
-
+  </CodeGroupItem>
+</CodeGroup>

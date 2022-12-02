@@ -6,18 +6,30 @@ export const sidebar: Record<string, SidebarConfig> = {
       {
         text: 'Tutorials',
         children: [
-          '/tutorials/index.md',
+          {
+            text: 'SDK guides',
+            children: [
+              '/tutorials/accounts/create-account.md',
+              '/tutorials/create-collection-token.md',
+              '/tutorials/accounts/integrate-creating-into-UI.md',
+              '/tutorials/work-with-evm-via-sdk.md',
+              '/tutorials/live-nft-example.md',
+            ]
+          },
+          {
+            text: 'REST API examples',
+            children: [
+              '/tutorials/examplesREST.md',
+            ]
+          },
+          // '/tutorials/index.md',
           '/tutorials/createAccount.md',
-          '/tutorials/accounts/ways-to-create.md',
-          '/tutorials/examplesREST.md',
-          '/tutorials/examplesSDK.md',
+          // '/tutorials/accounts/ways-to-create.md',
           '/tutorials/wallet-integration.md',
           '/tutorials/how-to-get-collections-tokens.md',
-          '/tutorials/live-nft-example.md',
           '/tutorials/nfts-fetching.md',
           '/tutorials/getNFTsAndTokens.md',
           '/tutorials/easy-market.md',
-          '/tutorials/work-with-evm-via-sdk.md',
           '/tutorials/nfts-how-to-create-and-tune-collection.md',
           '/tutorials/nfts-how-to-mint.md',
           '/tutorials/nfts-ways-to-create.md',
