@@ -1,15 +1,15 @@
-# NFTs fetching
+# Fetching NFT
 
-This article shows the basics of fetching NFTs data with GraphQL. We are going to share some code examples are accompanied by explanations and could be a starting point for creating your own queries with different filters and sortings. It might be useful in the following cases:
+This article demonstrates the basics of fetching NFT data using GraphQL. We are going to share some code examples. We hope this could become a starting point for creating your own queries with different filters and sortings. This might be useful in the following cases:
 
 1) Interacting with pagination and infinite scrolling;
 2) Making different filters, including dynamic conditions;
 3) Requesting limited and distinct data;
 4) ...and in other things, for which necessary to obtain and handle arrays of data.
 
-## Basic example
+### Basic example
 
-In the first example, just main NFTs fields like id, prefix, and name are included in a request.
+In this example, only main NFTs fields like id, prefix, and name are included in a request.
 
 ```graphql:no-line-numbers
 query tokens_query {
@@ -24,7 +24,7 @@ query tokens_query {
 }
 ```
 
-It returns all existing tokes from your scan, but probably you'd like to make some limitations because handling big arrays of data might be expensive for both back-end and front-end parts of your application.
+The request returns all existing tokens, but probably you'd like to make some filtering because handling big arrays of data might be expensive for both back-end and front-end parts of your application.
 For this reason, we will define a limit value in our query:
 
 ```graphql:no-line-numbers
@@ -40,9 +40,9 @@ query tokens_query {
 }
 ```
 
-From a response you can directly get NFTs data and total number (count) of them in your scan:
+From a response, you can get NFT data and total number (count) of the tokens:
 
-```json
+```json:no-line-numbers
 {
   "data": {
     "tokens": {
@@ -65,13 +65,13 @@ From a response you can directly get NFTs data and total number (count) of them 
 }
 ```
 
-## Pagination
+### Pagination
 
-Let's make our query a little bit more complicated by adding offset and limit parameters. It might be your first step to implement pagination and requests are dependent on external arguments.
+Let's make our query a little bit more complex by adding offset and limit parameters. It might be your first step to implement pagination and requests that depend on external arguments.
 
 Arguments:
 
-```json
+```json:no-line-numbers
 {
   "offset": 100,
   "limit": 20
@@ -93,13 +93,13 @@ query tokens_query($limit: Int, $offset: Int) {
 }
 ```
 
-## Distinct and OderBy statements
+### DistinctOn and OderBy statements
 
-If you'd like a list of sorted or different data (without duplicates), you can use "distinct_on" or "order_by" statements.
+If you'd like to get a sorted list or different data (e.g. without duplicates), you can use the `distinct_on` or `order_by` statements.
 
 Arguments:
 
-```json
+```json:no-line-numbers
 {
   "offset": 0,
   "limit": 20,
@@ -110,7 +110,7 @@ Arguments:
 
 Request:
 
-```graphql:no-line-number
+```graphql:no-line-numbers
 query tokens_query(
   $limit: Int
   $offset: Int
@@ -135,13 +135,13 @@ query tokens_query(
 }
 ```
 
-## Search and filters
+### Search and filter
 
-In this paragraph, you can learn how to make search and filtration of NFTs. Below request selects NFTs are filtered by collection name.
+In this section, you will learn how to search and filter NFTs. Below request selects NFTs that are filtered by a collection name.
 
 Arguments:
 
-```json
+```json:no-line-numbers
 {
   "offset": 0,
   "limit": 20,
@@ -153,7 +153,7 @@ Arguments:
 
 Request:
 
-```graphql:no-line-number
+```graphql:no-line-numbers
 query tokens_query(
   $limit: Int
   $offset: Int
@@ -181,9 +181,9 @@ query tokens_query(
 }
 ```
 
-The following "where" argument contains a search by name in addition the previous condition:
+The following examples contains the "where" argument which adds a search by name:
 
-```json
+```json:no-line-numbers
 {
   "offset": 0,
   "limit": 20,
@@ -198,12 +198,15 @@ The following "where" argument contains a search by name in addition the previou
 }
 ```
 
-You can define conditions for your own aims using available fields and operators like "_or", "_and", "_eq", "_like", "_ilike", etc. In our wallet, we use Apollo react library for convenient interaction with Graphql queries. Its hooks help to make dynamic queries, watch a current query's status, refetch queries, handle data and errors easier, and a lot of other useful things.
+You can define any conditions for your needs using available fields and operators: `_or`, `_and`, `_eq`, `_like`, `_ilike`, etc. 
+
+In our wallet, we use React library called Apollo for convenient interaction with the Graphql queries. Its hooks help to make dynamic queries, watch a current query status, refetch queries, handle data and errors easier, and do a lot of other useful things.
 If you'd like to know more about it, you can visit [Apollo](https://www.apollographql.com/docs/)
 
-## Conclusion
+### To learn next
 
-In this article, we got acquainted with the basics of fetching NFTs data.
+In this article, we got acquainted with the basics of fetching NFT data.
 The same principles you can use to make requests into other tables.
-If you are interested in more information, we suggest you to read about [Apollo](https://www.apollographql.com/docs/) or [react-query](https://tanstack.com/query/v4/docs/examples/react/basic-graphql-request), or another state management library available for working with graphql.
-In addition, if you are curious about more fundamental knowledge, you can read [graphql](https://graphql.org/learn/) documentation. And we hope you found this article helpful.
+If you are interested in more information, we suggest you to read about [Apollo](https://www.apollographql.com/docs/), [React Query](https://tanstack.com/query/v4/docs/examples/react/basic-graphql-request), or another state management library available for working with GraphQL.
+
+In addition, if you are interested about deeper fundamental knowledge, you can read [GraphQL](https://graphql.org/learn/) documentation. 

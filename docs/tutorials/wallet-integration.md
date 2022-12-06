@@ -1,6 +1,4 @@
-# Wallet integration
-
-## GraphQL API
+# Wallet integration 
 
 To connect a wallet, you can use our Hasura-based GraphQL API.
 

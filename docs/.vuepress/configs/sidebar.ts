@@ -12,6 +12,11 @@ export const sidebar: Record<string, SidebarConfig> = {
               '/tutorials/accounts/create-account.md',
               '/tutorials/create-collection-token.md',
               '/tutorials/accounts/integrate-creating-into-UI.md',
+              '/tutorials/nfts-how-to-create-and-tune-collection.md',
+              '/tutorials/nfts-how-to-mint.md',
+              '/tutorials/nfts-ways-to-create.md',
+              '/tutorials/destroyCollection.md',
+              '/tutorials/burnNFT.md',
               '/tutorials/work-with-evm-via-sdk.md',
               '/tutorials/live-nft-example.md',
             ]
@@ -22,21 +27,19 @@ export const sidebar: Record<string, SidebarConfig> = {
               '/tutorials/examplesREST.md',
             ]
           },
-          // '/tutorials/index.md',
-          '/tutorials/createAccount.md',
-          // '/tutorials/accounts/ways-to-create.md',
-          '/tutorials/wallet-integration.md',
-          '/tutorials/how-to-get-collections-tokens.md',
-          '/tutorials/nfts-fetching.md',
+          {
+            text: 'GraphQL samples',
+            children: [
+              '/tutorials/wallet-integration.md',
+              '/tutorials/how-to-get-collections-tokens.md',
+              '/tutorials/nfts-fetching.md',
+            ]
+          },
+          '/tutorials/createAccount.md',      
           '/tutorials/getNFTsAndTokens.md',
-          '/tutorials/easy-market.md',
-          '/tutorials/nfts-how-to-create-and-tune-collection.md',
-          '/tutorials/nfts-how-to-mint.md',
-          '/tutorials/nfts-ways-to-create.md',
+          '/tutorials/easy-market.md',         
           '/tutorials/store-files.md',
           '/tutorials/getAccountAndBalance.md',
-          '/tutorials/destroyCollection.md',
-          '/tutorials/burnNFT.md',
           '/tutorials/how-to-use-nesting-and-bundling.md',
         ],
       }
