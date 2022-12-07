@@ -2,7 +2,7 @@
 
 In this tutorial, we will go through the entire process of creating an account using the Unique Network SDK.
 
-Consider using how you can create or get an account using the [Accounts]((https://www.npmjs.com/package/@unique-nft/accounts)) package.
+Consider using how you can create or get an account using the [Accounts](https://www.npmjs.com/package/@unique-nft/accounts) package.
 
 You will need to come up with or generate a mnemonic phrase (this is a set of words that can be used to create and restore your wallet).
 

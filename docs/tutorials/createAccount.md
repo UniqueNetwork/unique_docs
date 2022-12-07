@@ -1,4 +1,4 @@
-# Creating Substrate Address
+# Creating Substrate Address via browser extension
 
 Unique Network, like most blockchains, is based on [accounts or addresses](/concepts/addresses/index.md). An address can own some QTZ or UNQ tokens, NFTs or some ERC-20 tokens. It can sign transactions to transfer these valuable assets to other addresses or to make some actions in Decentralized Apps (dApps). For example, an address can buy and sell NFTs on the NFT Marketplace.
 

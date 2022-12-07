@@ -1,12 +1,10 @@
 # Tools
 
-
+[[toc]]
 
 ### Accounts
 
-[[toc]]
-
-#### About accounts
+##### About 
 The package is required to connect different accounts and create signatures for them. To get a list of accounts, you need to create an instance of the Accounts class and connect the necessary providers to it:
 
 ```typescript
@@ -23,7 +21,7 @@ const accountsList = await accounts.getAccounts();
 const signer = accountsList[0];
 ```
 
-#### Providers
+### Providers
 
 If you need to get an account from one specific provider, then it is not necessary to create an Accounts object, you can contact the provider directly:
 

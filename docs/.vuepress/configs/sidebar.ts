@@ -10,12 +10,14 @@ export const sidebar: Record<string, SidebarConfig> = {
             text: 'SDK guides',
             children: [
               '/tutorials/accounts/create-account.md',
+              '/tutorials/getAccountAndBalance.md',
               '/tutorials/create-collection-token.md',
               '/tutorials/accounts/integrate-creating-into-UI.md',
               '/tutorials/nfts-how-to-create-and-tune-collection.md',
               '/tutorials/nfts-how-to-mint.md',
+              '/tutorials/store-files.md',
               '/tutorials/nfts-ways-to-create.md',
-              '/tutorials/destroyCollection.md',
+              '/tutorials/destroyCollection.md',             
               '/tutorials/burnNFT.md',
               '/tutorials/work-with-evm-via-sdk.md',
               '/tutorials/live-nft-example.md',
@@ -38,8 +40,6 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/tutorials/createAccount.md',      
           '/tutorials/getNFTsAndTokens.md',
           '/tutorials/easy-market.md',         
-          '/tutorials/store-files.md',
-          '/tutorials/getAccountAndBalance.md',
           '/tutorials/how-to-use-nesting-and-bundling.md',
         ],
       }
@@ -142,7 +142,7 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/sdk/architecture.md',
           '/sdk/installation.md',
           '/sdk/methods.md',
-          '/sdk/tools.md',
+          // '/sdk/tools.md', -> this info exists in Tutorials section
         ],
       }
     ]
