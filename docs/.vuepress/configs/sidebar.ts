@@ -6,25 +6,40 @@ export const sidebar: Record<string, SidebarConfig> = {
       {
         text: 'Tutorials',
         children: [
-          '/tutorials/index.md',
-          '/tutorials/createAccount.md',
-          '/tutorials/accounts/ways-to-create.md',
-          '/tutorials/examplesREST.md',
-          '/tutorials/examplesSDK.md',
-          '/tutorials/wallet-integration.md',
-          '/tutorials/how-to-get-collections-tokens.md',
-          '/tutorials/live-nft-example.md',
-          '/tutorials/nfts-fetching.md',
+          {
+            text: 'SDK guides',
+            children: [
+              '/tutorials/accounts/create-account.md',
+              '/tutorials/getAccountAndBalance.md',
+              '/tutorials/create-collection-token.md',
+              '/tutorials/accounts/integrate-creating-into-UI.md',
+              '/tutorials/nfts-how-to-create-and-tune-collection.md',
+              '/tutorials/nfts-how-to-mint.md',
+              // '/tutorials/store-files.md',  - duplicate
+              // '/tutorials/nfts-ways-to-create.md', - duplicate
+              '/tutorials/destroyCollection.md',             
+              '/tutorials/burnNFT.md',
+              '/tutorials/work-with-evm-via-sdk.md',
+              '/tutorials/live-nft-example.md',
+            ]
+          },
+          {
+            text: 'REST API examples',
+            children: [
+              '/tutorials/examplesREST.md',
+            ]
+          },
+          {
+            text: 'GraphQL samples',
+            children: [
+              '/tutorials/wallet-integration.md',
+              '/tutorials/how-to-get-collections-tokens.md',
+              '/tutorials/nfts-fetching.md',
+            ]
+          },
+          '/tutorials/createAccount.md',      
           '/tutorials/getNFTsAndTokens.md',
-          '/tutorials/easy-market.md',
-          '/tutorials/work-with-evm-via-sdk.md',
-          '/tutorials/nfts-how-to-create-and-tune-collection.md',
-          '/tutorials/nfts-how-to-mint.md',
-          '/tutorials/nfts-ways-to-create.md',
-          '/tutorials/store-files.md',
-          '/tutorials/getAccountAndBalance.md',
-          '/tutorials/destroyCollection.md',
-          '/tutorials/burnNFT.md',
+          '/tutorials/easy-market.md',         
           '/tutorials/how-to-use-nesting-and-bundling.md',
         ],
       }
@@ -69,7 +84,6 @@ export const sidebar: Record<string, SidebarConfig> = {
               '/concepts/schemas/ERC721Metadata.md',
             ]
           },
-          '/concepts/wallet-integration.md',
           {
             text: 'Network Features',
             children: [
@@ -127,7 +141,7 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/sdk/architecture.md',
           '/sdk/installation.md',
           '/sdk/methods.md',
-          '/sdk/tools.md',
+          // '/sdk/tools.md', -> this info exists in Tutorials section
         ],
       }
     ]

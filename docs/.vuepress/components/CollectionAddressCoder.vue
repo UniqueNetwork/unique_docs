@@ -1,18 +1,24 @@
 <template>
   <div class="inputContainer">
-    <input v-model="collectionIdInputRef" class="input"/>
-    <button @click="convertCollectionIdToAddress">Convert Collection Id to Address</button>
+    <UniqueInput v-model="collectionIdInputRef" class="input"/>
+    <UniqueButton @click="convertCollectionIdToAddress">
+      Collection Id to Address
+    </UniqueButton>
   </div>
 
   <div class="inputContainer">
-    <input v-model="addressInputRef" class="input"/>
-    <button @click="convertAddressToCollectionId">Convert Address to Collection Id</button>
+    <unique-input v-model="addressInputRef" class="input"/>
+    <UniqueButton @click="convertAddressToCollectionId">
+      Address to Collection Id
+    </UniqueButton>
   </div>
 
   <p v-show="errorMessageRef" class="error">{{ errorMessageRef }}</p>
 </template>
 
 <script setup lang="ts">
+import UniqueButton from '../components/UI/UniqueButton.vue'
+import UniqueInput from '../components/UI/UniqueInput.vue'
 import {ref} from 'vue'
 
 const collectionIdInputRef = ref('')

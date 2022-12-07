@@ -2,13 +2,7 @@
 
 # Unique Network connection tools
 
-# Table of Contents
-
-- [Intro](#intro)
-- [Packages](#packages)
-  - [SDK](#sdk)
-  - [Substrate REST](#substrate-rest)
-  - [Substrate Client](#substrate-client)
+[[toc]]
 
 ## Intro
 

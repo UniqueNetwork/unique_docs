@@ -1,14 +1,14 @@
-# NFTs. How to create and tune a collection.
+# Substrate Client. How to create and setup a collection
 
-To create NFT collection you need to have initialized SDK client. [Here](./examplesSDK.md) you can learn how to get it. Also there you can find how to get the signer address, that you'll need to sign collection creation transaction.
+To create an NFT collection, you need to initialize the SDK client. You can learn how to to do this in this [article](../sdk/installation.md). Also, you can learn how to get the signer address there, that you'll need to sign a collection creation transaction.
 
-And for optional collection cover you'll need a _valid ipfs cid_ of your cover image. Read more about storing images, videos etc [here](./store-files.md).
+And, you'll need a _valid ipfs cid_ of your cover image. Read more about storing images, videos, etc. [here](./store-files.md).
 
-## Simple collection creation
+### Create a simple collection
 
-All you should know so far is that collection can be created using different schemas. For now we support three kinds of schemas:
+Please keep in mind that collections can be created using different schemas. At the moment, we support three schemas:
 
-```typescript
+```typescript:no-line-numbers
 enum COLLECTION_SCHEMA_NAME {
   unique = "unique",
   old = "_old_",
@@ -16,11 +16,11 @@ enum COLLECTION_SCHEMA_NAME {
 }
 ```
 
-Actually you have only two options, because you should NOT use **old** schema name because of it's deprecation.
+In fact, you have only two available options, because we strongly do not recommend using the `_old_` schema, because it is already deprecated.
 
-Let's create simple collection with **unique** schema:
+So, let's create a simple collection using the `unique` schema:
 
-```typescript
+```typescript:no-line-numbers
 import { Sdk } from "@unique-nft/substrate-client";
 import {
   COLLECTION_SCHEMA_NAME,
@@ -77,39 +77,41 @@ main();
 
 ```
 
-### Arguments for sdk.collections.creation method:
+**Arguments for the `sdk.collections.creation` method**:
 
-**address** - The address of the collection owner
+`address` - the address of the collection owner.
 
-**name** - Collection name (text, up to 64 characters)
+`name` - the collection name (text value up to 64 characters).
 
-**description** - Collection description (text, up to 256 characters)
+`description` - the collection description (text value up to 256 characters).
 
-**mode** - The collection type (Nft, Fungible, or ReFungible)
+`mode` - the collection type (NFT, Fungible, or ReFungible).
 
-**tokenPrefix** - Token prefix (text, up to 4 characters)
+`tokenPrefix` - the token prefix (text value up to 4 characters).
 
-**sponsorship** - This field tells if sponsorship is enabled and what address is the current collection sponsor.
+`sponsorship` - this field defines whether a sponsorship is enabled and which address is the current collection sponsor.
 
-**limits** - Collection limits
+`limits` - the collection limits.
 
-**metaUpdatePermission** - Permission for update meta (ItemOwner, Admin, None)
+`metaUpdatePermission` - the permission to update metadata (ItemOwner, Admin, None).
 
-**permissions** - Collection permissions
+`permissions` - the collection permissions.
 
-**schema** - Collection schema
+`schema` - the collection schema.
 
-## Tune collection
+## Setup a collection
 
 Your NFT collection have a bunch of various properties such as limits, permissions, token attributes and some others. Some of them you can set only while collection creation, but others you can set up later, when your collection is already created.
 
+<!---
 _#### todo: А это так? Например атрибуты токенов же можно задать только в момент создания? Может указать конкретный список свойств с указанием что можно перезадать, что нельзя? Где взять этот список?_
+-->
 
-[Here](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/collection) you can see the list of SDK methods, that you can use to tune your collection.
+You can find the list of SDK methods, that you can use to adjust your collection [here](../sdk/methods.md#collection).
 
-Let's for example update collection limits using _sdk.collections.setLimits_ method. The method sets some collection limits and starts enforcing them immediately. By the way, only collection owner has permission to call this method.
+For example, let's update the collection limits using `sdk.collections.setLimits` method. The method sets some collection limits and starts enforcing them immediately. By the way, only the collection owner has the permission to call this method.
 
-```typescript
+```typescript:no-line-numbers
 import "@unique-nft/substrate-client/tokens";
 import { SetCollectionLimitsArguments } from "@unique-nft/substrate-client/tokens/types";
 
@@ -128,10 +130,11 @@ const limitsArgs: SetCollectionLimitsArguments = {
     transfersEnabled: false,
   },
 };
+
 const setResult = await sdk.collections.setLimits.submitWaitResult(limitsArgs);
 const {
   parsed: { collectionId, limits },
 } = result;
 ```
 
-The complete list of sdk.collections module you can check right [in the sources](https://github.com/UniqueNetwork/unique-sdk/blob/master/packages/substrate-client/tokens/sdk-collections.ts) of @unique/substrate-client package (See _SdkCollections_ class definition), or exploring tree of docs in the _UniqueNetwork/unique-sdk_ GitHub [repo](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens).
+The full list of the `sdk.collections` module you can check right [in the sources](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/collection) of `@unique/substrate-client` package. 

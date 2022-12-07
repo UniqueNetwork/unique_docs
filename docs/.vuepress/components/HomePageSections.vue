@@ -82,10 +82,6 @@ const menu: MenuItem[] = [
   align-items: center;
   text-align: center;
 
-  a {
-    color: #2c3e50;
-  }
-
   @media screen and (min-width: 1000px) {
     width: 33.33%;
   }
@@ -95,33 +91,39 @@ const menu: MenuItem[] = [
 }
 
 .icon {
-  width: 180px;
-  width: 180px;
-  padding-bottom: 15px;
+  width: 170px;
+  padding-bottom: 5px;
 }
 
 .hint {
-  color: #333333;
+  // color: #333333;
   font-weight: 300;
   font-size: 16px;
   line-height: 36px;
   letter-spacing: -0.015em;
-  padding-bottom: 15px;
+  padding-bottom: 5px;
 }
 
 .title {
   font-weight: 700;
-  font-size: 36px;
+  font-size: 32px;
   line-height: 36px;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
+}
+
+a {
+  color: var(--c-text);
+  &:hover {
+    color: rgba(var(--c-text-hover));
+  }
 }
 
 .subtitle {
   font-style: normal;
   font-weight: 400;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 30px;
   letter-spacing: -0.015em;
-  padding-bottom: 50px;
+  padding-bottom: 30px;
 }
 </style>
