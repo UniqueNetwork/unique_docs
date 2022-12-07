@@ -1,7 +1,3 @@
-
-
-
-
 # How to install
 
 [[toc]]
@@ -31,7 +27,7 @@ yarn add @unique-nft/sdk
 
 ```typescript:no-line-numbers
 import { Sdk, Options } from '@unique-nft/sdk';
-const options: Options = {
+const options: Options = {ву
     baseUrl: '<REST API URL>'
 };
 const sdk = new Sdk(options);

@@ -82,10 +82,6 @@ const menu: MenuItem[] = [
   align-items: center;
   text-align: center;
 
-  a {
-    color:  #6699cc; 
-  }
-
   @media screen and (min-width: 1000px) {
     width: 33.33%;
   }
@@ -115,10 +111,17 @@ const menu: MenuItem[] = [
   padding-bottom: 10px;
 }
 
+a {
+  color: var(--c-text);
+  &:hover {
+    color: rgba(var(--c-text-hover));
+  }
+}
+
 .subtitle {
   font-style: normal;
   font-weight: 400;
-  font-size: 21px;
+  font-size: 20px;
   line-height: 30px;
   letter-spacing: -0.015em;
   padding-bottom: 30px;

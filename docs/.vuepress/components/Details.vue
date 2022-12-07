@@ -20,8 +20,8 @@
     background: rgba(0, 0, 0, 0.05);
     margin-bottom: 5px;
     height: 35px !important;
-    color:  #6699cc;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    color:  rgba(var(--c-text-hover));
+    box-shadow: 0 0 10px rgba(var(--c-text-hover), 0.25);
     border-radius: 20px !important;
   }
   .unique-details-body {

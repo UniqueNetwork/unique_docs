@@ -15,8 +15,8 @@ export const sidebar: Record<string, SidebarConfig> = {
               '/tutorials/accounts/integrate-creating-into-UI.md',
               '/tutorials/nfts-how-to-create-and-tune-collection.md',
               '/tutorials/nfts-how-to-mint.md',
-              '/tutorials/store-files.md',
-              '/tutorials/nfts-ways-to-create.md',
+              // '/tutorials/store-files.md',  - duplicate
+              // '/tutorials/nfts-ways-to-create.md', - duplicate
               '/tutorials/destroyCollection.md',             
               '/tutorials/burnNFT.md',
               '/tutorials/work-with-evm-via-sdk.md',
@@ -84,7 +84,6 @@ export const sidebar: Record<string, SidebarConfig> = {
               '/concepts/schemas/ERC721Metadata.md',
             ]
           },
-          '/concepts/wallet-integration.md',
           {
             text: 'Network Features',
             children: [

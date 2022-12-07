@@ -8,9 +8,9 @@
 
   <div class="inputContainer">
     <unique-input v-model="addressInputRef" class="input"/>
-    <unique-button @click="convertAddressToCollectionId">
+    <UniqueButton @click="convertAddressToCollectionId">
       Address to Collection Id
-    </unique-button>
+    </UniqueButton>
   </div>
 
   <p v-show="errorMessageRef" class="error">{{ errorMessageRef }}</p>

@@ -1,63 +1,81 @@
-# Wallet integration 
+# Wallet integration
 
-To connect a wallet, you can use our Hasura-based GraphQL API.
+### Scan API
 
-[Testnet - Opal GraphQL API endpoint](https://api-opal.uniquescan.io/v1/graphql)
+[Scan API for Unique parachain](https://api-unique.uniquescan.io/v1/graphql)
 
-[Mainnet for Kusama - Quartz GraphQL API endpoint](https://api-quartz.uniquescan.io/v1/graphql)
+[Scan API for Quartz parachain](https://api-quartz.uniquescan.io/v1/graphql)
 
+[Scan API for Opal testnet](https://api-opal.uniquescan.io/v1/graphql)
 
-[//]: # ([Mainnet for Polkadot - Unique GraphQL API endpoint]&#40;https://hasura.unique.network/v1/graphql&#41;)
+[Scan API for Sapphire solochain](https://api-sapphire.uniquescan.io/v1/graphql)
 
-```graphql:no-line-numbers
-query MyQuery {
+Every endpoint provides a GraphQL playground.
+
+## Examples
+
+In all code examples at this page we assume that the `$ownerNormalized` variable should be one of:
+- a Substrate address in default (42) format, like `"5HNUuEAYMWEo4cuBW7tuL9mLHR9zSA8H7SdNKsNnYRB9M5TX"`
+- an Ethereum address in __lowercase__, like `"0xeabbf89e7a3866183c49366dc30c10837c073a6f"`
+
+### Collections
+
+How to obtain a list of collections where the address is owner or owns at least one NFT:
+
+```graphql
+query MyCollections($ownerNormalized: String) {
   collections(
     where: {
-      tokens: {
-        owner: {
-          _in: [
-            "5GbjEGWbTFV7f2XN6z7TBUyW4YidWTHmaw1ekNFCtWGuEmTT",
-            "yGHGXr2qCKygrxFw16XXEYRLmQwQt8RN8eMN5UuuJ17ZFPosP"
-          ]
-        }
-      }
+      _or: [
+        {owner_normalized: {_eq: $ownerNormalized}},
+      	{tokens: {owner_normalized: {_eq: $ownerNormalized}}},
+      ]
     },
-    order_by: {
-      collection_id: asc
-    }
+    order_by: {collection_id: asc}
+    offset: 0
+    limit: 10
   ) {
-    collection_id
-    token_prefix
-    name
-    schema_version
-    offchain_schema
-    variable_on_chain_schema
-  }
-}
-```
-
-```graphql:no-line-numbers
-query MyQuery {
-  collections(where: {collection_id: {_eq: "354"}}) {
-    collection_id
-    name
-    owner
-    schema_version
-    offchain_schema
-    variable_on_chain_schema
-    tokens(where: {
-      owner: {
-        _in: [
-          "5GbjEGWbTFV7f2XN6z7TBUyW4YidWTHmaw1ekNFCtWGuEmTT",
-          "yGHGXr2qCKygrxFw16XXEYRLmQwQt8RN8eMN5UuuJ17ZFPosP"
-        ]
-      }
-    }, order_by: {token_id: asc}) {
-      token_id
-      owner
-      data
+    count
+    timestamp
+    data {
+      collection_id
+      type
+      token_prefix
+      name
+      collection_cover
+      description
     }
   }
 }
 ```
 
+### Tokens
+
+How to obtain a list of tokens where the address is owner.
+
+`collection_id` param is optional, it's here just for example how to obtain NFTs from specific collections.
+
+```graphql
+query MyTokens($ownerNormalized: String) {
+  tokens(
+    where: {
+      owner_normalized: {_eq: $ownerNormalized}, 
+      collection_id: {_in: [123]}
+    },
+    order_by: {collection_id: desc, token_id: asc}
+    offset: 0
+    limit: 10
+  ) {
+    count
+    timestamp
+    data {
+      collection_id
+      token_id
+      token_name
+      image
+      owner_normalized
+      date_of_creation
+    }
+  }
+}
+```

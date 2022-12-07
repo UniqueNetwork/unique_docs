@@ -1,5 +1,5 @@
 <template>
-  <input class='unq-inp' type="text"
+  <input class='input' type="text"
   :value="modelValue"
   @input="$emit('update:modelValue', $event.target.value)"
   />
@@ -22,10 +22,11 @@ const value = computed({
 </script>
 
 <style lang="scss">
-.unq-inp {
+.input {
   font-family: var(--font-family) !important;
   border-radius: 30px;
   padding-left: 20px !important;
   font-weight: 600;
+  border: 1px solid var(--c-text);
 }
 </style>
