@@ -17,7 +17,7 @@ export const sidebar: Record<string, SidebarConfig> = {
               '/tutorials/nfts-how-to-mint.md',
               // '/tutorials/store-files.md',  - duplicate
               // '/tutorials/nfts-ways-to-create.md', - duplicate
-              '/tutorials/destroyCollection.md',             
+              '/tutorials/destroyCollection.md',
               '/tutorials/burnNFT.md',
               '/tutorials/work-with-evm-via-sdk.md',
               '/tutorials/live-nft-example.md',
@@ -37,9 +37,9 @@ export const sidebar: Record<string, SidebarConfig> = {
               '/tutorials/nfts-fetching.md',
             ]
           },
-          '/tutorials/createAccount.md',      
+          '/tutorials/createAccount.md',
           '/tutorials/getNFTsAndTokens.md',
-          '/tutorials/easy-market.md',         
+          '/tutorials/easy-market.md',
           '/tutorials/how-to-use-nesting-and-bundling.md',
         ],
       }
@@ -141,6 +141,8 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/sdk/architecture.md',
           '/sdk/installation.md',
           '/sdk/methods.md',
+          '/sdk/ios.md',
+          '/sdk/android.md',
           // '/sdk/tools.md', -> this info exists in Tutorials section
         ],
       }
