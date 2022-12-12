@@ -27,21 +27,21 @@ const menu: MenuItem[] = [
     hint: 'Best place to start',
     title: 'SDK',
     path: '/sdk',
-    subtitle: 'For Javascript, Mobile and Games.</br>And the best place to start for a</br> rookie Web3 developer',
+    subtitle: 'For Javascript, Mobile and Games.<br/> And the best place to start for a rookie Web3 developer',
     iconName: 'pencil',
   },
   {
-    hint: 'For designers and media enthusiats',
+    hint: 'For designers and media enthusiasts',
     title: 'NFT Design & Concepts',
     path: '/concepts',
-    subtitle: 'Media content, audio, video, nesting,<br/>fractionalization, permissions, royalties,<br/>POAPs all the tidbits in one place',
+    subtitle: 'Media content, audio, video, nesting, fractionalization, permissions, royalties, POAPs all the tidbits in one place',
     iconName: 'paint',
   },
   {
     hint: 'If you prefer to start with Solidity',
     title: 'EVM',
     path: '/evm',
-    subtitle: 'For advanced Web3 developers and</br>projects based on Solidity or Metamask',
+    subtitle: 'For advanced Web3 developers and projects based on Solidity or Metamask',
     iconName: 'calculator',
   },
   {
@@ -124,6 +124,6 @@ a {
   font-size: 20px;
   line-height: 30px;
   letter-spacing: -0.015em;
-  padding-bottom: 30px;
+  padding: 5px 15px 40px;
 }
 </style>
