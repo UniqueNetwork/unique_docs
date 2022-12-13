@@ -1,5 +1,5 @@
 <template>
-  <UniqueButton @click="testMetamask">Test Metamask</UniqueButton>
+  <UniqueButton @click="testMetamask" color="blue">Test Metamask</UniqueButton>
 
   <p v-show="error.message" class="error">{{ error.message }}</p>
 

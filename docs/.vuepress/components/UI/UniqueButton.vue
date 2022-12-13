@@ -1,29 +1,54 @@
 <template>
-  <button class='button'>
+  <button class='button' :style="cssVars">
     <slot></slot>
   </button>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
+import { computed } from 'vue'
+
+const props = defineProps(['color'])
+
+const cssVars = computed(() => {
+  switch (props.color) {
+    case 'blue':
+      return {
+        '--bg-color': "#15ADFF",
+        '--tx-color': "#FFFFFF"
+      }
+    case 'white':
+      return {
+        '--bg-color': "--c-bg",
+        '--tx-color': "#15ADFF"
+      }
+    default:
+      return {
+        '--bg-color': "--c-bg",
+        '--tx-color': "#15ADFF"
+      }
+  }
+})
 </script>
 
 <style scoped lang="scss">
 .button {
   font-family: var(--font-family);
   cursor: pointer;
-  border-radius: 30px;
-  padding: 12px 20px;
+  border-radius: 8px;
+  padding: 8px 24px;
   font-weight: 600;
-  border: 1px black;
-  box-shadow: 0 0 10px rgba(var(--c-text-hover), 0.25);
+  background-color: var(--bg-color);
+  color: var(--tx-color);
+  border: 1px solid #15ADFF;
+  // box-shadow: 0 0 10px rgba(var(--c-text-hover), 0.25);
 
   &:disabled {
     cursor: not-allowed;
-    opacity: 0.65;
+    opacity: 0.5;
   }
-  
+
   &:hover:not(:disabled) {
-    color: var(--c-text-hover)
+    size: 1.1ch
   }
 }
 </style>

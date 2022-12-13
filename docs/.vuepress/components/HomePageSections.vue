@@ -35,7 +35,7 @@ const menu: MenuItem[] = [
     title: 'NFT Design & Concepts',
     path: '/concepts',
     subtitle: 'Media content, audio, video, nesting,<br/>fractionalization, permissions, royalties,<br/>POAPs all the tidbits in one place',
-    iconName: 'paint',
+    iconName: 'palette',
   },
   {
     hint: 'If you prefer to start with Solidity',
@@ -56,14 +56,14 @@ const menu: MenuItem[] = [
     title: 'Tutorials & How-To’s',
     path: '/tutorials',
     subtitle: 'Who doesn’t like a video?<br/>And yup, code explained.',
-    iconName: 'television',
+    iconName: 'monitorplay',
   },
   {
     hint: 'True bare-metal docs',
     title: 'Our Networks',
     path: '/networks',
     subtitle: 'Technical specs',
-    iconName: 'server',
+    iconName: 'squaresfour',
   },
 ];
 </script>

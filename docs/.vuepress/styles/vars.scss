@@ -25,6 +25,7 @@
   --c-border: #eaecef;
   --c-border-dark: #dfe2e5;
   --c-border-collapse: #d2d3d6;
+  --c-border-table: 243, 244, 245;
 
   // custom container colors
   --c-tip: #42b983;
@@ -102,7 +103,8 @@
 
 // plugin-external-link-icon
 .external-link-icon {
-  --external-link-icon-color: var(--c-text-quote);
+  width: 24px;
+  --external-link-icon-color: #15ADFF;
 }
 
 // plugin-medium-zoom
