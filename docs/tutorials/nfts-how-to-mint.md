@@ -151,7 +151,7 @@ The `attributesSchema` object should contain a token description fields like typ
 
 ### Create an NFT token
 
-When you perform all previos steps, you have all what is needed to create a new NFT token.
+When you perform all previous steps, you have all what is needed to create a new NFT token.
 
 ```typescript:no-line-numbers
 const { parsed: { tokenId } } = await sdk.tokens.create.submitWaitResult({
@@ -163,7 +163,7 @@ const { parsed: { tokenId } } = await sdk.tokens.create.submitWaitResult({
     },
     encodedAttributes: {
       0: 0,
-      1: { '_': 'Murzik' },
+      1: { '_': 'Jack' },
       2: [1, 2, 3],
     },
   }
@@ -186,6 +186,6 @@ encodedAttributes: {
 
 First attribute have 0 index and it means what cat sex is 'male' according the enum values.
 
-Second attribute means that cat name is 'Murzik' and that this attribute can contain any text value.
+Second attribute means that cat name is 'Jack' and that this attribute can contain any text value.
 
 Third attribute is a cat color and it can contain the array of colors specified in the enum with colors.
