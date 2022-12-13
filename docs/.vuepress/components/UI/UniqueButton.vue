@@ -40,7 +40,6 @@ const cssVars = computed(() => {
   background-color: var(--bg-color);
   color: var(--tx-color);
   border: 1px solid #15ADFF;
-  // box-shadow: 0 0 10px rgba(var(--c-text-hover), 0.25);
 
   &:disabled {
     cursor: not-allowed;

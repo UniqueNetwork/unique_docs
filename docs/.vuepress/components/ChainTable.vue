@@ -98,12 +98,9 @@ export default {
 table {
   display: table;
   width: 100%;
-  // border-radius: 20px !important;
-  // box-shadow: 0 0 20px rgba(var(--c-text-hover), 0.1);
 }
 
 th {
-  // border-bottom: 3px solid #999 !important;
   font-size: 18px;
   font-weight: 600;
   text-align: left;

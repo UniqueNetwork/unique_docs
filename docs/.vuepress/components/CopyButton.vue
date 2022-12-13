@@ -59,7 +59,6 @@ const copy = async () => {
 
   .external-link-icon {
     padding-top: .25rem;
-    color: blue;
   }
 }
 </style>
