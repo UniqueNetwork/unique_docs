@@ -1,13 +1,13 @@
 <template>
   <div class="inputContainer">
-    <UniqueInput v-model="collectionIdInputRef" class="input"/>
-    <UniqueButton @click="convertCollectionIdToAddress">
+    <UniqueInput placeholder="Collection id" v-model="collectionIdInputRef" class="input"/>
+    <UniqueButton color="blue" @click="convertCollectionIdToAddress">
       Collection Id to Address
     </UniqueButton>
   </div>
 
   <div class="inputContainer">
-    <unique-input v-model="addressInputRef" class="input"/>
+    <UniqueInput placeholder="Collection address" v-model="addressInputRef" class="input"/>
     <UniqueButton @click="convertAddressToCollectionId">
       Address to Collection Id
     </UniqueButton>

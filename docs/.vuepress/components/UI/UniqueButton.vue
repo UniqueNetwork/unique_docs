@@ -39,7 +39,7 @@ const cssVars = computed(() => {
   font-weight: 600;
   background-color: var(--bg-color);
   color: var(--tx-color);
-  border: 1px solid #15ADFF;
+  border: 1px solid var(--c-brand-secondary);
 
   &:disabled {
     cursor: not-allowed;
