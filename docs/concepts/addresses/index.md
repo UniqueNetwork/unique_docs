@@ -21,14 +21,15 @@ In addition to allowing you to derive multiple addresses from the same public ke
 Thus, a Substrate address contains of chain prefix, public key, and checksum which are encoded using the base58 algorithm. The example below
 demonstrates this in detail.
 
-<details>
-<summary>Example</summary>
+<Details>
+<template v-slot:header>Example</template>
+<template v-slot:body>
 
-Let's take a Substrate address, e.g. _yGHGXr2qCKygrxFw16XXEYRLmQwQt8RN8eMN5UuuJ17ZFPosP_. Using the [@unique-nft/api](https://www.npmjs.com/package/@unique-nft/api)
-library, we can decode the address. 
+Let's take a Substrate address, e.g. `yGHGXr2qCKygrxFw16XXEYRLmQwQt8RN8eMN5UuuJ17ZFPosP`. Using the [@unique-nft/api](https://www.npmjs.com/package/@unique-nft/api) library, we can decode the address. 
 
-```ts
+```ts:no-line-numbers
 import {UniqueUtils} from '@unique-nft/api'
+
 const Address = UniqueUtils.Address
   ...  
 Address.substrate.decode('unk9GwxLcJ7VHE75RgDYuRjuewZBGWHWvwgdVMSN3pPz9bY52')
@@ -36,15 +37,15 @@ Address.substrate.decode('unk9GwxLcJ7VHE75RgDYuRjuewZBGWHWvwgdVMSN3pPz9bY52')
 Address.substrate.decode('yGJMj5z32dpBUigGVFgatC382Ti3FNVSKyfgi87UF7f786MJL')
 ```
 
-The result is following. Please note that both calls give the same result since we receive a public key which is the same in both addresses, 
-they are equal just presented in different formats (Unique and Quartz). 
+The result is following. Please note that both calls give the same result since we receive a public key which is the same in both addresses, they are equal just presented in different formats (Unique and Quartz). 
 
 ![public key](../images/array-address.png)
 
 Now, let's use another decoder that will provide not only public key as a result. 
 
-```ts
+```ts:no-line-numbers
 import {algorithms} from "@unique-nft/utils/address"
+
 ... 
 algorithms.base58.decode('unk9GwxLcJ7VHE75RgDYuRjuewZBGWHWvwgdVMSN3pPz9bY52')
 ``` 
@@ -61,7 +62,7 @@ on the chain prefix, as well.
 
 The reverse operation will show that the encoding and decoding work in both directions. 
 
-```ts
+```ts:no-line-numbers
 algorithms.base58.encode(new Uint8Array( [
     119, 220, 248, 204, 117, 247, 109,  70, 195,
     177, 197, 242, 112, 254,   6, 200,
@@ -72,7 +73,8 @@ algorithms.base58.encode(new Uint8Array( [
 // unk9GwxLcJ7VHE75RgDYuRjuewZBGWHWvwgdVMSN3pPz9bY52
 ```
 
-</details>
+</template>
+</Details>
 
 The private key owner can change chain data only by signing a transaction with the private key and publishing it to the blockchain.
 This data is stored inside the blockchain, and it is read-only for all other users.
@@ -84,8 +86,7 @@ Blockchain accounts are quite different thing from what we use for web2 accounts
 * _Chain data_ associated with the address - in the case of Unique, it is all public.
 -->
 
-Each Substrate blockchain can register a custom prefix to create a chain-specific address type. For example, all Polkadot addresses start with 1 and all Kusama
-addresses start with a capital letter. All unregistered Substrate chains start with 5.
+Each Substrate blockchain can register a custom prefix to create a chain-specific address type. For example, all Polkadot addresses start with 1 and all Kusama addresses start with a capital letter. All unregistered Substrate chains start with 5.
 
 :warning: The default Substrate address format (starting from 5) also has the prefix equals 42.
 
@@ -104,7 +105,7 @@ There are two types of addresses in Ethereum: Externally Owned Address (EOA) and
 
 Externally Owned Address refers to an account with a public and private key pair that holds your funds.
 
-An Ethereum address is a 42-character hexadecimal address derived from the last 20 bytes of the public key controlling the address with 0x appended in front. e.g., _0x71C7656EC7ab88b098defB751B7401B5f6d8976F_.
+An Ethereum address is a 42-character hexadecimal address derived from the last 20 bytes of the public key controlling the address with 0x appended in front. e.g. `0x71C7656EC7ab88b098defB751B7401B5f6d8976F`.
 
 The Ethereum address is the "public" address that you would need to receive funds from another party. To access funds in the address, you must have its private key. 
 Kindly exercise duty of care when handling your private key as they can be used to access all the funds in an address.
