@@ -1,25 +1,32 @@
-# NFTS. How to mint NFTs
+# Substrate Client. Mint an NFT using schemas
 
-## Preparation
+### Create an account
 
-Before to start creating tokens we should have:
+Install the the needed packages.
 
-1. [Substrate account](/sdk-guides/accounts/ways-to-create)
-2. [Link to image in IPFS](#upload-images-to-ipfs)
-3. [Collection ID](#create-collection)
+<CodeGroup>
+  <CodeGroupItem title="NPM" active>
 
-## SDK
-
-Install packages.
-
-```bash
-npm i @unique-nft/substrate-client --save
-npm i @unique-nft/accounts --save
+```bash:no-line-numbers
+npm i @unique-nft/substrate-client --save-dev
+npm i @unique-nft/accounts --save-dev
 ```
 
-Like for previous steps you should have [SDK](/sdk-guides/examplesSDK.html) object with specified account for execute creating method.
+  </CodeGroupItem>
+  <CodeGroupItem title="YARN">
 
-```typescript
+```bash:no-line-numbers
+yarn add @unique-nft/substrate-client --dev
+yarn add @unique-nft/accounts --dev
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
+
+Import the required objects and initialize the account using the Substrate Client.
+
+```typescript:no-line-numbers
 import { Sdk } from '@unique-nft/substrate-client';
 import { KeyringProvider } from '@unique-nft/accounts/keyring';
 
@@ -34,11 +41,11 @@ const sdk = new Sdk({
 });
 ```
 
-## Upload images to IPFS
+### Upload images to IPFS
 
-If we have collection cover image or nft image we can upload these files by this script:
+When we have a collection cover image or an NFT image, we can upload these files to IPFS by the following script:
 
-```typescript
+```typescript:no-line-numbers
 import { createReadStream } from 'fs';
 import FormData from 'form-data';
 import fetch from 'node-fetch';
@@ -73,80 +80,80 @@ result.then((res) => {
 });
 ```
 
-After uploading file we are getting response from server with IPFS Cid:
+After uploading a file, we get a response from a server with an IPFS Cid:
 
-```json
+```json:no-line-numbers
 {
   cid: 'Qmc1Dj8m4z2vcojjJjp348FKffmSjopSFTgATpU8gUx5k1',
   fileUrl: 'https://ipfs.unique.network/ipfs/Qmc1Dj8m4z2vcojjJjp348FKffmSjopSFTgATpU8gUx5k1'
 }
 ```
 
-## Create collection
+### Create a collection
 
-For create awesome collection with cats(all love cats) we should set name, description, tokenPrefix and add some information about future tokens to attributes scheme.
+For create a brand-new collection with cats, we should set a name, a description, a token prefix and add some information about future tokens. In other words, we should define a attributes scheme.
 
-Cover picture and url template we can take from previous step.
+We can take the cover picture and the URL template from previous step.
 
-```typescript
-  const { parsed: { collectionId } } = await sdk.collections.creation.submitWaitResult({
-    address,
-    name: 'Crazy cats',
-    description: 'Crazy cats from village',
-    tokenPrefix: 'CRC',
-    schema: {
-      schemaName: COLLECTION_SCHEMA_NAME.unique,
-      schemaVersion: '1.0.0',
-      coverPicture: {
-        ipfsCid: 'Qmc1Dj8m4z2vcojjJjp348FKffmSjopSFTgATpU8gUx5k1',
-      },
-      image: {
-        urlTemplate: 'https://ipfs.unique.network/ipfs/{infix}',
-      },
-      attributesSchemaVersion: '1.0.0',
-      attributesSchema: {
-        0: {
-          name: { '_': 'sex' },
-          type: AttributeType.string,
-          optional: true,
-          isArray: false,
-          enumValues: {
-            0: { '_': 'male' },
-            1: { '_': 'female' }
-          }
-        },
-        1: {
-          name: { '_': 'name' },
-          isArray: false,
-          optional: false,
-          type: AttributeType.string,
-        },
-        2: {
-          name: { '_': 'color' },
-          isArray: true,
-          type: AttributeType.string,
-          optional: true,
-          enumValues: {
-            0: { '_': 'black' },
-            1: { '_': 'white' },
-            2: { '_': 'gray' },
-            3: { '_': 'brown' },
-          },
+```typescript:no-line-numbers
+const { parsed: { collectionId } } = await sdk.collections.creation.submitWaitResult({
+  address,
+  name: 'Crazy cats',
+  description: 'Crazy cats from village',
+  tokenPrefix: 'CRC',
+  schema: {
+    schemaName: COLLECTION_SCHEMA_NAME.unique,
+    schemaVersion: '1.0.0',
+    coverPicture: {
+      ipfsCid: 'Qmc1Dj8m4z2vcojjJjp348FKffmSjopSFTgATpU8gUx5k1',
+    },
+    image: {
+      urlTemplate: 'https://ipfs.unique.network/ipfs/{infix}',
+    },
+    attributesSchemaVersion: '1.0.0',
+    attributesSchema: {
+      0: {
+        name: { '_': 'sex' },
+        type: AttributeType.string,
+        optional: true,
+        isArray: false,
+        enumValues: {
+          0: { '_': 'male' },
+          1: { '_': 'female' }
         }
+      },
+      1: {
+        name: { '_': 'name' },
+        isArray: false,
+        optional: false,
+        type: AttributeType.string,
+      },
+      2: {
+        name: { '_': 'color' },
+        isArray: true,
+        type: AttributeType.string,
+        optional: true,
+        enumValues: {
+          0: { '_': 'black' },
+          1: { '_': 'white' },
+          2: { '_': 'gray' },
+          3: { '_': 'brown' },
+        },
       }
     }
-  });
+  }
+});
 
-  console.log('Collection ID: ', collectionId);
+console.log('Collection ID: ', collectionId);
 ```
 
-AttributesSchema should contain description of token fields like types, possible values, requirement flag and array with list of values.
+The `attributesSchema` object should contain a token description fields like types, possible values, requirement flag and an array with a list of values.
 
-## Create NFT token
+### Create an NFT token
 
-In this moment we have all what we need to create NFT token.
+When you perform all previous steps, you have all what is needed to create a new NFT token.
 
-```typescript
+```typescript:no-line-numbers
 const { parsed: { tokenId } } = await sdk.tokens.create.submitWaitResult({
   address,
   collectionId,
@@ -156,69 +163,29 @@ const { parsed: { tokenId } } = await sdk.tokens.create.submitWaitResult({
     },
     encodedAttributes: {
       0: 0,
-      1: { '_': 'Murzik' },
+      1: { '_': 'Jack' },
       2: [1, 2, 3],
     },
   }
 });
+
+console.log('Token was minted. ID: ', tokenId)
 ```
 
-How you can see, for creating token we should have account address.
+As you can see, for creating a token we should have an account address. Also, we should pass `CollectionID` created on the previous step and the IPFS Cid. 
 
-We should pass CollectionID created from previous step and IPFS Cid.
+If we have collection with specified schema attributes (see the collection schema [above](#create-a-collection)), we can define the token attributes in accordance with collection attributes schema:
 
-If we have collection with specified schema attributes like that:
-
-```typescript
-{
-  schemaName: COLLECTION_SCHEMA_NAME.unique,
-  schemaVersion: '1.0.0',
-  attributesSchemaVersion: '1.0.0',
-  attributesSchema: {
-    0: {
-      name: { '_': 'sex' },
-      type: AttributeType.string,
-      optional: true,
-      isArray: false,
-      enumValues: {
-        0: { '_': 'male' },
-        1: { '_': 'female' }
-      }
-    },
-    1: {
-      name: { '_': 'name' },
-      isArray: false,
-      optional: false,
-      type: AttributeType.string,
-    },
-    2: {
-      name: { '_': 'color' },
-      isArray: true,
-      type: AttributeType.string,
-      optional: true,
-      enumValues: {
-        0: { '_': 'black' },
-        1: { '_': 'white' },
-        2: { '_': 'gray' },
-        3: { '_': 'brown' },
-      },
-    }
-  }
-}
-```
-
-We can define attributes for token in accordance with collection attributes schema:
-
-```typescript
+```typescript:no-line-numbers
 encodedAttributes: {
   0: 0,
-  1: { '_': 'Murzik' },
+  1: { '_': 'Jack' },
   2: [1, 2, 3],
 }
 ```
 
-First attribute have 0 index and it means what cat sex is 'male' according enum with values.
+First attribute have 0 index and it means what cat sex is 'male' according the enum values.
 
-Second attribute is mean what cat's name is 'Murzik' and that attribute can contain any text value.
+Second attribute means that cat name is 'Jack' and that this attribute can contain any text value.
 
-Third attribute is color of cat and it can contains array of colors specified in enum with colors.
+Third attribute is a cat color and it can contain the array of colors specified in the enum with colors.

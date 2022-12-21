@@ -1,7 +1,6 @@
 .unique-details {
   background-color: var(--c-bg);
   border-bottom: 1px solid var(--c-border-collapse);
-  padding: 24px 16px;
   position: relative;
   .unique-summary {
     font-size: 24px;
@@ -25,6 +24,7 @@
       right: 24px;
       width: 24px;
       height: 24px;
+      margin-top: 0;
       transition: 0.2s;
       background-image: url("/images/icons/arrow.svg");
       filter: brightness(var(--icon-bright-level));

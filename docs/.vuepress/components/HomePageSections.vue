@@ -1,14 +1,14 @@
 <template>
-<div :class="$style.root">
-  <div v-for="item in menu" :class="$style.item">
-    <RouterLink :to="item.path">
-      <img :src="withBase(`/images/icons/${item.iconName}.svg`)" :class="$style.icon"/>
-      <div :class="$style.hint" v-html="item.hint"/>
-      <div :class="$style.title" v-html="item.title"/>
-      <div :class="$style.subtitle" v-html="item.subtitle"/>
-    </RouterLink>
+  <div :class="$style.root">
+    <div v-for="item in menu" :class="$style.item">
+      <RouterLink :to="item.path">
+        <img :src="withBase(`/images/icons/${item.iconName}.svg`)" :class="$style.icon"/>
+        <div :class="$style.hint" v-html="item.hint"/>
+        <div :class="$style.title" v-html="item.title"/>
+        <div :class="$style.subtitle" v-html="item.subtitle"/>
+      </RouterLink>
+    </div>
   </div>
-</div>
 </template>
 
 <script setup lang="ts">
@@ -27,21 +27,21 @@ const menu: MenuItem[] = [
     hint: 'Best place to start',
     title: 'SDK',
     path: '/sdk',
-    subtitle: 'For Javascript, Mobile and Games.</br>And the best place to start for a</br> rookie Web3 developer',
+    subtitle: 'For Javascript, Mobile and Games.<br/> And the best place to start for a rookie Web3 developer',
     iconName: 'pencil',
   },
   {
-    hint: 'For designers and media enthusiats',
+    hint: 'For designers and media enthusiasts',
     title: 'NFT Design & Concepts',
     path: '/concepts',
-    subtitle: 'Media content, audio, video, nesting,<br/>fractionalization, permissions, royalties,<br/>POAPs all the tidbits in one place',
+    subtitle: 'Media content, audio, video, nesting, fractionalization, permissions, royalties, POAPs all the tidbits in one place',
     iconName: 'paint',
   },
   {
     hint: 'If you prefer to start with Solidity',
     title: 'EVM',
     path: '/evm',
-    subtitle: 'For advanced Web3 developers and</br>projects based on Solidity or Metamask',
+    subtitle: 'For advanced Web3 developers and projects based on Solidity or Metamask',
     iconName: 'calculator',
   },
   {
@@ -82,10 +82,6 @@ const menu: MenuItem[] = [
   align-items: center;
   text-align: center;
 
-  a {
-    color: #2c3e50;
-  }
-
   @media screen and (min-width: 1000px) {
     width: 33.33%;
   }
@@ -95,33 +91,40 @@ const menu: MenuItem[] = [
 }
 
 .icon {
-  width: 180px;
-  width: 180px;
-  padding-bottom: 15px;
+  width: 170px;
+  padding-bottom: 5px;
 }
 
 .hint {
-  color: #333333;
+  // color: #333333;
   font-weight: 300;
   font-size: 16px;
   line-height: 36px;
   letter-spacing: -0.015em;
-  padding-bottom: 15px;
+  padding-bottom: 5px;
 }
 
 .title {
   font-weight: 700;
-  font-size: 36px;
+  font-size: 32px;
   line-height: 36px;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
+}
+
+a {
+  color: var(--c-custom-text);
+
+  &:hover {
+    color: var(--c-custom-text-hover);
+  }
 }
 
 .subtitle {
   font-style: normal;
   font-weight: 400;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 30px;
   letter-spacing: -0.015em;
-  padding-bottom: 50px;
+  padding: 5px 15px 40px;
 }
 </style>

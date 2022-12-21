@@ -1,26 +1,22 @@
-# NFTs. Ways of creation
+# (Duplicate) Substrate Client. Different approaches to create a collection
 
 In this guide, we will go through the entire process of creating token using the Unique Network SDK.
 
 To create tokens and collections, we need the following packages:
 
-1) [@unique-nft/substrate-client](https://www.npmjs.com/package/@unique-nft/substrate-client)
-2) [@unique-nft/accounts](https://www.npmjs.com/package/@unique-nft/accounts)
+[@unique-nft/substrate-client](https://www.npmjs.com/package/@unique-nft/substrate-client)
+
+[@unique-nft/accounts](https://www.npmjs.com/package/@unique-nft/accounts)
 
 
-_**Ways of creation**_
-- [Initialize SDK with signer](#initialize-sdk)
-- [Upload file(optional)](#upload-file)
-- [Create new collection](#create-collection)
-- [Create new token](#create-token)
+## Initialization
 
-## Initialize sdk
-To get signer we need to install NPM package [@unique-nft/accounts](https://www.npmjs.com/package/@unique-nft/accounts)
+To get signer we need to install the [@unique-nft/accounts](https://www.npmjs.com/package/@unique-nft/accounts) package. 
 An easy way to get signer is to use the `KeyringProvider` function from the `@unique-nft/accounts/keyring` package:
 
-### Get signer
+#### Get a signer
 
-```typescript
+```typescript:no-line-numbers
 // signer.ts
 import {KeyringProvider} from '@unique-nft/accounts/keyring';
 
@@ -35,9 +31,9 @@ export const getSigner = async (seed = '//Alice') => {
 }
 ```
 
-### Initialize SDK
+#### Initialize SDK
 
-```typescript
+```typescript:no-line-numbers
 // sdk.servicce.ts
 import { Sdk } from '@unique-nft/substrate-client';
 import { getSigner } from './signer';
@@ -48,24 +44,24 @@ export const sdk = await Sdk.create({
 });
 ```
 
-## Upload file
+## Upload a file
 
-You can upload files in the following ways: upload to ipfs or use our [rest method](https://rest.opal.uniquenetwork.dev/swagger/#/ipfs/IpfsController_uploadFile)
+You can upload files in the following ways: upload to IPFS, or use our [Rest method](https://rest.opal.uniquenetwork.dev/swagger/#/ipfs/IpfsController_uploadFile).
 
 Response example:
 
-```json
+```json:no-line-numbers
 {
   "cid": "QmUDXW8FbHQ1GGhJbj9kiPeCeTH5SX7QPHJFQGtEp9QeEm",
   "fileUrl": "https://ipfs.uniquenetwork.dev/ipfs/QmUDXW8FbHQ1GGhJbj9kiPeCeTH5SX7QPHJFQGtEp9QeEm"
 }
 ```
 
-And then use those response entities to create collections/tokens.
+And then, you can use those response entities to create collections/tokens.
 
-## Create collection
+## Create a collection
 
-```typescript
+```typescript:no-line-numbers
 import '@unique-nft/substrate-client/tokens';
 import { sdk } from './sdk.servicce.ts';
 
@@ -89,8 +85,9 @@ const collectionId = result.parsed.collectionId;
 const collection = await sdk.collections.get({ collectionId });
 ```
 
-#### Other ways to create collections
-```typescript
+#### Other ways to create a collection
+
+```typescript:no-line-numbers
 /**
  * returns unsigned extrinsic
  */
@@ -114,25 +111,39 @@ const newCollection$ = sdk.collections.creation.submitWatch(myCollection);
 
 #### Collection settings methods
 
-1) setLimits - sets some collection limits
-2) setProperties - sets some collection properties
-3) deleteProperties
-4) setPropertyPermissions
-5) setSponsorship - set sponsor of collection
-6) confirmSponsorship - confirms sponsorship of a collection
-7) removeSponsorship
-8) setPermissions - sets onchain permissions for a collection
-9) destroy - destroys collection if no tokens within this collection
-10) setTransfersEnabled - enables or disables transfers in a collection
-11) transfer - сhanges the owner of the collection
-12) addAdmin - adds an administrator of a collection
-13) removeAdmin - Removes administrator of a collection
-14) addToAllowList
-15) removeFromAllowList
+`setLimits` - sets collection limits.
 
-## Create token
+`setProperties` - sets collection properties.
 
-```typescript
+`deleteProperties` - deletes collection properties. 
+
+`setPropertyPermissions` - sets permissions for collection properties. 
+
+`setSponsorship` - set sponsor of collection.
+
+`confirmSponsorship` - confirms sponsorship of a collection.
+
+`removeSponsorship` - deletes the collection sponsor. 
+
+`setPermissions`- sets onchain permissions for a collection.
+
+`destroy` - destroys collection if no tokens within this collection.
+
+`setTransfersEnabled` - enables or disables transfers in a collection.
+
+`transfer` - сhanges the owner of the collection.
+
+`addAdmin` - adds an administrator of a collection.
+
+`removeAdmin` - removes administrator of a collection.
+
+`addToAllowList` - adds an address to the allow list. 
+
+`removeFromAllowList` - removes an address from the allow list.
+
+## Create a token
+
+```typescript:no-line-numbers
 import '@unique-nft/substrate-client/tokens';
 import { sdk } from './sdk.servicce.ts';
 

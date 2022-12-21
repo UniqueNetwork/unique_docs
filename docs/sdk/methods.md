@@ -3,9 +3,7 @@
 ## Collection
 
 <Details><template v-slot:header>
-
-### Get collection by Id new
-
+Get collection by Id new
 </template><template v-slot:body>
 
 #### Overview
@@ -72,7 +70,7 @@ const collection: CollectionInfo = await sdk.collections.get(getCollectionArgs);
 
 ```bash
 curl -X 'GET' \
-  'https://rest.unique.network/opal/collection?collectionId=1' \
+  'https://rest.unique.network/opal/v1/collection?collectionId=1' \
   -H 'accept: application/json'
 ```
 
@@ -81,7 +79,7 @@ curl -X 'GET' \
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
 const collection = await sdk.collections.get({ collectionId: 1 });
 ```
@@ -93,9 +91,7 @@ const collection = await sdk.collections.get({ collectionId: 1 });
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Get collection properties
-
+Get collection properties
 </template><template v-slot:body>
 
 #### Overview
@@ -170,7 +166,7 @@ const result: CollectionPropertiesResult = await sdk.collections.properties(args
 
 ```bash
 curl -X 'GET' \
-  'https://rest.unique.network/opal/collection/properties?collectionId=1' \
+  'https://rest.unique.network/opal/v1/collections/properties?collectionId=1' \
   -H 'accept: application/json'
 ```
 
@@ -179,7 +175,7 @@ curl -X 'GET' \
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
 const { properties } = await sdk.collections.properties({ collectionId: 1 });
 ```
@@ -191,9 +187,7 @@ const { properties } = await sdk.collections.properties({ collectionId: 1 });
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Create collection with unique schema
-
+Create collection with unique schema
 </template><template v-slot:body>
 
 #### Overview
@@ -338,6 +332,8 @@ Throws common errors on insufficient balance and so on.
 
 #### Returns
 
+The method returns a `parsed` object that contains the `CollectionIdArguments`.
+
 ```typescript
 interface CollectionIdArguments {
   collectionId: number;
@@ -381,7 +377,7 @@ console.log(`Created new collection with id ${collectionId}`);
 
 ```bash
 curl -X 'POST' \
-  'https://rest.unique.network/opal/collection' \
+  'https://rest.unique.network/opal/v1/collections' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -403,7 +399,7 @@ curl -X 'POST' \
 # then we sign, then we call
 
 curl -X 'POST' \
-'https://rest.unique.network/opal/extrinsic/submit' \
+'https://rest.unique.network/opal/v1/extrinsic/submit' \
 -H 'accept: application/json' \
 -H 'Content-Type: application/json' \
 -d '{
@@ -417,7 +413,7 @@ curl -X 'POST' \
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
 const result = await sdk.collections.creation.submitWaitResult({
   address: '<your address>',
@@ -448,9 +444,7 @@ console.log(`Created collection with id ${collectionId}`);
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Delete collection properties
-
+Delete collection properties
 </template><template v-slot:body>
 
 #### Overview
@@ -529,7 +523,7 @@ console.log(`Deleted ${deletedKeys.join()}`);
 
 ```bash
 curl -X 'DELETE' \
-  'https://rest.unique.network/opal/collection/properties' \
+  'https://rest.unique.network/opal/v1/collections/properties' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -543,7 +537,7 @@ curl -X 'DELETE' \
 ### then we sign, then we call
 
 curl -X 'POST' \
-'https://rest.unique.network/opal/extrinsic/submit' \
+'https://rest.unique.network/opal/v1/extrinsic/submit' \
 -H 'accept: application/json' \
 -H 'Content-Type: application/json' \
 -d '{
@@ -557,7 +551,7 @@ curl -X 'POST' \
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
 await sdk.collections.deleteProperties.submitWaitResult({
     address: '<your address>',
@@ -573,9 +567,7 @@ await sdk.collections.deleteProperties.submitWaitResult({
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Destroy collection
-
+Destroy collection
 </template><template v-slot:body>
 
 #### Overview
@@ -639,7 +631,7 @@ const { success } = result.parsed;
 
 ```bash
 curl -X 'DELETE' \
-  'https://rest.unique.network/opal/collection' \
+  'https://rest.unique.network/opal/v1/collections' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -649,7 +641,7 @@ curl -X 'DELETE' \
 # then we sign, then we call
 
 curl -X 'POST' \
-'https://rest.unique.network/opal/extrinsic/submit' \
+'https://rest.unique.network/opal/v1/extrinsic/submit' \
 -H 'accept: application/json' \
 -H 'Content-Type: application/json' \
 -d '{
@@ -663,7 +655,7 @@ curl -X 'POST' \
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
 client.collections.destroy.submitWaitResult({
     address: '<your address>',
@@ -678,9 +670,7 @@ client.collections.destroy.submitWaitResult({
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Get effective limits by collection Id
-
+Get effective limits by collection Id
 </template><template v-slot:body>
 
 #### Overview
@@ -756,7 +746,7 @@ console.log(`Collection ${collectionId} limits: ${JSON.stringify(limits)}`);
 
 ```bash
 curl -X 'GET' \
-  'https://rest.unique.network/opal/collection/limits?collectionId=1' \
+  'https://rest.unique.network/opal/v1/collections/limits?collectionId=1' \
   -H 'accept: application/json'
 ```
 
@@ -765,7 +755,7 @@ curl -X 'GET' \
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
 const { collectionId, limits } = await sdk.collections.getLimits({ collectionId: 1 });
 
@@ -779,9 +769,7 @@ console.log(`Collection ${collectionId} limits: ${JSON.stringify(limits)}`);
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Property permissions
-
+Property permissions
 </template><template v-slot:body>
 
 #### Overview
@@ -874,7 +862,7 @@ This method returns `PropertyPermissionsResult`
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-  const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+  const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
   
   const result = await sdk.collections.propertyPermissions({
     collectionId: 1,
@@ -888,9 +876,7 @@ This method returns `PropertyPermissionsResult`
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Set collection limits
-
+Set collection limits
 </template><template v-slot:body>
 
 #### Overview
@@ -1000,7 +986,7 @@ This method returns `SetCollectionLimitsResult`
 ```bash
 
     curl -X 'POST' \
-      'https://rest.unique.network/opal/collection/set-limits?use=Build&withFee=false&verify=false' \
+      'https://rest.unique.network/opal/v1/collections/set-limits?use=Build&withFee=false&verify=false' \
       -H 'accept: application/json' \
       -H 'Content-Type: application/json' \
       -d '{
@@ -1022,7 +1008,7 @@ This method returns `SetCollectionLimitsResult`
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.unique.network/opal/extrinsic/submit' \
+    'https://rest.unique.network/opal/v1/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -1036,7 +1022,7 @@ This method returns `SetCollectionLimitsResult`
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
     const result = await sdk.collections.setLimits.submitWaitResult({
       "limits": {
@@ -1064,9 +1050,7 @@ This method returns `SetCollectionLimitsResult`
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Set collection permissions
-
+Set collection permissions
 </template><template v-slot:body>
 
 #### Overview
@@ -1169,7 +1153,7 @@ This method returns `SetCollectionPermissionsResult`
 
 ```bash
     curl -X 'POST' \
-      'https://rest.unique.network/opal/collection/permissions?use=Build&withFee=false&verify=false' \
+      'https://rest.unique.network/opal/v1/collections/permissions?use=Build&withFee=false&verify=false' \
       -H 'accept: application/json' \
       -H 'Content-Type: application/json' \
       -d '{
@@ -1188,7 +1172,7 @@ This method returns `SetCollectionPermissionsResult`
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.unique.network/opal/extrinsic/submit' \
+    'https://rest.unique.network/opal/v1/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -1202,7 +1186,7 @@ This method returns `SetCollectionPermissionsResult`
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-  const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+  const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
   
   const result = await sdk.collections.setPermissions.submitWaitResult({
     "collectionId": 1,
@@ -1229,9 +1213,7 @@ This method returns `SetCollectionPermissionsResult`
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Set collection properties
-
+Set collection properties
 </template><template v-slot:body>
 
 #### Overview
@@ -1321,7 +1303,7 @@ This method returns `SetCollectionPermissionsResult`
 ```bash
 
     curl -X 'POST' \
-      'https://rest.unique.network/opal/collection/properties?use=Build&withFee=false&verify=false' \
+      'https://rest.unique.network/opal/v1/collections/properties?use=Build&withFee=false&verify=false' \
       -H 'accept: application/json' \
       -H 'Content-Type: application/json' \
       -d '{
@@ -1338,7 +1320,7 @@ This method returns `SetCollectionPermissionsResult`
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.unique.network/opal/extrinsic/submit' \
+    'https://rest.unique.network/opal/v1/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -1352,7 +1334,7 @@ This method returns `SetCollectionPermissionsResult`
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
     const result = await sdk.collections.setProperties.submitWaitResult({
       "address": "5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX",
@@ -1377,9 +1359,7 @@ This method returns `SetCollectionPermissionsResult`
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Set token property permissions
-
+Set token property permissions
 </template><template v-slot:body>
 
 #### Overview
@@ -1491,7 +1471,7 @@ This method returns `SetTokenPropertyPermissionsResult`
 ```bash
 
     curl -X 'POST' \
-      'https://rest.unique.network/opal/collection/property-permissions?use=Build&withFee=false&verify=false' \
+      'https://rest.unique.network/opal/v1/collections/property-permissions?use=Build&withFee=false&verify=false' \
       -H 'accept: application/json' \
       -H 'Content-Type: application/json' \
       -d '{
@@ -1512,7 +1492,7 @@ This method returns `SetTokenPropertyPermissionsResult`
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.unique.network/opal/extrinsic/submit' \
+    'https://rest.unique.network/opal/v1/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -1526,7 +1506,7 @@ This method returns `SetTokenPropertyPermissionsResult`
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
     const result = await sdk.collections.setPropertyPermissions.submitWaitResult({
       "address": "5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX",
@@ -1555,9 +1535,7 @@ This method returns `SetTokenPropertyPermissionsResult`
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Set transfers enabled flag
-
+Set transfers enabled flag
 </template><template v-slot:body>
 
 #### Overview
@@ -1636,7 +1614,7 @@ This method returns `SetTransfersEnabledResult`
 ```bash
 
     curl -X 'POST' \
-      'https://rest.unique.network/opal/collection/transfers-enabled?use=Build&withFee=false&verify=false' \
+      'https://rest.unique.network/opal/v1/collections/transfers-enabled?use=Build&withFee=false&verify=false' \
       -H 'accept: application/json' \
       -H 'Content-Type: application/json' \
       -d '{
@@ -1648,7 +1626,7 @@ This method returns `SetTransfersEnabledResult`
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.unique.network/opal/extrinsic/submit' \
+    'https://rest.unique.network/opal/v1/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -1662,7 +1640,7 @@ This method returns `SetTransfersEnabledResult`
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
     const result = await sdk.collections.setTransfersEnabled.submitWaitResult({
       "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
@@ -1680,9 +1658,7 @@ This method returns `SetTransfersEnabledResult`
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Change the owner of the collection
-
+Change the owner of the collection
 </template><template v-slot:body>
 
 #### Overview
@@ -1756,7 +1732,7 @@ This method returns `TransferCollectionResult`
 ```bash
 
     curl -X 'PATCH' \
-      'https://rest.unique.network/opal/collection/transfer?use=Build&withFee=false&verify=false' \
+      'https://rest.unique.network/opal/v1/collections/transfer?use=Build&withFee=false&verify=false' \
       -H 'accept: application/json' \
       -H 'Content-Type: application/json' \
       -d '{
@@ -1768,7 +1744,7 @@ This method returns `TransferCollectionResult`
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.unique.network/opal/extrinsic/submit' \
+    'https://rest.unique.network/opal/v1/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -1782,7 +1758,7 @@ This method returns `TransferCollectionResult`
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
     const result = await sdk.collections.transfer.submitWaitResult({
       "collectionId": 1,
@@ -1804,9 +1780,7 @@ This method returns `TransferCollectionResult`
 ## Collections admin
 
 <Details><template v-slot:header>
-
-### Add collection admin
-
+Add collection admin
 </template><template v-slot:body>
 
 #### Overview
@@ -1886,7 +1860,7 @@ This method returns `AddCollectionAdminResult`
 ```bash
 
     curl -X 'POST' \
-      'https://rest.unique.network/opal/collection/admins?use=Build&withFee=false&verify=false' \
+      'https://rest.unique.network/opal/v1/collections/admins?use=Build&withFee=false&verify=false' \
       -H 'accept: application/json' \
       -H 'Content-Type: application/json' \
       -d '{
@@ -1898,7 +1872,7 @@ This method returns `AddCollectionAdminResult`
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.unique.network/opal/extrinsic/submit' \
+    'https://rest.unique.network/opal/v1/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -1912,7 +1886,7 @@ This method returns `AddCollectionAdminResult`
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
     const result = await sdk.collections.addAdmin.submitWaitResult({
       "address": "5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y",
@@ -1932,9 +1906,7 @@ This method returns `AddCollectionAdminResult`
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Get admin list
-
+Get admin list
 </template><template v-slot:body>
 
 #### Overview
@@ -2011,7 +1983,7 @@ This method returns `AdminlistResult`
 
 ```bash
     curl -X 'GET' \
-      'https://rest.unique.network/opal/collection/admins?collectionId=1' \
+      'https://rest.unique.network/opal/v1/collections/admins?collectionId=1' \
       -H 'accept: application/json'
 ```
 
@@ -2020,7 +1992,7 @@ This method returns `AdminlistResult`
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
     const result = await sdk.collections.admins({
         collectionId: 1,
@@ -2038,9 +2010,7 @@ This method returns `AdminlistResult`
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Remove collection admin
-
+Remove collection admin
 </template><template v-slot:body>
 
 #### Overview
@@ -2122,7 +2092,7 @@ This method returns `RemoveCollectionAdminResult`
 ```bash
 
     curl -X 'DELETE' \
-      'https://rest.unique.network/opal/collection/admins?use=Build&withFee=false&verify=false' \
+      'https://rest.unique.network/opal/v1/collections/admins?use=Build&withFee=false&verify=false' \
       -H 'accept: application/json' \
       -H 'Content-Type: application/json' \
       -d '{
@@ -2134,7 +2104,7 @@ This method returns `RemoveCollectionAdminResult`
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.unique.network/opal/extrinsic/submit' \
+    'https://rest.unique.network/opal/v1/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -2148,7 +2118,7 @@ This method returns `RemoveCollectionAdminResult`
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
     const result = await sdk.collections.removeAdmin.submitWaitResult({
       "address": "5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y",
@@ -2170,9 +2140,7 @@ This method returns `RemoveCollectionAdminResult`
 ## Collections allow list
 
 <Details><template v-slot:header>
-
-### Add To Allow List
-
+Add To Allow List
 </template><template v-slot:body>
 
 #### Overview
@@ -2242,7 +2210,7 @@ console.log(
 
 ```bash
     curl -X 'POST' \
-      'https://rest.unique.network/opal/collection/add-to-allow-list' \
+      'https://rest.unique.network/opal/v1/collections/add-to-allow-list' \
       -H 'accept: application/json' \
       -H 'Content-Type: application/json' \
       -d '{
@@ -2256,7 +2224,7 @@ console.log(
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
 const { parsed } = await sdk.collections.addToAllowList.submitWaitResult({
   address: '<your account address>',
@@ -2279,9 +2247,7 @@ console.log(
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Allow list
-
+Allow list
 </template><template v-slot:body>
 
 #### Overview
@@ -2338,14 +2304,14 @@ interface AllowListResult {
 
 ```bash
     curl -X 'GET' \
-    'https://rest.unique.network/opal/collection/allow-list?collectionId=1'
+    'https://rest.unique.network/opal/v1/collections/allow-list?collectionId=1'
 ```
   </CodeGroupItem>
 
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
     const { addresses } = await sdk.collections.allowList({
         collectionId: 1,
@@ -2363,9 +2329,7 @@ interface AllowListResult {
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Get allowance
-
+Get allowance
 </template><template v-slot:body>
 
 The method gets the number of token pieces approved to transfer
@@ -2397,9 +2361,7 @@ const { isAllowed } = await sdk.tokens.allowance({
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Check is allowed
-
+Check is allowed
 </template><template v-slot:body>
 
 #### Overview
@@ -2451,14 +2413,14 @@ interface AllowedResult {
 
 ```bash
     curl -X 'GET' \
-    'https://rest.unique.network/opal/collection/allowed?collectionId=1&address=<address>'
+    'https://rest.unique.network/opal/v1/collections/allowed?collectionId=1&address=<address>'
 ```
   </CodeGroupItem>
 
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
     const { isAllowed } = await sdk.collections.allowed({
         collectionId: 1,
@@ -2476,9 +2438,7 @@ interface AllowedResult {
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Remove from allow list
-
+Remove from allow list
 </template><template v-slot:body>
 
 #### Overview
@@ -2547,7 +2507,7 @@ interface RemoveFromAllowListResult {
 
 ```bash
     curl -X 'POST' \
-      'https://rest.unique.network/opal/collection/remove-from-allow-list' \
+      'https://rest.unique.network/opal/v1/collections/remove-from-allow-list' \
       -H 'accept: application/json' \
       -H 'Content-Type: application/json' \
       -d '{
@@ -2561,7 +2521,7 @@ interface RemoveFromAllowListResult {
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
     const { parsed } = await sdk.collections.removeFromAllowList.submitWaitResult({
       address: '<your account address>',
@@ -2585,9 +2545,7 @@ interface RemoveFromAllowListResult {
 ## Nesting
 
 <Details><template v-slot:header>
-
-### Get bundle
-
+Get bundle
 </template><template v-slot:body>
 
 #### Overview
@@ -2668,7 +2626,7 @@ console.log(bundle);
 
 ```bash
 curl -X 'GET' \
-  'https://rest.unique.network/opal/token/get-bundle?collectionId=2&tokenId=5' \
+  'https://rest.unique.network/opal/v1/token/get-bundle?collectionId=2&tokenId=5' \
   -H 'accept: application/json'
 ```
 
@@ -2677,7 +2635,7 @@ curl -X 'GET' \
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
 const bundle = await sdk.tokens.getBundle({
   collectionId: 2,
@@ -2694,9 +2652,7 @@ console.log(bundle);
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Is Bundle
-
+Is Bundle
 </template><template v-slot:body>
 
 #### Overview
@@ -2755,7 +2711,7 @@ console.log(bundle);
 
 ```bash
 curl -X 'GET' \
-  'https://rest.unique.network/opal/token/is-bundle?collectionId=2&tokenId=1' \
+  'https://rest.unique.network/opal/v1/token/is-bundle?collectionId=2&tokenId=1' \
   -H 'accept: application/json'
 ```
 
@@ -2764,7 +2720,7 @@ curl -X 'GET' \
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
 const result = await sdk.tokens.isBundle({
   collectionId: 2,
@@ -2781,9 +2737,7 @@ console.log(result.isBundle);
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Nest token
-
+Nest token
 </template><template v-slot:body>
 
 #### Overview
@@ -2807,7 +2761,7 @@ const args: NestTokenArguments = {
   },
 };
 
-const result = await sdk.tokens.nest.submitWaitResult(args);
+const result = await sdk.tokens.nestToken.submitWaitResult(args);
 
 const { tokenId, collectionId } = result.parsed;
 
@@ -2879,7 +2833,7 @@ const args: NestTokenArguments = {
   },
 };
 
-const result = await sdk.tokens.nest.submitWaitResult(args);
+const result = await sdk.tokens.nestToken.submitWaitResult(args);
 
 const { tokenId, collectionId } = result.parsed;
 
@@ -2895,7 +2849,7 @@ console.log(
 ```bash
 
     curl -X 'POST' \
-      'https://rest.unique.network/opal/token/nest' \
+      'https://rest.unique.network/opal/v1/token/nest' \
       -H 'accept: application/json' \
       -H 'Content-Type: application/json' \
       -d '{
@@ -2913,7 +2867,7 @@ console.log(
     # then we sign, then we call
 
     curl -X 'POST' \
-    'https://rest.unique.network/opal/extrinsic/submit' \
+    'https://rest.unique.network/opal/v1/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -2927,7 +2881,7 @@ console.log(
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
 const result = await sdk.tokens.nest.submitWaitResult({
   address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
@@ -2957,9 +2911,7 @@ console.log(
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Token children
-
+Token children
 </template><template v-slot:body>
 
 #### Overview
@@ -3048,7 +3000,7 @@ console.log(result);
 
 ```bash
 curl -X 'GET' \
-  'https://rest.unique.network/opal/token/children?collectionId=1&tokenId=1' \
+  'https://rest.unique.network/opal/v1/token/children?collectionId=1&tokenId=1' \
   -H 'accept: application/json'
 ```
 
@@ -3057,7 +3009,7 @@ curl -X 'GET' \
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
 const result = await sdk.tokens.children({
   collectionId: 1,
@@ -3074,9 +3026,7 @@ console.log(result.children);
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Token parent
-
+Token parent
 </template><template v-slot:body>
 
 #### Overview
@@ -3155,7 +3105,7 @@ console.log(result);
 
 ```bash
 curl -X 'GET' \
-  'https://rest.unique.network/opal/token/parent?collectionId=1&tokenId=2' \
+  'https://rest.unique.network/opal/v1/token/parent?collectionId=1&tokenId=2' \
   -H 'accept: application/json'
 ```
 
@@ -3164,7 +3114,7 @@ curl -X 'GET' \
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
 const result = await sdk.tokens.parent({
   collectionId: 1,
@@ -3181,9 +3131,7 @@ console.log(result);
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Topmost token owner
-
+Topmost token owner
 </template><template v-slot:body>
 
 #### Overview
@@ -3260,7 +3208,7 @@ console.log(result);
 
 ```bash
 curl -X 'GET' \
-  'https://rest.unique.network/opal/token/topmost-owner?collectionId=1&tokenId=2' \
+  'https://rest.unique.network/opal/v1/token/topmost-owner?collectionId=1&tokenId=2' \
   -H 'accept: application/json'
 ```
 
@@ -3269,7 +3217,7 @@ curl -X 'GET' \
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
 const result = await sdk.tokens.topmostOwner({
   collectionId: 1,
@@ -3286,9 +3234,7 @@ console.log(result.topmostOwner);
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Unnest token
-
+Unnest token
 </template><template v-slot:body>
 
 #### Overview
@@ -3302,17 +3248,13 @@ import { UnnestTokenArguments } from '@unique-nft/substrate-client/tokens/types'
 
 const args: UnnestTokenArguments = {
   address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
-  parent: {
-    collectionId: 1,
-    tokenId: 1,
-  },
   nested: {
     collectionId: 1,
     tokenId: 2,
   },
 };
 
-const result = await sdk.tokens.unnest.submitWaitResult(args);
+const result = await sdk.tokens.unnestToken.submitWaitResult(args);
 
 const { tokenId, collectionId } = result.parsed;
 
@@ -3325,11 +3267,11 @@ console.log(
 
 `address: string` - Token owner address
 
-`parent: { collectionId: number, tokenId: number }` - Parent token object
-
 `nested: { collectionId: number, tokenId: number }` - Nested token object
 
 `value: number` - _optional_ (default: 1) - Amount of pieces (For Refungible token)
+
+`to: string` - _optional_ - Address of new owner
 
 #### Behaviour and errors
 
@@ -3363,17 +3305,13 @@ import { UnnestTokenArguments } from '@unique-nft/substrate-client/tokens/types'
 
 const args: UnnestTokenArguments = {
   address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
-  parent: {
-    collectionId: 1,
-    tokenId: 1,
-  },
   nested: {
     collectionId: 1,
     tokenId: 2,
   },
 };
 
-const result = await sdk.tokens.unnest.submitWaitResult(args);
+const result = await sdk.tokens.unnestToken.submitWaitResult(args);
 
 const { tokenId, collectionId } = result.parsed;
 
@@ -3389,15 +3327,11 @@ console.log(
 ```bash
 
     curl -X 'POST' \
-      'https://rest.unique.network/opal/token/unnest' \
+      'https://rest.unique.network/opal/v1/token/unnest' \
       -H 'accept: application/json' \
       -H 'Content-Type: application/json' \
       -d '{
       "address": "yGCyN3eydMkze4EPtz59Tn7obwbUbYNZCz48dp8FRdemTaLwm",
-      "parent": {
-        "collectionId": 1,
-        "tokenId": 1
-      },
       "nested": {
         "collectionId": 1,
         "tokenId": 2
@@ -3407,7 +3341,7 @@ console.log(
     # then we sign, then we call
 
     curl -X 'POST' \
-    'https://rest.unique.network/opal/extrinsic/submit' \
+    'https://rest.unique.network/opal/v1/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -3421,14 +3355,10 @@ console.log(
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
 const result = await sdk.tokens.unnest.submitWaitResult({
   address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
-  parent: {
-    collectionId: 1,
-    tokenId: 1,
-  },
   nested: {
     collectionId: 1,
     tokenId: 2,
@@ -3453,9 +3383,7 @@ console.log(
 ## Sponsorship
 
 <Details><template v-slot:header>
-
-### Confirm sponsorship
-
+Confirm sponsorship
 </template><template v-slot:body>
 
 #### Overview
@@ -3543,7 +3471,7 @@ This method returns `ConfirmSponsorshipResult`
 ```bash
 
     curl -X 'POST' \
-    'https://rest.unique.network/opal/collection/sponsorship/confirm' \
+    'https://rest.unique.network/opal/v1/collections/sponsorship/confirm' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -3554,7 +3482,7 @@ This method returns `ConfirmSponsorshipResult`
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.unique.network/opal/extrinsic/submit' \
+    'https://rest.unique.network/opal/v1/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -3568,7 +3496,7 @@ This method returns `ConfirmSponsorshipResult`
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
     const result = await sdk.collections.confirmSponsorship.submitWaitResult({
         address: '5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp',
@@ -3587,9 +3515,7 @@ This method returns `ConfirmSponsorshipResult`
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Next sponsored
-
+Next sponsored
 </template><template v-slot:body>
 
 #### Overview
@@ -3671,7 +3597,7 @@ console.log(result);
 
 ```bash
 curl -X 'GET' \
-  'https://rest.unique.network/opal/collection/next-sponsored?collectionId=934&address=5GbRWxdwL8eHAgVaeXW3GUBffyLaKaLRhXXPwcnZbbzKDUU8&tokenId=1' \
+  'https://rest.unique.network/opal/v1/collections/next-sponsored?collectionId=934&address=5GbRWxdwL8eHAgVaeXW3GUBffyLaKaLRhXXPwcnZbbzKDUU8&tokenId=1' \
   -H 'accept: application/json'
 ```
 
@@ -3680,7 +3606,7 @@ curl -X 'GET' \
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
 const result = await sdk.tokens.nextSponsored({
   collectionId: 1,
@@ -3698,9 +3624,7 @@ console.log(result);
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Remove collection sponsor
-
+Remove collection sponsor
 </template><template v-slot:body>
 
 #### Overview
@@ -3781,7 +3705,7 @@ This method returns `RemoveSponsorshipResult`
 ```bash
 
     curl -X 'DELETE' \
-    'https://rest.unique.network/opal/collection/sponsorship' \
+    'https://rest.unique.network/opal/v1/collections/sponsorship' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -3792,7 +3716,7 @@ This method returns `RemoveSponsorshipResult`
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.unique.network/opal/extrinsic/submit' \
+    'https://rest.unique.network/opal/v1/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -3806,7 +3730,7 @@ This method returns `RemoveSponsorshipResult`
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
     const result = await sdk.collections.removeSponsorship.submitWaitResult({
         address: '5HgvUDiRm5yjRSrrG9B6q6km7KLzkXMxvFLHPZpA13pmwCJQ',
@@ -3825,9 +3749,7 @@ This method returns `RemoveSponsorshipResult`
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Set collection sponsor
-
+Set collection sponsor
 </template><template v-slot:body>
 
 #### Overview
@@ -3924,7 +3846,7 @@ This method returns `SetSponsorshipResult`
 ```bash
 
     curl -X 'POST' \
-    'https://rest.unique.network/opal/collection/sponsorship' \
+    'https://rest.unique.network/opal/v1/collections/sponsorship' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -3936,7 +3858,7 @@ This method returns `SetSponsorshipResult`
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.unique.network/opal/extrinsic/submit' \
+    'https://rest.unique.network/opal/v1/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -3950,7 +3872,7 @@ This method returns `SetSponsorshipResult`
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
     const result = await sdk.collections.setSponsorship.submitWaitResult({
         address: '5HgvUDiRm5yjRSrrG9B6q6km7KLzkXMxvFLHPZpA13pmwCJQ',
@@ -3972,9 +3894,7 @@ This method returns `SetSponsorshipResult`
 ## Statistics
 
 <Details><template v-slot:header>
-
-### Get account tokens of the collection
-
+Get account tokens of the collection
 </template><template v-slot:body>
 
 #### Overview
@@ -4042,14 +3962,14 @@ interface AccountTokensResult {
 
 ```bash
     curl -X 'GET' \
-    'https://rest.unique.network/opal/token/account-tokens?address=5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp&collectionId=1'
+    'https://rest.unique.network/opal/v1/token/account-tokens?address=5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp&collectionId=1'
 ```
   </CodeGroupItem>
 
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
     const tokensResult = await sdk.tokens.accountTokens({
         address: '5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp',
@@ -4069,9 +3989,29 @@ interface AccountTokensResult {
 </template></Details>
 
 <Details><template v-slot:header>
+Get account tokens amount
+</template><template v-slot:body>
 
-### Get collection tokens
+TBD
 
+#### Overview
+TBD
+
+#### Brief example
+
+TBD
+
+#### Arguments
+
+TBD
+
+#### Examples
+
+TBD
+</template></Details>
+
+<Details><template v-slot:header>
+Get collection tokens
 </template><template v-slot:body>
 
 #### Overview
@@ -4128,14 +4068,14 @@ interface CollectionTokensResult {
 
 ```bash
     curl -X 'GET' \
-    'https://rest.unique.network/opal/collection/tokens?collectionId=1'
+    'https://rest.unique.network/opal/v1/collections/tokens?collectionId=1'
 ```
   </CodeGroupItem>
 
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
     const tokensResult = await sdk.collections.tokens({
         collectionId: 1,
@@ -4154,9 +4094,7 @@ interface CollectionTokensResult {
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Get collection stats
-
+Get collection stats
 </template><template v-slot:body>
 
 #### Overview
@@ -4213,14 +4151,14 @@ interface GetStatsResult {
 
 ```bash
     curl -X 'GET' \
-    'https://rest.unique.network/opal/collection/stats'
+    'https://rest.unique.network/opal/v1/collections/stats'
 ```
   </CodeGroupItem>
 
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
     const stats = await sdk.collections.stats();
 
@@ -4236,9 +4174,7 @@ interface GetStatsResult {
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Last token id
-
+Last token id
 </template><template v-slot:body>
 
 #### Overview
@@ -4296,14 +4232,14 @@ interface LastTokenIdResult {
 
 ```bash
     curl -X 'GET' \
-    'https://rest.unique.network/opal/collection/last-token-id?collectionId=1'
+    'https://rest.unique.network/opal/v1/collections/last-token-id?collectionId=1'
 ```
   </CodeGroupItem>
 
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
     const lastTokenId = await sdk.collections.lastTokenId();
 
@@ -4320,9 +4256,7 @@ interface LastTokenIdResult {
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Total supply
-
+Total supply
 </template><template v-slot:body>
 
 #### Overview
@@ -4386,14 +4320,14 @@ interface TotalSupplyResult {
 
 ```bash
     curl -X 'GET' \
-    'https://rest.unique.network/opal/collection/total-supply?collectionId=1'
+    'https://rest.unique.network/opal/v1/collections/total-supply?collectionId=1'
 ```
   </CodeGroupItem>
 
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
     const result = await sdk.collections.totalSupply();
 
@@ -4411,9 +4345,7 @@ interface TotalSupplyResult {
 ## Token
 
 <Details><template v-slot:header>
-
-### Get allowance
-
+Get allowance
 </template><template v-slot:body>
 
 #### Overview
@@ -4496,7 +4428,7 @@ curl -X 'GET' \
   <CodeGroupItem title="Client">
 
 ```typescript
-const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
 const { isAllowed } = await sdk.tokens.allowance({
     address: '<your account address>',
@@ -4512,9 +4444,7 @@ const { isAllowed } = await sdk.tokens.allowance({
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Burn token
-
+Burn token
 </template><template v-slot:body>
 
 #### Overview
@@ -4613,7 +4543,7 @@ const { collectionId, tokenId, address, value } = setResult.parsed;
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.unique.network/opal/extrinsic/submit' \
+    'https://rest.unique.network/opal/v1/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -4627,7 +4557,7 @@ const { collectionId, tokenId, address, value } = setResult.parsed;
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
     const result = await sdk.tokens.burn.submitWaitResult({
       "collectionId": 1,
@@ -4648,9 +4578,7 @@ const { collectionId, tokenId, address, value } = setResult.parsed;
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Create multiple tokens
-
+Create multiple tokens
 </template><template v-slot:body>
 
 #### Overview
@@ -4670,22 +4598,29 @@ import {
   AttributeType,
 } from '@unique-nft/substrate-client/tokens';
 
-const createTokenArgs: CreateTokenNewArguments = {
+const args: CreateMultipleTokensArguments = {
   address: '<your account address>',
   collectionId: 123,
-  data: [{
-    encodedAttributes: {
-      '0': 0,
-      '1': [0],
-      '2': 'foo_bar',
+  tokens: [
+    data: {
+      encodedAttributes: {
+        '0': 0,
+        '1': [0],
+        '2': 'foo_bar',
+      },
+      image: {
+        ipfsCid: '<valid_ipfs_cid>',
+      },
     },
-    image: {
-      ipfsCid: '<valid_ipfs_cid>',
-    },
-  }],
+    owner: '<new token owner address>',
+    properties: [{
+      key: "example",
+      value: "Hello world"
+    }]
+  ],
 };
 
-const result = await sdk.tokens.createMultiple.submitWaitResult(createArgs);
+const result = await sdk.tokens.createMultiple.submitWaitResult(args);
 const [{ collectionId, tokenId }] = result.parsed;
 
 const token = await sdk.tokens.get({ collectionId, tokenId });
@@ -4697,11 +4632,9 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
 
 `collectionId: number` - Collection id
 
-`data: Array<UniqueTokenToCreate & { owner?: string} >` - The content of the tokens:
+`tokens: Array<CreateTokenPayload>` - The content of the tokens:
 
 - Description **UniqueTokenToCreate** available in [Create token](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/create-token)
-
-- `owner?: string` - The address of token owner (optional)
 
 #### Behaviour and errors
 
@@ -4738,22 +4671,29 @@ import {
   AttributeType,
 } from '@unique-nft/substrate-client/tokens';
 
-const createTokenArgs: CreateTokenNewArguments = {
+const args: CreateMultipleTokensArguments = {
   address: '<your account address>',
   collectionId: 123,
-  data: [{
-    encodedAttributes: {
-      '0': 0,
-      '1': [0],
-      '2': 'foo_bar',
+  tokens: [
+    data: {
+      encodedAttributes: {
+        '0': 0,
+        '1': [0],
+        '2': 'foo_bar',
+      },
+      image: {
+        ipfsCid: '<valid_ipfs_cid>',
+      },
     },
-    image: {
-      ipfsCid: '<valid_ipfs_cid>',
-    },
-  }],
+    owner: '<new token owner address>',
+    properties: [{
+      key: "example",
+      value: "Hello world"
+    }]
+  ],
 };
 
-const result = await sdk.tokens.createMultiple.submitWaitResult(createArgs);
+const result = await sdk.tokens.createMultiple.submitWaitResult(args);
 const [{ collectionId, tokenId }] = result.parsed;
 
 const token = await sdk.tokens.get({ collectionId, tokenId });
@@ -4772,24 +4712,28 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
     -d '{
     "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
     "collectionId": 183,
-    "data": [
+    "tokens": [
       {
-        "image": {
-          "url": "https://ipfs.unique.network/ipfs/QmcAcH4F9HYQtpqKHxBFwGvkfKb8qckXj2YWUrcc8yd24G/image1.png"
+        "data": {
+          "image": {
+            "url": "https://ipfs.unique.network/ipfs/QmcAcH4F9HYQtpqKHxBFwGvkfKb8qckXj2YWUrcc8yd24G/image2.png"
+          }
         }
       },
       {
-        "image": {
-          "url": "https://ipfs.unique.network/ipfs/QmcAcH4F9HYQtpqKHxBFwGvkfKb8qckXj2YWUrcc8yd24G/image2.png"
-        }    
+        "data": {
+          "image": {
+            "url": "https://ipfs.unique.network/ipfs/QmcAcH4F9HYQtpqKHxBFwGvkfKb8qckXj2YWUrcc8yd24G/image2.png"
+          }
+        }
       }
     ]
   }'
-    
+
     # then we sign, then we call
-    
+
     curl -X 'POST' \
-    'https://rest.unique.network/opal/extrinsic/submit' \
+    'https://rest.unique.network/opal/v1/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -4803,28 +4747,32 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-  const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
-  
-  const result = await sdk.tokens.createMultiple.submitWaitResult({
-    "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
-    "collectionId": 183,
-    "data": [
-      {
-        "image": {
-          "url": "https://ipfs.unique.network/ipfs/QmcAcH4F9HYQtpqKHxBFwGvkfKb8qckXj2YWUrcc8yd24G/image1.png"
-        }
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
+
+const result = await sdk.tokens.createMultiple.submitWaitResult({
+  address: '5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty',
+  collectionId: 183,
+  tokens: [
+    {
+      data: {
+        image: {
+          url: 'https://ipfs.unique.network/ipfs/QmcAcH4F9HYQtpqKHxBFwGvkfKb8qckXj2YWUrcc8yd24G/image1.png',
+        },
       },
-      {
-        "image": {
-          "url": "https://ipfs.unique.network/ipfs/QmcAcH4F9HYQtpqKHxBFwGvkfKb8qckXj2YWUrcc8yd24G/image2.png"
-        }
-      }
-    ]
-  });
-  
-  const { parsed } = result;
-  
-  console.log(`minted ${parsed.length} tokens`);
+    },
+    {
+      data: {
+        image: {
+          url: 'https://ipfs.unique.network/ipfs/QmcAcH4F9HYQtpqKHxBFwGvkfKb8qckXj2YWUrcc8yd24G/image1.png',
+        },
+      },
+    },
+  ],
+});
+
+const { parsed } = result;
+
+console.log(`minted ${parsed.length} tokens`);
 ```
 
   </CodeGroupItem>
@@ -4834,9 +4782,7 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Create token (mint)
-
+Create token (mint)
 </template><template v-slot:body>
 
 #### Overview
@@ -5007,7 +4953,7 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
 # then we sign, then we call
 
     curl -X 'POST' \
-    'https://rest.unique.network/opal/extrinsic/submit' \
+    'https://rest.unique.network/opal/v1/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -5021,7 +4967,7 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
     const result = await sdk.tokens.create.submitWaitResult({
       "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
@@ -5052,9 +4998,7 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Delete token properties
-
+Delete token properties
 </template><template v-slot:body>
 
 #### Overview
@@ -5147,7 +5091,7 @@ This method returns `DeleteTokenPropertiesResult`
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.unique.network/opal/extrinsic/submit' \
+    'https://rest.unique.network/opal/v1/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -5161,7 +5105,7 @@ This method returns `DeleteTokenPropertiesResult`
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
     const { parsed: { properties } } = await sdk.tokens.deleteProperties.submitWaitResult({
       "address": "5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX",
@@ -5183,9 +5127,7 @@ This method returns `DeleteTokenPropertiesResult`
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Set token properties
-
+Set token properties
 </template><template v-slot:body>
 
 #### Overview
@@ -5278,7 +5220,7 @@ This method returns `SetTokenPropertiesResult`
 ```bash
 
     curl -X 'POST' \
-      'https://rest.unique.network/opal/token/properties?use=Build&withFee=false&verify=false' \
+      'https://rest.unique.network/opal/v1/token/properties?use=Build&withFee=false&verify=false' \
       -H 'accept: application/json' \
       -H 'Content-Type: application/json' \
       -d '{
@@ -5296,7 +5238,7 @@ This method returns `SetTokenPropertiesResult`
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.unique.network/opal/extrinsic/submit' \
+    'https://rest.unique.network/opal/v1/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -5310,7 +5252,7 @@ This method returns `SetTokenPropertiesResult`
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
     const { parsed: { properties } } = await sdk.tokens.setProperties.submitWaitResult({
       "address": "5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX",
@@ -5334,9 +5276,7 @@ This method returns `SetTokenPropertiesResult`
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Get token
-
+Get token
 </template><template v-slot:body>
 
 #### Overview
@@ -5410,7 +5350,7 @@ const {
 
 ```bash
 curl -X 'GET' \
-  'https://rest.unique.network/opal/token?collectionId=2&tokenId=1' \
+  'https://rest.unique.network/opal/v1/token?collectionId=2&tokenId=1' \
   -H 'accept: application/json'
 ```
   </CodeGroupItem>
@@ -5418,7 +5358,7 @@ curl -X 'GET' \
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
     const result = await sdk.tokens.get({
       collectionId: 2,
@@ -5437,9 +5377,7 @@ curl -X 'GET' \
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Get token owner
-
+Get token owner
 </template><template v-slot:body>
 
 #### Overview
@@ -5524,7 +5462,7 @@ const result: TokenOwnerResult = await sdk.tokens.tokenOwner(
 ```bash
 
     curl -X 'GET' \
-  'https://rest.unique.network/opal/token/owner?collectionId=1&tokenId=1' \
+  'https://rest.unique.network/opal/v1/token/owner?collectionId=1&tokenId=1' \
   -H 'accept: application/json'
 ```
 
@@ -5533,7 +5471,7 @@ const result: TokenOwnerResult = await sdk.tokens.tokenOwner(
   <CodeGroupItem title="Substrate">
 
 ```typescript
-    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
     const { owner } = await sdk.tokens.owner({
       collectionId: 1,
@@ -5550,9 +5488,7 @@ const result: TokenOwnerResult = await sdk.tokens.tokenOwner(
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Token properties
-
+Token properties
 </template><template v-slot:body>
 
 #### Overview
@@ -5632,7 +5568,7 @@ const result: TokenPropertiesResult = await sdk.tokens.properties(args);
 
 ```bash
   curl -X 'GET' \
-    'https://rest.unique.network/opal/token/properties?collectionId=1&tokenId=1' \
+    'https://rest.unique.network/opal/v1/token/properties?collectionId=1&tokenId=1' \
     -H 'accept: application/json'
 ```
 
@@ -5641,7 +5577,7 @@ const result: TokenPropertiesResult = await sdk.tokens.properties(args);
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
     const { properties } = await sdk.tokens.properties({
       collectionId: 1,
@@ -5656,9 +5592,7 @@ const result: TokenPropertiesResult = await sdk.tokens.properties(args);
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Transfer token
-
+Transfer token
 </template><template v-slot:body>
 
 #### Overview
@@ -5688,7 +5622,7 @@ console.log(result.parsed);
 
 #### Arguments
 
-`address: string` - Signer address
+`address: string` - Signer address.  Signer doesn't needs to be an **owner** of the token (in this case, the owner should set **allowance** for the Signer to transfer token)
 
 `to: string` - Address of token recipient
 
@@ -5769,7 +5703,7 @@ console.log(result.parsed);
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.unique.network/opal/extrinsic/submit' \
+    'https://rest.unique.network/opal/v1/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -5783,7 +5717,7 @@ console.log(result.parsed);
   <CodeGroupItem title="Substrate Client">
 
 ```typescript
-    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
     const result = await sdk.tokens.transfer.submitWaitResult({
       "collectionId": 183,
@@ -5806,14 +5740,12 @@ console.log(result.parsed);
 ## Other
 
 <Details><template v-slot:header>
-
-### Approve
-
+Approve
 </template><template v-slot:body>
 
 #### Overview
 
-Set, change, or remove approved address to transfer the ownership of the token.
+Set, change, or remove approved address to transfer the ownership of the token or burn the token.
 
 #### Brief example
 
@@ -5903,7 +5835,7 @@ const { collectionId, tokenId } = result.parsed;
     # then we sign, then we call
     
     curl -X 'POST' \
-    'https://rest.unique.network/opal/extrinsic/submit' \
+    'https://rest.unique.network/opal/v1/extrinsic/submit' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -5917,7 +5849,7 @@ const { collectionId, tokenId } = result.parsed;
   <CodeGroupItem title="Client">
 
 ```typescript
-    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+    const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
     const result = await sdk.tokens.approve.submitWaitResult({
         address: '5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty',
@@ -5937,9 +5869,7 @@ const { collectionId, tokenId } = result.parsed;
 </template></Details>
 
 <Details><template v-slot:header>
-
-### Token exists
-
+Token exists
 </template><template v-slot:body>
 
 #### Overview
@@ -6001,7 +5931,7 @@ const { isExists } = await sdk.tokens.exists({ collectionId: 1, tokenId: 1 });
   <CodeGroupItem title="Client">
 
 ```typescript
-const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
 const { isExists } = await sdk.tokens.exists({
     collectionId: 1,
@@ -6014,4 +5944,2150 @@ const { isExists } = await sdk.tokens.exists({
 </CodeGroup>
 
 </template></Details>
+
+## Balance
+
+<Details><template v-slot:header>
+Get all balances of the address
+</template><template v-slot:body>
+
+#### Overview
+
+Returns information about chain.
+
+#### Brief example
+
+```typescript
+const chainProperties = sdk.common.chainProperties();
+    
+const {
+    SS58Prefix,
+    token,
+    decimals,
+    wsUrl,
+    genesisHash,
+} = chainProperties;
+```
+
+#### Arguments
+
+- **address** - Wallet address
+
+#### Behaviour and errors
+
+Throw errors:
+
+- Validation error - if invalid address provided
+
+#### Returns
+
+This method returns `AllBalances`
+
+```typescript
+interface Balance {
+    raw: string;
+    unit: string;
+    decimals: number;
+    amount: string;
+    formatted: string;
+}
+
+interface AllBalances {
+    availableBalance: Balance;
+    lockedBalance: Balance;
+    freeBalance: Balance;
+    address: Address;
+}
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="JS">
+
+```typescript
+const balance = await sdk.balance.get({
+    address: 'yGCyN3eydMkze4EPtz59Tn7obwbUbYNZCz48dp8FRdemTaLwm',
+});
+
+const {
+    address,
+    availableBalance,
+    freeBalance,
+    lockedBalance,
+} = balance;
+```
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+curl -X 'GET' \
+  'https://rest.unique.network/opal/v1/balance?address=yGCyN3eydMkze4EPtz59Tn7obwbUbYNZCz48dp8FRdemTaLwm' \
+  -H 'accept: application/json'  
+```
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Substrate Client">
+
+```typescript
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
+
+const balance = await sdk.balance.get({ address: 'yGCyN3eydMkze4EPtz59Tn7obwbUbYNZCz48dp8FRdemTaLwm' });
+
+const {
+    address,
+    availableBalance,
+    freeBalance,
+    lockedBalance,
+} = balance;
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+
+</template></Details>
+
+<Details><template v-slot:header>
+Balance transfer
+</template><template v-slot:body>
+
+#### Overview
+
+Balance transfers between accounts
+
+#### Brief example
+
+```typescript
+import { TransferBuildArguments } from '@unique-nft/substrate-client/types';
+const transferArgs: TransferBuildArguments = {
+  address: '<from account address>',
+  destination: '<to account address>',
+  amount: 0.001,
+};
+const transferResult = await sdk.balance.transfer.submitWaitResult(transferArgs);
+const { success } = transferResult.parsed;
+```
+
+#### Arguments
+
+`address: string` - Wallet address to withdraw from
+`destination: string` - Wallet address for replenishment
+`amount: number` - Number of coins transferred
+
+#### Behaviour and errors
+
+#### Returns
+
+This method returns `BalanceTransferResult`
+
+```typescript
+interface BalanceTransferResult {
+  success: boolean;
+}
+```
+
+#### Examples
+
+
+</template></Details>
+
+## Fungible
+
+<Details><template v-slot:header>
+Add fungible tokens
+</template><template v-slot:body>
+
+#### Arguments
+
+- **address** - The address of collection owner
+- **collectionId** - Collection Id
+- **amount** - amount of tokens
+- **recipient** - recipient of new tokens, **address** as default
+
+#### Returns
+
+- **collectionId** - Collection Id
+- **amount** - amount of tokens
+- **recipient** - recipient of new tokens
+
+The method add new tokens of the collection to **recipient**
+
+#### Examples
+
+```typescript
+import { AddTokensArgs } from '@unique-nft/substrate-client/fungible';
+
+const addTokens: AddTokensArgs = {
+    address: '<collection_owner_address>',
+    collectionId: 123,
+    amount: 777,
+    recipient: '<address_of_recipient>'
+};
+
+await sdk.fungible.addTokens.submitWaitResult(addTokens);
+```
+
+</template></Details>
+
+<Details><template v-slot:header>
+Get allowance
+</template><template v-slot:body>
+
+#### Overview
+
+Get amount of fungible tokens approved to transfer
+
+#### Brief example
+
+```typescript
+import { AllowanceFungibleArguments } from '@unique-nft/substrate-client/fungible';
+
+const AllowanceArgs: AllowanceFungibleArguments = {
+    from: '<address>',
+    to: '<address>',
+    collectionId: 1,
+};
+
+const { amount } = await sdk.fungible.allowance(AllowanceArgs);
+```
+
+
+#### Arguments
+
+`from: string` - Owner of tokens
+
+`to: string` - The address approved for the transfer of tokens on behalf of the owner
+
+`collectionId: number` - ID of collection
+
+`at?: string` — Hash of execution block (optional)
+
+#### Behaviour and errors
+
+Throw errors:
+
+- Collection not found
+
+#### Returns
+
+The method returns a `parsed` object that contains the `Balance`.
+
+```typescript
+interface Balance {
+    raw: string;
+    unit: string;
+    decimals: number;
+    amount: string;
+    formatted: string;
+}
+```
+
+See the detailed description of the fields in [getBalance](./get-balance).
+
+#### Examples
+
+<CodeGroup>
+  <CodeGroupItem title="SDK">
+
+```typescript
+import { AllowanceFungibleArguments } from '@unique-nft/substrate-client/fungible';
+
+const AllowanceArgs: AllowanceFungibleArguments = {
+    from: '<address>',
+    to: '<address>',
+    collectionId: 1,
+};
+
+const { amount } = await sdk.fungible.allowance(AllowanceArgs);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+curl -X 'GET' \
+  'https://rest.unique.network/opal/v1/fungible/tokens/allowance?collectionId=1&from=5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty&to=5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y' \
+  -H 'accept: application/json'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
+
+const { amount } = await client.fungible.allowanceTokens.submitWaitResult({
+    from: '<address>',
+    to: '<address>',
+    collectionId: 1,
+});
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+
+</template></Details>
+
+<Details><template v-slot:header>
+Approve
+</template><template v-slot:body>
+
+#### Overview
+
+Set, change, or remove approved address to transfer tokens.
+
+#### Brief example
+
+```typescript
+import { ApproveArguments } from '@unique-nft/substrate-client/refungible';
+
+const approveArgs: ApproveArguments = {
+    address: '<Signer address>',
+    spender: '<Account address to be approved>',
+    collectionId: 1,
+    amount: '<amount of tokens to be approved>',
+};
+
+const result = await sdk.fungible.approve.submitWaitResult(approveArgs);
+const { collectionId, amount } = result.parsed;
+```
+
+#### Arguments 
+
+`address: string` - **Signer** address
+
+`spender: string` - Account address to be approved
+
+`collectionId: number` - Collection id
+
+`amount: number` - Amount of tokens to be approved
+
+#### Behaviour and errors
+
+Throw errors:
+
+- Collection not found
+- **Signer** is not **Token Owner**
+- Insufficient balance
+
+#### Returns
+
+The method returns a `parsed` object that contains the `ApproveFungibleResult`.
+
+```typescript
+{
+    collectionId: number;
+    amount: number;
+}
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="SDK">
+
+```typescript
+import { ApproveArguments } from '@unique-nft/substrate-client/refungible';
+
+const approveArgs: ApproveArguments = {
+    address: '<Signer address>',
+    spender: '<Account address to be approved>',
+    collectionId: 1,
+    amount: '<amount of tokens to be approved>',
+};
+
+const result = await sdk.fungible.approve.submitWaitResult(approveArgs);
+const { collectionId, amount } = result.parsed;
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+curl -X 'POST' \
+'https://rest.unique.network/opal/v1/fungible/tokens/approve?use=Result&withFee=false&verify=false' \
+-H 'accept: application/json' \
+-H 'Authorization: Seed //Bob' \
+-H 'Content-Type: application/json' \
+-d '{
+"address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
+"spender": "5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y",
+"collectionId": 1,
+"amount": 0.1
+}'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
+
+const result = await client.fungible.approveTokens.submitWaitResult({
+    address: '<Signer address>',
+    spender: '<Account address to be approved>',
+    collectionId: 1,
+    amount: '<amount of tokens to be approved>',
+});
+const { collectionId, amount } = result.parsed;
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+
+</template></Details>
+
+<Details><template v-slot:header>
+Create collection
+</template><template v-slot:body>
+
+#### Arguments
+
+- **address** - The address of collection owner
+- **name** - Collection name (text, up to 64 characters)
+- **description** - Collection description (text, up to 256 characters)
+- **mode** - The collection type - Fungible
+- **decimals** - decimal part for tokens in collection
+- **tokenPrefix** - Token prefix (text, up to 4 characters)
+- **sponsorship** - This field tells if sponsorship is enabled and what address is the current collection sponsor.
+- **limits** - [Collection limits](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/../tokens/methods/set-collection-limits#arguments)
+- **metaUpdatePermission** - [Permission](#todo) for update meta (ItemOwner, Admin, None)
+- **permissions** - [Collection permissions](#todo)
+
+#### Returns
+
+The method returns a `parsed` object that contains the `collectionId: number`.
+
+#### Examples
+
+```typescript
+import { CreateFungibleCollectionArguments } from '@unique-nft/substrate-client/fungible';
+
+const collectionCreateArgs: CreateFungibleCollectionArguments = {
+    address: '<valid_address>',
+    name: 'Test fungible collection',
+    description: 'just test',
+    tokenPrefix: 'TEST',
+    decimals: 10,
+};
+
+const createResult = await sdk.fungible.createCollection.submitWaitResult(collectionCreateArgs);
+
+const { collectionId } = createResult.parsed;
+
+const collection = await sdk.fungible.getCollection({ collectionId });
+```
+
+</template></Details>
+
+<Details><template v-slot:header>
+Get fungible tokens balance
+</template><template v-slot:body>
+
+Returns amount of fungible tokens owned by address.
+
+#### Arguments
+
+- **collectionId** - ID of the collection
+- **address** - address
+
+#### Returns
+
+- **raw** - raw tokens amount
+- **decimals** - decimal part in fungible collection
+- **amount** - tokens amount (raw / decimal ** 10)
+- **unit** - collection token prefix
+- **formatted** - pretty formatted amount with SI
+
+#### Examples
+
+```typescript
+const accountBalance = await sdk.fungible.getBalance({ collectionId: 123, address: '<address>' });
+const { formatted, unit } = accountBalance;
+
+console.log(`Balance is ${formatted}${unit}`); // 'Balance is 100.0000 mTEST'
+```
+
+</template></Details>
+
+<Details><template v-slot:header>
+Get fungible collection by Id
+</template><template v-slot:body>
+
+Returns collection info in human format.
+
+#### Arguments
+
+- **collectionId** - ID of collection
+
+#### Returns
+
+- **address** - The address of collection owner
+- **name** - Collection name (text, up to 64 characters)
+- **description** - Collection description (text, up to 256 characters)
+- **mode** - The collection type - Fungible
+- **decimals** - decimal part for tokens in collection
+- **tokenPrefix** - Token prefix (text, up to 4 characters)
+- **sponsorship** - This field tells if sponsorship is enabled and what address is the current collection sponsor.
+- **limits** - [Collection limits](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/../tokens/methods/set-collection-limits#arguments)
+- **metaUpdatePermission** - [Permission](#todo) for update meta (ItemOwner, Admin, None)
+- **permissions** - [Collection permissions](#todo)
+
+#### Examples
+
+```typescript
+const {
+    name,
+    description,
+    decimals,
+    ...rest
+} = await sdk.fungible.getCollection({ collectionId: 123 });
+```
+
+</template></Details>
+
+<Details><template v-slot:header>
+Transfer fungible tokens
+</template><template v-slot:body>
+
+#### Arguments
+
+- **address** - The address of tokens owner
+- **collectionId** - ID of the collection
+- **recipient** - The address of recipient
+- **amount** - count of tokens
+
+#### Returns
+
+- **sender** - The address of tokens owner
+- **collectionId** - ID of the collection
+- **recipient** - The address of recipient
+- **amount** - count of tokens
+
+#### Examples
+
+```typescript
+import { TransferTokensArgs } from '@unique-nft/substrate-client/fungible';
+
+const transferArgs: TransferTokensArgs = {
+    address: '<your_address>',
+    collectionId: 123,
+    recipient: '<recipient_address>',
+    amount: 100.1,
+};
+
+await sdk.fungible.transferTokens.submitWaitResult(transferArgs);
+```
+
+</template></Details>
+
+## Refungible
+
+<Details><template v-slot:header>
+Get allowance
+</template><template v-slot:body>
+
+#### Overview
+
+Maximum number of RFT token pieces that one account is allowed to transfer from the balance of another account.
+
+#### Brief example
+
+```typescript
+import { AllowanceRefungibleArguments } from '@unique-nft/substrate-client/refungible/types';
+
+const AllowanceArgs: AllowanceRefungibleArguments = {
+    from: '<address>',
+    to: '<address>',
+    collectionId: 1,
+    tokenId: 1,
+};
+
+const { amount } = await sdk.refungible.allowance(AllowanceArgs);
+```
+
+#### Arguments
+
+`from: string` - Owner of tokens
+
+`to: string` - The address approved for the transfer of tokens on behalf of the owner
+
+`collectionId: number` - ID of collection
+
+`tokenId: number` - ID of token
+
+`at?: string` — hash of execution block
+
+#### Behaviour and errors
+
+Throw errors:
+
+- Collection or token not found
+
+#### Returns
+
+This method returns `AllowanceRefungibleResult`
+
+```typescript
+type AllowanceRefungibleResult = {
+    amount: number;
+};
+```
+
+- **amount** - number of pieces
+
+#### Examples
+
+<CodeGroup>
+  <CodeGroupItem title="SDK">
+
+```typescript
+import { AllowanceRefungibleArguments } from '@unique-nft/substrate-client/refungible/types';
+
+const AllowanceArgs: AllowanceRefungibleArguments = {
+    from: '<address>',
+    to: '<address>',
+    collectionId: 1,
+    tokenId: 1,
+};
+
+const { amount } = await sdk.refungible.allowance(AllowanceArgs);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+curl -X 'GET' \
+  'https://rest.unique.network/opal/v1/refungible/tokens/allowance?collectionId=1&tokenId=1&from=5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty&to=5HGjWAeFDfFCWPsjFQdVV2Msvz2XtMktvgocEZcCj68kUMaw' \
+  -H 'accept: application/json'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
+
+const result = await client.fungible.allowanceToken.submitWaitResult({
+    from: '<address>',
+    to: '<address>',
+    collectionId: 1,
+    tokenId: 1,
+});
+const { amount } = result.parsed;
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+
+</template></Details>
+
+<Details><template v-slot:header>
+Approve
+</template><template v-slot:body>
+
+#### Overview
+
+Set, change, or remove approved address to transfer the ownership of the RFT.
+
+#### Brief example
+
+```typescript
+import { ApproveArguments } from '@unique-nft/substrate-client/refungible';
+
+const approveArgs: ApproveArguments = {
+    address: '<Signer address>',
+    spender: '<Account address for whom token will be approved>',
+    collectionId: 1,
+    tokenId: 1,
+    amount: '<number of pieces>',
+};
+
+const result = await sdk.refungible.approve.submitWaitResult(approveArgs);
+const { collectionId, tokenId, amount } = result.parsed;
+```
+
+#### Arguments 
+
+`address: string` - **Signer** address
+
+`spender: string` - Account address for whom token will be approved
+
+`collectionId: number` - Collection id
+
+`tokenId: number` - Token id
+
+`amount?: number` - Amount number of pieces to be approved (default value 1)
+
+#### Behaviour and errors
+
+Throw errors:
+
+- Collection or token not found
+- **Signer** is not **Token Owner**
+- Insufficient balance
+
+#### Returns
+
+The method returns a `parsed` object that contains the `ApproveRefungibleResult`.
+
+```typescript
+{
+    collectionId: number;
+    tokenId: number;
+    amount: number;
+}
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="SDK">
+
+```typescript
+import { ApproveArguments } from '@unique-nft/substrate-client/refungible';
+
+const approveArgs: ApproveArguments = {
+    address: '<Signer address>',
+    spender: '<Account address for whom token will be approved>',
+    collectionId: 1,
+    tokenId: 1,
+    amount: '<number of pieces>',
+};
+
+const result = await sdk.refungible.approve.submitWaitResult(approveArgs);
+const { collectionId, tokenId, amount } = result.parsed;
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+curl -X 'POST' \
+  'https://rest.unique.network/opal/v1/refungible/tokens/approve?use=Result&withFee=false&verify=false' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Seed //Bob' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
+  "spender": "5HGjWAeFDfFCWPsjFQdVV2Msvz2XtMktvgocEZcCj68kUMaw",
+  "collectionId": 1,
+  "tokenId": 1,
+  "amount": 3
+}'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
+
+const result = await client.refungible.approveToken.submitWaitResult({
+    address: '<Signer address>',
+    spender: '<Account address for whom token will be approved>',
+    collectionId: 1,
+    tokenId: 1,
+    amount: '<number of pieces>',
+});
+const { collectionId, tokenId, amount } = result.parsed;
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+
+</template></Details>
+
+<Details><template v-slot:header>
+Create a refungible collection
+</template><template v-slot:body>
+
+#### Overview
+
+The method creates a new **RFT Collection**.
+
+**RFT tokens** can be created in a refungible collection. Learn more about [RFT](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/create-token).
+
+#### Brief example
+
+```typescript
+import { CreateFungibleCollectionArguments } from '@unique-nft/substrate-client/refungible';
+
+const collectionCreateArgs: CreateFungibleCollectionArguments = {
+    address: '<valid_address>',
+    name: 'Test fungible collection',
+    description: 'just test',
+    tokenPrefix: 'TEST',
+};
+
+const createResult = await sdk.refungible.createCollection.submitWaitResult(collectionCreateArgs);
+
+const { collectionId } = createResult.parsed;
+
+const collection = await sdk.refungible.getCollection({ collectionId });
+```
+
+#### Arguments
+
+The arguments are the same as for the [create NFT token](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/../../tokens/methods/token/create-token) method.
+
+`address` - The address of the collection owner
+
+`name` - Collection name (text, up to 64 characters)
+
+`description` - Collection description (text, up to 256 characters)
+
+`tokenPrefix` - Token prefix (text, up to 4 characters)
+
+Optional Arguments
+
+`sponsorship` - This field tells if sponsorship is enabled and what address is the current collection sponsor.
+
+`limits` - [Collection limits](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/../tokens/methods/set-collection-limits#arguments)
+
+`metaUpdatePermission` - [Permission](#todo) for update meta (ItemOwner, Admin, None)
+
+`permissions` - [Collection permissions](#todo)
+
+#### Behaviour and errors
+
+Throws common errors on insufficient balance or incorrect parameters.
+
+#### Returns
+
+The method returns a `parsed` object that contains the `CollectionIdArguments`.
+
+```typescript
+interface CollectionIdArguments {
+  collectionId: number;
+}
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="JS">
+
+```typescript
+import { CreateFungibleCollectionArguments } from '@unique-nft/substrate-client/refungible';
+
+const collectionCreateArgs: CreateFungibleCollectionArguments = {
+    address: '<valid_address>',
+    name: 'Test refungible collection',
+    description: 'just test',
+    tokenPrefix: 'TEST',
+};
+
+const createResult = await sdk.refungible.createCollection.submitWaitResult(collectionCreateArgs);
+
+const { collectionId } = createResult.parsed;
+
+const collection = await sdk.refungible.getCollection({ collectionId });
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+curl -X 'POST' \
+  'https://rest.unique.network/opal/v1/refungible/collection?use=Result&withFee=false&verify=false' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Seed //Bob' \
+  -H 'Content-Type: application/json' \
+  -d '{  
+"address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
+    "name": "Test refungible collection",
+    "description": "just test",
+    "tokenPrefix": "TEST"
+}'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Substrate Client">
+
+```typescript
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
+
+const result = await client.refungible.createCollection.submitWaitResult({
+    address: '<valid_address>',
+    name: 'Test refungible collection',
+    description: 'just test',
+    tokenPrefix: 'TEST',
+});
+const { collectionId, amount } = result.parsed;
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+
+</template></Details>
+
+<Details><template v-slot:header>
+Create RFT token
+</template><template v-slot:body>
+
+#### Overview
+
+This method creates a concrete instance of RFT collection.
+
+The RFT token is a non fungible token that was partitioned to pieces.
+
+Collection can be created with [Create collection](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/create-collection) method.
+
+#### Brief example
+
+```typescript
+import { GetRefungibleCollectionArguments } from '@unique-nft/substrate-client/refungible/types';
+
+const createTokenArgs: GetRefungibleCollectionArguments = {
+  address: '<your account address>',
+  collectionId: 123,
+  amount: 2,
+};
+
+const result = await sdk.refungible.createToken.submitWaitResult(createArgs);
+const { collectionId, tokenId } = result.parsed;
+
+const token = await sdk.tokens.get({ collectionId, tokenId });
+```
+
+#### Arguments
+
+The arguments are the same as for the [create NFT token](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/../../tokens/methods/token/create-token) method.
+
+And the **amount** property is added:
+
+`amount?: number;` - Number of pieces the RFT is split into
+
+#### Behaviour and errors
+
+Throw errors:
+
+- Collection not found, the collection is not an RFT collection
+- The number of pieces greater than 2^53 -1 (the maximum allowable number of pieces MAX_REFUNGIBLE_PIECES)
+- Insufficient balance
+
+#### Returns
+
+The method returns a `parsed` object that contains the `CreateRefungibleTokenResult`.
+
+```typescript
+{
+    collectionId: number;
+    tokenId: number;
+    owner: Address;
+    amount: number;
+}
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="JS">
+
+```typescript
+import { GetRefungibleCollectionArguments } from '@unique-nft/substrate-client/refungible/types';
+
+const createTokenArgs: GetRefungibleCollectionArguments = {
+    address: '<your account address>',
+    collectionId: 123,
+    amount: 2,
+};
+
+const result = await sdk.refungible.createToken.submitWaitResult(createArgs);
+const { collectionId, tokenId } = result.parsed;
+
+const token = await sdk.tokens.get({ collectionId, tokenId });
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+curl -X 'POST' \
+  'https://rest.unique.network/opal/v1/refungible/tokens?use=Result&withFee=false&verify=false' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Seed //Bob' \
+  -H 'Content-Type: application/json' \
+  -d '  {"address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
+  "collectionId": 123,
+  "amount": 2}
+'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Substrate Client">
+
+```typescript
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
+
+const result = await client.refungible.createToken.submitWaitResult({
+    address: '<your account address>',
+    collectionId: 123,
+    amount: 2,
+});
+const { collectionId, tokenId } = result.parsed;
+```
+  </CodeGroupItem>
+
+</CodeGroup>
+
+
+</template></Details>
+
+<Details><template v-slot:header>
+Get balance
+</template><template v-slot:body>
+
+#### Overview
+
+Get number of RFT token pieces owned by address.
+
+#### Brief example
+
+```typescript
+import { TokenBalanceRequest } from '@unique-nft/substrate-client/refungible';
+
+const getBalanceArgs: TokenBalanceRequest = {
+    address: '<your account address>',
+    collectionId: 1,
+    tokenId: 1,
+};
+
+const { amount } = await sdk.refungible.getBalance(getBalanceArgs);
+```
+
+#### Arguments
+
+`address: Address;` - The address that owns the token pieces
+
+`collectionId: number;` - Collection id
+
+`tokenId: number;` - Token id
+
+`at?: At;`- Hash of execution block (optional)
+
+#### Behaviour and errors
+
+Throws common errors on incorrect parameters.
+
+#### Returns
+
+The method returns the `TokenBalanceResult`.
+
+```typescript
+{ amount: number }
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="JS">
+
+```typescript
+import { TokenBalanceRequest } from '@unique-nft/substrate-client/refungible';
+
+const getBalanceArgs: TokenBalanceRequest = {
+    address: '<your account address>',
+    collectionId: 1,
+    tokenId: 1,
+};
+
+const { amount } = await sdk.refungible.getBalance(getBalanceArgs);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+curl -X 'GET' \
+  'https://rest.unique.network/opal/v1/refungible/tokens/balance?collectionId=1&tokenId=1&address=5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty' \
+  -H 'accept: application/json'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Substrate Client">
+
+```typescript
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
+
+const { amount } = await client.fungible.getBalance.submitWaitResult({
+    address: '<your account address>',
+    collectionId: 1,
+    tokenId: 1,
+});
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+
+</template></Details>
+
+<Details><template v-slot:header>
+Get refungible collection by Id
+</template><template v-slot:body>
+
+#### Overview
+
+Returns **RFT Collection** info in human format.
+
+#### Brief example
+
+```typescript
+import { GetRefungibleCollectionArguments } from '@unique-nft/substrate-client/refungible';
+
+const getCollectionArgs: GetRefungibleCollectionArguments = {
+    collectionId: 1,
+};
+
+const collection = await sdk.refungible.getCollection(getCollectionArgs);
+```
+
+#### Arguments
+
+```typescript
+type GetRefungibleCollectionArguments = {
+  collectionId: number;
+  at?: string;
+}
+```
+* collectionId - collection id
+* at - hash of execution block
+
+#### Behaviour and errors
+
+Throws a SubstrateClientError if the requested collection is not an RFT collection
+
+#### Returns
+
+The method returns a `parsed` object that contains the `CollectionIdArguments`.
+
+```typescript
+interface CollectionIdArguments {
+  collectionId: number;
+}
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="JS">
+
+```typescript
+import { GetRefungibleCollectionArguments } from '@unique-nft/substrate-client/refungible';
+
+const getCollectionArgs: GetRefungibleCollectionArguments = {
+    collectionId: 1,
+};
+
+const collection = await sdk.refungible.getCollection(getCollectionArgs);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+curl -X 'GET' \
+  'https://rest.unique.network/opal/v1/refungible/collection?collectionId=1' \
+  -H 'accept: application/json'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Substrate Client">
+
+```typescript
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
+
+const collection = await client.refungible.getCollection.submitWaitResult({
+    collectionId: 1,
+});
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+
+</template></Details>
+
+<Details><template v-slot:header>
+Repartition
+</template><template v-slot:body>
+
+#### Overview
+
+Change number of **RFT token** pieces.
+
+Signer must be the owner of all token pieces.
+
+To combine all parts of the token into one, set the `amount` parameter to 1.
+
+#### Brief example
+
+```typescript
+import { RepartitionTokenArguments } from '@unique-nft/substrate-client/refungible/types';
+
+const repartitionArgs: RepartitionTokenArguments = {
+  address: '<your account address>',
+  collectionId: 123,
+  tokenId: 1,
+  amount: 5,
+};
+
+const result = await sdk.refungible.repartitionToken.submitWaitResult(repartitionArgs);
+const { success } = result.parsed;
+```
+
+#### Arguments
+
+`address: string` - The address of token owner
+
+`collectionId: number` - Collection id
+
+`tokenId: number` - Token id
+
+`amount: number;` - Number of pieces the RFT is split into
+
+#### Behaviour and errors
+
+Throw errors:
+
+- Collection not found, the collection is not an RFT collection
+- Token not found
+- The number of pieces greater than 2^53 -1 (the maximum allowable number of pieces MAX_REFUNGIBLE_PIECES)
+- Insufficient balance
+
+#### Returns
+
+The method returns a `parsed` object that contains the `RepartitionTokenResult`.
+
+```typescript
+interface RepartitionTokenResult {
+    success: boolean;
+}
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="JS">
+
+```typescript
+import { RepartitionTokenArguments } from '@unique-nft/substrate-client/refungible/types';
+
+const repartitionArgs: RepartitionTokenArguments = {
+    address: '<your account address>',
+    collectionId: 123,
+    tokenId: 1,
+    amount: 5,
+};
+
+const result = await sdk.refungible.repartitionToken.submitWaitResult(repartitionArgs);
+const { success } = result.parsed;
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+curl -X 'POST' \
+'https://rest.unique.network/opal/v1/refungible/tokens/repartition?use=Result&withFee=false&verify=false' \
+-H 'accept: application/json' \
+-H 'Authorization: Seed //Bob' \
+-H 'Content-Type: application/json' \
+-d '{
+"address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
+"collectionId": 123,
+"tokenId": 1,
+"amount": 5
+}
+'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Substrate Client">
+
+```typescript
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
+
+const result = await client.fungible.repartitionToken.submitWaitResult({
+    address: '<your account address>',
+    collectionId: 123,
+    tokenId: 1,
+    amount: 5,
+});
+const { success } = result.parsed;
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+
+
+</template></Details>
+
+<Details><template v-slot:header>
+Total pieces
+</template><template v-slot:body>
+
+#### Overview
+
+Get total number of pieces
+
+#### Brief example
+
+```typescript
+import { TotalPiecesArguments } from '@unique-nft/substrate-client/fungible';
+
+const AllowanceArgs: TotalPiecesArguments = {
+    collectionId: 1,
+    tokenId: 1,
+};
+
+const { amount } = await sdk.refungible.totalPieces(AllowanceArgs);
+```
+
+
+#### Arguments
+
+`collectionId: number` - ID of collection
+
+`tokenId: number` - ID of token
+
+`at?: string` — Hash of execution block (optional)
+
+#### Behaviour and errors
+
+Throw errors:
+
+- Collection or token not found
+
+#### Returns
+
+This method returns `TotalPiecesResult`
+
+```typescript
+type TotalPiecesResult = {
+    amount: number;
+}
+```
+
+- **amount** - number of pieces
+
+#### Examples
+
+<CodeGroup>
+  <CodeGroupItem title="SDK">
+
+```typescript
+import { TotalPiecesArguments } from '@unique-nft/substrate-client/fungible';
+
+const AllowanceArgs: TotalPiecesArguments = {
+    collectionId: 1,
+    tokenId: 1,
+};
+
+const { amount } = await sdk.refungible.totalPieces(AllowanceArgs);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+
+```bash
+curl -X 'GET' \
+  'https://rest.unique.network/opal/v1/refungible/tokens/total-pieces?collectionId=1&tokenId=1' \
+  -H 'accept: application/json'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
+
+const result = await client.fungible.totalPieces.submitWaitResult({
+    collectionId: 1,
+    tokenId: 1,
+});
+const { amount } = result.parsed;
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+
+</template></Details>
+
+<Details><template v-slot:header>
+Transfer RFT tokens
+</template><template v-slot:body>
+
+#### Overview
+
+This method changes the ownership of the RFT token pieces.
+
+#### Brief example
+
+```typescript
+import { TransferArguments } from '@unique-nft/substrate-client/tokens';
+
+const args: TransferArguments = {
+  address: '<address>',
+  to: '<address>',
+  collectionId: 1,
+  tokenId: 1,
+  amount: 3,
+};
+
+const result = await sdk.refungible.transferToken.submitWaitResult(args);
+
+console.log(result.parsed);
+```
+
+#### Arguments
+
+The arguments are the same as for the [transfer NFT token](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/../../tokens/methods/token/transfer) method.
+
+And the **amount** property is added:
+
+`amount?: number` - Amount to transfer. The default value is 1 (optional)
+
+#### Behaviour and errors
+
+Throw errors:
+
+- `address` is not the current owner or an authorized operator for this RFT
+- `from` is not the current owner
+- `to` is the zero address
+- `tokenId` is not a valid RFT
+- Transferable RFT pieces have multiple owners
+- Insufficient balance
+
+#### Returns
+
+The method returns a `parsed` object that contains the `TransferRefungibleResult`.
+
+```typescript
+interface TransferRefungibleResult {
+  collectionId: number;
+  tokenId: number;
+  from: Address;
+  to: Address;
+  amount: number;
+}
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="JS">
+
+```typescript
+import { TransferArguments } from '@unique-nft/substrate-client/tokens';
+
+const args: TransferArguments = {
+  address: '<address>',
+  to: '<address>',
+  collectionId: 1,
+  tokenId: 1,
+};
+
+const result = await sdk.tokens.transfer.submitWaitResult(args);
+
+console.log(result.parsed);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+curl -X 'POST' \
+  'https://rest.unique.network/opal/v1/refungible/tokens/transfer?use=Result&withFee=false&verify=false' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Seed //Bob' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "collectionId": 1,
+  "tokenId": 1,
+  "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
+  "to": "5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y",
+  "amount": 3
+}'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Substrate Client">
+
+```typescript
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
+
+const result = await client.fungible.transferToken.submitWaitResult({
+    address: '<address>',
+    to: '<address>',
+    collectionId: 1,
+    tokenId: 1,
+    amount: 3,
+});
+
+console.log(result.parsed);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+
+</template></Details>
+
+## Evm
+
+<Details><template v-slot:header>
+Call method
+</template><template v-slot:body>
+
+#### Overview
+
+The method does not require a signature. With this method, you can only read information from the smart contract.
+
+#### Brief example
+
+```typescript
+const value = await sdk.evm.call({
+  abi,
+  contractAddress,
+  address: richAccount.address,
+  funcName: 'getTestValue',
+  args: [true],
+});
+
+console.log(value);
+```
+
+#### Arguments
+
+`address: string` - **Signer** address
+
+`contractAddress: string` - Ethereum address of the smart-contract
+
+`abi: Abi` - JSON Abi of your smart-contract
+
+`funcName: string` - Name of function smart-contract
+
+`args?: any[]` - An array of arguments you want to pass to the function call
+
+`nonce?: number | HexString` - The nonce for this transaction
+
+`at?: string` - Hash of execution block
+
+#### Behaviour and errors
+
+#### Returns
+The method can return any data, depending on the result of the smart contract function.
+
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="JS">
+
+```typescript
+const value = await sdk.evm.call({
+  abi,
+  contractAddress,
+  address: richAccount.address,
+  funcName: 'getTestValue',
+  args: [true],
+});
+
+console.log(value);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+  curl -X 'POST' \
+        'https://rest.unique.network/opal/v1/evm/call' \
+        -H 'accept: application/json' \
+        -H 'Content-Type: application/json' \
+        -d '{
+        "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
+        "contractAddress": "0x60639DB997DAAeD16111998a45a4D6450809aB6A",
+        "abi": [{
+            "inputs": [],
+            "name": "myStrValue",
+            "outputs":
+            [
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        }],
+        "funcName": "myStrValue"
+      }'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Substrate Client">
+
+```typescript
+const value = await sdk.evm.call({
+  abi,
+  contractAddress,
+  address: richAccount.address,
+  funcName: 'getTestValue',
+  args: [true],
+});
+
+console.log(value);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+
+</template></Details>
+
+<Details><template v-slot:header>
+Check Smart contract exist method
+</template><template v-slot:body>
+
+#### Overview
+
+The method will check if there is a smart contract in the network at the specified address
+
+#### Brief example
+
+```typescript
+const { exist } = await sdk.evm.contractExists({
+  contractAddress: '<ethereum address>'
+});
+
+console.log('exist', exist);
+```
+
+#### Arguments
+
+`contractAddress: string` - Ethereum address of the smart-contract
+
+`blockNumber?: number | string` - Number of execution block
+
+#### Behaviour and errors
+
+#### Returns
+This method returns `EvmContractExistResponse`
+
+```typescript
+interface EvmContractExistResponse {
+  exist: boolean;
+};
+```
+
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="JS">
+
+```typescript
+const { exist } = await sdk.evm.contractExists({
+  contractAddress: '<ethereum address>'
+});
+
+console.log('exist', exist);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+curl -X 'GET' \
+  'https://rest.unique.network/opal/v1/evm/contract-exists?contractAddress=0x60639DB997DAAeD16111998a45a4D6450809aB6A' \
+  -H 'accept: application/json'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Substrate Client">
+
+```typescript
+const { exist } = await client.evm.contractExists({
+  contractAddress: '<ethereum address>'
+});
+
+console.log('exist', exist);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+
+</template></Details>
+
+<Details><template v-slot:header>
+Send method
+</template><template v-slot:body>
+
+#### Overview
+
+Method for calling functions that make changes to the network and require transactions to be signed.
+
+#### Brief example
+
+```typescript
+import { EvmSendArguments } from '@unique-nft/substrate-client/evm/methods/send';
+
+const sendArgs: EvmSendArguments = {
+  abi,
+  contractAddress,
+  address: richAccount.address,
+  maxFeePerGas: gasPrice,
+  funcName: 'addValue',
+  args: [1],
+};
+const { parsed } = await sdk.evm.send.submitWaitResult(sendArgs);
+
+console.log(parsed);
+```
+
+#### Arguments
+
+`address: string` - **Signer** address
+
+`contractAddress: string` - Ethereum address of the smart-contract
+
+`abi: Abi` - JSON Abi of your smart-contract
+
+`funcName: string` - Name of function smart-contract
+
+`args?: any[]` - An array of arguments you want to pass to the function call
+
+`nonce?: number | HexString` - The nonce for this transaction
+
+`value?: number | string` - The amount of money you want to transfer to the smart-contract
+
+`gasLimit?: number | string` - Function gas limit
+
+`maxFeePerGas?: number | string`
+
+`maxPriorityFeePerGas?: number | string`
+
+#### Behaviour and errors
+
+#### Returns
+
+This method returns `EvmSendResult`
+
+```typescript
+import { HexString } from '@polkadot/util/types';
+import { Event } from 'abi-coder';
+
+export interface UnknownEvent {
+  topics: string[];
+  data: string;
+}
+
+interface EvmSendResult {
+  isExecutedFailed: boolean;
+  parsedEvents: Event[];
+  unknownEvents: UnknownEvent[];
+}
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="SDK">
+
+```typescript
+import { EvmSendArguments } from '@unique-nft/substrate-client/evm/methods/send';
+
+const sendArgs: EvmSendArguments = {
+  abi,
+  contractAddress,
+  address: richAccount.address,
+  maxFeePerGas: gasPrice,
+  funcName: 'addValue',
+  args: [1],
+};
+const { parsed } = await sdk.evm.send.submitWaitResult(sendArgs);
+
+console.log(parsed);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+curl -X 'POST' \
+  'https://rest.unique.network/opal/v1/evm/send?use=SubmitWatch&withFee=false&verify=false' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Seed <your seed>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+        "address": "5HNUuEAYMWEo4cuBW7tuL9mLHR9zSA8H7SdNKsNnYRB9M5TX",
+        "contractAddress": "0x60639DB997DAAeD16111998a45a4D6450809aB6A",
+        "abi": [{
+          "inputs":
+          [
+            {
+              "internalType": "uint256",
+              "name": "delta",
+              "type": "uint256"
+            }
+          ],
+          "name": "updateMyUint",
+          "outputs":
+          [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        }],
+        "funcName": "updateMyUint",
+        "args": [1]
+      }'
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Client">
+
+```typescript
+import { EvmSendArgumentsDto } from '@unique-nft/sdk/types';
+
+const sendArgs: EvmSendArgumentsDto = {
+  abi,
+  contractAddress: <contract adress>,
+  address: <substrate address>,
+  funcName: 'addValue',
+  args: [1],
+};
+const { parsed } = await sdk.evm.send.submitWaitResult(sendArgs);
+
+console.log(parsed);
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+
+</template></Details>
+
+## Common
+
+## Ipfs
+
+### Upload file
+
+#### Overview
+
+Upload single file to IPFS
+
+#### Brief example
+
+```typescript
+const client = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
+
+const file = fs.readFileSync(`./your_picture.png`);
+
+const { fullUrl, cid } = await client.ipfs.uploadFile({ file });
+
+console.log(`Open by browser -> ${fullUrl}`);
+console.log(`Or use CID if you need -> ${cid}`);
+```
+
+
+#### Arguments
+
+`file: Buffer | Blob` - File content
+
+#### Behaviour and errors
+
+Throws validation error if file mime type is not allowed
+
+#### Returns
+
+This method returns `IpfsUploadResponse`
+
+```typescript
+export interface IpfsUploadResponse {
+    /** Entry CID_V0 */
+    cid: string;
+
+    /** Full url for entry on IPFS gateway */
+    fullUrl?: string;
+}
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="SDK">
+
+```typescript
+
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+curl -v -F file=@./1.jpg https://rest.unique.network/opal/v1/ipfs/upload-file
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+
+
+### Upload multiple files
+
+#### Overview
+
+Upload multiple files to IPFS and group inside single directory
+
+#### Brief example
+```typescript
+const client = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
+
+const contentAsBuffer = fs.readFileSync(`./1.png`);
+const contentAsStream = fs.createReadStream(`./2.png`);
+
+const files = [
+    { content: contentAsBuffer, name: `1.png` },
+    { content: contentAsStream, name: `2.png` },
+];
+
+const { fullUrl, cid } = await client.ipfs.uploadFiles({ files })
+
+console.log(`Open by browser -> ${fullUrl}`);
+console.log(`Or use CID if you need -> ${cid}`);
+```
+
+#### Arguments
+Method accepts `IpfsUploadMultipleRequest`
+
+```typescript
+type FileLike = {
+    content: Buffer | ReadableStream;
+    name: string;
+}
+
+type IpfsUploadMultipleRequest = {
+    files: Array<FileLike | File>;
+}
+```
+
+#### Behaviour and errors
+
+Throws validation error if file mime type is not allowed
+
+#### Returns
+
+This method returns `IpfsUploadResponse`
+
+```typescript
+export interface IpfsUploadResponse {
+    /** Entry CID_V0 */
+    cid: string;
+
+    /** Full url for entry on IPFS gateway */
+    fullUrl?: string;
+}
+```
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="SDK">
+
+```typescript
+const client = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
+
+const name = 'punk-1.png';
+
+const contentAsBuffer = fs.readFileSync(`./1.png`);
+const contentAsStream = fs.createReadStream(`./2.png`);
+
+const files = [
+    { content: contentAsBuffer, name: `1.png` },
+    { content: contentAsStream, name: `2.png` },
+];
+
+const { fullUrl, cid } = await client.ipfs.uploadFiles({ files })
+
+console.log(`Open by browser -> ${fullUrl}`);
+console.log(`Or use CID if you need -> ${cid}`);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+curl -v \
+ -F files=@1.jpg \
+ -F files=@2.jpg \
+ https://rest.unique.network/opal/v1/ipfs/upload-files
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+
+
+
+
+### Add multiple files to existing folder
+
+#### Overview
+
+Upload multiple files to existing IPFS folder and get new URL and CID 
+
+#### Brief example
+```typescript
+const client = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
+
+const contentAsBuffer = fs.readFileSync(`./1.png`);
+const firstFilesArray = [{ content: contentAsBuffer, name: `1.png` }];
+
+const contentAsStream = fs.createReadStream(`./2.png`);
+const secondFilesArray = [{ content: contentAsStream, name: `2.png` }];
+
+
+const { cid: firstCid } = await client.ipfs.uploadFiles({ files: firstFilesArray });
+
+const { fullUrl, cid } = await client.ipfs.addFiles({ cid: firstCid, files: secondFilesArray });
+
+console.log(`Open by browser -> ${fullUrl}`);
+console.log(`Or use CID if you need -> ${cid}`);
+```
+
+#### Arguments
+
+Method accepts `IpfsAddMultipleRequest`
+
+```typescript
+type FileLike = {
+    content: Buffer | ReadableStream;
+    name: string;
+}
+
+type IpfsUploadMultipleRequest = {
+    cid: string;
+    files: Array<FileLike | File>;
+}
+```
+
+
+#### Behaviour and errors
+
+Throws validation error if file mime type is not allowed
+
+#### Returns
+
+This method returns `IpfsUploadResponse`
+
+```typescript
+export interface IpfsUploadResponse {
+    /** Entry CID_V0 */
+    cid: string;
+
+    /** Full url for entry on IPFS gateway */
+    fullUrl?: string;
+}
+```
+
+
+#### Examples
+
+<CodeGroup>
+
+  <CodeGroupItem title="SDK">
+
+```typescript
+const client = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
+
+const contentAsBuffer = fs.readFileSync(`./1.png`);
+const firstFilesArray = [{ content: contentAsBuffer, name: `1.png` }];
+
+const contentAsStream = fs.createReadStream(`./2.png`);
+const secondFilesArray = [{ content: contentAsStream, name: `2.png` }];
+
+
+const { cid: firstCid } = await client.ipfs.uploadFiles({ files: firstFilesArray });
+
+const { fullUrl, cid } = await client.ipfs.addFiles({ cid: firstCid, files: secondFilesArray });
+
+console.log(`Open by browser -> ${fullUrl}`);
+console.log(`Or use CID if you need -> ${cid}`);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="REST">
+
+```bash
+curl -X PATCH -v \
+ -F files=@3.jpg \
+ -F cid=QmbZFugbeYQZj2jqH9qE1zPzUEJ4Zcj8RE5jqGGBpBYaRd \
+  https://rest.unique.network/opal/v1/ipfs/add-files
+```
+
+  </CodeGroupItem>
+
+</CodeGroup>
+
 

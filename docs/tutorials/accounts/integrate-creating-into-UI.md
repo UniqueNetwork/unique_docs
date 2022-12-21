@@ -1,16 +1,15 @@
-# How to integrate creating into your UI
+# Create an account via web form
 
-Ok, now we are ready to create a userform for adding a new account.
+In this tutorial, we will create a userform for adding a new account right in your web UI.
 
-To work with accounts, we definitely need the Accounts class and a provider, such as KeyringLocalProvider, which saves accounts in a secure store using the @polkadot/ui-keyring package.
+To work with accounts, we will need the ``Accounts`` object and a provider, such as ``KeyringLocalProvider``,
+which saves accounts in a secure store using the ``@polkadot/ui-keyring`` package.
 
-And first of all, we need to initialize the provider in advance:
+First of all, we need to initialize the provider:
 
-```typescript
+```typescript:no-line-numbers
 import { Accounts } from '@unique-nft/accounts';
-import {
-  KeyringLocalProvider
-} from '@unique-nft/accounts/keyring-local';
+import { KeyringLocalProvider } from '@unique-nft/accounts/keyring-local';
 
 ... 
 
@@ -25,19 +24,19 @@ const provider = new KeyringLocalProvider(options);
 await provider.init();
 ```
 
-Next, you need to associate it with an instance of the Accounts class:
+Next, we need to associate it with the ``Accounts`` instance:
 
-```typescript
+```typescript:no-line-numbers
 const accounts = new Accounts();
 await accounts.addProvider(provider);
 ```
 
-Finally, let’s create an account creation form. 
+Finally, let’s create a web form which will use this code. Please find below a code sample on React.
+The user interface contains two fields: a mnemonic phrase and a password that must be filled.
+Optionally, you can offer to fill in the account name.
 
-At a minimum, to create an account through the user interface, the user must fill out a form consisting of two fields: a mnemonic phrase and a password. Optionally, you can offer to fill in the name of the account.
-
-```JSX
- <form onSubmit={onSubmit} className='create-account-form'>
+```jsx:no-line-numbers
+<form onSubmit={onSubmit} className='create-account-form'>
   <div>
     <label htmlFor="mnemonic">Mnemonic phrase*</label>
     <input id={'mnemonic'} value={mnemonicPhrase} onChange={(e) => setMnemonicPhrase(e.target.value)}/>
@@ -54,22 +53,22 @@ At a minimum, to create an account through the user interface, the user must fil
 </form>
 ```
 
-Using mnemonicGenerate from the @polkadot/util-crypto library, you can generate random mnemonic:
+Using the ``mnemonicGenerate`` method from the ``@polkadot/util-crypto`` library, you can generate a new mnemonic:
 
-```typescript
+```typescript:no-line-numbers
 const newMnemonicPhrase = mnemonicGenerate();
 ```
 
-In onSubmit, we will add an account through a provider like this:
+In the ``onSubmit`` function, we will add an account through a provider this way:
 
-```typescript
+```typescript:no-line-numbers
 const onSubmit = () => {
   provider.addUri(mnemonicPhrase, password, { name });
 }
 ```
 
-After that, the account will be added to the local storage and it will be possible to get it through the getAccounts method:
+After that, the account will be added to the local storage and it will be possible to get it through the ``getAccounts`` method:
 
-```typescript
+```typescript:no-line-numbers
 const accountsList = await accounts.getAccounts();
 ```

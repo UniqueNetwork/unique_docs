@@ -1,81 +1,91 @@
-# NFTs. How to store images/videos/etc.
+# (Duplicate) How to store files 
 
-You can use the following methods to upload files:
+### SDK
 
-- [SDK](#sdk)
-- [Rest](#rest)
+Install the [SDK](https://www.npmjs.com/package/@unique-nft/sdk) package.
 
-## Sdk
+<CodeGroup>
+  <CodeGroupItem title="NPM"  active>
 
-Install package [sdk](https://www.npmjs.com/package/@unique-nft/sdk).
-
-```bash
-npm i @unique-nft/sdk --save
+```bash:no-line-numbers
+npm install @unique-nft/sdk
 ```
 
-#### In the baseUrl parameter, you must pass one of the paths to the Unique Network
+  </CodeGroupItem>
+  <CodeGroupItem title="YARN">
 
-1) Opal https://rest.unique.network/opal
-2) Quartz https://rest.unique.network/quartz
-3) Unique https://rest.unique.network/unique
+```bash:no-line-numbers
+yarn add @unique-nft/sdk
+```
 
-```typescript
-  import { Sdk } from '@unique-nft/sdk';
+  </CodeGroupItem>
+</CodeGroup>
 
-  const baseUrl = 'https://rest.unique.network/opal';
+In the `baseUrl` parameter, you need to pass one of the following URLs depending on which parachain you want to work with.
 
-  const main = async () => {
-    const uploadFile = async (file) => {
-      const options = { baseUrl };
-      const client = new Sdk(options);
+Opal - `https://rest.unique.network/opal`   
 
-      // uploadZip - to upload archives
-      return client.ipfs.uploadFile({ file });
-    };
-  
-    const form = document.querySelector('form');
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      const file = document.querySelector('#nftFile').files[0];
-      const response = await uploadFile(file);
-      document.querySelector('#response').innerText = JSON.stringify(
-        response,
-        null,
-        4,
-      );
-    });
+Quartz - `https://rest.unique.network/quartz` 
+
+Unique - `https://rest.unique.network/unique` 
+
+```typescript:no-line-numbers
+import { Sdk } from '@unique-nft/sdk';
+
+const baseUrl = 'https://rest.unique.network/opal';
+
+const main = async () => {
+  const uploadFile = async (file) => {
+    const options = { baseUrl };
+    const client = new Sdk(options);
+
+    // the "uploadZip" method can be used to upload archives
+    return client.ipfs.uploadFile({ file });
   };
-  
-  main();
+
+  const form = document.querySelector('form');
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const file = document.querySelector('#nftFile').files[0];
+    const response = await uploadFile(file);
+    document.querySelector('#response').innerText = JSON.stringify(
+      response,
+      null,
+      4,
+    );
+  });
+};
+
+main();
 ```
 
-## Rest
+### REST libraries
 
-```typescript
-  import { createReadStream } from 'fs';
-  import FormData from 'form-data';
-  import fetch from 'node-fetch';
-  import mime from 'mime-types';
-  
-  const filename = '<path_to_file>';
-  
-  const URL = 'https://rest.unique.network/opal/v1/ipfs/upload-file';
-  const form = new FormData();
-  form.append(
-    'file',
-    createReadStream(filename),
-    {
-      contentType: mime.lookup(filename) as string,
-      filename,
-    },
-  );
-  
-  const result = fetch(URL, { method: 'POST', body: form });
+```typescript:no-line-numbers
+import { createReadStream } from 'fs';
+import FormData from 'form-data';
+import fetch from 'node-fetch';
+import mime from 'mime-types';
+
+const filename = '<path_to_file>';
+
+const URL = 'https://rest.unique.network/opal/v1/ipfs/upload-file';
+const form = new FormData();
+form.append(
+  'file',
+  createReadStream(filename),
+  {
+    contentType: mime.lookup(filename) as string,
+    filename,
+  },
+);
+
+const result = fetch(URL, { method: 'POST', body: form });
 ```
 
-After uploading file we are getting response from server with IPFS Cid:
+After uploading a file, we get a response from a server with an IPFS Cid:
 
-```json
+```json:no-line-numbers
 {
   "cid": "Qmc1Dj8m4z2vcojjJjp348FKffmSjopSFTgATpU8gUx5k1",
   "fileUrl": "https://ipfs.unique.network/ipfs/Qmc1Dj8m4z2vcojjJjp348FKffmSjopSFTgATpU8gUx5k1"

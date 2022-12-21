@@ -36,15 +36,15 @@ Url is predetermined for all tokens, but a part of it will be replaced with the 
 
 Very useful to work with big collections. Name all images as "1.png", "2.png" etc. then place them somewhere and use infixes to dynamically set urls for your media.
 
-<details>
-<summary>Infix url:</summary>
+<Details>
+<template v-slot:header>Infix url</template>
+<template v-slot:body>
 
 Prerequisites: requires property "```media.type```.urlTemplate" to be prefilled in collection. The end of urlTemplate should contain ```{infix}``` that will be replaced by the value provided in token properties.
 
 **i.c** stands for "image cover". An image that should be used for display.
 
 **h.c** stands for "video cover". An image that should be used as a preview for videos. This one is optional.
-
 
 _Example of token image_:
 collection
@@ -68,13 +68,17 @@ token
 { key: i.c value: QmQrC7a1yiYLMHGABBBc4VxqCEpWe7Y8HWrfHLiZxLrQj5 }
 { key: v.i value: 22 }
 ```
-</details>
+
+</template>
+</Details>
 
 ### Url
 Full url to be used as is. Provided in token properties and requires no prerequisites in the collection.
 
 Simplest of solutions.
-<details><summary>Plain url:</summary>
+
+<Details>
+<template v-slot:header>Plain url</template><template v-slot:body>
 
 _Example_:
 
@@ -84,15 +88,17 @@ image: { url: example.com }
 
 Should be converted to: ```example.com```
 
-</details>
+</template>
+</Details>
 
 ### IpfsCid
 If collection.urlTemplate is not provided - should be used with "ipfs://" from token.image["i.c"] ``` `ipfs://${token["i.c"]}` ```.
 
 If provided - behaves exactly the same is infix, replacing {infix} inside collection.templateUrl
 
-<details>
-<summary>Ipfs cid:</summary>
+<Details>
+<template v-slot:header>Ipfs cid</template>
+<template v-slot:body>
 
 Prerequisite: collection should not have any image properties provided.
 Just provide a Cid string to token.image.ipfsCid and it will be converted to full url.
@@ -108,7 +114,8 @@ Should be converted to:
 ```typescript
 `ipfs://${token.image.ipfsCid}`
 ```
-</details>
+</template>
+</Details>
 
 ## Attributes
 Attributes define some unique properties for each NFT. They should be defined on collection.schema and used on token[a.*index*] afterward.
@@ -118,8 +125,9 @@ Attributes define some unique properties for each NFT. They should be defined on
 ### Schema
 The schema defines which attributes can be stored on any token of the collection. Attributes in tokens that are not provided in collection.schema can't be used. Attributes should respect "optional" param from collection attribute as well as type - if condition not met NFT can't be created. 
 
-<details>
-<summary>Attributes schema definition:</summary>
+<Details>
+<template v-slot:header>Attributes schema definition</template>
+<template v-slot:body>
 
 On chain schema for attributes _in collection_ is defined as 
 
@@ -136,14 +144,18 @@ On chain schema for attributes _in collection_ is defined as
 ```
 
 _name_ - attribute name. Note, that we reference attributes by index, not by name.
-_optional_ - whether value is required in tokens or can be skipped
-_isArray_ - defines whether you can store multiple values
-_type_ - which type can be stored, see supported types below
-_enumValues_ - if provided, can't use values only from provided list
 
-<details>
-<summary>Supported attribute types:</summary>
+_optional_ - whether value is required in tokens or can be skipped.
 
+_isArray_ - defines whether you can store multiple values.
+
+_type_ - which type can be stored, see supported types below.
+
+_enumValues_ - if provided, can't use values only from provided list.
+
+<Details>
+<template v-slot:header>Supported attribute types</template>
+<template v-slot:body>
 
 ```typescript
 - integer
@@ -157,12 +169,12 @@ _enumValues_ - if provided, can't use values only from provided list
 - colorRgba
 ```
 
-</details>
+</template>
+</Details>
 
-<details>
-<summary>Attributes schema in collection example:</summary>
-
-<CodeGroup>
+<Details>
+<template v-slot:header>Attributes schema in collection example</template>
+<template v-slot:body>
 
 ```typescript
 [
@@ -200,18 +212,17 @@ _enumValues_ - if provided, can't use values only from provided list
   }
 ]
 ```
-</CodeGroup>
-</details>
 
 On chain schema for attributes _in token_ is defined as ```
 { key: a.*index*, 
   value: "value based on collection.attributeSchema.*index*"
 } ```
 
-<details>
-<summary>Attributes usage in NFT example:</summary>
+</template>
+</Details>
 
-<CodeGroup>
+<Details>
+<template v-slot:header>Attributes usage in NFT example</template><template v-slot:body>
 
 ```typescript
 [
@@ -249,7 +260,9 @@ On chain schema for attributes _in token_ is defined as ```
   }
 ]
 ```
-</CodeGroup>
-</details>
 
-</details>
+</template>
+</Details>
+
+</template>
+</Details>

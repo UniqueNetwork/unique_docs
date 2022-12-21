@@ -23,7 +23,7 @@ with [Karura SWAP](https://apps.karura.network/swap).
 ## Sapphire - solochain
 
 ::: danger Under construction
-Sapphire mainnet is under construction, live in September
+Sapphire mainnet is under construction, live soon.
 :::
 
 The Sapphire Mainnet is the production environment.  

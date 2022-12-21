@@ -1,53 +1,24 @@
-# Destroy collection
+# Destroy a collection
 
-In this guide, we will go through the entire process of destroy collection using the Unique Network SDK.
+In this guide, we will go through the entire process on how to destroy a collection using the Unique Network SDK.
 
-## Preparation
+### Prerequisites
 
-To get started, you need to have:
+To get started, you need to have a [Substrate address](../tutorials/accounts/create-account.md) and an existing collection (see [create a collection](../tutorials/create-collection-token.md).
 
-1. [Substrate address](/sdk-guides/createAccount.html)
-2. [Collection ID](/sdk-guides/nfts-ways-to-create.html#create-collection)
+### Limitations
 
-## Destroy collection
+There are some scenarios when it is impossible to destroy a collection:
 
-There are limits to deleting a collection:
+- a collection is not found. 
+- not enough balance to destroy a collection.
+- a collection contains tokens.
+- your address is not the collection owner.
+- the corresponding permission is specified when the collection is created.
 
+### Sample code 
 
-- collection not found
-- enough balance to destroy the collection
-- collection must not contain tokens
-- your address is the owner of the collection
-- collection can't be destroyed it is specified when the collection is created
-
-## Brief example
-
-```typescript
-import { DestroyCollectionArguments } from '@unique-nft/substrate-client/tokens/types';
-
-const destroyArgs: DestroyCollectionArguments = {
-    address: '<Account address>',
-    collectionId: '<ID of the collection>'
-};
-
-const result = await sdk.collections.destroy.submitWaitResult(destroyArgs);
-const { success } = result.parsed;
-```
-## Arguments
-
-`address` - string
-
-`collectionId` - number
-
-```typescript
-Returns
-interface DestroyCollectionResult {
-    success: boolean;
-}
-```
-## Examples
-
-```typescript
+```typescript:no-line-numbers
 import { DestroyCollectionArguments } from '@unique-nft/substrate-client/tokens/types';
 
 const destroyArgs: DestroyCollectionArguments = {
@@ -59,7 +30,41 @@ const result = await sdk.collections.destroy.submitWaitResult(destroyArgs);
 const { success } = result.parsed;
 ```
 
-```bash
+### Examples
+
+<CodeGroup>
+<CodeGroupItem title = "SDK" active>
+
+```typescript:no-line-numbers
+import { Sdk } from "@unique-nft/sdk";
+
+const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+
+client.collections.destroy.submitWaitResult({
+    address: '<your address>',
+    collectionId: 1,
+});
+```
+
+</CodeGroupItem>
+<CodeGroupItem title="Substrate Client">
+
+```typescript:no-line-numbers
+import { DestroyCollectionArguments } from '@unique-nft/substrate-client/tokens/types';
+
+const destroyArgs: DestroyCollectionArguments = {
+    address: '<Account address>',
+    collectionId: '<ID of the collection>'
+};
+
+const result = await sdk.collections.destroy.submitWaitResult(destroyArgs);
+const { success } = result.parsed;
+```
+
+</CodeGroupItem>
+<CodeGroupItem title ="REST">
+
+```bash:no-line-numbers
 curl -X 'DELETE' \
   'https://rest.unique.network/opal/collection' \
   -H 'accept: application/json' \
@@ -81,11 +86,7 @@ curl -X 'POST' \
 }'
 ```
 
-```typescript
-const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-client.collections.destroy.submitWaitResult({
-    address: '<your address>',
-    collectionId: 1,
-});
-```
+</CodeGroupItem>
+</CodeGroup>
+

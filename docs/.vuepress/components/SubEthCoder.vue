@@ -1,7 +1,7 @@
 <template>
   <div class="inputContainer">
-    <input v-model="inputRef" class="input"/>
-    <button @click="convertInputSubToEth">Convert</button>
+    <UniqueInput v-model="inputRef" class="input" placeholder="Input an address"/>
+    <UniqueButton @click="convertInputSubToEth">Convert</UniqueButton>
   </div>
 
   <p v-show="error.message" class="error">{{ error.message }}</p>
@@ -70,6 +70,8 @@
 <script setup lang="ts">
 import {reactive, ref} from 'vue'
 import CopyButton from './CopyButton.vue'
+import UniqueButton from '../components/UI/UniqueButton.vue'
+import UniqueInput from '../components/UI/UniqueInput.vue'
 
 import {Address} from '@unique-nft/utils/'
 

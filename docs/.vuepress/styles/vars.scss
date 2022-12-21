@@ -1,6 +1,7 @@
 :root {
   // brand colors
   --c-brand: #009cf0;
+  --c-brand-secondary: #15ADFF;
   --c-brand-light: #0085cc;
 
   // background colors
@@ -14,16 +15,21 @@
 
   // text colors
   --c-text: #2c3e50;
+  --c-text-hover: rgb(8, 55, 130);
   --c-text-accent: var(--c-brand);
   --c-text-light: #3a5169;
   --c-text-lighter: #4e6e8e;
   --c-text-lightest: #6a8bad;
   --c-text-quote: #999999;
 
+  --c-custom-text: lighten(#000, 15%);
+  --c-custom-text-hover: #000;
+
   // border colors
   --c-border: #eaecef;
   --c-border-dark: #dfe2e5;
   --c-border-collapse: #d2d3d6;
+  --c-border-table: rgb(243, 244, 245);
 
   // custom container colors
   --c-tip: #42b983;
@@ -60,7 +66,7 @@
 
   // font vars
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   --font-family-code: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
 
   // layout vars
@@ -101,7 +107,8 @@
 
 // plugin-external-link-icon
 .external-link-icon {
-  --external-link-icon-color: var(--c-text-quote);
+  width: 24px;
+  --external-link-icon-color: #15ADFF;
 }
 
 // plugin-medium-zoom
