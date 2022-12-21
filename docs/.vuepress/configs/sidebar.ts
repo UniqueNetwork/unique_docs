@@ -22,6 +22,7 @@ export const sidebar: Record<string, SidebarConfig> = {
               '/tutorials/burnNFT.md',
               '/tutorials/work-with-evm-via-sdk.md',
               '/tutorials/live-nft-example.md',
+              '/tutorials/websocket-subscriptions.md',
             ]
           },
           {
