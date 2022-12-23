@@ -37,7 +37,7 @@ const size = computed(() => {
     margin-bottom: 5px;
     height: 35px !important;
     color:  var(--c-text);
-    box-shadow: 0 0 10px var(--c-custom-border);
+    box-shadow: 0 0 10px rgba(var(--c-text-hover), 0.25);
     border-radius: 8px !important;
   }
   .unique-details-body {
