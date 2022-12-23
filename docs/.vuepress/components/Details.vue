@@ -36,7 +36,7 @@ const size = computed(() => {
     font-weight: 400;
     margin-bottom: 5px;
     height: 35px !important;
-    color:  var(--c-brand-secondary);
+    color:  var(--c-text);
     box-shadow: 0 0 10px var(--c-custom-border);
     border-radius: 8px !important;
   }
