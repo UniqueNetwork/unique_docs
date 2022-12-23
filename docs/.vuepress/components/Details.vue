@@ -1,6 +1,6 @@
 <template>
   <details class="unique-details" >
-    <summary class="unique-summary">
+    <summary class="unique-summary" :style="size">
       <slot name="header"/>
     </summary>
     <div class="unique-details-body">
@@ -9,20 +9,36 @@
   </details>
 </template>
 
+<script setup lang="ts">
+import {computed} from 'vue'
+
+const defaultSize = '20px'
+const props = defineProps(['fontSize'])
+
+const size = computed(() => {
+  if (props.fontSize)
+    return {'--fz': props.fontSize + 'px'}
+  else 
+    return {'--fz': defaultSize}
+})
+</script>
+
 <style lang="scss">
 .unique-details {
   border: thin;
-  border-radius: 20px !important;
+  border-radius: 8px !important;
   cursor: pointer;
-  padding: 10px 15px 10px;
+  padding: 10px 15px;
   .unique-summary {
-    padding: 10px 0 10px 30px;
+    font-size: var(--fz);
+    padding: 10px 0 10px 15px;
     background: rgba(0, 0, 0, 0.05);
+    font-weight: 400;
     margin-bottom: 5px;
     height: 35px !important;
-    color:  rgba(var(--c-text-hover));
-    box-shadow: 0 0 10px rgba(var(--c-text-hover), 0.25);
-    border-radius: 20px !important;
+    color:  var(--c-brand-secondary);
+    box-shadow: 0 0 10px var(--c-custom-border);
+    border-radius: 8px !important;
   }
   .unique-details-body {
     margin-top: 0;

@@ -104,7 +104,7 @@ th {
   font-size: 18px;
   font-weight: 600;
   text-align: left;
-  background-color: rgba(var(--c-border-table));
+  background-color: var(--c-border-table);
   border: 0px;
   padding: 24px 0 24px 16px;
 }
@@ -116,7 +116,7 @@ td {
   font-size: 16px;
   padding: 14px;
   background-color: var(--bg-color);
-  border-bottom: 2px solid rgba(var(--c-border-table));
+  border-bottom: 2px solid var(--c-border-table);
 }
 
 .colorSquare {

@@ -1,7 +1,7 @@
 :root {
   // brand colors
   --c-brand: #009cf0;
-  --c-brand-secondary: #15ADFF;
+  --c-brand-secondary: #15adff;
   --c-brand-light: #0085cc;
 
   // background colors
@@ -30,6 +30,8 @@
   --c-border-dark: #dfe2e5;
   --c-border-collapse: #d2d3d6;
   --c-border-table: rgb(243, 244, 245);
+
+  --c-custom-border: rgba(0, 0, 0, .25);
 
   // custom container colors
   --c-tip: #42b983;
