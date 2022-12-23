@@ -1,8 +1,29 @@
 # Websocket subscriptions
 
-## Connect with socket.io-client
+### Connect to the client
 
-```typescript
+In this tutorial, we will using the [Socket.IO client](https://socket.io/docs/v4/client-initialization/) library. So first of all, you need to install it: 
+
+<CodeGroup>
+  <CodeGroupItem title="NPM"  active>
+
+```bash:no-line-numbers
+npm install socket.io-client
+```
+
+</CodeGroupItem>
+<CodeGroupItem title="YARN">
+
+```bash:no-line-numbers
+yarn add socket.io-client
+```
+
+</CodeGroupItem>
+</CodeGroup>
+
+Then, you can import it to your project and initialize the client by the following code: 
+
+```typescript:no-line-numbers
 import { io } from 'socket.io-client';
 
 const socket = io('https://rest.unique.network', {
@@ -15,8 +36,10 @@ socket.on('system', (room, data) => {
   console.log(data);
 });
 ```
-In this example, immediately after the connection is established, you will receive a `system` event, with the blockchain information of the network to which you are connected:
-```text
+
+When the connection is established, you will receive a `system` event with the blockchain network information to which you connected. 
+
+```typescript:no-line-numbers
 {
   name: 'system'
 }
@@ -31,19 +54,21 @@ In this example, immediately after the connection is established, you will recei
 
 ### Headers
 
-To receive events about new `headers`, subscribe as follows:
+To receive events about new `headers`, you can subscribe the following way:
 
-```typescript
+```typescript:no-line-numbers
 socket.on('headers', (room, header) => {
   console.log(header);
 });
+
 socket.on('connect', () => {
   socket.emit('subscribe:headers');  
 });
 ```
 
-You will receive a `header` object containing the following fields:
-```
+You will receive the `header` object that contains these fields:
+
+```typescript:no-line-numbers
 interface HeaderResult {
   hash: string;
   parentHash: string;
@@ -56,19 +81,21 @@ interface HeaderResult {
 
 ### Blocks
 
-To receive events about new `blocks`, subscribe as follows:
+To receive events about new `blocks`, you can subscribe the following way:
 
-```typescript
+```typescript:no-line-numbers
 socket.on('blocks', (room, block) => {
   console.log(block);
 });
+
 socket.on('connect', () => {
   socket.emit('subscribe:blocks');  
 });
 ```
 
-You will receive a `block` object containing the following fields:
-```
+You will receive еру `block` object that contains these fields:
+
+```typescript:no-line-numbers
 interface BlockResult {
   hash: string;
   header: HeaderResult;
@@ -77,19 +104,21 @@ interface BlockResult {
 
 ### Extrinsics
 
-To receive events about new `extrinsics`, subscribe as follows:
+To receive events about new `extrinsics`, you can subscribe the following way:
 
-```typescript
+```typescript:no-line-numbers
 socket.on('extrinsics', (room, extrinsic) => {
   console.log(extrinsic);
 });
+
 socket.on('connect', () => {
   socket.emit('subscribe:extrinsics');  
 });
 ```
 
-You will receive a `extrinsic` object containing the following fields:
-```
+You will receive a `extrinsic` object that contains these fields:
+
+```typescript:no-line-numbers
 interface ExtrinsicResultResponse {
   isCompleted: boolean;
   hash: string;
@@ -105,15 +134,17 @@ interface ExtrinsicResultResponse {
 }
 ```
 
-#### Extrinsic filtering
+##### Extrinsic filtering
 
-You can filter extrinsics by specifying the id of the collection.
+You can filter extrinsics by specifying the collection id.
 
-For example, in the following example, you will only get extras from collection 123:
-```typescript
+In the example below, you will only get extrinsics from collection #123:
+
+```typescript:no-line-numbers
 socket.on('extrinsics', (room, extrinsic) => {
   console.log(extrinsic);
 });
+
 socket.on('connect', () => {
   socket.emit('subscribe:extrinsics', {
       collectionId: 123,
@@ -121,11 +152,13 @@ socket.on('connect', () => {
 });
 ```
 
-To get extrinsics from any collection, write a filter like this:
-```typescript
+To get extrinsics from any collection, you can use this filter:
+
+```typescript:no-line-numbers
 socket.on('extrinsics', (room, extrinsic, block) => {
   console.log(extrinsic);
 });
+
 socket.on('connect', () => {
   socket.emit('subscribe:extrinsics', {
       collectionId: '*',
@@ -135,19 +168,21 @@ socket.on('connect', () => {
 
 ### Events
 
-To receive events about new `events`, subscribe as follows:
+To receive events about new `events`, you can subscribe the following way:
 
-```typescript
+```typescript:no-line-numbers
 socket.on('events', (room, event, extrinsic, block) => {
   console.log(event);
 });
+
 socket.on('connect', () => {
   socket.emit('subscribe:events');
 });
 ```
 
-You will receive a `event` object containing the following fields:
-```
+You will receive a `event` object that contains these fields:
+
+```typescript:no-line-numbers
 interface ExtrinsicResultEvent {
   section: string;
   method: string;
@@ -157,14 +192,17 @@ interface ExtrinsicResultEvent {
 }
 ```
 
-#### Events filtering
-You can filter the event stream to receive, for example, events from a specific section and method.
+##### Events filtering
 
-The following example will only show you the token creation events:
-```typescript
+You can filter the `events` stream to receive events from a specific section and method.
+
+The following example will display only the token creation events:
+
+```typescript:no-line-numbers
 socket.on('events', (room, event, extrinsic, block) => {
   console.log(event);
 });
+
 socket.on('connect', () => {
   socket.emit('subscribe:events', {
     method: 'ItemCreated',
@@ -173,9 +211,10 @@ socket.on('connect', () => {
 });
 ```
 
-As values for the `method` and `section` fields, you can specify the character "*" to mean any value.
-For example, this filter will return all events from the `"common"` section.
-```typescript
+As values for the `method` and `section` fields, you can specify the "*" character which will mean any value.
+For example, the following filter will return all events from the `common` section.
+
+```typescript:no-line-numbers
 socket.on('events', (room, event, extrinsic, block) => {
   console.log(event);
 });
