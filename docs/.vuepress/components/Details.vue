@@ -1,6 +1,6 @@
 <template>
-  <details class="unique-details" >
-    <summary class="unique-summary" :style="size">
+  <details class="unique-details" :style="cssVars">
+    <summary class="unique-summary">
       <slot name="header"/>
     </summary>
     <div class="unique-details-body">
@@ -10,16 +10,34 @@
 </template>
 
 <script setup lang="ts">
-import {computed} from 'vue'
+import {computed, PropType} from 'vue'
+import {DetailsSizes, smallDetails, defaultDetails} from './types/DetailsSizes'
 
-const defaultSize = '20px'
-const props = defineProps(['fontSize'])
+const props = defineProps({
+  size: { 
+    type: String as PropType<keyof typeof DetailsSizes>, 
+    required: true 
+  },
+})
 
-const size = computed(() => {
-  if (props.fontSize)
-    return {'--fz': props.fontSize + 'px'}
-  else 
-    return {'--fz': defaultSize}
+const cssVars = computed(() => {
+  switch (props.size) {
+    case 'Small': 
+      return {
+        '--fz': smallDetails.size,
+        '--p': smallDetails.padding,
+        '--h': smallDetails.height,
+        '--w': smallDetails.width,
+      }
+    case 'Default': 
+    default: 
+      return {
+        '--fz': defaultDetails.size,
+        '--h': defaultDetails.height,
+        '--p': defaultDetails.padding,
+        '--w': defaultDetails.width,
+      }
+  }
 })
 </script>
 
@@ -29,15 +47,17 @@ const size = computed(() => {
   border-radius: 8px !important;
   cursor: pointer;
   padding: 10px 15px;
+  width: var(--w);
+  min-width: 320px;
   .unique-summary {
     font-size: var(--fz);
-    padding: 10px 0 10px 15px;
+    padding: var(--p);
     background: rgba(0, 0, 0, 0.05);
     font-weight: 400;
     margin-bottom: 5px;
-    height: 35px !important;
+    height: var(--h) !important;
     color:  var(--c-text);
-    box-shadow: 0 0 10px rgba(var(--c-text-hover), 0.25);
+    box-shadow: 0 0 6px var(--c-custom-text-hover-opacity);
     border-radius: 8px !important;
   }
   .unique-details-body {

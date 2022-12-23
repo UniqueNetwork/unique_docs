@@ -17,10 +17,6 @@ const cssVars = computed(() => {
         '--tx-color': "#FFFFFF"
       }
     case 'white':
-      return {
-        '--bg-color': "--c-bg",
-        '--tx-color': "#15ADFF"
-      }
     default:
       return {
         '--bg-color': "--c-bg",
