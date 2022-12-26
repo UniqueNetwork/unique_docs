@@ -5,18 +5,24 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, PropType } from 'vue'
+import { Colors } from '../types/UniqueButtonColors'
 
-const props = defineProps(['color'])
+const props = defineProps({
+  color: { 
+    type: String as PropType<keyof typeof Colors>, 
+    required: true 
+  },
+})
 
 const cssVars = computed(() => {
   switch (props.color) {
-    case 'blue':
+    case 'Blue':
       return {
         '--bg-color': "#15ADFF",
         '--tx-color': "#FFFFFF"
       }
-    case 'white':
+    case 'White':
     default:
       return {
         '--bg-color': "--c-bg",
