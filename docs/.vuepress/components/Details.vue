@@ -16,7 +16,7 @@ import {DetailsSizes, smallDetails, defaultDetails} from './types/DetailsSizes'
 const props = defineProps({
   size: { 
     type: String as PropType<keyof typeof DetailsSizes>, 
-    required: true 
+    required: false, 
   },
 })
 

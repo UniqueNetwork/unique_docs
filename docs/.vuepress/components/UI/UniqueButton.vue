@@ -11,7 +11,7 @@ import { Colors } from '../types/UniqueButtonColors'
 const props = defineProps({
   color: { 
     type: String as PropType<keyof typeof Colors>, 
-    required: true 
+    required: false, 
   },
 })
 
