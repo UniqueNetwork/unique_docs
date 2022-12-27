@@ -1,16 +1,16 @@
 <template>
   <details class="unique-details" :class="props.size">
     <summary class="unique-summary">
-      <slot name="header"/>
+      <slot name="header" />
     </summary>
     <div class="unique-details-body">
-      <slot name="body"/>
+      <slot name="body" />
     </div>
   </details>
 </template>
 
 <script setup lang="ts">
-import {Prop} from 'vue'
+import { Prop } from 'vue'
 
 const props = defineProps<{
   size?: Prop<DetailsSizes>
@@ -22,29 +22,32 @@ const props = defineProps<{
   border: thin;
   border-radius: 8px !important;
   cursor: pointer;
-  padding: 10px 0;
+  padding: 0;
+  margin-bottom: 10px;
   width: 100%;
   min-width: 320px;
 
   .unique-summary {
-    background: rgba(0, 0, 0, 0.05);
+    background: var(--c-bg-dark);
     font-weight: 400;
     margin-bottom: 5px;
-    font-size: 24px;
-    height: 28px !important;
-    padding: 12px 0 12px 16px;
+    font-size: 16px;
+    height: 20px !important;
+    padding: 8px 12px;
     color: var(--c-text);
-    box-shadow: 0 0 6px var(--c-custom-text-hover-opacity);
     border-radius: 8px !important;
   }
 
-  &.small {
-    width: 50%;
+  .unique-details-body {
+    background: var(--c-bg);
+  }
+
+  &.large {
 
     .unique-summary {
-      font-size: 16px;
-      height: 20px !important;
-      padding: 8px 12px;
+      font-size: 24px;
+      height: 28px !important;
+      padding: 12px 0 12px 16px;
     }
   }
 
