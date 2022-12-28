@@ -20,12 +20,15 @@ html.dark {
 
   --c-custom-text: var(--c-text);
   --c-custom-text-hover: var(--c-text-hover);
+  --c-custom-text-hover-opacity: rgba(218, 223, 230, 0.25);
 
   // border colors
   --c-border: #3e4c5a;
   --c-border-dark: #34404c;
   --c-border-collapse: #c9d0d7;
   --c-border-table: rgb(49, 49, 51);
+
+  --c-custom-border: rgba(255, 255, 255, .25);
 
   // custom container colors
   --c-tip: #318a62;

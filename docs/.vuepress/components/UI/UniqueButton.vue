@@ -1,33 +1,15 @@
 <template>
-  <button class='button' :style="cssVars">
+  <button class='button' :class="props.color">
     <slot></slot>
   </button>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { Prop } from 'vue'
 
-const props = defineProps(['color'])
-
-const cssVars = computed(() => {
-  switch (props.color) {
-    case 'blue':
-      return {
-        '--bg-color': "#15ADFF",
-        '--tx-color': "#FFFFFF"
-      }
-    case 'white':
-      return {
-        '--bg-color': "--c-bg",
-        '--tx-color': "#15ADFF"
-      }
-    default:
-      return {
-        '--bg-color': "--c-bg",
-        '--tx-color': "#15ADFF"
-      }
-  }
-})
+const props = defineProps<{
+  color?: Prop<ButtonColors>
+}>()
 </script>
 
 <style scoped lang="scss">
@@ -37,9 +19,14 @@ const cssVars = computed(() => {
   border-radius: 8px;
   padding: 8px 24px;
   font-weight: 600;
-  background-color: var(--bg-color);
-  color: var(--tx-color);
   border: 1px solid var(--c-brand-secondary);
+  color: var(--c-brand-secondary);
+  background-color: var(--c-bg);
+
+  &.blue {
+    color: var(--c-bg);
+    background-color: var(--c-brand-secondary);
+  }
 
   &:disabled {
     cursor: not-allowed;
@@ -51,3 +38,10 @@ const cssVars = computed(() => {
   }
 }
 </style>
+
+<script lang="ts">
+export enum ButtonColors {
+  white = 'white',
+  blue = 'blue',
+}
+</script>
