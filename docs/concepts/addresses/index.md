@@ -21,7 +21,7 @@ In addition to allowing you to derive multiple addresses from the same public ke
 Thus, a Substrate address contains of chain prefix, public key, and checksum which are encoded using the base58 algorithm. The example below
 demonstrates this in detail.
 
-<Details size="Default">
+<Details>
 <template v-slot:header>Example</template>
 <template v-slot:body>
 
