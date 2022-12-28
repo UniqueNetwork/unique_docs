@@ -50,7 +50,6 @@ const account = await generateAccount({
 })
 
 console.log(account);
-
 ```
 
 <Details><template v-slot:header>
@@ -69,7 +68,6 @@ console.log(account);
     meta: { name: 'my_test_account' }
   }
 }
-
 ```
 </template>
 </Details>
@@ -240,7 +238,6 @@ await accounts.addProvider(KeyringLocalProvider);
 await accounts.addProvider(PolkadotProvider);
 
 const accountsList = await accounts.getAccounts();
-
 ```
 This will give us a list of available accounts. You can read a little more about accounts in the Polkadot docs - [Keyring](https://polkadot.js.org/docs/ui-keyring) and [Extension](https://polkadot.js.org/docs/extension). 
 
