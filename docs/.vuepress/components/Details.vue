@@ -59,7 +59,7 @@ const props = defineProps<{
 
 <script lang="ts">
 export enum DetailsSizes {
-  small = 'small',
+  large = 'large',
   regular = 'regular', //dummy, uses default value
 }
 </script>
