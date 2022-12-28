@@ -145,6 +145,7 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/sdk/methods.md',
           '/sdk/ios.md',
           '/sdk/android.md',
+          '/sdk/C_sharp.md',
           // '/sdk/tools.md', -> this info exists in Tutorials section
         ],
       }
