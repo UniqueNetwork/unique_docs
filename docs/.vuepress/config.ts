@@ -3,7 +3,7 @@ import {defaultTheme} from '@vuepress/theme-default'
 import * as path from 'path'
 import {navbar} from "./configs/navbar";
 import {sidebar} from "./configs/sidebar";
-// import {searchPlugin} from "@vuepress/plugin-search"
+import {searchPlugin} from "@vuepress/plugin-search"
 
 import {registerComponentsPlugin} from '@vuepress/plugin-register-components'
 
@@ -37,7 +37,13 @@ export default defineUserConfig({
   // extendsMarkdown: (md: any) => {md.set({breaks: true})},
   plugins: [
     registerComponentsPlugin({componentsDir: path.resolve(__dirname, './components')}),
-    // searchPlugin({})
+    searchPlugin({
+      locales: {
+        '/': {
+          placeholder: 'Search',
+        }
+      },
+    })
   ],
 
 
