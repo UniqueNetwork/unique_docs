@@ -99,3 +99,47 @@ After all executions we can see transaction hash
 ```csharp
 Console.WriteLine(submitResponse.Hash);
 ```
+
+### Creation of a collection
+
+This code sample shows how to create a new collection. You can read more about the method arguments in [create collection method description](./methods.md#collection).
+
+```csharp
+var collectionService = sdk.CollectionService;
+var createCollection = collectionService.GetCreateCollection();
+
+var request = new CreateCollectionBody(
+    CreateCollectionBody.ModeEnum.NFT,
+    "Sample collection name",
+    "sample collection description",
+    "TEST",
+    null,
+    null,
+    CreateCollectionBody.MetaUpdatePermissionEnum.ItemOwner,
+    new CollectionPermissionsDto(
+        CollectionPermissionsDto.AccessEnum.Normal,
+        true,
+        new CollectionNestingPermissionsDto(
+            true,
+            true
+        )
+    ),
+    true,
+    "5DnUE1uV7iW25bUriWVPHY67KMm2t6g5v23GzVbZCUc8fyBD"
+);
+var createCollectionResponse = createCollection.Build(request);
+
+var signCollectionBody = new UnsignedTxPayloadResponse(
+    createCollectionResponse.SignerPayloadJSON,
+    createCollectionResponse.SignerPayloadRaw,
+    createCollectionResponse.SignerPayloadHex
+);
+var signCollectionResponse = createCollection.Sign(signCollectionBody);
+
+var submitCollectionBody = new SubmitTxBody(signCollectionResponse.SignerPayloadJSON, signCollectionResponse.Signature);
+var submitCollectionResponse = createCollection.SubmitWatch(submitCollectionBody);
+var collectionExtrinsic = extrinsicService.GetExtrinsicStatus(submitCollectionResponse.Hash);
+
+Console.WriteLine(submitCollectionResponse.Hash);
+Console.WriteLine(collectionExtrinsic);
+```
