@@ -18,7 +18,7 @@ Please find below a full sample code that creates an account from a mnemonic phr
 (see [Create an account](../tutorials/how-to-account.md#create-an-account-via-code)).
 
 <CodeGroup>
-<CodeGroupItem title = "SDK" active>
+<CodeGroupItem name = "SDK" active>
 
 ```ts:no-line-numbers
 import { Sdk } from '@unique-nft/sdk';
@@ -71,7 +71,7 @@ main();
 ```
 
 </CodeGroupItem>
-<CodeGroupItem title="Substrate Client">
+<CodeGroupItem name="Substrate Client">
 
 ```typescript:no-line-numbers
 import { Client } from '@unique-nft/substrate-client'
@@ -119,7 +119,7 @@ console.log(`Created new collection with id ${collectionId}`);
 ```
 
 </CodeGroupItem>
-<CodeGroupItem title ="REST">
+<CodeGroupItem name ="REST">
 
 ```bash:no-line-numbers
 curl -X
