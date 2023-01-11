@@ -5,14 +5,14 @@
 In this tutorial, we will using the [Socket.IO client](https://socket.io/docs/v4/client-initialization/) library. So first of all, you need to install it: 
 
 <CodeGroup>
-  <CodeGroupItem title="NPM">
+  <CodeGroupItem name="NPM">
 
 ```bash:no-line-numbers
 npm install socket.io-client
 ```
 
 </CodeGroupItem>
-<CodeGroupItem title="YARN">
+<CodeGroupItem name="YARN">
 
 ```bash:no-line-numbers
 yarn add socket.io-client

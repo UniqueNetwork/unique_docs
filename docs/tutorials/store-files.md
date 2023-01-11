@@ -5,14 +5,14 @@
 Install the [SDK](https://www.npmjs.com/package/@unique-nft/sdk) package.
 
 <CodeGroup>
-  <CodeGroupItem title="NPM"  active>
+  <CodeGroupItem name="NPM"  active>
 
 ```bash:no-line-numbers
 npm install @unique-nft/sdk
 ```
 
   </CodeGroupItem>
-  <CodeGroupItem title="YARN">
+  <CodeGroupItem name="YARN">
 
 ```bash:no-line-numbers
 yarn add @unique-nft/sdk

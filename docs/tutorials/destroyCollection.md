@@ -33,7 +33,7 @@ const { success } = result.parsed;
 ### Examples
 
 <CodeGroup>
-<CodeGroupItem title = "SDK" active>
+<CodeGroupItem name = "SDK" active>
 
 ```typescript:no-line-numbers
 import { Sdk } from "@unique-nft/sdk";
@@ -47,7 +47,7 @@ client.collections.destroy.submitWaitResult({
 ```
 
 </CodeGroupItem>
-<CodeGroupItem title="Substrate Client">
+<CodeGroupItem name="Substrate Client">
 
 ```typescript:no-line-numbers
 import { DestroyCollectionArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -62,7 +62,7 @@ const { success } = result.parsed;
 ```
 
 </CodeGroupItem>
-<CodeGroupItem title ="REST">
+<CodeGroupItem name ="REST">
 
 ```bash:no-line-numbers
 curl -X 'DELETE' \

@@ -7,14 +7,14 @@
 ### Installation
 
 <CodeGroup>
-  <CodeGroupItem title="NPM"  active>
+  <CodeGroupItem name="NPM"  active>
 
 ```bash:no-line-numbers
 npm install @unique-nft/sdk
 ```
 
   </CodeGroupItem>
-  <CodeGroupItem title="YARN">
+  <CodeGroupItem name="YARN">
 
 ```bash:no-line-numbers
 yarn add @unique-nft/sdk
@@ -45,14 +45,14 @@ In the `baseUrl` parameter, you must pass one of the paths to [our networks](../
 To be able to sign extrinsics, you need to install the [`Accounts`](https://www.npmjs.com/package/@unique-nft/accounts) package.
 
 <CodeGroup>
-  <CodeGroupItem title="NPM"  active>
+  <CodeGroupItem name="NPM"  active>
 
 ```bash:no-line-numbers
 npm install @unique-nft/accounts
 ```
 
 </CodeGroupItem>
-<CodeGroupItem title="YARN">
+<CodeGroupItem name="YARN">
 
 ```bash:no-line-numbers
 yarn add @unique-nft/accounts
@@ -99,7 +99,7 @@ See the [hub.docker.com](https://hub.docker.com/r/uniquenetwork/web) page for mo
 #### Git
 
 <CodeGroup>
-  <CodeGroupItem title="NPM"  active>
+  <CodeGroupItem name="NPM"  active>
 
 ```bash:no-line-numbers
 git clone https://github.com/UniqueNetwork/unique-sdk
@@ -110,7 +110,7 @@ npm start
 ```
 
   </CodeGroupItem>
-  <CodeGroupItem title="YARN">
+  <CodeGroupItem name="YARN">
 
 ```bash:no-line-numbers
 git clone https://github.com/UniqueNetwork/unique-sdk
@@ -224,14 +224,14 @@ SECONDARY_CHAIN_NAME = 'ksm'
 ### Installation
 
 <CodeGroup>
-  <CodeGroupItem title="NPM"  active>
+  <CodeGroupItem name="NPM"  active>
 
 ```bash:no-line-numbers
 npm install @unique-nft/substrate-client
 ```
 
 </CodeGroupItem>
-<CodeGroupItem title="YARN">
+<CodeGroupItem name="YARN">
 
 ```bash:no-line-numbers
 yarn add @unique-nft/substrate-client
@@ -243,7 +243,7 @@ yarn add @unique-nft/substrate-client
 **via Git:**
 
 <CodeGroup>
-  <CodeGroupItem title="NPM"  active>
+  <CodeGroupItem name="NPM"  active>
 
 ```bash:no-line-numbers
 git clone https://github.com/UniqueNetwork/unique-sdk
@@ -253,7 +253,7 @@ npm run build:substrate-client
 ```
 
 </CodeGroupItem>
-<CodeGroupItem title="YARN">
+<CodeGroupItem name="YARN">
 
 ```bash:no-line-numbers
 git clone https://github.com/UniqueNetwork/unique-sdk
