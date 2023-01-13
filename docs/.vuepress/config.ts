@@ -4,7 +4,8 @@ import * as path from 'path'
 import {navbar} from "./configs/navbar";
 import {sidebar} from "./configs/sidebar";
 import {searchPlugin} from "@vuepress/plugin-search"
-
+//import {codeSwitcherPlugin} from 'vuepress-plugin-code-switcher'
+import {clipboardPlugin} from 'vuepress-plugin-clipboard'
 import {registerComponentsPlugin} from '@vuepress/plugin-register-components'
 
 export default defineUserConfig({
@@ -43,7 +44,11 @@ export default defineUserConfig({
           placeholder: 'Search',
         }
       },
-    })
+    }),
+    clipboardPlugin({
+      staticIcon: true
+    }),
+    // codeSwitcherPlugin(),
   ],
 
 
