@@ -1,10 +1,11 @@
+import mitt from 'mitt';
 import {defineClientConfig} from '@vuepress/client'
 
 import Toast, {POSITION} from 'vue-toastification'
 import "vue-toastification/dist/index.css";
 import {ToastOptions} from "vue-toastification/dist/types/types";
-import TabsVue3 from "./components/TabsVue3.vue";
-import TabVue3 from "./components/TabVue3.vue";
+import NewTabs from "./components/NewTabs.vue";
+import NewTab from "./components/NewTab.vue";
 
 import HomePageLayout from './layouts/HomePageLayout.vue'
 
@@ -17,9 +18,11 @@ const toastOptions: ToastOptions = {
 export default defineClientConfig({
   enhance({app}) {
     // app.use()
+    const emitter = mitt();
+    app.provide('emitter', emitter);
     app.use(Toast, toastOptions)
-    app.component('CodeGroup', TabsVue3)
-    app.component('CodeGroupItem', TabVue3)
+    app.component('CodeGroup', NewTabs)
+    app.component('CodeGroupItem', NewTab)
     app.config.globalProperties.$navigationProps = {
       tool: 'SDK',
       packageManager: 'NPM',
@@ -27,7 +30,9 @@ export default defineClientConfig({
       dictionary: {
         SDK: 'tool',
         'Substrate Client': 'tool',
+        'Client': 'tool',
         REST: 'tool',
+        JS: 'tool',
         NPM: 'packageManager',
         YARN: 'packageManager',
         Keyring: 'keyring',

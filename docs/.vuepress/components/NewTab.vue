@@ -1,13 +1,9 @@
 <script lang="ts">
-import {defineComponent, toRef, reactive, getCurrentInstance} from 'vue'
+import { defineComponent, toRef, reactive } from 'vue'
 import { useTab } from './composables/tabs'
 
 export default defineComponent({
   name: 'Tab',
-
-  data: () => ({
-    navigationProps: getCurrentInstance()?.appContext.config.globalProperties.$navigationProps,
-  }),
 
   props: {
     name: {
@@ -19,18 +15,18 @@ export default defineComponent({
   setup (props) {
     const name = toRef(props, 'name')
 
-    const { isActive } = useTab(reactive({ name }));
+    const { isActive } = useTab(reactive({ name }))
 
     return {
       isActive,
     }
-  }
+  },
 })
 </script>
 
 <template>
   <div
-    v-if="name === navigationProps[navigationProps.dictionary[name]]"
+    v-if="isActive"
     class="Tab"
   >
     <slot />

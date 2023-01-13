@@ -1,52 +1,63 @@
-import {
-  reactive,
-  ref,
-  readonly,
-  InjectionKey,
-  provide,
-  inject,
-  Ref,
-  onUnmounted,
-  computed,
-  getCurrentInstance
-} from 'vue'
+import { reactive, ref, readonly, InjectionKey, provide, inject, Ref, onUnmounted, computed, getCurrentInstance } from 'vue'
 
 interface TabData {
-  name: string,
+  name: string
 }
 
 const tabsInjectionKey = Symbol('tabs') as InjectionKey<{
   registerTab: (identifier: symbol, tabData: TabData) => void,
   deregisterTab: (identifier: symbol) => void
-  activeTab: Readonly<Ref<symbol>>,
+  activeTab: Readonly<Ref<string>>
 }>
 
 export const useTabs = () => {
-  const tabs = reactive(new Map<symbol, TabData>())
 
+  const emitter: any = inject('emitter');
+  const tabs = reactive(new Map<symbol, TabData>())
+  const activeTab = ref('')
+  const navigationProps = reactive(getCurrentInstance()?.appContext.config.globalProperties.$navigationProps)
   const registerTab = (identifier: symbol, tabData: TabData) => {
     tabs.set(identifier, tabData)
+
+    // reading previously selected pages during component initialization
+    // executed even if the first tab is already selected as active
+    const key = navigationProps.dictionary[tabData.name];
+    if (navigationProps[key] === tabData.name) activeTab.value = tabData.name;
+
+    // if there is no active tab yet, then select as active
+    if (!activeTab.value && tabData && tabData.name) {
+      activeTab.value = tabData.name;
+    }
   }
 
   const deregisterTab = (identifier: symbol) => {
     tabs.delete(identifier)
   }
 
-  const activeTab = ref<symbol>()
+  emitter.on('selectTab', (value: string) => {
+    try {
+      if ((Array.from(tabs).filter(([, tabData]) => (tabData && tabData.name === value))).length) {
+        activeTab.value = value;
+      }
+    } catch (e) {}
+  });
 
   provide(tabsInjectionKey, {
     registerTab,
     deregisterTab,
-    activeTab: readonly(activeTab),
+    activeTab: readonly(activeTab)
   })
 
-  const setActiveTab = (identifier: symbol) => {
-    activeTab.value = identifier
+  const setActiveTab = (value: string) => {
+    emitter.emit('selectTab', value);
+    const key = navigationProps.dictionary[value];
+    if (navigationProps[key]) navigationProps[key] = value;
   }
 
   return {
     tabs: readonly(tabs),
     setActiveTab,
+    activeTab,
   }
 }
 
@@ -57,7 +68,7 @@ export const useTab = (tabData: TabData) => {
     throw new Error('Tabs was not provided')
   }
 
-  const { registerTab, deregisterTab } = tabsInjection
+  const { registerTab, deregisterTab, activeTab } = tabsInjection
 
   const tabSymbol = Symbol(tabData.name)
 
@@ -67,11 +78,10 @@ export const useTab = (tabData: TabData) => {
     deregisterTab(tabSymbol)
   })
 
-  const preferredTool = getCurrentInstance()?.appContext.config.globalProperties.$navigationProps.preferredTool;
-
   const isActive = computed(() => (
-    tabData.name == preferredTool
+    activeTab.value === tabData.name
   ))
+
   return {
     isActive,
   }
