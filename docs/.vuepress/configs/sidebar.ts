@@ -11,6 +11,7 @@ export const sidebar: Record<string, SidebarConfig> = {
             children: [
               '/tutorials/how-to-accounts.md',
               '/tutorials/how-to-collections.md',
+              '/tutorials/how-to-ethereum.md',
               '/tutorials/accounts/create-account.md',
               '/tutorials/getAccountAndBalance.md',
               '/tutorials/create-collection-token.md',
