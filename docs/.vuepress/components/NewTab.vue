@@ -1,27 +1,17 @@
-<script lang="ts">
-import { defineComponent, toRef, reactive } from 'vue'
-import { useTab } from './composables/tabs'
+<script setup>
+import {reactive, toRef} from "vue";
+import {useTab} from "./composables/tabs";
 
-export default defineComponent({
-  name: 'Tab',
-
-  props: {
-    name: {
-      type: String,
-      required: true,
-    },
-  },
-
-  setup (props) {
-    const name = toRef(props, 'name')
-
-    const { isActive } = useTab(reactive({ name }))
-
-    return {
-      isActive,
-    }
+const props = defineProps({
+  name: {
+    type: String,
+    required: true,
   },
 })
+
+const name = toRef(props, 'name')
+
+const { isActive } = useTab(reactive({ name }))
 </script>
 
 <template>

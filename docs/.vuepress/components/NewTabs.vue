@@ -1,20 +1,7 @@
-<script lang="ts">
-import { defineComponent } from 'vue'
-import { useTabs } from './composables/tabs'
+<script setup>
+import {useTabs} from "./composables/tabs";
 
-export default defineComponent({
-  name: 'Tabs',
-
-  setup () {
-    const { tabs, setActiveTab, activeTab } = useTabs()
-
-    return {
-      tabs,
-      setActiveTab,
-      activeTab
-    }
-  },
-})
+const { tabs, setActiveTab, activeTab } = useTabs()
 </script>
 
 <template>

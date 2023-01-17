@@ -51,7 +51,7 @@ export const useTabs = () => {
   const setActiveTab = (value: string) => {
     emitter.emit('selectTab', value);
     const key = navigationProps.dictionary[value];
-    if (navigationProps[key]) navigationProps[key] = value;
+    if (key in navigationProps) navigationProps[key] = value;
   }
 
   return {
