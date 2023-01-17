@@ -1,7 +1,7 @@
 import { reactive, ref, readonly, InjectionKey, provide, inject, Ref, onUnmounted, computed, getCurrentInstance } from 'vue'
 
 interface TabData {
-  name: string
+  title: string
 }
 
 const tabsInjectionKey = Symbol('tabs') as InjectionKey<{
@@ -15,18 +15,15 @@ export const useTabs = () => {
   const emitter: any = inject('emitter');
   const tabs = reactive(new Map<symbol, TabData>())
   const activeTab = ref('')
-  const navigationProps = reactive(getCurrentInstance()?.appContext.config.globalProperties.$navigationProps)
+  const navigationProps = getCurrentInstance()?.appContext.config.globalProperties.$navigationProps
   const registerTab = (identifier: symbol, tabData: TabData) => {
     tabs.set(identifier, tabData)
 
-    // reading previously selected pages during component initialization
-    // executed even if the first tab is already selected as active
-    const key = navigationProps.dictionary[tabData.name];
-    if (navigationProps[key] === tabData.name) activeTab.value = tabData.name;
+    const key = navigationProps.dictionary[tabData.title];
+    if (navigationProps[key] === tabData.title) activeTab.value = tabData.title;
 
-    // if there is no active tab yet, then select as active
-    if (!activeTab.value && tabData && tabData.name) {
-      activeTab.value = tabData.name;
+    if (!activeTab.value && tabData && tabData.title) {
+      activeTab.value = tabData.title;
     }
   }
 
@@ -36,7 +33,7 @@ export const useTabs = () => {
 
   emitter.on('selectTab', (value: string) => {
     try {
-      if ((Array.from(tabs).filter(([, tabData]) => (tabData && tabData.name === value))).length) {
+      if ((Array.from(tabs).filter(([, tabData]) => (tabData && tabData.title === value))).length) {
         activeTab.value = value;
       }
     } catch (e) {}
@@ -70,7 +67,7 @@ export const useTab = (tabData: TabData) => {
 
   const { registerTab, deregisterTab, activeTab } = tabsInjection
 
-  const tabSymbol = Symbol(tabData.name)
+  const tabSymbol = Symbol(tabData.title)
 
   registerTab(tabSymbol, tabData)
 
@@ -79,7 +76,7 @@ export const useTab = (tabData: TabData) => {
   })
 
   const isActive = computed(() => (
-    activeTab.value === tabData.name
+    activeTab.value === tabData.title
   ))
 
   return {

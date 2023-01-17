@@ -55,7 +55,7 @@ interface CollectionInfoWithSchema {
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { CollectionIdArguments, CollectionInfoWithSchema } from '@unique-nft/substrate-client/types';
@@ -66,7 +66,7 @@ const collection: CollectionInfo = await sdk.collections.get(getCollectionArgs);
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
@@ -76,7 +76,7 @@ curl -X 'GET' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -143,7 +143,7 @@ interface CollectionPropertiesResult {
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import {
@@ -162,7 +162,7 @@ const result: CollectionPropertiesResult = await sdk.collections.properties(args
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
@@ -172,7 +172,7 @@ curl -X 'GET' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -344,7 +344,7 @@ interface CollectionIdArguments {
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { CreateCollectionNewArguments } from '@unique-nft/substrate-client/tokens';
@@ -373,7 +373,7 @@ console.log(`Created new collection with id ${collectionId}`);
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'POST' \
@@ -410,7 +410,7 @@ curl -X 'POST' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -499,7 +499,7 @@ interface DeleteCollectionPropertiesResult {
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { DeleteCollectionPropertiesArguments} from '@unique-nft/substrate-client/tokens';
@@ -519,7 +519,7 @@ console.log(`Deleted ${deletedKeys.join()}`);
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'DELETE' \
@@ -548,7 +548,7 @@ curl -X 'POST' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -610,7 +610,7 @@ interface DestroyCollectionResult {
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { DestroyCollectionArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -627,7 +627,7 @@ const { success } = result.parsed;
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'DELETE' \
@@ -652,7 +652,7 @@ curl -X 'POST' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -729,7 +729,7 @@ interface GetCollectionLimitsResult {
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { CollectionIdArguments, GetCollectionLimitsResult } from '@unique-nft/substrate-client/types';
@@ -742,7 +742,7 @@ console.log(`Collection ${collectionId} limits: ${JSON.stringify(limits)}`);
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
@@ -752,7 +752,7 @@ curl -X 'GET' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -828,7 +828,7 @@ This method returns `PropertyPermissionsResult`
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
   import {
@@ -847,7 +847,7 @@ This method returns `PropertyPermissionsResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -859,7 +859,7 @@ This method returns `PropertyPermissionsResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
   const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -955,7 +955,7 @@ This method returns `SetCollectionLimitsResult`
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
     import '@unique-nft/substrate-client/tokens';
@@ -981,7 +981,7 @@ This method returns `SetCollectionLimitsResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -1019,7 +1019,7 @@ This method returns `SetCollectionLimitsResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -1119,7 +1119,7 @@ This method returns `SetCollectionPermissionsResult`
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
   import {
@@ -1149,7 +1149,7 @@ This method returns `SetCollectionPermissionsResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
     curl -X 'POST' \
@@ -1183,7 +1183,7 @@ This method returns `SetCollectionPermissionsResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
   const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -1277,7 +1277,7 @@ This method returns `SetCollectionPermissionsResult`
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
     const args: SetCollectionPropertiesArguments = {
@@ -1298,7 +1298,7 @@ This method returns `SetCollectionPermissionsResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -1331,7 +1331,7 @@ This method returns `SetCollectionPermissionsResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -1440,7 +1440,7 @@ This method returns `SetTokenPropertyPermissionsResult`
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
     const args: SetTokenPropertyPermissionsArguments = {
@@ -1466,7 +1466,7 @@ This method returns `SetTokenPropertyPermissionsResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -1503,7 +1503,7 @@ This method returns `SetTokenPropertyPermissionsResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -1591,7 +1591,7 @@ This method returns `SetTransfersEnabledResult`
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
     import { SetTransfersEnabledArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -1609,7 +1609,7 @@ This method returns `SetTransfersEnabledResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -1637,7 +1637,7 @@ This method returns `SetTransfersEnabledResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -1710,7 +1710,7 @@ This method returns `TransferCollectionResult`
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
     import { TransferCollectionArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -1727,7 +1727,7 @@ This method returns `TransferCollectionResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -1755,7 +1755,7 @@ This method returns `TransferCollectionResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -1837,7 +1837,7 @@ This method returns `AddCollectionAdminResult`
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
     import { AddCollectionAdminArguments } from '@unique-nft/substrate-client/tokens';
@@ -1855,7 +1855,7 @@ This method returns `AddCollectionAdminResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -1883,7 +1883,7 @@ This method returns `AddCollectionAdminResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -1962,7 +1962,7 @@ This method returns `AdminlistResult`
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
     import {
@@ -1979,7 +1979,7 @@ This method returns `AdminlistResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
     curl -X 'GET' \
@@ -1989,7 +1989,7 @@ This method returns `AdminlistResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -2069,7 +2069,7 @@ This method returns `RemoveCollectionAdminResult`
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
     import { RemoveCollectionAdminArguments } from '@unique-nft/substrate-client/tokens';
@@ -2087,7 +2087,7 @@ This method returns `RemoveCollectionAdminResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -2115,7 +2115,7 @@ This method returns `RemoveCollectionAdminResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -2184,7 +2184,7 @@ interface AccountTokensResult {
 #### Examples
 
 <CodeGroup>
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { AddToAllowListArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -2206,7 +2206,7 @@ console.log(
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
     curl -X 'POST' \
@@ -2221,7 +2221,7 @@ console.log(
 ```
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -2284,7 +2284,7 @@ interface AllowListResult {
 #### Examples
 
 <CodeGroup>
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
   import { AllowListArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -2300,7 +2300,7 @@ interface AllowListResult {
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
     curl -X 'GET' \
@@ -2308,7 +2308,7 @@ interface AllowListResult {
 ```
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -2396,7 +2396,7 @@ interface AllowedResult {
 #### Examples
 
 <CodeGroup>
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
   const { isAllowed } = await sdk.collection.allowed({
@@ -2409,7 +2409,7 @@ interface AllowedResult {
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
     curl -X 'GET' \
@@ -2417,7 +2417,7 @@ interface AllowedResult {
 ```
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -2481,7 +2481,7 @@ interface RemoveFromAllowListResult {
 #### Examples
 
 <CodeGroup>
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
     import { RemoveFromAllowListArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -2503,7 +2503,7 @@ interface RemoveFromAllowListResult {
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
     curl -X 'POST' \
@@ -2518,7 +2518,7 @@ interface RemoveFromAllowListResult {
 ```
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -2605,7 +2605,7 @@ type NestedToken = Omit<TokenByIdResult, 'nestingChildTokens'> & {
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { GetBundleArguments } from '@unique-nft/substrate-client/tokens';
@@ -2622,7 +2622,7 @@ console.log(bundle);
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
@@ -2632,7 +2632,7 @@ curl -X 'GET' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -2690,7 +2690,7 @@ type IsBundleResult = boolean;
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { IsBundleArguments } from '@unique-nft/substrate-client/tokens';
@@ -2707,7 +2707,7 @@ console.log(bundle);
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
@@ -2717,7 +2717,7 @@ curl -X 'GET' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -2816,7 +2816,7 @@ type NestTokenResult = {
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { NestTokenArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -2844,7 +2844,7 @@ console.log(
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -2878,7 +2878,7 @@ console.log(
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -2976,7 +2976,7 @@ type TokenChildrenResult = {
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import {
@@ -2996,7 +2996,7 @@ console.log(result);
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
@@ -3006,7 +3006,7 @@ curl -X 'GET' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -3081,7 +3081,7 @@ type TokenParentResult = {
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import {
@@ -3101,7 +3101,7 @@ console.log(result);
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
@@ -3111,7 +3111,7 @@ curl -X 'GET' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -3183,7 +3183,7 @@ type TopmostTokenOwnerResult = { topmostOwner: Address };
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import {
@@ -3204,7 +3204,7 @@ console.log(result);
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
@@ -3214,7 +3214,7 @@ curl -X 'GET' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -3298,7 +3298,7 @@ type UnnestTokenResult = {
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { UnnestTokenArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -3322,7 +3322,7 @@ console.log(
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -3352,7 +3352,7 @@ console.log(
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -3446,7 +3446,7 @@ This method returns `ConfirmSponsorshipResult`
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
     import { ConfirmSponsorshipArguments } from '@unique-nft/substrate-client/tokens';
@@ -3466,7 +3466,7 @@ This method returns `ConfirmSponsorshipResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -3493,7 +3493,7 @@ This method returns `ConfirmSponsorshipResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -3571,7 +3571,7 @@ type NextSponsoredResult = {
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import {
@@ -3593,7 +3593,7 @@ console.log(result);
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
@@ -3603,7 +3603,7 @@ curl -X 'GET' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -3680,7 +3680,7 @@ This method returns `RemoveSponsorshipResult`
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
     import { RemoveSponsorshipArguments } from '@unique-nft/substrate-client/tokens';
@@ -3700,7 +3700,7 @@ This method returns `RemoveSponsorshipResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -3727,7 +3727,7 @@ This method returns `RemoveSponsorshipResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -3820,7 +3820,7 @@ This method returns `SetSponsorshipResult`
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
     import { SetCollectionSponsorArguments } from '@unique-nft/substrate-client/tokens';
@@ -3841,7 +3841,7 @@ This method returns `SetSponsorshipResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -3869,7 +3869,7 @@ This method returns `SetSponsorshipResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -3938,7 +3938,7 @@ interface AccountTokensResult {
 
 
 <CodeGroup>
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
   import { AccountTokensArguments, AccountTokensResult } from '@unique-nft/substrate-client/tokens';
@@ -3958,7 +3958,7 @@ interface AccountTokensResult {
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
     curl -X 'GET' \
@@ -3966,7 +3966,7 @@ interface AccountTokensResult {
 ```
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -4048,7 +4048,7 @@ interface CollectionTokensResult {
 #### Examples
 
 <CodeGroup>
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
   import { CollectionTokensResult } from '@unique-nft/substrate-client/tokens';
@@ -4064,7 +4064,7 @@ interface CollectionTokensResult {
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
     curl -X 'GET' \
@@ -4072,7 +4072,7 @@ interface CollectionTokensResult {
 ```
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -4133,7 +4133,7 @@ interface GetStatsResult {
 #### Examples
 
 <CodeGroup>
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
   import { CollectionTokensResult } from '@unique-nft/substrate-client/tokens';
@@ -4147,7 +4147,7 @@ interface GetStatsResult {
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
     curl -X 'GET' \
@@ -4155,7 +4155,7 @@ interface GetStatsResult {
 ```
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -4212,7 +4212,7 @@ interface LastTokenIdResult {
 
 
 <CodeGroup>
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
   import { LastTokenIdResult } from '@unique-nft/substrate-client/types';
@@ -4228,7 +4228,7 @@ interface LastTokenIdResult {
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
     curl -X 'GET' \
@@ -4236,7 +4236,7 @@ interface LastTokenIdResult {
 ```
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -4299,7 +4299,7 @@ interface TotalSupplyResult {
 
 
 <CodeGroup>
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
   import {
@@ -4316,7 +4316,7 @@ interface TotalSupplyResult {
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
     curl -X 'GET' \
@@ -4324,7 +4324,7 @@ interface TotalSupplyResult {
 ```
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -4399,7 +4399,7 @@ type AllowanceResult = {
 #### Examples
 
 <CodeGroup>
-  <CodeGroupItem name="SDK">
+  <CodeGroupItem title="SDK">
 
 ```typescript
 import { AllowanceArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -4416,7 +4416,7 @@ const { isAllowed } = await sdk.tokens.allowance(AllowanceArgs);
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
@@ -4425,7 +4425,7 @@ curl -X 'GET' \
 ```
   </CodeGroupItem>
 
-  <CodeGroupItem name="Client">
+  <CodeGroupItem title="Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -4511,7 +4511,7 @@ This method returns `BurnTokenResult`
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import '@unique-nft/substrate-client/tokens';
@@ -4526,7 +4526,7 @@ const { collectionId, tokenId, address, value } = setResult.parsed;
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -4554,7 +4554,7 @@ const { collectionId, tokenId, address, value } = setResult.parsed;
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -4660,7 +4660,7 @@ interface TokenIdArguments {
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { CreateMultipleTokensArguments } from '@unique-nft/substrate-client/tokens';
@@ -4701,7 +4701,7 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -4744,7 +4744,7 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -4892,7 +4892,7 @@ This method returns `TokenIdArguments`
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { CreateTokenNewArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -4926,7 +4926,7 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -4964,7 +4964,7 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -5056,7 +5056,7 @@ This method returns `DeleteTokenPropertiesResult`
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
   const args: DeleteTokenPropertiesArguments = {
@@ -5073,7 +5073,7 @@ This method returns `DeleteTokenPropertiesResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -5102,7 +5102,7 @@ This method returns `DeleteTokenPropertiesResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -5193,7 +5193,7 @@ This method returns `SetTokenPropertiesResult`
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
   const args: SetTokenPropertiesArguments = {
@@ -5215,7 +5215,7 @@ This method returns `SetTokenPropertiesResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -5249,7 +5249,7 @@ This method returns `SetTokenPropertiesResult`
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -5328,7 +5328,7 @@ type TokenByIdResult = Omit<UniqueTokenDecoded, 'owner'> & {
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
 const token = await sdk.tokens.get({
@@ -5346,7 +5346,7 @@ const {
 ```
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
@@ -5355,7 +5355,7 @@ curl -X 'GET' \
 ```
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -5436,7 +5436,7 @@ type TokenOwnerResult = { owner: Address }
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import {
@@ -5457,7 +5457,7 @@ const result: TokenOwnerResult = await sdk.tokens.tokenOwner(
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -5468,7 +5468,7 @@ const result: TokenOwnerResult = await sdk.tokens.tokenOwner(
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate">
+  <CodeGroupItem title="Substrate">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -5545,7 +5545,7 @@ type TokenPropertiesResult = {
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import {
@@ -5564,7 +5564,7 @@ const result: TokenPropertiesResult = await sdk.tokens.properties(args);
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
   curl -X 'GET' \
@@ -5574,7 +5574,7 @@ const result: TokenPropertiesResult = await sdk.tokens.properties(args);
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -5666,7 +5666,7 @@ interface TransferResult {
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { TransferArguments } from '@unique-nft/substrate-client/tokens';
@@ -5685,7 +5685,7 @@ console.log(result.parsed);
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -5714,7 +5714,7 @@ console.log(result.parsed);
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -5798,7 +5798,7 @@ interface ApproveResult {
 
 <CodeGroup>
 
-  <CodeGroupItem name="SDK">
+  <CodeGroupItem title="SDK">
 
 ```typescript
 import { ApproveArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -5817,7 +5817,7 @@ const { collectionId, tokenId } = result.parsed;
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
     curl -X 'POST' \
@@ -5846,7 +5846,7 @@ const { collectionId, tokenId } = result.parsed;
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Client">
+  <CodeGroupItem title="Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -5910,7 +5910,7 @@ type TokenExistsResult = {
 
 <CodeGroup>
 
-  <CodeGroupItem name="SDK">
+  <CodeGroupItem title="SDK">
 
 ```typescript
 const { isExists } = await sdk.tokens.exists({ collectionId: 1, tokenId: 1 });
@@ -5918,7 +5918,7 @@ const { isExists } = await sdk.tokens.exists({ collectionId: 1, tokenId: 1 });
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
     curl -X 'GET' \
@@ -5928,7 +5928,7 @@ const { isExists } = await sdk.tokens.exists({ collectionId: 1, tokenId: 1 });
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Client">
+  <CodeGroupItem title="Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -6004,7 +6004,7 @@ interface AllBalances {
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
 const balance = await sdk.balance.get({
@@ -6020,7 +6020,7 @@ const {
 ```
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
@@ -6029,7 +6029,7 @@ curl -X 'GET' \
 ```
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -6190,7 +6190,7 @@ See the detailed description of the fields in [getBalance](./get-balance).
 #### Examples
 
 <CodeGroup>
-  <CodeGroupItem name="SDK">
+  <CodeGroupItem title="SDK">
 
 ```typescript
 import { AllowanceFungibleArguments } from '@unique-nft/substrate-client/fungible';
@@ -6206,7 +6206,7 @@ const { amount } = await sdk.fungible.allowance(AllowanceArgs);
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
@@ -6216,7 +6216,7 @@ curl -X 'GET' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Client">
+  <CodeGroupItem title="Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -6291,7 +6291,7 @@ The method returns a `parsed` object that contains the `ApproveFungibleResult`.
 
 <CodeGroup>
 
-  <CodeGroupItem name="SDK">
+  <CodeGroupItem title="SDK">
 
 ```typescript
 import { ApproveArguments } from '@unique-nft/substrate-client/refungible';
@@ -6309,7 +6309,7 @@ const { collectionId, amount } = result.parsed;
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'POST' \
@@ -6327,7 +6327,7 @@ curl -X 'POST' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Client">
+  <CodeGroupItem title="Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -6549,7 +6549,7 @@ type AllowanceRefungibleResult = {
 #### Examples
 
 <CodeGroup>
-  <CodeGroupItem name="SDK">
+  <CodeGroupItem title="SDK">
 
 ```typescript
 import { AllowanceRefungibleArguments } from '@unique-nft/substrate-client/refungible/types';
@@ -6566,7 +6566,7 @@ const { amount } = await sdk.refungible.allowance(AllowanceArgs);
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
@@ -6576,7 +6576,7 @@ curl -X 'GET' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Client">
+  <CodeGroupItem title="Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -6657,7 +6657,7 @@ The method returns a `parsed` object that contains the `ApproveRefungibleResult`
 
 <CodeGroup>
 
-  <CodeGroupItem name="SDK">
+  <CodeGroupItem title="SDK">
 
 ```typescript
 import { ApproveArguments } from '@unique-nft/substrate-client/refungible';
@@ -6676,7 +6676,7 @@ const { collectionId, tokenId, amount } = result.parsed;
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'POST' \
@@ -6695,7 +6695,7 @@ curl -X 'POST' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Client">
+  <CodeGroupItem title="Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -6785,7 +6785,7 @@ interface CollectionIdArguments {
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { CreateFungibleCollectionArguments } from '@unique-nft/substrate-client/refungible';
@@ -6806,7 +6806,7 @@ const collection = await sdk.refungible.getCollection({ collectionId });
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'POST' \
@@ -6824,7 +6824,7 @@ curl -X 'POST' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -6906,7 +6906,7 @@ The method returns a `parsed` object that contains the `CreateRefungibleTokenRes
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { GetRefungibleCollectionArguments } from '@unique-nft/substrate-client/refungible/types';
@@ -6925,7 +6925,7 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'POST' \
@@ -6941,7 +6941,7 @@ curl -X 'POST' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -7008,7 +7008,7 @@ The method returns the `TokenBalanceResult`.
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { TokenBalanceRequest } from '@unique-nft/substrate-client/refungible';
@@ -7024,7 +7024,7 @@ const { amount } = await sdk.refungible.getBalance(getBalanceArgs);
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
@@ -7034,7 +7034,7 @@ curl -X 'GET' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -7101,7 +7101,7 @@ interface CollectionIdArguments {
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { GetRefungibleCollectionArguments } from '@unique-nft/substrate-client/refungible';
@@ -7115,7 +7115,7 @@ const collection = await sdk.refungible.getCollection(getCollectionArgs);
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
@@ -7125,7 +7125,7 @@ curl -X 'GET' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -7202,7 +7202,7 @@ interface RepartitionTokenResult {
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { RepartitionTokenArguments } from '@unique-nft/substrate-client/refungible/types';
@@ -7220,7 +7220,7 @@ const { success } = result.parsed;
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'POST' \
@@ -7239,7 +7239,7 @@ curl -X 'POST' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -7311,7 +7311,7 @@ type TotalPiecesResult = {
 #### Examples
 
 <CodeGroup>
-  <CodeGroupItem name="SDK">
+  <CodeGroupItem title="SDK">
 
 ```typescript
 import { TotalPiecesArguments } from '@unique-nft/substrate-client/fungible';
@@ -7326,7 +7326,7 @@ const { amount } = await sdk.refungible.totalPieces(AllowanceArgs);
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 
 ```bash
@@ -7337,7 +7337,7 @@ curl -X 'GET' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Client">
+  <CodeGroupItem title="Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -7418,7 +7418,7 @@ interface TransferRefungibleResult {
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { TransferArguments } from '@unique-nft/substrate-client/tokens';
@@ -7437,7 +7437,7 @@ console.log(result.parsed);
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'POST' \
@@ -7456,7 +7456,7 @@ curl -X 'POST' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -7528,7 +7528,7 @@ The method can return any data, depending on the result of the smart contract fu
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
 const value = await sdk.evm.call({
@@ -7544,7 +7544,7 @@ console.log(value);
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
   curl -X 'POST' \
@@ -7574,7 +7574,7 @@ console.log(value);
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const value = await sdk.evm.call({
@@ -7634,7 +7634,7 @@ interface EvmContractExistResponse {
 
 <CodeGroup>
 
-  <CodeGroupItem name="JS">
+  <CodeGroupItem title="JS">
 
 ```typescript
 const { exist } = await sdk.evm.contractExists({
@@ -7646,7 +7646,7 @@ console.log('exist', exist);
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
@@ -7656,7 +7656,7 @@ curl -X 'GET' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const { exist } = await client.evm.contractExists({
@@ -7746,7 +7746,7 @@ interface EvmSendResult {
 
 <CodeGroup>
 
-  <CodeGroupItem name="SDK">
+  <CodeGroupItem title="SDK">
 
 ```typescript
 import { EvmSendArguments } from '@unique-nft/substrate-client/evm/methods/send';
@@ -7766,7 +7766,7 @@ console.log(parsed);
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'POST' \
@@ -7799,7 +7799,7 @@ curl -X 'POST' \
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="Client">
+  <CodeGroupItem title="Client">
 
 ```typescript
 import { EvmSendArgumentsDto } from '@unique-nft/sdk/types';
@@ -7872,7 +7872,7 @@ export interface IpfsUploadResponse {
 
 <CodeGroup>
 
-  <CodeGroupItem name="SDK">
+  <CodeGroupItem title="SDK">
 
 ```typescript
 
@@ -7880,7 +7880,7 @@ export interface IpfsUploadResponse {
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -v -F file=@./1.jpg https://rest.unique.network/opal/v1/ipfs/upload-file
@@ -7951,7 +7951,7 @@ export interface IpfsUploadResponse {
 
 <CodeGroup>
 
-  <CodeGroupItem name="SDK">
+  <CodeGroupItem title="SDK">
 
 ```typescript
 const client = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -7974,7 +7974,7 @@ console.log(`Or use CID if you need -> ${cid}`);
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -v \
@@ -8055,7 +8055,7 @@ export interface IpfsUploadResponse {
 
 <CodeGroup>
 
-  <CodeGroupItem name="SDK">
+  <CodeGroupItem title="SDK">
 
 ```typescript
 const client = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -8077,7 +8077,7 @@ console.log(`Or use CID if you need -> ${cid}`);
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X PATCH -v \

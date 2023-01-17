@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import {useTabs} from "./composables/tabs";
 
 const { tabs, setActiveTab, activeTab } = useTabs()
@@ -16,11 +16,11 @@ const { tabs, setActiveTab, activeTab } = useTabs()
           <button
             :class="{
             'code-group__nav-tab': true,
-            'code-group__nav-tab-active': tabData.name === activeTab
+            'code-group__nav-tab-active': tabData.title === activeTab
         }"
-            @click="setActiveTab(tabData.name)"
+            @click="setActiveTab(tabData.title)"
           >
-            {{ tabData.name }}
+            {{ tabData.title }}
           </button>
         </li>
       </ul>

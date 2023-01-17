@@ -4,8 +4,8 @@ import {defineClientConfig} from '@vuepress/client'
 import Toast, {POSITION} from 'vue-toastification'
 import "vue-toastification/dist/index.css";
 import {ToastOptions} from "vue-toastification/dist/types/types";
-import NewTabs from "./components/NewTabs.vue";
-import NewTab from "./components/NewTab.vue";
+import NewTabs from "./components/Tabs.vue";
+import NewTab from "./components/Tab.vue";
 
 import HomePageLayout from './layouts/HomePageLayout.vue'
 

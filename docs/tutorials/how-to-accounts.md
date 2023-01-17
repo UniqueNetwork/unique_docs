@@ -144,7 +144,7 @@ const signer = provider.addSeed('<seed of account>');
 The following providers are supported:
 
 <CodeGroup>
-  <CodeGroupItem name="Keyring">
+  <CodeGroupItem title="Keyring">
 
 ```typescript:no-line-numbers
 // The provider works directly with the chain using `KeyringPair` from the `@polkadotkeyring` package.
@@ -162,7 +162,7 @@ const signer1 = provider.addSeed('<seed of account>');
 const signer2 = provider.addKeyfile('<json keyfile>');
 ```
   </CodeGroupItem>
-  <CodeGroupItem name="Keyring Local">
+  <CodeGroupItem title="Keyring Local">
 
 ```typescript:no-line-numbers
 import { Account } from '@unique-nft/accounts';
@@ -185,7 +185,7 @@ const signer = provider.addUri('<uri of account>', '<password>');
 ```
 
   </CodeGroupItem>
-  <CodeGroupItem name="Polkadot Extension">
+  <CodeGroupItem title="Polkadot Extension">
 
 ```typescript:no-line-numbers
 // The provider uses the Polkadot extension (https://polkadot.js.org/extension) for the browser.
@@ -203,7 +203,7 @@ const signer = await provider.first();
 ```
 
   </CodeGroupItem>
-  <CodeGroupItem name="Metamask Extension">
+  <CodeGroupItem title="Metamask Extension">
 
 ```typescript:no-line-numbers
 // The provider uses the Metamask extension (https://metamask.io/download) for the browser.

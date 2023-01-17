@@ -5,7 +5,7 @@
 Install the the needed packages.
 
 <CodeGroup>
-  <CodeGroupItem name="NPM" active>
+  <CodeGroupItem title="NPM" active>
 
 ```bash:no-line-numbers
 npm i @unique-nft/substrate-client --save-dev
@@ -13,7 +13,7 @@ npm i @unique-nft/accounts --save-dev
 ```
 
   </CodeGroupItem>
-  <CodeGroupItem name="YARN">
+  <CodeGroupItem title="YARN">
 
 ```bash:no-line-numbers
 yarn add @unique-nft/substrate-client --dev

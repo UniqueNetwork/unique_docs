@@ -38,7 +38,7 @@ const { collectionId, tokenId, address, value } = setResult.parsed;
 
 
 <CodeGroup>
-<CodeGroupItem name = "SDK" active>
+<CodeGroupItem title = "SDK" active>
 
 ```typescript:no-line-numbers
 import { Sdk } from "@unique-nft/sdk";
@@ -57,7 +57,7 @@ console.log(`burned token ${tokenId} collection ${collectionId}`);
 ```
 
 </CodeGroupItem>
-<CodeGroupItem name="Substrate Client">
+<CodeGroupItem title="Substrate Client">
 
 ```typescript:no-line-numbers
 import '@unique-nft/substrate-client/tokens';
@@ -73,7 +73,7 @@ const { collectionId, tokenId, address, value } = setResult.parsed;
 ```
 
 </CodeGroupItem>
-<CodeGroupItem name ="REST">
+<CodeGroupItem title ="REST">
 
 ```bash:no-line-numbers
   curl -X 'DELETE' \

@@ -18,7 +18,7 @@ Please find below a full sample code that creates an account from a mnemonic phr
 (see [Create an account](../tutorials/how-to-account.md#create-an-account-via-code)).
 
 <CodeGroup>
-<CodeGroupItem name = "SDK" active>
+<CodeGroupItem title = "SDK" active>
 
 ```ts:no-line-numbers
 import { Sdk } from '@unique-nft/sdk';
@@ -71,7 +71,7 @@ main();
 ```
 
 </CodeGroupItem>
-<CodeGroupItem name="Substrate Client">
+<CodeGroupItem title="Substrate Client">
 
 ```typescript:no-line-numbers
 import { Client } from '@unique-nft/substrate-client'
@@ -119,7 +119,7 @@ console.log(`Created new collection with id ${collectionId}`);
 ```
 
 </CodeGroupItem>
-<CodeGroupItem name ="REST">
+<CodeGroupItem title ="REST">
 
 ```bash:no-line-numbers
 curl -X
@@ -145,14 +145,14 @@ In fact, you have only two available options, because we strongly do not recomme
 So, let's create a simple collection using the `unique` schema:
 
 <CodeGroup>
-<CodeGroupItem name = "SDK" active>
+<CodeGroupItem title = "SDK" active>
 
 ```ts:no-line-numbers
 
 ```
 
 </CodeGroupItem>
-<CodeGroupItem name="Substrate Client">
+<CodeGroupItem title="Substrate Client">
 
 ```typescript:no-line-numbers
 import { Sdk } from "@unique-nft/substrate-client";
@@ -211,7 +211,7 @@ main();
 ```
 
 </CodeGroupItem>
-<CodeGroupItem name ="REST">
+<CodeGroupItem title ="REST">
 
 ```bash:no-line-numbers
 curl -X
@@ -237,7 +237,7 @@ There are some scenarios when it is impossible to destroy a collection:
 The samples below demonstrate how you can destroy the collection.
 
 <CodeGroup>
-<CodeGroupItem name = "SDK" active>
+<CodeGroupItem title = "SDK" active>
 
 ```typescript:no-line-numbers
 import { Sdk } from "@unique-nft/sdk";
@@ -253,7 +253,7 @@ const { success } = result.parsed;
 ```
 
 </CodeGroupItem>
-<CodeGroupItem name="Substrate Client">
+<CodeGroupItem title="Substrate Client">
 
 ```typescript:no-line-numbers
 import { Client } from '@unique-nft/substrate-client';
@@ -288,7 +288,7 @@ const { success } = result.parsed;
 ```
 
 </CodeGroupItem>
-<CodeGroupItem name ="REST">
+<CodeGroupItem title ="REST">
 
 ```bash:no-line-numbers
 curl -X 'DELETE' \
@@ -324,7 +324,7 @@ You can find the list of SDK methods, that you can use to adjust your collection
 For example, let's update the collection limits using `sdk.collections.setLimits` method. The method sets some collection limits and starts enforcing them immediately. By the way, only the collection owner has the permission to call this method.
 
 <CodeGroup>
-<CodeGroupItem name = "SDK" active>
+<CodeGroupItem title = "SDK" active>
 
 ```typescript:no-line-numbers
 import { Sdk } from '@unique-nft/sdk'
@@ -351,7 +351,7 @@ const { parsed: { collectionId, limits } } = result;
 ```
 
 </CodeGroupItem>
-<CodeGroupItem name="Substrate Client">
+<CodeGroupItem title="Substrate Client">
 
 ```typescript:no-line-numbers
 import "@unique-nft/substrate-client/tokens";
@@ -400,7 +400,7 @@ const {
 ```
 
 </CodeGroupItem>
-<CodeGroupItem name ="REST">
+<CodeGroupItem title ="REST">
 
 ```bash:no-line-numbers
 curl -X 'POST' \
@@ -447,7 +447,7 @@ If you need a collection, you can get it by Id. The result will contain the coll
 
 <CodeGroup>
 
-<CodeGroupItem name="SDK" active>
+<CodeGroupItem title="SDK" active>
 
 ```typescript:no-line-numbers
 import { Sdk } from "@unique-nft/sdk";
@@ -459,7 +459,7 @@ const collection = await sdk.collections.get({ collectionId: 1 });
 
 </CodeGroupItem>
 
-<CodeGroupItem name="Substrate Client">
+<CodeGroupItem title="Substrate Client">
 
 ```typescript:no-line-numbers
 import { CollectionIdArguments, CollectionInfoWithSchema } from '@unique-nft/substrate-client/types';
@@ -491,7 +491,7 @@ const collection: CollectionInfo = await client.collections.get(getCollectionArg
 
 </CodeGroupItem>
 
-<CodeGroupItem name="REST">
+<CodeGroupItem title="REST">
 
 ```bash:no-line-numbers
 curl -X 'GET' \
@@ -509,7 +509,7 @@ The collections has properties. You can get the collection properties programmat
 
 <CodeGroup>
 
-<CodeGroupItem name="SDK" active>
+<CodeGroupItem title="SDK" active>
 
 ```typescript:no-line-numbers
 import { Sdk } from '@unique-nft/sdk'
@@ -521,7 +521,7 @@ const { properties } = await sdk.collections.properties({ collectionId: 1 });
 
 </CodeGroupItem>
 
-<CodeGroupItem name="Substrate Client">
+<CodeGroupItem title="Substrate Client">
 
 ```typescript:no-line-numbers
 import {
@@ -559,7 +559,7 @@ const result: CollectionPropertiesResult = await client.collections.properties(a
 
 </CodeGroupItem>
 
-<CodeGroupItem name="REST">
+<CodeGroupItem title="REST">
 
 ```bash:no-line-numbers
 curl -X 'GET' \
@@ -584,7 +584,7 @@ The keys names are restricted to a limited set of the following characters: lati
 
 <CodeGroup>
 
- <CodeGroupItem name="SDK" active>
+ <CodeGroupItem title="SDK" active>
 
 ```typescript:no-line-numbers
 import { Sdk } from '@unique-nft/sdk'
@@ -609,7 +609,7 @@ console.log(`Properties ${properties.map(t => t.propertyKey).join()} are set for
 
 </CodeGroupItem>
 
-<CodeGroupItem name="Substrate Client">
+<CodeGroupItem title="Substrate Client">
 
 ```typescript:no-line-numbers
 import { Client } from '@unique-nft/substrate-client'
@@ -651,7 +651,7 @@ console.log(result.parsed);
 
 </CodeGroupItem>
 
-<CodeGroupItem name="REST">
+<CodeGroupItem title="REST">
 
 ```bash:no-line-numbers
 curl -X 'POST' \
@@ -692,7 +692,7 @@ Each collection has an owner. It is defined when collection is created. However,
 
 <CodeGroup>
 
-<CodeGroupItem name="SDK" active>
+<CodeGroupItem title="SDK" active>
 
 ```typescript:no-line-numbers
 import { Sdk } from 'unique-nft/sdk'
@@ -712,7 +712,7 @@ console.log(`new owner of collection ${collectionId} has address ${owner}`);
 
 </CodeGroupItem>
 
-<CodeGroupItem name="Substrate Client">
+<CodeGroupItem title="Substrate Client">
 
 ```typescript
 import { Client } from '@unique-nft/substrate-client/'
@@ -749,7 +749,7 @@ const { collectionId, newOnwer } = result.parsed;
 
 </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash:no-line-numbers
 curl -X 'PATCH' \
@@ -786,7 +786,7 @@ Each collection has administrators. These addresses has permissions to perform a
 
 <CodeGroup>
 
-<CodeGroupItem name="SDK" active>
+<CodeGroupItem title="SDK" active>
 
 ```typescript:no-line-numbers
 import { Sdk } from '@unique-nft/sdk'
@@ -806,7 +806,7 @@ console.log(`collection ${collectionId} has admin ${newAdmin}`);
 
 </CodeGroupItem>
 
-<CodeGroupItem name="Substrate Client">
+<CodeGroupItem title="Substrate Client">
 
 ```typescript:no-line-numbers
 import { Client } from '@unique-nft/substrate-client'
@@ -844,7 +844,7 @@ console.log(result.parsed);
 
   </CodeGroupItem>
 
-  <CodeGroupItem name="REST">
+  <CodeGroupItem title="REST">
 
 ```bash:no-line-numbers
 
@@ -887,7 +887,7 @@ Please check the samples below to learn how to get admin list.
 
 <CodeGroup>
 
-<CodeGroupItem name="SDK">
+<CodeGroupItem title="SDK">
 
 ```typescript:no-line-numbers
 import { Sdk } from '@unique-nft/sdk'
@@ -905,7 +905,7 @@ console.log(`Collection admins: ${admins.join()}`);
 
 </CodeGroupItem>
 
-<CodeGroupItem name="Substrate Client">
+<CodeGroupItem title="Substrate Client">
 
 ```typescript:no-line-numbers
 import { Client } from '@unique-nft/substrate-client'
@@ -942,7 +942,7 @@ const result: AdminlistResult = await client.collections.admins(args);
 
 </CodeGroupItem>
 
-<CodeGroupItem name="REST">
+<CodeGroupItem title="REST">
 
 ```bash:no-line-numbers
 curl -X 'GET' \
@@ -965,7 +965,7 @@ Please check the samples below to learn how to remove a collection admin.
 
 <CodeGroup>
 
-<CodeGroupItem name="SDK">
+<CodeGroupItem title="SDK">
 
 ```typescript:no-line-numbers
 import { Sdk } from '@unique-nft/sdk'
@@ -985,7 +985,7 @@ console.log(`Admin ${admin} was removed from collection # ${collectionId}`);
 
 </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript:no-line-numbers
 import { Client } from '@unique-nft/substrate-client'
@@ -1023,7 +1023,7 @@ console.log(result.parsed);
 
 </CodeGroupItem>
 
-  <CodeGroupItem name="Substrate Client">
+  <CodeGroupItem title="Substrate Client">
 
 ```bash:no-line-numbers
 
@@ -1061,7 +1061,7 @@ Please check the samples below to learn how to add an address to the allow list.
 
 <CodeGroup>
 
-<CodeGroupItem name="SDK">
+<CodeGroupItem title="SDK">
 
 ```typescript:no-line-numbers
 import { Sdk } from '@unique-nft/sdk'
@@ -1083,7 +1083,7 @@ console.log(
 
 </CodeGroupItem>
 
-<CodeGroupItem name="Substrate Client">
+<CodeGroupItem title="Substrate Client">
 
 ```typescript:no-line-numbers
 import { Client } from '@unique-nft/substrate-client'
@@ -1125,7 +1125,7 @@ console.log(
 
 </CodeGroupItem>
 
-<CodeGroupItem name="REST">
+<CodeGroupItem title="REST">
 
 ```bash:no-line-numbers
 curl -X 'POST' \
@@ -1151,7 +1151,7 @@ Please check the samples below to learn how to get the allow list.
 
 <CodeGroup>
 
-<CodeGroupItem name="SDK">
+<CodeGroupItem title="SDK">
 
 ```typescript:no-line-numbers
 import { Sdk } from '@unique-nft/sdk'
@@ -1167,7 +1167,7 @@ console.log(`addresses: ${addresses}`);
 
 </CodeGroupItem>
 
-<CodeGroupItem name="Substrate Client">
+<CodeGroupItem title="Substrate Client">
 
 ```typescript:no-line-numbers
 import { Client } from '@unique-nft/substrate-client'
@@ -1203,7 +1203,7 @@ console.log(`addresses: ${addresses}`);
 
 </CodeGroupItem>
 
-<CodeGroupItem name="REST">
+<CodeGroupItem title="REST">
 
 ```bash:no-line-numbers
 curl -X 'GET' \
@@ -1222,7 +1222,7 @@ Please check the samples below to learn how to get the allow list.
 
 <CodeGroup>
 
-<CodeGroupItem name="Substrate Client">
+<CodeGroupItem title="Substrate Client">
 
 ```typescript:no-line-numbers
 import { Sdk } from '@unique-nft/sdk'
@@ -1244,7 +1244,7 @@ console.log(
 
 </CodeGroupItem>
 
-<CodeGroupItem name="JS">
+<CodeGroupItem title="JS">
 
 ```typescript:no-line-numbers
 import { Client } from '@unique-nft/substrate-client'
@@ -1286,7 +1286,7 @@ console.log(
 
 </CodeGroupItem>
 
-<CodeGroupItem name="REST">
+<CodeGroupItem title="REST">
 
 ```bash:no-line-numbers
 curl -X 'POST' \
