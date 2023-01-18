@@ -1,17 +1,11 @@
 <script setup lang="ts">
-import {reactive, toRef} from "vue";
 import {useTab} from "./composables/tabs";
 
-const props = defineProps({
-  title: {
-    type: String,
-    required: true,
-  },
-})
+const props = defineProps<{
+  title: string
+}>()
 
-const title = toRef(props, 'title')
-
-const { isActive } = useTab(reactive({ title }))
+const { isActive } = useTab(props)
 </script>
 
 <template>
