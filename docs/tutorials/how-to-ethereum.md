@@ -35,13 +35,13 @@ First of all, we need to install the libraries.
 
 To install the required libraries, you can use the following commands. Please note that Hardhat must be initialized after the installation.
 
-This command will prompt to select the project type, please choose *TypeScript* and answer *yes* to all questions.
+The second command will prompt to select the project type, please choose *TypeScript* and answer *yes* to all questions.
 
 <CodeGroup>
   <CodeGroupItem title="NPM">
 
 ```bash:no-line-numbers
-npm install --save-dev hardhat
+npm install --save-dev hardhat @unique-nft/solidity-interfaces @nomicfoundation/hardhat-toolbox dotenv
 npx hardhat
 npx hardhat test
 ```
@@ -50,7 +50,7 @@ npx hardhat test
 <CodeGroupItem title="YARN">
 
 ```bash:no-line-numbers
-yarn add -D hardhat
+yarn add -D hardhat @unique-nft/solidity-interfaces @nomicfoundation/hardhat-toolbox @nomicfoundation/hardhat-network-helpers @nomicfoundation/hardhat-chai-matchers @nomiclabs/hardhat-ethers @nomiclabs/hardhat-etherscan chai ethers hardhat-gas-reporter solidity-coverage @typechain/hardhat typechain @typechain/ethers-v5 @ethersproject/abi @ethersproject/providers dotenv
 yarn hardhat
 yarn hardhat test 
 ```
@@ -58,66 +58,10 @@ yarn hardhat test
 </CodeGroupItem>
 </CodeGroup>
 
-When the main library is installed, we will need to install some additional packages which will be used later. 
-
-<CodeGroup>
-  <CodeGroupItem title="NPM">
-
-```bash:no-line-numbers
-npm install --save-dev @nomicfoundation/hardhat-toolbox
-```
-
-</CodeGroupItem>
-<CodeGroupItem title="YARN">
-
-```bash:no-line-numbers
-yarn add --dev @nomicfoundation/hardhat-toolbox @nomicfoundation/hardhat-network-helpers @nomicfoundation/hardhat-chai-matchers @nomiclabs/hardhat-ethers @nomiclabs/hardhat-etherscan chai ethers hardhat-gas-reporter solidity-coverage @typechain/hardhat typechain @typechain/ethers-v5 @ethersproject/abi @ethersproject/providers
-```
-
-</CodeGroupItem>
-</CodeGroup>
-
-Finally, let's install the [@unique-nft/solidity-interfaces](https://www.npmjs.com/package/@unique-nft/solidity-interfaces) library that provides the several smart contracts. You can check the repository for the `.sol` files and review them if needed. 
-
-<CodeGroup>
-  <CodeGroupItem title="NPM">
-
-```bash:no-line-numbers
-npm i @unique-nft/solidity-interfaces
-```
-
-</CodeGroupItem>
-<CodeGroupItem title="YARN">
-
-```bash:no-line-numbers
-yarn add @unique-nft/solidity-interfaces
-```
-
-</CodeGroupItem>
-</CodeGroup>
 
 ### Connect the network and the Metamask account
 
-Install the `dotenv` package in your project directory by running:
-
-<CodeGroup>
-  <CodeGroupItem title="NPM">
-
-```bash:no-line-numbers
-npm install dotenv --save
-```
-
-</CodeGroupItem>
-<CodeGroupItem title="YARN">
-
-```bash:no-line-numbers
-yarn add dotenv --save
-```
-
-</CodeGroupItem>
-</CodeGroup>
-
-Then, create a `.env` file in the root directory of our project, and add your Metamask private key and the network RPC to it.
+Create a `.env` file in the root directory of our project, and add your Metamask private key and the network RPC to it.
 
 Follow [these instructions](https://metamask.zendesk.com/hc/en-us/articles/360015289632-How-to-Export-an-Account-Private-Key/ "these instructions") to export your private key from Metamask. 
 
@@ -128,7 +72,9 @@ RPC_OPAL="https://rpc-opal.unique.network"
 PRIVATE_KEY = "your-metamask-private-key"
 ```
 
-After this, update your `hardhat.config.ts` so that our project knows about all of these values. Also, we will add some configuration that is required for Solidity versions newer than 0.8.17 (see [here](https://docs.soliditylang.org/en/v0.8.17/ir-breaking-changes.html)). 
+After this, update your `hardhat.config.ts` so that our project knows about all of these values. Please pay attention to the `settings` object in the config file. To successfully compile the smart contracts, please use this configuration that enables the IR-based ( intermediate representation) code generator. Also, we will need to enable the optimizer and set the parameter for it. 
+
+This configuration is required for Solidity versions newer than 0.8.17 (for more details please check the [Solidity docs](https://docs.soliditylang.org/en/v0.8.17/ir-breaking-changes.html)). 
 
 ```typescript:no-line-numbers
 import dotenv from 'dotenv'
@@ -174,6 +120,8 @@ After this, we will write a new smart contract that will use this library. Pleas
 
 We will create a new file in the */contracts* folder with the **CollectionManager.sol** name. This contract will create a collection and make it ERC721Metadata compatible. This simple example demonstrates how you can create your own smart contracts if needed using our library.   
 
+The contract below is [inherited](https://docs.soliditylang.org/en/develop/contracts.html#inheritance) from `CollectionHelpersEvents`. You can refer to the `CollectionHelpers.sol` file from the library to learn more. The contract contains one function (`createCollection`) that accepts a collection owner address, a collection admin address, a collection name, a collection description, a collection symbol and a collection base URI as arguments. Then, the function calls the `createNFTCollection` function from our library that creates an NFT collection. When the collection is created, our function makes this collection ERC721Metadata compatible. Finally, it sets the collection admin and collection owner and returns the address of the created collection.
+
 ```sol:no-line-numbers
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.17;
@@ -181,7 +129,9 @@ pragma solidity ^0.8.17;
 import {CollectionHelpers, CollectionHelpersEvents} from  "@unique-nft/solidity-interfaces/contracts/CollectionHelpers.sol";
 import {UniqueNFT, CrossAddress} from "@unique-nft/solidity-interfaces/contracts/UniqueNFT.sol";
 
+// inherit contract from our interface 
 contract CollectionManager is CollectionHelpersEvents {
+  // a «static» smart contract in our chain (CollectionHelpers.sol) obtained by its address 
   CollectionHelpers helpers = CollectionHelpers(0x6C4E9fE1AE37a41E93CEE429e8E1881aBdcbb54F);
 
   function createCollection(
@@ -192,15 +142,16 @@ contract CollectionManager is CollectionHelpersEvents {
     string calldata symbol,
     string calldata baseURI
   ) public payable virtual returns (address){
+    // create a collection using the method from the library 
     address collectionAddress = helpers.createNFTCollection{value: helpers.collectionCreationFee()}(name, description, symbol);
-
+    // make the collection ERC721Metadata compatible
     helpers.makeCollectionERC721MetadataCompatible(collectionAddress, baseURI);
-
+    // get the collection object by its address 
     UniqueNFT collection = UniqueNFT(collectionAddress);
-
+    // set the collection admin and owner using cross address
     collection.addCollectionAdminCross(CrossAddress(managerContract, 0));
     collection.changeCollectionOwnerCross(CrossAddress(owner, 0));
-
+    // return the collection address 
     return collectionAddress;
   }
 }
@@ -275,11 +226,13 @@ async function main() {
   const provider = ethers.provider
   // Create a signer
   const privateKey = process.env.PRIVATE_KEY
-  // @ts-ignore
+  if (!privateKey) 
+    throw new Error('Missing private key')
   const wallet = new ethers.Wallet(privateKey, provider)
+  
   // address received after the deployment - see the section above 
   const contractAddress = '0xFcD9dC04af91B033834B230A1D8B4CDd7fDfFbb4'
-  // @ts-ignore
+
   const collectionHelpers = await CollectionHelpersFactory(wallet, ethers)
   // Create a contract instance
   const collectionManager = CollectionManager__factory.connect(contractAddress, wallet);
@@ -322,6 +275,8 @@ Now, when we demonstrated how to work with contracts that you can create on your
 
 Let's initialize the needed objects, our config file and also create an array of cids for the future. The code below demonstrates how to create a new collection using our library. The code looks shorter and cleaner comparing to the previous section where we used the manual created smart contract. 
 
+We would like to draw your attention to the fact that the collection creation in Ethereum requires to specify a gas. That's why we pass the additional object to the `createNFTCollection` method that contains a fee value (about 2 UNQ in equivalent). In code, this value is obtained using supplementary method from our library - `collectionHelpers.collectionCreationFee()`. 
+
 ```ts:no-line-numbers
 import dotenv from 'dotenv'
 import {ethers} from "hardhat"
@@ -343,9 +298,10 @@ async function main() {
   const provider = ethers.provider
   // Create a signer
   const privateKey = process.env.PRIVATE_KEY
-  // @ts-ignore
+  if (!privateKey) 
+    throw new Error('Missing private key')
   const wallet = new ethers.Wallet(privateKey, provider)
- // @ts-ignore
+
   const collectionHelpers = await CollectionHelpersFactory(wallet, ethers)
 
   // create a new collection
@@ -396,9 +352,9 @@ async function main() {
   /*
   code created earlier 
   */
-  const collection = UniqueNFTFactory(collectionId, wallet, ethers)
+  const collection = await UniqueNFTFactory(collectionId, wallet, ethers)
 
-  const txMintToken = await (await (await collection).mint(wallet.address)).wait()
+  const txMintToken = await (await collection.mint(wallet.address)).wait()
 
   const tokenId = txMintToken.events?.[0].args?.tokenId.toString()
   const tokenUri = await (await collection).tokenURI(tokenId)
@@ -419,9 +375,9 @@ struct CrossAddress {
 }
 ```
 
-:warning: One of these addresses must be empty. In other case, the blockchain will reject the transaction. 
+:warning: One of these addresses must be zero address. In other case, the blockchain will reject the transaction. 
 
-To clarify, you must specify two addresses in any case. But, one of them must be empty, and the second one must be a valid address. 
+To clarify, you must specify two addresses in any case. But, one of them must be zero address, and the second one must be a valid address. 
 
 Now, when we know what the cross address is, we can use the `mintCross` method that accepts as the first argument the `CrossAddress` structure. The second parameter is the properties array. In this example, we will set only one property (`URISuffix`).
 
@@ -438,7 +394,7 @@ async function main() {
   */
   const collection = UniqueNFTFactory(collectionId, wallet, ethers)
 
-  const crossMintResult = await (await (await collection).mintCross(
+  const crossMintResult = await (await collection.mintCross(
     {
       eth: wallet.address,
       sub: 0n,
@@ -460,7 +416,7 @@ async function main() {
 As we mentioned, it is possible to specify either Ethereum, or Substrate address in the cross address. So, let's demonstrate how to use the Substrate address for the same operation.  
 
 ```ts:no-line-numbers
-const crossMintResult = await (await (await collection).mintCross(
+const crossMintResult = await (await collection.mintCross(
   {
     eth: '0x0000000000000000000000000000000000000000',
     sub: Address.substrate.decode('5DVgiNh1Go8ESa18xEirA4uV3zpra59awPGQjJTmCrqYMNtM').bigint,
@@ -478,11 +434,11 @@ const crossMintResult = await (await (await collection).mintCross(
 
 A token has the following properties: `baseURI`, `URI`, `URISuffix`. In this section, we will provide some details about them and describe how an URI is returned by our `tokenURI` method when you are trying to get a token URI. 
 
-So, when we are getting a token URI, first of all, we need to check that this collection is ERC721Metadata compatible. If this is not so, the error will occur. Then, we check whether the mentioned above properties exist and are not empty. 
+So, when we are getting a token URI, first of all, we need to check that this collection is ERC721Metadata compatible. If this is not so, the error will occur. Then, we check whether the mentioned above properties exist and are not zero address. 
 
 The check is carried out in this order: `URI`, `baseURI`, `URISuffix`. 
 
-1. If the `URI` property is valid (exists and not empty), then the method returns it. If the property is invalid, proceed to next check.
+1. If the `URI` property is valid (exists and not zero address), then the method returns it. If the property is invalid, proceed to next check.
 2. If the `baseURI` property is valid, then the method returns an empty value. If the property is invalid, proceed to next check.
 3. If the `URISuffix` property is valid, the method returns the `baseURI + URISuffix` value. 
 4. If all previous checks failed, the method returns the `baseURI` property value.  
@@ -521,7 +477,7 @@ async function main() {
   /*
   code created earlier 
   */
-  const txMintToken = await (await (await collection).mint(wallet.address)).wait()
+  const txMintToken = await (await collection.mint(wallet.address)).wait()
 
   const tokenId = txMintToken.events?.[0].args?.tokenId.toString()
   const tokenUri = await (await collection).tokenURI(tokenId)
@@ -567,10 +523,10 @@ async function main() {
   const provider = ethers.provider
   // Create a signer
   const privateKey = process.env.PRIVATE_KEY
-  // @ts-ignore
+  if (!privateKey) 
+    throw new Error('Missing private key')
   const wallet = new ethers.Wallet(privateKey, provider)
 
-  // @ts-ignore
   const collectionHelpers = await CollectionHelpersFactory(wallet, ethers)
 
   // create a new collection
@@ -598,17 +554,17 @@ async function main() {
 
   console.log('The ERC721Metadata flag was set to true.')
 
-  const collection = UniqueNFTFactory(collectionId, wallet, ethers)
+  const collection = await UniqueNFTFactory(collectionId, wallet, ethers)
 
   // Mint 
-  const txMintToken = await (await (await collection).mint(wallet.address)).wait()
+  const txMintToken = await (await collection.mint(wallet.address)).wait()
 
   const tokenId = txMintToken.events?.[0].args?.tokenId.toString()
   const tokenUri = await (await collection).tokenURI(tokenId)
   console.log(`Successfully minted token #${tokenId}, it's URI is: ${tokenUri}`)
   
   // Mint cross
-  const crossMintResult = await ( await ( await collection).mintCross(
+  const crossMintResult = await ( await collection.mintCross(
     {
       eth: wallet.address,
       sub: 0n,
@@ -626,25 +582,25 @@ async function main() {
     Id: ${parsedTxReceipt.events.Transfer.tokenId.toString()}`)
 
   // Mint with URI
-  const txMintTokenWithURI = await (await (await collection).mintWithTokenURI(wallet.address, 
+  const txMintTokenWithURI = await (await collection.mintWithTokenURI(wallet.address, 
     'https://ipfs.unique.network/ipfs/' + tokenIpfsCids['1'])).wait()
 
   const tokenIdWithURI = txMintTokenWithURI.events?.[1].args?.tokenId.toNumber()
-  const tokenUriWithURI = await (await collection).tokenURI(tokenIdWithURI)
+  const tokenUriWithURI = await collection.tokenURI(tokenIdWithURI)
 
   console.log(`Successfully minted token #${tokenIdWithURI}, 
     it's URI is: ${tokenUriWithURI}`)
 
   // Mint with suffix 
-  const txMintTokenWithSuffix = await (await (await collection).mint(wallet.address)).wait()
+  const txMintTokenWithSuffix = await (await collection.mint(wallet.address)).wait()
 
   const tokenIdWithSuffix = txMintTokenWithSuffix.events?.[0].args?.tokenId.toString()
-  const tokenUriWithSuffix = await (await collection).tokenURI(tokenIdWithSuffix)
+  const tokenUriWithSuffix = await collection.tokenURI(tokenIdWithSuffix)
 
   console.log(`Successfully minted token to set the suffix: #${tokenIdWithSuffix}, 
     it's URI is: ${tokenUriWithSuffix}`)
 
-  const txSetSuffix = await (await (await collection).setProperties(
+  const txSetSuffix = await (await collection.setProperties(
     tokenIdWithSuffix,
     [ 
       {
