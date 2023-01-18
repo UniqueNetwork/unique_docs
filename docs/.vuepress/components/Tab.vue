@@ -2,10 +2,10 @@
 import {useTab} from "./composables/tabs";
 
 const props = defineProps<{
-  title: string
+  title: string,
 }>()
 
-const { isActive } = useTab(props)
+const { isActive } = useTab(props.title)
 </script>
 
 <template>

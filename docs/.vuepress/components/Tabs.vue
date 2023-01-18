@@ -10,17 +10,17 @@ const { tabs, setActiveTab, activeTab } = useTabs()
       <ul class="code-group__ul">
         <li
           class="code-group__li"
-          v-for="[identifier, tabData] in tabs.entries()"
-          :key="identifier"
+          v-for="title in tabs"
+          :key="title"
         >
           <button
             :class="{
             'code-group__nav-tab': true,
-            'code-group__nav-tab-active': tabData.title === activeTab
+            'code-group__nav-tab-active': title === activeTab
         }"
-            @click="setActiveTab(tabData.title)"
+            @click="setActiveTab(title)"
           >
-            {{ tabData.title }}
+            {{ title }}
           </button>
         </li>
       </ul>
