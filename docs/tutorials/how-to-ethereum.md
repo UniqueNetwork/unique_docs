@@ -275,7 +275,16 @@ Now, when we demonstrated how to work with contracts that you can create on your
 
 Let's initialize the needed objects, our config file and also create an array of cids for the future. The code below demonstrates how to create a new collection using our library. The code looks shorter and cleaner comparing to the previous section where we used the manual created smart contract. 
 
-We would like to draw your attention to the fact that the collection creation in Ethereum requires to specify a gas. That's why we pass the additional object to the `createNFTCollection` method that contains a fee value (about 2 UNQ in equivalent). In code, this value is obtained using supplementary method from our library - `collectionHelpers.collectionCreationFee()`. 
+We would like to draw your attention to the fact that the collection creation at Unique chains cost some price 
+and additional collection creation price which is 2 UNQ or QTZ. Via Substrate API 
+this sum is being hold automatically, while via Eth RPC API it requires to pass
+the value manually. But to not pass this constant manually (because it may change somewhere later)
+there is a useful helper `collectionHelpers.collectionCreationFee()` which returns
+real necessary value to send to create a collection. 
+
+Thus, usual collection creation has complete cost around ~2.3 UNQ, where 2 UNQ 
+must be paid via `{value: await collectionHelpers.collectionCreationFee()}` field in the transaction.
+And the rest ~0.3 UNQ will be hold automatically in the form of gas cost. 
 
 ```ts:no-line-numbers
 import dotenv from 'dotenv'

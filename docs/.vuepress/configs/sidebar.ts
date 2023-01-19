@@ -11,7 +11,6 @@ export const sidebar: Record<string, SidebarConfig> = {
             children: [
               '/tutorials/how-to-accounts.md',
               '/tutorials/how-to-collections.md',
-              '/tutorials/how-to-ethereum.md',
               '/tutorials/accounts/create-account.md',
               '/tutorials/getAccountAndBalance.md',
               '/tutorials/create-collection-token.md',
@@ -25,6 +24,12 @@ export const sidebar: Record<string, SidebarConfig> = {
               '/tutorials/work-with-evm-via-sdk.md',
               '/tutorials/live-nft-example.md',
               '/tutorials/websocket-subscriptions.md',
+            ]
+          },
+          {
+            text: 'EVM and Eth-like RPC',
+            children: [
+              '/tutorials/how-to-ethereum.md',
             ]
           },
           {
