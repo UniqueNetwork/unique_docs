@@ -229,7 +229,7 @@ async function main() {
   if (!privateKey) 
     throw new Error('Missing private key')
   const wallet = new ethers.Wallet(privateKey, provider)
-  
+
   // address received after the deployment - see the section above 
   const contractAddress = '0xFcD9dC04af91B033834B230A1D8B4CDd7fDfFbb4'
 
@@ -357,7 +357,7 @@ async function main() {
   const txMintToken = await (await collection.mint(wallet.address)).wait()
 
   const tokenId = txMintToken.events?.[0].args?.tokenId.toString()
-  const tokenUri = await (await collection).tokenURI(tokenId)
+  const tokenUri = await collection.tokenURI(tokenId)
 
   console.log(`Successfully minted token #${tokenId}, it's URI is: ${tokenUri}`)
 }
@@ -480,11 +480,11 @@ async function main() {
   const txMintToken = await (await collection.mint(wallet.address)).wait()
 
   const tokenId = txMintToken.events?.[0].args?.tokenId.toString()
-  const tokenUri = await (await collection).tokenURI(tokenId)
+  const tokenUri = await collection.tokenURI(tokenId)
   console.log(`Successfully minted token to set the suffix: #${tokenId}, 
       it's URI is: ${tokenUri}`)
 
-  const txSetSuffix = await (await (await collection).setProperties(
+  const txSetSuffix = await (await collection.setProperties(
     tokenIdWithSuffix,
     [ 
       {
@@ -560,7 +560,7 @@ async function main() {
   const txMintToken = await (await collection.mint(wallet.address)).wait()
 
   const tokenId = txMintToken.events?.[0].args?.tokenId.toString()
-  const tokenUri = await (await collection).tokenURI(tokenId)
+  const tokenUri = await collection.tokenURI(tokenId)
   console.log(`Successfully minted token #${tokenId}, it's URI is: ${tokenUri}`)
   
   // Mint cross
