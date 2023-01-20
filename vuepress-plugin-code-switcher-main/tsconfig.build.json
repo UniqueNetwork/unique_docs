@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "lib": ["DOM", "ES2020"],
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "noEmitOnError": true,
+    "noImplicitAny": false,
+    "skipLibCheck": true,
+    "declaration": true,
+    "target": "ES2020",
+    "rootDir": "./src",
+    "outDir": "./lib",
+    "types": ["@vuepress/client/types", "tiny-emitter"]
+  },
+  "include": [
+    "./src"
+  ]
+}

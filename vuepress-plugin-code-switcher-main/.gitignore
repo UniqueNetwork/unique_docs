@@ -1,0 +1,6 @@
+node_modules
+yarn.lock
+demo/src/.vuepress/dist
+demo/src/.vuepress/.cache
+demo/src/.vuepress/.temp
+lib

@@ -15,8 +15,6 @@
     "@vuepress/client": "2.0.0-beta.60",
     "@vuepress/plugin-external-link-icon": "2.0.0-beta.60",
     "@vuepress/plugin-register-components": "2.0.0-beta.60",
-    "@vuepress/plugin-search": "^2.0.0-beta.60",
-    "@vuepress/theme-default": "2.0.0-beta.60",
     "autoprefixer": "^10.4.4",
     "postcss": "^8.4.12",
     "serve": "^14.1.1",
@@ -27,11 +25,14 @@
   "dependencies": {
     "@unique-nft/utils": "^0.3.2",
     "@urql/core": "^3.1.1",
-    "graphql": "^16.6.0",
+    "@vuepress/plugin-search": "^2.0.0-beta.60",
     "@vueuse/core": "^9.9.0",
     "ethers": "^5.7.2",
+    "graphql": "^16.6.0",
+    "tiny-emitter": "^2.1.0",
     "vue": "^3.2.45",
     "vue-toastification": "^2.0.0-rc.5",
+    "vuepress-plugin-code-switcher": "~2.0",
     "web3-provider-sponsoring": "^0.2.0"
   },
   "repository": "https://github.com/UniqueNetwork/unique_docs.git"

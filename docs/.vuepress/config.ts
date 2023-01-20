@@ -4,6 +4,8 @@ import * as path from 'path'
 import {navbar} from "./configs/navbar";
 import {sidebar} from "./configs/sidebar";
 import {searchPlugin} from "@vuepress/plugin-search"
+import { codeSwitcherPlugin } from '../../vuepress-plugin-code-switcher-main/src/node/codeSwitcherPlugin'
+// import { codeSwitcherPlugin } from 'vuepress-plugin-code-switcher'
 
 import {registerComponentsPlugin} from '@vuepress/plugin-register-components'
 
@@ -43,7 +45,8 @@ export default defineUserConfig({
           placeholder: 'Search',
         }
       },
-    })
+    }),
+    codeSwitcherPlugin(),
   ],
 
 
@@ -52,6 +55,9 @@ export default defineUserConfig({
       build: {
         sourcemap: true,
         target: 'es2020',
+        rollupOptions: {
+          external: ['vue', 'vuetify']
+        }
       },
       ssr: {
         noExternal: ['vue-toastification']

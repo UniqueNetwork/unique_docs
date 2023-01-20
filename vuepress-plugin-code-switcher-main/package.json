@@ -1,0 +1,45 @@
+{
+  "name": "vuepress-plugin-code-switcher",
+  "version": "2.0.0",
+  "author": {
+    "name": "Christopher Mühl",
+    "email": "christopher@padarom.xyz",
+    "url": "https://padarom.xyz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/padarom/vuepress-plugin-code-switcher"
+  },
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json && cpx \\\\\\\"src/**/*.{d.ts,vue,scss}\\\\\\\" lib",
+    "build:demo": "npm run build --workspace @vuepress-plugin-code-switcher/demo",
+    "dev": "npm run dev --workspace @vuepress-plugin-code-switcher/demo"
+  },
+  "workspaces": ["./demo"],
+  "packageManager": "pnpm@7.11.0",
+  "type": "module",
+  "exports": {
+    ".": "./lib/node/index.js",
+    "./client": "./lib/client/index.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./lib/node/index.ts",
+  "types": "./lib/node/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "cpx": "^1.5.0",
+    "sass": "^1.55.0",
+    "sass-loader": "^13.0.2",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "@vuepress/client": "^2.0.0-beta.51",
+    "@vuepress/core": "^2.0.0-beta.51",
+    "@vuepress/utils": "^2.0.0-beta.51",
+    "tiny-emitter": "^2.1.0",
+    "vue": "^3.2.40"
+  }
+}
