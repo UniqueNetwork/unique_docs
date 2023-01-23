@@ -11,7 +11,7 @@ export const sidebar: Record<string, SidebarConfig> = {
             children: [
               '/tutorials/how-to-accounts.md',
               '/tutorials/how-to-collections.md',
-              '/tutorials/accounts/create-account.md',
+//            '/tutorials/accounts/create-account.md', -> moved to SDK examples
               '/tutorials/getAccountAndBalance.md',
               '/tutorials/create-collection-token.md',
               '/tutorials/accounts/integrate-creating-into-UI.md',
@@ -22,16 +22,16 @@ export const sidebar: Record<string, SidebarConfig> = {
               '/tutorials/destroyCollection.md',
               '/tutorials/burnNFT.md',
               '/tutorials/work-with-evm-via-sdk.md',
-              '/tutorials/live-nft-example.md',
+//              '/tutorials/live-nft-example.md', -> moved to SDK life nft
               '/tutorials/websocket-subscriptions.md',
             ]
           },
-          {
-            text: 'REST API examples',
-            children: [
-              '/tutorials/examplesREST.md',
-            ]
-          },
+//          {
+//            text: 'REST API examples',
+//            children: [
+//              '/tutorials/examplesREST.md',
+//            ]
+//          },
           {
             text: 'GraphQL samples',
             children: [
@@ -43,7 +43,7 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/tutorials/createAccount.md',
           '/tutorials/getNFTsAndTokens.md',
           '/tutorials/easy-market.md',
-          '/tutorials/how-to-use-nesting-and-bundling.md',
+//        '/tutorials/how-to-use-nesting-and-bundling.md', -> moved to SDK nesting
         ],
       }
     ],
@@ -141,8 +141,12 @@ export const sidebar: Record<string, SidebarConfig> = {
         text: 'SDK docs',
         children: [
           '/sdk/index.md',
+          '/sdk/examplesSubstrateREST.md',
+          '/sdk/examplesSDK.md',
+          '/sdk/examplesLifeNFT.md',
+          '/sdk/examplesNesting.md',
+//        '/sdk/installation.md', -> moved to other pages
           '/sdk/architecture.md',
-          '/sdk/installation.md',
           '/sdk/methods.md',
           '/sdk/ios.md',
           '/sdk/android.md',
