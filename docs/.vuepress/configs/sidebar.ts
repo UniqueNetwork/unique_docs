@@ -22,7 +22,7 @@ export const sidebar: Record<string, SidebarConfig> = {
               // '/tutorials/destroyCollection.md', - how-to-collections.md
               '/tutorials/burnNFT.md',
               '/tutorials/work-with-evm-via-sdk.md',
-              '/tutorials/live-nft-example.md',
+//              '/tutorials/live-nft-example.md', -> moved to SDK life nft
               '/tutorials/websocket-subscriptions.md',
             ]
           },
@@ -50,7 +50,7 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/tutorials/createAccount.md',
           '/tutorials/getNFTsAndTokens.md',
           '/tutorials/easy-market.md',
-          '/tutorials/how-to-use-nesting-and-bundling.md',
+//        '/tutorials/how-to-use-nesting-and-bundling.md', -> moved to SDK nesting
         ],
       }
     ],
@@ -148,8 +148,12 @@ export const sidebar: Record<string, SidebarConfig> = {
         text: 'SDK docs',
         children: [
           '/sdk/index.md',
+          '/sdk/examplesSubstrateREST.md',
+          '/sdk/examplesSDK.md',
+          '/sdk/examplesLifeNFT.md',
+          '/sdk/examplesNesting.md',
+//        '/sdk/installation.md', -> moved to other pages
           '/sdk/architecture.md',
-          '/sdk/installation.md',
           '/sdk/methods.md',
           '/sdk/ios.md',
           '/sdk/android.md',
