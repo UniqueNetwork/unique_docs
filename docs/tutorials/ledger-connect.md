@@ -27,7 +27,7 @@ To add an account you would have to connect Ledger Nano to your PC and install t
 
 ![Account connected](./account-connected.png)
 
-### How to use Ledger account in Wallet
+### Connect Ledger to Wallet via Metamask
 
 You can use your Ledger account in Wallet within Metamask plugin
 1. Open "Manage accounts" page in Wallet
@@ -39,7 +39,7 @@ You can use your Ledger account in Wallet within Metamask plugin
 
 ![Connect Ledger](./ledger-metamask-wallet.png)
 
-### How to mint in Wallet with Ledger
+### How to keep tokens in Ledger
 
 Yet there is no minting available for Metamask in Wallet UI. Still you might want to mint an NFT with any other account, e.g. polkadot's and then transfer it to your Ledger connected via Metamask.
 
