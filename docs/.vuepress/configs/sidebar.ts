@@ -44,6 +44,7 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/tutorials/getNFTsAndTokens.md',
           '/tutorials/easy-market.md',
           '/tutorials/how-to-use-nesting-and-bundling.md',
+          '/tutorials/ledger-connect.md',
         ],
       }
     ],
