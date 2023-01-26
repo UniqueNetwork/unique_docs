@@ -29,8 +29,11 @@ export const sidebar: Record<string, SidebarConfig> = {
           {
             text: 'EVM and Eth-like RPC',
             children: [
-              '/tutorials/eth-general.md',
-              '/tutorials/how-to-ethereum.md',
+              '/tutorials/evm/eth-general.md',
+              '/tutorials/evm/using-contracts.md',
+              '/tutorials/evm/using-sol-interfaces.md',
+              '/tutorials/evm/ready-samples.md',
+              // '/tutorials/evm/how-to-ethereum.md', - disassembled
             ]
           },
           {
@@ -47,10 +50,10 @@ export const sidebar: Record<string, SidebarConfig> = {
               '/tutorials/nfts-fetching.md',
             ]
           },
-          '/tutorials/createAccount.md',
+          // '/tutorials/createAccount.md', - how-to-accounts.md
           '/tutorials/getNFTsAndTokens.md',
           '/tutorials/easy-market.md',
-//        '/tutorials/how-to-use-nesting-and-bundling.md', -> moved to SDK nesting
+          // '/tutorials/how-to-use-nesting-and-bundling.md', -> moved to SDK nesting
         ],
       }
     ],

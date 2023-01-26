@@ -63,7 +63,7 @@ yarn hardhat test
 </CodeGroup>
 
 
-### Connect the network and the Metamask account
+### Connect to network and Metamask account
 
 Create a `.env` file in the root directory of our project, and add your Metamask private key and the network RPC to it.
 Follow [these instructions](https://metamask.zendesk.com/hc/en-us/articles/360015289632-How-to-Export-an-Account-Private-Key/) 
@@ -120,7 +120,7 @@ const config: HardhatUserConfig = {
 export default config;
 ```
 
-## Write a new smart contract  
+## Write new smart contract  
 
 After this, we will write a new smart contract that will use this library. Please pay attention that 
 we can just import a couple of `.sol` files and use them. 
@@ -174,7 +174,7 @@ contract CollectionManager is CollectionHelpersEvents {
 :warning: Make sure that the version defined above (^0.8.17) is the same as the version defined  
 in the **hardhat.config.ts** file.
 
-## Deploy a smart contract  
+## Deploy smart contract  
 
 Now, when our contract is written (see above) and our configuration file is ready, 
 it is time to write the contract deployment script.
