@@ -50,6 +50,7 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/tutorials/createAccount.md',
           '/tutorials/getNFTsAndTokens.md',
           '/tutorials/easy-market.md',
+          '/tutorials/ledger-connect.md',
 //        '/tutorials/how-to-use-nesting-and-bundling.md', -> moved to SDK nesting
         ],
       }
