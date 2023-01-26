@@ -11,19 +11,26 @@ export const sidebar: Record<string, SidebarConfig> = {
             children: [
               '/tutorials/how-to-accounts.md',
               '/tutorials/how-to-collections.md',
-              '/tutorials/accounts/create-account.md',
-              '/tutorials/getAccountAndBalance.md',
+              // '/tutorials/accounts/create-account.md', - how-to-accounts.md
+              // '/tutorials/getAccountAndBalance.md', - how-to-accounts.md
               '/tutorials/create-collection-token.md',
-              '/tutorials/accounts/integrate-creating-into-UI.md',
+              // '/tutorials/accounts/integrate-creating-into-UI.md', - how-to-accounts.md
               '/tutorials/nfts-how-to-create-and-tune-collection.md',
               '/tutorials/nfts-how-to-mint.md',
               // '/tutorials/store-files.md',  - duplicate
               // '/tutorials/nfts-ways-to-create.md', - duplicate
-              '/tutorials/destroyCollection.md',
+              // '/tutorials/destroyCollection.md', - how-to-collections.md
               '/tutorials/burnNFT.md',
               '/tutorials/work-with-evm-via-sdk.md',
-              '/tutorials/live-nft-example.md',
+//              '/tutorials/live-nft-example.md', -> moved to SDK life nft
               '/tutorials/websocket-subscriptions.md',
+            ]
+          },
+          {
+            text: 'EVM and Eth-like RPC',
+            children: [
+              '/tutorials/eth-general.md',
+              '/tutorials/how-to-ethereum.md',
             ]
           },
           {
@@ -43,8 +50,8 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/tutorials/createAccount.md',
           '/tutorials/getNFTsAndTokens.md',
           '/tutorials/easy-market.md',
-          '/tutorials/how-to-use-nesting-and-bundling.md',
           '/tutorials/ledger-connect.md',
+//        '/tutorials/how-to-use-nesting-and-bundling.md', -> moved to SDK nesting
         ],
       }
     ],
@@ -142,8 +149,12 @@ export const sidebar: Record<string, SidebarConfig> = {
         text: 'SDK docs',
         children: [
           '/sdk/index.md',
+          '/sdk/examplesSubstrateREST.md',
+          '/sdk/examplesSDK.md',
+          '/sdk/examplesLifeNFT.md',
+          '/sdk/examplesNesting.md',
+//        '/sdk/installation.md', -> moved to other pages
           '/sdk/architecture.md',
-          '/sdk/installation.md',
           '/sdk/methods.md',
           '/sdk/ios.md',
           '/sdk/android.md',

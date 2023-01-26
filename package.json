@@ -15,6 +15,7 @@
     "@vuepress/client": "2.0.0-beta.60",
     "@vuepress/plugin-external-link-icon": "2.0.0-beta.60",
     "@vuepress/plugin-register-components": "2.0.0-beta.60",
+    "@vuepress/plugin-search": "^2.0.0-beta.60",
     "@vuepress/theme-default": "2.0.0-beta.60",
     "autoprefixer": "^10.4.4",
     "postcss": "^8.4.12",
