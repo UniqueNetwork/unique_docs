@@ -22,14 +22,15 @@
     "serve": "^14.1.1",
     "typescript": "^4.9.4",
     "vite": "^2.9.15",
-    "vuepress": "2.0.0-beta.60"
+    "vuepress": "2.0.0-beta.60",
+    "vuepress-plugin-clipboard": "^2.1.5"
   },
   "dependencies": {
     "@unique-nft/utils": "^0.3.2",
     "@urql/core": "^3.1.1",
-    "graphql": "^16.6.0",
     "@vueuse/core": "^9.9.0",
     "ethers": "^5.7.2",
+    "graphql": "^16.6.0",
     "vue": "^3.2.45",
     "vue-toastification": "^2.0.0-rc.5",
     "web3-provider-sponsoring": "^0.2.0"
