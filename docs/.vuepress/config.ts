@@ -6,6 +6,7 @@ import {sidebar} from "./configs/sidebar";
 import {searchPlugin} from "@vuepress/plugin-search"
 import {clipboardPlugin} from 'vuepress-plugin-clipboard'
 import {registerComponentsPlugin} from '@vuepress/plugin-register-components'
+import { codeSwitcherPlugin } from '../vuepress-plugin-code-switcher-main/src/node/codeSwitcherPlugin'
 
 export default defineUserConfig({
   lang: 'en-US',
@@ -47,6 +48,7 @@ export default defineUserConfig({
     clipboardPlugin({
       staticIcon: true
     }),
+    codeSwitcherPlugin()
   ],
 
 

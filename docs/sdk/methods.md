@@ -2,6 +2,27 @@
 
 ## Collection
 
+<CodeSwitcher :languages="{js:'JavaScript',ts:'TypeScript'}">
+<template v-slot:js>
+
+```js
+module.exports = function (str) {
+    return typeof str === 'string' && str.trim() === str
+}
+```
+
+</template>
+<template v-slot:ts>
+
+```ts
+export default function isString (str: string) : str is string {
+    return typeof str === 'string' && str.trim() === str
+}
+```
+
+</template>
+</CodeSwitcher>
+
 <Details><template v-slot:header>
 Get collection by Id new
 </template><template v-slot:body>

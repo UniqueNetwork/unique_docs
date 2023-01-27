@@ -31,6 +31,7 @@
     "@vueuse/core": "^9.9.0",
     "ethers": "^5.7.2",
     "graphql": "^16.6.0",
+    "tiny-emitter": "^2.1.0",
     "vue": "^3.2.45",
     "vue-toastification": "^2.0.0-rc.5",
     "web3-provider-sponsoring": "^0.2.0"
