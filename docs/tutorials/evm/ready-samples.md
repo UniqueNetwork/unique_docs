@@ -3,25 +3,25 @@
 
 You can find the complete code that we created in this section. 
 
-To run scripts, you can use the following commands (where `--opal` is the network specified  
-in the `hardhat.config.ts` file):
+To run scripts, you can use the following commands. Make sure that you installed the [tsx](https://www.npmjs.com/package/tsx) 
+package to run scripts. 
 
 <CodeGroup>
   <CodeGroupItem title="NPM">
 
 ```bash:no-line-numbers
-npx hardhat run scripts/mintNFT.ts --network opal
-npx hardhat run scripts/mintRFT.ts --network opal
-npx hardhat run scripts/mintFT.ts --network opal
+npx tsx mintNFT.mts
+npx tsx mintRFT.mts
+npx tsx mintFT.mts
 ```
 
 </CodeGroupItem>
 <CodeGroupItem title="YARN">
 
 ```bash:no-line-numbers
-yarn hardhat run scripts/mintNFT.ts --network opal
-yarn hardhat run scripts/mintRFT.ts --network opal
-yarn hardhat run scripts/mintFT.ts --network opal
+yarn tsx mintNFT.mts
+yarn tsx mintRFT.mts
+yarn tsx mintFT.mts
 ```
 
 </CodeGroupItem>
@@ -29,11 +29,11 @@ yarn hardhat run scripts/mintFT.ts --network opal
 
 ### Mint NFT
 
-**mintNFT.ts**
+**mintNFT.mts**
 
 ```ts:no-line-numbers
 import dotenv from 'dotenv'
-import {ethers} from 'hardhat'
+import {ethers} from 'ethers'
 import {CollectionHelpersFactory, UniqueNFTFactory} from '@unique-nft/solidity-interfaces'
 import {Ethereum} from '@unique-nft/utils/extension'
 import {Address, StringUtils} from '@unique-nft/utils'
@@ -48,8 +48,8 @@ const tokenIpfsCids = {
 }
 
 async function main() {
-  // define a provider
-  const provider = ethers.provider
+  // define a provider using the Opal RPC
+  const provider = new ethers.providers.JsonRpcProvider('https://rpc-opal.unique.network')
   // Create a signer
   const privateKey = process.env.PRIVATE_KEY
   if (!privateKey) throw new Error('Missing private key')
@@ -57,7 +57,10 @@ async function main() {
 
   const collectionHelpers = await CollectionHelpersFactory(wallet, ethers)
 
-  // create a new collection
+
+  ///////////////////////////////////////////
+  // Сreate a new collection
+  ///////////////////////////////////////////
   let newCollection = await ( await collectionHelpers.createNFTCollection(
     'My NFT collection',
     'This collection is for testing purposes',
@@ -71,8 +74,11 @@ async function main() {
   const collectionId = Address.collection.addressToId(collectionAddress)
   console.log(`Collection created!`)
   console.log(`Address: ${collectionAddress} , id: ${collectionId}`)
- 
+  
+
+  ///////////////////////////////////////////
   // Make ERC721Metadata
+  ///////////////////////////////////////////
   const txMake = await (
     await collectionHelpers.makeCollectionERC721MetadataCompatible(
       collectionAddress,
@@ -84,13 +90,16 @@ async function main() {
 
   const collection = await UniqueNFTFactory(collectionId, wallet, ethers)
 
+
+  ///////////////////////////////////////////
   // Enable collection sponsoring. For this, we will need second account 
+  ///////////////////////////////////////////
   const privateKeySecondary = process.env.PRIVATE_KEY_SECONDARY
   if (!privateKeySecondary) 
     throw new Error('Missing private key')
   const walletConfirm = new ethers.Wallet(privateKeySecondary, provider)
   const collectionConfirm = await UniqueNFTFactory(collectionId, walletConfirm, ethers)
-  // --------
+
   const txSponsor = await (await collection.setCollectionSponsorCross(
     {
       eth: '0x83E02d8ab05913bA7b5A76fA828A95E5118255E8',
@@ -105,12 +114,14 @@ async function main() {
   const currentSponsor = await collectionConfirm.collectionSponsor()
   console.log(`Sponsor was set. The current sponsor is 0x83E02d8ab05913bA7b5A76fA828A95E5118255E8`)
 
-  // Mint 
+
+  ///////////////////////////////////////////
+  // Mint NFT 
+  ///////////////////////////////////////////
   const txMintToken = await (await collection.mint(wallet.address)).wait()
 
   const tokenId = txMintToken.events?.[0].args?.tokenId.toString()
-  const tokenUri = await collection.tokenURI(tokenId)
-  console.log(`Successfully minted token #${tokenId}, it's URI is: ${tokenUri}`)
+  console.log(`Successfully minted token #${tokenId}`)
   
   // Mint cross
   const crossMintResult = await ( await collection.mintCross(
@@ -130,7 +141,10 @@ async function main() {
   console.log(`Successfully minted token with cross address. 
     Id: ${parsedTxReceipt.events.Transfer.tokenId.toString()}`)
 
+
+  ///////////////////////////////////////////
   // Mint with URI
+  ///////////////////////////////////////////
   const txMintTokenWithURI = await (await collection.mintWithTokenURI(wallet.address, 
     'https://ipfs.unique.network/ipfs/' + tokenIpfsCids['1'])).wait()
 
@@ -140,7 +154,10 @@ async function main() {
   console.log(`Successfully minted token #${tokenIdWithURI}, 
     it's URI is: ${tokenUriWithURI}`)
 
+
+  ///////////////////////////////////////////
   // Mint with suffix 
+  ///////////////////////////////////////////
   const txMintTokenWithSuffix = await (await collection.mint(wallet.address)).wait()
 
   const tokenIdWithSuffix = txMintTokenWithSuffix.events?.[0].args?.tokenId.toString()
@@ -162,18 +179,15 @@ async function main() {
   console.log(`URI suffix was set for token # ${tokenIdWithSuffix}`)
 }
 
-main().catch((error) => {
-  console.error(error)
-  process.exitCode = 1
-})
+main().catch(console.error)
 ```
 ### Mint RFT 
 
-**mintRFT.ts**
+**mintRFT.mts**
 
 ```ts:no-line-numbers
 import dotenv from 'dotenv'
-import {ethers} from 'hardhat'
+import {ethers} from 'ethers'
 import {
   CollectionHelpersFactory,
   UniqueRefungibleFactory,
@@ -185,8 +199,8 @@ import {Address} from '@unique-nft/utils'
 dotenv.config()
 
 async function main() {
-  // define a provider
-  const provider = ethers.provider
+  // define a provider using the Opal RPC
+  const provider = new ethers.providers.JsonRpcProvider('https://rpc-opal.unique.network')
   // Create a signer
   const privateKey = process.env.PRIVATE_KEY
 
@@ -195,7 +209,10 @@ async function main() {
 
   const collectionHelpers = await CollectionHelpersFactory(wallet, ethers)
 
-  // create a new collection
+
+  ///////////////////////////////////////////
+  // Create a new RFT collection
+  ///////////////////////////////////////////
   let newCollection = await (
     await collectionHelpers.createRFTCollection(
       'My new RFT collection',
@@ -212,9 +229,31 @@ async function main() {
 
   console.log(`RFT collection created! Address: ${collectionAddressRFT} , id: ${collectionIdRFT}`)
 
+
+  ///////////////////////////////////////////
+  // Make ERC721Metadata compatible 
+  ///////////////////////////////////////////
+  const txMake = await (
+    await collectionHelpers.makeCollectionERC721MetadataCompatible(
+      collectionAddressRFT,
+      'https://ipfs.unique.network/ipfs/'
+    )
+  ).wait()
+
+  console.log('The ERC721Metadata flag was set to true.')
+
+
+  ///////////////////////////////////////////
+  // Mint RFT 
+  ///////////////////////////////////////////
   const collectionRFT = await UniqueRefungibleFactory(collectionIdRFT, wallet, ethers)
 
-  const txMintRFTToken = await (await collectionRFT.mint(wallet.address)).wait()
+  const txMintRFTToken = await (
+    await collectionRFT.mintWithTokenURI(
+      wallet.address,
+      'https://ipfs.unique.network/ipfs/' + tokenIpfsCids['1']
+    )
+  ).wait()
 
   const tokenIdRFT = Number(Ethereum.parseEthersTxReceipt(txMintRFTToken).events.Transfer.tokenId)
 
@@ -235,20 +274,16 @@ async function main() {
   One piece remained on the original place.`)
 }
 
-main().catch((error) => {
-  console.error(error)
-  process.exitCode = 1
-})
-
+main().catch(console.error)
 ```
 
 ### Mint Fungible 
 
-**mintFT.ts** 
+**mintFT.mts** 
 
 ```ts:no-line-numbers
 import dotenv from 'dotenv'
-import {ethers} from 'hardhat'
+import {ethers} from 'ethers'
 import {
   CollectionHelpersFactory, 
   UniqueFungibleFactory
@@ -259,8 +294,8 @@ import {Address} from '@unique-nft/utils'
 dotenv.config()
 
 async function main() {
-  // define a provider
-  const provider = ethers.provider
+  // define a provider using the Opal RPC
+  const provider = new ethers.providers.JsonRpcProvider('https://rpc-opal.unique.network')
   // Create a signer
   const privateKey = process.env.PRIVATE_KEY
 
@@ -269,7 +304,10 @@ async function main() {
 
   const collectionHelpers = await CollectionHelpersFactory(wallet, ethers)
 
-// create a fungible collection
+
+  ///////////////////////////////////////////
+  // Create a fungible collection
+  ///////////////////////////////////////////
   const newFTcollection = await (await collectionHelpers.createFTCollection(
     'My new FT collection', 
      10, // decimals
@@ -285,15 +323,13 @@ async function main() {
 
   console.log(`FT collection created! Address: ${collectionAddressFT}, id: ${collectionIdFT}`)
 
-  // mint fungible tokens 
+  ///////////////////////////////////////////
+  // Mint fungible tokens 
+  ///////////////////////////////////////////
   const collectionFT = await UniqueFungibleFactory(collectionIdFT, wallet, ethers)
 
   const txMintFT = await (await collectionFT.mint(wallet.address, 50)).wait()
   console.log(`${Ethereum.parseEthersTxReceipt(txMintFT).events.Transfer.value} fungible tokens were minted. `)
 }
-
-main().catch((error) => {
-  console.error(error)
-  process.exitCode = 1
-})
+main().catch(console.error)
 ```

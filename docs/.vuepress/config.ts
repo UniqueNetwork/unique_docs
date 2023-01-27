@@ -45,7 +45,8 @@ export default defineUserConfig({
       },
     }),
     clipboardPlugin({
-      staticIcon: true
+      staticIcon: true,
+      align: 'top'
     }),
   ],
 

@@ -85,6 +85,9 @@ to use the `UniqueNFTFactory` object and initialize it using id of the created c
 After this, we can just call the corresponding method (`mint`) to create an new NFT. 
 The only argument for this method is the owner address. 
 
+:exclamation: Please note that if we do not specify a token URI, the base URI will be returned  
+(see the [URI and URISuffix](tutorials/evm/../../eth-general.md#uri-and-urisuffix) section). 
+
 You can add the following code to the `main` function which we created earlier. 
 
 ```ts:no-line-numbers
@@ -97,9 +100,8 @@ async function main() {
   const txMintToken = await (await collection.mint(wallet.address)).wait()
 
   const tokenId = txMintToken.events?.[0].args?.tokenId.toString()
-  const tokenUri = await collection.tokenURI(tokenId)
 
-  console.log(`Successfully minted token #${tokenId}, it's URI is: ${tokenUri}`)
+  console.log(`Successfully minted token #${tokenId}`)
 }
 ```
 

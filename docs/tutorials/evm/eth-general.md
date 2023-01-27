@@ -45,7 +45,7 @@ answer *yes* to all questions.
   <CodeGroupItem title="NPM">
 
 ```bash:no-line-numbers
-npm install --save-dev hardhat @unique-nft/solidity-interfaces @nomicfoundation/hardhat-toolbox dotenv
+npm install --save-dev hardhat @unique-nft/solidity-interfaces @unique-nft/utils @nomicfoundation/hardhat-toolbox dotenv
 npx hardhat
 npx hardhat test
 ```
@@ -54,7 +54,7 @@ npx hardhat test
 <CodeGroupItem title="YARN">
 
 ```bash:no-line-numbers
-yarn add -D hardhat @unique-nft/solidity-interfaces @nomicfoundation/hardhat-toolbox @nomicfoundation/hardhat-network-helpers @nomicfoundation/hardhat-chai-matchers @nomiclabs/hardhat-ethers @nomiclabs/hardhat-etherscan chai ethers hardhat-gas-reporter solidity-coverage @typechain/hardhat typechain @typechain/ethers-v5 @ethersproject/abi @ethersproject/providers dotenv
+yarn add -D hardhat @unique-nft/solidity-interfaces @unique-nft/utils @nomicfoundation/hardhat-toolbox @nomicfoundation/hardhat-network-helpers @nomicfoundation/hardhat-chai-matchers @nomiclabs/hardhat-ethers @nomiclabs/hardhat-etherscan chai ethers hardhat-gas-reporter solidity-coverage @typechain/hardhat typechain @typechain/ethers-v5 @ethersproject/abi @ethersproject/providers dotenv
 yarn hardhat
 yarn hardhat test 
 ```
@@ -193,12 +193,7 @@ async function main() {
   console.log("Contract deployed to address:", collectionManager.address);
 }
 
-main()
-  .then(() => process.exit(0))
-  .catch(error => {
-    console.error(error);
-    process.exit(1);
-  });
+main().catch(console.error)
 ```
 
 After this, we are finally ready to deploy our smart contract!  
