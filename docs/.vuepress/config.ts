@@ -48,7 +48,10 @@ export default defineUserConfig({
     clipboardPlugin({
       staticIcon: true
     }),
-    codeSwitcherPlugin()
+    codeSwitcherPlugin({groups:{
+      default: { ts: 'TypeScript', js: 'JavaScript' },
+      default1: { ts1: 'TypeScript1', js1: 'JavaScript1' },
+    }})
   ],
 
 
