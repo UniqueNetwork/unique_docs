@@ -75,6 +75,8 @@ async function main() {
   console.log(`Collection created!`)
   console.log(`Address: ${collectionAddress} , id: ${collectionId}`)
   
+  const collection = await UniqueNFTFactory(collectionId, wallet, ethers)
+
 
   ///////////////////////////////////////////
   // Make ERC721Metadata
@@ -87,8 +89,6 @@ async function main() {
   ).wait()
 
   console.log('The ERC721Metadata flag was set to true.')
-
-  const collection = await UniqueNFTFactory(collectionId, wallet, ethers)
 
 
   ///////////////////////////////////////////
@@ -123,24 +123,6 @@ async function main() {
   const tokenId = txMintToken.events?.[0].args?.tokenId.toString()
   console.log(`Successfully minted token #${tokenId}`)
   
-  // Mint cross
-  const crossMintResult = await ( await collection.mintCross(
-    {
-      eth: wallet.address,
-      sub: 0n,
-    },
-    [
-      {
-        key: 'URISuffix',
-        value: StringUtils.Utf8.stringToNumberArray(tokenIpfsCids['1']),
-      },
-    ]
-  )).wait()
-
-  const parsedTxReceipt = Ethereum.parseEthersTxReceipt(crossMintResult)
-  console.log(`Successfully minted token with cross address. 
-    Id: ${parsedTxReceipt.events.Transfer.tokenId.toString()}`)
-
 
   ///////////////////////////////////////////
   // Mint with URI
@@ -156,15 +138,24 @@ async function main() {
 
 
   ///////////////////////////////////////////
-  // Mint with suffix 
+  // Mint with suffix and then re-write its value
   ///////////////////////////////////////////
-  const txMintTokenWithSuffix = await (await collection.mint(wallet.address)).wait()
+  const crossMintResult = await ( await collection.mintCross(
+    {
+      eth: wallet.address,
+      sub: 0n,
+    },
+    [
+      {
+        key: 'URISuffix',
+        value: StringUtils.Utf8.stringToNumberArray(tokenIpfsCids['1']),
+      },
+    ]
+  )).wait()
 
-  const tokenIdWithSuffix = txMintTokenWithSuffix.events?.[0].args?.tokenId.toString()
-  const tokenUriWithSuffix = await collection.tokenURI(tokenIdWithSuffix)
-
-  console.log(`Successfully minted token to set the suffix: #${tokenIdWithSuffix}, 
-    it's URI is: ${tokenUriWithSuffix}`)
+  const parsedTxReceipt = Ethereum.parseEthersTxReceipt(crossMintResult)
+  const tokenIdWithSuffix = parsedTxReceipt.events.Transfer.tokenId.toString()
+  console.log(`Successfully minted token with cross address. Id: ${tokenIdWithSuffix}`)
 
   const txSetSuffix = await (await collection.setProperties(
     tokenIdWithSuffix,
