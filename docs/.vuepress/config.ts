@@ -49,7 +49,7 @@ export default defineUserConfig({
       staticIcon: true
     }),
     codeSwitcherPlugin({groups:{
-      default: { ts: 'TypeScript', js: 'JavaScript' },
+      default: { ts: 'TypeScript', js: 'JavaScript', new: 'New' },
       default1: { ts1: 'TypeScript1', js1: 'JavaScript1' },
     }})
   ],

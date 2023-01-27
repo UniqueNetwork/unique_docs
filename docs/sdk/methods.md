@@ -2,7 +2,38 @@
 
 ## Collection
 
-<CodeSwitcher :languages="{js:'JavaScript',ts:'TypeScript'}">
+<CodeSwitcher>
+<template v-slot:js>
+
+```js
+module.exports = function (str) {
+    return typeof str === 'string' && str.trim() === str
+}
+```
+
+</template>
+<template v-slot:ts>
+
+```ts
+export default function isString (str: string) : str is string {
+    return typeof str === 'string' && str.trim() === str
+}
+```
+
+</template>
+<template v-slot:new>
+
+```ts
+export default function isString (str: string) : str is string {
+    return typeof str === 'string' && str.trim() === str
+}
+```
+
+</template>
+</CodeSwitcher>
+
+
+<CodeSwitcher>
 <template v-slot:js>
 
 ```js
@@ -24,29 +55,7 @@ export default function isString (str: string) : str is string {
 </CodeSwitcher>
 
 
-<CodeSwitcher :languages="{js:'JavaScript',ts:'TypeScript'}">
-<template v-slot:js>
-
-```js
-module.exports = function (str) {
-    return typeof str === 'string' && str.trim() === str
-}
-```
-
-</template>
-<template v-slot:ts>
-
-```ts
-export default function isString (str: string) : str is string {
-    return typeof str === 'string' && str.trim() === str
-}
-```
-
-</template>
-</CodeSwitcher>
-
-
-<CodeSwitcher name="default1" :languages="{js1:'JavaScript1',ts1:'TypeScript1'}">
+<CodeSwitcher name="default1">
 <template v-slot:js1>
 
 ```js
@@ -67,7 +76,7 @@ export default function isString (str: string) : str is string {
 </template>
 </CodeSwitcher>
 
-<CodeSwitcher name="default1" :languages="{js1:'JavaScript1',ts1:'TypeScript1'}">
+<CodeSwitcher name="default1">
 <template v-slot:js1>
 
 ```js
