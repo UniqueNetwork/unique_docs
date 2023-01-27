@@ -11,7 +11,6 @@ This plugin supports both Vuepress 1 and 2. Since Vuepress 1 plugins are incompa
 ## Demo
 A live demo is available at https://code-switcher.padarom.xyz.
 
-![](preview.gif)
 ## Installation
 **These instructions are only valid for Vuepress 2. If you use Vuepress 1, see [here](https://github.com/padarom/vuepress-plugin-code-switcher/blob/vuepress-1/README.md#installation).**
 
