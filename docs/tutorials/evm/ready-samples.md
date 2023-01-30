@@ -6,8 +6,8 @@ You can find the complete code that we created in this section.
 To run scripts, you can use the following commands (where `--opal` is the network specified  
 in the `hardhat.config.ts` file):
 
-<CodeGroup>
-  <CodeGroupItem title="NPM">
+<CodeSwitcher name="commandLine">
+<template v-slot:npm>
 
 ```bash:no-line-numbers
 npx hardhat run scripts/mintNFT.ts --network opal
@@ -15,8 +15,8 @@ npx hardhat run scripts/mintRFT.ts --network opal
 npx hardhat run scripts/mintFT.ts --network opal
 ```
 
-</CodeGroupItem>
-<CodeGroupItem title="YARN">
+</template>
+<template v-slot:yarn>
 
 ```bash:no-line-numbers
 yarn hardhat run scripts/mintNFT.ts --network opal
@@ -24,8 +24,8 @@ yarn hardhat run scripts/mintRFT.ts --network opal
 yarn hardhat run scripts/mintFT.ts --network opal
 ```
 
-</CodeGroupItem>
-</CodeGroup>
+</template>
+</CodeSwitcher>
 
 ### Mint NFT
 

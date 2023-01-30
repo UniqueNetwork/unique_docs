@@ -123,19 +123,19 @@ async function main() {
 
 To run the created script, you can using the command below: 
 
-<CodeGroup>
-  <CodeGroupItem title="NPM">
+<CodeSwitcher name="commandLine">
+<template v-slot:npm>
 
 ```bash:no-line-numbers
 npx hardhat run scripts/mintNFT.ts --network opal
 ```
 
-</CodeGroupItem>
-<CodeGroupItem title="YARN">
+</template>
+<template v-slot:yarn>
 
 ```bash:no-line-numbers
 yarn hardhat run scripts/mintNFT.ts --network opal
 ```
 
-</CodeGroupItem>
-</CodeGroup>
+</template>
+</CodeSwitcher>

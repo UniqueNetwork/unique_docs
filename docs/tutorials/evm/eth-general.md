@@ -41,8 +41,8 @@ must be initialized after the installation.
 The second command will prompt to select the project type, please choose *TypeScript* and  
 answer *yes* to all questions.
 
-<CodeGroup>
-  <CodeGroupItem title="NPM">
+<CodeSwitcher name="commandLine">
+<template v-slot:npm>
 
 ```bash:no-line-numbers
 npm install --save-dev hardhat @unique-nft/solidity-interfaces @nomicfoundation/hardhat-toolbox dotenv
@@ -50,8 +50,8 @@ npx hardhat
 npx hardhat test
 ```
 
-</CodeGroupItem>
-<CodeGroupItem title="YARN">
+</template>
+<template v-slot:yarn>
 
 ```bash:no-line-numbers
 yarn add -D hardhat @unique-nft/solidity-interfaces @nomicfoundation/hardhat-toolbox @nomicfoundation/hardhat-network-helpers @nomicfoundation/hardhat-chai-matchers @nomiclabs/hardhat-ethers @nomiclabs/hardhat-etherscan chai ethers hardhat-gas-reporter solidity-coverage @typechain/hardhat typechain @typechain/ethers-v5 @ethersproject/abi @ethersproject/providers dotenv
@@ -59,8 +59,8 @@ yarn hardhat
 yarn hardhat test 
 ```
 
-</CodeGroupItem>
-</CodeGroup>
+</template>
+</CodeSwitcher>
 
 
 ### Connect to network and Metamask account
@@ -204,22 +204,22 @@ main()
 After this, we are finally ready to deploy our smart contract!  
 For this, please run the following command line:
 
-<CodeGroup>
-  <CodeGroupItem title="NPM">
+<CodeSwitcher name="commandLine">
+<template v-slot:npm>
 
 ```bash:no-line-numbers
 npx hardhat run scripts/deploy.ts --network opal
 ```
 
-</CodeGroupItem>
-<CodeGroupItem title="YARN">
+</template>
+<template v-slot:yarn>
 
 ```bash:no-line-numbers
 yarn hardhat run scripts/deploy.ts --network opal
 ```
 
-</CodeGroupItem>
-</CodeGroup>
+</template>
+</CodeSwitcher>
 
 When the script is executed, you should then see something like:
 
