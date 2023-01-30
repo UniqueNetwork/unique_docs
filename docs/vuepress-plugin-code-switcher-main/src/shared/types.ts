@@ -3,5 +3,6 @@ export type DefaultGroups = Record<string, LanguageMapping>
 
 export type PluginOptions = {
   groups?: DefaultGroups,
+  fullNames?: LanguageMapping,
   componentName?: string,
 }

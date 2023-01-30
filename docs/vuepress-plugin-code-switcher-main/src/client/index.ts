@@ -1,2 +1,2 @@
-export * from './components/CodeSwitcher.js'
-export * from '../shared/types.js'
+export * from './components/CodeSwitcher.vue'
+export * from './components/types'
