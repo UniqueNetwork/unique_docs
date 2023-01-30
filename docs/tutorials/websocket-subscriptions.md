@@ -4,22 +4,22 @@
 
 In this tutorial, we will using the [Socket.IO client](https://socket.io/docs/v4/client-initialization/) library. So first of all, you need to install it: 
 
-<CodeGroup>
-  <CodeGroupItem title="NPM">
+<CodeSwitcher name="commandLine">
+<template v-slot:npm>
 
 ```bash:no-line-numbers
 npm install socket.io-client
 ```
 
-</CodeGroupItem>
-<CodeGroupItem title="YARN">
+</template>
+<template v-slot:yarn>
 
 ```bash:no-line-numbers
 yarn add socket.io-client
 ```
 
-</CodeGroupItem>
-</CodeGroup>
+</template>
+</CodeSwitcher>
 
 Then, you can import it to your project and initialize the client by the following code: 
 

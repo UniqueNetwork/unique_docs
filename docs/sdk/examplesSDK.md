@@ -58,7 +58,7 @@ Console log output
 </template>
 </Details>
 
-#### Get an account from mnemonic phrse
+#### Get an account from mnemonic phrase
 
 If you already have a mnemonic phrase, you can use it to get an account. Here is how the phrase looks like:
 
@@ -208,8 +208,8 @@ const signer = await provider.first();
 
 ## How to create a new collection
 
-<CodeGroup>
-<CodeGroupItem title = "SDK" active>
+<CodeSwitcher>
+<template v-slot:sdk>
 
 ```ts:no-line-numbers
 import { Sdk } from '@unique-nft/sdk';
@@ -260,14 +260,14 @@ async function main() {
 
 main();
 ```
-</CodeGroupItem>
-</CodeGroup>
+</template>
+</CodeSwitcher>
 
 
 ## How to create a new token
 
-<CodeGroup>
-<CodeGroupItem title="SDK">
+<CodeSwitcher>
+<template v-slot:sdk>
 
 ```typescript
 import { CreateTokenNewArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -298,13 +298,13 @@ const { collectionId, tokenId } = result.parsed;
 
 const token = await sdk.tokens.get({ collectionId, tokenId });
 ```
-</CodeGroupItem>
-</CodeGroup>
+</template>
+</CodeSwitcher>
 
 ## Hot to transfer a token
 
-<CodeGroup>
-<CodeGroupItem title="SDK">
+<CodeSwitcher>
+<template v-slot:sdk>
 
 ```typescript
 import { TransferArguments } from '@unique-nft/substrate-client/tokens';
@@ -321,8 +321,8 @@ const result = await sdk.tokens.transfer.submitWaitResult(args);
 console.log(result.parsed);
 ```
 
-</CodeGroupItem>
-</CodeGroup>
+</template>
+</CodeSwitcher>
 
 ## What are token permissions
 

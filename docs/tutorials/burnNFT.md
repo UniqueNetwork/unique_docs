@@ -37,8 +37,8 @@ const { collectionId, tokenId, address, value } = setResult.parsed;
 ### Examples
 
 
-<CodeGroup>
-<CodeGroupItem title = "SDK" active>
+<CodeSwitcher>
+<template v-slot:sdk>
 
 ```typescript:no-line-numbers
 import { Sdk } from "@unique-nft/sdk";
@@ -56,8 +56,8 @@ const { parsed: { collectionId, tokenId } } = result;
 console.log(`burned token ${tokenId} collection ${collectionId}`);
 ```
 
-</CodeGroupItem>
-<CodeGroupItem title="Substrate Client">
+</template>
+<template v-slot:substrateClient>
 
 ```typescript:no-line-numbers
 import '@unique-nft/substrate-client/tokens';
@@ -72,8 +72,8 @@ const setResult = await sdk.tokens.burn.submitWaitResult(burnItemArgs);
 const { collectionId, tokenId, address, value } = setResult.parsed;
 ```
 
-</CodeGroupItem>
-<CodeGroupItem title ="REST">
+</template>
+<template v-slot:rest>
 
 ```bash:no-line-numbers
   curl -X 'DELETE' \
@@ -98,8 +98,8 @@ const { collectionId, tokenId, address, value } = setResult.parsed;
     }'
 ```
 
-</CodeGroupItem>
-</CodeGroup>
+</template>
+</CodeSwitcher>
 
 
 

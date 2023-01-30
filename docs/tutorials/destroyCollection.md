@@ -32,8 +32,8 @@ const { success } = result.parsed;
 
 ### Examples
 
-<CodeGroup>
-<CodeGroupItem title = "SDK" active>
+<CodeSwitcher>
+<template v-slot:sdk>
 
 ```typescript:no-line-numbers
 import { Sdk } from "@unique-nft/sdk";
@@ -46,8 +46,8 @@ client.collections.destroy.submitWaitResult({
 });
 ```
 
-</CodeGroupItem>
-<CodeGroupItem title="Substrate Client">
+</template>
+<template v-slot:substrateClient>
 
 ```typescript:no-line-numbers
 import { DestroyCollectionArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -61,8 +61,8 @@ const result = await sdk.collections.destroy.submitWaitResult(destroyArgs);
 const { success } = result.parsed;
 ```
 
-</CodeGroupItem>
-<CodeGroupItem title ="REST">
+</template>
+<template v-slot:rest>
 
 ```bash:no-line-numbers
 curl -X 'DELETE' \
@@ -87,6 +87,6 @@ curl -X 'POST' \
 ```
 
 
-</CodeGroupItem>
-</CodeGroup>
+</template>
+</CodeSwitcher>
 

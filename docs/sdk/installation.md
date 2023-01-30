@@ -6,22 +6,22 @@
 
 ### Installation
 
-<CodeGroup>
-  <CodeGroupItem title="NPM"  active>
+<CodeSwitcher name="commandLine">
+  <template v-slot:npm>
 
 ```bash:no-line-numbers
 npm install @unique-nft/sdk
 ```
 
-  </CodeGroupItem>
-  <CodeGroupItem title="YARN">
+  </template>
+  <template v-slot:yarn>
 
 ```bash:no-line-numbers
 yarn add @unique-nft/sdk
 ```
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+</CodeSwitcher>
 
 ### Initialization
 
@@ -44,22 +44,22 @@ In the `baseUrl` parameter, you must pass one of the paths to [our networks](../
 
 To be able to sign extrinsics, you need to install the [`Accounts`](https://www.npmjs.com/package/@unique-nft/accounts) package.
 
-<CodeGroup>
-  <CodeGroupItem title="NPM"  active>
+<CodeSwitcher name="commandLine">
+<template v-slot:npm>
 
 ```bash:no-line-numbers
 npm install @unique-nft/accounts
 ```
 
-</CodeGroupItem>
-<CodeGroupItem title="YARN">
+</template>
+<template v-slot:yarn>
 
 ```bash:no-line-numbers
 yarn add @unique-nft/accounts
 ```
 
-</CodeGroupItem>
-</CodeGroup>
+</template>
+</CodeSwitcher>
 
 Pass the `signer` in the parameters when creating the `Client` object.
 
@@ -98,8 +98,8 @@ See the [hub.docker.com](https://hub.docker.com/r/uniquenetwork/web) page for mo
 
 #### Git
 
-<CodeGroup>
-  <CodeGroupItem title="NPM"  active>
+<CodeSwitcher name="commandLine">
+  <template v-slot:npm>
 
 ```bash:no-line-numbers
 git clone https://github.com/UniqueNetwork/unique-sdk
@@ -109,8 +109,8 @@ npm run build:web
 npm start
 ```
 
-  </CodeGroupItem>
-  <CodeGroupItem title="YARN">
+  </template>
+  <template v-slot:yarn>
 
 ```bash:no-line-numbers
 git clone https://github.com/UniqueNetwork/unique-sdk
@@ -120,8 +120,8 @@ yarn run build:web
 yarn start
 ```
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+</CodeSwitcher>
 
 
 #### Public endpoints
@@ -223,27 +223,27 @@ SECONDARY_CHAIN_NAME = 'ksm'
 
 ### Installation
 
-<CodeGroup>
-  <CodeGroupItem title="NPM"  active>
+<CodeSwitcher name="commandLine">
+<template v-slot:npm>
 
 ```bash:no-line-numbers
 npm install @unique-nft/substrate-client
 ```
 
-</CodeGroupItem>
-<CodeGroupItem title="YARN">
+</template>
+<template v-slot:yarn>
 
 ```bash:no-line-numbers
 yarn add @unique-nft/substrate-client
 ```
 
-</CodeGroupItem>
-</CodeGroup>
+</template>
+</CodeSwitcher>
 
 **via Git:**
 
-<CodeGroup>
-  <CodeGroupItem title="NPM"  active>
+<CodeSwitcher name="commandLine">
+<template v-slot:npm>
 
 ```bash:no-line-numbers
 git clone https://github.com/UniqueNetwork/unique-sdk
@@ -252,8 +252,8 @@ npm install
 npm run build:substrate-client
 ```
 
-</CodeGroupItem>
-<CodeGroupItem title="YARN">
+</template>
+<template v-slot:yarn>
 
 ```bash:no-line-numbers
 git clone https://github.com/UniqueNetwork/unique-sdk
@@ -262,8 +262,8 @@ yarn
 yarn build:substrate-client
 ```
 
-</CodeGroupItem>
-</CodeGroup>
+</template>
+</CodeSwitcher>
 
 ### Initialization
 
