@@ -36,8 +36,8 @@ Please find below a full sample code that creates an account from a mnemonic phr
 :warning: Please note that you need to use your mnemonic phrase, or even use another way to initialize your account
 (see [Create an account](../tutorials/how-to-account.md#create-an-account-via-code)).
 
-<CodeGroup>
-<CodeGroupItem title = "SDK">
+<CodeSwitcher>
+<template v-slot:sdk>
 
 ```ts:no-line-numbers
 import { Sdk } from '@unique-nft/sdk';
@@ -89,9 +89,9 @@ async function main() {
 main();
 ```
 
-</CodeGroupItem>
+</template>
 
-<CodeGroupItem title ="REST">
+<template v-slot:rest>
 
 ```bash:no-line-numbers
 curl -X 'POST' \
@@ -117,8 +117,8 @@ curl -X 'POST' \
   }'
 ```
 
-</CodeGroupItem>
-</CodeGroup>
+</template>
+</CodeSwitcher>
 
 ### Create a collection using schemas
 
@@ -136,8 +136,8 @@ In fact, you have only two available options, because we strongly do not recomme
 
 So, let's create a simple collection using the `unique` schema:
 
-<CodeGroup>
-<CodeGroupItem title = "SDK">
+<CodeSwitcher>
+<template v-slot:sdk>
 
 ```ts:no-line-numbers
 import {Sdk} from "@unique-nft/sdk"
@@ -218,8 +218,8 @@ const collectionResult = await sdk.collections.creation.submitWaitResult({
 console.log(collectionResult.parsed)
 ```
 
-</CodeGroupItem>
-<CodeGroupItem title ="REST">
+</template>
+<template v-slot:rest>
 
 ```bash:no-line-numbers
 curl -X 'POST' \
@@ -254,16 +254,16 @@ curl -X 'POST' \
   }'
 ```
 
-</CodeGroupItem>
-</CodeGroup>
+</template>
+</CodeSwitcher>
 
 ## Get a collection 
 
 Quite often, you may need to get a collection by its id. You can easily do this by the code below. 
 
-<CodeGroup>
+<CodeSwitcher>
 
-<CodeGroupItem title="SDK">
+<template v-slot:sdk>
 
 ```typescript:no-line-numbers
 import { Sdk } from "@unique-nft/sdk";
@@ -273,9 +273,9 @@ const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 const collection = await sdk.collections.get({ collectionId: 1 });
 ```
 
-</CodeGroupItem>
+</template>
 
-<CodeGroupItem title="REST">
+<template v-slot:rest>
 
 ```bash:no-line-numbers
 curl -X 'GET' \
@@ -283,9 +283,9 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ```
 
-</CodeGroupItem>
+</template>
 
-</CodeGroup>
+</CodeSwitcher>
 
 
 ## Collection settings
@@ -298,8 +298,8 @@ You can find the list of SDK methods, that you can use to adjust your collection
 
 For example, let's update the collection limits using `sdk.collections.setLimits` method. The method sets some collection limits and starts enforcing them immediately. By the way, only the collection owner has the permission to call this method.
 
-<CodeGroup>
-<CodeGroupItem title = "SDK">
+<CodeSwitcher>
+<template v-slot:sdk>
 
 ```typescript:no-line-numbers
 import { Sdk } from '@unique-nft/sdk'
@@ -325,9 +325,9 @@ const result = await sdk.collections.setLimits.submitWaitResult({
 const { parsed: { collectionId, limits } } = result;
 ```
 
-</CodeGroupItem>
+</template>
 
-<CodeGroupItem title ="REST">
+<template v-slot:rest>
 
 ```bash:no-line-numbers
 curl -X 'POST' \
@@ -362,8 +362,8 @@ curl -X 'POST' \
   }'
 ```
 
-</CodeGroupItem>
-</CodeGroup>
+</template>
+</CodeSwitcher>
 
 
 The full list of the `sdk.collections` module you can check right [in the sources](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/collection) of the `@unique/substrate-client` package.
@@ -372,9 +372,9 @@ The full list of the `sdk.collections` module you can check right [in the source
 
 Each collection has an owner. It is defined when collection is created. However, it is possible to set a new collection owner if needed. However, you can do this **only on behalf of the collection owner** . Please check the samples below to learn how to do this. 
 
-<CodeGroup>
+<CodeSwitcher>
 
-<CodeGroupItem title="SDK">
+<template v-slot:sdk>
 
 ```typescript:no-line-numbers
 import { Sdk } from 'unique-nft/sdk'
@@ -392,8 +392,8 @@ const { parsed: { collectionId, owner } } = result;
 console.log(`The new owner of collection # ${collectionId} has the ${owner} address.`);
 ```
 
-</CodeGroupItem>
-<CodeGroupItem title="REST">
+</template>
+<template v-slot:rest>
 
 ```bash:no-line-numbers
 curl -X 'PATCH' \
@@ -418,8 +418,8 @@ curl -X 'POST' \
   }'
 ```
 
-</CodeGroupItem>
-</CodeGroup>
+</template>
+</CodeSwitcher>
 
 ## Properties
 
@@ -427,9 +427,9 @@ curl -X 'POST' \
 
 The collections has properties. You can get the collection properties programmatically to check them. Please refer to the samples below to learn how to do this. 
 
-<CodeGroup>
+<CodeSwitcher>
 
-<CodeGroupItem title="SDK">
+<template v-slot:sdk>
 
 ```typescript:no-line-numbers
 import { Sdk } from '@unique-nft/sdk'
@@ -439,8 +439,8 @@ const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 const { properties } = await sdk.collections.properties({ collectionId: 1 });
 ```
 
-</CodeGroupItem>
-<CodeGroupItem title="REST">
+</template>
+<template v-slot:rest>
 
 ```bash:no-line-numbers
 curl -X 'GET' \
@@ -448,8 +448,8 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ```
 
-</CodeGroupItem>
-</CodeGroup>
+</template>
+</CodeSwitcher>
 
 ### Set collection properties
 
@@ -462,9 +462,9 @@ Property keys can only be added and cannot be removed.
 The keys names are restricted to a limited set of the following characters: latin letter (both uppercase and lowercase), number, dot, hyphen and underscore (here is regex that defines the described rules: `^[0-9a-zA-Z.-_]`).
 
 
-<CodeGroup>
+<CodeSwitcher>
 
-<CodeGroupItem title="SDK">
+<template v-slot:sdk>
 
 ```typescript:no-line-numbers
 import { Sdk } from '@unique-nft/sdk'
@@ -487,8 +487,8 @@ const { parsed: { properties } } = result;
 console.log(`Properties ${properties.map(t => t.propertyKey).join()} are set for the collection.`);
 ```
 
-</CodeGroupItem>
-<CodeGroupItem title="REST">
+</template>
+<template v-slot:rest>
 
 ```bash:no-line-numbers
 curl -X 'POST' \
@@ -518,8 +518,8 @@ curl -X 'POST' \
   }'
 ```
 
-</CodeGroupItem>
-</CodeGroup>
+</template>
+</CodeSwitcher>
 
 ## Admins
 
@@ -533,8 +533,8 @@ Collection admins can mint and burn NFTs, and also add or remove other admins. H
 
 Please check the samples below to learn how to get admin list. 
 
-<CodeGroup>
-<CodeGroupItem title="SDK">
+<CodeSwitcher>
+<template v-slot:sdk>
 
 ```typescript:no-line-numbers
 import { Sdk } from '@unique-nft/sdk'
@@ -548,8 +548,8 @@ const { admins } = result;
 console.log(`Collection admins: ${admins.join()}`);
 ```
 
-</CodeGroupItem>
-<CodeGroupItem title="REST">
+</template>
+<template v-slot:rest>
 
 ```bash:no-line-numbers
 curl -X 'GET' \
@@ -557,8 +557,8 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ```
 
-</CodeGroupItem>
-</CodeGroup>
+</template>
+</CodeSwitcher>
 
 ### Add a collection admin 
 
@@ -566,8 +566,8 @@ Each collection has administrators. These addresses has permissions to perform a
 
 :warning: Only collection owner or current collection admin has permission to do this.
 
-<CodeGroup>
-<CodeGroupItem title="SDK">
+<CodeSwitcher>
+<template v-slot:sdk>
 
 ```typescript:no-line-numbers
 import { Sdk } from '@unique-nft/sdk'
@@ -585,8 +585,8 @@ const { parsed: { collectionId, newAdmin } } = result;
 console.log(`collection ${collectionId} has admin ${newAdmin}`);
 ```
 
-</CodeGroupItem>
-<CodeGroupItem title="REST">
+</template>
+<template v-slot:rest>
 
 ```bash:no-line-numbers
 curl -X 'POST' \
@@ -611,8 +611,8 @@ curl -X 'POST' \
   }'
 ```
 
-</CodeGroupItem>
-</CodeGroup>
+</template>
+</CodeSwitcher>
 
 ### Remove a collection admin
 
@@ -623,8 +623,8 @@ The admin list become empty at some point. In this case, only **the collection o
 
 Please check the samples below to learn how to remove a collection admin. 
 
-<CodeGroup>
-<CodeGroupItem title="SDK">
+<CodeSwitcher>
+<template v-slot:sdk>
 
 ```typescript:no-line-numbers
 import { Sdk } from '@unique-nft/sdk'
@@ -642,8 +642,8 @@ const { parsed: { collectionId, admin } } = result;
 console.log(`Admin ${admin} was removed from collection # ${collectionId}.`);
 ```
 
-</CodeGroupItem>
-<CodeGroupItem title="REST">
+</template>
+<template v-slot:rest>
 
 ```bash:no-line-numbers
 curl -X 'DELETE' \
@@ -668,8 +668,8 @@ curl -X 'POST' \
   }'
 ```
 
-</CodeGroupItem>
-</CodeGroup>
+</template>
+</CodeSwitcher>
 
 
 ## Allow list 
@@ -680,8 +680,8 @@ Adds an address to the allow list of a collection.
 
 Please check the samples below to learn how to add an address to the allow list. 
 
-<CodeGroup>
-<CodeGroupItem title="SDK">
+<CodeSwitcher>
+<template v-slot:sdk>
 
 ```typescript:no-line-numbers
 import { Sdk } from '@unique-nft/sdk'
@@ -699,9 +699,9 @@ const { address, collectionId } = parsed;
 console.log(`Address ${address} is allowed in collection # ${collectionId}.`);
 ```
 
-</CodeGroupItem>
+</template>
 
-<CodeGroupItem title="REST">
+<template v-slot:rest>
 
 ```bash:no-line-numbers
 curl -X 'POST' \
@@ -714,8 +714,8 @@ curl -X 'POST' \
     "newAdminId": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty"
   }'
 ```
-</CodeGroupItem>
-</CodeGroup>
+</template>
+</CodeSwitcher>
 
 
 ### Get the allow list 
@@ -724,8 +724,8 @@ You can get the allow list of the specified collection.
 
 Please check the samples below to learn how to get the allow list. 
 
-<CodeGroup>
-<CodeGroupItem title="SDK">
+<CodeSwitcher>
+<template v-slot:sdk>
 
 ```typescript:no-line-numbers
 import { Sdk } from '@unique-nft/sdk'
@@ -737,15 +737,15 @@ const { addresses } = await sdk.collections.allowList({ collectionId: 1 });
 console.log(`The addresses in the collection allow  list: ${addresses}`);
 ```
 
-</CodeGroupItem>
-<CodeGroupItem title="REST">
+</template>
+<template v-slot:rest>
 
 ```bash:no-line-numbers
 curl -X 'GET' \
   'https://rest.unique.network/opal/collection/allow-list?collectionId=1'
 ```
-</CodeGroupItem>
-</CodeGroup>
+</template>
+</CodeSwitcher>
 
 
 ### Remove from the allow list 
@@ -754,8 +754,8 @@ You can get the allow list of the specified collection.
 
 Please check the samples below to learn how to get the allow list. 
 
-<CodeGroup>
-<CodeGroupItem title="SDK">
+<CodeSwitcher>
+<template v-slot:sdk>
 
 ```typescript:no-line-numbers
 import { Sdk } from '@unique-nft/sdk'
@@ -773,9 +773,9 @@ const { collectionId, address } = parsed;
 console.log(`Address ${address} removed from allow list in collection ${collectionId}.`);
 ```
 
-</CodeGroupItem>
+</template>
 
-<CodeGroupItem title="REST">
+<template v-slot:rest>
 
 ```bash:no-line-numbers
 curl -X 'POST' \
@@ -788,8 +788,8 @@ curl -X 'POST' \
     "addressToDelete": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty"
   }'
 ```
-</CodeGroupItem>
-</CodeGroup>
+</template>
+</CodeSwitcher>
 
 ## Destroy a collection
 
@@ -807,8 +807,8 @@ There are some scenarios when it is impossible to destroy a collection:
 
 The samples below demonstrate how you can destroy the collection.
 
-<CodeGroup>
-<CodeGroupItem title = "SDK">
+<CodeSwitcher>
+<template v-slot:sdk>
 
 ```typescript:no-line-numbers
 import { Sdk } from "@unique-nft/sdk";
@@ -823,8 +823,8 @@ const result = sdk.collections.destroy.submitWaitResult({
 const { success } = result.parsed;
 ```
 
-</CodeGroupItem>
-<CodeGroupItem title ="REST">
+</template>
+<template v-slot:rest>
 
 ```bash:no-line-numbers
 curl -X 'DELETE' \
@@ -848,5 +848,5 @@ curl -X 'POST' \
   }'
 ```
 
-</CodeGroupItem>
-</CodeGroup>
+</template>
+</CodeSwitcher>
