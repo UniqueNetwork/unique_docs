@@ -50,11 +50,30 @@ export default defineUserConfig({
     }),
     codeSwitcherPlugin(
       {
+        groups: {
+          packageManager: {
+            yarn: 'YARN',
+            npm: 'NPM',
+          },
+          keyring: {
+            keyring: 'Keyring',
+            keyringLocal: 'Keyring Local',
+            polkadotExtension: 'Polkadot Extension',
+            metamaskExtension: 'Metamask Extension'
+          }
+        },
         fullNames: {
+          sdk: 'SDK',
+          rest: 'REST',
+          substrateClient: 'Substrate Client',
+          yarn: 'YARN',
+          npm: 'NPM',
+          keyring: 'Keyring',
+          keyringLocal: 'Keyring Local',
+          polkadotExtension: 'Polkadot Extension',
+          metamaskExtension: 'Metamask Extension',
+          js: 'JavaScript',
           ts: 'TypeScript',
-          new: 'NEW',
-          ts1: 'TypeScript1',
-          js1: 'JavaScript1'
         }
       }
     )

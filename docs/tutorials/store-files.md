@@ -4,22 +4,22 @@
 
 Install the [SDK](https://www.npmjs.com/package/@unique-nft/sdk) package.
 
-<CodeGroup>
-  <CodeGroupItem title="NPM"  active>
+<CodeSwitcher name="commandLine">
+  <template v-slot:npm>
 
 ```bash:no-line-numbers
 npm install @unique-nft/sdk
 ```
 
-  </CodeGroupItem>
-  <CodeGroupItem title="YARN">
+  </template>
+  <template v-slot:yarn>
 
 ```bash:no-line-numbers
 yarn add @unique-nft/sdk
 ```
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+</CodeSwitcher>
 
 In the `baseUrl` parameter, you need to pass one of the following URLs depending on which parachain you want to work with.
 

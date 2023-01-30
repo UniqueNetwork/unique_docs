@@ -4,24 +4,24 @@
 
 Install the the needed packages.
 
-<CodeGroup>
-  <CodeGroupItem title="NPM" active>
+<CodeSwitcher name="packageManager">
+  <template v-slot:npm>
 
 ```bash:no-line-numbers
 npm i @unique-nft/substrate-client --save-dev
 npm i @unique-nft/accounts --save-dev
 ```
 
-  </CodeGroupItem>
-  <CodeGroupItem title="YARN">
+  </template>
+  <template v-slot:yarn>
 
 ```bash:no-line-numbers
 yarn add @unique-nft/substrate-client --dev
 yarn add @unique-nft/accounts --dev
 ```
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+</CodeSwitcher>
 
 
 Import the required objects and initialize the account using the Substrate Client.

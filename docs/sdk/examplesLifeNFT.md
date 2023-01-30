@@ -3,8 +3,8 @@
 Life NFT is a token whose property values can be changed by some event, not just manually.
 The example below shows how to create a life nft.
 
-<CodeGroup>
-<CodeGroupItem title="SDK">
+<CodeSwitcher>
+<template v-slot:sdk>
 
 ```ts
 import {Sdk} from '@unique-nft/sdk'
@@ -173,5 +173,5 @@ const main = async () => {
 main().catch(err => console.error(err))
 ```
 
-</CodeGroupItem>
-</CodeGroup>
+</template>
+</CodeSwitcher>

@@ -82,7 +82,7 @@ onBeforeMount(() => {
 
   // When receiving the change event from another component, set the current language
   // for this component as well
-  Emitter.$on('change', ({ name, value: language }) => {console.log(languageMap.value);
+  Emitter.$on('change', ({ name, value: language }) => {
     if (name === props.name && languageMap.value[language]) selectedLanguage.value = language
   })
 })
