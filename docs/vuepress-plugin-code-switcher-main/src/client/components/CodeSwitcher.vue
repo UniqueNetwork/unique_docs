@@ -39,7 +39,7 @@ const languageMap = computed(() => {
   // }
 
   // ... or simply use the provided slot names for the language list
-  return Object.keys($slots).reduce((list, language) => {
+  return Object.keys($slots).reduce((list: LanguageMapping, language) => {
     // Capitalize the language name
     list[language] = props.fullNames[language] ||
       language.charAt(0).toUpperCase() + language.slice(1)
@@ -82,7 +82,7 @@ onBeforeMount(() => {
 
   // When receiving the change event from another component, set the current language
   // for this component as well
-  Emitter.$on('change', ({ name, value: language }) => {
+  Emitter.$on('change', ({ name, value: language }: {name: string, value: string}) => {
     if (name === props.name && languageMap.value[language]) selectedLanguage.value = language
   })
 })
