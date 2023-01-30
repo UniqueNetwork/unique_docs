@@ -2,8 +2,14 @@
 
 ## Intro 
 
-In this tutorial, we will use the [Hardhat library](https://hardhat.org/hardhat-runner/docs/guides/project-setup). 
-We will create a collection and mint several different tokens (NFT, RFT, fungible) using
+ Now, when we demonstrated how to work with contracts that you can create on your own, let's proceed to
+ our [@unique-nft/solidity-interfaces](https://www.npmjs.com/package/@unique-nft/solidity-interfaces) library. 
+ All further actions will be performed using it.  
+ Please note that we **do not need Hardhat** anymore for further 
+ operations. Everything can be done using standard [ethers](https://docs.ethers.org/v5/) library. Also, scripts 
+ can be launched without using Hardhat. 
+
+In this tutorial, we will create a collection and mint several different tokens (NFT, RFT, fungible) using
 the [@unique-nft/solidity-interfaces](https://www.npmjs.com/package/@unique-nft/solidity-interfaces) library.
 
 Before we start, please make sure that you meet the [prerequisites](eth-general.md#prerequisites) and  
@@ -13,12 +19,8 @@ Before we start, please make sure that you meet the [prerequisites](eth-general.
 
 ### Create NFT collection 
 
-Now, when we demonstrated how to work with contracts that you can create on your own, let's proceed to
- our [@unique-nft/solidity-interfaces](https://www.npmjs.com/package/@unique-nft/solidity-interfaces) library. 
- All further actions will be performed using it. 
-
-:bell: Starting from this section, we will add more and more different actions to one script file. 
-In the end, we will get one function that carries out all actions in one single execution. 
+:bell: Starting from this section, we will add more and more different actions to one script file.  
+So, all imports are global variables will be the same as in this section. 
 
 Let's initialize the needed objects, our config file and also create an array of cids for the future. 
 The code below demonstrates how to create a new collection using our library. 
@@ -37,7 +39,7 @@ And the rest ~0.3 UNQ will be hold automatically in the form of gas cost.
 
 ```ts:no-line-numbers
 import dotenv from 'dotenv'
-import {ethers} from "hardhat"
+import {ethers} from 'ethers'
 import {CollectionHelpersFactory, UniqueNFTFactory} from "@unique-nft/solidity-interfaces"
 import {Address} from "@unique-nft/utils";
 
@@ -53,7 +55,7 @@ const tokenIpfsCids = {
 
 async function main() {
   // define a provider
-  const provider = ethers.provider
+  const provider = new ethers.providers.JsonRpcProvider('https://rpc-opal.unique.network')
   // Create a signer
   const privateKey = process.env.PRIVATE_KEY
   if (!privateKey) throw new Error('Missing private key')
@@ -85,6 +87,9 @@ to use the `UniqueNFTFactory` object and initialize it using id of the created c
 After this, we can just call the corresponding method (`mint`) to create an new NFT. 
 The only argument for this method is the owner address. 
 
+:exclamation: Please note that if we do not specify a token URI, the base URI will be returned  
+(see the [URI and URISuffix](tutorials/evm/../../eth-general.md#uri-and-urisuffix) section). 
+
 You can add the following code to the `main` function which we created earlier. 
 
 ```ts:no-line-numbers
@@ -97,9 +102,8 @@ async function main() {
   const txMintToken = await (await collection.mint(wallet.address)).wait()
 
   const tokenId = txMintToken.events?.[0].args?.tokenId.toString()
-  const tokenUri = await collection.tokenURI(tokenId)
 
-  console.log(`Successfully minted token #${tokenId}, it's URI is: ${tokenUri}`)
+  console.log(`Successfully minted token #${tokenId}`)
 }
 ```
 
@@ -234,7 +238,7 @@ This fee is explained in detail in the the [create an NFT collection](#create-an
 ```ts:no-line-numbers
 async function main() {
   // define a provider
-  const provider = ethers.provider
+  const provider = new ethers.providers.JsonRpcProvider('https://rpc-opal.unique.network')
   // Create a signer
   const privateKey = process.env.PRIVATE_KEY
 
@@ -316,21 +320,46 @@ Also, we need to specify the gas limit (more than this value will not be hold fr
 This fee is explained in detail in the the [create an NFT collection](#create-an-nft-collection-1) section. 
 
 ```ts:no-line-numbers
-const newFTcollection = await (await collectionHelpers.createFTCollection(
-  'My new FT collection', 
-  10, // decimals
-  'This FT collection is for testing purposes', 
-  'FC', 
-  {
-    gasLimit: 10_000_000,
-    value: await collectionHelpers.collectionCreationFee(),
-  }
-)).wait()
+import dotenv from 'dotenv'
+import {ethers} from 'ethers'
+import {
+  CollectionHelpersFactory, 
+  UniqueFungibleFactory
+} from '@unique-nft/solidity-interfaces'
+import {Ethereum} from '@unique-nft/utils/extension'
+import {Address} from '@unique-nft/utils'
 
-const collectionAddressFT = Ethereum.parseEthersTxReceipt(newFTcollection).events.CollectionCreated.collectionId
-const collectionIdFT = Address.collection.addressToId(collectionAddressFT)
+dotenv.config()
 
-console.log(`FT collection created! Address: ${collectionAddressFT}, id: ${collectionIdFT}`)
+async function main() {
+  // define a provider using the Opal RPC
+  const provider = new ethers.providers.JsonRpcProvider('https://rpc.unq.uniq.su')
+  // Create a signer
+  const privateKey = process.env.PRIVATE_KEY
+
+  if (!privateKey) throw new Error('Missing private key')
+  const wallet = new ethers.Wallet(privateKey, provider)
+
+  const collectionHelpers = await CollectionHelpersFactory(wallet, ethers)
+
+  const newFTcollection = await (await collectionHelpers.createFTCollection(
+    'My new FT collection', 
+    10, // decimals
+    'This FT collection is for testing purposes', 
+    'FC', 
+    {
+      gasLimit: 10_000_000,
+      value: await collectionHelpers.collectionCreationFee(),
+    }
+  )).wait()
+
+  const collectionAddressFT = Ethereum.parseEthersTxReceipt(newFTcollection).events.CollectionCreated.collectionId
+  const collectionIdFT = Address.collection.addressToId(collectionAddressFT)
+
+  console.log(`FT collection created! Address: ${collectionAddressFT}, id: ${collectionIdFT}`)
+}
+
+main().catch(console.error)
 ```
 
 ### Mint fungible token
@@ -363,6 +392,8 @@ If you want to use these metadata fields for tokens, you can make the created co
 
 Please note that the collection, that we created in the [using your own smart contract](#using-your-own-smart-contract) 
 section, is already ERC721Metadata compatible, because we included the corresponding method call to the contract.  
+
+To make the collection ERC721Metadata compatible, we need to specify the collection address and the base URI. 
 
 ```ts:no-line-numbers
 async function main() {

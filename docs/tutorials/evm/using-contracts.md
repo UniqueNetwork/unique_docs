@@ -72,10 +72,7 @@ async function main() {
   console.log(`Address: ${collectionAddress} , id: ${collectionId}`)
 }
 
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+main().catch(console.error)
 ``` 
 
 ### Set sponsor for smart contract 
