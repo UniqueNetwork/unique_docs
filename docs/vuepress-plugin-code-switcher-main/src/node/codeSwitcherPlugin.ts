@@ -1,6 +1,6 @@
 import type { Plugin } from '@vuepress/core'
 import { getDirname, path } from '@vuepress/utils'
-import type { PluginOptions } from '../client/components/types'
+import type { PluginOptions } from '../shared/types'
 
 const __dirname = getDirname(import.meta.url)
 

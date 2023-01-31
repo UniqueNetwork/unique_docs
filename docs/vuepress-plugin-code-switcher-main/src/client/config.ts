@@ -1,6 +1,6 @@
 import { defineClientConfig } from '@vuepress/client'
 import { h } from 'vue'
-import type { PluginOptions } from './components/types'
+import type { PluginOptions } from '../shared/types'
 import CodeSwitcher from './components/CodeSwitcher.vue'
 
 import './styles/index.scss'
