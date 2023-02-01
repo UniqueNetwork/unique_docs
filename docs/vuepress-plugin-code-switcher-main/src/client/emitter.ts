@@ -1,6 +1,3 @@
-import emitter from 'tiny-emitter/instance'
+import { TinyEmitter } from 'tiny-emitter'
 
-export default {
-  $on: (...args) => emitter.on(...args),
-  $emit: (...args) => emitter.emit(...args),
-}
+export const emitter = new TinyEmitter()

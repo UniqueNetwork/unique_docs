@@ -1,17 +1,13 @@
-<script setup lang="ts">
-import { h } from 'vue'
-
-const props = defineProps({
-  shorthand: {
-    type: String,
-  }
-});
-const render = () => h(
-  'div',
-  null,
-  `Did not find a slot with name ${props.shorthand}.`
-);
-</script>
 <template>
-  <render />
+  <div>Did not find a slot with name {{ shorthand }}.</div>
 </template>
+
+<script setup lang="ts">
+const {shorthand} = defineProps<{ shorthand: string }>()
+</script>
+
+<script lang="ts">
+export default {
+  name: 'SlotNotFound',
+}
+</script>
