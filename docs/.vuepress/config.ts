@@ -6,7 +6,7 @@ import {sidebar} from "./configs/sidebar";
 import {searchPlugin} from "@vuepress/plugin-search"
 import {clipboardPlugin} from 'vuepress-plugin-clipboard'
 import {registerComponentsPlugin} from '@vuepress/plugin-register-components'
-import { codeSwitcherPlugin } from '../vuepress-plugin-code-switcher-main/src/node/codeSwitcherPlugin'
+import { codeSwitcherPlugin } from './plugins/vuepress-plugin-code-switcher/src/node/codeSwitcherPlugin'
 
 export default defineUserConfig({
   lang: 'en-US',
@@ -52,8 +52,8 @@ export default defineUserConfig({
       {
         groups: {
           packageManager: {
-            yarn: 'YARN',
-            npm: 'NPM',
+            yarn: 'yarn',
+            npm: 'npm',
           },
           keyring: {
             keyring: 'Keyring',
@@ -66,8 +66,8 @@ export default defineUserConfig({
           sdk: 'SDK',
           rest: 'REST',
           substrateClient: 'Substrate Client',
-          yarn: 'YARN',
-          npm: 'NPM',
+          yarn: 'yarn',
+          npm: 'npm',
           keyring: 'Keyring',
           keyringLocal: 'Keyring Local',
           polkadotExtension: 'Polkadot Extension',

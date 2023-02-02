@@ -2,14 +2,14 @@
   <div class="code-switcher">
     <div class="tab-header">
       <ul>
-        <li
+        <span
           v-for="shorthand in languageKeys"
           :key="shorthand"
-          :class="['tab-header', { active: selectedLanguage === shorthand }]"
           @click="switchLanguage(shorthand)"
         >
-          {{ languageMap[shorthand] }}
-        </li>
+          <li v-if="shorthand === selectedLanguage" class="tab-header active">{{ languageMap[shorthand] }}</li>
+          <li v-if="!(shorthand === selectedLanguage)" class="tab-header">{{ languageMap[shorthand] }}</li>
+        </span>
       </ul>
     </div>
     <div
@@ -18,7 +18,7 @@
       v-show="selectedLanguage === shorthand"
       :class="['tab-content', { active: selectedLanguage === shorthand }]"
     >
-      <slot v-if="slots[shorthand]" :shorthand="shorthand"/>
+      <slot v-if="slots[shorthand]" :name="shorthand"/>
       <SlotNotFound v-else :shorthand="shorthand"/>
     </div>
   </div>
@@ -26,7 +26,7 @@
 
 
 <script setup lang="ts">
-import {computed, onBeforeMount, ref, h, useSlots, PropType, withDirectives, vShow} from 'vue'
+import {computed, onBeforeMount, ref, useSlots} from 'vue'
 import {emitter} from '../emitter'
 import {DefaultGroups, LanguageMapping} from "../../shared/types";
 import SlotNotFound from './SlotNotFound.vue';
@@ -87,27 +87,21 @@ const switchLanguage = (language: string): void => {
 onBeforeMount(() => {
   // Don't perform any setup for isolated components. This means we won't register
   // any event handlers and won't initialize the selected language from local storage
-  console.log('onBeforeMount 0', props.isolated)
   if (props.isolated) {
     return
   }
-  console.log('onBeforeMount 1')
 
   // Restore the selected language for this group from local storage
   if (typeof localStorage !== 'undefined') {
-    console.log('onBeforeMount 2')
     let selected = localStorage.getItem(localStorageKey.value)
     if (selected && languageKeys.value.indexOf(selected) !== -1) {
       selectedLanguage.value = selected
-      console.log('onBeforeMount 3', selected)
     }
   }
 
-  console.log('onBeforeMount 4')
   // When receiving the change event from another component, set the current language
   // for this component as well
   emitter.on('change', ({name, value: language}: { name: string, value: string }) => {
-    console.log('onBeforeMount 5', name, props.name, languageMap.value[language])
     if (name === props.name && languageMap.value[language]) selectedLanguage.value = language
   })
 })
