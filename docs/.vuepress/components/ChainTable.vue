@@ -35,7 +35,11 @@
           {{ chain.metamask.chainId }}
           ({{ parseInt(chain.metamask.chainId) }})
           <CopyButton :data="chain.metamask.chainId" />
-          <UniqueButton :disabled="disableMetamask" :onClick="() => addChainToMetamask(chainName)"> Add to metamask
+          <UniqueButton
+            :disabled="disableMetamask"
+            :onClick="() => addChainToMetamask(chainName)"
+            style="margin-left: 10px;"
+          > Add to metamask
           </UniqueButton>
         </td>
       </tr>
