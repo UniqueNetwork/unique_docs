@@ -307,8 +307,8 @@ const result = await contract.send.submitWaitResult({
   args: [1],
 });
 
-console.log('parsedEvents', result.parsed.parsedEvents);
-console.log('unknownEvents', result.parsed.unknownEvents);
+console.log('Parsed Events: ', result.parsed.parsedEvents);
+console.log('Unknown Events: ', result.parsed.unknownEvents);
 ```
 
 ### Possible errors
