@@ -11,16 +11,17 @@ export const sidebar: Record<string, SidebarConfig> = {
             children: [
               '/tutorials/how-to-accounts.md',
               '/tutorials/how-to-collections.md',
+              '/tutorials/how-to-tokens.md',
               // '/tutorials/accounts/create-account.md', - how-to-accounts.md
               // '/tutorials/getAccountAndBalance.md', - how-to-accounts.md
-              '/tutorials/create-collection-token.md',
+              // '/tutorials/create-collection-token.md', - exists in how-to-collections.md + how-to-tokens.md
               // '/tutorials/accounts/integrate-creating-into-UI.md', - how-to-accounts.md
               '/tutorials/nfts-how-to-create-and-tune-collection.md',
               '/tutorials/nfts-how-to-mint.md',
               // '/tutorials/store-files.md',  - duplicate
               // '/tutorials/nfts-ways-to-create.md', - duplicate
               // '/tutorials/destroyCollection.md', - how-to-collections.md
-              '/tutorials/burnNFT.md',
+              // '/tutorials/burnNFT.md', - how-to-tokens.md
               '/tutorials/work-with-evm-via-sdk.md',
 //              '/tutorials/live-nft-example.md', -> moved to SDK life nft
               '/tutorials/websocket-subscriptions.md',
