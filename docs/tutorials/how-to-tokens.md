@@ -99,7 +99,7 @@ async function main() {
     collectionId,
     data: {
       image: {
-        url: 'https://ipfs.unique.network/ipfs/QmcAcH4F9HYQtpqKHxBFwGvkfKb8qckXj2YWUrcc8yd24G/image1.png',
+        ipfsCid: 'QmcAcH4F9HYQtpqKHxBFwGvkfKb8qckXj2YWUrcc8yd24G/image1.png',
       },
       name: {
         _: 'My token',
@@ -134,7 +134,7 @@ curl -X 'POST' \
     "collectionId": 100,
     "data": {
       "image": {
-        "url": "https://ipfs.unique.network/ipfs/QmcAcH4F9HYQtpqKHxBFwGvkfKb8qckXj2YWUrcc8yd24G/image1.png"
+        "ipfsCid": "QmcAcH4F9HYQtpqKHxBFwGvkfKb8qckXj2YWUrcc8yd24G/image1.png"
       },
       "name": {
         "_": "My token"
@@ -185,7 +185,7 @@ async function main() {
             _: 'My token',
           },
           image: {
-            url: 'https://ipfs.unique.network/ipfs/QmcAcH4F9HYQtpqKHxBFwGvkfKb8qckXj2YWUrcc8yd24G/image1.png',
+            ipfsCid: 'QmcAcH4F9HYQtpqKHxBFwGvkfKb8qckXj2YWUrcc8yd24G/image1.png',
           },
         },
       },
@@ -195,7 +195,7 @@ async function main() {
             _: 'Token for testing',
           },
           image: {
-            url: 'https://ipfs.unique.network/ipfs/QmZ8Syn28bEhZJKYeZCxUTM5Ut74ccKKDbQCqk5AuYsEnp/image1.png',
+            ipfsCid: 'QmZ8Syn28bEhZJKYeZCxUTM5Ut74ccKKDbQCqk5AuYsEnp/image1.png',
           },
         },
       },
@@ -226,14 +226,14 @@ curl -X 'POST' \
             "_": "My token",
           },
         "image": {
-          "url": "https://ipfs.unique.network/ipfs/QmcAcH4F9HYQtpqKHxBFwGvkfKb8qckXj2YWUrcc8yd24G/image2.png"
+          "ipfsCid": "QmcAcH4F9HYQtpqKHxBFwGvkfKb8qckXj2YWUrcc8yd24G/image2.png"
         }
       }
     },
     {
       "data": {
         "image": {
-          "url": "https://ipfs.unique.network/ipfs/QmcAcH4F9HYQtpqKHxBFwGvkfKb8qckXj2YWUrcc8yd24G/image2.png"
+          "ipfsCid": "QmcAcH4F9HYQtpqKHxBFwGvkfKb8qckXj2YWUrcc8yd24G/image2.png"
         }
       }
     }
