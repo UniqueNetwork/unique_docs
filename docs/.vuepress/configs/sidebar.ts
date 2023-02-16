@@ -104,7 +104,6 @@ export const sidebar: Record<string, SidebarConfig> = {
               '/concepts/network-features/nesting-bundling.md',
               '/concepts/network-features/refungibility.md',
               '/concepts/network-features/scheduling.md',
-              '/concepts/network-features/live-nft.md',
               '/concepts/network-features/rate-limits.md',
               '/concepts/network-features/royalties.md',
               '/concepts/network-features/did.md',

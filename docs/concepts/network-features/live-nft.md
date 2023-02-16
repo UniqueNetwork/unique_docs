@@ -1,1 +1,0 @@
-# Live (dynamic) NFTs
