@@ -1,39 +1,38 @@
 # Dynamic (live) NFTs
 
-Dynamic, ‘live’ NFTs represent an advanced implementation of NFTs that offer unique opportunities for both
-collectors and creators. Unlike traditional NFTs, which are static and represent a single digital asset,
-dynamic NFTs can change over time based on a wide range of conditions and triggers, allowing
-for a new level of interactivity and engagement.
+Dynamic, ‘live’ NFTs represent an advanced implementation of NFTs that offer unique opportunities for
+both collectors and creators. Unlike traditional NFTs, which are static and represent a single digital asset,
+dynamic NFTs can change over time based on a wide range of conditions and triggers, allowing for
+a new level of interactivity and engagement.
 
-For collectors, this offers a new level of value and engagement. By owning a dynamic NFT, collectors
-can experience the thrill of owning a digital asset that is constantly evolving and changing,
+For collectors, this offers a new level of value and engagement. By owning a dynamic NFT,
+collectors can experience the thrill of owning a digital asset that is constantly evolving and changing,
 providing a more immersive and engaging experience than traditional NFTs.
 
 For creators, on the other hand, a whole new area of new opportunities to explore their creativity
 and create more engaging and interactive digital assets opens up. By leveraging smart contracts,
 creators can program their dynamic NFTs to respond to a wide range of conditions and triggers,
 such as user interaction, time of day, or changes in the environment. Since the underlying conditions
-provide a ‘stimulus’ for the perpetual change and potential growth of the dynamic NFT,
-it almost makes sense to observe this process as an organic process.  
-Hence, calling it a ‘live’ NFT is not too far from how we experience it. Expanding on this concept,
-in considering how the dynamic NFT changes, it is fair to introduce the concept of ‘mutation’ - as it is a change
-of an NFT’s attribute through time as a result of external conditions. It is imaginable to foresee
-that a ‘mutation’ service could be provided as a general and dynamic NFT modifier service for any
-dynamic NFT that subscribes to it, independent of the collection creator.
-For example, a ‘Halofier’ mutator that creates halos of different and changing forms that adds
-a halo to a character. Or a ‘tourist’ mutator that changes a background to a popular tourist
-location that reflects the time of day at that location. This allows creators to experiment with
-new forms of digital art and storytelling, and can potentially open up new revenue streams through
-the sale and licensing of their dynamic NFTs.
+provide a ‘stimulus’ for the perpetual change and potential growth of the dynamic NFT, it almost
+makes sense to observe this process as an organic process.  
+Hence, calling it a ‘live’ NFT is not
+too far from how we experience it. Expanding on this concept, in considering how the dynamic NFT changes,
+it is fair to introduce the concept of ‘mutation’ - as it is a change of an NFT’s attribute through time
+as a result of external conditions. It is imaginable to foresee that a ‘mutation’ service could be provided
+as a general and dynamic NFT modifier service for any dynamic NFT that subscribes to it, independent of the collection creator.
+For example, a ‘Halofier’ mutator that creates halos of different and changing forms that adds a halo to a character.
+Or a ‘tourist’ mutator that changes a background to a popular tourist location that reflects the time of day at that location.  
+This allows creators to experiment with new forms of digital art and storytelling, and can potentially open up new
+revenue streams through the sale and licensing of their dynamic NFTs.
 
 Additionally, dynamic NFTs can be used to create new forms of digital experiences that are more immersive
 and engaging than traditional digital content. For example, a dynamic NFT could be used to create an
 interactive game or virtual world that evolves and changes over time based on user input.
 
-Overall, dynamic NFTs represent a significant advancement in the world of NFTs, expanding the
-boundaries of digital art and storytelling, and creating new forms of engaging and interactive digital experiences.
+Overall, dynamic NFTs represent a significant advancement in the world of NFTs, expanding the boundaries
+of digital art and storytelling, and creating new forms of engaging and interactive digital experiences.
 
-Here are 10 examples of how dynamic NFTs can be used:
+Here are **10 examples** of how dynamic NFTs can be used:
 
 **Gaming**: dynamic NFTs can be used in games to represent items that have different properties, such as weapons or armor.
 These items can change in response to the player's actions or the game environment, making the gameplay more immersive and engaging.
