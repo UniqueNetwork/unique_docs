@@ -324,6 +324,44 @@ console.log(result.parsed);
 </CodeGroupItem>
 </CodeGroup>
 
+## Batch several different transactions
+
+<CodeGroup>
+<CodeGroupItem title="SDK">
+
+```typescript no-line-numbers
+const batchTwoDifferentTransfers = async (sdk: Sdk, address: string) => {
+  let nonce = (await sdk.common.getNonce({address})).nonce
+
+  const requests = await Promise.all([
+    sdk.balance.transfer.build({
+      address,
+      amount: 100,
+      destination: account.address,
+    }, {nonce: nonce++}),
+    sdk.tokens.transfer.build({
+      address,
+      collectionId: 1,
+      tokenId: 1,
+      to: account.address,
+    }, {nonce: nonce++}),
+  ])
+
+  const results = (await Promise.all(requests.map(async r => {
+    const signed = await sdk.extrinsics.sign(r)
+    const result = await sdk.extrinsics.submit({
+      ...r,
+      signature: signed.signature,
+    })
+    return result
+  }))) as unknown as [TransferTokenParsed, BalanceTransferParsed]
+  
+  return results
+}
+```
+</CodeGroupItem>
+</CodeGroup>
+
 ## What are token permissions
 
 ## Unique schema
