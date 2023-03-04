@@ -27,7 +27,7 @@ const props = withDefaults(defineProps<{
   groups: DefaultGroups,
   fullNames: LanguageMapping,
 }>(), {
-  groups: () => ({} as DefaultGroups),
+  groups: () => ([] as DefaultGroups),
   fullNames: () => ({} as LanguageMapping)
 })
 
