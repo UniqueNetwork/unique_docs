@@ -68,6 +68,13 @@ provide('addTab', (tabId: string) => {
   }
 })
 
+provide('deleteTab', (tabId: string) => {
+  let tabIndex = tabIds.findIndex((tab) => tab === tabId)
+  if (tabIndex != -1) {
+    tabIds.splice(tabIndex, 1)
+  }
+})
+
 provide('activeTabId', activeTabId)
 
 </script>
