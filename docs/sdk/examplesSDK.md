@@ -58,7 +58,7 @@ Console log output
 </template>
 </Details>
 
-#### Get an account from mnemonic phrse
+#### Get an account from mnemonic phrase
 
 If you already have a mnemonic phrase, you can use it to get an account. Here is how the phrase looks like:
 
@@ -301,7 +301,7 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
 </CodeGroupItem>
 </CodeGroup>
 
-## Hot to transfer a token
+## How to transfer a token
 
 <CodeGroup>
 <CodeGroupItem title="SDK">
