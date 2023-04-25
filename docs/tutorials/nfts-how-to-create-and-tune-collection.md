@@ -21,7 +21,7 @@ In fact, you have only two available options, because we strongly do not recomme
 So, let's create a simple collection using the `unique` schema:
 
 ```typescript:no-line-numbers
-import { Sdk } from "@unique-nft/substrate-client";
+import Sdk from "@unique-nft/substrate-client";
 import {
   COLLECTION_SCHEMA_NAME,
   CreateCollectionNewArguments,

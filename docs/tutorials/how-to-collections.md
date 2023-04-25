@@ -40,7 +40,7 @@ Please find below a full sample code that creates an account from a mnemonic phr
 <CodeGroupItem title = "SDK">
 
 ```ts:no-line-numbers
-import { Sdk } from '@unique-nft/sdk';
+import Sdk from '@unique-nft/sdk';
 import { KeyringProvider } from '@unique-nft/accounts/keyring';
 
 const baseUrl = 'https://rest.unique.network/opal/v1';
@@ -266,7 +266,7 @@ Quite often, you may need to get a collection by its id. You can easily do this 
 <CodeGroupItem title="SDK">
 
 ```typescript:no-line-numbers
-import { Sdk } from "@unique-nft/sdk";
+import Sdk from "@unique-nft/sdk";
 
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
@@ -302,7 +302,7 @@ For example, let's update the collection limits using `sdk.collections.setLimits
 <CodeGroupItem title = "SDK">
 
 ```typescript:no-line-numbers
-import { Sdk } from '@unique-nft/sdk'
+import Sdk from '@unique-nft/sdk'
 
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
     
@@ -377,7 +377,7 @@ Each collection has an owner. It is defined when collection is created. However,
 <CodeGroupItem title="SDK">
 
 ```typescript:no-line-numbers
-import { Sdk } from 'unique-nft/sdk'
+import Sdk from 'unique-nft/sdk'
 
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
@@ -432,7 +432,7 @@ The collections has properties. You can get the collection properties programmat
 <CodeGroupItem title="SDK">
 
 ```typescript:no-line-numbers
-import { Sdk } from '@unique-nft/sdk'
+import Sdk from '@unique-nft/sdk'
 
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
@@ -467,7 +467,7 @@ The keys names are restricted to a limited set of the following characters: lati
 <CodeGroupItem title="SDK">
 
 ```typescript:no-line-numbers
-import { Sdk } from '@unique-nft/sdk'
+import Sdk from '@unique-nft/sdk'
 
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
@@ -537,7 +537,7 @@ Please check the samples below to learn how to get admin list.
 <CodeGroupItem title="SDK">
 
 ```typescript:no-line-numbers
-import { Sdk } from '@unique-nft/sdk'
+import Sdk from '@unique-nft/sdk'
 
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
@@ -570,7 +570,7 @@ Each collection has administrators. These addresses has permissions to perform a
 <CodeGroupItem title="SDK">
 
 ```typescript:no-line-numbers
-import { Sdk } from '@unique-nft/sdk'
+import Sdk from '@unique-nft/sdk'
 
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
@@ -627,7 +627,7 @@ Please check the samples below to learn how to remove a collection admin.
 <CodeGroupItem title="SDK">
 
 ```typescript:no-line-numbers
-import { Sdk } from '@unique-nft/sdk'
+import Sdk from '@unique-nft/sdk'
 
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
@@ -684,7 +684,7 @@ Please check the samples below to learn how to add an address to the allow list.
 <CodeGroupItem title="SDK">
 
 ```typescript:no-line-numbers
-import { Sdk } from '@unique-nft/sdk'
+import Sdk from '@unique-nft/sdk'
 
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
@@ -728,7 +728,7 @@ Please check the samples below to learn how to get the allow list.
 <CodeGroupItem title="SDK">
 
 ```typescript:no-line-numbers
-import { Sdk } from '@unique-nft/sdk'
+import Sdk from '@unique-nft/sdk'
 
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
@@ -758,7 +758,7 @@ Please check the samples below to learn how to get the allow list.
 <CodeGroupItem title="SDK">
 
 ```typescript:no-line-numbers
-import { Sdk } from '@unique-nft/sdk'
+import Sdk from '@unique-nft/sdk'
 
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
@@ -811,7 +811,7 @@ The samples below demonstrate how you can destroy the collection.
 <CodeGroupItem title = "SDK">
 
 ```typescript:no-line-numbers
-import { Sdk } from "@unique-nft/sdk";
+import Sdk from "@unique-nft/sdk";
 
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
