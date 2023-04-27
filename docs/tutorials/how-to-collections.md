@@ -140,7 +140,7 @@ So, let's create a simple collection using the `unique` schema:
 <CodeGroupItem title = "SDK">
 
 ```ts:no-line-numbers
-import {Sdk} from "@unique-nft/sdk"
+import Sdk from "@unique-nft/sdk"
 import {KeyringProvider} from "@unique-nft/accounts/keyring"
 import {
   AttributeType,

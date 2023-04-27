@@ -7,7 +7,7 @@ The example below shows how to create a life nft.
 <CodeGroupItem title="SDK">
 
 ```ts
-import {Sdk} from '@unique-nft/sdk'
+import Sdk from '@unique-nft/sdk'
 import {KeyringProvider} from '@unique-nft/accounts/keyring'
 import {AttributeType, COLLECTION_SCHEMA_NAME, SchemaTools, UniqueCollectionSchemaToCreate} from '@unique-nft/schemas'
 
