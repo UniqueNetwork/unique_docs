@@ -212,7 +212,7 @@ const signer = await provider.first();
 <CodeGroupItem title = "SDK" active>
 
 ```ts:no-line-numbers
-import { Sdk } from '@unique-nft/sdk';
+import Sdk from '@unique-nft/sdk';
 import { KeyringProvider } from '@unique-nft/accounts/keyring';
 
 const baseUrl = 'https://rest.unique.network/opal/v1';

@@ -40,7 +40,7 @@ Please find below a full sample code that creates an account from a mnemonic phr
 <CodeGroupItem title = "SDK">
 
 ```ts:no-line-numbers
-import { Sdk } from '@unique-nft/sdk';
+import Sdk from '@unique-nft/sdk';
 import { KeyringProvider } from '@unique-nft/accounts/keyring';
 
 const baseUrl = 'https://rest.unique.network/opal/v1';

@@ -69,7 +69,7 @@ yarn add @unique-nft/sdk
 #### Initialization
 
 ```typescript:no-line-numbers
-import { Sdk, Options } from '@unique-nft/sdk';
+import Sdk, { Options } from '@unique-nft/sdk';
 const options: Options = {
     baseUrl: '<REST API URL>'
 };
