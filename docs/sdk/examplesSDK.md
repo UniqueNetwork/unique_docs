@@ -301,7 +301,7 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
 </CodeGroupItem>
 </CodeGroup>
 
-## Hot to transfer a token
+## How to transfer a token
 
 <CodeGroup>
 <CodeGroupItem title="SDK">
