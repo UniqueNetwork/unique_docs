@@ -149,12 +149,10 @@ The abi.json file content
 ### Read a value
 
 
-You can read the `myStrValue` string property using the code below. We will need to [initialize our SDK](./../sdk/installation.md#initialization) and use its `evm` object. To connect to the deployed smart contract, we need to call the 
+You can read the `myStrValue` string property using the code below. We will need to 
+[initialize our SDK](./../sdk/installation.md#initialization) and use its `evm` object. 
+To connect to the deployed smart contract, we need to call the 
 `contractConnect` method and pass to it the contract address and its abi that we can store in a file. 
-
-```typescript:no-line-numbers
-import Sdk from '@unique-nft/sdk'
-
 
 When the contract is found, we just specify our address that performs a transaction and specify which entity 
 (the `myStrValue` variable) we need to access. 
