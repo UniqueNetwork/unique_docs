@@ -93,7 +93,7 @@ socket.on('connect', () => {
 });
 ```
 
-You will receive еру `block` object that contains these fields:
+You will receive `block` object that contains these fields:
 
 ```typescript:no-line-numbers
 interface BlockResult {
