@@ -139,6 +139,7 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/networks/events.md',
           '/networks/governance-only.md',
           '/networks/nesting.md',
+          '/networks/owner-admin-roles.md',
           {
             text: 'Ecosystem',
             children: [
