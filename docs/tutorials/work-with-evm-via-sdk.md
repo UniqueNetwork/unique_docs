@@ -234,7 +234,7 @@ async function main() {
 
 const account = provider.addSeed(seed);
 
-const contract = await client.evm.contractConnect(
+const contract = await sdk.evm.contractConnect(
 contractAddress,
 abi,
 );
