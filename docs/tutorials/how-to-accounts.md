@@ -247,7 +247,7 @@ This will give us a list of available accounts. You can read a little more about
 To get the balance of available accounts, we need to use [SDK](https://www.npmjs.com/package/@unique-nft/sdk). All we need to do is to pass the account address, whose balance we want to know, as an argument.
 
 ```typescript:no-line-numbers
-import Sdk, { Options } from '@unique-nft/sdk';
+import { Sdk, Options } from '@unique-nft/sdk';
 
 const options: Options = {
     baseUrl: '<REST API URL>'

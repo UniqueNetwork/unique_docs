@@ -212,7 +212,7 @@ const signer = await provider.first();
 <CodeGroupItem title = "SDK" active>
 
 ```ts:no-line-numbers
-import Sdk from '@unique-nft/sdk';
+import { Sdk } from '@unique-nft/sdk';
 import { KeyringProvider } from '@unique-nft/accounts/keyring';
 
 const baseUrl = 'https://rest.unique.network/opal/v1';
@@ -255,7 +255,7 @@ async function main() {
   const sdk = createSdk(signer);
 
   const collection = await createCollection(sdk, address);
-  console.log('Collection was create. ID: ', collection);
+  console.log('Сollection was create. ID: ', collection);
 }
 
 main();

@@ -146,7 +146,7 @@ ABI JSON
 You can read a string property `myStrValue` using the following code:
 
 ```typescript:no-line-numbers
-import Sdk from '@unique-nft/sdk';
+import { Sdk } from '@unique-nft/sdk';
 
 const sdk = new Sdk({
   baseUrl: 'https://rest.unique.network/opal/v1'
@@ -185,7 +185,7 @@ main();
 You can execute a function that does not require a transaction (marked `view`) using the following code:
 
 ```typescript:no-line-numbers
-import Sdk from '@unique-nft/sdk';
+import { Sdk } from '@unique-nft/sdk';
 
 const sdk = new Sdk({
   baseUrl: 'https://rest.unique.network/opal/v1'
@@ -218,7 +218,7 @@ If you want to make a request that makes changes in the chain state, you need to
 For example, to execute the `updateMyUint` method, you can use the following code:
 
 ```typescript:no-line-numbers
-import Sdk, { Options } from '@unique-nft/sdk';
+import { Sdk, Options } from '@unique-nft/sdk';
 import {KeyringProvider} from '@unique-nft/accounts/keyring';
 
 const seed = '<your seed>';

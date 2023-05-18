@@ -30,7 +30,7 @@ Create js or ts file and write the following inside:
 
 ```typescript
 // Required imports
-import Sdk from '@unique-nft/sdk';
+import { Sdk } from '@unique-nft/sdk';
 import { KeyringProvider } from '@unique-nft/accounts/keyring';
 
 // Test mnemonic

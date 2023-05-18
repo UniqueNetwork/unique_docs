@@ -84,12 +84,12 @@ Then, we carry out the steps below to demonstrate how the balances are changed a
    Dave pays for the transaction 0.1 UNQ since he is the sponsor for the collection to which this token belongs. **Dave balance** is `999.8265 UNQ`.
 
 
-8. Charlie sends the token to Alice. However, please pay attention that **Dave pays for the transaction** 0.1 UNQ. 
+8. Charlie sends the token to Аlice. However, please pay attention that **Dave pays for the transaction** 0.1 UNQ. 
    
     **Dave balance** reduces to `999.7265 UNQ`. Charlie balance does not change, and he does not pay for this transaction. 
 
 
-9. Alice sends the token to Charlie again. And, Dave pays for the transaction again (0.1 UNQ). 
+9. Аlice sends the token to Charlie again. And, Dave pays for the transaction again (0.1 UNQ). 
     **Dave balance** is `999.7265 UNQ`.
 
 

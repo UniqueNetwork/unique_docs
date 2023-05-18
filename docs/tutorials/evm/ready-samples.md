@@ -59,7 +59,7 @@ async function main() {
 
 
   ///////////////////////////////////////////
-  // Create a new collection
+  // Сreate a new collection
   ///////////////////////////////////////////
   let newCollection = await ( await collectionHelpers.createNFTCollection(
     'My NFT collection',
