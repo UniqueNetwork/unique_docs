@@ -12,6 +12,8 @@
   --c-bg-sidebar: var(--c-bg);
   --c-bg-arrow: #cccccc;
   --c-bg-dark: #f5f6f7;
+  --c-bg-hover-button: #f5fcff;
+  --c-bg-disabled-button: #ededee;
 
   // text colors
   --c-text: #2c3e50;
@@ -21,6 +23,7 @@
   --c-text-lighter: #4e6e8e;
   --c-text-lightest: #6a8bad;
   --c-text-quote: #999999;
+  --c-text-disabled-button: #abb6c1;
 
   --c-custom-text: lighten(#000, 15%);
   --c-custom-text-hover: #000;
