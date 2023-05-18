@@ -34,7 +34,7 @@ We will use SDK and some other packages in this section. To learn how to install
 Please find below a full sample code that creates an account from a mnemonic phrase, initializes SDK, and then creates a collection on the Opal testnet.
 
 :warning: Please note that you need to use your mnemonic phrase, or even use another way to initialize your account
-(see [Create an account](../tutorials/how-to-account.md#create-an-account-via-code)).
+(see [Create an account](../tutorials/how-to-accounts.md#create-an-account-via-code)).
 
 <CodeGroup>
 <CodeGroupItem title = "SDK">
