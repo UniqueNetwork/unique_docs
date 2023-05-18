@@ -91,6 +91,7 @@ export const sidebar: Record<string, SidebarConfig> = {
             ]
           },
           '/concepts/addresses/index.md',
+          '/concepts/balances/index.md',
           {
             text: 'Schemas',
             children: [

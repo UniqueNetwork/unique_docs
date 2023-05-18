@@ -4,7 +4,7 @@ This examples shows how to create a collection where token properties can be cha
 mint a token and then change it.
 
 ```ts
-import {Sdk} from '@unique-nft/sdk'
+import Sdk from '@unique-nft/sdk'
 import {KeyringProvider} from '@unique-nft/accounts/keyring'
 import {AttributeType, COLLECTION_SCHEMA_NAME, SchemaTools, UniqueCollectionSchemaToCreate} from '@unique-nft/schemas'
 

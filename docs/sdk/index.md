@@ -69,7 +69,7 @@ yarn add @unique-nft/sdk
 #### Initialization
 
 ```typescript:no-line-numbers
-import { Sdk, Options } from '@unique-nft/sdk';
+import Sdk, {Options} from "@unique-nft/sdk";
 const options: Options = {
     baseUrl: '<REST API URL>'
 };
@@ -109,7 +109,7 @@ Pass the `signer` in the parameters when creating the `Client` object.
 ```typescript:no-line-numbers
 import { KeyringProvider } from '@unique-nft/accounts/keyring';
 import { KeyringOptions } from '@polkadot/keyring/types';
-import { Sdk, Options } from "@unique-nft/sdk";
+import Sdk, { Options } from "@unique-nft/sdk";
 
 const options: KeyringOptions = {
   type: 'sr25519',
