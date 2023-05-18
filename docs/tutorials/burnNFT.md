@@ -41,7 +41,7 @@ const { collectionId, tokenId, address, value } = setResult.parsed;
 <CodeGroupItem title = "SDK" active>
 
 ```typescript:no-line-numbers
-import { Sdk } from "@unique-nft/sdk";
+import Sdk from "@unique-nft/sdk";
 
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 

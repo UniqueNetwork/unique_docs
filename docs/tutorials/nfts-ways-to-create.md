@@ -35,7 +35,7 @@ export const getSigner = async (seed = '//Alice') => {
 
 ```typescript:no-line-numbers
 // sdk.servicce.ts
-import { Sdk } from '@unique-nft/substrate-client';
+import Sdk from '@unique-nft/substrate-client';
 import { getSigner } from './signer';
 
 export const sdk = await Sdk.create({
@@ -63,7 +63,7 @@ And then, you can use those response entities to create collections/tokens.
 
 ```typescript:no-line-numbers
 import '@unique-nft/substrate-client/tokens';
-import { sdk } from './sdk.servicce.ts';
+import Sdk from './sdk.servicce.ts';
 
 const myCollection = {
   address: 'unjKJQJrRd238pkUZZvzDQrfKuM39zBSnQ5zjAGAGcdRhaJTx',
@@ -131,7 +131,7 @@ const newCollection$ = sdk.collections.creation.submitWatch(myCollection);
 
 `setTransfersEnabled` - enables or disables transfers in a collection.
 
-`transfer` - сhanges the owner of the collection.
+`transfer` - changes the owner of the collection.
 
 `addAdmin` - adds an administrator of a collection.
 
@@ -145,7 +145,7 @@ const newCollection$ = sdk.collections.creation.submitWatch(myCollection);
 
 ```typescript:no-line-numbers
 import '@unique-nft/substrate-client/tokens';
-import { sdk } from './sdk.servicce.ts';
+import Sdk from './sdk.servicce.ts';
 
 // example ot token arguments
 const createTokensArgs = {
