@@ -1,4 +1,4 @@
-import {SidebarConfig} from '@vuepress/theme-default'
+import { SidebarConfig } from '@vuepress/theme-default'
 
 export const sidebar: Record<string, SidebarConfig> = {
   en: {
@@ -22,9 +22,9 @@ export const sidebar: Record<string, SidebarConfig> = {
               // '/tutorials/destroyCollection.md', - how-to-collections.md
               '/tutorials/burnNFT.md',
               '/tutorials/work-with-evm-via-sdk.md',
-//              '/tutorials/live-nft-example.md', -> moved to SDK life nft
+              // '/tutorials/live-nft-example.md', -> moved to SDK life nft
               '/tutorials/websocket-subscriptions.md',
-            ]
+            ],
           },
           {
             text: 'EVM and Eth-like RPC',
@@ -34,13 +34,11 @@ export const sidebar: Record<string, SidebarConfig> = {
               '/tutorials/evm/using-sol-interfaces.md',
               '/tutorials/evm/ready-samples.md',
               // '/tutorials/evm/how-to-ethereum.md', - disassembled
-            ]
+            ],
           },
           {
             text: 'REST API examples',
-            children: [
-              '/tutorials/examplesREST.md',
-            ]
+            children: ['/tutorials/examplesREST.md'],
           },
           {
             text: 'GraphQL samples',
@@ -48,7 +46,7 @@ export const sidebar: Record<string, SidebarConfig> = {
               '/tutorials/wallet-integration.md',
               '/tutorials/how-to-get-collections-tokens.md',
               '/tutorials/nfts-fetching.md',
-            ]
+            ],
           },
           // '/tutorials/createAccount.md', - how-to-accounts.md
           '/tutorials/getNFTsAndTokens.md',
@@ -56,7 +54,7 @@ export const sidebar: Record<string, SidebarConfig> = {
           // '/tutorials/how-to-use-nesting-and-bundling.md', -> moved to SDK nesting
           '/tutorials/ledger-connect.md',
         ],
-      }
+      },
     ],
     '/business': [
       {
@@ -66,7 +64,7 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/business/ecosystem/community.md',
           '/business/ecosystem/use-cases.md',
         ],
-      }
+      },
     ],
     '/concepts': [
       {
@@ -78,7 +76,7 @@ export const sidebar: Record<string, SidebarConfig> = {
               '/concepts/types/nft.md',
               '/concepts/types/rft.md',
               '/concepts/types/fungible.md',
-            ]
+            ],
           },
           {
             text: 'Collections',
@@ -88,16 +86,16 @@ export const sidebar: Record<string, SidebarConfig> = {
               '/concepts/collections/token-properties.md',
               '/concepts/collections/collection-permissions.md',
               '/concepts/collections/collection-limits.md',
-            ]
+            ],
           },
           '/concepts/addresses/index.md',
           '/concepts/balances/index.md',
           {
             text: 'Schemas',
             children: [
-              '/concepts/schemas/unique.md',
-              '/concepts/schemas/ERC721Metadata.md',
-            ]
+              '/concepts/schemas/unique.md', 
+              '/concepts/schemas/ERC721Metadata.md'
+            ],
           },
           {
             text: 'Network Features',
@@ -109,10 +107,11 @@ export const sidebar: Record<string, SidebarConfig> = {
               '/concepts/network-features/nesting-bundling.md',
               '/concepts/network-features/refungibility.md',
               '/concepts/network-features/scheduling.md',
+              '/concepts/network-features/live-nft.md',
               '/concepts/network-features/rate-limits.md',
               '/concepts/network-features/royalties.md',
               '/concepts/network-features/did.md',
-            ]
+            ],
           },
           '/concepts/glossary.md',
         ],
@@ -122,11 +121,11 @@ export const sidebar: Record<string, SidebarConfig> = {
       {
         text: 'EVM docs',
         children: [
-          '/evm/index.md',
-          '/evm/smart_contracts.md',
-          '/evm/UniqueNFT.md',
+          '/evm/index.md', 
+          '/evm/smart_contracts.md', 
+          '/evm/UniqueNFT.md'
         ],
-      }
+      },
     ],
     '/networks': [
       {
@@ -141,12 +140,12 @@ export const sidebar: Record<string, SidebarConfig> = {
           {
             text: 'Ecosystem',
             children: [
-              '/networks/ecosystem/substrate.md',
-              '/networks/ecosystem/polkadot.md',
-            ]
+              '/networks/ecosystem/substrate.md', 
+              '/networks/ecosystem/polkadot.md'
+            ],
           },
         ],
-      }
+      },
     ],
     '/sdk': [
       {
@@ -157,7 +156,7 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/sdk/examplesSDK.md',
           '/sdk/examplesLifeNFT.md',
           '/sdk/examplesNesting.md',
-//        '/sdk/installation.md', -> moved to other pages
+          // '/sdk/installation.md', -> moved to other pages
           '/sdk/architecture.md',
           '/sdk/methods.md',
           '/sdk/ios.md',
@@ -165,7 +164,7 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/sdk/C_sharp.md',
           // '/sdk/tools.md', -> this info exists in Tutorials section
         ],
-      }
-    ]
-  }
+      },
+    ],
+  },
 }
