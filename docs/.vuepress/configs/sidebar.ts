@@ -43,6 +43,7 @@ export const sidebar: Record<string, SidebarConfig> = {
           {
             text: 'GraphQL samples',
             children: [
+              '/tutorials/graph-node-docker.md',
               '/tutorials/wallet-integration.md',
               '/tutorials/how-to-get-collections-tokens.md',
               '/tutorials/nfts-fetching.md',
