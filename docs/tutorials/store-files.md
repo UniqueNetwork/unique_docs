@@ -30,7 +30,7 @@ Quartz - `https://rest.unique.network/quartz`
 Unique - `https://rest.unique.network/unique` 
 
 ```typescript:no-line-numbers
-import { Sdk } from '@unique-nft/sdk';
+import Sdk from '@unique-nft/sdk';
 
 const baseUrl = 'https://rest.unique.network/opal';
 
