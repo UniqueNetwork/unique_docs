@@ -255,7 +255,7 @@ async function main() {
   const sdk = createSdk(signer);
 
   const collection = await createCollection(sdk, address);
-  console.log('Сollection was create. ID: ', collection);
+  console.log('Collection was create. ID: ', collection);
 }
 
 main();

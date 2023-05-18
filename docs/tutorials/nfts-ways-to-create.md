@@ -131,7 +131,7 @@ const newCollection$ = sdk.collections.creation.submitWatch(myCollection);
 
 `setTransfersEnabled` - enables or disables transfers in a collection.
 
-`transfer` - сhanges the owner of the collection.
+`transfer` - changes the owner of the collection.
 
 `addAdmin` - adds an administrator of a collection.
 
