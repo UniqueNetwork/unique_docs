@@ -21,7 +21,7 @@ In fact, you have only two available options, because we strongly do not recomme
 So, let's create a simple collection using the `unique` schema:
 
 ```typescript:no-line-numbers
-import { Sdk } from "@unique-nft/substrate-client";
+import Sdk from "@unique-nft/substrate-client";
 import {
   COLLECTION_SCHEMA_NAME,
   CreateCollectionNewArguments,
@@ -105,6 +105,7 @@ Your NFT collection have a bunch of various properties such as limits, permissio
 
 <!---
 _#### todo: А это так? Например атрибуты токенов же можно задать только в момент создания? Может указать конкретный список свойств с указанием что можно перезадать, что нельзя? Где взять этот список?_
+_#### todo: 
 -->
 
 You can find the list of SDK methods, that you can use to adjust your collection [here](../sdk/methods.md#collection).

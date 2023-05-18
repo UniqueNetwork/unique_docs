@@ -27,7 +27,7 @@ yarn add @unique-nft/accounts --dev
 Import the required objects and initialize the account using the Substrate Client.
 
 ```typescript:no-line-numbers
-import { Sdk } from '@unique-nft/substrate-client';
+import Sdk from '@unique-nft/substrate-client';
 import { KeyringProvider } from '@unique-nft/accounts/keyring';
 
 const mnemonic = 'bus ahead nation nice damp recall place dance guide media clap language';

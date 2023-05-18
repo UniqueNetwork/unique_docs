@@ -16,7 +16,7 @@ We will use the following packages this sample:
 - [@unique-nft/accounts](https://www.npmjs.com/package/@unique-nft/accounts)
 
 ```ts
-import { Sdk } from '@unique-nft/sdk';
+import Sdk from '@unique-nft/sdk';
 import { KeyringProvider } from '@unique-nft/accounts/keyring';
 
 const baseUrl = 'https://rest.unique.network/opal/v1';
