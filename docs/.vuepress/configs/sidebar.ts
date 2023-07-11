@@ -28,6 +28,13 @@ export const sidebar: Record<string, SidebarConfig> = {
             ],
           },
           {
+            text: 'Minting guides',
+            children: [
+              '/tutorials/minting/setup-environment.md',
+              '/tutorials/minting/mass-minting.md'
+            ]
+          },
+          {
             text: 'EVM and Eth-like RPC',
             children: [
               '/tutorials/evm/eth-general.md',
