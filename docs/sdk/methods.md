@@ -53,9 +53,9 @@ interface CollectionInfoWithSchema {
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { CollectionIdArguments, CollectionInfoWithSchema } from '@unique-nft/substrate-client/types';
@@ -64,9 +64,9 @@ const getCollectionArgs: CollectionIdArguments = { collectionId: 123 };
 const collection: CollectionInfo = await sdk.collections.get(getCollectionArgs);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
@@ -74,9 +74,9 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -84,9 +84,9 @@ const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 const collection = await sdk.collections.get({ collectionId: 1 });
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -141,9 +141,9 @@ interface CollectionPropertiesResult {
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 import {
@@ -160,9 +160,9 @@ const result: CollectionPropertiesResult = await sdk.collections.properties(args
 ```
 
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
@@ -170,9 +170,9 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -180,9 +180,9 @@ const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 const { properties } = await sdk.collections.properties({ collectionId: 1 });
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -370,9 +370,9 @@ interface CollectionIdArguments {
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { CreateCollectionNewArguments } from '@unique-nft/substrate-client/tokens';
@@ -399,9 +399,9 @@ const {
 console.log(`Created new collection with id ${collectionId}`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'POST' \
@@ -436,9 +436,9 @@ curl -X 'POST' \
 }'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -465,9 +465,9 @@ const {
 console.log(`Created collection with id ${collectionId}`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -525,9 +525,9 @@ interface DeleteCollectionPropertiesResult {
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { DeleteCollectionPropertiesArguments} from '@unique-nft/substrate-client/tokens';
@@ -545,9 +545,9 @@ console.log(`Deleted ${deletedKeys.join()}`);
 ```
 
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'DELETE' \
@@ -574,9 +574,9 @@ curl -X 'POST' \
 }'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -588,9 +588,9 @@ await sdk.collections.deleteProperties.submitWaitResult({
 });
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -636,9 +636,9 @@ interface DestroyCollectionResult {
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { DestroyCollectionArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -653,9 +653,9 @@ const { success } = result.parsed;
 ```
 
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'DELETE' \
@@ -678,9 +678,9 @@ curl -X 'POST' \
 }'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -691,9 +691,9 @@ client.collections.destroy.submitWaitResult({
 });
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -755,9 +755,9 @@ interface GetCollectionLimitsResult {
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { CollectionIdArguments, GetCollectionLimitsResult } from '@unique-nft/substrate-client/types';
@@ -768,9 +768,9 @@ console.log(`Collection ${collectionId} limits: ${JSON.stringify(limits)}`);
 ```
 
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
@@ -778,9 +778,9 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -790,9 +790,9 @@ const { collectionId, limits } = await sdk.collections.getLimits({ collectionId:
 console.log(`Collection ${collectionId} limits: ${JSON.stringify(limits)}`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -854,9 +854,9 @@ This method returns `PropertyPermissionsResult`
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
   import {
@@ -873,9 +873,9 @@ This method returns `PropertyPermissionsResult`
     await sdk.collections.propertyPermissions(args);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -885,9 +885,9 @@ This method returns `PropertyPermissionsResult`
       
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
   const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -897,9 +897,9 @@ This method returns `PropertyPermissionsResult`
   });
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -981,9 +981,9 @@ This method returns `SetCollectionLimitsResult`
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
     import '@unique-nft/substrate-client/tokens';
@@ -1007,9 +1007,9 @@ This method returns `SetCollectionLimitsResult`
     const { parsed: { collectionId, limits } } = result;
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -1045,9 +1045,9 @@ This method returns `SetCollectionLimitsResult`
     }'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -1071,9 +1071,9 @@ This method returns `SetCollectionLimitsResult`
     const { parsed: { collectionId, limits } } = result;
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -1145,9 +1145,9 @@ This method returns `SetCollectionPermissionsResult`
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
   import {
@@ -1175,9 +1175,9 @@ This method returns `SetCollectionPermissionsResult`
   );
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
     curl -X 'POST' \
@@ -1209,9 +1209,9 @@ This method returns `SetCollectionPermissionsResult`
     }'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
   const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -1234,9 +1234,9 @@ This method returns `SetCollectionPermissionsResult`
   );
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -1303,9 +1303,9 @@ This method returns `SetCollectionPermissionsResult`
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
     const args: SetCollectionPropertiesArguments = {
@@ -1324,9 +1324,9 @@ This method returns `SetCollectionPermissionsResult`
     console.log(result.parsed);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -1357,9 +1357,9 @@ This method returns `SetCollectionPermissionsResult`
     }'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -1380,9 +1380,9 @@ This method returns `SetCollectionPermissionsResult`
     console.log(`Properties ${properties.map(t => t.propertyKey).join()} are set for the collection`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -1466,9 +1466,9 @@ This method returns `SetTokenPropertyPermissionsResult`
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
     const args: SetTokenPropertyPermissionsArguments = {
@@ -1492,9 +1492,9 @@ This method returns `SetTokenPropertyPermissionsResult`
     console.log(result.parsed);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -1529,9 +1529,9 @@ This method returns `SetTokenPropertyPermissionsResult`
     }'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -1556,9 +1556,9 @@ This method returns `SetTokenPropertyPermissionsResult`
     console.log(`the values of the keys ${propertyPermissions.map(t => t.propertyKey).join()} are set`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -1617,9 +1617,9 @@ This method returns `SetTransfersEnabledResult`
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
     import { SetTransfersEnabledArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -1635,9 +1635,9 @@ This method returns `SetTransfersEnabledResult`
     console.log(result.parsed.success);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -1663,9 +1663,9 @@ This method returns `SetTransfersEnabledResult`
     }'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -1679,9 +1679,9 @@ This method returns `SetTransfersEnabledResult`
     console.log(result.parsed.success);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -1736,9 +1736,9 @@ This method returns `TransferCollectionResult`
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
     import { TransferCollectionArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -1753,9 +1753,9 @@ This method returns `TransferCollectionResult`
     const { collectionId, newOnwer } = result.parsed;
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -1781,9 +1781,9 @@ This method returns `TransferCollectionResult`
     }'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -1799,9 +1799,9 @@ This method returns `TransferCollectionResult`
     console.log(`new owner of collection ${collectionId} has address ${owner}`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -1863,9 +1863,9 @@ This method returns `AddCollectionAdminResult`
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
     import { AddCollectionAdminArguments } from '@unique-nft/substrate-client/tokens';
@@ -1881,9 +1881,9 @@ This method returns `AddCollectionAdminResult`
     console.log(result.parsed);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -1909,9 +1909,9 @@ This method returns `AddCollectionAdminResult`
     }'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -1927,9 +1927,9 @@ This method returns `AddCollectionAdminResult`
     console.log(`collection ${collectionId} has admin ${newAdmin}`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -1988,9 +1988,9 @@ This method returns `AdminlistResult`
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
     import {
@@ -2005,9 +2005,9 @@ This method returns `AdminlistResult`
     const result: AdminlistResult = await sdk.collections.admins(args);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
     curl -X 'GET' \
@@ -2015,9 +2015,9 @@ This method returns `AdminlistResult`
       -H 'accept: application/json'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -2031,9 +2031,9 @@ This method returns `AdminlistResult`
     console.log(`${admins.join()} - collection admins`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -2095,9 +2095,9 @@ This method returns `RemoveCollectionAdminResult`
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
     import { RemoveCollectionAdminArguments } from '@unique-nft/substrate-client/tokens';
@@ -2113,9 +2113,9 @@ This method returns `RemoveCollectionAdminResult`
     console.log(result.parsed);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -2141,9 +2141,9 @@ This method returns `RemoveCollectionAdminResult`
     }'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -2159,9 +2159,9 @@ This method returns `RemoveCollectionAdminResult`
     console.log(`admin ${admin} removed from collection ${collectionId}`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -2211,8 +2211,8 @@ interface AccountTokensResult {
 
 #### Examples
 
-<CodeSwitcher>
-<template v-slot:js>
+<CodeGroup>
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { AddToAllowListArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -2232,9 +2232,9 @@ console.log(
 );
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
     curl -X 'POST' \
@@ -2247,9 +2247,9 @@ console.log(
       "newAdminId": "<address>"
     }'
 ```
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -2267,9 +2267,9 @@ console.log(
 );
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 
 </template></Details>
@@ -2311,8 +2311,8 @@ interface AllowListResult {
 
 #### Examples
 
-<CodeSwitcher>
-<template v-slot:js>
+<CodeGroup>
+  <CodeGroupItem title="JS">
 
 ```typescript
   import { AllowListArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -2326,17 +2326,17 @@ interface AllowListResult {
   console.log(`addresses: ${addresses}`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
     curl -X 'GET' \
     'https://rest.unique.network/opal/v1/collections/allow-list?collectionId=1'
 ```
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -2348,9 +2348,9 @@ interface AllowListResult {
     console.log(`addresses: ${addresses}`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 
 
@@ -2423,8 +2423,8 @@ interface AllowedResult {
 
 #### Examples
 
-<CodeSwitcher>
-<template v-slot:js>
+<CodeGroup>
+  <CodeGroupItem title="JS">
 
 ```typescript
   const { isAllowed } = await sdk.collection.allowed({
@@ -2435,17 +2435,17 @@ interface AllowedResult {
   console.log(`isAllowed: ${isAllowed}`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
     curl -X 'GET' \
     'https://rest.unique.network/opal/v1/collections/allowed?collectionId=1&address=<address>'
 ```
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -2458,9 +2458,9 @@ interface AllowedResult {
     console.log(`isAllowed: ${isAllowed}`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 
 </template></Details>
@@ -2508,8 +2508,8 @@ interface RemoveFromAllowListResult {
 
 #### Examples
 
-<CodeSwitcher>
-<template v-slot:js>
+<CodeGroup>
+  <CodeGroupItem title="JS">
 
 ```typescript
     import { RemoveFromAllowListArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -2529,9 +2529,9 @@ interface RemoveFromAllowListResult {
     );
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
     curl -X 'POST' \
@@ -2544,9 +2544,9 @@ interface RemoveFromAllowListResult {
       "addressToDelete": "<address>"
     }'
 ```
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -2564,9 +2564,9 @@ interface RemoveFromAllowListResult {
     );
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -2631,9 +2631,9 @@ type NestedToken = Omit<TokenByIdResult, 'nestingChildTokens'> & {
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { GetBundleArguments } from '@unique-nft/substrate-client/tokens';
@@ -2648,9 +2648,9 @@ const bundle = await sdk.tokens.getBundle(args);
 console.log(bundle);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
@@ -2658,9 +2658,9 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -2673,9 +2673,9 @@ const bundle = await sdk.tokens.getBundle({
 console.log(bundle);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -2716,9 +2716,9 @@ type IsBundleResult = boolean;
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { IsBundleArguments } from '@unique-nft/substrate-client/tokens';
@@ -2733,9 +2733,9 @@ const bundle = await sdk.tokens.isBundle(args);
 console.log(bundle);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
@@ -2743,9 +2743,9 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -2758,9 +2758,9 @@ const result = await sdk.tokens.isBundle({
 console.log(result.isBundle);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -2842,9 +2842,9 @@ type NestTokenResult = {
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { NestTokenArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -2870,9 +2870,9 @@ console.log(
 );
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -2904,9 +2904,9 @@ console.log(
     }'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -2932,9 +2932,9 @@ console.log(
 );
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -3002,9 +3002,9 @@ type TokenChildrenResult = {
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 import {
@@ -3022,9 +3022,9 @@ const result: TokenChildrenResult = await sdk.tokens.children(args);
 console.log(result);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
@@ -3032,9 +3032,9 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -3047,9 +3047,9 @@ const result = await sdk.tokens.children({
 console.log(result.children);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -3107,9 +3107,9 @@ type TokenParentResult = {
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 import {
@@ -3127,9 +3127,9 @@ const result: TokenParentResult = await sdk.tokens.parent(args);
 console.log(result);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
@@ -3137,9 +3137,9 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -3152,9 +3152,9 @@ const result = await sdk.tokens.parent({
 console.log(result);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -3209,9 +3209,9 @@ type TopmostTokenOwnerResult = { topmostOwner: Address };
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 import {
@@ -3230,9 +3230,9 @@ const result: TopmostTokenOwnerResult = await sdk.tokens.topmostOwner(args);
 console.log(result);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
@@ -3240,9 +3240,9 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -3255,9 +3255,9 @@ const result = await sdk.tokens.topmostOwner({
 console.log(result.topmostOwner);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -3324,9 +3324,9 @@ type UnnestTokenResult = {
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { UnnestTokenArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -3348,9 +3348,9 @@ console.log(
 );
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -3378,9 +3378,9 @@ console.log(
     }'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -3402,9 +3402,9 @@ console.log(
 );
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -3472,9 +3472,9 @@ This method returns `ConfirmSponsorshipResult`
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
     import { ConfirmSponsorshipArguments } from '@unique-nft/substrate-client/tokens';
@@ -3492,9 +3492,9 @@ This method returns `ConfirmSponsorshipResult`
     console.log(`${sponsorship?.address} - ${sponsorship?.isConfirmed}`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -3519,9 +3519,9 @@ This method returns `ConfirmSponsorshipResult`
     }'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -3536,9 +3536,9 @@ This method returns `ConfirmSponsorshipResult`
     console.log(`${sponsor} approved sponsorship of ${collectionId} collection`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -3597,9 +3597,9 @@ type NextSponsoredResult = {
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 import {
@@ -3619,9 +3619,9 @@ const result: NextSponsoredResult = await sdk.collections.nextSponsored(args);
 console.log(result);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
@@ -3629,9 +3629,9 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -3645,9 +3645,9 @@ const result = await sdk.tokens.nextSponsored({
 console.log(result);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -3706,9 +3706,9 @@ This method returns `RemoveSponsorshipResult`
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
     import { RemoveSponsorshipArguments } from '@unique-nft/substrate-client/tokens';
@@ -3726,9 +3726,9 @@ This method returns `RemoveSponsorshipResult`
     console.log(sponsorship);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -3753,9 +3753,9 @@ This method returns `RemoveSponsorshipResult`
     }'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -3770,9 +3770,9 @@ This method returns `RemoveSponsorshipResult`
     console.log(`${collectionId} now works without sponsoring`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -3846,9 +3846,9 @@ This method returns `SetSponsorshipResult`
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
     import { SetCollectionSponsorArguments } from '@unique-nft/substrate-client/tokens';
@@ -3867,9 +3867,9 @@ This method returns `SetSponsorshipResult`
     console.log(`${sponsorship?.address} - ${sponsorship?.isConfirmed}`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -3895,9 +3895,9 @@ This method returns `SetSponsorshipResult`
     }'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -3913,9 +3913,9 @@ This method returns `SetSponsorshipResult`
     console.log(`${sponsor} should now approve sponsorship of ${collectionId} collection`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -3965,8 +3965,8 @@ interface AccountTokensResult {
 #### Examples
 
 
-<CodeSwitcher>
-<template v-slot:js>
+<CodeGroup>
+  <CodeGroupItem title="JS">
 
 ```typescript
   import { AccountTokensArguments, AccountTokensResult } from '@unique-nft/substrate-client/tokens';
@@ -3984,17 +3984,17 @@ interface AccountTokensResult {
   console.log(`${collectionId} - ${tokenId}`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
     curl -X 'GET' \
     'https://rest.unique.network/opal/v1/token/account-tokens?address=5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp&collectionId=1'
 ```
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -4010,9 +4010,9 @@ interface AccountTokensResult {
     console.log(`${collectionId} - ${tokenId}`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -4075,8 +4075,8 @@ interface CollectionTokensResult {
 
 #### Examples
 
-<CodeSwitcher>
-<template v-slot:js>
+<CodeGroup>
+  <CodeGroupItem title="JS">
 
 ```typescript
   import { CollectionTokensResult } from '@unique-nft/substrate-client/tokens';
@@ -4090,17 +4090,17 @@ interface CollectionTokensResult {
   console.log(`ids - ${ids}`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
     curl -X 'GET' \
     'https://rest.unique.network/opal/v1/collections/tokens?collectionId=1'
 ```
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -4114,9 +4114,9 @@ interface CollectionTokensResult {
     console.log(`ids - ${ids}`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 
 </template></Details>
@@ -4160,8 +4160,8 @@ interface GetStatsResult {
 
 #### Examples
 
-<CodeSwitcher>
-<template v-slot:js>
+<CodeGroup>
+  <CodeGroupItem title="JS">
 
 ```typescript
   import { CollectionTokensResult } from '@unique-nft/substrate-client/tokens';
@@ -4173,17 +4173,17 @@ interface GetStatsResult {
   console.log(`stats - ${created}, ${destroyed}, ${alive}`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
     curl -X 'GET' \
     'https://rest.unique.network/opal/v1/collections/stats'
 ```
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -4195,9 +4195,9 @@ interface GetStatsResult {
     console.log(`stats - ${created}, ${destroyed}, ${alive}`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -4239,8 +4239,8 @@ interface LastTokenIdResult {
 #### Examples
 
 
-<CodeSwitcher>
-<template v-slot:js>
+<CodeGroup>
+  <CodeGroupItem title="JS">
 
 ```typescript
   import { LastTokenIdResult } from '@unique-nft/substrate-client/types';
@@ -4254,17 +4254,17 @@ interface LastTokenIdResult {
   console.log(`tokenId - ${tokenId}`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
     curl -X 'GET' \
     'https://rest.unique.network/opal/v1/collections/last-token-id?collectionId=1'
 ```
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -4276,9 +4276,9 @@ interface LastTokenIdResult {
     console.log(`lastTokenId - ${tokenId}`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 
 </template></Details>
@@ -4326,8 +4326,8 @@ interface TotalSupplyResult {
 #### Examples
 
 
-<CodeSwitcher>
-<template v-slot:js>
+<CodeGroup>
+  <CodeGroupItem title="JS">
 
 ```typescript
   import {
@@ -4342,17 +4342,17 @@ interface TotalSupplyResult {
   console.log(`totalSupply - ${totalSupply}`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
     curl -X 'GET' \
     'https://rest.unique.network/opal/v1/collections/total-supply?collectionId=1'
 ```
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -4364,9 +4364,9 @@ interface TotalSupplyResult {
     console.log(`totalSupply - ${totalSupply}`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -4426,8 +4426,8 @@ type AllowanceResult = {
 
 #### Examples
 
-<CodeSwitcher>
-<template v-slot:sdk>
+<CodeGroup>
+  <CodeGroupItem title="SDK">
 
 ```typescript
 import { AllowanceArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -4442,18 +4442,18 @@ const AllowanceArgs: AddToAllowListArguments = {
 const { isAllowed } = await sdk.tokens.allowance(AllowanceArgs);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
   'http://localhost:3000/token/allowance?collectionId=1&tokenId=1&from=<address>&to=<address>' \
   -H 'accept: application/json'
 ```
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -4465,9 +4465,9 @@ const { isAllowed } = await sdk.tokens.allowance({
 });
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -4531,9 +4531,9 @@ This method returns `BurnTokenResult`
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 import '@unique-nft/substrate-client/tokens';
@@ -4546,9 +4546,9 @@ const setResult = await sdk.tokens.burn.submitWaitResult(burnItemArgs);
 const { collectionId, tokenId, address } = setResult.parsed;
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -4574,9 +4574,9 @@ const { collectionId, tokenId, address } = setResult.parsed;
     }'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -4593,9 +4593,9 @@ const { collectionId, tokenId, address } = setResult.parsed;
 
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -4680,9 +4680,9 @@ interface TokenIdArguments {
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { CreateMultipleTokensArguments } from '@unique-nft/substrate-client/tokens';
@@ -4721,9 +4721,9 @@ const [{ collectionId, tokenId }] = result.parsed;
 const token = await sdk.tokens.get({ collectionId, tokenId });
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -4764,9 +4764,9 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
     }'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -4797,9 +4797,9 @@ const { parsed } = result;
 console.log(`minted ${parsed.length} tokens`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -4912,9 +4912,9 @@ This method returns `TokenIdArguments`
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { CreateTokenNewArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -4946,9 +4946,9 @@ const { collectionId, tokenId } = result.parsed;
 const token = await sdk.tokens.get({ collectionId, tokenId });
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -4984,9 +4984,9 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
     }'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -5012,9 +5012,9 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
     console.log(`created token ${tokenId} in collection ${collectionId}`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 
 </template></Details>
@@ -5076,9 +5076,9 @@ This method returns `DeleteTokenPropertiesResult`
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
   const args: DeleteTokenPropertiesArguments = {
@@ -5093,9 +5093,9 @@ This method returns `DeleteTokenPropertiesResult`
   console.log(result.parsed);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -5122,9 +5122,9 @@ This method returns `DeleteTokenPropertiesResult`
     }'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -5142,9 +5142,9 @@ This method returns `DeleteTokenPropertiesResult`
     console.log(`removed properties  ${properties.map(t => t.propertyKey).join()}`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -5213,9 +5213,9 @@ This method returns `SetTokenPropertiesResult`
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
   const args: SetTokenPropertiesArguments = {
@@ -5235,9 +5235,9 @@ This method returns `SetTokenPropertiesResult`
   console.log(result.parsed);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -5269,9 +5269,9 @@ This method returns `SetTokenPropertiesResult`
     }'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -5291,9 +5291,9 @@ This method returns `SetTokenPropertiesResult`
     console.log(`the values of the keys ${properties.map(t => t.propertyKey).join()} are set`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -5348,9 +5348,9 @@ type TokenByIdResult = Omit<UniqueTokenDecoded, 'owner'> & {
 
 ## Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 const token = await sdk.tokens.get({
@@ -5366,18 +5366,18 @@ const {
     attributes,
 } = token;
 ```
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
   'https://rest.unique.network/opal/v1/token?collectionId=2&tokenId=1' \
   -H 'accept: application/json'
 ```
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -5392,9 +5392,9 @@ curl -X 'GET' \
     console.log(`token ${tokenId} is owned by address ${owner}`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -5456,9 +5456,9 @@ type TokenOwnerResult = { owner: Address }
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 import {
@@ -5477,9 +5477,9 @@ const result: TokenOwnerResult = await sdk.tokens.tokenOwner(
 );
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -5488,9 +5488,9 @@ const result: TokenOwnerResult = await sdk.tokens.tokenOwner(
   -H 'accept: application/json'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -5503,9 +5503,9 @@ const result: TokenOwnerResult = await sdk.tokens.tokenOwner(
     console.log(`token owner ${owner}`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -5565,9 +5565,9 @@ type TokenPropertiesResult = {
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 import {
@@ -5584,9 +5584,9 @@ const args: TokenPropertiesArguments = {
 const result: TokenPropertiesResult = await sdk.tokens.properties(args);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
   curl -X 'GET' \
@@ -5594,9 +5594,9 @@ const result: TokenPropertiesResult = await sdk.tokens.properties(args);
     -H 'accept: application/json'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -5607,9 +5607,9 @@ const result: TokenPropertiesResult = await sdk.tokens.properties(args);
     });
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -5686,9 +5686,9 @@ interface TransferResult {
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { TransferArguments } from '@unique-nft/substrate-client/tokens';
@@ -5705,9 +5705,9 @@ const result = await sdk.tokens.transfer.submitWaitResult(args);
 console.log(result.parsed);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -5734,9 +5734,9 @@ console.log(result.parsed);
     }'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -5753,9 +5753,9 @@ console.log(result.parsed);
     console.log(`${to} is the new owner of token ${tokenId} from collection ${collectionId}`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -5818,9 +5818,9 @@ interface ApproveResult {
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:sdk>
+  <CodeGroupItem title="SDK">
 
 ```typescript
 import { ApproveArguments } from '@unique-nft/substrate-client/tokens/types';
@@ -5837,9 +5837,9 @@ const result = await sdk.tokens.approve.submitWaitResult(approveArgs);
 const { collectionId, tokenId } = result.parsed;
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
     curl -X 'POST' \
@@ -5866,9 +5866,9 @@ const { collectionId, tokenId } = result.parsed;
     }'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -5884,9 +5884,9 @@ const { collectionId, tokenId } = result.parsed;
     const { collectionId, tokenId } = result.parsed;
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -5930,17 +5930,17 @@ type TokenExistsResult = {
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:sdk>
+  <CodeGroupItem title="SDK">
 
 ```typescript
 const { isExists } = await sdk.tokens.exists({ collectionId: 1, tokenId: 1 });
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
     curl -X 'GET' \
@@ -5948,9 +5948,9 @@ const { isExists } = await sdk.tokens.exists({ collectionId: 1, tokenId: 1 });
       -H 'accept: application/json'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -5961,9 +5961,9 @@ const { isExists } = await sdk.tokens.exists({
 });
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -6024,9 +6024,9 @@ interface AllBalances {
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 const balance = await sdk.balance.get({
@@ -6040,18 +6040,18 @@ const {
     lockedBalance,
 } = balance;
 ```
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
   'https://rest.unique.network/opal/v1/balance?address=yGCyN3eydMkze4EPtz59Tn7obwbUbYNZCz48dp8FRdemTaLwm' \
   -H 'accept: application/json'  
 ```
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -6066,9 +6066,9 @@ const {
 } = balance;
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -6211,8 +6211,8 @@ See the detailed description of the fields in [getBalance](./get-balance).
 
 #### Examples
 
-<CodeSwitcher>
-<template v-slot:sdk>
+<CodeGroup>
+  <CodeGroupItem title="SDK">
 
 ```typescript
 import { AllowanceFungibleArguments } from '@unique-nft/substrate-client/fungible';
@@ -6226,9 +6226,9 @@ const AllowanceArgs: AllowanceFungibleArguments = {
 const { amount } = await sdk.fungible.allowance(AllowanceArgs);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
@@ -6236,9 +6236,9 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -6250,9 +6250,9 @@ const { amount } = await client.fungible.allowanceTokens.submitWaitResult({
 });
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -6311,9 +6311,9 @@ The method returns a `parsed` object that contains the `ApproveFungibleResult`.
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:sdk>
+  <CodeGroupItem title="SDK">
 
 ```typescript
 import { ApproveArguments } from '@unique-nft/substrate-client/refungible';
@@ -6329,9 +6329,9 @@ const result = await sdk.fungible.approve.submitWaitResult(approveArgs);
 const { collectionId, amount } = result.parsed;
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'POST' \
@@ -6347,9 +6347,9 @@ curl -X 'POST' \
 }'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -6363,9 +6363,9 @@ const result = await client.fungible.approveTokens.submitWaitResult({
 const { collectionId, amount } = result.parsed;
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -6430,9 +6430,9 @@ This method returns `BurnFungibleResult`
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 import '@unique-nft/substrate-client/tokens';
@@ -6446,9 +6446,9 @@ const result = await sdk.fungible.burn.submitWaitResult(burnArgs);
 const { collectionId, address, amount } = result.parsed;
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -6474,9 +6474,9 @@ const { collectionId, address, amount } = result.parsed;
     }'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -6493,9 +6493,9 @@ const { collectionId, address, amount } = result.parsed;
 
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -6644,27 +6644,27 @@ interface GetTotalPiecesResult {
 
 ## Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 const { amount } = await sdk.fungible.getTotalPieces({ collectionId: 123 });
 
 console.log(`Total pieces is ${amount}`);
 ```
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
   'https://rest.unique.network/opal/v1/fungible/total-pieces?collectionId=2' \
   -H 'accept: application/json'
 ```
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -6678,9 +6678,9 @@ curl -X 'GET' \
     console.log(`Total pieces is ${amount}`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -6768,8 +6768,8 @@ interface AccountRefungibleTokensResult {
 #### Examples
 
 
-<CodeSwitcher>
-<template v-slot:substrateClient>
+<CodeGroup>
+  <CodeGroupItem title="Substrate client">
 
 ```typescript
   import { AccountRefungibleTokenArguments, AccountRefungibleTokensResult } from '@unique-nft/substrate-client/tokens';
@@ -6787,17 +6787,17 @@ interface AccountRefungibleTokensResult {
   console.log(`${collectionId} - ${tokenId} - ${amount}`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
     curl -X 'GET' \
     'https://rest.unique.network/opal/v1/refungible/tokens/account-tokens?address=5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp&collectionId=1'
 ```
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:sdk>
+  <CodeGroupItem title="Sdk">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -6813,9 +6813,9 @@ interface AccountRefungibleTokensResult {
     console.log(`${collectionId} - ${tokenId} - amount`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -6874,8 +6874,8 @@ type AllowanceRefungibleResult = {
 
 #### Examples
 
-<CodeSwitcher>
-<template v-slot:sdk>
+<CodeGroup>
+  <CodeGroupItem title="SDK">
 
 ```typescript
 import { AllowanceRefungibleArguments } from '@unique-nft/substrate-client/refungible/types';
@@ -6890,9 +6890,9 @@ const AllowanceArgs: AllowanceRefungibleArguments = {
 const { amount } = await sdk.refungible.allowance(AllowanceArgs);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
@@ -6900,9 +6900,9 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -6916,9 +6916,9 @@ const result = await client.fungible.allowanceToken.submitWaitResult({
 const { amount } = result.parsed;
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -6981,9 +6981,9 @@ The method returns a `parsed` object that contains the `ApproveRefungibleResult`
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:sdk>
+  <CodeGroupItem title="SDK">
 
 ```typescript
 import { ApproveArguments } from '@unique-nft/substrate-client/refungible';
@@ -7000,9 +7000,9 @@ const result = await sdk.refungible.approve.submitWaitResult(approveArgs);
 const { collectionId, tokenId, amount } = result.parsed;
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'POST' \
@@ -7019,9 +7019,9 @@ curl -X 'POST' \
 }'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -7036,9 +7036,9 @@ const result = await client.refungible.approveToken.submitWaitResult({
 const { collectionId, tokenId, amount } = result.parsed;
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -7107,9 +7107,9 @@ This method returns `BurnRefungibleResult`
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 import '@unique-nft/substrate-client/tokens';
@@ -7124,9 +7124,9 @@ const result = await sdk.fungible.burn.submitWaitResult(burnArgs);
 const { collectionId, tokenId, address, amount } = result.parsed;
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 
@@ -7153,9 +7153,9 @@ const { collectionId, tokenId, address, amount } = result.parsed;
     }'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -7173,9 +7173,9 @@ const { collectionId, tokenId, address, amount } = result.parsed;
 
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -7246,9 +7246,9 @@ interface CollectionIdArguments {
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { CreateFungibleCollectionArguments } from '@unique-nft/substrate-client/refungible';
@@ -7267,9 +7267,9 @@ const { collectionId } = createResult.parsed;
 const collection = await sdk.refungible.getCollection({ collectionId });
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'POST' \
@@ -7285,9 +7285,9 @@ curl -X 'POST' \
 }'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -7301,9 +7301,9 @@ const result = await client.refungible.createCollection.submitWaitResult({
 const { collectionId, amount } = result.parsed;
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -7368,9 +7368,9 @@ The method returns a `parsed` object that contains the `CreateRefungibleTokenRes
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { GetRefungibleCollectionArguments } from '@unique-nft/substrate-client/refungible/types';
@@ -7387,9 +7387,9 @@ const { collectionId, tokenId } = result.parsed;
 const token = await sdk.tokens.get({ collectionId, tokenId });
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'POST' \
@@ -7403,9 +7403,9 @@ curl -X 'POST' \
 '
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -7417,9 +7417,9 @@ const result = await client.refungible.createToken.submitWaitResult({
 });
 const { collectionId, tokenId } = result.parsed;
 ```
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 
 </template></Details>
@@ -7474,9 +7474,9 @@ export interface TokenBalanceResult {
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { TokenBalanceRequest } from '@unique-nft/substrate-client/refungible';
@@ -7490,9 +7490,9 @@ const getBalanceArgs: TokenBalanceRequest = {
 const { collectionId, tokenId, amount } = await sdk.refungible.getBalance(getBalanceArgs);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
@@ -7500,9 +7500,9 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -7514,9 +7514,9 @@ const { collectionId, tokenId, amount } = await client.fungible.getBalance({
 });
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -7567,9 +7567,9 @@ interface CollectionIdArguments {
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { GetRefungibleCollectionArguments } from '@unique-nft/substrate-client/refungible';
@@ -7581,9 +7581,9 @@ const getCollectionArgs: GetRefungibleCollectionArguments = {
 const collection = await sdk.refungible.getCollection(getCollectionArgs);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
@@ -7591,9 +7591,9 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -7603,9 +7603,9 @@ const collection = await client.refungible.getCollection.submitWaitResult({
 });
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -7668,9 +7668,9 @@ interface RepartitionTokenResult {
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { RepartitionTokenArguments } from '@unique-nft/substrate-client/refungible/types';
@@ -7686,9 +7686,9 @@ const result = await sdk.refungible.repartitionToken.submitWaitResult(repartitio
 const { success } = result.parsed;
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'POST' \
@@ -7705,9 +7705,9 @@ curl -X 'POST' \
 '
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -7721,9 +7721,9 @@ const result = await client.fungible.repartitionToken.submitWaitResult({
 const { success } = result.parsed;
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 
 </template></Details>
@@ -7778,8 +7778,8 @@ type TotalPiecesResult = {
 
 #### Examples
 
-<CodeSwitcher>
-<template v-slot:sdk>
+<CodeGroup>
+  <CodeGroupItem title="SDK">
 
 ```typescript
 import { TotalPiecesArguments } from '@unique-nft/substrate-client/fungible';
@@ -7792,9 +7792,9 @@ const AllowanceArgs: TotalPiecesArguments = {
 const { amount } = await sdk.refungible.totalPieces(AllowanceArgs);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 
 ```bash
@@ -7803,9 +7803,9 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -7817,9 +7817,9 @@ const result = await client.fungible.totalPieces.submitWaitResult({
 const { amount } = result.parsed;
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -7884,9 +7884,9 @@ interface TransferRefungibleResult {
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 import { TransferArguments } from '@unique-nft/substrate-client/tokens';
@@ -7903,9 +7903,9 @@ const result = await sdk.tokens.transfer.submitWaitResult(args);
 console.log(result.parsed);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'POST' \
@@ -7922,9 +7922,9 @@ curl -X 'POST' \
 }'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -7940,9 +7940,9 @@ const result = await client.fungible.transferToken.submitWaitResult({
 console.log(result.parsed);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -7994,9 +7994,9 @@ The method can return any data, depending on the result of the smart contract fu
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 const value = await sdk.evm.call({
@@ -8010,9 +8010,9 @@ const value = await sdk.evm.call({
 console.log(value);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
   curl -X 'POST' \
@@ -8040,9 +8040,9 @@ console.log(value);
       }'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const value = await sdk.evm.call({
@@ -8056,9 +8056,9 @@ const value = await sdk.evm.call({
 console.log(value);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -8100,9 +8100,9 @@ interface EvmContractExistResponse {
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:js>
+  <CodeGroupItem title="JS">
 
 ```typescript
 const { exist } = await sdk.evm.contractExists({
@@ -8112,9 +8112,9 @@ const { exist } = await sdk.evm.contractExists({
 console.log('exist', exist);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'GET' \
@@ -8122,9 +8122,9 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Substrate Client">
 
 ```typescript
 const { exist } = await client.evm.contractExists({
@@ -8134,9 +8134,9 @@ const { exist } = await client.evm.contractExists({
 console.log('exist', exist);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -8212,9 +8212,9 @@ interface EvmSendResult {
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:sdk>
+  <CodeGroupItem title="SDK">
 
 ```typescript
 import { EvmSendArguments } from '@unique-nft/substrate-client/evm/methods/send';
@@ -8232,9 +8232,9 @@ const { parsed } = await sdk.evm.send.submitWaitResult(sendArgs);
 console.log(parsed);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X 'POST' \
@@ -8265,9 +8265,9 @@ curl -X 'POST' \
       }'
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:substrateClient>
+  <CodeGroupItem title="Client">
 
 ```typescript
 import { EvmSendArgumentsDto } from '@unique-nft/sdk/types';
@@ -8284,9 +8284,9 @@ const { parsed } = await sdk.evm.send.submitWaitResult(sendArgs);
 console.log(parsed);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 </template></Details>
 
@@ -8338,25 +8338,25 @@ export interface IpfsUploadResponse {
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:sdk>
+  <CodeGroupItem title="SDK">
 
 ```typescript
 
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -v -F file=@./1.jpg https://rest.unique.network/opal/v1/ipfs/upload-file
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 
 ### Upload multiple files
@@ -8417,9 +8417,9 @@ export interface IpfsUploadResponse {
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:sdk>
+  <CodeGroupItem title="SDK">
 
 ```typescript
 const client = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -8440,9 +8440,9 @@ console.log(`Open by browser -> ${fullUrl}`);
 console.log(`Or use CID if you need -> ${cid}`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -v \
@@ -8451,9 +8451,9 @@ curl -v \
  https://rest.unique.network/opal/v1/ipfs/upload-files
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 
 
@@ -8521,9 +8521,9 @@ export interface IpfsUploadResponse {
 
 #### Examples
 
-<CodeSwitcher>
+<CodeGroup>
 
-<template v-slot:sdk>
+  <CodeGroupItem title="SDK">
 
 ```typescript
 const client = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
@@ -8543,9 +8543,9 @@ console.log(`Open by browser -> ${fullUrl}`);
 console.log(`Or use CID if you need -> ${cid}`);
 ```
 
-  </template>
+  </CodeGroupItem>
 
-<template v-slot:rest>
+  <CodeGroupItem title="REST">
 
 ```bash
 curl -X PATCH -v \
@@ -8554,8 +8554,8 @@ curl -X PATCH -v \
   https://rest.unique.network/opal/v1/ipfs/add-files
 ```
 
-  </template>
+  </CodeGroupItem>
 
-</CodeSwitcher>
+</CodeGroup>
 
 
