@@ -5975,7 +5975,7 @@ Get all balances of the address
 
 #### Overview
 
-Returns information about chain.
+Returns information about account balances.
 
 #### Brief example
 
@@ -6003,7 +6003,18 @@ Throw errors:
 
 #### Returns
 
-This method returns `AllBalances`
+This method returns all balances of the address.
+
+You can find more information about balances in the [balances](/concepts/balances/) section.
+
+- [availableBalance](/concepts/balances/#_1-1-transferable) - A truly free balance. Tokens that the user can transfer to another account or use in any other way.
+- [lockedBalance](/concepts/balances/#_1-2-frozen) - The balance locked by the logic of some pallets.
+- [freeBalance](/concepts/balances/#_1-free) - The balance of the user that they can use to perform operations on the network. Some operations (such as staking) may not decrease this balance, but may impose some restrictions on a part of it.
+- [totalBalance](/concepts/balances/#total) - All tokens owned by the user.
+- [reservedBalance](/concepts/balances/#_2-reserved) - Reserved balance is a portion of the user's balance that is not available for any operations involving the user's funds.
+- [stakedBalance](/concepts/balances/#_1-2-staking) - Tokens staked by `appPromotion` pallet.
+- [unstakedBalance](/concepts/balances/#_1-2-staking) - Tokens amount waiting for unstake.
+- [canstakeBalance](/concepts/balances/#_1-2-staking) - Amount of tokens that can be staked. It is equal to `freeBalance - (stakedBalance + unstakedBalance)`.
 
 ```typescript
 interface Balance {
@@ -6015,10 +6026,18 @@ interface Balance {
 }
 
 interface AllBalances {
-    availableBalance: Balance;
-    lockedBalance: Balance;
-    freeBalance: Balance;
-    address: Address;
+  address: Address;
+
+  availableBalance: Balance;
+  lockedBalance: Balance;
+  freeBalance: Balance;
+
+  totalBalance: Balance;
+  reservedBalance: Balance;
+
+  stakedBalance?: Balance;
+  unstakedBalance?: Balance;
+  canstakeBalance?: Balance;
 }
 ```
 
