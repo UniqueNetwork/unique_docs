@@ -220,3 +220,7 @@ Token Ids: 1, 2, 3, 4, 5
 ```
 
 Your collection and tokens have been successfully created! You can find it in your [wallet](https://wallet.unique.network/). Or you can connect to [Unique Market](https://unqnft.io/) and list your NFTs for sale.
+
+Next, you can learn
+
+[How to mass list tokens for sale](./mass-listing.md)
