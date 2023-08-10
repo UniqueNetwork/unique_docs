@@ -2,8 +2,6 @@
 
 In this tutorial, we will walk you through setting up your development environment. We'll cover the installation of git, node.js, and ensuring that everything is properly configured.
 
-> 💡 If you have prior knowledge of Node.js, npm, and Git, feel free to skip this guide and proceed directly to the [main section](./README.md).
-
 ### 1. Install Node.js
 
 There are various methods to install Node on your machine. We recomend to use [nvm for Mac](https://github.com/nvm-sh/nvm) or [nvm-windows](https://github.com/coreybutler/nvm-windows).
@@ -13,11 +11,11 @@ There are various methods to install Node on your machine. We recomend to use [n
 > Install & Update Script
 > 
 > To install or update nvm, you should run the install script. To do that, you may either download and run the script manually, or use the following cURL or Wget command:
-> ```sh
+> ```sh:no-line-numbers
 > curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 > ```
 >
-> ```sh
+> ```sh:no-line-numbers
 > wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 > ```
 >
@@ -30,7 +28,7 @@ There are various methods to install Node on your machine. We recomend to use [n
 
 After installation, you may need to reload your terminal, and than set your node.js version:
 
-```sh
+```sh:no-line-numbers
 nvm use 18
 ```
 
@@ -44,7 +42,7 @@ You can also follow this [guide from npm Docs](https://docs.npmjs.com/downloadin
 
 Once you’re done, run `node --version` on a terminal to check your installation:
 
-```sh
+```sh:no-line-numbers
 node --version
 ```
 
@@ -52,7 +50,7 @@ node --version
 
 Check your version running following command in your terminal:
 
-```sh
+```sh:no-line-numbers
 git -v
 ```
 
@@ -65,4 +63,9 @@ After installation, check your version again.
 We recommend using [Visual Studio Code](https://code.visualstudio.com/).
 
 
-🎉 Great! You're all set now. Feel free to proceed to the [main section](./README.md).
+🎉 Great! You're all set now.
+
+Next, you can learn
+
+1. [Generative NFT guide](./generative-nft.md)
+2. [Mass NFT minting guide](./mass-minting.md)
