@@ -90,6 +90,17 @@ export const sidebar: Record<string, SidebarConfig> = {
             ],
           },
           {
+            text: 'NFT formats',
+            children: [
+              '/concepts/nft-formats/native-nfts.md',
+              '/concepts/nft-formats/customizable-nfts.md',
+              '/concepts/nft-formats/multi-resource-nfts.md',
+              '/concepts/nft-formats/dynamic-nfts.md',
+              '/concepts/nft-formats/fractional-tokens.md',
+              '/concepts/nft-formats/nested-nfts.md',
+            ],
+          },
+          {
             text: 'Collections',
             children: [
               '/concepts/collections/collection-schemas.md',
@@ -104,7 +115,7 @@ export const sidebar: Record<string, SidebarConfig> = {
           {
             text: 'Schemas',
             children: [
-              '/concepts/schemas/unique.md', 
+              '/concepts/schemas/unique.md',
               '/concepts/schemas/ERC721Metadata.md'
             ],
           },
@@ -132,8 +143,8 @@ export const sidebar: Record<string, SidebarConfig> = {
       {
         text: 'EVM docs',
         children: [
-          '/evm/index.md', 
-          '/evm/smart_contracts.md', 
+          '/evm/index.md',
+          '/evm/smart_contracts.md',
           '/evm/UniqueNFT.md'
         ],
       },
@@ -152,7 +163,7 @@ export const sidebar: Record<string, SidebarConfig> = {
           {
             text: 'Ecosystem',
             children: [
-              '/networks/ecosystem/substrate.md', 
+              '/networks/ecosystem/substrate.md',
               '/networks/ecosystem/polkadot.md'
             ],
           },
