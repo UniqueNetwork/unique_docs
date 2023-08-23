@@ -165,7 +165,9 @@ curl -X 'POST' \
 If you need to mint several tokens in one transaction, this is possible in Unique Network. For this, 
 you need to call the `tokens.createMultiple` method. It is quite similar to the common mint operation,
 but you need to pass the array of token properties to this method. Each item of this array is the same 
-as data for the common minting.  
+as data for the common minting.
+
+> There is a limitation on tokens minted at once exist. For detailed information, please refer to the [Limitations page](../concepts/limitations/limitations.md)
 
 <CodeGroup>
 <CodeGroupItem title = "SDK">

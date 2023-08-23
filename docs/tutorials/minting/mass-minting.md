@@ -6,8 +6,7 @@ This tutorial is for those who already have token images and want to create a la
 
 This guide is perfect for beginners who don't have extensive programming knowledge. However, having some familiarity with using the console will be helpful.
 
-<!-- TODO guide link -->
-> 💡 If you want to create a generative NFT collection, make use of [this guide](./generate.md).
+> 💡 If you want to create a generative NFT collection, make use of [this guide](./generative-nft.md).
 
 By completing of this tutorial, you will have a clear understanding of how to use scripts to mint vast collections, illustrated through the example of the [Space Animals collection](https://uniquescan.io/opal/collections/1883).
 
