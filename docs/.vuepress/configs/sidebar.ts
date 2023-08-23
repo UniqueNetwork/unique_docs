@@ -125,6 +125,7 @@ export const sidebar: Record<string, SidebarConfig> = {
             ],
           },
           '/concepts/glossary.md',
+          '/concepts/limitations/limitations.md'
         ],
       },
     ],
