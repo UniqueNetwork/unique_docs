@@ -49,7 +49,7 @@ Congratulations! You're all set now. After following the previous steps, your pr
 
 ## 🖼 Step-2: Prepare your images
 
-Place your images in the `data` folder. The image names should consist of a `prefix` and a sequential number that determines the token's position in the collection. For this tutorial, the token prefix is `cosmic_`. Therefore, `cosmic_1.png` will be the first token in the collection, `cosmic_2.png` will be the second token, and so on.
+Place your images in the `data` folder. The image names should consist of a `symbol` and a sequential number that determines the token's position in the collection. For this tutorial, the token symbol is `SA`. Therefore, `sa1.png` will be the first token in the collection, `sa2.png` will be the second token, and so on.
 
 Additionally, place an image named `cover.png` in the data folder, which will serve as the cover image for the collection.
 
@@ -57,13 +57,13 @@ We have already prepared ten images stored in the `data` folder. Feel free to us
 
 ![Images](./images/images.png)
 
-> ✏️  In the `config.js` file, specify the prefix for your collection by setting the value of the `imagePrefix` property.
+> ✏️  In the `config.js` file, specify the prefix for your collection by setting the value of the `symbol` property (max 4 symbols).
 
 ## 📇 Step-3: Prepare collection metadata
 
 Metadata is basic information that describes NFT or collection, such as its name, description, token prefix, and other relevant details.
 
-> ✏️ In the `config.js` file, fill in the fields `collectionName` (max 64 symbols), `collectionDescription` (max 256 symbols), and `symbol` (max 4 symbols).
+> ✏️ In the `config.js` file, fill in the fields `collectionName` (max 64 symbols), `collectionDescription` (max 256 symbols).
 >
 > If you want to make nesting available for your collection, set the `nesting` property. [Read more about nesting](https://docs.unique.network/networks/nesting.html).
 
