@@ -114,6 +114,25 @@ Export the table to CSV format by clicking on `File - Download - Comma Separated
 >
 > If you want to make nesting available for your collection, set the `nesting` property. [Read more about nesting](https://docs.unique.network/networks/nesting.html).
 
+### 3.3 Generate images and metadata
+
+> ✏️ Set the desired number of generated NFTs in the config.js file and fill in the `desiredCount` property.
+
+Open the VS Code terminal, as we did in step 1.2, and run the following command:
+
+```sh:no-line-numbers
+node 0-generate-nfts.js
+```
+
+The images in the `data` folder will be replaced with randomly generated ones. Please verify that the generated images are correct.
+
+Additionally, a file named `nfts.csv` with the listed properties of future tokens will be added to the `data` folder. Please check that the generated images match the description. For convenience, you can upload the `nfts.csv` file to Google Sheets. Select "File - Import" and upload the `nfts.csv` file.
+
+Each row in the spreadsheet should correspond to a generated image with the same sequential number.
+
+![Generated](./images/generated.png)
+
+
 ## ⛓ Step-4: Prepare Substrate Account
 
 ### 4.1 Generate address and seed phrase
@@ -147,25 +166,7 @@ Now everything is ready to create a collection and tokens.
 
 ## 💎 Step-5: Create Collection and NFTs
 
-### 5.1 Generate images and metadata
-
-> ✏️ Set the desired number of generated NFTs in the config.js file and fill in the `desiredCount` property.
-
-Open the VS Code terminal, as we did in step 1.2, and run the following command:
-
-```sh:no-line-numbers
-node 0-generate-nfts.js
-```
-
-The images in the `data` folder will be replaced with randomly generated ones. Please verify that the generated images are correct.
-
-Additionally, a file named `nfts.csv` with the listed properties of future tokens will be added to the `data` folder. Please check that the generated images match the description. For convenience, you can upload the `nfts.csv` file to Google Sheets. Select "File - Import" and upload the `nfts.csv` file.
-
-Each row in the spreadsheet should correspond to a generated image with the same sequential number.
-
-![Generated](./images/generated.png)
-
-### 5.2 Upload images to IPFS
+### 5.1 Upload images to IPFS
 
 In simple terms, the Inter-Planetary File System (IPFS) is a distributed file storage protocol that enables a network of computers to store any data in a reliable and unchangeable manner.
 
@@ -181,7 +182,7 @@ This script will pack all the images into a zip archive and save it as data/arch
 
 > ✏️ In the `config.js` file, fill in the `fileUrl` set provided link. 
 
-### 5.3 Create a collection
+### 5.2 Create a collection
 
 We have set the collection metadata in the previous steps. Double-check that the name, description, and symbol fields are filled in `config.js`. Afterward, execute the script.
 
@@ -201,7 +202,7 @@ After a short time, you will see the result of executing the command:
 Your collection has been created, and you can check it on your [wallet](https://wallet.unique.network/) or on [uniquescan.io](https://uniquescan.io/). Your collection doesn't have any NFTs yet, so let's create some.
 
 
-### 5.4 Create NFTs
+### 5.3 Create NFTs
 
 We have set the token metadata in the previous steps in the nfts.csv file. Check again if it exists. After that, execute the following script.
 
