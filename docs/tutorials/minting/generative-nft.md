@@ -183,7 +183,7 @@ This script will pack all the images into a zip archive and save it as data/arch
 
 ### 5.3 Create a collection
 
-We have set the collection metadata in the previous steps. Double-check that the name, description, symbol, and attributes fields are filled in `config.js`. Afterward, execute the script.
+We have set the collection metadata in the previous steps. Double-check that the name, description, and symbol fields are filled in `config.js`. Afterward, execute the script.
 
 ```sh:no-line-numbers
 node 2-create-collection.js
