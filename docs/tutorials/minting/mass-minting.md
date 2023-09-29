@@ -14,7 +14,7 @@ By completing of this tutorial, you will have a clear understanding of how to us
 
 ## Before we start
 
-1. For this tutorial, you will need node.js, git, and Visual Studio Code installed on your computer. If you haven't worked with git, node, and npm before, we recommend reading our [brief guide](./setup.md) to configure your environment correctly.
+1. For this tutorial, you will need node.js, git, and Visual Studio Code installed on your computer. If you haven't worked with git, node, and npm before, we recommend reading our [brief guide](./setup-environment.md) to configure your environment correctly.
 2. Prepare minting scripts according to [this instruction]('./prepare-scripts.md')
 
 ## 🖼 Step-1: Prepare your images
@@ -39,7 +39,7 @@ Metadata is basic information that describes NFT or collection, such as its name
 
 After the creation of the collection metadata file, we need to create metadata of our NFTs
 
-## 👨‍🎨 Step-3: Describe the properties of NFTs
+## 👨‍🎨 Step-3: Describe NFT attributes
 
 We will encode NFT properties in CSV format. The first value in the header should be id, representing the sequential number of each token. Following that, list all the existing properties of the collection that were set in the previous step.
 
