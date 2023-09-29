@@ -1,4 +1,4 @@
-# Customazable NFTs
+# Customazable NFTs guide
 
 Customizable NFTs provide a unique approach where users can visually modify the appearance of their NFTs. This modification happens by nesting one NFT within another and establishing an on-chain relationship between them. This entire customization process is a combination of on-chain and off-chain operations.
 

@@ -1,6 +1,6 @@
-# How to create a Substrate Account and OPL Tokens
+# Getting Account and OPL Tokens
 
-### 4.1 Generate address and seed phrase
+## Generate address and seed phrase
 
 You will need an address with a balance to create the collection and tokens. If you don't have an account yet, you may create it with [Polkadot{.js} extension for Chrome](https://polkadot.js.org/extension/).
 
@@ -13,7 +13,7 @@ You will need an address with a balance to create the collection and tokens. If 
 
 > ❗️ Save your seed phrase and keep it safe!
 
-### 4.2 Get some tokens
+## Get some tokens
 
 For this guide, we are using Opal Network, and you can obtain OPL tokens for free by using [Telegram faucet bot](https://t.me/unique2faucet_opal_bot). You will have to provide your address (not a mnemonic phrase!). Click on the circle icon next to your account in the Polkadot extension to copy it.
 
