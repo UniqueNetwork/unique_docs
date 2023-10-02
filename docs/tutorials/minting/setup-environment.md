@@ -58,14 +58,11 @@ If you see your version, e.g. `git version 2.40.1` you already have git installe
 
 After installation, check your version again.
 
-### 3. Optional: Install IDE
+### 3. Install IDE
 
 We recommend using [Visual Studio Code](https://code.visualstudio.com/).
 
 
 🎉 Great! You're all set now.
 
-Next, you can learn
-
-1. [Generative NFT guide](./generative-nft.md)
-2. [Mass NFT minting guide](./mass-minting.md)
+Next, read how to [prepare minting scripts](./prepare-scripts.md)

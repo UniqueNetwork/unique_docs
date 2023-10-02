@@ -12,47 +12,16 @@ By completing this tutorial, you will have a clear understanding of how to use s
 
 ![Intro](./images/intro-generate.png)
 
+## Before we start
 
-## ⚙️ Step 1: Setup environment
+1. For this tutorial, you will need node.js, git, and Visual Studio Code installed on your computer. If you haven't worked with git, node, and npm before, we recommend reading our [brief guide](./setup.md) to configure your environment correctly.
+2. Prepare minting scripts according to [this instruction]('./prepare-scripts.md')
 
-To get started, we'll need node.js, git, and Visual Studio Code installed on your computer. If you haven't worked with git, node, and npm before, we recommend reading our [brief guide](./setup.md) to configure your environment correctly.
-
-### 1.1 Download the project
-
-You may do it in two ways.
-
-1. Using terminal. Open your terminal, `cd` to desired directory, and execute the following command:
-```sh:no-line-numbers
-git clone git@github.com:UniqueNetwork/mass-nfts-doc.git
-```
-
-2. Manually. Go to the [Github repository](https://github.com/UniqueNetwork/mass-nfts-doc) and download the project by clicking `Code - Download ZIP`. Unzip it after downloading.
-
-![Download](./images/download.png)
-
-After downloading the project, open it in Visual Studio Code. Click on `"File"` and select `"Open Folder"`. Then, choose the folder where the project was downloaded.
-
-### 1.2 Install dependencies
-
-In Visual Studio Code, access the built-in terminal by clicking on `"Terminal"` and then selecting `"New Terminal"`. Execute the following command:
-
-```sh:no-line-numbers
-npm install
-```
-
-![Terminal](./images/terminal.png)
-
-Lastly, create a file named `config.js` in the root directory of your project and copy the contents from the `config.example.js` file into it. 
-
-Congratulations! You're all set now. After following the previous steps, your project should resemble the screenshot below.
-
-![Setup finish](./images/setup-finish.png)
-
-## 🖼 Step-2: Prepare the images
+## 🖼 Step-1: Prepare the images
 
 ![Combine](./images/combine.png)
 
-### 2.1 Design image parts
+### 1.1 Design image parts
 
 The image parts should generally include some combinable details with transparent backgrounds. Store them in the `generate` folder. For this example, we have already provided a certain number of images. Feel free to use them or replace them with your own.
 
@@ -63,15 +32,15 @@ The image parts should generally include some combinable details with transparen
 > 3. The images are positioned in a way that they form a cohesive image when overlaid.
 > 4. The image filenames should follow the format {attribute-name}{index}.png, for example, eye1.png, eye2.png.
 
-### 2.2 Set collection cover
+### 1.2 Set collection cover
 
 Place an image named `cover.png` in the `generate` folder, which will serve as the cover image for the collection. We have already provided a cover. You can either keep it or replace it with your own.
 
 ![Cover](./images/cover.png)
 
-## 👨‍🎨 Step-3: Describe NFT attributes
+## 👨‍🎨 Step-2: Describe NFT attributes
 
-### 3.1 Encode attributes
+### 2.1 Encode attributes
 
 Generally, combinable parts produce NFT traits. For example, if the `eye2.png` image is used to generate the NFT image, it will have `joy` trait. 
 
@@ -106,7 +75,7 @@ Export the table to CSV format by clicking on `File - Download - Comma Separated
 ![Export CSV](./images/export-csv.png)
 
 > ✏️ Rename the exported file to `attributes.csv` and save it in the `generate` folder near the images' parts.
-### 3.2 Set the collection metadata
+### 2.2 Set the collection metadata
 
 ![Collection metadata](./images/collection-metadata.png)
 
@@ -114,40 +83,7 @@ Export the table to CSV format by clicking on `File - Download - Comma Separated
 >
 > If you want to make nesting available for your collection, set the `nesting` property. [Read more about nesting](https://docs.unique.network/networks/nesting.html).
 
-## ⛓ Step-4: Prepare Substrate Account
-
-### 4.1 Generate address and seed phrase
-
-You will need an address with a balance to create the collection and tokens. If you don't have an account yet, you may create it with [Polkadot{.js} extension for Chrome](https://polkadot.js.org/extension/).
-
-- Open the Polkadot{.js} extension in your browser.
-- Look for the "+" icon and click on it.
-- A menu will appear. From the options presented, select "Create new account".
-- A 12-words mnemonic phrase will be generated. Make sure to save it securely.
-
-![Extension](./images/extension.png)
-
-> ✏️ In the `config.js` file, fill in the `ownerSeed` field.
-> 
-> ❗️ Do not commit your secrets, such as `ownerSeed`, to version control! We have added `config.js` to the `.gitignore` file for this purpose.
-
-### 4.2 Get some tokens
-
-For this guide, we are using Opal Network, and you can obtain OPL tokens for free by using [Telegram faucet bot](https://t.me/unique2faucet_opal_bot). You will have to provide your address (not a mnemonic phrase!). Click on the circle icon next to your account in the Polkadot extension to copy it.
-
-
-> 💡 If you are ready to mint tokens on the mainnet (Quartz or Unique), change the endpoint variable in the config.js file. Set it to `https://rest.unique.network/quartz/v1` for Quartz or `https://rest.unique.network/unique/v1` for Unique.
->
-> - Quartz Network tokens (QTZ) are available on [MEXC](https://www.mexc.com/ru-RU/exchange/QTZ_USDT?_from=search)
-> 
-> - For Unique Network tokens (UNQ), you can visit [Huobi](https://www.huobi.com/en-us/trade/unq_usdt?type=spot)
-
-
-Now everything is ready to create a collection and tokens.
-
-## 💎 Step-5: Create Collection and NFTs
-
-### 5.1 Generate images and metadata
+### 2.3 Generate images and metadata
 
 > ✏️ Set the desired number of generated NFTs in the config.js file and fill in the `desiredCount` property.
 
@@ -165,7 +101,41 @@ Each row in the spreadsheet should correspond to a generated image with the same
 
 ![Generated](./images/generated.png)
 
-### 5.2 Upload images to IPFS
+
+## ⛓ Step-3: Prepare Substrate Account
+
+### 3.1 Generate address and seed phrase
+
+You will need an address with a balance to create the collection and tokens. If you don't have an account yet, you may create it with [Polkadot{.js} extension for Chrome](https://polkadot.js.org/extension/).
+
+- Open the Polkadot{.js} extension in your browser.
+- Look for the "+" icon and click on it.
+- A menu will appear. From the options presented, select "Create new account".
+- A 12-words mnemonic phrase will be generated. Make sure to save it securely.
+
+![Extension](./images/extension.png)
+
+> ✏️ In the `config.js` file, fill in the `ownerSeed` field.
+> 
+> ❗️ Do not commit your secrets, such as `ownerSeed`, to version control! We have added `config.js` to the `.gitignore` file for this purpose.
+
+### 3.2 Get some tokens
+
+For this guide, we are using Opal Network, and you can obtain OPL tokens for free by using [Telegram faucet bot](https://t.me/unique2faucet_opal_bot). You will have to provide your address (not a mnemonic phrase!). Click on the circle icon next to your account in the Polkadot extension to copy it.
+
+
+> 💡 If you are ready to mint tokens on the mainnet (Quartz or Unique), change the endpoint variable in the config.js file. Set it to `https://rest.unique.network/quartz/v1` for Quartz or `https://rest.unique.network/unique/v1` for Unique.
+>
+> - Quartz Network tokens (QTZ) are available on [MEXC](https://www.mexc.com/ru-RU/exchange/QTZ_USDT?_from=search)
+> 
+> - For Unique Network tokens (UNQ), you can visit [Huobi](https://www.huobi.com/en-us/trade/unq_usdt?type=spot)
+
+
+Now everything is ready to create a collection and tokens.
+
+## 💎 Step-4: Create Collection and NFTs
+
+### 4.1 Upload images to IPFS
 
 In simple terms, the Inter-Planetary File System (IPFS) is a distributed file storage protocol that enables a network of computers to store any data in a reliable and unchangeable manner.
 
@@ -181,9 +151,9 @@ This script will pack all the images into a zip archive and save it as data/arch
 
 > ✏️ In the `config.js` file, fill in the `fileUrl` set provided link. 
 
-### 5.3 Create a collection
+### 4.2 Create a collection
 
-We have set the collection metadata in the previous steps. Double-check that the name, description, symbol, and attributes fields are filled in `config.js`. Afterward, execute the script.
+We have set the collection metadata in the previous steps. Double-check that the name, description, and symbol fields are filled in `config.js`. Afterward, execute the script.
 
 ```sh:no-line-numbers
 node 2-create-collection.js
@@ -201,7 +171,7 @@ After a short time, you will see the result of executing the command:
 Your collection has been created, and you can check it on your [wallet](https://wallet.unique.network/) or on [uniquescan.io](https://uniquescan.io/). Your collection doesn't have any NFTs yet, so let's create some.
 
 
-### 5.4 Create NFTs
+### 4.3 Create NFTs
 
 We have set the token metadata in the previous steps in the nfts.csv file. Check again if it exists. After that, execute the following script.
 

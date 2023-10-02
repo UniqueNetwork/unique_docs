@@ -30,9 +30,13 @@ export const sidebar: Record<string, SidebarConfig> = {
           {
             text: 'Minting guides',
             children: [
+              '/tutorials/minting/main.md',
               '/tutorials/minting/setup-environment.md',
+              '/tutorials/minting/prepare-scripts.md',
+              '/tutorials/minting/prepare-account.md',
               '/tutorials/minting/generative-nft.md',
               '/tutorials/minting/mass-minting.md',
+              '/tutorials/minting/customizable-nfts.md',
               '/tutorials/minting/mass-listing.md'
             ]
           },

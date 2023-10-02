@@ -12,44 +12,14 @@ By completing of this tutorial, you will have a clear understanding of how to us
 
 ![Intro](./images/intro.png)
 
-## ⚙️ Step-1: Setup environment
+## Before we start
 
-To get started, we'll need node.js, git, and Visual Studio Code installed on your computer. If you haven't worked with git, node, and npm before, we recommend reading our [brief guide](./setup.md) to configure your environment correctly.
+1. For this tutorial, you will need node.js, git, and Visual Studio Code installed on your computer. If you haven't worked with git, node, and npm before, we recommend reading our [brief guide](./setup-environment.md) to configure your environment correctly.
+2. Prepare minting scripts according to [this instruction]('./prepare-scripts.md')
 
-### 1.1 Download the project
+## 🖼 Step-1: Prepare your images
 
-You may do it in two ways.
-
-1. Using terminal. Open your terminal, `cd` to desired directory, and execute the following command:
-```sh:no-line-numbers
-git clone git@github.com:UniqueNetwork/mass-nfts-doc.git
-```
-
-2. Manually. Go to the [Github repository](https://github.com/UniqueNetwork/mass-nfts-doc) and download the project by clicking `Code - Download ZIP`. Unzip it after downloading.
-
-![Download](./images/download.png)
-
-After downloading the project, open it in Visual Studio Code. Click on `"File"` and select `"Open Folder"`. Then, choose the folder where the project was downloaded.
-
-### 1.2 Install dependencies
-
-In Visual Studio Code, access the built-in terminal by clicking on `"Terminal"` and then selecting `"New Terminal"`. Execute the following command:
-
-```sh:no-line-numbers
-npm install
-```
-
-![Terminal](./images/terminal.png)
-
-Lastly, create a file named `config.js` in the root directory of your project and copy the contents from the `config.example.js` file into it. 
-
-Congratulations! You're all set now. After following the previous steps, your project should resemble the screenshot below.
-
-![Setup finished](./images/setup-finish.png)
-
-## 🖼 Step-2: Prepare your images
-
-Place your images in the `data` folder. The image names should consist of a `prefix` and a sequential number that determines the token's position in the collection. For this tutorial, the token prefix is `cosmic_`. Therefore, `cosmic_1.png` will be the first token in the collection, `cosmic_2.png` will be the second token, and so on.
+Place your images in the `data` folder. The image names should consist of a `symbol` and a sequential number that determines the token's position in the collection. For this tutorial, the token symbol is `SA`. Therefore, `sa1.png` will be the first token in the collection, `sa2.png` will be the second token, and so on.
 
 Additionally, place an image named `cover.png` in the data folder, which will serve as the cover image for the collection.
 
@@ -57,55 +27,19 @@ We have already prepared ten images stored in the `data` folder. Feel free to us
 
 ![Images](./images/images.png)
 
-> ✏️  In the `config.js` file, specify the prefix for your collection by setting the value of the `imagePrefix` property.
+> ✏️  In the `config.js` file, specify the prefix for your collection by setting the value of the `symbol` property (max 4 symbols).
 
-## 📇 Step-3: Prepare metadata
+## 📇 Step-2: Prepare collection metadata
 
 Metadata is basic information that describes NFT or collection, such as its name, description, token prefix, and other relevant details.
 
-### 3.1 Set the collection metadata
-
-> ✏️ In the `config.js` file, fill in the fields `collectionName` (max 64 symbols), `collectionDescription` (max 256 symbols), and `symbol` (max 4 symbols).
+> ✏️ In the `config.js` file, fill in the fields `collectionName` (max 64 symbols), `collectionDescription` (max 256 symbols).
 >
 > If you want to make nesting available for your collection, set the `nesting` property. [Read more about nesting](https://docs.unique.network/networks/nesting.html).
 
 After the creation of the collection metadata file, we need to create metadata of our NFTs
 
-### 3.2 Set the metadata for NFTs
-
-The property `attributes` in the `config.js` file should describe traits of your NFT collection. In the simplest case, properties can be defined as a list. Each element represents the name of the property.
-
-For this tutorial, the properties are predefined as follows:
-```sh:no-line-numbers
-attributes: [
-    'creature',
-    'description',
-],
-```
-> <font size=1> Each token in the collection will have two properties: creature and description. Each field is mandatory to fill and can contain arbitrary data. </font>
-
-
-<details>
-  <summary>You can also specify more complex rules for properties. Find out how...</summary>
-
-  Rather than coding the properties as strings, use objects with the following properties:
-
-  - `name`: REQUIRED field, represents the property's name.
-  - `required`: OPTIONAL field. Set it to `false` if the property can be skipped for the NFT. The default value is `true`.
-  - `values`: OPTIONAL field. It is an array of possible values. If specified, the property can only have a value that is present in the list.
-
-  **Example**
-  ```js:no-line-numbers
-  attributes: [
-      { name: 'creature', required: true, values: ['Mammal', 'Reptiles', 'Birds'] },
-      { name: 'description', required: false }
-  ],
-  ```
-  > <font size=1> `creature` is a required enumerable property. Each token must have one of the following values for this property: `Mammal`, `Reptiles`, or `Birds`. On the other hand, the value for the `description` property is not specified, so it can be filled with arbitrary data. Additionally, the `description` property can be omitted entirely since its required field is set to false. </font>
-
-</details>
-
-## 👨‍🎨 Step-4: Describe the properties of NFTs
+## 👨‍🎨 Step-3: Describe NFT attributes
 
 We will encode NFT properties in CSV format. The first value in the header should be id, representing the sequential number of each token. Following that, list all the existing properties of the collection that were set in the previous step.
 
@@ -134,9 +68,9 @@ We have already included a file named `nfts.csv` with data for 10 NFTs. You can 
 
 ![csv](./images/csv.png)
 
-## ⛓ Step-5: Prepare Substrate Account
+## ⛓ Step-4: Prepare Substrate Account
 
-### 5.1 Generate address and seed phrase
+### 4.1 Generate address and seed phrase
 
 You will need an address with a balance to create the collection and tokens. If you don't have an account yet, you may create it with [Polkadot{.js} extension for Chrome](https://polkadot.js.org/extension/).
 
@@ -151,7 +85,7 @@ You will need an address with a balance to create the collection and tokens. If 
 > 
 > ❗️ Do not commit your secrets, such as `ownerSeed`, to version control! We have added `config.js` to the `.gitignore` file for this purpose.
 
-### 5.2 Get some tokens
+### 4.2 Get some tokens
 
 For this guide, we are using Opal Network, and you can obtain OPL tokens for free by using [Telegram faucet bot](https://t.me/unique2faucet_opal_bot). You will have to provide your address (not a mnemonic phrase!). Click on the circle icon next to your account in the Polkadot extension to copy it.
 
@@ -163,9 +97,9 @@ For this guide, we are using Opal Network, and you can obtain OPL tokens for fre
 > - For Unique Network tokens (UNQ) you can visit [Huobi](https://www.huobi.com/en-us/trade/unq_usdt?type=spot)
 
 
-## 💎 Step-6: Create Collection and NFTs
+## 💎 Step-5: Create Collection and NFTs
 
-### 6.1 Upload images to IPFS
+### 5.1 Upload images to IPFS
 
 In simple terms, the Inter-Planetary File System (IPFS) is a distributed file storage protocol that enables a network of computers to store any data in a reliable and unchangeable manner.
 
@@ -183,9 +117,9 @@ This script will pack all the images into a zip archive and save it as data/arch
 
 > ✏️ In the `config.js` file, fill in the `fileUrl` set provided link. 
 
-### 6.2 Create a collection
+### 5.2 Create a collection
 
-We have set the collection metadata in the previous steps. Double-check that the name, description, symbol, and attributes fields are filled in `config.js`. Afterward, execute the script.
+We have set the collection metadata in the previous steps. Double-check that the name, description and symbol fields are filled in `config.js`. Afterward, execute the script.
 
 ```sh:no-line-numbers
 node 2-create-collection.js
@@ -203,7 +137,7 @@ After a short time, you will see the result of executing the command:
 Your collection has been created, and you can check it on your [wallet](https://wallet.unique.network/) or on [uniquescan.io](https://uniquescan.io/). Your collection doesn't have any NFTs yet, so let's create some.
 
 
-### 6.3 Create NFTs
+### 5.3 Create NFTs
 
 We have set the token metadata in the previous steps in the nfts.csv file. Check again if it exists. After that, execute the following script.
 
