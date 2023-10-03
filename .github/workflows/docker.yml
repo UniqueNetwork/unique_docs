@@ -26,6 +26,6 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v4
         with:
-          file: ./docker/Dockerfile
+          file: .docker/Dockerfile
           push: true
           tags: uniquenetwork/unique-web:unique-docs-${{ github.sha }},uniquenetwork/unique-web:unique-docs-latest
