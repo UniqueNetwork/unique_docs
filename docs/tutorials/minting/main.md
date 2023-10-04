@@ -11,7 +11,7 @@ Before we start, read how to
 
 You will learn
 
-- 🖼 How to create a large collection if you already have [prepared images]('./mass-minting.md').
+- 🖼 How to create a large collection if you already have [prepared images](./mass-minting.md).
 - 🏗 How to [generate a collection from image fragments](./generative-nft.md), similar to CryptoPunks.
 - 👕 How to create a [customizable NFTs](./customizable-nfts.md) where one token can change the properties and images of another.
 - 🏪 You will also learn [how to list tokens](./mass-listing.md) in bulk for sale on the Unique Market.
