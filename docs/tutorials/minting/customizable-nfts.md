@@ -29,9 +29,9 @@ Creating a customizable NFT collection doesn't deviate much from creating standa
 
 We've already generated a **heads** collection and an **accessories** collection for this tutorial. You can locate them in the `customization` folder.
 
-## 1.2 If you are ready to create your own collection
+### 1.2 If you are ready to create your own collection
 
-The process for preparing metadata images is detailed in guides on [how to create a collection from pre-prepared](./mass-minting.md) images and [how to generate a collection from image fragments](./generative-nft.md).
+The process for preparing metadata images is detailed in guides on [mass minting](./mass-minting.md) and [generative NFTs](./generative-nft.md).
 
 Complete all the steps up to and including the `Describe NFT attributes` stage.
 
@@ -40,7 +40,7 @@ Complete all the steps up to and including the `Describe NFT attributes` stage.
 For creating a head collection, we followed the generative NFT guide.
 We utilized the mass minting guide to make an attributes collection, substituting cosmic animal images with accessory images.
 
-### What to Consider When Preparing Your Images
+#### What to Consider When Preparing Your Images
 
 When nesting, the accessories NFT will overlay onto the base NFT. To ensure correct alignment and overlay, keep the following in mind:
 
@@ -305,7 +305,7 @@ Token Ids: 1, 2, 3, 4, 5
 
 </details>
 
-## 7. Check how customization works
+## 😎 7. Check how customization works
 
 At this stage, you should have created two collections with tokens. 
 
