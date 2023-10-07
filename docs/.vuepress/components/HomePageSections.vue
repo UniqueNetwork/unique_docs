@@ -112,10 +112,10 @@ const menu: MenuItem[] = [
 }
 
 a {
-  color: var(--c-custom-text);
+  color: var(--c-text-accent);
 
   &:hover {
-    color: var(--c-custom-text-hover);
+    color: var(--c-text-hover);
   }
 }
 
