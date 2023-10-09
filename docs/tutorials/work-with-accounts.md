@@ -2,23 +2,23 @@
 
 ## Account as an entity
 
-A blockchain account is an entity that is associated with a public blockchain address to identify a network participant and is used to sign transactions. In Web3, you digitally sign any transaction, or more generally any message, using your private key.
+A blockchain account is an entity associated with a public blockchain address to identify a network participant and is used to sign transactions. In Web3, you digitally sign any transaction, or more generally, any message, using your private key.
 
 To work with accounts in the front-end application, you will need to install the following libraries:
 
-```
+```sh:no-line-numbers
 npm install @polkadot/ui-keyring @polkadot/keyring @unique-nft/utils
 ```
 
 We will also install the Unique SDK client to interact with the blockchain:
 
-```
+```sh:no-line-numbers
 npm install @unique-nft/sdk
 ```
 
-In the future, we will implement the connection of accounts stored in the local browser storage, as well as those supplied by browser extensions, such as Polkadot and Metamask. 
+In this guide, we will implement the connection of accounts stored in the local browser storage, as well as those supplied by browser extensions, such as Polkadot and Metamask. 
 
-Next, we write the account interface in accordance with its abstraction:
+But let's start with creating an account interface in accordance with its abstraction:
 
 ```typescript
 import { Signer } from "@unique-nft/sdk";
@@ -40,7 +40,8 @@ interface Account {
 
 The transaction signing mechanism in the SDK requires that the Signer interface contains the sign method:
 
-```
+```typescript
+// @unique-nft/sdk
 interface Signer {
     address?: string;
     sign(unsignedTxPayload: UnsignedTxPayloadBody): Promise<SignTxResultResponse>;
@@ -50,7 +51,7 @@ interface Signer {
 ## Local Keyring Account
 ### Getting a list of accounts
 
-To manage local accounts in a browser based on @polkadot/keyring, we use the @polkadot/ui-keyring wrapper, which allows you to generate, save and retrieve keyring pairs from local storage. 
+To manage local accounts in a browser based on `@polkadot/keyring`, we use the `@polkadot/ui-keyring` wrapper, which allows you to generate, save and retrieve keyring pairs from local storage. 
 
 ```typescript
 import keyring from '@polkadot/ui-keyring';
@@ -58,7 +59,7 @@ import keyring from '@polkadot/ui-keyring';
 keyring.loadAll({ type: 'sr25519' }); // initializes the underlying @polkadot/keyring (only once)
 ```
 
-The loadAll function in @polkadot/ui-keyring is used to retrieve all key pairs stored in the local keyring. It allows accessing and using previously saved keys for various operations such as signing transactions or verifying identities within the Polkadot ecosystem. This function provides a convenient way to load and manage multiple key pairs without having to load them individually. Option 'type' need to set KeypairType, which represents the type of key pair used for identification and transaction signing in the Polkadot network. A key pair consists of a private key and a public key. KeypairType determines the specific encryption algorithm used to create and work with this key pair. 
+The loadAll function in `@polkadot/ui-keyring` is used to retrieve all key pairs stored in the local keyring. It allows accessing and using previously saved keys for various operations, such as signing transactions or verifying identities within the Polkadot ecosystem. This function provides a convenient way to load and manage multiple key pairs without loading them individually. Option `type` needs to set `KeypairType`, which represents the type of key pair used for identification and transaction signing in the Polkadot network. A key pair consists of a private key and a public key. `KeypairType` determines the specific encryption algorithm used to create and work with this key pair. 
 
 The next step - getting all accounts:
 
@@ -66,7 +67,7 @@ The next step - getting all accounts:
 const keyringAddresses = keyring.getAccounts();
 ```
 
-Each account keyring contains:
+Each account keyring contains the following properties:
 
 ```typescript
 export interface KeyringAddress {
@@ -76,7 +77,7 @@ export interface KeyringAddress {
 }
 ```
 
-From all this we need address and meta.name. Let’s wrap getting the account in a function that will convert the keyringAddresses array into a Map<address, Account> for ease of use in the future:
+From all this we need `address` and `meta.name`. Let’s wrap getting the account in a function that will convert the keyringAddresses array into a `Map<address, Account>` for ease of use in the future:
 
 ```typescript
 function getLocalAccounts(askPassphraseCallback: AskPassphraseCallback) {
@@ -98,7 +99,7 @@ function getLocalAccounts(askPassphraseCallback: AskPassphraseCallback) {
 };
 ```
 
-In the code above, the askPassphraseCallback argument passes the callback that will be needed to call the mechanism in the UI for obtaining a password from the user. This callback will be called in the sign method, display a password entry form in the UI and wait for the user’s response, in which we can also unlock the keyring of the account. To do this, we will pass it to the KeyringSigner constructor.
+In the code above, the `askPassphraseCallback` argument passes the callback that will be needed to call the mechanism in the UI for obtaining a password from the user. This callback will be called in the sign method, display a password entry form in the UI and wait for the user’s response, in which we can also unlock the keyring of the account. To do this, we will pass it to the `KeyringSigner` constructor.
 
 To understand the principle of calling a password entry form from a callback to the UI, here is a small example. Let's say we have this html:
 
@@ -137,13 +138,14 @@ function showAskPasswordModal(keyringPair: KeyringPair) {
 }
 ```
 
-It is also recommended to wrap the call to the unlock(password) method in a try... catch construct and catch errors when unlocking
+It is also recommended to wrap the call to the unlock(password) method in a try... catch construct and catch errors when unlocking.
 
 ### Sign a transaction via SDK
 
 The SDK expects a signer object containing a method:
 
-```
+```typescript:no-line-numbers
+// @unique-nft/sdk
 async sign(unsignedTxPayload: UnsignedTxPayloadBody): Promise<SignTxResultResponse>
 ```
 to sign a transaction. Let's describe a class for creating a signer object for local accounts:
@@ -181,7 +183,8 @@ class KeyringSigner implements Signer {
 }
 ```
 
-We now have two ways to pass signer to the SDK: 
+We now have two ways to pass signer to the SDK:
+
 a. when initializing the SDK client (if there is only one account in the application or there is a default account):
 
 ```typescript
@@ -204,7 +207,7 @@ sdk?.balance.transfer.submitWaitResult({
 
 ### Sign a message
 
-Sometimes it becomes necessary to sign not only transactions, but also some text messages. To do this, we’ll add the signMessage method to our class:
+Sometimes it becomes necessary to sign not only transactions but also some text messages. To do this, we’ll add the `signMessage` method to our class:
 
 ```typescript
 export class KeyringSigner implements Signer {
@@ -229,9 +232,9 @@ export class KeyringSigner implements Signer {
 
 ### Create a new account
 
-Creating an account begins with generating a random mnemonic of 12 words. To generate an account in the UI, the user can be asked to enter mnemonic in the field or generate a new one. To generate, we will use the @polkadot/util-crypto library:
+Creating an account begins with generating a random mnemonic of 12 words. To generate an account in the UI, the user can be asked to enter a mnemonic in the field or generate a new one. To generate, we will use the `@polkadot/util-crypto` library:
 
-```
+```sh:no-line-numbers
 npm install @polkadot/util-crypto
 ```
 We can get the mnemonic phrase:
@@ -242,34 +245,34 @@ import { mnemonicGenerate } from '@polkadot/util-crypto';
 const mnemonic = mnemonicGenerate(12);
 ```
 
-It is also necessary in the UI to request the user’s password and, if desired, an account name (a human-readable name for better UX), after which we create an account using the keyring.addUri method
+It is also necessary to request the user’s password and, if desired, an account name (a human-readable name for better UX), after which we create an account using the `keyring.addUri` method
 
 ```typescript
 const { pair } = keyring.addUri(mnemonic, password, { name });
 ```
 
-The addUri function is used to add a new key pair to the local keyring by providing a URI. This URI typically includes the necessary information for generating a new key pair, such as a mnemonic phrase or a seed. After add, you can easily refetch existing accounts.
+The `addUri` function is used to add a new key pair to the local keyring by providing a URI. This URI typically includes the necessary information for generating a new key pair, such as a mnemonic phrase or a seed. After that, you can easily refetch existing accounts.
 
 ### Remove account
 
 Deleting a local account in the local storage is performed by calling the method:
 
-```
-    keyring.forgetAddress(address);
+```typescript
+keyring.forgetAddress(address);
 ```
 
 ## Polkadot-extension Account
 ### Getting a list of accounts
 
-To work with accounts in browser extensions, for example Polkadot extension, the @unique-nft/utils library provides a module:
+To work with accounts in browser extensions, for example Polkadot extension, the `@unique-nft/utils` library provides a module:
 
 ```typescript
-import {Polkadot} from '@unique-nft/utils/extension';
+import { Polkadot } from '@unique-nft/utils/extension';
 
 const { accounts } = await Polkadot.enableAndLoadAllWallets();
 ```
 
-The enableAndLoadAllWallets method allows you to get an array of accounts, or triggers one of the errors:
+The `enableAndLoadAllWallets` method allows you to get an array of accounts, or triggers one of the errors:
 
 ```typescript
 export const getPolkadotAccounts = async () => { 
@@ -308,7 +311,7 @@ export const getPolkadotAccounts = async () => {
 
 ### Sign a transaction via SDK
 
-The accounts array element with type IPolkadotExtensionAccount already contains a signer object, it's ready for use with the SDK:
+The accounts array element with type `IPolkadotExtensionAccount` already contains a signer object, it's ready for use with the SDK:
 
 ```typescript
 const sdk = new Sdk({
@@ -330,24 +333,24 @@ sdk?.balance.transfer.submitWaitResult({
 ```
 
 ### Sign a message
-Also in the IPolkadotExtensionAccount interface there is a signRaw method:
+Also in the `IPolkadotExtensionAccount` interface there is a `signRaw` method:
 
 ```typescript
 signRaw: (raw: SignerPayloadRawWithAddressAndTypeOptional | string) => Promise<SignerResult>
 ``` 
 
-which will easily allow you to sign a string value.
+It will easily allow you to sign a string value.
 
 ## Metamask-extension Account
 ### Getting a list of accounts
 
-For Ethereum browser extensions, like Metamask the @unique-nft/utils library provides a module Ethereum:
+For Ethereum browser extensions, like Metamask the `@unique-nft/utils` library provides a module Ethereum:
 
 ```typescript
-import {Ethereum} from '@unique-nft/utils/extension'
+import { Ethereum } from '@unique-nft/utils/extension'
 
 try {
-  const {address, chainId} = await Ethereum.requgestAccounts()
+  const {address, chainId} = await Ethereum.requestAccounts()
 } catch (e: IEthereumExtensionError) {
   if (e.extensionNotFound) {
     alert(`Please install some ethereum browser extension`)
@@ -362,12 +365,12 @@ try {
 ### Sign and send a transaction
 To create and sign transactions via the Ethereum-like extension, install the following libraries:
 
-```
+```sh:no-line-numbers
 npm install ethers @unique-nft/solidity-interfaces
 ```
 
-The 'ethers' are needed to create a Web3 provider, which used to connect and interact with Ethereum nodes. 
-The @unique-nft/solidity-interfaces library is a Solidity-specific library designed for creating and working with non-fungible tokens (NFTs) on the Ethereum blockchain.  This library offers functionalities such as defining NFT contract interfaces, implementing NFT metadata and URI standards, handling token ownership and transfers, and managing token metadata storage. By using @unique-nft/solidity-interfaces, developers can efficiently build, deploy, and interact with NFT contracts in their Solidity projects, ensuring compatibility with other NFT-related applications and protocols.
+The `ethers` module is needed to create a Web3 provider, which is used to connect and interact with Ethereum nodes. 
+The `@unique-nft/solidity-interfaces` library is a Solidity-specific library designed for creating and working with non-fungible tokens (NFTs) on the Ethereum blockchain. This library offers functionalities such as defining NFT contract interfaces, implementing NFT metadata and URI standards, handling token ownership and transfers, and managing token metadata storage. By using `@unique-nft/solidity-interfaces`, developers can efficiently build, deploy, and interact with NFT contracts in their Solidity projects, ensuring compatibility with other NFT-related applications and protocols.
 
 Finally, we can transfer some tokens:
 
@@ -396,7 +399,7 @@ await contractTransaction.wait()
 
 ### Sign a message
 
-Also to sign a message we can use provider:
+Also, to sign a message, we can use `provider`:
 
 ```typescript
 const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -406,7 +409,7 @@ const result = await signer.signMessage(message);
 
 ## Subscription to balance changes via SDK
 
-The SDK-client allow to subscribe on changing account balance:
+The SDK-client allows to subscribe on changing account balance:
 
 ```typescript
 import { SocketClient, SubscriptionEvents } from '@unique-nft/sdk/full';
@@ -425,7 +428,7 @@ client.on(SubscriptionEvents.ACCOUNT_CURRENT_BALANCE, (_, data) => {
 })
 ```
 
-Argument 'data' will be object with parameter 'balance':
+Argument `data` will be an object with the parameter `balance`:
 
 ```typescript
 interface AccountCurrentBalanceData {
@@ -446,7 +449,7 @@ interface AllBalancesResponse {
 }
 ```
 
-Every balance contain this:
+Every balance contains this:
 
 ```typescript
 interface BalanceResponse {
@@ -463,7 +466,7 @@ interface BalanceResponse {
 }
 ```
 
-For example, we can extend the Account for saving balances:
+For example, we can extend the `Account` for saving balances:
 
 ```typescript
 interface Account {
@@ -479,7 +482,6 @@ client.on(SubscriptionEvents.ACCOUNT_CURRENT_BALANCE, (_, data) => {
   const { balance } = data; 
 
   accounts.get(balance.address).balances = balance;
-
 })
 ```
 
