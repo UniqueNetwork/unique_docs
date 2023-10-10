@@ -99,7 +99,7 @@ function getLocalAccounts(askPassphraseCallback: AskPassphraseCallback) {
 };
 ```
 
-In the code above, the `askPassphraseCallback` argument passes the callback that will be needed to call the mechanism in the UI for obtaining a password from the user. This callback will be called in the sign method, display a password entry form in the UI and wait for the user’s response, in which we can also unlock the keyring of the account. To do this, we will pass it to the `KeyringSigner` constructor.
+In the code above, the `askPassphraseCallback` argument passes the callback that will be needed to call the mechanism in the UI for obtaining a password from the user. This callback will be called in the sign method, display a password entry form in the UI and wait for the user’s response, in which we can also unlock the keyring of the account. To do this, we will pass it to the `KeyringSigner` constructor. In the next chapter we will describe the KeyringSigner class. In the meantime, let’s take a closer look at signing and calling the password entry form.
 
 To understand the principle of calling a password entry form from a callback to the UI, here is a small example. Let's say we have this html:
 
@@ -485,5 +485,10 @@ client.on(SubscriptionEvents.ACCOUNT_CURRENT_BALANCE, (_, data) => {
 })
 ```
 
+## Examples of working with accounts
 
+There are couple examples of use with popular front-end frameworks:
 
+[React Example](https://github.com/UniqueNetwork/accounts-react-example)
+
+[Vue Example](https://github.com/UniqueNetwork/accounts-vue-example)
