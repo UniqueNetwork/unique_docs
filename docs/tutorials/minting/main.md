@@ -7,7 +7,7 @@ These guides are perfect for beginners who don't have extensive programming know
 Before we start, read how to
 
 - [Prepare your environment](./setup-environment.md)
-- [Download scripts]('./prepare-scripts.md')
+- [Download scripts](./prepare-scripts.md)
 
 You will learn
 
