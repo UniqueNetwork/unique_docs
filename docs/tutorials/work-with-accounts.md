@@ -7,13 +7,7 @@ A blockchain account is an entity associated with a public blockchain address to
 To work with accounts in the front-end application, you will need to install the following libraries:
 
 ```sh:no-line-numbers
-npm install @polkadot/ui-keyring @polkadot/keyring @unique-nft/utils
-```
-
-We will also install the Unique SDK client to interact with the blockchain:
-
-```sh:no-line-numbers
-npm install @unique-nft/sdk
+npm install @unique-nft/sdk @unique-nft/utils
 ```
 
 In this guide, we will implement the connection of accounts stored in the local browser storage, as well as those supplied by browser extensions, such as Polkadot and Metamask. 
@@ -48,58 +42,109 @@ interface Signer {
 }
 ```
 
-## Local Keyring Account
-### Getting a list of accounts
+## Local Account
 
-To manage local accounts in a browser based on `@polkadot/keyring`, we use the `@polkadot/ui-keyring` wrapper, which allows you to generate, save and retrieve keyring pairs from local storage. 
+### Create local account
 
-```typescript
-import keyring from '@polkadot/ui-keyring';
+Creating an account begins with generating a random mnemonic. To generate an account in the UI, the user can be asked to enter a mnemonic in the field or generate a new one. To generate, we will use the `@unique-nft/sr25519` library:
 
-keyring.loadAll({ type: 'sr25519' }); // initializes the underlying @polkadot/keyring (only once)
+```sh:no-line-numbers
+npm install @unique-nft/sr25519
 ```
 
-The loadAll function in `@polkadot/ui-keyring` is used to retrieve all key pairs stored in the local keyring. It allows accessing and using previously saved keys for various operations, such as signing transactions or verifying identities within the Polkadot ecosystem. This function provides a convenient way to load and manage multiple key pairs without loading them individually. Option `type` needs to set `KeypairType`, which represents the type of key pair used for identification and transaction signing in the Polkadot network. A key pair consists of a private key and a public key. `KeypairType` determines the specific encryption algorithm used to create and work with this key pair. 
+The `@unique-nft/sr25519` library is a specific implementation of the `SR25519` cryptographic algorithm. It provides a set of functions and utilities for working with the SR25519 keypair generation, signing, verification, and other related operations. `SR25519` is a cryptographic algorithm used in blockchain networks, particularly in Substrate-based systems like `Polkadot` and Kusama. This library enables developers to integrate and interact with the SR25519 cryptography in their applications or projects within those blockchain ecosystems.
 
-The next step - getting all accounts:
+To encrypt mnemonic pharase and save it in localStorage we use cryptographic library `tweetnacl-ts`:
 
-```typescript
-const keyringAddresses = keyring.getAccounts();
+```sh:no-line-numbers
+npm install tweetnacl-ts 
 ```
 
-Each account keyring contains the following properties:
+We can get the mnemonic phrase:
 
 ```typescript
-export interface KeyringAddress {
-    readonly address: string;
-    readonly meta: KeyringJson$Meta;
-    readonly publicKey: Uint8Array;
+import { Sr25519Account } from '@unique-nft/sr25519';
+
+const mnemonic = Sr25519Account.generateMnemonic()
+```
+
+It is also necessary to request the user’s password and, if desired, an account name (a human-readable name for better UX), after which we will encrypt mnemonic phrase by the password and save it in localStorage.
+
+```typescript
+import { StringUtils } from '@unique-nft/utils';
+import { secretbox } from 'tweetnacl-ts';
+import { algorithms } from '@unique-nft/utils/address';
+
+// get passphrase hash
+const passwordHash = algorithms.keccak_256(passphrase)
+
+// encrypt mnemonic phrase
+const boxed = secretbox(
+  StringUtils.Utf8.stringToU8a(mnemonicPhrase), 
+  NONCE, 
+  passwordHash
+);
+
+// save 
+localStorage.setItem(`account:${address}`, JSON.stringify({ 
+  name, 
+  secret: StringUtils.HexString.fromU8a(boxed) 
+}));
+```
+
+The `secretbox` function in the `tweetnacl-ts` library is used for encrypting messages using symmetric-key encryption. It takes a message and a secret key as input and generates an encrypted message that can be transmitted over insecure communication channels. The `secretbox` function provides data confidentiality, allowing the sender and recipient to exchange information without the risk of it being read by a third party.
+
+The 'nonce' constant in the secretbox function of the tweetnacl-ts library is a unique value used in symmetric-key encryption to ensure the uniqueness of each encrypted message. Nonce stands for "number used once."
+
+Finally, let's define the complete function that creates the account:
+
+```typescript
+function addLocalAccount(name: string, mnemonicPhrase: string, passphrase: string) {
+  const passwordHash = algorithms.keccak_256(passphrase)
+
+  const { address } = Sr25519Account.fromUri(mnemonicPhrase); 
+  
+  const secret = secretbox(
+    StringUtils.Utf8.stringToU8a(mnemonicPhrase), 
+    NONCE, 
+    passwordHash
+  );
+
+  localStorage.setItem(`account:${address}`, JSON.stringify({ 
+    name, 
+    secret: StringUtils.HexString.fromU8a(secret) 
+  }));
 }
 ```
 
-From all this we need `address` and `meta.name`. Let’s wrap getting the account in a function that will convert the keyringAddresses array into a `Map<address, Account>` for ease of use in the future:
+### Getting a list of accounts
+To fetch all accounts from localStorage, we will iterate all the keys, select accounts and add this account into a `Map<address, Account>`:
 
 ```typescript
+
 function getLocalAccounts(askPassphraseCallback: AskPassphraseCallback) {
-  const keyringAddresses = keyring.getAccounts();
-  
-  return new Map<string, Account>(
-    keyringAddresses.map(({ address, meta,  }) => {
-      return [
-        address, // address as map key
-        {
-            name: meta.name || "untitled",
-            address,
-            signerType: SignerTypeEnum.Local,
-            signer: new KeyringSigner(address, askPassphraseCallback)
-        }
-      ]
-    })
-  );
+  const accounts = new Map<string, Account>();
+  for (const key of Object.keys(localStorage)) {
+    if(key && /^account:/.test(key)){
+      const value = localStorage.getItem(key);
+      if(!value) break;
+      const address = key.split(':')[1];
+      const { name, secret } = JSON.parse(value);
+      
+      accounts.set(address,  {
+        name,
+        address,
+        signerType: SignerTypeEnum.Local,
+        signer: new LocalAccountSigner(secret, askPassphraseCallback)
+      });
+    }
+  }
+
+  return accounts;
 };
 ```
 
-In the code above, the `askPassphraseCallback` argument passes the callback that will be needed to call the mechanism in the UI for obtaining a password from the user. This callback will be called in the sign method, display a password entry form in the UI and wait for the user’s response, in which we can also unlock the keyring of the account. To do this, we will pass it to the `KeyringSigner` constructor. In the next chapter we will describe the KeyringSigner class. In the meantime, let’s take a closer look at signing and calling the password entry form.
+In the code above, the `askPassphraseCallback` argument passes the callback that will be needed to call the mechanism in the UI for obtaining a password from the user. This callback will be called in the sign method, display a password entry form in the UI and wait for the user’s response, in which we can also unlock the keyring of the account. To do this, we will pass it to the `LocalAccountSigner` constructor. In the next chapter we will describe the KeyringSigner class. In the meantime, let’s take a closer look at signing and calling the password entry form.
 
 To understand the principle of calling a password entry form from a callback to the UI, here is a small example. Let's say we have this html:
 
@@ -124,21 +169,20 @@ To understand the principle of calling a password entry form from a callback to 
 Let's write a callback code that, when called, will show a modal window with a password input field and return a Promise awaiting the user's response:
 
 ```typescript
-function showAskPasswordModal(keyringPair: KeyringPair) { 
+function showAskPasswordModal(decrypt: (password: string) => boolean) { 
   return new Promise((resolve) => {
     modal.classList.add('visible'); // show modal
   
     submitButton.onclick = () => {
       modal.classList.remove('visible'); // hide modal
       const password = passworInput.value; // get password
-      keyringPair.unlock(password); // unlock
-      resolve();
+      if (decrypt(password)) { // decrypt 
+        resolve();
+      } 
     }
   });
 }
 ```
-
-It is also recommended to wrap the call to the unlock(password) method in a try... catch construct and catch errors when unlocking.
 
 ### Sign a transaction via SDK
 
@@ -151,34 +195,44 @@ async sign(unsignedTxPayload: UnsignedTxPayloadBody): Promise<SignTxResultRespon
 to sign a transaction. Let's describe a class for creating a signer object for local accounts:
 
 ```typescript
-class KeyringSigner implements Signer {
-  address: string;
+export class LocalAccountSigner implements Signer {
+  secret: string;
   askPassphraseCallback: AskPassphraseCallback;
 
-  constructor(address: string, askPassphraseCallback: AskPassphraseCallback) {
-    this.address = address;
+  constructor(secret: string, askPassphraseCallback: AskPassphraseCallback) {
+    this.secret = secret;
     this.askPassphraseCallback = askPassphraseCallback;
   }
 
-  public async sign(unsignedTxPayload: UnsignedTxPayloadBody): Promise<SignTxResultResponse> {
-    const keyringPair = keyring.getPair(this.address);
-    // if pair is locked and we have callback for asking password
-    if (keyringPair.isLocked && this.askPassphraseCallback) {
-      await this.askPassphraseCallback(keyringPair); // show password form and wait 
-    }
-    // sign transaction
-    const signature = keyringPair.sign(
-      unsignedTxPayload.signerPayloadHex,
-      {
-        withType: true
+  private async getAccount() {
+    let mnemonicPhrase: string | undefined;
+
+    await this.askPassphraseCallback?.((passphrase: string) => {
+      // get password hash
+      const passwordHash = Address.algorithms.keccak_256(passphrase)
+
+      // decrypt
+      const mnemonicPhraseU8a = secretbox_open(
+        StringUtils.HexString.toU8a(this.secret),
+        NONCE,
+        passwordHash
+      );
+
+      if (mnemonicPhraseU8a) {
+        mnemonicPhrase = StringUtils.Utf8.u8aToString(mnemonicPhraseU8a);
       }
-    );
-    keyringPair.lock();
-    // return SignTxResultResponse
-    return {
-      signature: HexString.fromU8a(signature),
-      signatureType: keyringPair.type
-    };
+
+      return !!mnemonicPhrase;
+    });
+    if(!mnemonicPhrase) return;
+    return Sr25519Account.fromUri(mnemonicPhrase);
+  }
+
+  public async sign(unsignedTxPayload: UnsignedTxPayloadBody): Promise<SignTxResultResponse> {
+    const account = await this.getAccount();
+    if(!account) throw new Error('No account');
+
+    return await account.signer.sign(unsignedTxPayload);
   }
 }
 ```
@@ -210,55 +264,27 @@ sdk?.balance.transfer.submitWaitResult({
 Sometimes it becomes necessary to sign not only transactions but also some text messages. To do this, we’ll add the `signMessage` method to our class:
 
 ```typescript
-export class KeyringSigner implements Signer {
+export class LocalAccountSigner implements Signer {
   ...
-  public async signMessage(message: string): Promise<string> {
-    const keyringPair = keyring.getPair(this.address);
-    if (keyringPair.isLocked && this.askPassphraseCallback) {
-      await this.askPassphraseCallback(keyringPair);
-    }
-    const signature = keyringPair.sign(
-      message,
-      {
-        withType: true
-      }
-    );
-    keyringPair.lock();
 
-    return HexString.fromU8a(signature);
+  public async signMessage(message: string): Promise<string> {
+    const account = await this.getAccount();
+    if(!account) throw new Error('No account');
+
+    const signatureU8a = account.sign(message);
+    return StringUtils.HexString.fromU8a(signatureU8a);
   }
 }
 ```
 
-### Create a new account
-
-Creating an account begins with generating a random mnemonic of 12 words. To generate an account in the UI, the user can be asked to enter a mnemonic in the field or generate a new one. To generate, we will use the `@polkadot/util-crypto` library:
-
-```sh:no-line-numbers
-npm install @polkadot/util-crypto
-```
-We can get the mnemonic phrase:
-
-```typescript
-import { mnemonicGenerate } from '@polkadot/util-crypto';
-
-const mnemonic = mnemonicGenerate(12);
-```
-
-It is also necessary to request the user’s password and, if desired, an account name (a human-readable name for better UX), after which we create an account using the `keyring.addUri` method
-
-```typescript
-const { pair } = keyring.addUri(mnemonic, password, { name });
-```
-
-The `addUri` function is used to add a new key pair to the local keyring by providing a URI. This URI typically includes the necessary information for generating a new key pair, such as a mnemonic phrase or a seed. After that, you can easily refetch existing accounts.
-
 ### Remove account
 
-Deleting a local account in the local storage is performed by calling the method:
+To delete a local account in the local storage just remove key:
 
 ```typescript
-keyring.forgetAddress(address);
+function deleteLocalAccount(address: string) { 
+  localStorage.removeItem(`account:${address}`);
+}
 ```
 
 ## Polkadot-extension Account
