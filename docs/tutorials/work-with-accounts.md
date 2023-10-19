@@ -65,7 +65,7 @@ We can get the mnemonic phrase:
 ```typescript
 import { Sr25519Account } from '@unique-nft/sr25519';
 
-const mnemonic = Sr25519Account.generateMnemonic()
+const mnemonicPhrase = Sr25519Account.generateMnemonic()
 ```
 
 It is also necessary to request the user’s password and, if desired, an account name (a human-readable name for better UX), after which we will encrypt mnemonic phrase by the password and save it in localStorage.
@@ -94,7 +94,7 @@ localStorage.setItem(`account:${address}`, JSON.stringify({
 
 The `secretbox` function in the `tweetnacl-ts` library is used for encrypting messages using symmetric-key encryption. It takes a message and a secret key as input and generates an encrypted message that can be transmitted over insecure communication channels. The `secretbox` function provides data confidentiality, allowing the sender and recipient to exchange information without the risk of it being read by a third party.
 
-The 'nonce' constant in the secretbox function of the tweetnacl-ts library is a unique value used in symmetric-key encryption to ensure the uniqueness of each encrypted message. Nonce stands for "number used once."
+The `NONCE` argument in the secretbox function of the tweetnacl-ts library is a unique value used in symmetric-key encryption to ensure the uniqueness of each encrypted message. Nonce stands for "number used once."
 
 Finally, let's define the complete function that creates the account:
 
@@ -243,9 +243,9 @@ a. when initializing the SDK client (if there is only one account in the applica
 
 ```typescript
 const sdk = new Sdk({
-      baseUrl,
-      signer: account.signer
-    })
+  baseUrl,
+  signer: account.signer
+})
 ```
 
 b. when creating a transaction:
