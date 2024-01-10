@@ -10,6 +10,7 @@ export const sidebar: Record<string, SidebarConfig> = {
             text: 'SDK guides',
             children: [
               '/tutorials/how-to-accounts.md',
+              '/tutorials/work-with-accounts.md',
               '/tutorials/how-to-collections.md',
               '/tutorials/how-to-tokens.md',
               // '/tutorials/accounts/create-account.md', - how-to-accounts.md
