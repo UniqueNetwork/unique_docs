@@ -13,8 +13,6 @@ Depending on the project characteristics and the development team capabilities, 
 Our SDK allows integrating all Unique Network features into your web3 application without interacting with low-level API. Using SDK, you can mint collections and tokens, manage account balance, etc.
 Technically, it is a REST add-on that allows you to use the same methods in a simplified form.
 
-You can learn SDK deeply by reviewing its [repository](https://github.com/UniqueNetwork/unique-sdk/blob/master/packages/sdk/).
-
 ### Substrate REST
 
 You can use a proxy HTTP service (Substrate REST) to implement server logic.
@@ -28,8 +26,6 @@ In general, this package is pretty close to SDK, but it provides you with more f
 
 With Substrate REST, you can use public or self-hosted endpoints, which provides some flexibility in project and security settings.
 
-You can learn SDK deeply by reviewing its [repository](https://github.com/UniqueNetwork/unique-sdk/blob/master/packages/rest/).
-
 ### Substrate Client
 
 Substrate Client is a JavaScript/TypeScript library that helps to interact with Unique Network directly. This approach is recommended only for experienced developers which have already worked with blockchains. This is the most low-level package that we provide. 
@@ -40,8 +36,6 @@ extending it with simple methods to work with the Unique Network.
 However, Substrate Client can also be used with any network based on the [Substrate framework](https://substrate.io) - main modules (extrinsics, balance, query, sign, etc.) will work with them.
 
 Substrate Client is a low-lower connection tool that is easier than the WSS connection, but it requires more development and infrastructure support than SDK or Substrate REST.
-
-You can review the Substrate Client deeper in its [repository](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client).
 
 ## How to install
 
@@ -129,7 +123,7 @@ const sdk = new Sdk(clientOptions);
 ### Substrate REST
 
 #### Installation
-Choose install approach: [Docker](#docker), [Source code](#git) or [Public endpoints](#public-endpoints).
+Choose install approach: [Docker](#docker) or [Public endpoints](#public-endpoints).
 
 ##### Docker
 
@@ -138,34 +132,6 @@ docker run -p 3000:3000 -e CHAIN_WS_URL=wss://ws-opal.unique.network uniquenetwo
 ```
 
 See the [hub.docker.com](https://hub.docker.com/r/uniquenetwork/web) page for more details.
-
-#### Git
-
-<CodeGroup>
-  <CodeGroupItem title="NPM"  active>
-
-```bash:no-line-numbers
-git clone https://github.com/UniqueNetwork/unique-sdk
-cd unique-sdk
-npm install
-npm run build:web
-npm start
-```
-
-  </CodeGroupItem>
-  <CodeGroupItem title="YARN">
-
-```bash:no-line-numbers
-git clone https://github.com/UniqueNetwork/unique-sdk
-cd unique-sdk
-yarn
-yarn run build:web
-yarn start
-```
-
-  </CodeGroupItem>
-</CodeGroup>
-
 
 #### Public endpoints
 
@@ -278,31 +244,6 @@ npm install @unique-nft/substrate-client
 
 ```bash:no-line-numbers
 yarn add @unique-nft/substrate-client
-```
-
-</CodeGroupItem>
-</CodeGroup>
-
-**via Git:**
-
-<CodeGroup>
-  <CodeGroupItem title="NPM"  active>
-
-```bash:no-line-numbers
-git clone https://github.com/UniqueNetwork/unique-sdk
-cd unique-sdk
-npm install
-npm run build:substrate-client
-```
-
-</CodeGroupItem>
-<CodeGroupItem title="YARN">
-
-```bash:no-line-numbers
-git clone https://github.com/UniqueNetwork/unique-sdk
-cd unique-sdk
-yarn
-yarn build:substrate-client
 ```
 
 </CodeGroupItem>

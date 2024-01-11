@@ -137,5 +137,3 @@ const {
   parsed: { collectionId, limits },
 } = result;
 ```
-
-The full list of the `sdk.collections` module you can check right [in the sources](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/collection) of `@unique/substrate-client` package. 

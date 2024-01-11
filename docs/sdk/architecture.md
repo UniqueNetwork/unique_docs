@@ -57,16 +57,16 @@ TBD
 
 | Error type                                                                                                                                                                   | Additional information | 
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------|
-| [Bad payload](https://github.com/UniqueNetwork/unique-sdk/blob/0cbdab33512e6e712d3e2c5cbcd54807ec6354a1/packages/substrate-client/errors/src/bad-payload.ts)                 | TBD                    |
-| [Bad signature](https://github.com/UniqueNetwork/unique-sdk/blob/0cbdab33512e6e712d3e2c5cbcd54807ec6354a1/packages/substrate-client/errors/src/bad-signature.ts)             | TBD                    |
-| [Build extrinsic](https://github.com/UniqueNetwork/unique-sdk/blob/0cbdab33512e6e712d3e2c5cbcd54807ec6354a1/packages/substrate-client/errors/src/build-extrinsic.ts)         | TBD                    |
-| [Build query](https://github.com/UniqueNetwork/unique-sdk/blob/0cbdab33512e6e712d3e2c5cbcd54807ec6354a1/packages/substrate-client/errors/src/build-query.ts)                 | TBD                    |
-| [Codes](https://github.com/UniqueNetwork/unique-sdk/blob/0cbdab33512e6e712d3e2c5cbcd54807ec6354a1/packages/substrate-client/errors/src/codes.ts)                             | TBD                    |
-| [Connection failed](https://github.com/UniqueNetwork/unique-sdk/blob/0cbdab33512e6e712d3e2c5cbcd54807ec6354a1/packages/substrate-client/errors/src/connection-failed.ts)     | TBD                    |
-| [Errors](https://github.com/UniqueNetwork/unique-sdk/blob/0cbdab33512e6e712d3e2c5cbcd54807ec6354a1/packages/substrate-client/errors/src/errors.ts)                           | TBD                    |
-| [Invalid signer](https://github.com/UniqueNetwork/unique-sdk/blob/0cbdab33512e6e712d3e2c5cbcd54807ec6354a1/packages/substrate-client/errors/src/invalid-signer.ts)           | TBD                    |
-| [Not found](https://github.com/UniqueNetwork/unique-sdk/blob/0cbdab33512e6e712d3e2c5cbcd54807ec6354a1/packages/substrate-client/errors/src/not-found.ts)                     | TBD                    |
-| [Public api](https://github.com/UniqueNetwork/unique-sdk/blob/0cbdab33512e6e712d3e2c5cbcd54807ec6354a1/packages/substrate-client/errors/src/public-api.ts)                   | TBD                    |
-| [Submit extrinsic](https://github.com/UniqueNetwork/unique-sdk/blob/0cbdab33512e6e712d3e2c5cbcd54807ec6354a1/packages/substrate-client/errors/src/submit-extrinsic.ts)       | TBD                    |
-| [Validation](https://github.com/UniqueNetwork/unique-sdk/blob/0cbdab33512e6e712d3e2c5cbcd54807ec6354a1/packages/substrate-client/errors/src/validation.ts)                   | TBD                    |
-| [Verification failed](https://github.com/UniqueNetwork/unique-sdk/blob/0cbdab33512e6e712d3e2c5cbcd54807ec6354a1/packages/substrate-client/errors/src/verification-failed.ts) | TBD                    |
+| Bad payload                 | TBD                    |
+| Bad signature             | TBD                    |
+| Build extrinsic         | TBD                    |
+| Build query                 | TBD                    |
+| Codes                          | TBD                    |
+| Connection failed     | TBD                    |
+| Errors                        | TBD                    |
+| Invalid signer           | TBD                    |
+| Not found                     | TBD                    |
+| Public api                   | TBD                    |
+| Submit extrinsic       | TBD                    |
+| Validation                | TBD                    |
+| Verification failed | TBD                    |

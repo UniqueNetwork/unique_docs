@@ -365,9 +365,6 @@ curl -X 'POST' \
 </CodeGroupItem>
 </CodeGroup>
 
-
-The full list of the `sdk.collections` module you can check right [in the sources](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/substrate-client/tokens/methods/collection) of the `@unique/substrate-client` package.
-
 ### Change the owner of the collection
 
 Each collection has an owner. It is defined when collection is created. However, it is possible to set a new collection owner if needed. However, you can do this **only on behalf of the collection owner** . Please check the samples below to learn how to do this. 
