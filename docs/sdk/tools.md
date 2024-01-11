@@ -40,10 +40,10 @@ const signer = provider.addSeed('<seed of account>');
 
 The following providers are supported:
 
-* [Keyring](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/accounts/keyring)
-* [KeyringLocal](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/accounts/keyring-local)
-* [Polkadot extension](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/accounts/polkadot)
-* [Metamask extension](https://github.com/UniqueNetwork/unique-sdk/tree/master/packages/accounts/metamask)
+* Keyring
+* KeyringLocal
+* Polkadot extension
+* Metamask extension
 
 #### Generate new account
 

@@ -86,7 +86,7 @@ const sdk = new Sdk(clientOptions);
 ## Substrate REST
 
 ### Installation
-Choose install approach: [Docker](#docker), [Source code](#git) or [Public endpoints](#public-endpoints).
+Choose install approach: [Docker](#docker) or [Public endpoints](#public-endpoints).
 
 #### Docker
 
@@ -95,34 +95,6 @@ docker run -p 3000:3000 -e CHAIN_WS_URL=wss://ws-opal.unique.network uniquenetwo
 ```
 
 See the [hub.docker.com](https://hub.docker.com/r/uniquenetwork/web) page for more details.
-
-#### Git
-
-<CodeGroup>
-  <CodeGroupItem title="NPM"  active>
-
-```bash:no-line-numbers
-git clone https://github.com/UniqueNetwork/unique-sdk
-cd unique-sdk
-npm install
-npm run build:web
-npm start
-```
-
-  </CodeGroupItem>
-  <CodeGroupItem title="YARN">
-
-```bash:no-line-numbers
-git clone https://github.com/UniqueNetwork/unique-sdk
-cd unique-sdk
-yarn
-yarn run build:web
-yarn start
-```
-
-  </CodeGroupItem>
-</CodeGroup>
-
 
 #### Public endpoints
 
@@ -235,31 +207,6 @@ npm install @unique-nft/substrate-client
 
 ```bash:no-line-numbers
 yarn add @unique-nft/substrate-client
-```
-
-</CodeGroupItem>
-</CodeGroup>
-
-**via Git:**
-
-<CodeGroup>
-  <CodeGroupItem title="NPM"  active>
-
-```bash:no-line-numbers
-git clone https://github.com/UniqueNetwork/unique-sdk
-cd unique-sdk
-npm install
-npm run build:substrate-client
-```
-
-</CodeGroupItem>
-<CodeGroupItem title="YARN">
-
-```bash:no-line-numbers
-git clone https://github.com/UniqueNetwork/unique-sdk
-cd unique-sdk
-yarn
-yarn build:substrate-client
 ```
 
 </CodeGroupItem>
