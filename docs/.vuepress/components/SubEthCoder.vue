@@ -34,11 +34,6 @@
     {{ converted.toUnique }}
   </p>
   <p>
-    Sapphire format (prefix 8883):
-    <CopyButton :data="converted.toSapphire"/>
-    {{ converted.toSapphire }}
-  </p>
-  <p>
     Eth mirror:
     <CopyButton :data="converted.toEth"/>
     {{ converted.toEth }}
@@ -82,7 +77,6 @@ const converted = reactive({
   toSub: '',
   toQuartz: '',
   toUnique: '',
-  toSapphire: '',
   toKusama: '',
   toPolkadot: '',
   toEth: '',
@@ -114,7 +108,6 @@ const convertInputSubToEth = async () => {
     converted.toEth,
     converted.toQuartz,
     converted.toUnique,
-    converted.toSapphire,
     converted.toPolkadot,
     converted.toKusama,
     converted.toSubNormalized,

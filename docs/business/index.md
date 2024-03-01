@@ -10,8 +10,6 @@ Unique Network provides 4 chains, each of them has its own purpose and specifics
 
 **Opal** is a our testnet. It receives updates earlier than Quartz, and since the OPL tokens are free (you can get them via the [Telegram bot](https://t.me/unique2faucet_opal_bot "Telegram bot")), you can test anything on this network for free.
 
-**Sapphire** is a the mainnet for production environment with the quickest time to market (usually, 1 week after Opal testnet). So, it proves the early access to the new features on the production environment.
-
 ### Why Unique
 
 Unique Network is the next generation NFT chain for advanced use cases and mass adoption.

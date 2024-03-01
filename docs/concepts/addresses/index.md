@@ -95,7 +95,6 @@ The prefixes that Unique Network uses:
 - For Unique - **7391**, gives "**un**" at the beginning of the encoded address.
 - For Quartz - **255**, gives "**yG**" at the beginning of the encoded address.
 - For Opal - **42**, gives default "**5**" at the beginning of the encoded address.
-- For Sapphire - **8883**, gives default "**px**" at the beginning of the encoded address.
 
 ### Ethereum addresses
 

@@ -26,7 +26,7 @@
 
 **UNQ** is the Unique token, the cryptocurrency of the Unique network. Used to pay commissions on the Unique network.
 
-**QTZ** is the Quartz token, the cryptocurrency of the Quartz network. Used to pay commissions on the Quartz and Sapphire networks.
+**QTZ** is the Quartz token, the cryptocurrency of the Quartz network. Used to pay commissions on the Quartz network.
 
 **NFT** (or Non-Fungible Token) is a unique indivisible token. It reflects some unique indivisible essence of the real or virtual world. For example, a car, an apartment, a diamond, a cryptocurrency, a cryptobank, or any game item. The Ethereum blockchain has an NFT token standard known as ERC-721.
 
