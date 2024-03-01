@@ -2,7 +2,6 @@ export enum UNIQUE_CHAINS {
   unique= 'unique',
   quartz= 'quartz',
   opal = 'opal',
-  sapphire = 'sapphire',
 }
 
 export interface AddEthereumChainParameter {
@@ -82,25 +81,6 @@ export const uniqueChainsParameters: Record<UNIQUE_CHAINS, ChainData> = {
     ss58Prefix: 42,
     color: `#0CB6B8`,
   },
-  [UNIQUE_CHAINS.sapphire]: {
-    metamask: {
-      chainId: "0x22b3",
-      chainName: "Sapphire by Unique",
-      nativeCurrency: {
-        name: 'Quartz',
-        symbol: 'QTZ',
-        decimals: 18,
-      },
-      rpcUrls: [`https://rpc-sapphire.unique.network`],
-      iconUrls: [`https://ipfs.unique.network/ipfs/Qmd1PGt4cDRjFbh4ihP5QKEd4XQVwN1MkebYKdF56V74pf`],
-      blockExplorerUrls: ['https://uniquescan.io/sapphire/'],
-    },
-
-    //unique custom fields
-    websocketUrls: [`wss://ws-sapphire.unique.network`],
-    ss58Prefix: 8883,
-    color: `#5D59FF`,
-  }
 }
 
 export const UNIQUE_IPFS_GATEWAY = `https://ipfs.unique.network/ipfs`

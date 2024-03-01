@@ -8,8 +8,6 @@
 
 [Scan API for Opal testnet](https://api-opal.uniquescan.io/v1/graphql)
 
-[Scan API for Sapphire solochain](https://api-sapphire.uniquescan.io/v1/graphql)
-
 Every endpoint provides a GraphQL playground.
 
 ## Examples
