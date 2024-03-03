@@ -65,13 +65,15 @@ const menu: MenuItem[] = [
 
 
 .welcome h1 {
-  font-size: 48px;
+  font-size: 32px;
   font-weight: bold;
   text-align: center;
 }
 
 .welcome p {
   font-size: 20px;
+  padding: 0px 10px;
+  text-align: center;
 }
 
 .item {
@@ -92,7 +94,7 @@ const menu: MenuItem[] = [
   }
   @media screen and (max-width: 999px) {
     width: 90%;
-    height: 20vh;
+    height: fit-content
   }
 }
 
