@@ -87,10 +87,24 @@ export const sidebar: Record<string, SidebarConfig> = {
           {
             text: 'Tokens & collections types',
             link: '/about/types/nft.md',
+            collapsible: true,
             children: [
               '/about/types/nft.md',
               '/about/types/rft.md',
               '/about/types/fungible.md',
+            ],
+          },
+          {
+            text: 'NFT formats',
+            link: '/about/nft-formats/native-nfts.md',
+            collapsible: true,
+            children: [
+              '/about/nft-formats/native-nfts.md',
+              '/about/nft-formats/customizable-nfts.md',
+              '/about/nft-formats/multi-resource-nfts.md',
+              '/about/nft-formats/dynamic-nfts.md',
+              '/about/nft-formats/fractional-tokens.md',
+              '/about/nft-formats/nested-nfts.md',
             ],
           },
         ]

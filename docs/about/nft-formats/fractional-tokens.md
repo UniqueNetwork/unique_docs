@@ -1,14 +1,14 @@
 # Fractional Tokens
 
 ## What are Fractional tokens?
-Fractional tokens, or RFTs, are a refungible token format that allows users to fractionalize their tokens, providing an opportunity for shared ownership
+Fractional tokens, or RFTs, are a refungible token format that allows users to fractionalize their tokens, providing an opportunity for shared ownership.
 
 They democratize ownership, allowing multiple users to own a piece of an asset and make traditionally indivisible assets, like NFTs, divisible and more accessible.
 
 ## Why are Fractional tokens unique?
-- Native token standard. Not add-ons or plugin features; they’re intrinsic to the very essence of our NFTs.
+- Native token standard. Not add-ons or plugin features; they're intrinsic to the very essence of our NFTs.
 - Smart contracts not required
-- No need to code (everything in wallet)
+- No need to code (everything in a wallet)
 
 ## Use cases
 - Art Sharing – High-value artwork NFTs can be fractionalized to allow multiple users to invest and enjoy shared ownership
@@ -30,7 +30,7 @@ They democratize ownership, allowing multiple users to own a piece of an asset a
 - Unleash the power of co-ownership for your end-users, allowing them to envision themselves as co-owners of exquisite art, real estate, and many other valuable assets
 
 ## How can I create Fractional tokens?
-1. Design your collection, develop collection tokens traits and prepare the digital assets (image, audio, video, doc)
+1. Design your collection, develop collection tokens traits, and prepare the digital assets (image, audio, video, doc)
 2. Set up the development environment for using the SDK in two easy steps (step-by-step setup video [here](https://youtu.be/StfRap-dvks))
 3. Determine the RFT attributes that dictate the number of fractions in each token
 4. Mint the NFTs

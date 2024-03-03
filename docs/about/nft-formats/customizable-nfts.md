@@ -7,7 +7,7 @@ All NFTs in Unique Network are highly customizable. An NFT that implements any o
 
 But what does it mean to customize an NFT?
 
-Any NFT has the ability to obtain the advanced features provided by Unique Network, including nested bundles, dynamic NFTs, and multi-resource NFTs. By utilizing layered ownership structures, this category of NFTs enables the unbundling of single assets into multiple sets of tradable rights, providing unparalleled flexibility and personalization.
+Any NFT can obtain the advanced features provided by Unique Network, including nested bundles, dynamic NFTs, and multi-resource NFTs. By utilizing layered ownership structures, this category of NFTs enables the unbundling of single assets into multiple sets of tradable rights, providing unparalleled flexibility and personalization.
 
 ## Why are Customizable NFTs unique?
 - Every token can be customized
@@ -37,13 +37,13 @@ Any NFT has the ability to obtain the advanced features provided by Unique Netwo
 
 ## How can I create Customizable NFTs?
 
-The SDK provides full control over the creation and customization process as described in the [SDK documentation](/sdk/).
+The SDK provides full control over the creation and customization process described in the [SDK documentation](/sdk/).
 
 The process consists of the following steps:
 
-1. Design your collection, create the collection tokens traits and prepare the digital assets (image, audio, video, doc).
+1. Design your collection, create the collection tokens traits, and prepare the digital assets (image, audio, video, doc).
 2. Set up the development environment for using the SDK in two easy steps (step-by-step setup video [here](https://youtu.be/StfRap-dvks))
-3. Establishing your own compositing server to observe customizations during development is recommended. The server merges nested NFTs, presents modifications in dynamic NFTs and more.
-4. The process can be expedited by bringing your own server. More information about the setup can be found in this repo and you can view an example in this [video](https://youtu.be/YHGS4Z7Yxm8)
+3. Establishing your compositing server to observe customizations during development is recommended. The server merges nested NFTs and presents modifications in dynamic NFTs and more.
+4. The process can be expedited by bringing your server. More information about the setup can be found in this repo, and you can view an example in this [video](https://youtu.be/YHGS4Z7Yxm8)
 5. Mint the tokens via a simple call. You can mass-mint with just one call!
 6. Examine the results in the UniqueWallet and use the wallet interface for further customization and nesting.

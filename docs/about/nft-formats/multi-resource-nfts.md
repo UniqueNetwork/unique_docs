@@ -12,7 +12,7 @@ Seamlessly integrate any file type, images, videos, audio, or structured documen
 
 ## Use cases
 - Advanced NFT collections – store several resources
-  - EXAMPLE: Our Substrapunk NFTs are currently accompanied by a single image per token. However, through the multi-resource NFTs feature we have the capability to incorporate additional elements such as a 3D image of Substrapunk, a GIF, and even the voice of Substrapunk using an MP3 file.
+  - EXAMPLE: Our Substrapunk NFTs are currently accompanied by a single image per token. However, through the multi-resource NFTs feature, we can incorporate additional elements such as a 3D image of Substrapunk, a GIF, and even Substrapunk's voice using an MP3 file.
 - Multimedia entertainment – A single NFT could hold a movie, its soundtrack and associated artwork
 - Exclusive media content and releases
 
@@ -30,7 +30,7 @@ Seamlessly integrate any file type, images, videos, audio, or structured documen
 
 ## How can I create Multi-resource NFTs?
 
-1. Design your collection, create the collection tokens traits and prepare the digital assets(image, audio, video, doc)
+1. Design your collection, create the collection tokens traits, and prepare the digital assets(image, audio, video, doc)
 2. Set up the development environment for using the SDK in two easy steps (step-by-step setup video [here](https://youtu.be/StfRap-dvks))
 3. Use the links to the multi-resource assets as you would for a simple image NFT
 4. Mint the NFTs
