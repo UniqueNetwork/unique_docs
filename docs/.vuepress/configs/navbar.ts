@@ -3,12 +3,8 @@ import {NavbarConfig} from '@vuepress/theme-default'
 export const navbar: Record<string, NavbarConfig> = {
   en: [
     {
-      text: 'Why Unique',
-      link: '/about/',
-    },
-    {
       text: 'Concepts',
-      link: '/concepts/',
+      link: '/about/',
     },
     {
       text: 'SDK',

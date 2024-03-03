@@ -3,9 +3,9 @@
 ![Types of balances](../balances/types.png)
 
 ## Total
-All tokens owned by the user.
+All tokens that the user owns.
 
-> Not all tokens included in the total are available to the user for transfers or extrinsics calls. Some of them may be [reserved](#_2-reserved), and some may be [frozen](#_1-2-frozen) (previously locked).
+> Not all tokens included in the total are available to the user for transfers or extrinsic calls. Some of them may be [reserved](#_2-reserved), and some may be [frozen](#_1-2-frozen) (previously locked).
 
 **How to get:**
 
@@ -26,10 +26,10 @@ All tokens owned by the user.
 }
 ```
 
-> then add the fields `data.free` and `data.reserved`. In the example above total balance equal `1,000,000,000,133,637,366,777,247,975,283`
+> then add the fields `data.free` and `data.reserved`. In the example above, the total balance equals `1,000,000,000,133,637,366,777,247,975,283`
 
 ## 1. Free
-The balance of the user that they can use to perform operations on the network. Some operations (such as staking) may not decrease this balance, but may impose some restrictions on a part of it (see frozen).
+The balance of the user that they can use to perform operations on the network. Some operations (such as staking) may not decrease this balance but may impose some restrictions on a part of it (see frozen).
 
 **How to get:**
 
@@ -48,8 +48,9 @@ Subtract [total frozen](#_1-2-frozen) balance from [free](#_1-free).
 
 ### 1.2 Frozen
 
-The balance locked by the logic of some pallets.
-Freezes are imposed on the free balance and do not reduce it, but only impose restrictions on transfer and payment of fees, reducing the transferable balance.
+This is the balance locked by the logic of some pallets.
+
+Freezes are imposed on the free balance and do not reduce it; they only impose restrictions on transfer and payment of fees, reducing the transferable balance.
 
 Every freeze has an ID. Possible reasons for the freeze:
 - staking (`id: appstakeappstake`) 
@@ -57,7 +58,7 @@ Every freeze has an ID. Possible reasons for the freeze:
 - democracy (in upcoming releases) 
 
 Freezes with different IDs are not summed up - the total frozen balance is determined by the biggest freeze.
-A balance frozen under any freeze ID can be frozen under another ID. For example: balance frozen in vesting can be frozen in staking, provided the user has enough tokens to pay the tx fee. In fact, there may be cases where the sum (for different IDs) of frozen balances exceeds the value of the free balance.
+A balance frozen under any freeze ID can be frozen under another ID. For example, a balance frozen in vesting can be frozen in staking, provided the user has enough tokens to pay the transaction fee. In fact, there may be cases where the sum (for different IDs) of frozen balances exceeds the value of the free balance.
 
 **How to get:**
 
@@ -105,7 +106,7 @@ To find out the vesting schedule, execute:
 > 
 > perPeriod: the number of tokens available for claim per period
 
->Starting from block `13,710,000`, each subsequent block for a period of `1,000,000` blocks makes available `1,000,000,000,000,000,000` what equals 1 token (18 decimals), become available for vesting. One million tokens in total.
+>Starting from block `13,710,000`, each subsequent block for a period of `1,000,000` blocks makes available `1,000,000,000,000,000,000`, what equals 1 token (18 decimals), become available for vesting. One million tokens in total.
 
 
 Unlocking does not happen automatically. The user must call `api.extrinsic.vesting.claim`. The amount of unlocked tokens will be calculated on the block when the transaction is made. In the example above, if the user makes a claim at block `#14,000,000`, then `290,000` tokens will be unlocked - one for each block since the start.
@@ -229,7 +230,7 @@ After:
 **Result:**
 
 - The total and free balances have increased by 100 tokens.
-- Rewards have been automatically frozen, so the staking freeze has increased to 800. When calculating subsequent rewards, the earned tokens will be taken into account. As a result, each next reward will be slightly larger than the previous one.
+- Rewards have been automatically frozen, so the staking freeze has increased to 800. When calculating subsequent rewards, the earned tokens will be taken into account. As a result, each reward will be slightly larger than the previous one.
 - Since the staking freeze is the largest, the total frozen balance also increases to 800. 
 - The transferable balance remains unchanged
 

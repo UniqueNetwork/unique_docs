@@ -107,63 +107,23 @@ export const sidebar: Record<string, SidebarConfig> = {
               '/about/nft-formats/nested-nfts.md',
             ],
           },
-        ]
-      }
-    ],
-    '/concepts': [
-      {
-        text: 'Concepts',
-        children: [
-          {
-            text: 'NFT formats',
-            children: [
-              '/concepts/nft-formats/native-nfts.md',
-              '/concepts/nft-formats/customizable-nfts.md',
-              '/concepts/nft-formats/multi-resource-nfts.md',
-              '/concepts/nft-formats/dynamic-nfts.md',
-              '/concepts/nft-formats/fractional-tokens.md',
-              '/concepts/nft-formats/nested-nfts.md',
-            ],
-          },
-          {
-            text: 'Collections',
-            children: [
-              '/concepts/collections/collection-schemas.md',
-              '/concepts/collections/collection-properties.md',
-              '/concepts/collections/token-properties.md',
-              '/concepts/collections/collection-permissions.md',
-              '/concepts/collections/collection-limits.md',
-            ],
-          },
-          '/concepts/addresses/index.md',
-          '/concepts/balances/index.md',
-          {
-            text: 'Schemas',
-            children: [
-              '/concepts/schemas/unique.md',
-              '/concepts/schemas/ERC721Metadata.md'
-            ],
-          },
+          '/about/addresses/index.md',
+          '/about/balances/index.md',
           {
             text: 'Network Features',
+            link: '/about/network-features/evm.md',
+            collapsible: true,
             children: [
-              '/concepts/network-features/index.md',
-              '/concepts/network-features/evm.md',
-              '/concepts/network-features/sponsoring.md',
-              '/concepts/network-features/onchain-metadata.md',
-              '/concepts/network-features/nesting-bundling.md',
-              '/concepts/network-features/refungibility.md',
-              '/concepts/network-features/scheduling.md',
-              '/concepts/network-features/live-nft.md',
-              '/concepts/network-features/rate-limits.md',
-              '/concepts/network-features/royalties.md',
-              '/concepts/network-features/did.md',
+              '/about/network-features/evm.md',
+              '/about/network-features/sponsoring.md',
+              '/about/network-features/nesting-bundling.md',
+              '/about/network-features/live-nft.md',
             ],
           },
-          '/concepts/glossary.md',
-          '/concepts/limitations/limitations.md'
-        ],
-      },
+          '/about/glossary.md',
+          '/about/limitations/limitations.md'
+        ]
+      }
     ],
     '/evm': [
       {

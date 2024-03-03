@@ -22,7 +22,7 @@ In Unique Network, the following types of transactions can be sponsored:
 - NFT transfers
 - Smart contract calls, etc.
 
-See [Sponsoring](../concepts/network-features/sponsoring.md) for more details.
+See [Sponsoring](./network-features/sponsoring.md) for more details.
 
 <!-- ### USDT on Unique
 TODO mention USDT when it will be there
