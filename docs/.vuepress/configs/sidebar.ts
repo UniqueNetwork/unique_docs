@@ -81,19 +81,25 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/about/ecosystem/ambassador.md',
         ],
       },
-    ],
-    '/concepts': [
       {
         text: 'Concepts',
         children: [
           {
             text: 'Tokens & collections types',
+            link: '/about/types/nft.md',
             children: [
-              '/concepts/types/nft.md',
-              '/concepts/types/rft.md',
-              '/concepts/types/fungible.md',
+              '/about/types/nft.md',
+              '/about/types/rft.md',
+              '/about/types/fungible.md',
             ],
           },
+        ]
+      }
+    ],
+    '/concepts': [
+      {
+        text: 'Concepts',
+        children: [
           {
             text: 'NFT formats',
             children: [

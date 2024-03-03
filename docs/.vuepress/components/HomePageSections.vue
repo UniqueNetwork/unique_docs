@@ -65,7 +65,7 @@ const menu: MenuItem[] = [
 
 
 .welcome h1 {
-  font-size: 32px;
+  font-size: 48px;
   font-weight: bold;
   text-align: center;
 }
@@ -118,7 +118,7 @@ const menu: MenuItem[] = [
 }
 
 a {
-  color: var(--c-text);
+  color: var(--c-brand);
 
   &:hover {
     color: var(--c-text-hover);
