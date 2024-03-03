@@ -27,7 +27,7 @@ interface MenuItem {
 const menu: MenuItem[] = [
   {
     title: 'What is Unique Network',
-    path: '/business',
+    path: '/about',
     subtitle: 'Get started by learning the basic concepts',
     icon: '🎓',
   },

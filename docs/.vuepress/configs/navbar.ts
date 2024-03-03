@@ -4,7 +4,7 @@ export const navbar: Record<string, NavbarConfig> = {
   en: [
     {
       text: 'Why Unique',
-      link: '/business/',
+      link: '/about/',
     },
     {
       text: 'Concepts',

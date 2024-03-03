@@ -73,13 +73,12 @@ export const sidebar: Record<string, SidebarConfig> = {
         ],
       },
     ],
-    '/business': [
+    '/about': [
       {
-        text: 'Business',
+        text: 'What is Unique Network',
         children: [
-          '/business/index.md',
-          '/business/ecosystem/community.md',
-          '/business/ecosystem/use-cases.md',
+          '/about',
+          '/about/ecosystem/ambassador.md',
         ],
       },
     ],

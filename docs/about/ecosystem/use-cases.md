@@ -1,5 +1,5 @@
-# Uses Cases and Partners 
-
+<!-- TODO maybe it should be updated maybe removed at all -->
+<!-- # Uses Cases and Partners 
 ## Artpool
 
 Unique Network is a scalable blockchain for composable NFTs with advanced economies that offers innovative tools for startups that are building solutions for next-generation NFTs. From boosting the discovery of creators to giving developers the tools to customize their marketplaces, we constantly seek partnerships that will help promote our vision of empowering creators. Our latest partnership with Artpool, an NFT discovery and curation platform - and art discovery social network-, or [Art Curator Grid](https://www.artcuratorgrid.com/), demonstrates the democratized and collaborative future we want to support across tech and art, facilitated by blockchain technology. Art Curator Grid is host to over 1000 selected curators, art professionals, venues and organizations from 76 countries, working with more than 6000 artists worldwide, engaging every day with its tools. On the other hand, Artpool is an NFT Platform created by Art Curator Grid where art enthusiasts and collectors discover quality artworks curated by leading professionals.
@@ -89,4 +89,4 @@ Unique Network will create and host DigitalArt4Climate’s NFT marketplace for t
 
 The advanced features of Unique Network will allow for building in flexible economic and revenue models for individual artists. The DigitalArt4Climate Initiative’s work program was structured to complement the United Nations Climate Change Conference of Parties (COP26), the annual global summit where nations meet to reach agreements on how to tackle climate change collectively.
 
-Alexander Mitrovich, CEO of Unique Network, said in a statement that blockchain technologies and open data can be used as a change agent in identifying actions to protect the climate.
+Alexander Mitrovich, CEO of Unique Network, said in a statement that blockchain technologies and open data can be used as a change agent in identifying actions to protect the climate. -->
