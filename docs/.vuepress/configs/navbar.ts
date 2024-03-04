@@ -3,20 +3,20 @@ import {NavbarConfig} from '@vuepress/theme-default'
 export const navbar: Record<string, NavbarConfig> = {
   en: [
     {
-      text: 'Concepts',
-      link: '/about/',
+      text: 'Learn',
+      link: '/about',
     },
     {
       text: 'Start Building',
-      link: '/develop/'
+      link: '/develop'
     },
     {
       text: 'Tutorials',
-      link: '/tutorials/',
+      link: '/tutorials',
     },
     {
-      text: 'Blockchain API',
-      link: '/networks/'
+      text: 'Reference book',
+      link: '/api'
     },
   ]
 }

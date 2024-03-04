@@ -5,13 +5,15 @@ export const sidebar: Record<string, SidebarConfig> = {
     '/about': [
       {
         text: 'What is Unique Network',
-        children: [
-          '/about',
-          '/about/ecosystem/ambassador.md',
-        ],
+        link: '/about',
+        // children: [
+        //   '/about',
+        //   '/about/ecosystem/ambassador.md',
+        // ],
       },
       {
-        text: 'Concepts',
+        text: 'Features',
+        link: '/about/types/nft.md',
         children: [
           {
             text: 'Tokens & collections types',
@@ -36,19 +38,20 @@ export const sidebar: Record<string, SidebarConfig> = {
               '/about/nft-formats/nested-nfts.md',
             ],
           },
-          '/about/addresses/index.md',
+          '/about/network-features/evm.md',
+          '/about/network-features/sponsoring.md',
+          '/about/network-features/nesting-bundling.md',
+          '/about/network-features/live-nft.md',
+          '/about/network-features/staking.md',
+          '/about/network-features/pricing.md',
+        ]
+      },
+      {
+        text: 'Tech Concepts',
+        link: '/about/addresses',
+        children: [
+          '/about/addresses',
           '/about/balances/index.md',
-          {
-            text: 'Network Features',
-            link: '/about/network-features/evm.md',
-            collapsible: true,
-            children: [
-              '/about/network-features/evm.md',
-              '/about/network-features/sponsoring.md',
-              '/about/network-features/nesting-bundling.md',
-              '/about/network-features/live-nft.md',
-            ],
-          },
           '/about/glossary.md',
           '/about/limitations/limitations.md'
         ]
@@ -165,18 +168,19 @@ export const sidebar: Record<string, SidebarConfig> = {
         ]
       },
     ],
-    '/networks': [
+    '/api': [
+      '/api',
       {
-        text: 'Networks',
+        text: 'Blockchain API',
         children: [
-          '/networks/index.md',
-          '/networks/rpc.md',
-          '/networks/extrinsics.md',
-          '/networks/events.md',
-          '/networks/nesting.md',
-          '/networks/owner-admin-roles.md',
+          '/api/rpc.md',
+          '/api/extrinsics.md',
+          '/api/events.md',
+          '/api/nesting.md',
+          '/api/owner-admin-roles.md',
         ],
       },
+      '/api/tools.md'
     ],
   },
 }

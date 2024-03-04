@@ -1,4 +1,4 @@
-# Chain
+# Networks
 
 ## Unique - Polkadot parachain
 
