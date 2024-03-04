@@ -1,4 +1,4 @@
-# Connection tools
+# Getting started
 
 ## Overview
 
