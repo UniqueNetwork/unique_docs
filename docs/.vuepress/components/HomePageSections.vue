@@ -35,13 +35,13 @@ const menu: MenuItem[] = [
     title: 'Develop',
     path: '/develop',
     subtitle: 'Build applications using JavaScript SDK and EVM tools',
-    icon: '🚀',
+    icon: '🤖',
   },
   {
-    title: 'NFT Design',
-    path: '/concepts',
-    subtitle: 'Discover how Unique Network can help artists create and earn',
-    icon: '🎨',
+    title: 'Tutorials',
+    path: '/tutorials',
+    subtitle: 'Learn with Real-life Examples',
+    icon: '🚀',
   },
 ];
 </script>

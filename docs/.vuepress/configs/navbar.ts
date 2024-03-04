@@ -15,7 +15,7 @@ export const navbar: Record<string, NavbarConfig> = {
       link: '/tutorials/',
     },
     {
-      text: 'Networks',
+      text: 'Blockchain API',
       link: '/networks/'
     },
   ]
