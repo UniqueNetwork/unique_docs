@@ -28,7 +28,7 @@ const menu: MenuItem[] = [
   {
     title: 'What is Unique Network',
     path: '/about',
-    subtitle: 'Get started by learning the basic concepts',
+    subtitle: 'Learn the basic concepts',
     icon: '🎓',
   },
   {
@@ -80,7 +80,8 @@ const menu: MenuItem[] = [
   display: flex;
   width: 50%;
   flex-direction: column;
-  height: 30vh;
+  min-height: 250px;
+  max-height: 30vh;
   align-items: flex-start;
   background-color: var(--c-bg-lighter);
   border-radius: 10px;
@@ -105,7 +106,6 @@ const menu: MenuItem[] = [
 
 .icon {
   width: 170px;
-  padding-bottom: 5px;
   font-size: 48px;
   line-height: 64px;
 }
@@ -113,7 +113,7 @@ const menu: MenuItem[] = [
 .title {
   font-weight: 700;
   font-size: 24px;
-  line-height: 36px;
+  line-height: 30px;
   padding-bottom: 10px;
 }
 
