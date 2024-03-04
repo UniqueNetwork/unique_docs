@@ -33,7 +33,7 @@ const menu: MenuItem[] = [
   },
   {
     title: 'Develop',
-    path: '/sdk',
+    path: '/develop',
     subtitle: 'Build applications using JavaScript SDK and EVM tools',
     icon: '🚀',
   },

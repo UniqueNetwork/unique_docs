@@ -125,15 +125,38 @@ export const sidebar: Record<string, SidebarConfig> = {
         ]
       }
     ],
-    '/evm': [
+    '/develop': [
       {
-        text: 'EVM docs',
-        children: [
-          '/evm/index.md',
-          '/evm/smart_contracts.md',
-          '/evm/UniqueNFT.md'
-        ],
+        text: 'Development',
+        link: '/develop',
       },
+      {
+        text: 'SDK',
+        link: '/develop/sdk/index.md',
+        children: [
+            '/develop/sdk/index.md',
+            '/develop/sdk/examplesSubstrateREST.md',
+            '/develop/sdk/examplesSDK.md',
+            '/develop/sdk/examplesLifeNFT.md',
+            '/develop/sdk/examplesNesting.md',
+            // '/develop/sdk/installation.md', -> moved to other pages
+            '/develop/sdk/architecture.md',
+            '/develop/sdk/methods.md',
+            '/develop/sdk/ios.md',
+            '/develop/sdk/android.md',
+            '/develop/sdk/C_sharp.md',
+            // '/develop/sdk/tools.md', -> this info exists in Tutorials section
+        ]
+      },
+      {
+        text: 'EVM',
+        link: '/develop/evm/index.md',
+        children: [
+          '/develop/evm/index.md',
+          '/develop/evm/smart_contracts.md',
+          '/develop/evm/UniqueNFT.md'
+        ],
+      }
     ],
     '/networks': [
       {
@@ -156,24 +179,24 @@ export const sidebar: Record<string, SidebarConfig> = {
         ],
       },
     ],
-    '/sdk': [
-      {
-        text: 'SDK docs',
-        children: [
-          '/sdk/index.md',
-          '/sdk/examplesSubstrateREST.md',
-          '/sdk/examplesSDK.md',
-          '/sdk/examplesLifeNFT.md',
-          '/sdk/examplesNesting.md',
-          // '/sdk/installation.md', -> moved to other pages
-          '/sdk/architecture.md',
-          '/sdk/methods.md',
-          '/sdk/ios.md',
-          '/sdk/android.md',
-          '/sdk/C_sharp.md',
-          // '/sdk/tools.md', -> this info exists in Tutorials section
-        ],
-      },
-    ],
+    // '/develop': [
+    //   {
+    //     text: 'SDK docs',
+    //     children: [
+    //       '/sdk/index.md',
+    //       '/sdk/examplesSubstrateREST.md',
+    //       '/sdk/examplesSDK.md',
+    //       '/sdk/examplesLifeNFT.md',
+    //       '/sdk/examplesNesting.md',
+    //       // '/sdk/installation.md', -> moved to other pages
+    //       '/sdk/architecture.md',
+    //       '/sdk/methods.md',
+    //       '/sdk/ios.md',
+    //       '/sdk/android.md',
+    //       '/sdk/C_sharp.md',
+    //       // '/sdk/tools.md', -> this info exists in Tutorials section
+    //     ],
+    //   },
+    // ],
   },
 }

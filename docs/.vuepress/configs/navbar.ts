@@ -7,12 +7,8 @@ export const navbar: Record<string, NavbarConfig> = {
       link: '/about/',
     },
     {
-      text: 'SDK',
-      link: '/sdk/'
-    },
-    {
-      text: 'EVM',
-      link: '/evm/'
+      text: 'Start Building',
+      link: '/develop/'
     },
     {
       text: 'Tutorials',
