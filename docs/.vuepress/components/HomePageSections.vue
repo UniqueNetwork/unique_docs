@@ -99,12 +99,12 @@ a {
   box-sizing: border-box;
   transition: var(--t-transform);
 
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: 1024px) {
     width: 20%;
   }
-  @media screen and (max-width: 999px) {
-    width: 60%;
-    min-height: 200px;
+  @media screen and (max-width: 1023px) {
+    width: 100%;
+    margin: 10px;
   }
 }
 
