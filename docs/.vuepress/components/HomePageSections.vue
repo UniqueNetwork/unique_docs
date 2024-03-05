@@ -56,6 +56,14 @@ const menu: MenuItem[] = [
   height: 40vh;
 }
 
+a {
+  color: var(--c-brand);
+
+  &:hover {
+    color: var(--c-text-hover);
+  }
+}
+
 .welcome {
   display: flex;
   flex-direction: column;
@@ -84,7 +92,7 @@ const menu: MenuItem[] = [
   min-height: 250px;
   max-height: 30vh;
   align-items: flex-start;
-  background-color: var(--c-bg-lighter);
+  background-color: var(--c-bg-dark);
   border-radius: 10px;
   padding: 20px;
   margin: 20px;
@@ -101,7 +109,7 @@ const menu: MenuItem[] = [
 }
 
 .item:hover {
-  background-color: var(--c-bg-dark);
+  background-color: var(--c-bg-lighter);
   color: #333;
 }
 
@@ -114,14 +122,7 @@ const menu: MenuItem[] = [
   font-size: 24px;
   line-height: 30px;
   padding-bottom: 10px;
-}
-
-a {
-  color: var(--c-brand);
-
-  &:hover {
-    color: var(--c-text-hover);
-  }
+  color: var(--c-text);
 }
 
 .subtitle {
@@ -131,5 +132,6 @@ a {
   line-height: 30px;
   letter-spacing: -0.015em;
   padding: 5px 0px 40px;
+  color: var(--c-text);
 }
 </style>
