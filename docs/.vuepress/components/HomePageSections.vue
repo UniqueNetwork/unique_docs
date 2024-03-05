@@ -6,6 +6,7 @@
   <div :class="$style.root">
     <div v-for="item in menu" :class="$style.item">
       <RouterLink :to="item.path">
+        <img :src="withBase(`/images/icons/${item.iconName}.svg`)" :class="$style.icon"/>
         <div :class="$style.icon" v-html="item.icon"/>
         <div :class="$style.title" v-html="item.title"/>
         <div :class="$style.subtitle" v-html="item.subtitle"/>
@@ -21,27 +22,27 @@ interface MenuItem {
   title: string
   path: string
   subtitle: string
-  icon: string
+  iconName: string
 }
 
 const menu: MenuItem[] = [
   {
-    title: 'What is Unique Network',
+    title: 'Learn',
     path: '/about',
-    subtitle: 'Learn the basic concepts',
-    icon: '🎓',
+    subtitle: 'The basic concepts and what can you do',
+    iconName: 'Palette',
   },
   {
-    title: 'Develop',
+    title: 'Build',
     path: '/develop',
     subtitle: 'Build applications using JavaScript SDK and EVM tools',
-    icon: '🤖',
+    iconName: 'Monitor',
   },
   {
     title: 'Tutorials',
     path: '/tutorials',
     subtitle: 'Learn with Real-life Examples',
-    icon: '🚀',
+    iconName: 'MonitorPlay',
   },
 ];
 </script>
@@ -94,8 +95,8 @@ const menu: MenuItem[] = [
     width: 20%;
   }
   @media screen and (max-width: 999px) {
-    width: 90%;
-    height: fit-content
+    width: 60%;
+    min-height: 200px;
   }
 }
 
@@ -105,9 +106,7 @@ const menu: MenuItem[] = [
 }
 
 .icon {
-  width: 170px;
-  font-size: 48px;
-  line-height: 64px;
+  width: 80px;
 }
 
 .title {

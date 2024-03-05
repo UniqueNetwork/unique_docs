@@ -7,7 +7,7 @@ export const navbar: Record<string, NavbarConfig> = {
       link: '/about',
     },
     {
-      text: 'Start Building',
+      text: 'Build',
       link: '/develop'
     },
     {

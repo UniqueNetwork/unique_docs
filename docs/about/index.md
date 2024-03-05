@@ -1,4 +1,4 @@
-# Unique Network
+# What is Unique Network
 
 Unique Network is the next-generation NFT chain for advanced use cases and mass adoption.
 

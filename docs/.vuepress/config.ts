@@ -33,6 +33,7 @@ export default defineUserConfig({
         sidebar: sidebar.en,
       }
     },
+    sidebarDepth: 0,
   }),
   // extendsMarkdown: (md: any) => {md.set({breaks: true})},
   plugins: [

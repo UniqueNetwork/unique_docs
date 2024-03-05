@@ -4,16 +4,13 @@ export const sidebar: Record<string, SidebarConfig> = {
   en: {
     '/about': [
       {
-        text: 'What is Unique Network',
-        link: '/about',
-        // children: [
-        //   '/about',
-        //   '/about/ecosystem/ambassador.md',
-        // ],
+        text: 'Intro',
+        children: [
+          '/about',
+        ],
       },
       {
         text: 'Features',
-        link: '/about/types/nft.md',
         children: [
           {
             text: 'Tokens & collections types',
@@ -48,7 +45,6 @@ export const sidebar: Record<string, SidebarConfig> = {
       },
       {
         text: 'Tech Concepts',
-        link: '/about/addresses',
         children: [
           '/about/addresses',
           '/about/balances/index.md',
@@ -59,14 +55,15 @@ export const sidebar: Record<string, SidebarConfig> = {
     ],
     '/develop': [
       {
-        text: 'Development',
-        link: '/develop',
+        text: 'Intro',
+        children: [
+          '/develop',
+        ]
       },
       {
         text: 'SDK',
-        link: '/develop/sdk/index.md',
         children: [
-            '/develop/sdk/index.md',
+            '/develop/sdk',
             '/develop/sdk/examplesSubstrateREST.md',
             '/develop/sdk/examplesSDK.md',
             '/develop/sdk/examplesLifeNFT.md',
@@ -82,9 +79,8 @@ export const sidebar: Record<string, SidebarConfig> = {
       },
       {
         text: 'EVM',
-        link: '/develop/evm/index.md',
         children: [
-          '/develop/evm/index.md',
+          '/develop/evm',
           '/develop/evm/smart_contracts.md',
           '/develop/evm/UniqueNFT.md'
         ],
@@ -92,9 +88,14 @@ export const sidebar: Record<string, SidebarConfig> = {
     ],
     '/tutorials': [
       {
+        text: 'Intro',
+        children: [
+          '/tutorials'
+        ]
+      },
+      {
         text: 'SDK guides',
         link: '/tutorials/how-to-accounts.md',
-        collapsible: true,
         children: [
           '/tutorials/how-to-accounts.md',
           '/tutorials/work-with-accounts.md',
@@ -117,8 +118,6 @@ export const sidebar: Record<string, SidebarConfig> = {
       },
       {
         text: 'Minting guides',
-        collapsible: true,
-        link: '/tutorials/minting/main.md',
         children: [
           '/tutorials/minting/main.md',
           '/tutorials/minting/setup-environment.md',
@@ -132,8 +131,6 @@ export const sidebar: Record<string, SidebarConfig> = {
       },
       {
         text: 'EVM',
-        collapsible: true,
-        link: '/tutorials/evm/eth-general.md',
         children: [
           '/tutorials/evm/eth-general.md',
           '/tutorials/evm/using-contracts.md',
@@ -142,11 +139,14 @@ export const sidebar: Record<string, SidebarConfig> = {
           // '/tutorials/evm/how-to-ethereum.md', - disassembled
         ],
       },
-      '/tutorials/examplesREST.md',
       {
-        text: 'GraphQL samples',
-        collapsible: true,
-        link: '/tutorials/graph-node-docker.md',
+        text: 'REST API',
+        children: [
+          '/tutorials/examplesREST.md',
+        ]
+      },
+      {
+        text: 'GraphQL',
         children: [
           '/tutorials/graph-node-docker.md',
           '/tutorials/subquery-indexer.md',
@@ -157,8 +157,6 @@ export const sidebar: Record<string, SidebarConfig> = {
       },
       {
         text: 'How to',
-        collapsible: true,
-        link: '/tutorials/getNFTsAndTokens.md',
         children: [
           // '/tutorials/createAccount.md', - how-to-accounts.md
           '/tutorials/getNFTsAndTokens.md',
@@ -169,7 +167,18 @@ export const sidebar: Record<string, SidebarConfig> = {
       },
     ],
     '/api': [
-      '/api',
+      {
+        text: 'Blockchains',
+        children: [
+          '/api',
+        ]
+      },
+      {
+        text: 'EVM',
+        children: [
+          '/api/tools.md'
+        ]
+      },
       {
         text: 'Blockchain API',
         children: [
@@ -180,7 +189,6 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/api/owner-admin-roles.md',
         ],
       },
-      '/api/tools.md'
     ],
   },
 }
