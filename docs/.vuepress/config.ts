@@ -6,6 +6,7 @@ import {sidebar} from "./configs/sidebar";
 import {searchPlugin} from "@vuepress/plugin-search"
 import {clipboardPlugin} from 'vuepress-plugin-clipboard'
 import {registerComponentsPlugin} from '@vuepress/plugin-register-components'
+import {codeSwitcherPlugin} from './plugins/vuepress-plugin-code-switcher/src/node/codeSwitcherPlugin'
 
 export default defineUserConfig({
   lang: 'en-US',
@@ -48,6 +49,43 @@ export default defineUserConfig({
       staticIcon: true,
       align: 'top'
     }),
+    codeSwitcherPlugin(
+      {
+        groups: [
+          ['sdk', [
+            'sdk',
+            'rest',
+            'substrate client',
+            'client',
+            'js'
+          ]],
+          ['packageManager', [
+            'yarn',
+            'npm',
+          ]],
+          ['keyring', [
+            'keyring',
+            'keyring local',
+            'polkadot extension',
+            'metamask extension'
+          ]]
+        ],
+        fullNames: {
+          sdk: 'SDK',
+          rest: 'REST',
+          'substrate client': 'Substrate Client',
+          client: 'Substrate Client',
+          yarn: 'yarn',
+          npm: 'npm',
+          keyring: 'Keyring',
+          'keyring local': 'Keyring Local',
+          'polkadot extension': 'Polkadot Extension',
+          'metamask extension': 'Metamask Extension',
+          js: 'JavaScript',
+          ts: 'TypeScript',
+        }
+      }
+    )
   ],
 
 
