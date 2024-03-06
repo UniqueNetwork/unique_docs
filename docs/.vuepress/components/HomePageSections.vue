@@ -34,7 +34,7 @@ const menu: MenuItem[] = [
   },
   {
     title: 'Build',
-    path: '/develop',
+    path: '/build',
     subtitle: 'Build applications using JavaScript SDK and EVM tools',
     iconName: 'Monitor',
   },
@@ -69,7 +69,7 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 35vh;
+  min-height: 35vh;
 }
 
 

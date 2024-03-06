@@ -8,15 +8,15 @@ export const navbar: Record<string, NavbarConfig> = {
     },
     {
       text: 'Build',
-      link: '/develop'
+      link: '/build'
     },
     {
       text: 'Tutorials',
       link: '/tutorials',
     },
     {
-      text: 'Reference book',
-      link: '/api'
+      text: 'Reference',
+      link: '/reference'
     },
   ]
 }
