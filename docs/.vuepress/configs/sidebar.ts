@@ -64,17 +64,7 @@ export const sidebar: Record<string, SidebarConfig> = {
         text: 'SDK',
         children: [
             '/build/sdk',
-            '/build/sdk/examplesSubstrateREST.md',
-            '/build/sdk/examplesSDK.md',
-            '/build/sdk/examplesLifeNFT.md',
-            '/build/sdk/examplesNesting.md',
-            // '/build/sdk/installation.md', -> moved to other pages
-            '/build/sdk/architecture.md',
-            '/build/sdk/methods.md',
-            '/build/sdk/ios.md',
-            '/build/sdk/android.md',
-            '/build/sdk/C_sharp.md',
-            // '/build/sdk/tools.md', -> this info exists in Tutorials section
+            '/build/sdk/examples-nesting.md',
         ]
       },
       {
@@ -170,6 +160,13 @@ export const sidebar: Record<string, SidebarConfig> = {
         text: 'Blockchains',
         children: [
           '/reference',
+          '/reference/sdk-endpoints.md'
+        ]
+      },
+      {
+        text: "SDK",
+        children: [
+          '/reference/sdk-methods.md'
         ]
       },
       {

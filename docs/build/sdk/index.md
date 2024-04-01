@@ -2,318 +2,255 @@
 
 ## Overview
 
-Unique Network provides various blockchain connection tools in order to simplify the features implementation in your project.
+The SDK facilitates seamless integration of Unique Network's capabilities into the web3 application, bypassing the need for direct low-level API interaction. It enables you to effortlessly mint collections and tokens, manage account balances, and more.
 
-Depending on the project characteristics and the development team capabilities, you can choose the most suitable tool for you: SDK, Substrate REST or Substrate Client.
+All transactions require a fee so that you can use Opal tokens for test purposes. You can get them free in [Telegram faucet bot](https://t.me/unique2faucet_opal_bot).
 
-## Packages
+[[toc]]
 
-### SDK
+## Installation
 
-Our SDK allows integrating all Unique Network features into your web3 application without interacting with low-level API. Using SDK, you can mint collections and tokens, manage account balance, etc.
-Technically, it is a REST add-on that allows you to use the same methods in a simplified form.
-
-### Substrate REST
-
-You can use a proxy HTTP service (Substrate REST) to implement server logic.
-It is designed to interact with the blockchain using simple HTTP requests.
-In general, this package is pretty close to SDK, but it provides you with more freedom to work with extrinsic on your side, such as:
-
-1. Build an unsigned extrinsic.
-2. Sign and verify the extrinsic using service 
-   (these functions should be implemented on a client for safety).
-3. Submit the extrinsic.
-
-With Substrate REST, you can use public or self-hosted endpoints, which provides some flexibility in project and security settings.
-
-### Substrate Client
-
-Substrate Client is a JavaScript/TypeScript library that helps to interact with Unique Network directly. This approach is recommended only for experienced developers which have already worked with blockchains. This is the most low-level package that we provide. 
-
-Substrate Client was developed as an add-on of the [Polkadot{.js} ApiPromise](https://polkadot.js.org/docs/api/start/), 
-extending it with simple methods to work with the Unique Network.
-
-However, Substrate Client can also be used with any network based on the [Substrate framework](https://substrate.io) - main modules (extrinsics, balance, query, sign, etc.) will work with them.
-
-Substrate Client is a low-lower connection tool that is easier than the WSS connection, but it requires more development and infrastructure support than SDK or Substrate REST.
-
-## How to install
-
-### SDK
-
-#### Installation
+Install `@unique-nft/sdk` for Unique Network interaction and `@unique-nft/accounts` for account management.
 
 <CodeGroup>
   <CodeGroupItem title="NPM"  active>
 
 ```bash:no-line-numbers
-npm install @unique-nft/sdk
+npm install @unique-nft/sdk @unique-nft/accounts
 ```
 
   </CodeGroupItem>
   <CodeGroupItem title="YARN">
 
 ```bash:no-line-numbers
-yarn add @unique-nft/sdk
+yarn add @unique-nft/sdk @unique-nft/accounts
 ```
 
   </CodeGroupItem>
 </CodeGroup>
 
-#### Initialization
+## Creating SDK instance
+
+In the `baseUrl` parameter, you must pass one of the paths to the network. For a complete list of endpoints, refer to the [reference](../../reference/sdk-endpoints.md).
+
+You can also set a default signer; for this, you must set the seed phrase to the signer option.
 
 ```typescript:no-line-numbers
 import Sdk, {Options} from "@unique-nft/sdk";
-const options: Options = {
-    baseUrl: '<REST API URL>'
-};
-const sdk = new Sdk(options);
-```
-In the `baseUrl` parameter, you must pass one of the paths to [our networks](../networks/index.md):
 
-**Opal** : ``https://rest.unique.network/opal/v1``
-
-**Quartz** : ``https://rest.unique.network/quartz/v1``
-
-**Unique** : ``https://rest.unique.network/unique/v1``
-
-#### Set a signer
-
-To be able to sign extrinsics, you need to install the [`Accounts`](https://www.npmjs.com/package/@unique-nft/accounts) package.
-
-<CodeGroup>
-  <CodeGroupItem title="NPM"  active>
-
-```bash:no-line-numbers
-npm install @unique-nft/accounts
-```
-
-</CodeGroupItem>
-<CodeGroupItem title="YARN">
-
-```bash:no-line-numbers
-yarn add @unique-nft/accounts
-```
-
-</CodeGroupItem>
-</CodeGroup>
-
-Pass the `signer` in the parameters when creating the `Client` object.
-
-```typescript:no-line-numbers
-import { KeyringProvider } from '@unique-nft/accounts/keyring';
-import { KeyringOptions } from '@polkadot/keyring/types';
-import Sdk, { Options } from "@unique-nft/sdk";
+const baseUrl = "https://rest.unique.network/opal/v1";
+const mnemonic = '<SET THE MNEMONIC SEED PHRASE FOR THE DEFAULT SIGNER>';
 
 const options: KeyringOptions = {
-  type: 'sr25519',
+  type: "sr25519",
 };
 const provider = new KeyringProvider(options);
 await provider.init();
 
-const signer = provider.addSeed('<seed of account>');
+const signer = provider.addSeed(mnemonic);
 
-const clientOptions: Options = {
-  baseUrl: 'REST API URL',
-  signer,
+const options: Options = {
+    baseUrl,
+    signer
 };
-const sdk = new Sdk(clientOptions);
+const sdk = new Sdk(options);
 ```
 
-### Substrate REST
+## Creating accounts
 
-#### Installation
-Choose install approach: [Docker](#docker) or [Public endpoints](#public-endpoints).
+### Get an account from the mnemonic phrase
 
-##### Docker
+If you already have a mnemonic phrase, you can use it to get an account. Here is what the phrase looks like:
 
-```bash:no-line-numbers
-docker run -p 3000:3000 -e CHAIN_WS_URL=wss://ws-opal.unique.network uniquenetwork/web:latest
+``
+affair spoon other impact target solve extra range cute myself float panda
+``
+
+Here is how we can use it to get an account.
+
+```typescript:no-line-numbers
+import { getAccountFromMnemonic } from '@unique-nft/accounts';
+
+const account = await getAccountFromMnemonic({
+  mnemonic: 'affair spoon other impact target solve extra range cute myself float panda',
+});
+console.log(account);
 ```
 
-See the [hub.docker.com](https://hub.docker.com/r/uniquenetwork/web) page for more details.
+<Details>
+<template v-slot:header>
+Console log output
+</template><template v-slot:body>
 
-#### Public endpoints
-
-You can use public endpoints for access Unique Web:
-
-**Opal** : ``https://web-opal.unique.network``
-
-**Quartz** : ``https://web-quartz.unique.network``
-
-**Unique** : ``https://web-unique.unique.network/``
-
-
-### Environment variables
-
-##### CHAIN_WS_URL (required)
-
-```ts:no-line-numbers
-// Opal
-CHAIN_WS_URL = 'wss://ws-opal.unique.network'
-// Quartz
-CHAIN_WS_URL = 'wss://ws-quartz.unique.network'
-// Unique
-CHAIN_WS_URL = 'wss://ws.unique.network'
+```typescript:no-line-numbers
+{
+  mnemonic: 'affair spoon other impact target solve extra range cute myself float panda',
+  seed: '0x2a5dd888c0fb536c7c82ee53bb44ca49825ab134dd5a9c09e62423eeba30847b',
+  publicKey: '0x094bb2d311460005c5072635beb8a11c8f15521d2136bdfbab3163af3c21412e',
+  keyfile: {
+    encoded: 'MFMCAQEwBQYDK2VwBCIEICpd2IjA+1NsfILuU7tEykmCWrE03VqcCeYkI+66MIR7Ji4DUViFrOGgvhQNVi8elFCpHSDekzUg/5dpSD2lZsuhIwMhACYuA1FYhazhoL4UDVYvHpRQqR0g3pM1IP+XaUg9pWbL',
+    encoding: { content: [Array], type: [Array], version: '3' },
+    address: '5CvmLzTcAfSFJgRiJ7DbKYwDUMcRBbNAa3bQeCrNM2nXTvBk',
+    meta: {}
+  }
+}
 ```
 
-##### SIGNER_SEED (optional)
+</template>
+</Details>
 
-The `SIGNER_SEED` value is used for the signing the transactions.
+### Providers
 
-```ts:no-line-numbers
-// type mnemonic here
-SIGNER_SEED = 'nest have have have brave have nest nest nest body have amazing'
-```
+You can contact the provider directly if you need to get an account from a specific provider, like polkadot{.js} or Metamask.
 
-##### Port (optional, default value is 3000)
-```ts:no-line-numbers
-PORT = 3000
-```
-
-##### IPFS Gateway (optional)
-```ts:no-line-numbers
-IPFS_GATEWAY_URL = 'https://ipfs.unique.network/ipfs/'
-```
-
-##### IPFS upload URL (optional)
-
-IPFS_UPLOAD_URL allows you to specify a setting for uploading files via IPFS.
-```ts:no-line-numbers
-IPFS_UPLOAD_URL = 'http://192.168.100.183:5001/api/v0'
-```
-
-##### Cache manager (optional)
-
-Extrinsics results cache time
-
-```ts:no-line-numbers
-CACHE_TTL = 600
-```
-
-To set up the Redis store to cache extrinsics
-```ts:no-line-numbers
-REDIS_HOST = 'localhost'
-REDIS_PORT = 6379
-REDIS_DB = 0
-```
-
-##### Prefix (optional)
-
-PREFIX allows you to add a global prefix to API.
-By default, the prefix is empty.
-
-### Secondary endpoints
-
-You can also use a secondary connection for substrate, which allows you to use secondary endpoints.
-
-Substrate endpoints
-
-```ts:no-line-numbers
-// Unique
-https://web-unique.unique.network/swagger/dot/
-// Quartz
-https://web-quartz.unique.network/swagger/ksm/
-```
-
-#### Secondary environment variables
-
-```ts:no-line-numbers
-SECONDARY_CHAIN_WS_URL = 'wss://kusama-rpc.polkadot.io'
-SECONDARY_CHAIN_NAME = 'ksm'
-
-// or
-
-SECONDARY_CHAIN_WS_URL = 'wss://rpc.polkadot.io'
-SECONDARY_CHAIN_NAME = 'ksm'
-```
-
-## Substrate Client
-
-#### Installation
+The following providers are supported:
 
 <CodeGroup>
-  <CodeGroupItem title="NPM"  active>
+  <CodeGroupItem title="Keyring">
 
-```bash:no-line-numbers
-npm install @unique-nft/substrate-client
+```typescript:no-line-numbers
+// The provider works directly with the chain using `KeyringPair` from the `@polkadotkeyring` package.
+import { Account } from '@unique-nft/accounts';
+import { KeyringProvider } from '@unique-nft/accounts/keyring';
+import { KeyringOptions } from '@polkadot/keyring/types';
+
+const options: KeyringOptions = {
+  type: 'sr25519',
+  };
+  const provider = new KeyringProvider(options);
+  await provider.init();
+
+const signer1 = provider.addSeed('<seed of account>');
+const signer2 = provider.addKeyfile('<json keyfile>');
+```
+  </CodeGroupItem>
+  <CodeGroupItem title="Keyring Local">
+
+```typescript:no-line-numbers
+import { Account } from '@unique-nft/accounts';
+import { KeyringPair } from '@polkadot/keyring/types';
+import {
+  KeyringLocalOptions,
+  KeyringLocalProvider,
+  } from '@unique-nft/accounts/keyring-local';
+
+const options: KeyringLocalOptions = {
+  type: 'sr25519',
+  passwordCallback: async (keyring: KeyringPair) => {
+    return '<password>';
+      },
+      };
+      const provider = new KeyringLocalProvider(options);
+      await provider.init();
+
+const signer = provider.addUri('<uri of account>', '<password>');
 ```
 
-</CodeGroupItem>
-<CodeGroupItem title="YARN">
+  </CodeGroupItem>
+  <CodeGroupItem title="Polkadot Extension">
 
-```bash:no-line-numbers
-yarn add @unique-nft/substrate-client
+```typescript:no-line-numbers
+// The provider uses the Polkadot extension (https://polkadot.js.org/extension) for the browser.
+import { Web3AccountsOptions } from '@polkadot/extension-inject/types';
+import { Account } from '@unique-nft/accounts';
+import { PolkadotProvider } from '@unique-nft/accounts/polkadot';
+
+const options: Web3AccountsOptions = {
+  accountType: ['sr25519'],
+  };
+  const provider = new PolkadotProvider(options);
+  await provider.init();
+
+const signer = await provider.first();
+```
+
+  </CodeGroupItem>
+  <CodeGroupItem title="Metamask Extension">
+
+```typescript:no-line-numbers
+// The provider uses the Metamask extension (https://metamask.io/download) for the browser.
+import { Account } from '@unique-nft/accounts';
+import { MetamaskProvider } from '@unique-nft/accounts/metamask';
+
+const provider = new MetamaskProvider();
+await provider.init();
+
+const signer = await provider.first();
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
+## Creating collections and NFTs
+<!-- TODO give a link to Unique Schema guide -->
+<CodeGroup>
+<CodeGroupItem title = "SDK" active>
+
+```ts:no-line-numbers
+// ... sdk initialization 
+
+const { parsed, error } = await sdk.collection.create.submitWaitResult({
+  name: "Test collection",
+  description: "My test collection",
+  tokenPrefix: "TST",
+});
+
+if (error) throw Error("Error occurred while creating a collection");
+if (!parsed) throw Error("Cannot parse results");
+
+const { collectionId } = parsed;
+const collection = await sdk.collection.get({ collectionId });
+
+// Create NFT
+await sdk.token.create({ collectionId });
+// ...
+```
+</CodeGroupItem>
+</CodeGroup>
+
+
+## Transfer NFT
+
+<CodeGroup>
+<CodeGroupItem title="SDK">
+
+```typescript
+await sdk.token.transfer({
+  collectionId,
+  tokenId: 1,
+  to: "5EZDbVxdAYH6mB7uAnoUUvaXDL2LyEmYxpsEn9NWajqpQJ2W",
+});
 ```
 
 </CodeGroupItem>
 </CodeGroup>
 
-#### Initialization
+## Batch several transactions
 
-```typescript:no-line-numbers
-import { createSigner } from '@unique-nft/substrate-client/sign';
-import { Client } from '@unique-nft/substrate-client';
-import fetch from 'node-fetch';
+You should manually increase `nonce` if you want to send several transactions in one block.
 
-(async () => {
-  const client = await Client.create({
-    chainWsUrl: 'wss://quartz.unique.network',
-    signer: await createSigner({
-      seed: '//Alice', // Signer seed phrase if you want to sign extrinsics
-      }),
-    erc721: { // enable this option to parse ERC721 tokens
-      fetch: async (url: string) => {
-        const response = await fetch(url);
-        if (!response.ok) throw new Error(response.statusText);
-        try {
-          return await response.json();
-        } catch (e) {
-          return true;
-        }
+<CodeGroup>
+<CodeGroupItem title="SDK">
+
+```typescript no-line-numbers
+  let { nonce } = await sdk.common.getNonce({ address: signer.address });
+
+  await Promise.all([
+    sdk.balance.transfer.submitWaitResult(
+      {
+        amount: 100,
+        destination: "5CiRmhr6pd3YyU2VPR4ePTVxw2FddTiZeocEiiZbvq4XDACq",
       },
-      ipfsGateways: ['https://ipfs.io', 'https://gateway.ipfs.io'],
-    },
-  });
-})();
+      { nonce: nonce++ },
+    ),
+    sdk.balance.transfer.submitWaitResult(
+      {
+        amount: 100,
+        destination: "5E7DCdEPC8enm49fkQ6ipkxo2EA1F3qZ5WiaaCdeppxQ9ejD",
+      },
+      { nonce: nonce++ },
+    ),
+  ]);
 ```
-
-
-## Comparison of connection tools
-
-Every connection tool has several advantages and disadvantages compared to each others.
-
-#### SDK
-
-As the most user-friendly tool, the SDK has no obvious disadvantages compared to other tools.
-
-| Advantages                                                                 |
-|----------------------------------------------------------------------------|
-| It is a very small package (58 kB only)                                    |
-| There is no need to use the WSS connection, that means no connection delay |
-| The highest possible level of backward compatibility                       |
-| No need for infrastructure support (in the case of using public endpoints) |
-| No need to implement the transaction signature logic                       |
-
-
-### Substrate REST
-
-
-| Advantages                                                                                                                  | Disadvantages                                                                                                             |
-|-----------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| This package can be used with any programming language (SDK and Substrate Client are available only for specific platforms) | Substrate REST provides fewer use cases than Substrate Client                                                             |
-| Using public endpoints allows you to use public IPFS nodes                                                                  | Unlike SDK, Substrate REST supposes that you have your own infrastructure                                                 |
-| Using private endpoints allows you to increase the level of security for transaction signing and to use your IPFS nodes     | Public endpoints don't allow you to implement safe transaction signing without JS (it is compatible only with browsers)   |
-|                                                                                                                             | Private endpoints don't allow you to use public IPFS and require that you build transaction signing logic in your project |
-
-
-### Substrate client
-
-
-| Advantages                                                                                                                                        | Disadvantages                                                                       |
-|---------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
-| Compared to Substrate REST, Substrate Client already contains all the dependencies                                                                | New features are implemented in this package later, then in Substrate REST          |
-| The package contains all core blockchain features and methods                                                                                     | Relatively large package (0,5 MB), which could be critical for browser applications |
-| Contains verification of the sufficiency of funds in the account for a specific transaction or confirmation of ownership of the transferred token | Doesn't contain IPFS, which means you have to upload images on your own             |
-|                                                                                                                                                   | Releases come out more often, but have less backward compatibility                  |
-|                                                                                                                                                   | Contains an inner WSS connection, which means that connection delays could occur    |
+</CodeGroupItem>
+</CodeGroup>
