@@ -178,12 +178,13 @@ export const sidebar: Record<string, SidebarConfig> = {
       {
         text: 'Blockchain API',
         children: [
-          '/reference/blockchain/rpc.md',
-          '/reference/blockchain/extrinsics.md',
-          '/reference/blockchain/events.md',
+          '/reference/blockchain/collections.md',
+          '/reference/blockchain/properties.md',
           '/reference/blockchain/nesting.md',
           '/reference/blockchain/owner-admin-roles.md',
-        ],
+          '/reference/blockchain/rpc.md',
+          '/reference/blockchain/extrinsics.md',
+          '/reference/blockchain/events.md',        ],
       },
     ],
   },

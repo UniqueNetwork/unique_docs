@@ -2,7 +2,7 @@
 ## Collection admins and collection owners
 Collection admins and collection owners access rights are listed in following table
 
-|                                                                                    |                                                                      Collection owner                                                                      |                                                                     Collection admin                                                                      |
+||Collection owner|Collection admin|
 |------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------:| 
 | [addCollectionAdmin](/networks/extrinsics.html#addcollectionadmin)                 |                                                                             ✅                                                                              |                                                                             ❌                                                                             | 
 | [addToAllowList](/networks/extrinsics.html#addtoallowlist)                         |                                                                             ✅                                                                              |                                                                             ✅                                                                             |
@@ -33,7 +33,7 @@ Collection admins and collection owners access rights are listed in following ta
 | [transferFrom](/networks/extrinsics.html#transferfrom)                             |                                                           ✅ <br/>only if ownerCanTransfer: true                                                            |                                                           ✅ <br/>only if ownerCanTransfer: true                                                           |
 
 ## Token owners
-|                                                                                    |                                                                     Token owner                                                                     |
+||Token owner                                                                     |
 |------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------:| 
 | [addCollectionAdmin](/networks/extrinsics.html#addcollectionadmin)                 |                                                                          ❌                                                                          | 
 | [addToAllowList](/networks/extrinsics.html#addtoallowlist)                         |                                                                          ❌                                                                          |
