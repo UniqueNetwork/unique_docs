@@ -160,12 +160,12 @@ export const sidebar: Record<string, SidebarConfig> = {
         text: 'Blockchains',
         children: [
           '/reference',
-          '/reference/sdk-endpoints.md'
         ]
       },
       {
         text: "SDK",
         children: [
+          '/reference/sdk-endpoints.md',
           '/reference/sdk-methods.md'
         ]
       },
@@ -178,11 +178,11 @@ export const sidebar: Record<string, SidebarConfig> = {
       {
         text: 'Blockchain API',
         children: [
-          '/reference/rpc.md',
-          '/reference/extrinsics.md',
-          '/reference/events.md',
-          '/reference/nesting.md',
-          '/reference/owner-admin-roles.md',
+          '/reference/blockchain/rpc.md',
+          '/reference/blockchain/extrinsics.md',
+          '/reference/blockchain/events.md',
+          '/reference/blockchain/nesting.md',
+          '/reference/blockchain/owner-admin-roles.md',
         ],
       },
     ],

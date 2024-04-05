@@ -1,4 +1,4 @@
-# SDK public endpoints
+# Public endpoints
 
 |  | Endpoint |
 |----------|----------|
