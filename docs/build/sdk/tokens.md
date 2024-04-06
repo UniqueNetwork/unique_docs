@@ -1,5 +1,5 @@
-# How to work with tokens
-
+# Working with tokens
+<!-- TODO review this page -->
 ## Intro 
 
 NFT means non-fungible token, and non-fungible means that this token is unique and can’t be replaced.
@@ -31,19 +31,19 @@ In Unique Network, the token has the following entities:
 ## Prerequisites 
 
 We'll need a Substrate address to go through this tutorial. If you do not have it yet,   
-please check [Create an account](../tutorials/how-to-accounts.md#create-an-account-via-code).
+please check [working with accounts](./accounts.md).
 
 To be able to mint a token, you must have an existing collection. Just in case, we will 
 demonstrate the simple way in the [Mint token](#mint-token) section.
 To learn more on how to work the collections,  
-please refer to the [How to work with collections](how-to-collections.md) section. 
+please refer to the [How to work with collections](./collections.md) section. 
 
 And, since some Opal tokens are required to pay for the transaction fees as well, please make sure
  that your balance has some tokens. 
 These can be obtained via the [Telegram faucet bot](https://t.me/unique2faucet_opal_bot).
 
 We will use SDK and some other packages in this section. To learn how to install SDK,  
-please refer to [SDK Installation](../sdk/installation.md).
+please refer to [getting started](./getting-started.md).
 
 
 ## Mint token
@@ -167,7 +167,7 @@ you need to call the `tokens.createMultiple` method. It is quite similar to the 
 but you need to pass the array of token properties to this method. Each item of this array is the same 
 as data for the common minting.
 
-> There is a limitation on tokens minted at once exist. For detailed information, please refer to the [Limitations page](../concepts/limitations/limitations.md)
+> There is a limitation on tokens minted at once exist. For detailed information, please refer to the [Limitations page](../../about/limitations/limitations.md)
 
 <CodeGroup>
 <CodeGroupItem title = "SDK">

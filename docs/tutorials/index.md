@@ -1,4 +1,9 @@
 # Welcome to the tutorials section
 
-- [How to integrate creating into your UI](./accounts/integrate-creating-into-UI.md)
-- [Way to create](./accounts/ways-to-create.md)
+Here you can learn:
+
+- [What wallet to choose](./user-guides/wallets.md)
+- [Everything about mass minting](./minting/main.md)
+- [How to work with EVM](./evm/eth-general.md)
+
+and much more...

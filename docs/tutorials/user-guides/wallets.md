@@ -1,5 +1,5 @@
 # Choose your wallet
 
-Several different wallets are interoperable with Unique Network.
+Here is the list of supported wallets.
 
 <WalletTable />

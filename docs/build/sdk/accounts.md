@@ -1,37 +1,20 @@
-# How to work with accounts 
-
+# Working with accounts 
+<!-- TODO review this doc -->
 [[toc]]
 
-## Creating a Substrate address via the browser extension
+## Creating a Substrate address with wallets
 
-Unique Network, like most blockchains, is based on [accounts or addresses](/concepts/addresses/index.md). An address can own some QTZ or UNQ tokens, NFTs or some ERC-20 tokens. It can sign transactions to transfer these valuable assets to other addresses or to make some actions in Decentralized Apps (dApps). For example, an address can buy and sell NFTs on the NFT Marketplace.
+- [Choose from supported wallets](../../tutorials/user-guides/wallets.md)
+- [Create account via Polkadot.js browser extension](../../tutorials/user-guides/polkadotjs.md)
+- [Learn how to connect Ledger](../../tutorials/user-guides/ledger-connect.md)
 
-A typical Quartz address looks like this: `yGHuU9CWnrHMUz8GJRmpA9MowmtMKZvnq2tLc5mk3zMFizW5X`
-
-So, to purchase and sell tokens on the Market, you need to have a Unique Network account. To create a new account, you should get an address that can own NFTs and allow you to manage KSM. The best way to get an address is to install the **Polkadot{.js} browser extension** [for Chrome](https://chrome.google.com/webstore/detail/polkadot%7Bjs%7D-extension/mopnmbcafieddcagagdcbnhejhlodfdd) or [for Firefox](https://addons.mozilla.org/en-US/firefox/addon/polkadot-js-extension/). This browser extension manages accounts and allows you to sign transactions with these accounts.
-
-To create a Unique Network account:
-1. Download the [Polkadot{.js} extension](https://polkadot.js.org/extension/) and add it to your browser.
-2. Click on the Polkadot{.js} extension in your browser.
-3. In the **Authorize** window, read the disclaimer and click **Yes, allow this application access**.
-4. Click the **Add Account** icon (**+**) and then click **Create new account**. This will generate your wallet address and the 12-word mnemonic seed – the series of words that can be used to restore your wallet. :warning: Copy this seed and keep it a safe place. :warning:
- ![Seed](./images/seed.png)
-5. Select "I have saved my mnemonic seed safely" and click **Next step**.
-6. On the next screen, in the _NETWORK_ drop-down menu, select **Allow use on any chain**. Add a name for your account and create a new password by entering the password twice.
- ![AccountName](./images/acc-name.png)
-7. Click **Add the account with the generated seed**. Your newly created account is now displayed in the Accounts window.               
-   ![AccountList](./images/acc-list.png)
-
-Each account has an icon displayed next to the account name. Clicking this icon, you copy the account address to the clipboard.
-
-
-## Create an account via code
+## Create an account via SDK
 
 In this tutorial, we will go through the entire process of creating an account using the Unique Network SDK.
 
-Consider using how you can create or get an account using the [Accounts](https://www.npmjs.com/package/@unique-nft/accounts) package.
+Consider how you can create or get an account using the [Accounts](https://www.npmjs.com/package/@unique-nft/accounts) package.
 
-You will need to come up with or generate a mnemonic phrase (this is a set of words that can be used to create and restore your wallet).
+You will need to create or generate a mnemonic phrase (a set of words that can be used to create and restore your wallet).
 
 :warning: Never share your mnemonic phrase with anyone. If someone gets access to your mnemonic phrase, they can steal your funds.
 
@@ -74,7 +57,7 @@ console.log(account);
 
 ### Get an account from mnemonic
 
-If you already have a mnemonic phrase, you can use it to get an account. Here is how the phrase looks like:
+If you already have a mnemonic phrase, you can use it to get an account. Here is what the phrase looks like:
 
 ``
 affair spoon other impact target solve extra range cute myself float panda
@@ -126,7 +109,7 @@ const account = await getAccountFromMnemonic({
 
 ### Providers
 
-If you need to get an account from one specific provider, then it is not necessary to create an Accounts object, you can contact the provider directly:
+If you need to get an account from one specific provider, then it is not necessary to create an Accounts object. You can contact the provider directly:
 
 ```typescript:no-line-numbers
 import { Account } from '@unique-nft/accounts';
@@ -224,7 +207,7 @@ const signer = await provider.first();
 
 ### Get accounts
 
-You can use the [Accounts](https://www.npmjs.com/package/@unique-nft/accounts) package to work with accounts easily.
+You can use the [Accounts](https://www.npmjs.com/package/@unique-nft/accounts) package to easily manage accounts.
 
 The package allows connecting with different accounts. To get an accounts list, you need to create an instance of the `Accounts` class and connect the necessary providers to it:
 
@@ -285,7 +268,7 @@ import { KeyringLocalProvider } from '@unique-nft/accounts/keyring-local';
 const options: KeyringLocalOptions = {
   type: 'sr25519', // 
   passwordCallback: async (keyring: KeyringPair) => {
-	... // here you need to ask the user to enter a password to sign the transaction and return it from this callback
+  ... // here you need to ask the user to enter a password to sign the transaction and return it from this callback
   },
 };
 

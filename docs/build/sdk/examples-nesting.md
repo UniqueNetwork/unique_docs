@@ -3,7 +3,7 @@
 The **nesting** feature allows you to create **nested tokens**. Thus, the topmost token will have a wallet address as its owner, while the owner of tokens nested in it will be the token above it.
 The entire chain of nested tokens will be called a **bundle**. If you transfer a top-level token to another owner, all tokens in the bundle will go with it.
 
-> If you don't know how to create collections and tokens, start from [the beginning](./index.md)
+> If you don't know how to create collections and tokens, start from [the beginning](./getting-started.md)
 
 ## Nesting permission
 

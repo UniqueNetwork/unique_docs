@@ -63,7 +63,10 @@ export const sidebar: Record<string, SidebarConfig> = {
       {
         text: 'SDK',
         children: [
-            '/build/sdk',
+            '/build/sdk/getting-started.md',
+            '/build/sdk/accounts.md',
+            '/build/sdk/collections.md',
+            '/build/sdk/tokens.md',
             '/build/sdk/examples-nesting.md',
         ]
       },
@@ -86,10 +89,7 @@ export const sidebar: Record<string, SidebarConfig> = {
       {
         text: 'SDK guides',
         children: [
-          '/tutorials/how-to-accounts.md',
           '/tutorials/work-with-accounts.md',
-          '/tutorials/how-to-collections.md',
-          '/tutorials/how-to-tokens.md',
           // '/tutorials/accounts/create-account.md', - how-to-accounts.md
           // '/tutorials/getAccountAndBalance.md', - how-to-accounts.md
           // '/tutorials/create-collection-token.md', - exists in how-to-collections.md + how-to-tokens.md
@@ -156,8 +156,14 @@ export const sidebar: Record<string, SidebarConfig> = {
       {
         text: 'User guides',
         children: [
-          '/tutorials/user-guides/wallets.md',
-          '/tutorials/user-guides/ledger-connect.md'
+          {
+            text: 'Choose your wallet',
+            link: '/tutorials/user-guides/wallets.md',
+            children: [
+              '/tutorials/user-guides/polkadotjs.md',
+              '/tutorials/user-guides/ledger-connect.md'
+            ]
+          },
         ]
       }
     ],

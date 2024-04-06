@@ -1,5 +1,5 @@
-# How to work with collections
-
+# Working with collections
+<!-- TODO review this page -->
 [[toc]]
 
 ## Intro 
@@ -21,11 +21,11 @@ In Unique Network, the collection has the following entities:
 
 ## Prerequisites
 
-We'll need a Substrate address to use in this example. If you do not have it yet, please check [Create an account](../tutorials/how-to-accounts.md#create-an-account-via-code).
+We'll need a Substrate address to use in this example. If you do not have it yet, please check [working with account](./accounts.md#create-an-account-via-sdk).
 
 And, since some Opal tokens are required to pay for the transaction fees as well (around 2 to 2.5 OPL), please make sure that your balance has some tokens. These can be obtained via the [Telegram faucet bot](https://t.me/unique2faucet_opal_bot).
 
-We will use SDK and some other packages in this section. To learn how to install SDK, please refer to [SDK Installation](../sdk/installation.md).
+We will use SDK and some other packages in this section. To learn how to install SDK, please refer to [getting started](./getting-started.md).
 
 ## Collection creation
 
@@ -34,7 +34,7 @@ We will use SDK and some other packages in this section. To learn how to install
 Please find below a full sample code that creates an account from a mnemonic phrase, initializes SDK, and then creates a collection on the Opal testnet.
 
 :warning: Please note that you need to use your mnemonic phrase, or even use another way to initialize your account
-(see [Create an account](../tutorials/how-to-accounts.md#create-an-account-via-code)).
+(see [Create an account](./accounts.md#create-an-account-via-sdk)).
 
 <CodeGroup>
 <CodeGroupItem title = "SDK">
@@ -294,7 +294,7 @@ curl -X 'GET' \
 
 Your NFT collection have a bunch of various properties such as limits, permissions, token attributes and some others. Some of them you can set only while collection creation, but others you can set up later, when your collection is already created.
 
-You can find the list of SDK methods, that you can use to adjust your collection [here](../sdk/methods.md#collection).
+You can find the list of SDK methods, that you can use to adjust your collection [here](../../reference/sdk-methods.md).
 
 For example, let's update the collection limits using `sdk.collections.setLimits` method. The method sets some collection limits and starts enforcing them immediately. By the way, only the collection owner has the permission to call this method.
 

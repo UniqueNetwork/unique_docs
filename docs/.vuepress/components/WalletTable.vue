@@ -57,7 +57,6 @@ const wallets: WalletItem[] = [
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  padding: 40px;
 }
 
 .item {
@@ -65,8 +64,7 @@ const wallets: WalletItem[] = [
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: white;
-  border: 1px solid #e1e4e8;
+  background-color:  var(--c-bg-light);
   border-radius: 12px;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -87,7 +85,7 @@ const wallets: WalletItem[] = [
 
 .title {
   font-size: 20px;
-  color: #333;
+  color: var(--c-text-hover);
   width: 100%;
   padding: 20px;
   text-align: center;
