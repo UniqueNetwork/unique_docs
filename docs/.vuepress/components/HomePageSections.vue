@@ -7,7 +7,6 @@
     <div v-for="item in menu" :class="$style.item">
       <RouterLink :to="item.path">
         <img :src="withBase(`/images/icons/${item.iconName}.svg`)" :class="$style.icon"/>
-        <div :class="$style.icon" v-html="item.icon"/>
         <div :class="$style.title" v-html="item.title"/>
         <div :class="$style.subtitle" v-html="item.subtitle"/>
       </RouterLink>

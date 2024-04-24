@@ -10,24 +10,24 @@ To add an account you would have to connect Ledger Nano to your PC and install t
 
 1. Open metamask plugin, click on account icon, then click "Connect hardware wallet"
 
-![Connecting hardware wallet in Metamask](./images/connect-hardware-wallet.png)
+![Connecting hardware wallet in Metamask](../images/connect-hardware-wallet.png)
 
 2. Select Ledger in the next step, connect Ledger Nano to your PC and press Continue
 3. In modal window select your device, connect it
 
-![Connect device](./images/connect-device.png)
+![Connect device](../images/connect-device.png)
 
 *. Sometimes while connecting an error might occur. Just retry
 
-![Connection error](./images/error-0x650f.png)
+![Connection error](../images/error-0x650f.png)
 
-4. Select an account or few and press Unlock
+1. Select an account or few and press Unlock
 
-![Select an account](./images/select-an-account.png)
+![Select an account](../images/select-an-account.png)
 
 5. Account connected
 
-![Account connected](./images/account-connected.png)
+![Account connected](../images/account-connected.png)
 
 ### Connect Ledger to Wallet via Metamask
 
@@ -35,11 +35,11 @@ You can use your Ledger account in Wallet within Metamask plugin
 1. Open "Manage accounts" page in Wallet
 2. Then open "Connect account" popup window and choose Metamask provider
 
-![Connect wallet via Metamask](./images/metamask-in-wallet.png)
+![Connect wallet via Metamask](../images/metamask-in-wallet.png)
 
 3. In Metamask plugin connect the account you need
 
-![Connect Ledger](./images/ledger-metamask-wallet.png)
+![Connect Ledger](../images/ledger-metamask-wallet.png)
 
 ### How to keep tokens in Ledger
 

@@ -63,18 +63,11 @@ export const sidebar: Record<string, SidebarConfig> = {
       {
         text: 'SDK',
         children: [
-            '/build/sdk',
-            '/build/sdk/examplesSubstrateREST.md',
-            '/build/sdk/examplesSDK.md',
-            '/build/sdk/examplesLifeNFT.md',
-            '/build/sdk/examplesNesting.md',
-            // '/build/sdk/installation.md', -> moved to other pages
-            '/build/sdk/architecture.md',
-            '/build/sdk/methods.md',
-            '/build/sdk/ios.md',
-            '/build/sdk/android.md',
-            '/build/sdk/C_sharp.md',
-            // '/build/sdk/tools.md', -> this info exists in Tutorials section
+            '/build/sdk/getting-started.md',
+            '/build/sdk/accounts.md',
+            '/build/sdk/collections.md',
+            '/build/sdk/tokens.md',
+            '/build/sdk/examples-nesting.md',
         ]
       },
       {
@@ -96,10 +89,7 @@ export const sidebar: Record<string, SidebarConfig> = {
       {
         text: 'SDK guides',
         children: [
-          '/tutorials/how-to-accounts.md',
           '/tutorials/work-with-accounts.md',
-          '/tutorials/how-to-collections.md',
-          '/tutorials/how-to-tokens.md',
           // '/tutorials/accounts/create-account.md', - how-to-accounts.md
           // '/tutorials/getAccountAndBalance.md', - how-to-accounts.md
           // '/tutorials/create-collection-token.md', - exists in how-to-collections.md + how-to-tokens.md
@@ -161,15 +151,34 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/tutorials/getNFTsAndTokens.md',
           '/tutorials/easy-market.md',
           // '/tutorials/how-to-use-nesting-and-bundling.md', -> moved to SDK nesting
-          '/tutorials/ledger-connect.md',
         ]
       },
+      {
+        text: 'User guides',
+        children: [
+          {
+            text: 'Choose your wallet',
+            link: '/tutorials/user-guides/wallets.md',
+            children: [
+              '/tutorials/user-guides/polkadotjs.md',
+              '/tutorials/user-guides/ledger-connect.md'
+            ]
+          },
+        ]
+      }
     ],
     '/reference': [
       {
         text: 'Blockchains',
         children: [
           '/reference',
+        ]
+      },
+      {
+        text: "SDK",
+        children: [
+          '/reference/sdk-endpoints.md',
+          '/reference/sdk-methods.md'
         ]
       },
       {
@@ -181,12 +190,13 @@ export const sidebar: Record<string, SidebarConfig> = {
       {
         text: 'Blockchain API',
         children: [
-          '/reference/rpc.md',
-          '/reference/extrinsics.md',
-          '/reference/events.md',
-          '/reference/nesting.md',
-          '/reference/owner-admin-roles.md',
-        ],
+          '/reference/blockchain/collections.md',
+          '/reference/blockchain/properties.md',
+          '/reference/blockchain/nesting.md',
+          '/reference/blockchain/owner-admin-roles.md',
+          '/reference/blockchain/rpc.md',
+          '/reference/blockchain/extrinsics.md',
+          '/reference/blockchain/events.md',        ],
       },
     ],
   },

@@ -1,24 +1,24 @@
-# SDK usage examples
-
-On this page, we will provide examples of basic token handling methods: creating an account, creating a collection, creating and transferring a token. You can read more about other methods in the [methods section](../networks/methods.md).
-
+# Working with accounts 
+<!-- TODO review this doc -->
 [[toc]]
 
-## Prerequisites
+## Creating a Substrate address with wallets
 
-All transactions require some fee, so in test purpose you can use Opal tokens, which you can get for free on your balance. These can be obtained via the [Telegram faucet bot](https://t.me/unique2faucet_opal_bot).
+- [Choose from supported wallets](../../tutorials/user-guides/wallets.md)
+- [Create account via Polkadot.js browser extension](../../tutorials/user-guides/polkadotjs.md)
+- [Learn how to connect Ledger](../../tutorials/user-guides/ledger-connect.md)
 
-## How to create an account
+## Create an account via SDK
 
 In this tutorial, we will go through the entire process of creating an account using the Unique Network SDK.
 
-Consider using how you can create or get an account using the [Accounts](https://www.npmjs.com/package/@unique-nft/accounts) package.
+Consider how you can create or get an account using the [Accounts](https://www.npmjs.com/package/@unique-nft/accounts) package.
 
-You will need to come up with or generate a mnemonic phrase (this is a set of words that can be used to create and restore your wallet).
+You will need to create or generate a mnemonic phrase (a set of words that can be used to create and restore your wallet).
 
 :warning: Never share your mnemonic phrase with anyone. If someone gets access to your mnemonic phrase, they can steal your funds.
 
-#### Generate a new account
+### Generate a new account
 
 An easy way to create a new account is to use the `generateAccount` function from the `Accounts` package:
 
@@ -33,12 +33,10 @@ const account = await generateAccount({
 })
 
 console.log(account);
-
 ```
 
-<Details>
-<template v-slot:header>
-Console log output
+<Details><template v-slot:header>
+  Console log output
 </template><template v-slot:body>
 
 ```typescript:no-line-numbers
@@ -53,14 +51,13 @@ Console log output
     meta: { name: 'my_test_account' }
   }
 }
-
 ```
 </template>
 </Details>
 
-#### Get an account from mnemonic phrase
+### Get an account from mnemonic
 
-If you already have a mnemonic phrase, you can use it to get an account. Here is how the phrase looks like:
+If you already have a mnemonic phrase, you can use it to get an account. Here is what the phrase looks like:
 
 ``
 affair spoon other impact target solve extra range cute myself float panda
@@ -77,8 +74,7 @@ const account = await getAccountFromMnemonic({
 console.log(account);
 ```
 
-<Details>
-<template v-slot:header>
+<Details><template v-slot:header>
 Console log output
 </template><template v-slot:body>
 
@@ -111,9 +107,9 @@ const account = await getAccountFromMnemonic({
 });
 ```
 
-#### Providers
+### Providers
 
-If you need to get an account from one specific provider, then it is not necessary to create an Accounts object, you can contact the provider directly:
+If you need to get an account from one specific provider, then it is not necessary to create an Accounts object. You can contact the provider directly:
 
 ```typescript:no-line-numbers
 import { Account } from '@unique-nft/accounts';
@@ -206,162 +202,125 @@ const signer = await provider.first();
   </CodeGroupItem>
 </CodeGroup>
 
-## How to create a new collection
 
-<CodeGroup>
-<CodeGroupItem title = "SDK" active>
+## Get and display accounts and balances
 
-```ts:no-line-numbers
-import Sdk from '@unique-nft/sdk';
-import { KeyringProvider } from '@unique-nft/accounts/keyring';
+### Get accounts
 
-const baseUrl = 'https://rest.unique.network/opal/v1';
-const mnemonic = 'bus ahead nation nice damp recall place dance guide media clap language';
+You can use the [Accounts](https://www.npmjs.com/package/@unique-nft/accounts) package to easily manage accounts.
 
-// Creating an SDK client
-function createSdk(account) {
-  const options = {
-    baseUrl,
-    signer: account,
-  }
-  return new Sdk(options);
-}
+The package allows connecting with different accounts. To get an accounts list, you need to create an instance of the `Accounts` class and connect the necessary providers to it:
 
-// Creating a sample collection
-// The signer specified in the SDK constructor is used to sign an extrinsic
-export async function createCollection(sdk, address) {
-  const { parsed, error } = await sdk.collections.creation.submitWaitResult({
-    address,
-    name: 'Test collection',
-    description: 'My test collection',
-    tokenPrefix: 'TST',
-  });
+```typescript:no-line-numbers
+import { Accounts } from '@unique-nft/accounts';
+import { KeyringLocalProvider } from '@unique-nft/accounts/keyring-local';
+import { PolkadotProvider } from '@unique-nft/accounts/polkadot';
 
-  if (error) {
-    console.log('Error occurred while creating a collection. ', error);
-    process.exit();
-  }
+const accounts = new Accounts();
+await accounts.addProvider(KeyringLocalProvider);
+await accounts.addProvider(PolkadotProvider);
 
-  const { collectionId } = parsed;
-
-  return sdk.collections.get({ collectionId });
-}
-
-// Entrypoint
-async function main() {
-  const signer = await KeyringProvider.fromMnemonic(mnemonic);
-  const address = signer.instance.address;
-
-  const sdk = createSdk(signer);
-
-  const collection = await createCollection(sdk, address);
-  console.log('Collection was create. ID: ', collection);
-}
-
-main();
+const accountsList = await accounts.getAccounts();
 ```
-</CodeGroupItem>
-</CodeGroup>
+This will give us a list of available accounts. You can read a little more about accounts in the Polkadot docs - [Keyring](https://polkadot.js.org/docs/ui-keyring) and [Extension](https://polkadot.js.org/docs/extension). 
 
 
-## How to create a new token
+### Get balances
 
-<CodeGroup>
-<CodeGroupItem title="SDK">
+To get the balance of available accounts, we need to use [SDK](https://www.npmjs.com/package/@unique-nft/sdk). All we need to do is to pass the account address, whose balance we want to know, as an argument.
 
-```typescript
-import { CreateTokenNewArguments } from '@unique-nft/substrate-client/tokens/types';
+```typescript:no-line-numbers
+import Sdk, { Options } from '@unique-nft/sdk';
 
-import {
-    UniqueCollectionSchemaToCreate,
-    COLLECTION_SCHEMA_NAME,
-    AttributeType,
-} from '@unique-nft/substrate-client/tokens';
+const options: Options = {
+    baseUrl: '<REST API URL>'
+};
+const sdk = new Sdk(options);
 
-const createTokenArgs: CreateTokenNewArguments = {
-    address: '<your account address>',
-    collectionId: 123,
-    data: {
-        encodedAttributes: {
-            '0': 0,
-            '1': [0],
-            '2': 'foo_bar',
-        },
-        image: {
-            ipfsCid: '<valid_ipfs_cid>',
-        },
-    },
+const { address, availableBalance, lockedBalance, freeBalance } = sdk.balance.get({ address });
+```
+
+As a result, we get the following data: 
+
+`address` - current address.
+
+`availableBalance` - transferable balance.
+
+`lockedBalance` - locked balance.
+
+`freeBalance` - full balance.
+
+## Create an account via web form
+
+In this tutorial, we will create a userform for adding a new account right in your web UI.
+
+To work with accounts, we will need the ``Accounts`` object and a provider, such as ``KeyringLocalProvider``,
+which saves accounts in a secure store using the ``@polkadot/ui-keyring`` package.
+
+First of all, we need to initialize the provider:
+
+```typescript:no-line-numbers
+import { Accounts } from '@unique-nft/accounts';
+import { KeyringLocalProvider } from '@unique-nft/accounts/keyring-local';
+
+... 
+
+const options: KeyringLocalOptions = {
+  type: 'sr25519', // 
+  passwordCallback: async (keyring: KeyringPair) => {
+  ... // here you need to ask the user to enter a password to sign the transaction and return it from this callback
+  },
 };
 
-const result = await sdk.tokens.create.submitWaitResult(createArgs);
-const { collectionId, tokenId } = result.parsed;
-
-const token = await sdk.tokens.get({ collectionId, tokenId });
-```
-</CodeGroupItem>
-</CodeGroup>
-
-## How to transfer a token
-
-<CodeGroup>
-<CodeGroupItem title="SDK">
-
-```typescript
-import { TransferArguments } from '@unique-nft/substrate-client/tokens';
-
-const args: TransferArguments = {
-  address: '<address>',
-  to: '<address>',
-  collectionId: 1,
-  tokenId: 1,
-};
-
-const result = await sdk.tokens.transfer.submitWaitResult(args);
-
-console.log(result.parsed);
+const provider = new KeyringLocalProvider(options);
+await provider.init();
 ```
 
-</CodeGroupItem>
-</CodeGroup>
+Next, we need to associate it with the ``Accounts`` instance:
 
-## Batch several different transactions
+```typescript:no-line-numbers
+const accounts = new Accounts();
+await accounts.addProvider(provider);
+```
 
-<CodeGroup>
-<CodeGroupItem title="SDK">
+Finally, let’s create a web form which will use this code. Please find below a code sample on React.
+The user interface contains two fields: a mnemonic phrase and a password that must be filled.
+Optionally, you can offer to fill in the account name.
 
-```typescript no-line-numbers
-const batchTwoDifferentTransfers = async (sdk: Sdk, address: string) => {
-  let nonce = (await sdk.common.getNonce({address})).nonce
+```jsx:no-line-numbers
+<form onSubmit={onSubmit} className='create-account-form'>
+  <div>
+    <label htmlFor="mnemonic">Mnemonic phrase*</label>
+    <input id={'mnemonic'} value={mnemonicPhrase} onChange={(e) => setMnemonicPhrase(e.target.value)}/>
+  </div>
+  <div>
+    <label htmlFor="name">Account name</label>
+    <input id={'name'} value={name} onChange={(e) => setName(e.target.value)} />
+  </div>
+  <div>
+    <label htmlFor="password">Password*</label>
+    <input id={'password'} value={password} onChange={(e) => setPassword(e.target.value)} />
+  </div>
+  <button type='submit' onClick={onSubmit} >Create</button>
+</form>
+```
 
-  const requests = await Promise.all([
-    sdk.balance.transfer.build({
-      address,
-      amount: 100,
-      destination: account.address,
-    }, {nonce: nonce++}),
-    sdk.tokens.transfer.build({
-      address,
-      collectionId: 1,
-      tokenId: 1,
-      to: account.address,
-    }, {nonce: nonce++}),
-  ])
+Using the ``mnemonicGenerate`` method from the ``@polkadot/util-crypto`` library, you can generate a new mnemonic:
 
-  const results = (await Promise.all(requests.map(async r => {
-    const signed = await sdk.extrinsics.sign(r)
-    const result = await sdk.extrinsics.submit({
-      ...r,
-      signature: signed.signature,
-    })
-    return result
-  }))) as unknown as [TransferTokenParsed, BalanceTransferParsed]
-  
-  return results
+```typescript:no-line-numbers
+const newMnemonicPhrase = mnemonicGenerate();
+```
+
+In the ``onSubmit`` function, we will add an account through a provider this way:
+
+```typescript:no-line-numbers
+const onSubmit = () => {
+  provider.addUri(mnemonicPhrase, password, { name });
 }
 ```
-</CodeGroupItem>
-</CodeGroup>
 
-## What are token permissions
+After that, the account will be added to the local storage and it will be possible to get it through the ``getAccounts`` method:
 
-## Unique schema
+```typescript:no-line-numbers
+const accountsList = await accounts.getAccounts();
+```
