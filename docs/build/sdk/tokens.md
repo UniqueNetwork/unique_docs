@@ -48,7 +48,7 @@ please refer to [getting started](./getting-started.md).
 
 ## Mint token
 
-When creating (minting) a new token, we need to call the `tokens.create` method from our SDK. 
+When creating (minting) a new token, we need to call the `token.create` method from our SDK. 
 The arguments that we need to specify are the token owner address, the collection id 
 where the token will be created, and a couple of data for token itself (like image, name 
 and short description).  
@@ -77,7 +77,7 @@ async function main() {
   ////////////////////////////////////
   // Create collection - quick simple way 
   ////////////////////////////////////
-  const {parsed, error} = await sdk.collections.create.submitWaitResult({
+  const {parsed, error} = await sdk.collection.create.submitWaitResult({
     address,
     name: 'Test collection',
     description: 'My test collection',
@@ -165,7 +165,7 @@ curl -X 'POST' \
 ## Bulk mint 
 
 If you need to mint several tokens in one transaction, this is possible in Unique Network. For this, 
-you need to call the `tokens.createMultiple` method. It is quite similar to the common mint operation,
+you need to call the `token.createMultiple` method. It is quite similar to the common mint operation,
 but you need to pass the array of token properties to this method. Each item of this array is the same 
 as data for the common minting.
 
@@ -280,7 +280,7 @@ The `collectionAdmin` attribute grants the collection administrator and the coll
 The `tokenOwner` attribute grants the token owner the 'write/modify' access. 
 
 When the permissions are set for the collection, we can set the properties values. For this, we will call  
-the `tokens.setProperties` method and pass the address from which behalf the operation is performed (the collection owner,
+the `token.setProperties` method and pass the address from which behalf the operation is performed (the collection owner,
 collection admin or token owner), the collection id and the token id, and  
 the properties array.  
 The array consists of the 'key-value' pairs. In the example below, we set one property, 
@@ -293,7 +293,7 @@ but you can make this for several properties in one operation.
 async function main() {
   ...
   // set permissions 
-  const txSetPermissions = await sdk.collections.setPropertyPermissions.submitWaitResult({
+  const txSetPermissions = await sdk.collection.setPropertyPermissions.submitWaitResult({
     address,
     collectionId,
     propertyPermissions: [
@@ -309,7 +309,7 @@ async function main() {
   })
 
   // set properties values 
-  const txSetProps = await sdk.tokens.setProperties.submitWaitResult({
+  const txSetProps = await sdk.token.setProperties.submitWaitResult({
     address,
     collectionId,
     tokenId,
@@ -400,7 +400,7 @@ curl -X 'POST' \
 ## Get token properties 
 
 If a token has properties, then we can get them as the array of of the 'key-value' pairs. 
-For this, we can just call the `tokens.properties` method and pass the collection id and token id to it.
+For this, we can just call the `token.properties` method and pass the collection id and token id to it.
 
 The method will return an empty array if the specified token does not have any properties. 
 
@@ -412,7 +412,7 @@ In the example below, we will get all properties and print their keys and values
 ```ts:no-line-numbers
 async function main() {
   ...
-  const {properties} = await sdk.tokens.properties({
+  const {properties} = await sdk.token.properties({
     collectionId,
     tokenId,
   })
@@ -440,7 +440,7 @@ curl -X 'GET' \
 ## Delete token properties
 
 If a token has properties, then we can remove them at some point if needed. 
-For this, we can just call the `tokens.deleteProperties` method, pass the collection id, token id to it and 
+For this, we can just call the `token.deleteProperties` method, pass the collection id, token id to it and 
 specify the array of the properties **keys** that should be deleted. So, you should not specify the properties values. 
 
 The method will return an empty array if the specified token does not have any properties.
@@ -453,7 +453,7 @@ In the example below, we will remove only one property that we have.
 ```ts:no-line-numbers
 async function main() {
   ...
-  const txDeleteProps = await sdk.tokens.deleteProperties.submitWaitResult({
+  const txDeleteProps = await sdk.token.deleteProperties.submitWaitResult({
     address,
     collectionId,
     tokenId,
@@ -498,7 +498,7 @@ curl -X 'POST' \
 
 ## Get token
 
-It is possible to get all details about the token in one transaction. For this, we can call for the `tokens.get` method. 
+It is possible to get all details about the token in one transaction. For this, we can call for the `token.get` method. 
 The method returns the object that contains all data - token id, owner, name, description, image, audio, video, properties.  
 
 Then, we can process this data as needed. Please refer to the sample below. 
@@ -509,7 +509,7 @@ Then, we can process this data as needed. Please refer to the sample below.
 ```ts:no-line-numbers
 async function main() {
   ... 
-  const txGetToken = await sdk.tokens.get({
+  const txGetToken = await sdk.token.get({
     collectionId: 100,
     tokenId: 1,
   })
@@ -533,7 +533,7 @@ curl -X 'GET' \
 
 ## Transfer token
 
-If we need to transfer a token (change the owner in fact), we can call the `tokens.transfer` method.  
+If we need to transfer a token (change the owner in fact), we can call the `token.transfer` method.  
 To make this operation work, we need to specify the token id and the collection id which token  
 belongs to. 
 Also, we need to specify the addresses of current token owner and the new token owner.  
@@ -552,7 +552,7 @@ the signer address.
 ```ts:no-line-numbers
 async function main() {
   ... 
-  const txTransfer = await sdk.tokens.transfer.submitWaitResult({
+  const txTransfer = await sdk.token.transfer.submitWaitResult({
     collectionId,
     tokenId,
     address,
@@ -601,7 +601,7 @@ curl -X 'POST' \
 
 ## Burn token
 
-If we need to destroy (or burn) a token, we can call the `tokens.burn` method. To make this operation work,
+If we need to destroy (or burn) a token, we can call the `token.burn` method. To make this operation work,
 we need to specify the token id and the collection id which token belongs to. The `address` argument is the address that signs the transaction. 
 
 :exclamation: The method has the optional `from` argument. The argument defines on whose behalf the token is destroyed.
@@ -615,7 +615,7 @@ anyone of the collection owner, the collection admin, or current NFT owner has p
 ```ts:no-line-numbers
 async function main() {
   ...
-  const txBurn = await sdk.tokens.burn.submitWaitResult({
+  const txBurn = await sdk.token.burn.submitWaitResult({
     collectionId: 101,
     tokenId: 1,
     address, 

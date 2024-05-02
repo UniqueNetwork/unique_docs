@@ -26,7 +26,7 @@ const destroyArgs: DestroyCollectionArguments = {
     collectionId: '<ID of the collection>'
 };
 
-const result = await sdk.collections.destroy.submitWaitResult(destroyArgs);
+const result = await sdk.collection.destroy.submitWaitResult(destroyArgs);
 const { success } = result.parsed;
 ```
 
@@ -40,7 +40,7 @@ import Sdk from "@unique-nft/sdk";
 
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-client.collections.destroy.submitWaitResult({
+sdk.collection.destroy.submitWaitResult({
     address: '<your address>',
     collectionId: 1,
 });
@@ -57,7 +57,7 @@ const destroyArgs: DestroyCollectionArguments = {
     collectionId: '<ID of the collection>'
 };
 
-const result = await sdk.collections.destroy.submitWaitResult(destroyArgs);
+const result = await sdk.collection.destroy.submitWaitResult(destroyArgs);
 const { success } = result.parsed;
 ```
 

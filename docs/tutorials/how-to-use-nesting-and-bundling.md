@@ -59,7 +59,7 @@ function createSdk(account: any) {
 
 ```typescript
 export async function createCollection(sdk, address) {
-  const { parsed, error } = await sdk.collections.creation.submitWaitResult({
+  const { parsed, error } = await sdk.collection.create.submitWaitResult({
     address,
     name: 'Test collection',
     description: 'My test collection',
@@ -79,7 +79,7 @@ export async function createCollection(sdk, address) {
 
   const { collectionId } = parsed;
 
-  return sdk.collections.get({ collectionId });
+  return sdk.collection.get({ collectionId });
 }
 ```
 
@@ -87,7 +87,7 @@ export async function createCollection(sdk, address) {
 
 ```typescript
 export async function createToken(sdk, address, collectionId) {
-  const { parsed, error } = await sdk.tokens.create.submitWaitResult({
+  const { parsed, error } = await sdk.token.create.submitWaitResult({
     address,
     collectionId,
   });
@@ -99,7 +99,7 @@ export async function createToken(sdk, address, collectionId) {
 
   const { tokenId } = parsed;
 
-  return sdk.tokens.get({ collectionId, tokenId });
+  return sdk.token.get({ collectionId, tokenId });
 }
 ```
 
@@ -108,7 +108,7 @@ export async function createToken(sdk, address, collectionId) {
 ```typescript
 export async function createNestedToken(sdk, nestedArgs) {
   const { address, parent, nested } = nestedArgs;
-  const { parsed, error } = await sdk.tokens.nest.submitWaitResult({
+  const { parsed, error } = await sdk.token.nest.submitWaitResult({
     address,
     parent,
     nested,
@@ -123,7 +123,7 @@ export async function createNestedToken(sdk, nestedArgs) {
 
   console.log(`Token ${tokenId} from collection ${collectionId} successfully nested`);
 
-  return sdk.tokens.get({ collectionId, tokenId });
+  return sdk.token.get({ collectionId, tokenId });
 }
 ```
 
@@ -175,12 +175,12 @@ main();
 Let's look at some more functions provided by our library: IsBundle and getBundle. Add the following code inside the `main` function
 
 ```typescript
-  const isBundle = await sdk.tokens.isBundle({
+  const isBundle = await sdk.token.isBundle({
     collectionId: collection.id,
     tokenId: 1,
   });
 
-  const isBundle2 = await sdk.tokens.isBundle({
+  const isBundle2 = await sdk.token.isBundle({
     collectionId: collection.id,
     tokenId: 2,
   });
@@ -188,7 +188,7 @@ Let's look at some more functions provided by our library: IsBundle and getBundl
   console.log('token 1 isBundle?', isBundle);
   console.log('token 2 isBundle?', isBundle2);
 
-  const result: any = await sdk.tokens.getBundle({
+  const result: any = await sdk.token.getBundle({
     collectionId: collection.id,
     tokenId: 2,
   });
@@ -206,7 +206,7 @@ Add to your js file unnesting function
 ```typescript
 export async function createUnNestedToken(sdk: any, nestedArgs: any) {
   const { address, parent, nested } = nestedArgs;
-  const { parsed, error } = await sdk.tokens.unnest.submitWaitResult({
+  const { parsed, error } = await sdk.token.unnest.submitWaitResult({
     address,
     parent,
     nested,
@@ -221,7 +221,7 @@ export async function createUnNestedToken(sdk: any, nestedArgs: any) {
 
   console.log(`Token ${tokenId} from collection ${collectionId} successfully unnested`);
 
-  return sdk.tokens.get({ collectionId, tokenId });
+  return sdk.token.get({ collectionId, tokenId });
 }
 ```
 
@@ -242,7 +242,7 @@ const unNestedToken = await createUnNestedToken(sdk, {
 
   console.log('unNestedToken', unNestedToken);
 
-  const isBundleAfterUnnest = await sdk.tokens.isBundle({
+  const isBundleAfterUnnest = await sdk.token.isBundle({
     collectionId: collection.id,
     tokenId: 2,
   });

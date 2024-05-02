@@ -96,7 +96,7 @@ For create a brand-new collection with cats, we should set a name, a description
 We can take the cover picture and the URL template from previous step.
 
 ```typescript:no-line-numbers
-const { parsed: { collectionId } } = await sdk.collections.creation.submitWaitResult({
+const { parsed: { collectionId } } = await sdk.collection.create.submitWaitResult({
   address,
   name: 'Crazy cats',
   description: 'Crazy cats from village',
@@ -154,7 +154,7 @@ The `attributesSchema` object should contain a token description fields like typ
 When you perform all previous steps, you have all what is needed to create a new NFT token.
 
 ```typescript:no-line-numbers
-const { parsed: { tokenId } } = await sdk.tokens.create.submitWaitResult({
+const { parsed: { tokenId } } = await sdk.token.create.submitWaitResult({
   address,
   collectionId,
   data: {

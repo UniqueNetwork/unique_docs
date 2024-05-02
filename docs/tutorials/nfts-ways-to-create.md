@@ -80,9 +80,9 @@ const myCollection = {
   },
 };
 
-const result = await sdk.collections.creation.submitWaitResult(myCollection);
+const result = await sdk.collection.create.submitWaitResult(myCollection);
 const collectionId = result.parsed.collectionId;
-const collection = await sdk.collections.get({ collectionId });
+const collection = await sdk.collection.get({ collectionId });
 ```
 
 #### Other ways to create a collection
@@ -91,22 +91,22 @@ const collection = await sdk.collections.get({ collectionId });
 /**
  * returns unsigned extrinsic
  */
-const unsignedExtrinsic = await sdk.collections.creation.build(myCollection);
+const unsignedExtrinsic = await sdk.collection.create.build(myCollection);
 
 /**
  * return signed extrinsic (unsigned extrinsic + signature + signature type)
  */
-const signedExtrinsic = await sdk.collections.creation.sign(myCollection);
+const signedExtrinsic = await sdk.collection.create.sign(myCollection);
 
 /**
  * submitting extrinsic and returns extrinsic hash
  */
-const { hash } = await sdk.collections.creation.submit(myCollection);
+const { hash } = await sdk.collection.create.submit(myCollection);
 
 /**
  * submitting extrinsic and returns Observable of extrinsic progress
  */
-const newCollection$ = sdk.collections.creation.submitWatch(myCollection);
+const newCollection$ = sdk.collection.create.submitWatch(myCollection);
 ```
 
 #### Collection settings methods
@@ -159,8 +159,8 @@ const createTokensArgs = {
   collectionId,
 };
 
-const result = await sdk.tokens.create.submitWaitResult(createTokensArgs);
+const result = await sdk.token.create.submitWaitResult(createTokensArgs);
 const tokenId = result.parsed;
 
-const token = await this.sdk.tokens.get({ collectionId, tokenId })
+const token = await this.sdk.token.get({ collectionId, tokenId })
 ```

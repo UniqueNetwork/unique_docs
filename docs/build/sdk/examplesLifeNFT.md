@@ -63,7 +63,7 @@ const main = async () => {
   // Part 2: creating the collection
   ////////////////////////////////////////
 
-  const collectionResult = await sdk.collections.creation.submitWaitResult({
+  const collectionResult = await sdk.collection.create.submitWaitResult({
     address: account.getAddress(),
     name: 'Test collection',
     description: 'Test collection description',
@@ -109,7 +109,7 @@ const main = async () => {
     }
   }, collectionSchema)
 
-  const tokenMintResult = await sdk.tokens.create.submitWaitResult({
+  const tokenMintResult = await sdk.token.create.submitWaitResult({
     address: account.getAddress(),
     collectionId,
     properties: tokenProperties,
@@ -125,7 +125,7 @@ const main = async () => {
   // the colour attr value should be 'red'
   ////////////////////////////////////////
 
-  const token = await sdk.tokens.get({
+  const token = await sdk.token.get({
     collectionId,
     tokenId,
   })
@@ -140,7 +140,7 @@ const main = async () => {
   // Changing the token property
   ////////////////////////////////////////
 
-  const tokenChangeResult = await sdk.tokens.setProperties.submitWaitResult({
+  const tokenChangeResult = await sdk.token.setProperties.submitWaitResult({
     address: account.getAddress(),
     collectionId,
     tokenId,
@@ -157,7 +157,7 @@ const main = async () => {
   // the colour attr value should be 'blue'
   /////////////////////////////////////////
 
-  const tokenAfterChange = await sdk.tokens.get({
+  const tokenAfterChange = await sdk.token.get({
     collectionId,
     tokenId,
   })

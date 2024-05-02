@@ -30,7 +30,7 @@ const burnItemArgs: BurnTokenArguments = {
   collectionId: 1,
 };
 
-const setResult = await sdk.tokens.burn.submitWaitResult(burnItemArgs);
+const setResult = await sdk.token.burn.submitWaitResult(burnItemArgs);
 const { collectionId, tokenId, address, value } = setResult.parsed;
 ```
 
@@ -45,7 +45,7 @@ import Sdk from "@unique-nft/sdk";
 
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-const result = await sdk.tokens.burn.submitWaitResult({
+const result = await sdk.token.burn.submitWaitResult({
   "collectionId": 1,
   "tokenId": 1,
   "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty"
@@ -68,7 +68,7 @@ const burnItemArgs: BurnTokenArguments = {
   collectionId: 1,
 };
 
-const setResult = await sdk.tokens.burn.submitWaitResult(burnItemArgs);
+const setResult = await sdk.token.burn.submitWaitResult(burnItemArgs);
 const { collectionId, tokenId, address, value } = setResult.parsed;
 ```
 

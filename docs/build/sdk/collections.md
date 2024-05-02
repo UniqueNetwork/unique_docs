@@ -58,7 +58,7 @@ function createSdk(account) {
 // Creating a sample collection
 // The signer specified in the SDK constructor is used to sign an extrinsic
 export async function createCollection(sdk, address) {
-  const { parsed, error } = await sdk.collections.creation.submitWaitResult({
+  const { parsed, error } = await sdk.collection.create.submitWaitResult({
     address,
     name: 'Test collection',
     description: 'My test collection',
@@ -72,7 +72,7 @@ export async function createCollection(sdk, address) {
 
   const { collectionId } = parsed;
 
-  return sdk.collections.get({ collectionId });
+  return sdk.collection.get({ collectionId });
 }
 
 // Entrypoint
@@ -197,7 +197,7 @@ const collectionSchema: UniqueCollectionSchemaToCreate = {
   },
 }
 
-const collectionResult = await sdk.collections.creation.submitWaitResult({
+const collectionResult = await sdk.collection.create.submitWaitResult({
   address: account.getAddress(),
   name: 'sdk demo collection',
   description: 'test collection for sdk demo',
@@ -270,7 +270,7 @@ import Sdk from "@unique-nft/sdk";
 
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-const collection = await sdk.collections.get({ collectionId: 1 });
+const collection = await sdk.collection.get({ collectionId: 1 });
 ```
 
 </CodeGroupItem>
@@ -296,17 +296,17 @@ Your NFT collection have a bunch of various properties such as limits, permissio
 
 You can find the list of SDK methods, that you can use to adjust your collection [here](../../reference/sdk-methods.md).
 
-For example, let's update the collection limits using `sdk.collections.setLimits` method. The method sets some collection limits and starts enforcing them immediately. By the way, only the collection owner has the permission to call this method.
+For example, let's update the collection limits using `sdk.collection.setLimits` method. The method sets some collection limits and starts enforcing them immediately. By the way, only the collection owner has the permission to call this method.
 
 <CodeGroup>
 <CodeGroupItem title = "SDK">
 
 ```typescript:no-line-numbers
-import Sdk from '@unique-nft/sdk'
+import Sdk from "@unique-nft/sdk"
 
-const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
+const sdk = new Sdk({ baseUrl: "https://rest.unique.network/opal" });
     
-const result = await sdk.collections.setLimits.submitWaitResult({
+const result = await sdk.collection.setLimits.submitWaitResult({
   limits: {
     accountTokenOwnershipLimit: 1000,
     sponsoredDataSize: 1024,
@@ -378,7 +378,7 @@ import Sdk from 'unique-nft/sdk'
 
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-const result = await sdk.collections.transfer.submitWaitResult({
+const result = await sdk.collection.transfer.submitWaitResult({
   collectionId: 1,
   from: '5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y',
   to: '5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty',
@@ -433,7 +433,7 @@ import Sdk from '@unique-nft/sdk'
 
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-const { properties } = await sdk.collections.properties({ collectionId: 1 });
+const { properties } = await sdk.collection.properties({ collectionId: 1 });
 ```
 
 </CodeGroupItem>
@@ -468,7 +468,7 @@ import Sdk from '@unique-nft/sdk'
 
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-const result = await sdk.collections.setProperties.submitWaitResult({
+const result = await sdk.collection.setProperties.submitWaitResult({
   address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
   collectionId: 1,
   properties: [
@@ -538,7 +538,7 @@ import Sdk from '@unique-nft/sdk'
 
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-const result = await sdk.collections.admins({ collectionId: 1 });
+const result = await sdk.collection.admins({ collectionId: 1 });
 
 const { admins } = result;
 
@@ -571,7 +571,7 @@ import Sdk from '@unique-nft/sdk'
 
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-const result = await sdk.collections.addAdmin.submitWaitResult({
+const result = await sdk.collection.addAdmin.submitWaitResult({
 	address: '5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y',
 	collectionId: 1,
 	newAdmin: '5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty',
@@ -628,7 +628,7 @@ import Sdk from '@unique-nft/sdk'
 
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-const result = await sdk.collections.removeAdmin.submitWaitResult({
+const result = await sdk.collection.removeAdmin.submitWaitResult({
   address: '5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y',
   collectionId: 1,
   admin: '5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty',
@@ -685,7 +685,7 @@ import Sdk from '@unique-nft/sdk'
 
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-const { parsed } = await sdk.collections.addToAllowList.submitWaitResult({
+const { parsed } = await sdk.collection.addToAllowList.submitWaitResult({
   address: '5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y',
   collectionId: 1,
   newAdmin: '5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty',
@@ -729,7 +729,7 @@ import Sdk from '@unique-nft/sdk'
 
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-const { addresses } = await sdk.collections.allowList({ collectionId: 1 });
+const { addresses } = await sdk.collection.allowList({ collectionId: 1 });
 
 console.log(`The addresses in the collection allow  list: ${addresses}`);
 ```
@@ -759,7 +759,7 @@ import Sdk from '@unique-nft/sdk'
 
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-const { parsed } = await sdk.collections.removeFromAllowList.submitWaitResult({
+const { parsed } = await sdk.collection.removeFromAllowList.submitWaitResult({
   address: '5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y',
   collectionId: 1,
   addressToDelete: '5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty',
@@ -812,7 +812,7 @@ import Sdk from "@unique-nft/sdk";
 
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal' });
 
-const result = sdk.collections.destroy.submitWaitResult({
+const result = sdk.collection.destroy.submitWaitResult({
 	address: '5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y',
 	collectionId: 1,
 });

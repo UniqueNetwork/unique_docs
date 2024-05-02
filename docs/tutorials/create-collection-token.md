@@ -34,7 +34,7 @@ function createSdk(account) {
 // Creating a sample collection
 // The signer specified in the SDK constructor is used to sign an extrinsic
 export async function createCollection(sdk, address) {
-  const { parsed, error } = await sdk.collections.creation.submitWaitResult({
+  const { parsed, error } = await sdk.collection.create.submitWaitResult({
     address,
     name: 'Test collection',
     description: 'My test collection',
@@ -48,13 +48,13 @@ export async function createCollection(sdk, address) {
 
   const { collectionId } = parsed;
 
-  return sdk.collections.get({ collectionId });
+  return sdk.collection.get({ collectionId });
 }
 
 // Creating a sample token in the newly created collection
 // The signer specified in the SDK constructor is used to sign an extrinsic
 export async function createToken(sdk, address, collectionId) {
-  const { parsed, error } = await sdk.tokens.create.submitWaitResult({
+  const { parsed, error } = await sdk.token.create.submitWaitResult({
     address,
     collectionId,
   });
@@ -66,7 +66,7 @@ export async function createToken(sdk, address, collectionId) {
 
   const { tokenId } = parsed;
 
-  return sdk.tokens.get({ collectionId, tokenId });
+  return sdk.token.get({ collectionId, tokenId });
 }
 
 // Entrypoint
