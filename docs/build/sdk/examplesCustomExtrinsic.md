@@ -62,7 +62,7 @@ Find this method in [polkadot.js.org](https://polkadot.js.org/apps/?rpc=wss%3A%2
 Calling this method with the SDK would look like this:
 
 ```typescript
-  import { Sdk } from '@unique-nft/sdk'
+  import Sdk from '@unique-nft/sdk'
   const sdk = new Sdk({ baseUrl: 'https://rest.opal.uniquenetwork.dev/v1' })
   const result = await sdk.stateQuery.execute(
     {
@@ -96,7 +96,7 @@ Find this method in [polkadot.js.org](https://polkadot.js.org/apps/?rpc=wss%3A%2
 Calling this method with the SDK would look like this:
 
 ```typescript
-  import { Sdk } from '@unique-nft/sdk'
+  import Sdk from '@unique-nft/sdk'
   import Extension  from '@unique-nft/utils/extension'
   const enablingResult = await Extension.Polkadot.enableAndLoadAllWallets()
   const accounts = enablingResult.accounts

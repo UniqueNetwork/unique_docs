@@ -16,7 +16,7 @@ The method returns collection info with parsed unique schema.
 import { CollectionIdArguments, CollectionInfoWithSchema } from '@unique-nft/substrate-client/types';
 const getCollectionArgs: CollectionIdArguments = { collectionId: 123 };
 
-const collection: CollectionInfoWithSchema = await sdk.collections.get(getCollectionArgs);
+const collection: CollectionInfoWithSchema = await sdk.collection.get(getCollectionArgs);
 ```
 
 #### Arguments
@@ -61,7 +61,7 @@ interface CollectionInfoWithSchema {
 import { CollectionIdArguments, CollectionInfoWithSchema } from '@unique-nft/substrate-client/types';
 const getCollectionArgs: CollectionIdArguments = { collectionId: 123 };
 
-const collection: CollectionInfo = await sdk.collections.get(getCollectionArgs);
+const collection: CollectionInfo = await sdk.collection.get(getCollectionArgs);
 ```
 
   </CodeGroupItem>
@@ -81,7 +81,7 @@ curl -X 'GET' \
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
-const collection = await sdk.collections.get({ collectionId: 1 });
+const collection = await sdk.collection.get({ collectionId: 1 });
 ```
 
   </CodeGroupItem>
@@ -111,7 +111,7 @@ const args: CollectionPropertiesArguments = {
   // propertyKeys: ['foo', 'bar'],
 };
 
-const result: CollectionPropertiesResult = await sdk.collections.properties(args);
+const result: CollectionPropertiesResult = await sdk.collection.properties(args);
 ```
 
 #### Arguments
@@ -156,7 +156,7 @@ const args: CollectionPropertiesArguments = {
   // propertyKeys: ['foo', 'bar'],
 };
 
-const result: CollectionPropertiesResult = await sdk.collections.properties(args);
+const result: CollectionPropertiesResult = await sdk.collection.properties(args);
 ```
 
 
@@ -177,7 +177,7 @@ curl -X 'GET' \
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
-const { properties } = await sdk.collections.properties({ collectionId: 1 });
+const { properties } = await sdk.collection.properties({ collectionId: 1 });
 ```
 
   </CodeGroupItem>
@@ -219,7 +219,7 @@ const args: CreateCollectionNewArguments = {
   tokenPrefix: 'Baz',
   schema: collectionSchema,
 };
-const result = await sdk.collections.creation.submitWaitResult(args);
+const result = await sdk.collection.create.submitWaitResult(args);
 
 const {
   parsed: { collectionId },
@@ -294,7 +294,7 @@ const args: CreateCollectionNewArguments = {
   tokenPrefix: 'Baz',
   schema: collectionSchema,
 };
-const result = await sdk.collections.creation.submitWaitResult(args);
+const result = await sdk.collection.create.submitWaitResult(args);
 
 const {
   parsed: { collectionId },
@@ -377,7 +377,7 @@ interface CollectionIdArguments {
 ```typescript
 import { CreateCollectionNewArguments } from '@unique-nft/substrate-client/tokens';
 
-const result = await sdk.collections.creation.submitWaitResult({
+const result = await sdk.collection.create.submitWaitResult({
   address: '<your address>',
   name: 'Foo',
   description: 'Bar',
@@ -443,7 +443,7 @@ curl -X 'POST' \
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
-const result = await sdk.collections.creation.submitWaitResult({
+const result = await sdk.collection.create.submitWaitResult({
   address: '<your address>',
   name: 'Foo',
   description: 'Bar',
@@ -490,7 +490,7 @@ const args: DeleteCollectionPropertiesArguments = {
     propertyKeys: ['foo', 'bar'],
 };
 
-const result = await sdk.collections.deleteProperties.submitWaitResult(args);
+const result = await sdk.collection.deleteProperties.submitWaitResult(args);
 const deletedKeys = result.parsed.properties.map((property) => property.propertyKey);
 
 console.log(`Deleted ${deletedKeys.join()}`);
@@ -538,7 +538,7 @@ const args: DeleteCollectionPropertiesArguments = {
     propertyKeys: ['foo', 'bar'],
 };
 
-const result = await sdk.collections.deleteProperties.submitWaitResult(args);
+const result = await sdk.collection.deleteProperties.submitWaitResult(args);
 const deletedKeys = result.parsed.properties.map((property) => property.propertyKey);
 
 console.log(`Deleted ${deletedKeys.join()}`);
@@ -581,7 +581,7 @@ curl -X 'POST' \
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
-await sdk.collections.deleteProperties.submitWaitResult({
+await sdk.collection.deleteProperties.submitWaitResult({
     address: '<your address>',
     collectionId: 1,
     propertyKeys: ['foo', 'bar'],
@@ -612,7 +612,7 @@ const destroyArgs: DestroyCollectionArguments = {
     collectionId: '<ID of the collection>'
 };
 
-const result = await sdk.collections.destroy.submitWaitResult(destroyArgs);
+const result = await sdk.collection.destroy.submitWaitResult(destroyArgs);
 const { success } = result.parsed;
 ```
 
@@ -648,7 +648,7 @@ const destroyArgs: DestroyCollectionArguments = {
     collectionId: '<ID of the collection>'
 };
 
-const result = await sdk.collections.destroy.submitWaitResult(destroyArgs);
+const result = await sdk.collection.destroy.submitWaitResult(destroyArgs);
 const { success } = result.parsed;
 ```
 
@@ -710,7 +710,7 @@ The method gets collection effective limits.
 ```typescript
 import { CollectionIdArguments, GetCollectionLimitsResult } from '@unique-nft/substrate-client/types';
 
-const { collectionId, limits }: GetCollectionLimitsResult = await sdk.collections.getLimits({ collectionId: 123 });
+const { collectionId, limits }: GetCollectionLimitsResult = await sdk.collection.getLimits({ collectionId: 123 });
 
 console.log(`Collection ${collectionId} limits: ${JSON.stringify(limits)}`);
 ```
@@ -762,7 +762,7 @@ interface GetCollectionLimitsResult {
 ```typescript
 import { CollectionIdArguments, GetCollectionLimitsResult } from '@unique-nft/substrate-client/types';
 
-const { collectionId, limits }: GetCollectionLimitsResult = await sdk.collections.getLimits({ collectionId: 123 });
+const { collectionId, limits }: GetCollectionLimitsResult = await sdk.collection.getLimits({ collectionId: 123 });
 
 console.log(`Collection ${collectionId} limits: ${JSON.stringify(limits)}`);
 ```
@@ -785,7 +785,7 @@ curl -X 'GET' \
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
-const { collectionId, limits } = await sdk.collections.getLimits({ collectionId: 1 });
+const { collectionId, limits } = await sdk.collection.getLimits({ collectionId: 1 });
 
 console.log(`Collection ${collectionId} limits: ${JSON.stringify(limits)}`);
 ```
@@ -818,7 +818,7 @@ The method gets an array of **collection property permissions** (see **Set token
   };
   
   const result: PropertyPermissionsResult =
-    await sdk.collections.propertyPermissions(args);
+    await sdk.collection.propertyPermissions(args);
 ```
 
 #### Arguments
@@ -870,7 +870,7 @@ This method returns `PropertyPermissionsResult`
   };
   
   const result: PropertyPermissionsResult =
-    await sdk.collections.propertyPermissions(args);
+    await sdk.collection.propertyPermissions(args);
 ```
 
   </CodeGroupItem>
@@ -892,7 +892,7 @@ This method returns `PropertyPermissionsResult`
 ```typescript
   const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
   
-  const result = await sdk.collections.propertyPermissions({
+  const result = await sdk.collection.propertyPermissions({
     collectionId: 1,
   });
 ```
@@ -935,7 +935,7 @@ Only the **Collection Owner** has permission to call this method.
         transfersEnabled: false,
       }
     };
-    const setResult = await sdk.collections.setLimits.submitWaitResult(limitsArgs);
+    const setResult = await sdk.collection.setLimits.submitWaitResult(limitsArgs);
     const { parsed: { collectionId, limits } } = result;
 ```
 
@@ -1003,7 +1003,7 @@ This method returns `SetCollectionLimitsResult`
         transfersEnabled: false,
       }
     };
-    const setResult = await sdk.collections.setLimits.submitWaitResult(limitsArgs);
+    const setResult = await sdk.collection.setLimits.submitWaitResult(limitsArgs);
     const { parsed: { collectionId, limits } } = result;
 ```
 
@@ -1052,7 +1052,7 @@ This method returns `SetCollectionLimitsResult`
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
-    const result = await sdk.collections.setLimits.submitWaitResult({
+    const result = await sdk.collection.setLimits.submitWaitResult({
       "limits": {
         "accountTokenOwnershipLimit": 1000,
         "sponsoredDataSize": 1024,
@@ -1106,7 +1106,7 @@ This method sets on-chain permissions for collection
       },
     };
     
-    const result = await sdk.collections.setPermissions.submitWaitResult(args);
+    const result = await sdk.collection.setPermissions.submitWaitResult(args);
     
     console.log(
       `Collection #${result.parsed.collectionId} permissions successfully updated`,
@@ -1168,7 +1168,7 @@ This method returns `SetCollectionPermissionsResult`
     },
   };
   
-  const result = await sdk.collections.setPermissions.submitWaitResult(args);
+  const result = await sdk.collection.setPermissions.submitWaitResult(args);
   
   console.log(
     `Collection #${result.parsed.collectionId} permissions successfully updated`,
@@ -1216,7 +1216,7 @@ This method returns `SetCollectionPermissionsResult`
 ```typescript
   const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
   
-  const result = await sdk.collections.setPermissions.submitWaitResult({
+  const result = await sdk.collection.setPermissions.submitWaitResult({
     "collectionId": 1,
     "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
     "permissions": {
@@ -1268,7 +1268,7 @@ The naming of keys is restricted to a limited set of the following characters: L
       ],
     };
     
-    const result = await sdk.collections.setProperties.submitWaitResult(args);
+    const result = await sdk.collection.setProperties.submitWaitResult(args);
     
     console.log(result.parsed);
 ```
@@ -1319,7 +1319,7 @@ This method returns `SetCollectionPermissionsResult`
       ],
     };
     
-    const result = await sdk.collections.setProperties.submitWaitResult(args);
+    const result = await sdk.collection.setProperties.submitWaitResult(args);
     
     console.log(result.parsed);
 ```
@@ -1364,7 +1364,7 @@ This method returns `SetCollectionPermissionsResult`
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
-    const result = await sdk.collections.setProperties.submitWaitResult({
+    const result = await sdk.collection.setProperties.submitWaitResult({
       "address": "5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX",
       "collectionId": 1,
       "properties": [
@@ -1423,7 +1423,7 @@ The permissions to create and modify properties of a collection are carried out 
     };
     
     const result =
-      await sdk.collections.setTokenPropertyPermissions.submitWaitResult(args);
+      await sdk.collection.setPropertyPermissions.submitWaitResult(args);
     
     console.log(result.parsed);
 ```
@@ -1487,7 +1487,7 @@ This method returns `SetTokenPropertyPermissionsResult`
     };
     
     const result =
-      await sdk.collections.setTokenPropertyPermissions.submitWaitResult(args);
+      await sdk.collection.setPropertyPermissions.submitWaitResult(args);
     
     console.log(result.parsed);
 ```
@@ -1536,7 +1536,7 @@ This method returns `SetTokenPropertyPermissionsResult`
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
-    const result = await sdk.collections.setPropertyPermissions.submitWaitResult({
+    const result = await sdk.collection.setPropertyPermissions.submitWaitResult({
       "address": "5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX",
       "collectionId": 1,
       "propertyPermissions": [
@@ -1585,7 +1585,7 @@ The method sets **transfersEnabled** flag for particular collection. The current
       isEnabled: true,
     };
     
-    const result = await sdk.collections.setTransfersEnabled.submitWaitResult(args);
+    const result = await sdk.collection.setTransfersEnabled.submitWaitResult(args);
     
     console.log(result.parsed.success);
 ```
@@ -1630,7 +1630,7 @@ This method returns `SetTransfersEnabledResult`
       isEnabled: true,
     };
     
-    const result = await sdk.collections.setTransfersEnabled.submitWaitResult(args);
+    const result = await sdk.collection.setTransfersEnabled.submitWaitResult(args);
     
     console.log(result.parsed.success);
 ```
@@ -1670,7 +1670,7 @@ This method returns `SetTransfersEnabledResult`
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
-    const result = await sdk.collections.setTransfersEnabled.submitWaitResult({
+    const result = await sdk.collection.setTransfersEnabled.submitWaitResult({
       "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
       "collectionId": 1,
       "isEnabled": true
@@ -1704,7 +1704,7 @@ This method assigns a new collection owner. Only the **Collection Owner** can ca
       to: '<new collection owner>'
     };
     
-    const result = await sdk.collections.transfer.submitWaitResult(args);
+    const result = await sdk.collection.transfer.submitWaitResult(args);
     const { collectionId, newOnwer } = result.parsed;
 ```
 
@@ -1749,7 +1749,7 @@ This method returns `TransferCollectionResult`
       to: '<new collection owner>'
     };
     
-    const result = await sdk.collections.transfer.submitWaitResult(args);
+    const result = await sdk.collection.transfer.submitWaitResult(args);
     const { collectionId, newOnwer } = result.parsed;
 ```
 
@@ -1788,7 +1788,7 @@ This method returns `TransferCollectionResult`
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
-    const result = await sdk.collections.transfer.submitWaitResult({
+    const result = await sdk.collection.transfer.submitWaitResult({
       "collectionId": 1,
       "from": "5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y",
       "to": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty"
@@ -1830,7 +1830,7 @@ Only **Collection Owner** or **Collection Admin** has permission to call this me
       newAdmin: '<address>',
     };
     
-    const result = await sdk.collections.addAdmin.submitWaitResult(args);
+    const result = await sdk.collection.addAdmin.submitWaitResult(args);
     
     console.log(result.parsed);
 ```
@@ -1876,7 +1876,7 @@ This method returns `AddCollectionAdminResult`
       newAdmin: '<address>',
     };
     
-    const result = await sdk.collections.addAdmin.submitWaitResult(args);
+    const result = await sdk.collection.addAdmin.submitWaitResult(args);
     
     console.log(result.parsed);
 ```
@@ -1916,7 +1916,7 @@ This method returns `AddCollectionAdminResult`
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
-    const result = await sdk.collections.addAdmin.submitWaitResult({
+    const result = await sdk.collection.addAdmin.submitWaitResult({
       "address": "5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y",
       "collectionId": 1,
       "newAdmin": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty"
@@ -1961,7 +1961,7 @@ To add a **Collection Admin**, use the **Add collection admin** method.
       collectionId: 1,
     };
     
-    const result: AdminlistResult = await sdk.collections.admins(args);
+    const result: AdminlistResult = await sdk.collection.admins(args);
 ```
 
 #### Arguments
@@ -2002,7 +2002,7 @@ This method returns `AdminlistResult`
       collectionId: 1,
     };
     
-    const result: AdminlistResult = await sdk.collections.admins(args);
+    const result: AdminlistResult = await sdk.collection.admins(args);
 ```
 
   </CodeGroupItem>
@@ -2022,7 +2022,7 @@ This method returns `AdminlistResult`
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
-    const result = await sdk.collections.admins({
+    const result = await sdk.collection.admins({
         collectionId: 1,
     });
     
@@ -2062,7 +2062,7 @@ Only the **Collection Owner** or **Collection Admin** has permission to call thi
       accountId: '<address>',
     };
     
-    const result = await sdk.collections.removeAdmin.submitWaitResult(args);
+    const result = await sdk.collection.removeAdmin.submitWaitResult(args);
     
     console.log(result.parsed);
 ```
@@ -2108,7 +2108,7 @@ This method returns `RemoveCollectionAdminResult`
       accountId: '<address>',
     };
     
-    const result = await sdk.collections.removeAdmin.submitWaitResult(args);
+    const result = await sdk.collection.removeAdmin.submitWaitResult(args);
     
     console.log(result.parsed);
 ```
@@ -2148,7 +2148,7 @@ This method returns `RemoveCollectionAdminResult`
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
-    const result = await sdk.collections.removeAdmin.submitWaitResult({
+    const result = await sdk.collection.removeAdmin.submitWaitResult({
       "address": "5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y",
       "collectionId": 1,
       "admin": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty"
@@ -2186,7 +2186,7 @@ const addToAllowListArgs: AddToAllowListArguments = {
     newAdminId: '<valid address>'
 };
 
-const { parsed } = await sdk.collections.addToAllowList.submitWaitResult(addToAllowListArgs);
+const { parsed } = await sdk.collection.addToAllowList.submitWaitResult(addToAllowListArgs);
 const { collectionId, address } = parsed;
 ```
 
@@ -2223,7 +2223,7 @@ const addToAllowListArgs: AddToAllowListArguments = {
     newAdminId: '<valid address>'
 };
 
-const { parsed } = await sdk.collections.addToAllowList.submitWaitResult(addToAllowListArgs);
+const { parsed } = await sdk.collection.addToAllowList.submitWaitResult(addToAllowListArgs);
 
 const { collectionId, address } = parsed;
 
@@ -2254,7 +2254,7 @@ console.log(
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
-const { parsed } = await sdk.collections.addToAllowList.submitWaitResult({
+const { parsed } = await sdk.collection.addToAllowList.submitWaitResult({
   address: '<your account address>',
   collectionId: '<ID of the collection>',
   newAdminId: '<valid address>'
@@ -2291,7 +2291,7 @@ const allowListArgs: AllowListArguments = {
   collectionId: 1,
 };
 
-const addresses = await sdk.collections.allowList(allowListArgs);
+const addresses = await sdk.collection.allowList(allowListArgs);
 ```
 
 
@@ -2321,7 +2321,7 @@ interface AllowListResult {
     collectionId: 1,
   };
 
-  const { addresses } = await sdk.collections.allowList(allowListArgs);
+  const { addresses } = await sdk.collection.allowList(allowListArgs);
   
   console.log(`addresses: ${addresses}`);
 ```
@@ -2341,7 +2341,7 @@ interface AllowListResult {
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
-    const { addresses } = await sdk.collections.allowList({
+    const { addresses } = await sdk.collection.allowList({
         collectionId: 1,
     });
 
@@ -2378,7 +2378,7 @@ Method returns object:
 #### Examples
 
 ```typescript
-const { isAllowed } = await sdk.tokens.allowance({
+const { isAllowed } = await sdk.token.allowance({
   from: '<address>',
   to: '<address>',
   collectionId: 1,
@@ -2450,7 +2450,7 @@ interface AllowedResult {
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
-    const { isAllowed } = await sdk.collections.allowed({
+    const { isAllowed } = await sdk.collection.allowed({
         collectionId: 1,
         account: '<address>',
     });
@@ -2484,7 +2484,7 @@ const removeFromAllowListArgs: RemoveFromAllowListArguments = {
     addressToDelete: '<valid address>'
 };
 
-const { parsed } = await sdk.collections.removeFromAllowList.submitWaitResult(removeFromAllowListArgs);
+const { parsed } = await sdk.collection.removeFromAllowList.submitWaitResult(removeFromAllowListArgs);
 const { collectionId, address } = parsed;
 ```
 
@@ -2520,7 +2520,7 @@ interface RemoveFromAllowListResult {
         addressToDelete: '<valid address>'
     };
     
-    const { parsed } = await sdk.collections.removeFromAllowList.submitWaitResult(removeFromAllowListArgs);
+    const { parsed } = await sdk.collection.removeFromAllowList.submitWaitResult(removeFromAllowListArgs);
     
     const { collectionId, address } = parsed;
     
@@ -2551,7 +2551,7 @@ interface RemoveFromAllowListResult {
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
-    const { parsed } = await sdk.collections.removeFromAllowList.submitWaitResult({
+    const { parsed } = await sdk.collection.removeFromAllowList.submitWaitResult({
       address: '<your account address>',
       collectionId: '<ID of the collection>',
       addressToDelete: '<valid address>'
@@ -2585,7 +2585,7 @@ Returns full tree of a nested tokens. You can request it with any token from the
 ```typescript
 import { NestedToken } from '@unique-nft/substrate-client/types';
 
-const result: NestedToken = await sdk.tokens.getBundle({
+const result: NestedToken = await sdk.token.getBundle({
   collectionId: 2,
   tokenId: 5,
 });
@@ -2643,7 +2643,7 @@ const args: GetBundleArguments = {
   tokenId: 5,
 };
 
-const bundle = await sdk.tokens.getBundle(args);
+const bundle = await sdk.token.getBundle(args);
 
 console.log(bundle);
 ```
@@ -2665,7 +2665,7 @@ curl -X 'GET' \
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
-const bundle = await sdk.tokens.getBundle({
+const bundle = await sdk.token.getBundle({
   collectionId: 2,
   tokenId: 5,
 });
@@ -2690,7 +2690,7 @@ The method returns whether the token is in part of the bundle or not.
 #### Brief example
 
 ```typescript
-const isBundle = await sdk.tokens.isBundle({
+const isBundle = await sdk.token.isBundle({
   collectionId: 2,
   tokenId: 1,
 });
@@ -2728,7 +2728,7 @@ const args: IsBundleArguments = {
   tokenId: 1,
 };
 
-const bundle = await sdk.tokens.isBundle(args);
+const bundle = await sdk.token.isBundle(args);
 
 console.log(bundle);
 ```
@@ -2750,7 +2750,7 @@ curl -X 'GET' \
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
-const result = await sdk.tokens.isBundle({
+const result = await sdk.token.isBundle({
   collectionId: 2,
   tokenId: 1,
 });
@@ -2789,7 +2789,7 @@ const args: NestTokenArguments = {
   },
 };
 
-const result = await sdk.tokens.nestToken.submitWaitResult(args);
+const result = await sdk.token.nest.submitWaitResult(args);
 
 const { tokenId, collectionId } = result.parsed;
 
@@ -2813,7 +2813,7 @@ console.log(
 Nesting can be applied only if the token collection has permission for nesting. If the collection has no permission for nesting - "UserIsNotAllowedToNest" Error will be thrown.
 
 ```typescript
-await sdk.collections.creation.submitWaitResult({
+await sdk.collection.create.submitWaitResult({
   // ...
   permissions: {
     nesting: {
@@ -2861,7 +2861,7 @@ const args: NestTokenArguments = {
   },
 };
 
-const result = await sdk.tokens.nestToken.submitWaitResult(args);
+const result = await sdk.token.nest.submitWaitResult(args);
 
 const { tokenId, collectionId } = result.parsed;
 
@@ -2911,7 +2911,7 @@ console.log(
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
-const result = await sdk.tokens.nest.submitWaitResult({
+const result = await sdk.token.nest.submitWaitResult({
   address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
   parent: {
     collectionId: 1,
@@ -2959,7 +2959,7 @@ const args: TokenChildrenArguments = {
   tokenId: 1,
 };
 
-const result: TokenChildrenResult = await sdk.tokens.children(args);
+const result: TokenChildrenResult = await sdk.token.children(args);
 
 console.log(result);
 
@@ -3017,7 +3017,7 @@ const args: TokenChildrenArguments = {
   tokenId: 1,
 };
 
-const result: TokenChildrenResult = await sdk.tokens.children(args);
+const result: TokenChildrenResult = await sdk.token.children(args);
 
 console.log(result);
 ```
@@ -3039,7 +3039,7 @@ curl -X 'GET' \
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
-const result = await sdk.tokens.children({
+const result = await sdk.token.children({
   collectionId: 1,
   tokenId: 1,
 });
@@ -3074,7 +3074,7 @@ const args: TokenParentArguments = {
   tokenId: 2,
 };
 
-const result: TokenParentResult = await sdk.tokens.parent(args);
+const result: TokenParentResult = await sdk.token.parent(args);
 
 console.log(result);
 
@@ -3122,7 +3122,7 @@ const args: TokenParentArguments = {
   tokenId: 2,
 };
 
-const result: TokenParentResult = await sdk.tokens.parent(args);
+const result: TokenParentResult = await sdk.token.parent(args);
 
 console.log(result);
 ```
@@ -3144,7 +3144,7 @@ curl -X 'GET' \
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
-const result = await sdk.tokens.parent({
+const result = await sdk.token.parent({
   collectionId: 1,
   tokenId: 2,
 });
@@ -3180,7 +3180,7 @@ const args: TokenOwnerArguments = {
   // blockHashAt: '0xff19c2457fa4d7216cfad444615586c4365250e7310e2de7032ded4fcbd36873'
 };
 
-const result: TopmostTokenOwnerResult = await sdk.tokens.topmostOwner(args);
+const result: TopmostTokenOwnerResult = await sdk.token.topmostOwner(args);
 
 console.log(result);
 
@@ -3225,7 +3225,7 @@ const args: TokenOwnerArguments = {
   // blockHashAt: '0xff19c2457fa4d7216cfad444615586c4365250e7310e2de7032ded4fcbd36873'
 };
 
-const result: TopmostTokenOwnerResult = await sdk.tokens.topmostOwner(args);
+const result: TopmostTokenOwnerResult = await sdk.token.topmostOwner(args);
 
 console.log(result);
 ```
@@ -3247,7 +3247,7 @@ curl -X 'GET' \
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
-const result = await sdk.tokens.topmostOwner({
+const result = await sdk.token.topmostOwner({
   collectionId: 1,
   tokenId: 2,
 });
@@ -3282,7 +3282,7 @@ const args: UnnestTokenArguments = {
   },
 };
 
-const result = await sdk.tokens.unnestToken.submitWaitResult(args);
+const result = await sdk.token.unnest.submitWaitResult(args);
 
 const { tokenId, collectionId } = result.parsed;
 
@@ -3339,7 +3339,7 @@ const args: UnnestTokenArguments = {
   },
 };
 
-const result = await sdk.tokens.unnestToken.submitWaitResult(args);
+const result = await sdk.token.unnest.submitWaitResult(args);
 
 const { tokenId, collectionId } = result.parsed;
 
@@ -3385,7 +3385,7 @@ console.log(
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
-const result = await sdk.tokens.unnest.submitWaitResult({
+const result = await sdk.token.unnest.submitWaitResult({
   address: '5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX',
   nested: {
     collectionId: 1,
@@ -3428,9 +3428,9 @@ Confirm sponsorship
         collectionId: 1,
     };
     
-    await sdk.collections.confirmSponsorship.submitWaitResult(confirmSponsorshipArgs);
+    await sdk.collection.confirmSponsorship.submitWaitResult(confirmSponsorshipArgs);
 
-    const { sponsorship } = await sdk.collections.get({ collectionId: 1 });
+    const { sponsorship } = await sdk.collection.get({ collectionId: 1 });
 
     // `5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp - true`
     console.log(`${sponsorship?.address} - ${sponsorship?.isConfirmed}`);
@@ -3484,9 +3484,9 @@ This method returns `ConfirmSponsorshipResult`
         collectionId: 1,
     };
     
-    await sdk.collections.confirmSponsorship.submitWaitResult(confirmSponsorshipArgs);
+    await sdk.collection.confirmSponsorship.submitWaitResult(confirmSponsorshipArgs);
     
-    const { sponsorship } = await sdk.collections.get({ collectionId: 1 });
+    const { sponsorship } = await sdk.collection.get({ collectionId: 1 });
     
     // `5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp - true`
     console.log(`${sponsorship?.address} - ${sponsorship?.isConfirmed}`);
@@ -3526,7 +3526,7 @@ This method returns `ConfirmSponsorshipResult`
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
-    const result = await sdk.collections.confirmSponsorship.submitWaitResult({
+    const result = await sdk.collection.confirmSponsorship.submitWaitResult({
         address: '5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp',
         collectionId: 1,
     });
@@ -3565,7 +3565,7 @@ const args: NextSponsoredArguments = {
   // at: "0xa37d1c0155bda5877f4bc64c62cd37022c1b6db201c8225da7d169336d38b257"
 };
 
-const result: NextSponsoredResult = await sdk.collections.nextSponsored(args);
+const result: NextSponsoredResult = await sdk.collection.nextSponsored(args);
 
 console.log(result);
 /*
@@ -3614,7 +3614,7 @@ const args: NextSponsoredArguments = {
   // at: "0xa37d1c0155bda5877f4bc64c62cd37022c1b6db201c8225da7d169336d38b257"
 };
 
-const result: NextSponsoredResult = await sdk.collections.nextSponsored(args);
+const result: NextSponsoredResult = await sdk.collection.nextSponsored(args);
 
 console.log(result);
 ```
@@ -3627,22 +3627,6 @@ console.log(result);
 curl -X 'GET' \
   'https://rest.unique.network/opal/v1/collections/next-sponsored?collectionId=934&address=5GbRWxdwL8eHAgVaeXW3GUBffyLaKaLRhXXPwcnZbbzKDUU8&tokenId=1' \
   -H 'accept: application/json'
-```
-
-  </CodeGroupItem>
-
-  <CodeGroupItem title="Substrate Client">
-
-```typescript
-const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
-
-const result = await sdk.tokens.nextSponsored({
-  collectionId: 1,
-  tokenId: 1,
-  address: '5G4M7RCt8PvtFPFm4XSwu85eK9Z8n9c6rygHZawHVALUvgcd',
-});
-
-console.log(result);
 ```
 
   </CodeGroupItem>
@@ -3669,9 +3653,9 @@ The collection **owner** can use this method to remove **sponsors** added by the
         collectionId: 1,
     };
     
-    await sdk.collections.removeSponsorship.submitWaitResult(removeSponsorshipArgs);
+    await sdk.collection.removeSponsorship.submitWaitResult(removeSponsorshipArgs);
 
-    const { sponsorship } = await sdk.collections.get({ collectionId: 1 });
+    const { sponsorship } = await sdk.collection.get({ collectionId: 1 });
 
     // `null`
     console.log(sponsorship);
@@ -3718,9 +3702,9 @@ This method returns `RemoveSponsorshipResult`
         collectionId: 1,
     };
     
-    await sdk.collections.removeSponsorship.submitWaitResult(removeSponsorshipArgs);
+    await sdk.collection.removeSponsorship.submitWaitResult(removeSponsorshipArgs);
     
-    const { sponsorship } = await sdk.collections.get({ collectionId: 1 });
+    const { sponsorship } = await sdk.collection.get({ collectionId: 1 });
     
     // `null`
     console.log(sponsorship);
@@ -3760,7 +3744,7 @@ This method returns `RemoveSponsorshipResult`
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
-    const result = await sdk.collections.removeSponsorship.submitWaitResult({
+    const result = await sdk.collection.removeSponsorship.submitWaitResult({
         address: '5HgvUDiRm5yjRSrrG9B6q6km7KLzkXMxvFLHPZpA13pmwCJQ',
         collectionId: 1,
     });
@@ -3799,9 +3783,9 @@ The collection **owner** can also call **remove collection sponsor** method.
         newSponsor: '5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp',
     };
     
-    await sdk.collections.setCollectionSponsor.submitWaitResult(setSponsorArgs);
+    await sdk.collection.setSponsorship.submitWaitResult(setSponsorArgs);
 
-    const { sponsorship } = await sdk.collections.get({ collectionId: 1 });
+    const { sponsorship } = await sdk.collection.get({ collectionId: 1 });
 
     // `5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp - false`
     console.log(`${sponsorship?.address} - ${sponsorship?.isConfirmed}`);
@@ -3859,9 +3843,9 @@ This method returns `SetSponsorshipResult`
         newSponsor: '5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp',
     };
     
-    await sdk.collections.setCollectionSponsor.submitWaitResult(setSponsorArgs);
+    await sdk.collection.setSponsorship.submitWaitResult(setSponsorArgs);
     
-    const { sponsorship } = await sdk.collections.get({ collectionId: 1 });
+    const { sponsorship } = await sdk.collection.get({ collectionId: 1 });
     
     // `5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp - false`
     console.log(`${sponsorship?.address} - ${sponsorship?.isConfirmed}`);
@@ -3902,7 +3886,7 @@ This method returns `SetSponsorshipResult`
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
-    const result = await sdk.collections.setSponsorship.submitWaitResult({
+    const result = await sdk.collection.setSponsorship.submitWaitResult({
         address: '5HgvUDiRm5yjRSrrG9B6q6km7KLzkXMxvFLHPZpA13pmwCJQ',
         collectionId: 1,
         newSponsor: '5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp',
@@ -3933,7 +3917,7 @@ Returns an array of tokens, owned by address.
 ```typescript
 import { AccountTokensResult } from '@unique-nft/substrate-client/tokens';
 
-const tokensResult: AccountTokensResult = await sdk.tokens.getAccountTokens({
+const tokensResult: AccountTokensResult = await sdk.token.accountTokens({
   collectionId: 1,
   address: '<address>',
 });
@@ -3976,7 +3960,7 @@ interface AccountTokensResult {
       collectionId: 1,
   };
   
-  const tokensResult: AccountTokensResult = await sdk.tokens.getAccountTokens(accountTokensArguments);
+  const tokensResult: AccountTokensResult = await sdk.token.accountTokens(accountTokensArguments);
   
   const token = tokensResult.tokens[0];
   const { collectionId, tokenId } = token;
@@ -3999,7 +3983,7 @@ interface AccountTokensResult {
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
-    const tokensResult = await sdk.tokens.accountTokens({
+    const tokensResult = await sdk.token.accountTokens({
         address: '5DZGhQtBRyZpRgKX3VffhyBCSQD1KwU2yY1eAs99Soh7Dpwp',
         collectionId: 1,
     });
@@ -4051,7 +4035,7 @@ This method gets tokens contained within a collection.
 ```typescript
 import { CollectionTokensResult } from '@unique-nft/substrate-client/tokens/types';
 
-const result: CollectionTokensResult = await sdk.collections.tokens({
+const result: CollectionTokensResult = await sdk.collection.tokens({
   collectionId: 1,
 });
 ```
@@ -4081,7 +4065,7 @@ interface CollectionTokensResult {
 ```typescript
   import { CollectionTokensResult } from '@unique-nft/substrate-client/tokens';
 
-  const tokensResult: CollectionTokensResult = await sdk.collections.tokens({
+  const tokensResult: CollectionTokensResult = await sdk.collection.tokens({
     collectionId: 1,
   });
   
@@ -4105,7 +4089,7 @@ interface CollectionTokensResult {
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
-    const tokensResult = await sdk.collections.tokens({
+    const tokensResult = await sdk.collection.tokens({
         collectionId: 1,
     });
 
@@ -4137,7 +4121,7 @@ Returns blockchain collection statistics:
 ```typescript
 import { GetStatsResult } from '@unique-nft/substrate-client/types';
 
-const stats: GetStatsResult = await sdk.collections.getStats();
+const stats: GetStatsResult = await sdk.collection.getStats();
 
 console.log(`stats: ${stats.created}, ${stats.destroyed}, ${stats.alive}`);
 ```
@@ -4166,7 +4150,7 @@ interface GetStatsResult {
 ```typescript
   import { CollectionTokensResult } from '@unique-nft/substrate-client/tokens';
 
-  const stats: GetStatsResult = await sdk.collections.getStats();
+  const stats: GetStatsResult = await sdk.collection.getStats();
   
   const { created, destroyed, alive } = stats;
   
@@ -4188,7 +4172,7 @@ interface GetStatsResult {
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
-    const stats = await sdk.collections.stats();
+    const stats = await sdk.collection.stats();
 
     const { created, destroyed, alive } = stats;
 
@@ -4214,7 +4198,7 @@ The method gets the last generated token id.
 ```typescript
 import { LastTokenIdResult } from '@unique-nft/substrate-client/types';
 
-const lastTokenIdResult: LastTokenIdResult = await sdk.collections.lastTokenId({
+const lastTokenIdResult: LastTokenIdResult = await sdk.collection.lastTokenId({
   collectionId: 1,
 });
 
@@ -4245,7 +4229,7 @@ interface LastTokenIdResult {
 ```typescript
   import { LastTokenIdResult } from '@unique-nft/substrate-client/types';
 
-  const lastTokenIdResult: LastTokenIdResult = await sdk.collections.lastTokenId({
+  const lastTokenIdResult: LastTokenIdResult = await sdk.collection.lastTokenId({
     collectionId: 1,
   });
   
@@ -4269,7 +4253,7 @@ interface LastTokenIdResult {
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
-    const lastTokenId = await sdk.collections.lastTokenId();
+    const lastTokenId = await sdk.collection.lastTokenId();
 
     const { tokenId } = lastTokenId;
 
@@ -4298,7 +4282,7 @@ import {
   TotalSupplyResult,
 } from '@unique-nft/substrate-client/tokens/types';
 
-const result: TotalSupplyResult = await sdk.collections.totalSupply({
+const result: TotalSupplyResult = await sdk.collection.totalSupply({
   collectionId: 1
 });
 const { totalSupply } = result;
@@ -4334,7 +4318,7 @@ interface TotalSupplyResult {
     TotalSupplyResult,
   } from '@unique-nft/substrate-client/tokens/types';
   
-  const result: TotalSupplyResult = await sdk.collections.totalSupply({
+  const result: TotalSupplyResult = await sdk.collection.totalSupply({
     collectionId: 1
   });
   const { totalSupply } = result;
@@ -4357,7 +4341,7 @@ interface TotalSupplyResult {
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
-    const result = await sdk.collections.totalSupply();
+    const result = await sdk.collection.totalSupply();
 
     const { totalSupply } = result;
 
@@ -4392,7 +4376,7 @@ const AllowanceArgs: AllowanceArguments = {
     tokenId: 1,
 };
 
-const { isAllowed } = await sdk.tokens.allowance(AllowanceArgs);
+const { isAllowed } = await sdk.token.allowance(AllowanceArgs);
 ```
 
 
@@ -4439,7 +4423,7 @@ const AllowanceArgs: AddToAllowListArguments = {
     tokenId: 1,
 };
 
-const { isAllowed } = await sdk.tokens.allowance(AllowanceArgs);
+const { isAllowed } = await sdk.token.allowance(AllowanceArgs);
 ```
 
   </CodeGroupItem>
@@ -4458,7 +4442,7 @@ curl -X 'GET' \
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
-const { isAllowed } = await sdk.tokens.allowance({
+const { isAllowed } = await sdk.token.allowance({
     address: '<your account address>',
     collectionId: '<ID of the collection>',
     newAdminId: '<valid address>'
@@ -4492,7 +4476,7 @@ const burnItemArgs: BurnTokenArguments = {
   tokenId: 1,
   collectionId: 1,
 };
-const setResult = await sdk.tokens.burn.submitWaitResult(burnItemArgs);
+const setResult = await sdk.token.burn.submitWaitResult(burnItemArgs);
 const { collectionId, tokenId, address } = setResult.parsed;
 ```
 
@@ -4542,7 +4526,7 @@ const burnItemArgs: BurnTokenArguments = {
   tokenId: 1,
   collectionId: 1,
 };
-const setResult = await sdk.tokens.burn.submitWaitResult(burnItemArgs);
+const setResult = await sdk.token.burn.submitWaitResult(burnItemArgs);
 const { collectionId, tokenId, address } = setResult.parsed;
 ```
 
@@ -4581,7 +4565,7 @@ const { collectionId, tokenId, address } = setResult.parsed;
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
-    const result = await sdk.tokens.burn.submitWaitResult({
+    const result = await sdk.token.burn.submitWaitResult({
       "collectionId": 1,
       "tokenId": 1,
       "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty"
@@ -4642,10 +4626,10 @@ const args: CreateMultipleTokensArguments = {
   ],
 };
 
-const result = await sdk.tokens.createMultiple.submitWaitResult(args);
+const result = await sdk.token.createMultiple.submitWaitResult(args);
 const [{ collectionId, tokenId }] = result.parsed;
 
-const token = await sdk.tokens.get({ collectionId, tokenId });
+const token = await sdk.token.get({ collectionId, tokenId });
 ```
 
 #### Arguments
@@ -4715,10 +4699,10 @@ const args: CreateMultipleTokensArguments = {
   ],
 };
 
-const result = await sdk.tokens.createMultiple.submitWaitResult(args);
+const result = await sdk.token.createMultiple.submitWaitResult(args);
 const [{ collectionId, tokenId }] = result.parsed;
 
-const token = await sdk.tokens.get({ collectionId, tokenId });
+const token = await sdk.token.get({ collectionId, tokenId });
 ```
 
   </CodeGroupItem>
@@ -4771,7 +4755,7 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
-const result = await sdk.tokens.createMultiple.submitWaitResult({
+const result = await sdk.token.createMultiple.submitWaitResult({
   address: '5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty',
   collectionId: 183,
   tokens: [
@@ -4843,10 +4827,10 @@ const createTokenArgs: CreateTokenNewArguments = {
   },
 };
 
-const result = await sdk.tokens.create.submitWaitResult(createArgs);
+const result = await sdk.token.create.submitWaitResult(createArgs);
 const { collectionId, tokenId } = result.parsed;
 
-const token = await sdk.tokens.get({ collectionId, tokenId });   
+const token = await sdk.token.get({ collectionId, tokenId });   
 ```
 
 #### Arguments
@@ -4940,10 +4924,10 @@ const createTokenArgs: CreateTokenNewArguments = {
     },
 };
 
-const result = await sdk.tokens.create.submitWaitResult(createArgs);
+const result = await sdk.token.create.submitWaitResult(createArgs);
 const { collectionId, tokenId } = result.parsed;
 
-const token = await sdk.tokens.get({ collectionId, tokenId });
+const token = await sdk.token.get({ collectionId, tokenId });
 ```
 
   </CodeGroupItem>
@@ -4991,7 +4975,7 @@ const token = await sdk.tokens.get({ collectionId, tokenId });
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
-    const result = await sdk.tokens.create.submitWaitResult({
+    const result = await sdk.token.create.submitWaitResult({
       "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
       "collectionId": 183,
       "data": {
@@ -5037,7 +5021,7 @@ Deletes **properties** from a token.
     propertyKeys: ['foo', 'bar'],
   };
   
-  const result = await sdk.tokens.deleteProperties.submitWaitResult(args);
+  const result = await sdk.token.deleteProperties.submitWaitResult(args);
   
   console.log(result.parsed);
 ```
@@ -5088,7 +5072,7 @@ This method returns `DeleteTokenPropertiesResult`
     propertyKeys: ['foo', 'bar'],
   };
   
-  const result = await sdk.tokens.deleteProperties.submitWaitResult(args);
+  const result = await sdk.token.deleteProperties.submitWaitResult(args);
   
   console.log(result.parsed);
 ```
@@ -5129,7 +5113,7 @@ This method returns `DeleteTokenPropertiesResult`
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
-    const { parsed: { properties } } = await sdk.tokens.deleteProperties.submitWaitResult({
+    const { parsed: { properties } } = await sdk.token.deleteProperties.submitWaitResult({
       "address": "5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX",
       "collectionId": 1,
       "tokenId": 1,
@@ -5171,7 +5155,7 @@ Sets (creates or overwrites) **properties** for token.
     ],
   };
   
-  const result = await sdk.tokens.setProperties.submitWaitResult(args);
+  const result = await sdk.token.setProperties.submitWaitResult(args);
   
   console.log(result.parsed);
 ```
@@ -5230,7 +5214,7 @@ This method returns `SetTokenPropertiesResult`
     ],
   };
   
-  const result = await sdk.tokens.setProperties.submitWaitResult(args);
+  const result = await sdk.token.setProperties.submitWaitResult(args);
   
   console.log(result.parsed);
 ```
@@ -5276,7 +5260,7 @@ This method returns `SetTokenPropertiesResult`
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
-    const { parsed: { properties } } = await sdk.tokens.setProperties.submitWaitResult({
+    const { parsed: { properties } } = await sdk.token.setProperties.submitWaitResult({
       "address": "5HNid8gyLiwocM9PyGVQetbWoBY76SrixnmjTRtewgaicKRX",
       "collectionId": 1,
       "tokenId": 1,
@@ -5308,7 +5292,7 @@ Returns information about the NFT of a specific collection.
 #### Brief example
 
 ```typescript
-const token = await sdk.tokens.get({
+const token = await sdk.token.get({
   collectionId: 2,
   tokenId: 1,
 });
@@ -5353,7 +5337,7 @@ type TokenByIdResult = Omit<UniqueTokenDecoded, 'owner'> & {
   <CodeGroupItem title="JS">
 
 ```typescript
-const token = await sdk.tokens.get({
+const token = await sdk.token.get({
   collectionId: 2,
   tokenId: 1,
 });
@@ -5382,7 +5366,7 @@ curl -X 'GET' \
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
-    const result = await sdk.tokens.get({
+    const result = await sdk.token.get({
       collectionId: 2,
       tokenId: 1,
     });
@@ -5424,7 +5408,7 @@ const args: TokenOwnerArguments = {
   // blockHashAt: '0xff19c2457fa4d7216cfad444615586c4365250e7310e2de7032ded4fcbd36873'
 };
 
-const result: TokenOwnerResult = await sdk.tokens.tokenOwner(
+const result: TokenOwnerResult = await sdk.token.owner(
   args,
 );
 ```
@@ -5472,7 +5456,7 @@ const args: TokenOwnerArguments = {
   // blockHashAt: '0xff19c2457fa4d7216cfad444615586c4365250e7310e2de7032ded4fcbd36873'
 };
 
-const result: TokenOwnerResult = await sdk.tokens.tokenOwner(
+const result: TokenOwnerResult = await sdk.token.owner(
   args,
 );
 ```
@@ -5495,7 +5479,7 @@ const result: TokenOwnerResult = await sdk.tokens.tokenOwner(
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
-    const { owner } = await sdk.tokens.owner({
+    const { owner } = await sdk.token.owner({
       collectionId: 1,
       tokenId: 1,
     });
@@ -5531,7 +5515,7 @@ const args: TokenPropertiesArguments = {
   // propertyKeys: ['foo', 'bar'],
 };
 
-const result: TokenPropertiesResult = await sdk.tokens.properties(args);
+const result: TokenPropertiesResult = await sdk.token.properties(args);
 ```
 
 #### Arguments
@@ -5581,7 +5565,7 @@ const args: TokenPropertiesArguments = {
   // propertyKeys: ['foo', 'bar'],
 };
 
-const result: TokenPropertiesResult = await sdk.tokens.properties(args);
+const result: TokenPropertiesResult = await sdk.token.properties(args);
 ```
 
   </CodeGroupItem>
@@ -5601,7 +5585,7 @@ const result: TokenPropertiesResult = await sdk.tokens.properties(args);
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
-    const { properties } = await sdk.tokens.properties({
+    const { properties } = await sdk.token.properties({
       collectionId: 1,
       tokenId: 1,
     });
@@ -5637,7 +5621,7 @@ const args: TransferArguments = {
   tokenId: 1,
 };
 
-const result = await sdk.tokens.transfer.submitWaitResult(args);
+const result = await sdk.token.transfer.submitWaitResult(args);
 
 console.log(result.parsed);
 ```
@@ -5700,7 +5684,7 @@ const args: TransferArguments = {
   tokenId: 1,
 };
 
-const result = await sdk.tokens.transfer.submitWaitResult(args);
+const result = await sdk.token.transfer.submitWaitResult(args);
 
 console.log(result.parsed);
 ```
@@ -5741,7 +5725,7 @@ console.log(result.parsed);
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
-    const result = await sdk.tokens.transfer.submitWaitResult({
+    const result = await sdk.token.transfer.submitWaitResult({
       "collectionId": 183,
       "tokenId": 1,
       "address": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
@@ -5782,7 +5766,7 @@ const approveArgs: ApproveArguments = {
     isApprove: true
 };
 
-const result = await sdk.tokens.approve.submitWaitResult(approveArgs);
+const result = await sdk.token.approve.submitWaitResult(approveArgs);
 const { collectionId, tokenId } = result.parsed;
 ```
 
@@ -5833,7 +5817,7 @@ const approveArgs: ApproveArguments = {
     isApprove: true
 };
 
-const result = await sdk.tokens.approve.submitWaitResult(approveArgs);
+const result = await sdk.token.approve.submitWaitResult(approveArgs);
 const { collectionId, tokenId } = result.parsed;
 ```
 
@@ -5873,7 +5857,7 @@ const { collectionId, tokenId } = result.parsed;
 ```typescript
     const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
     
-    const result = await sdk.tokens.approve.submitWaitResult({
+    const result = await sdk.token.approve.submitWaitResult({
         address: '5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty',
         spender: '5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty',
         collectionId: 1,
@@ -5901,7 +5885,7 @@ Checks if token exists in collection. Returns true or false.
 #### Brief example
 
 ```typescript
-const { isExists } = await sdk.tokens.exists({ collectionId: 1, tokenId: 1 });
+const { isExists } = await sdk.token.exists({ collectionId: 1, tokenId: 1 });
 ```
 
 #### Arguments
@@ -5935,7 +5919,7 @@ type TokenExistsResult = {
   <CodeGroupItem title="SDK">
 
 ```typescript
-const { isExists } = await sdk.tokens.exists({ collectionId: 1, tokenId: 1 });
+const { isExists } = await sdk.token.exists({ collectionId: 1, tokenId: 1 });
 ```
 
   </CodeGroupItem>
@@ -5955,7 +5939,7 @@ const { isExists } = await sdk.tokens.exists({ collectionId: 1, tokenId: 1 });
 ```typescript
 const sdk = new Sdk({ baseUrl: 'https://rest.unique.network/opal/v1' });
 
-const { isExists } = await sdk.tokens.exists({
+const { isExists } = await sdk.token.exists({
     collectionId: 1,
     tokenId: 1
 });
@@ -7353,7 +7337,7 @@ const createTokenArgs: GetRefungibleCollectionArguments = {
 const result = await sdk.refungible.createToken.submitWaitResult(createArgs);
 const { collectionId, tokenId } = result.parsed;
 
-const token = await sdk.tokens.get({ collectionId, tokenId });
+const token = await sdk.token.get({ collectionId, tokenId });
 ```
 
 #### Arguments
@@ -7403,7 +7387,7 @@ const createTokenArgs: GetRefungibleCollectionArguments = {
 const result = await sdk.refungible.createToken.submitWaitResult(createArgs);
 const { collectionId, tokenId } = result.parsed;
 
-const token = await sdk.tokens.get({ collectionId, tokenId });
+const token = await sdk.token.get({ collectionId, tokenId });
 ```
 
   </CodeGroupItem>
@@ -7917,7 +7901,7 @@ const args: TransferArguments = {
   tokenId: 1,
 };
 
-const result = await sdk.tokens.transfer.submitWaitResult(args);
+const result = await sdk.token.transfer.submitWaitResult(args);
 
 console.log(result.parsed);
 ```

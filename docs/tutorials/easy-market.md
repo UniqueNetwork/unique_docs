@@ -162,7 +162,7 @@ Before we, as marketplace, can do anything with token - we need to obtain owners
 <summary>Example:</summary>
 
 ```ts
-const { hash } = await sdk.tokens.transfer.submitWatch({ 
+const { hash } = await sdk.token.transfer.submitWatch({ 
   address: selectedAccount?.address, 
   collectionId, 
   tokenId, 
@@ -224,8 +224,8 @@ if (from.substrate !== seller
   ) throw new Error('Extrinsic is not valid');
 
 // save offer to DB
-const collection = await sdk.collections.get({ collectionId });
-const token = await sdk.tokens.get({ collectionId, tokenId });
+const collection = await sdk.collection.get({ collectionId });
+const token = await sdk.token.get({ collectionId, tokenId });
 
 const { name, tokenPrefix } = collection;
 const { image } = token;
@@ -335,7 +335,7 @@ Now, when everything verified - we need to finish up the trade. First - give NFT
 <summary>Back-end:</summary>
 
 ```ts
-await sdk.tokens.transfer.submit({
+await sdk.token.transfer.submit({
   address, // market wallet address
   collectionId,
   tokenId,

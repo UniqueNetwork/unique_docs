@@ -158,7 +158,7 @@ When the contract is found, we just specify our address that performs a transact
 (the `myStrValue` variable) we need to access. 
 
 ```typescript:no-line-numbers
-import {Sdk} from '@unique-nft/sdk'
+import Sdk from '@unique-nft/sdk'
 import {KeyringProvider} from '@unique-nft/accounts/keyring'
 import abiJSON from './abi.json'
 
@@ -242,7 +242,7 @@ import {KeyringProvider} from '@unique-nft/accounts/keyring';
 For example, to execute the `updateMyUint` method, you can use the following code:
 
 ```typescript:no-line-numbers
-import {Sdk} from '@unique-nft/sdk'
+import Sdk from '@unique-nft/sdk'
 import {KeyringProvider} from '@unique-nft/accounts/keyring'
 import abiJSON from './abi.json'
 

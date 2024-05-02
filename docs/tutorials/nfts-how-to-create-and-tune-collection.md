@@ -54,7 +54,7 @@ main() {
         schema: collectionSchema,
     };
 
-    const result = await sdk.collections.creation.submitWaitResult(args);
+    const result = await sdk.collection.create.submitWaitResult(args);
 
     const { isCompleted } = result;
 
@@ -77,7 +77,7 @@ main();
 
 ```
 
-**Arguments for the `sdk.collections.creation` method**:
+**Arguments for the `sdk.collection.create` method**:
 
 `address` - the address of the collection owner.
 
@@ -110,7 +110,7 @@ _#### todo:
 
 You can find the list of SDK methods, that you can use to adjust your collection [here](../sdk/methods.md#collection).
 
-For example, let's update the collection limits using `sdk.collections.setLimits` method. The method sets some collection limits and starts enforcing them immediately. By the way, only the collection owner has the permission to call this method.
+For example, let's update the collection limits using `sdk.collection.setLimits` method. The method sets some collection limits and starts enforcing them immediately. By the way, only the collection owner has the permission to call this method.
 
 ```typescript:no-line-numbers
 import "@unique-nft/substrate-client/tokens";
@@ -132,7 +132,7 @@ const limitsArgs: SetCollectionLimitsArguments = {
   },
 };
 
-const setResult = await sdk.collections.setLimits.submitWaitResult(limitsArgs);
+const setResult = await sdk.collection.setLimits.submitWaitResult(limitsArgs);
 const {
   parsed: { collectionId, limits },
 } = result;
