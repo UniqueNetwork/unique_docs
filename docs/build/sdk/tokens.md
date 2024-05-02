@@ -60,24 +60,24 @@ this is the full sample code that creates a new collection and a new token in it
 <CodeGroupItem title = "SDK">
 
 ```ts:no-line-numbers
-import {Sdk} from '@unique-nft/sdk'
+import Sdk, {CHAIN_CONFIG} from '@unique-nft/sdk'
 import {KeyringProvider} from '@unique-nft/accounts/keyring'
 
 async function main() {
   const account = await KeyringProvider.fromMnemonic(
     'bonus rubber price teach teach teach teach century scorpion require require require'
   )
-  const address = account.getAddress()
+  const address = account.address
 
   const sdk = new Sdk({
-    baseUrl: 'https://rest.unique.network/opal/v1', 
+    baseUrl: CHAIN_CONFIG.opal.restUrl, 
     signer: account,
   })
 
   ////////////////////////////////////
   // Create collection - quick simple way 
   ////////////////////////////////////
-  const {parsed, error} = await sdk.collections.creation.submitWaitResult({
+  const {parsed, error} = await sdk.collections.create.submitWaitResult({
     address,
     name: 'Test collection',
     description: 'My test collection',
@@ -90,11 +90,12 @@ async function main() {
   }
   const collectionId = parsed?.collectionId as number
   console.log(`Collection created. Id: ${collectionId}`)
+  console.log(`View this minted collection at https://uniquescan.io/opal/collections/${collectionId}`)
 
   ////////////////////////////////////
   // Mint token
   ////////////////////////////////////
-  const result = await sdk.tokens.create.submitWaitResult({
+  const result = await sdk.token.create.submitWaitResult({
     address,
     collectionId,
     data: {
@@ -112,7 +113,8 @@ async function main() {
 
   const tokenId = result.parsed?.tokenId as number
 
-  console.log(`Created token ${tokenId} in collection ${collectionId}`)
+  console.log(`Minted token ID ${tokenId} of 1 in collection ID ${collectionId}`)
+  console.log(`View this minted token at https://uniquescan.io/opal/tokens/${collectionId}/${tokenId}`)
 }
 
 main().catch((error) => {
@@ -177,7 +179,7 @@ async function main() {
    
    ... 
 
-  const result = await sdk.tokens.createMultiple.submitWaitResult({
+  const result = await sdk.token.createMultiple.submitWaitResult({
     address,
     collectionId,
     tokens: [ // array of tokens 
@@ -204,9 +206,14 @@ async function main() {
     ],
   })
 
-  const mintedTokens = result.parsed?.length
+  const mintedTokensCount = result.parsed?.length
 
-  console.log(`Minted ${mintedTokens} tokens in collection ${collectionId}`)
+  let currentTokenId;
+  result.parsed?.forEach((token, index) => {
+    currentTokenId = token?.tokenId as number
+    console.log(`Minted token ID #${currentTokenId}/${mintedTokensCount} in collection ${collectionId}`)
+    console.log(`View this minted token at https://uniquescan.io/opal/tokens/${collectionId}/${currentTokenId}`)
+  });
 }
 ```
 </CodeGroupItem>
