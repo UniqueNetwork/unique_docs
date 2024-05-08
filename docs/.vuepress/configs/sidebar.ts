@@ -74,6 +74,7 @@ export const sidebar: Record<string, SidebarConfig> = {
         text: 'EVM',
         children: [
           '/build/evm',
+          '/build/evm/accounts.md',
           '/build/evm/smart_contracts.md',
           '/build/evm/UniqueNFT.md'
         ],
