@@ -16,14 +16,14 @@ Install `@unique-nft/sdk` for Unique Network interaction and `@unique-nft/accoun
   <CodeGroupItem title="NPM"  active>
 
 ```bash:no-line-numbers
-npm install @unique-nft/sdk @unique-nft/accounts
+npm install @unique-nft/sdk @unique-nft/accounts @unique-nft/sr25519
 ```
 
   </CodeGroupItem>
   <CodeGroupItem title="YARN">
 
 ```bash:no-line-numbers
-yarn add @unique-nft/sdk @unique-nft/accounts
+yarn add @unique-nft/sdk @unique-nft/accounts @unique-nft/sr25519
 ```
 
   </CodeGroupItem>
@@ -36,24 +36,14 @@ In the `baseUrl` parameter, you must pass one of the paths to the network. For a
 You can also set a default signer; for this, you must set the seed phrase to the signer option.
 
 ```typescript:no-line-numbers
-import Sdk, {Options} from "@unique-nft/sdk";
+const mnemonic = "<SET THE MNEMONIC SEED PHRASE FOR THE DEFAULT SIGNER>";
+const account = Sr25519Account.fromUri(mnemonic);
 
-const baseUrl = "https://rest.unique.network/opal/v1";
-const mnemonic = '<SET THE MNEMONIC SEED PHRASE FOR THE DEFAULT SIGNER>';
-
-const options: KeyringOptions = {
-  type: "sr25519",
-};
-const provider = new KeyringProvider(options);
-await provider.init();
-
-const signer = provider.addSeed(mnemonic);
-
-const options: Options = {
-    baseUrl,
-    signer
-};
-const sdk = new Sdk(options);
+// set "account" as a default signer
+const sdk = new Sdk({
+  baseUrl: CHAIN_CONFIG.opal.restUrl,
+  account,
+});
 ```
 
 ## Creating accounts
@@ -69,11 +59,10 @@ affair spoon other impact target solve extra range cute myself float panda
 Here is how we can use it to get an account.
 
 ```typescript:no-line-numbers
-import { getAccountFromMnemonic } from '@unique-nft/accounts';
+import { Sr25519Account } from "@unique-nft/sr25519";
 
-const account = await getAccountFromMnemonic({
-  mnemonic: 'affair spoon other impact target solve extra range cute myself float panda',
-});
+const mnemonic = "<SET THE MNEMONIC SEED PHRASE FOR THE DEFAULT SIGNER>";
+const account = Sr25519Account.fromUri(mnemonic);
 console.log(account);
 ```
 

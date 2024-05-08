@@ -28,6 +28,8 @@ const creationResult = await sdk.collection.create.submitWaitResult({
 });
 ```
 
+> Note: After a collection is created, you can change nesting permission from less to more restrictive. For example, if the collection has permission collectionAdmin: true, you can switch it to false, but not vice versa.
+
 ## Creating bundles
 
 ```typescript

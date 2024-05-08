@@ -13,7 +13,7 @@ However, it is possible to mix these two worlds thanks to account mirroring.
 
 Mirroring is a mechanism that allows you to get address representation in a different format—substrate for ethereum address and ethereum for substrate.
 
-You can play around with address converter in the [Reference section]('../../../../reference/tools.md').
+You can play around with address converter in the [reference section](../../../../reference/tools.md).
 
 For example:
 
