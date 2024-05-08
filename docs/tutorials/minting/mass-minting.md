@@ -35,7 +35,7 @@ Metadata is basic information that describes NFT or collection, such as its name
 
 > ✏️ In the `config.js` file, fill in the fields `collectionName` (max 64 symbols), `collectionDescription` (max 256 symbols).
 >
-> If you want to make nesting available for your collection, set the `nesting` property. [Read more about nesting](https://docs.unique.network/networks/nesting.html).
+> If you want to make nesting available for your collection, set the `nesting` property. [Read more about nesting](../../build/sdk/examples-nesting.md).
 
 After the creation of the collection metadata file, we need to create metadata of our NFTs
 

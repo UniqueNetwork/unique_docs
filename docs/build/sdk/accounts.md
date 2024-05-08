@@ -20,17 +20,13 @@ You will need to create or generate a mnemonic phrase (a set of words that can b
 
 ### Generate a new account
 
-An easy way to create a new account is to use the `generateAccount` function from the `Accounts` package:
+An easy way to create a new account is to use the `@unique-nft/sr25519` package:
 
 ```typescript:no-line-numbers
-import { generateAccount, SignatureType } from "@unique-nft/accounts";
+import { Sr25519Account } from "@unique-nft/sr25519";
 
-const account = await generateAccount({
-  pairType: SignatureType.Sr25519,
-  meta: {
-    name: 'my_test_account'
-  }
-})
+const mnemonic = Sr25519Account.generateMnemonic();
+const account = Sr25519Account.fromUri(mnemonic);
 
 console.log(account);
 ```
@@ -54,58 +50,6 @@ console.log(account);
 ```
 </template>
 </Details>
-
-### Get an account from mnemonic
-
-If you already have a mnemonic phrase, you can use it to get an account. Here is what the phrase looks like:
-
-``
-affair spoon other impact target solve extra range cute myself float panda
-``
-
-Here is how we can use it to get an account.
-
-```typescript:no-line-numbers
-import { getAccountFromMnemonic } from '@unique-nft/accounts';
-
-const account = await getAccountFromMnemonic({
-  mnemonic: 'affair spoon other impact target solve extra range cute myself float panda',
-});
-console.log(account);
-```
-
-<Details><template v-slot:header>
-Console log output
-</template><template v-slot:body>
-
-```typescript:no-line-numbers
-{
-  mnemonic: 'affair spoon other impact target solve extra range cute myself float panda',
-  seed: '0x2a5dd888c0fb536c7c82ee53bb44ca49825ab134dd5a9c09e62423eeba30847b',
-  publicKey: '0x094bb2d311460005c5072635beb8a11c8f15521d2136bdfbab3163af3c21412e',
-  keyfile: {
-    encoded: 'MFMCAQEwBQYDK2VwBCIEICpd2IjA+1NsfILuU7tEykmCWrE03VqcCeYkI+66MIR7Ji4DUViFrOGgvhQNVi8elFCpHSDekzUg/5dpSD2lZsuhIwMhACYuA1FYhazhoL4UDVYvHpRQqR0g3pM1IP+XaUg9pWbL',
-    encoding: { content: [Array], type: [Array], version: '3' },
-    address: '5CvmLzTcAfSFJgRiJ7DbKYwDUMcRBbNAa3bQeCrNM2nXTvBk',
-    meta: {}
-  }
-}
-```
-
-</template>
-</Details>
-
-Or, we can generate a mnemonic phrase and then get an account using it:
-
-```typescript:no-line-numbers
-import { getAccountFromMnemonic } from '@unique-nft/accounts';
-import { mnemonicGenerate } from '@polkadot/util-crypto';
-
-const mnemonicPhrase = mnemonicGenerate();
-const account = await getAccountFromMnemonic({
-  mnemonic: mnemonicPhrase,
-});
-```
 
 ### Providers
 
