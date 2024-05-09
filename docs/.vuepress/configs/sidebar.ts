@@ -68,6 +68,7 @@ export const sidebar: Record<string, SidebarConfig> = {
             '/build/sdk/collections.md',
             '/build/sdk/tokens.md',
             '/build/sdk/examples-nesting.md',
+            '/build/sdk/refungible.md',
         ]
       },
       {
