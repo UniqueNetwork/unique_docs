@@ -69,6 +69,7 @@ export const sidebar: Record<string, SidebarConfig> = {
             '/build/sdk/tokens.md',
             '/build/sdk/examples-nesting.md',
             '/build/sdk/refungible.md',
+            '/build/sdk/sponsoring.md',
         ]
       },
       {
@@ -77,8 +78,19 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/build/evm',
           '/build/evm/accounts.md',
           '/build/evm/evm-from-substrate.md',
+          {
+            text: 'Precompiles',
+            link: '/build/evm/precompiles/index.md',
+            collapsible: true,
+            children: [
+              '/build/evm/precompiles/index.md',
+              '/build/evm/precompiles/contract-helpers.md',
+              '/build/evm/precompiles/collection-helpers.md',
+            ],
+          },
+          '/build/evm/sponsoring.md',
           '/build/evm/smart_contracts.md',
-          '/build/evm/UniqueNFT.md'
+          '/build/evm/UniqueNFT.md',
         ],
       }
     ],
@@ -199,7 +211,9 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/reference/blockchain/owner-admin-roles.md',
           '/reference/blockchain/rpc.md',
           '/reference/blockchain/extrinsics.md',
-          '/reference/blockchain/events.md',        ],
+          '/reference/blockchain/events.md',
+          '/reference/blockchain/contract-helpers.md'
+        ],
       },
     ],
   },
