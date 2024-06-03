@@ -4,6 +4,8 @@ Address: **0x842899ecf380553e8a4de75bf534cdf6fbf64049**
 
 This precompiled contract allows the owner to manage the sponsorship of their contract.
 
+In Unique Network, transactions can be sponsored, allowing for a gasless experience where the sponsor covers the transaction fees. This enables seamless and cost-free transfers of NFTs and the execution of smart contracts, even for accounts without native tokens.
+
 [[toc]]
 
 ## Interface
@@ -93,4 +95,4 @@ console.log("Sponsoring enabled now:", sponsoringEnabledAfter);
 
 ## Setting up Metamask
 
-When sending transactions through Metamask, it initially verifies if the user has sufficient balance to cover gas fees. To enable sponsoring with Metamask, we need to bypass this gas check. Use the following library: https://github.com/UniqueNetwork/web3-provider-sponsoring.
+When sending transactions through Metamask, it initially verifies if the user has sufficient balance to cover gas fees. To enable sponsoring with Metamask, we need to bypass this gas check. Use the following [library](https://github.com/UniqueNetwork/web3-provider-sponsoring).
