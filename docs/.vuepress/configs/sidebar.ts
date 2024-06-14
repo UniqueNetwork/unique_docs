@@ -99,6 +99,7 @@ export const sidebar: Record<string, SidebarConfig> = {
           // '/tutorials/accounts/integrate-creating-into-UI.md', - how-to-accounts.md
           '/tutorials/nfts-how-to-create-and-tune-collection.md',
           '/tutorials/nfts-how-to-mint.md',
+          '/tutorials/createCollectionV2',
           // '/tutorials/store-files.md',  - duplicate
           // '/tutorials/nfts-ways-to-create.md', - duplicate
           // '/tutorials/destroyCollection.md', - how-to-collections.md
@@ -168,7 +169,7 @@ export const sidebar: Record<string, SidebarConfig> = {
             ]
           },
         ]
-      }
+      },
     ],
     '/reference': [
       {
@@ -201,6 +202,12 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/reference/blockchain/extrinsics.md',
           '/reference/blockchain/events.md',        ],
       },
+      {
+        text: 'Schemas',
+        children: [
+          '/reference/schemas/2.0.0',
+        ]
+      }
     ],
   },
 }
