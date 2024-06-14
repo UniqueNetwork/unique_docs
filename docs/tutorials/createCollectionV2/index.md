@@ -13,7 +13,6 @@ import * as dotenv from 'dotenv';
 
 const SUBSTRATE_MNEMONIC = PUT_YOUR_MNEMONIC_HERE;
 
-dotenv.config();
 
 const getLinkToCollection = (sdk: Sdk, collectionId: number) => {
   return `${sdk.options.baseUrl}/collections?collectionId=${collectionId}`;
