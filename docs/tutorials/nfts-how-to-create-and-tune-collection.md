@@ -1,4 +1,4 @@
-# Substrate Client. How to create and setup a collection
+# How to create and setup a collection
 
 To create an NFT collection, you need to initialize the SDK client. You can learn how to to do this in this [article](../sdk/installation.md). Also, you can learn how to get the signer address there, that you'll need to sign a collection creation transaction.
 

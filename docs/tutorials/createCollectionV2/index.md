@@ -1,4 +1,4 @@
-# Substrate Client. Mint an NFT using schema 2.0.0
+# Mint an NFT using schema 2.0.0
 
 Below is an example of creating a collection and generating a token. Upon executing this script, you will obtain a collection and token similar to the following:
  [Collection](https://market2.uniquenetwork.dev/opal/collection/2943)
@@ -12,7 +12,6 @@ import Sdk from '@unique-nft/sdk';
 import * as dotenv from 'dotenv';
 
 const SUBSTRATE_MNEMONIC = PUT_YOUR_MNEMONIC_HERE;
-
 
 const getLinkToCollection = (sdk: Sdk, collectionId: number) => {
   return `${sdk.options.baseUrl}/collections?collectionId=${collectionId}`;
