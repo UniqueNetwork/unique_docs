@@ -2,7 +2,8 @@
 
 Below is an example of creating a collection and generating a token. Upon executing this script, you will obtain a collection and token similar to the following:
  [Collection](https://unqnft.io/collection/654?filterState=)
- [Token](https://unqnft.io/unique/token/654/4).
+ [NFT1](https://unqnft.io/unique/token/654/1).
+ [NFT2](https://unqnft.io/unique/token/654/4).
 
  [Metadata description](/reference/schemas/2.0.0.html)
 
@@ -67,7 +68,7 @@ const createCollectionV2 = async (sdk: Sdk): Promise<number> => {
   return collectionId;
 };
 
-const mintTokensV2 = async (sdk: Sdk, collectionId: number) => {
+const mintTokensV2 = async (sdk: Sdk, collectionId: number, image: string) => {
   const tokensMintingResult = await sdk.token.createMultipleV2({
     collectionId,
     tokens: [
@@ -75,7 +76,7 @@ const mintTokensV2 = async (sdk: Sdk, collectionId: number) => {
         owner: sdk.options.account?.address,
         schemaName: "unique",
         schemaVersion: "2.0.0",
-        image: "https://stage-ipfs.unique.network/ipfs/QmPT3F16h5jPuELwBqHiApM7iWkQtJdSrok1Z4JDMhnze3",
+        image,
         name: "Demo Hasky",
         description: "Demo Hasky Description",
         background_color: "#00BFFF",
@@ -156,7 +157,8 @@ const main = async () => {
 
   try {
     const collectionId = await createCollectionV2(sdk);
-    await mintTokensV2(sdk, collectionId);
+    await mintTokensV2(sdk, collectionId, "https://stage-ipfs.unique.network/ipfs/QmPT3F16h5jPuELwBqHiApM7iWkQtJdSrok1Z4JDMhnze3");
+    await mintTokensV2(sdk, collectionId, "https://stage-ipfs.unique.network/ipfs/QmbtRoNz7GMbSu4iBerp5zuW9W9pZZdAhXFPNxfmEWSUSy");
   } catch (e) {
     console.log(e);
   }
