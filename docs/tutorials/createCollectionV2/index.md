@@ -1,8 +1,9 @@
-# Substrate Client. Mint an NFT using schema 2.0.0
+# Mint an NFT using schema 2.0.0
 
 Below is an example of creating a collection and generating a token. Upon executing this script, you will obtain a collection and token similar to the following:
- [Collection](https://market2.uniquenetwork.dev/opal/collection/2943)
- [Token](https://market2.uniquenetwork.dev/opal/token/2943/1).
+ [Collection](https://unqnft.io/collection/654?filterState=)
+ [NFT1](https://unqnft.io/unique/token/654/1).
+ [NFT2](https://unqnft.io/unique/token/654/4).
 
  [Metadata description](/reference/schemas/2.0.0.html)
 
@@ -12,7 +13,6 @@ import Sdk from '@unique-nft/sdk';
 import * as dotenv from 'dotenv';
 
 const SUBSTRATE_MNEMONIC = PUT_YOUR_MNEMONIC_HERE;
-
 
 const getLinkToCollection = (sdk: Sdk, collectionId: number) => {
   return `${sdk.options.baseUrl}/collections?collectionId=${collectionId}`;
@@ -25,34 +25,36 @@ const getLinkToToken = (sdk: Sdk, collectionId: number, tokenId: number) => {
 const createCollectionV2 = async (sdk: Sdk): Promise<number> => {
   const collectionCreationV2Result = await sdk.collection.createV2({
     address: PUT_YOUR_ADDRESS_HERE,
-    name: 'Collection V2',
-    description: 'Test description Collection V2',
-    tokenPrefix: 'DEMO',
-    symbol: "TCD",
+    name: 'Winter Wonders: Husky Adventures',
+    description: 'NFT collection of huskies in winter sports and snowy landscapes, capturing their adventurous spirit and joyful energy.',
+    tokenPrefix: 'WWW',
+    symbol: "WWW",
     cover_image: {
-      "url": "https://ipfs.unique.network/ipfs/QmcAcH4F9HYQtpqKHxBFwGvkfKb8qckXj2YWUrcc8yd24G/image1.png"
+      "url": "https://stage-ipfs.unique.network/ipfs/QmXQs4AEdREu4ecyuVPJaNRYZCavwj75CAkjszDn84cPqP"
     },
     potential_attributes: [
-        {
-          "trait_type": "color",
-          "values": [
-            "red",
-            "green",
-            "blue"
-          ]
-        },
-        {
-          "trait_type": "shape",
-          "values": [
-            "Circle",
-          ]
-        },
-        {
-          "trait_type": "rarity",
-          "values": [
-            "10", "20", "30"
-          ]
-        }
+      {
+        "trait_type": "Fur Color",
+      },
+      {
+        "trait_type": "Eye Color",
+      },
+      {
+        "trait_type": "Winter Sport",
+        "values": ["Skiing", "Snowboarding", "Sledding", "Ice Skating", "Snowshoeing"]
+      },
+      {
+        "trait_type": "Accessory",
+        "values": ["Scarf", "Hat", "Goggles", "Boots", "Jacket"]
+      },
+      {
+        "trait_type": "Background",
+        "values": ["Snowy Mountain", "Frozen Lake", "Snow-Covered Forest", "Cozy Cabin", "Snowfall"]
+      },
+      {
+        "trait_type": "Rarity",
+        "values": ["Common", "Uncommon", "Rare", "Epic", "Legendary"]
+      }
     ],
     permissions: {nesting: {collectionAdmin: true}},
     limits: {ownerCanTransfer: true, ownerCanDestroy: true},
@@ -66,7 +68,7 @@ const createCollectionV2 = async (sdk: Sdk): Promise<number> => {
   return collectionId;
 };
 
-const mintTokensV2 = async (sdk: Sdk, collectionId: number) => {
+const mintTokensV2 = async (sdk: Sdk, collectionId: number, image: string) => {
   const tokensMintingResult = await sdk.token.createMultipleV2({
     collectionId,
     tokens: [
@@ -74,9 +76,9 @@ const mintTokensV2 = async (sdk: Sdk, collectionId: number) => {
         owner: sdk.options.account?.address,
         schemaName: "unique",
         schemaVersion: "2.0.0",
-        image: "https://stage-ipfs.unique.network/ipfs/QmRcrfQfJsZxzgFt4aqvwAt9S662F6ym7zMGSLXYfkXhYC",
-        name: "Demo Token",
-        description: "Demo Token Description",
+        image,
+        name: "Demo Hasky",
+        description: "Demo Hasky Description",
         background_color: "#00BFFF",
         image_details: {
           name: "test image details",
@@ -84,33 +86,48 @@ const mintTokensV2 = async (sdk: Sdk, collectionId: number) => {
         },
         attributes: [
           {
-            "trait_type": "Color",
-            "value": "Red"
+            "trait_type": "Fur Color",
+            "value": 'test string attribute 1'
           },
           {
-            "trait_type": "Shape",
-            "value": "Circle"
+            "trait_type": "Eye Color",
+            "value": 'test string attribute 2'
+          },
+          {
+            "trait_type": "Winter Sport",
+            "value": "Snowboarding",
+          },
+          {
+            "trait_type": "Accessory",
+            "value": "Boots",
+          },
+          {
+            "trait_type": "Background",
+            "value": "Jacket",
           },
           {
             "trait_type": "Rarity",
-            "value": "20"
+            "value": "Legendary",
           }
         ],
         media: {
-          image: {
+          image_1: {
             type: "image",
-            url: "https://stage-ipfs.unique.network/ipfs/QmRcrfQfJsZxzgFt4aqvwAt9S662F6ym7zMGSLXYfkXhYC",
+            url: "https://stage-ipfs.unique.network/ipfs/QmPT3F16h5jPuELwBqHiApM7iWkQtJdSrok1Z4JDMhnze3",
           },
-          video: {
+          image_2: {
+            type: "image",
+            url: "https://stage-ipfs.unique.network/ipfs/QmScKMbkUBQWADSrZusc7SUPVTCtdadAaFQ1eb7nN5Ysff",
+          },
+          video_1: {
             type: "video",
             url: "https://stage-ipfs.unique.network/ipfs/QmcDMcdhp23fRe6aAZKwkJVsHzvSh5i3EdK2LPFhJPZjgb",
           },
-          audio22: {
+          audio_1: {
             type: "audio",
             url: "https://stage-ipfs.unique.network/ipfs/QmVniYM43KfoNahTM8Mg9UStG7LmC5rVAHYBKj9WnDjuRX",
           },
         },
-        youtube_url: "https://www.youtube.com/embed/Ws5jIo4NMDc?si=ZtDRJwqoqdu1VQhU",
       },
     ],
   });
@@ -134,17 +151,18 @@ const main = async () => {
   // init substrate account and sdk
   const mnemonic = SUBSTRATE_MNEMONIC
   if (!mnemonic) throw new Error('SUBSTRATE_MNEMONIC env variable is not set')
-  const account = Sr25519Account.fromUri(mnemonic)
-  const sdk = new Sdk({baseUrl: 'https://rest.uniquenetwork.dev/opal/v1', account})
+  const account = Sr25519Account.fromUri(mnemonic);
+
+  const sdk = new Sdk({baseUrl: 'https://rest.unique.network/opal/v1', account})
 
   try {
     const collectionId = await createCollectionV2(sdk);
-    await mintTokensV2(sdk, collectionId);
+    await mintTokensV2(sdk, collectionId, "https://stage-ipfs.unique.network/ipfs/QmPT3F16h5jPuELwBqHiApM7iWkQtJdSrok1Z4JDMhnze3");
+    await mintTokensV2(sdk, collectionId, "https://stage-ipfs.unique.network/ipfs/QmbtRoNz7GMbSu4iBerp5zuW9W9pZZdAhXFPNxfmEWSUSy");
   } catch (e) {
     console.log(e);
   }
 };
-
 
 main()
   .catch((error) => {

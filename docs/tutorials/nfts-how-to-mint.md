@@ -1,4 +1,4 @@
-# Substrate Client. Mint an NFT using schemas
+# Mint an NFT using schemas
 
 ### Create an account
 
