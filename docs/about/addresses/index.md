@@ -117,6 +117,45 @@ The contract address is usually created when a contract is deployed to the Ether
 
 Both Externally Owned and Contract Addresses share the same format of having 42 hexadecimal characters.
 
+## Address Mirroring
+
+#### Introduction
+
+Address mirroring in blockchain is a process where an address from one blockchain network is represented in another network to facilitate interoperability. This is necessary because different blockchain networks, such as Ethereum and Substrate, use addresses of different lengths and formats. By creating mirrored addresses, these networks can communicate and interact seamlessly, allowing users to manage assets and perform transactions across multiple blockchains without compatibility issues.
+
+Address mirroring in blockchain systems isn't perfectly symmetrical with respect to the mirroring side.
+
+#### Key Length Discrepancies
+
+- **Substrate Public Key Length**: 32 bytes
+- **Ethereum Public Key Length**: 20 bytes
+
+The difference in key lengths is the root cause of mirroring issues. In certain parts of the blockchain, only a 32-byte address is allowed, such as in balances and the "collection owner" field. Other fields implement a special structure containing either a Substrate or Ethereum address along with a flag indicating the address type.
+
+- **Ethereum Mirror of Substrate Address**: The first 20 bytes of the Substrate address.
+- **Substrate Mirror of Ethereum Address**: A hash of the Ethereum address.
+
+These mirrors are synthetic constructs without private keys, making it impossible to sign anything with them. Essentially, they are verifiable bytes if the original address from which the mirror is derived is known.
+
+#### Differences in Mirroring
+
+1. **Eth -> Sub Mirror**:
+  - The blockchain often doesn't natively support Ethereum addresses and requires significant modifications to handle them.
+  - When interacting via Ethereum APIs, the blockchain calculates the Substrate mirror of the Ethereum address to return balances or deduct balances in the case of Ethereum transactions.
+  - Smart contract calls operate more natively, with `msg.sender` being passed as it is.
+
+2. **Sub -> Eth Mirror**:
+  - This is rare and mainly used for calling smart contracts from Substrate.
+  - The problem arises with invoking Solidity smart contracts from a Substrate address. A special Substrate extrinsic `evm.call` is used to facilitate this.
+  - In this case, `msg.sender` must be populated with the Ethereum mirror of the Substrate address, which is the first 20 bytes of the Substrate public key.
+
+When using an Ethereum address, the blockchain internally credits balances to the Substrate mirror of the Ethereum address. However, wallets like MetaMask and other Ethereum providers display the balance on the Ethereum address as is. This is because the blockchain itself performs the mirroring and returns the balance of the mirrored address when queried through Ethereum APIs.
+
+#### Conclusion
+
+Mirroring addresses is a necessary but effective measure. Users who always use Ethereum addresses can generally ignore the mirroring process and utilize the blockchain seamlessly.
+
+
 ### Live address encoder
 <br/>
 <SubEthCoder/>

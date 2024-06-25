@@ -104,24 +104,13 @@ const convertInputSubToEth = async () => {
     return
   }
 
-  ;[
-    converted.toEth,
-    converted.toQuartz,
-    converted.toUnique,
-    converted.toPolkadot,
-    converted.toKusama,
-    converted.toSubNormalized,
-    converted.toSubstratePublicKey,
-  ] = [
-    Address.mirror.substrateToEthereum(rawAddress),
-    Address.normalize.substrateAddress(rawAddress, 255),
-    Address.normalize.substrateAddress(rawAddress, 7391),
-    Address.normalize.substrateAddress(rawAddress, 8883),
-    Address.normalize.substrateAddress(rawAddress, 0),
-    Address.normalize.substrateAddress(rawAddress, 2),
-    Address.normalize.substrateAddress(rawAddress),
-    Address.substrate.decode(rawAddress).hex
-  ]
+  converted.toEth = Address.mirror.substrateToEthereum(rawAddress);
+  converted.toQuartz = Address.normalize.substrateAddress(rawAddress, 255);
+  converted.toUnique = Address.normalize.substrateAddress(rawAddress, 7391);
+  converted.toPolkadot = Address.normalize.substrateAddress(rawAddress, 0);
+  converted.toKusama = Address.normalize.substrateAddress(rawAddress, 2);
+  converted.toSubNormalized = Address.normalize.substrateAddress(rawAddress);
+  converted.toSubstratePublicKey = Address.substrate.decode(rawAddress).hex;
 }
 
 </script>
