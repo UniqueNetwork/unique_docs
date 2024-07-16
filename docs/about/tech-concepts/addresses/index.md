@@ -1,4 +1,4 @@
-# Accounts and Addresses
+# Addresses: Substrate & EVM
 
 An address represents an identity - usually of a person or an organization - capable of making transactions or holding funds. 
 Although addresses are most often used to represent a person, that doesn't have to be the case. An address can be used to perform operations 
@@ -155,7 +155,5 @@ When using an Ethereum address, the blockchain internally credits balances to th
 
 Mirroring addresses is a necessary but effective measure. Users who always use Ethereum addresses can generally ignore the mirroring process and utilize the blockchain seamlessly.
 
-
-### Live address encoder
-<br/>
-<SubEthCoder/>
+## Live address encoder
+You can always find Live address encoder in the [References](../../../reference/tools.md).

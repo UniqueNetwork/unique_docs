@@ -1,39 +1,3 @@
-# NFTs
-
-Non-Fungible Tokens (NFTs) are unique digital assets that represent ownership or proof of authenticity of a specific item, whether digital or physical.
-
-## Native and Smart Contract NFTs
-
-
-### Smart Contract (ERC-721) NFTs
-Smart Contract NFTs, also known as traditional NFTs, typically reside on blockchains like Ethereum and require smart contracts for their creation and management. These NFTs have become the standard by being the first to leverage existing blockchain infrastructure, even though it was not originally designed to store them.
-The majority of Smart Contract NFTs adhere to the ERC-721 standard, which is a free, open standard that describes how to build non-fungible or unique tokens on the Ethereum blockchain. 
-
-### Native NFTs
-Native NFTs are an NFT format built by the Unique Network blockchain that enables the minting of NFTs in seconds without using smart contracts or complex tools. This streamlined process offers greater accessibility and efficiency for creating and managing NFTs. 
-**Native NFTs fully support the ERC-721 standard and its extensions, ensuring compatibility and interoperability while providing additional flexibility and freedom.**
-
-## Advantages and Disadvantages
-
-### Smart Contract NFTs
-
-#### Disadvantages
-- **Complexity**: The use of smart contracts requires technical knowledge, making it less accessible for non-developers.
-- **Cost**: Deploying and interacting with smart contracts can be expensive due to high transaction fees, especially on networks like Ethereum.
-- **Security Risks**: Smart contracts are prone to vulnerabilities and exploits, which can lead to significant financial losses if not properly audited and secured.
-- **Scalability**: High demand on networks like Ethereum can lead to congestion and slow transaction times.
-
-### Native NFTs
-
-#### Advantages
-- **Simplicity**: No need for smart contracts simplifies the creation and management process, making it accessible for a wider audience.
-- **Speed**: Minting and transactions are faster as they do not rely on complex smart contract execution.
-- **Cost Efficiency**: Lower transaction fees compared to smart contract-based NFTs.
-- **Security**: Reduced risk of vulnerabilities associated with smart contracts.
-- **User-Friendly**: Easier for businesses and individuals to adopt and implement without requiring deep technical expertise.
-- **Flexibility**: While fully compatible with the ERC-721 standard and its extensions, Native NFTs on Unique Network offer additional customization options and freedom beyond traditional standards.
-- **Flexibility**: Allow for highly customizable and programmable NFTs, enabling complex interactions and functionality.
-
 # Why we believe in NFT  
 
 The landscape of NFTs is evolving rapidly. While early iterations of NFTs focused primarily on digital art and collectibles, the future holds much more significant potential. NFTs are reshaping various industries by introducing verifiable ownership, scarcity, and interoperability in digital and physical assets. They are not just about owning a piece of art or a collectible; they represent a paradigm shift in how we perceive ownership and value in the digital age.
@@ -42,10 +6,9 @@ NFTs provide a unique way to ensure the authenticity and provenance of assets, m
 
 As we move forward, the demand for more efficient, scalable, and secure NFT solutions will only grow. Native NFTs, which are simpler, faster, and more cost-effective, are positioned to meet these demands better than traditional smart contract-based NFTs. The future of NFTs lies in their ability to seamlessly integrate into various applications, and Native NFTs, with their enhanced usability and lower barriers to entry, represent the next step in this evolution.
 
-# NFT is a How, not a What 
+## NFT is a How, not a What 
 
-Think of NFTs as the plastic cards of the digital age. They can be anything: a membership card, a bank account, a coffee shop loyalty card, or your apartment ownership confirmation. It's not about what they are, but how they function.
-NFTs represent a powerful technology with specific technical features that provide substantial benefits across various industries.
+Think of NFTs as the plastic cards of the digital age. They can be anything: a membership card, a bank account, a coffee shop loyalty card, or your apartment ownership confirmation. It's not about what they are, but how they function. NFTs represent a powerful technology with specific technical features that provide substantial benefits across various industries.
 
 - **Verification of Authenticity**: NFTs enable the verification of an asset’s authenticity, reducing the risk of fraud and counterfeiting. 
 
@@ -68,8 +31,20 @@ NFTs represent a powerful technology with specific technical features that provi
   Imagine the records of your car ownership being stored on a decentralized network. This ensures that even if the government registry is hacked or fails, the data proving that the car belongs to you remains accessible and secure.
 
 - **Flexibility and Innovation**: The NFT standard is continually evolving, with new use cases and applications emerging regularly. This flexibility allows for constant innovation and adaptation to new technological and market developments. 
-  
-## Use Cases for NFTs
+
+## Unique Network NFT 2.0 Features
+Unique Network offers a range of advanced NFT features to make any use case real:
+
+- [Native NFTs](nft-features/native.md)
+- [Multimedia NFTs](nft-features/multimedia.md)
+- [Nested NFTs](nft-features/nested.md)
+- [Dynamic NFTs](nft-features/dynamic.md)
+- [Customizable NFTs](nft-features/customizable.md)
+- [Composable NFTs](nft-features/composable.md)
+
+For more information on NFTs, their uses, and their advantages, explore the detailed articles linked above or an [NFT Features Overview](token-types/nft.md)
+ 
+## Use Cases for NFTs 2.0
 
 ### Government Registers
 Secure and transparent land and property registers, vehicle registrations, and other official records can be maintained using NFTs. This reduces bureaucracy, prevents fraud, and enhances the efficiency of public services.
@@ -148,3 +123,14 @@ Tracking the origin and quality of agricultural products, ensuring food safety a
 
 ### Pharmaceuticals
 Ensuring the authenticity and traceability of pharmaceuticals and medical supplies.
+
+## Related Articles
+
+- [Native NFTs](nft-features/native.md)
+- [Multimedia NFTs](nft-features/multimedia.md)
+- [Nested NFTs](nft-features/nested.md)
+- [Dynamic NFTs](nft-features/dynamic.md)
+- [Customizable NFTs](nft-features/customizable.md)
+- [Composable NFTs](nft-features/composable.md)
+
+For more information on NFTs, their uses, and their advantages, explore the detailed articles linked above or an [NFT Features Overview](token-types/nft.md)

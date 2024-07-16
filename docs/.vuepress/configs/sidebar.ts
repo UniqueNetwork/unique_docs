@@ -7,38 +7,40 @@ export const sidebar: Record<string, SidebarConfig> = {
         text: 'Intro',
         children: [
           '/about',
+          '/networks',
+          '/why-nft',
         ],
       },
       {
-        text: 'Features',
+        text: 'Functionality',
         children: [
           {
-            text: 'Tokens & collections types',
-            link: '/about/types/nft.md',
+            text: 'Token types',
+            link: '/about/token-types/main-types.md',
             collapsible: true,
             children: [
-              '/about/types/nft.md',
-              '/about/types/rft.md',
-              '/about/types/fungible.md',
+              '/about/token-types/main-types.md',
+              '/about/token-types/nft.md',
+              '/about/token-types/rft.md',
+              '/about/token-types/coins.md',
             ],
           },
           {
-            text: 'NFT formats',
-            link: '/about/nft-formats/native-nfts.md',
+            text: 'NFT Features',
+            link: '/about/nft-features/native.md',
             collapsible: true,
             children: [
-              '/about/nft-formats/native-nfts.md',
-              '/about/nft-formats/customizable-nfts.md',
-              '/about/nft-formats/multi-resource-nfts.md',
-              '/about/nft-formats/dynamic-nfts.md',
-              '/about/nft-formats/fractional-tokens.md',
-              '/about/nft-formats/nested-nfts.md',
+              '/about/nft-features/native.md',
+              '/about/nft-features/multimedia.md',
+              '/about/nft-features/nested.md',
+              '/about/nft-features/dynamic.md',
+              '/about/nft-features/customizable.md',
+              '/about/nft-features/composable.md',
             ],
           },
-          '/about/network-features/evm.md',
-          '/about/network-features/sponsoring.md',
-          '/about/network-features/nesting-bundling.md',
-          '/about/network-features/live-nft.md',
+          //'/about/network-features/evm.md',
+          //'/about/network-features/smart-contracts.md',
+          //'/about/network-features/sponsoring.md',
           '/about/network-features/staking.md',
           '/about/network-features/pricing.md',
         ]
@@ -46,10 +48,9 @@ export const sidebar: Record<string, SidebarConfig> = {
       {
         text: 'Tech Concepts',
         children: [
-          '/about/addresses',
-          '/about/balances/index.md',
-          '/about/glossary.md',
-          '/about/limitations/limitations.md'
+          '/about/tech-concepts/addresses',
+          '/about/tech-concepts/balances/index.md',
+          //'/about/tech-concepts/glossary.md',
         ]
       }
     ],
