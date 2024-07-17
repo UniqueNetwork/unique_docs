@@ -14,7 +14,11 @@ Unique Network takes a different approach. We do not need to lock our NFTs in co
 
 When creating a collection, users can choose between NFT or RFT collections. They can then specify data about the collection (name, description, symbol, attributes) and the number of ownership shares specific to each RFT. For example, users can create tokens divided into 100,000 shares and then sell them to the community. Each RFT holder can re-sell their share or buy more token shares.
 
-NFT owners can also fractionalize their tokens to create RFTs. The owner of all RFT parts can de-fractionalize their RFT back to the original NFT and operate with it as a standard NFT.
+<br>
+
+<br>
+
+---
 
 ## Related Articles
 

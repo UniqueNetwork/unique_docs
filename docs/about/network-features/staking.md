@@ -16,7 +16,7 @@ Unique Network offers a straightforward staking process for its native tokens, U
 ## How to Stake
 
 ### Step-by-Step Guide:
-1. **Access the Staking Hub**: Visit the [Unique Staking Hub](https://unique.network/staking-hub) to get started.
+1. **Access the Staking Hub**: Visit the [Unique Staking Hub](https://unique.network/staking/) to get started.
 2. **Connect Your Wallet**: Connect your wallet that holds UNQ or QTZ tokens.
 3. **Select the Amount to Stake**: Choose the amount of tokens you wish to stake.
 4. **Confirm the Transaction**: Confirm the staking transaction in your wallet.
@@ -37,19 +37,26 @@ Currently, users can stake their tokens only using Substrate wallets. However, f
 
 ## Networks and Native Tokens
 
-Unique Network operates across several networks, each with its own native token. These tokens are used to facilitate transactions, including the creation and management of NFTs, RFTs, and fungible tokens.
-
-### Unique Network (Polkadot Parachain)
+<div style="display: flex; align-items: center; margin-bottom: 10px;">
+  <img src="https://ipfs.unique.network/ipfs/QmbJ7CGZ2GxWMp7s6jy71UGzRsMe4w3KANKXDAExYWdaFR" alt="Unique Network Logo" width="20" height="20" style="margin-right: 10px;">
+  <strong>Unique Network (Polkadot Parachain)</strong>
+</div>
 
 - **Currency**: UNQ 
-- **Obtain QTZ**: Visit our [Ecosystem page](https://unique.network/ecosystem/#dex) for the list of exchanges
-- **Tech info**: Visit [Network list](https://docs.unique.network/reference/#unique-polkadot-parachain)
+- **Obtain UNQ**: Visit our [Ecosystem page](https://unique.network/ecosystem/#dex) for the list of exchanges
+- **Tech info**: [Go to References](https://docs.unique.network/reference/#unique-polkadot-parachain)
 
-### Quartz (Kusama Parachain)
+<div style="display: flex; align-items: center; margin-bottom: 10px;">
+  <img src="https://ipfs.unique.network/ipfs/QmaGPdccULQEFcCGxzstnmE8THfac2kSiGwvWRAiaRq4dp" alt="Quartz logo" width="20" height="20" style="margin-right: 10px;">
+  <strong>Quartz (Kusama Parachain)</strong>
+</div>
+
 - **Currency**: QTZ
 - **Obtain QTZ**: Visit our [Ecosystem page](https://unique.network/ecosystem/#dex) for the list of exchanges
-- **Tech info**: Visit [Network list](https://docs.unique.network/reference/#unique-polkadot-parachain)
+- **Tech info**: [Go to References](https://docs.unique.network/reference/#unique-polkadot-parachain)
+
+<br>
 
 ---
 
-Visit our [Staking Hub](https://unique.network/staking-hub) and start staking today!
+Visit our [Staking Hub](https://unique.network/staking/) and start staking today!

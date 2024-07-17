@@ -44,6 +44,12 @@ Unique Network fully supports the ERC-20 standard, enabling the creation and man
 - **Incentive Programs**: Develop and implement reward programs using ERC-20 tokens to incentivize user participation and loyalty.
 - **Governance**: Utilize ERC-20 tokens for decentralized governance, allowing stakeholders to vote on key decisions affecting the ecosystem.
 
+<br>
+
+<br>
+
+---
+
 ## Related Articles
 
 - [Token Types overview](./coins.md)

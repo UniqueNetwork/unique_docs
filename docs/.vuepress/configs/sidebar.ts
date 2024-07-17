@@ -7,15 +7,16 @@ export const sidebar: Record<string, SidebarConfig> = {
         text: 'Intro',
         children: [
           '/about',
-          '/networks',
-          '/why-nft',
+          '/approach.md',
+          '/timeline.md',
+          '/networks.md',
         ],
       },
       {
         text: 'Functionality',
         children: [
           {
-            text: 'Token types',
+            text: 'Token types ▾',
             link: '/about/token-types/main-types.md',
             collapsible: true,
             children: [
@@ -26,7 +27,7 @@ export const sidebar: Record<string, SidebarConfig> = {
             ],
           },
           {
-            text: 'NFT Features',
+            text: 'NFT Features ▾',
             link: '/about/nft-features/native.md',
             collapsible: true,
             children: [
@@ -40,9 +41,10 @@ export const sidebar: Record<string, SidebarConfig> = {
           },
           //'/about/network-features/evm.md',
           //'/about/network-features/smart-contracts.md',
+          '/about/network-features/pricing.md',
           //'/about/network-features/sponsoring.md',
           '/about/network-features/staking.md',
-          '/about/network-features/pricing.md',
+
         ]
       },
       {
