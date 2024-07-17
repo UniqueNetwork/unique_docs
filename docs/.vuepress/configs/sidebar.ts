@@ -7,8 +7,8 @@ export const sidebar: Record<string, SidebarConfig> = {
         text: 'Intro',
         children: [
           '/about',
-          '/networks',
-          '/why-nft',
+          '/about/networks',
+          '/about/why-nft',
         ],
       },
       {

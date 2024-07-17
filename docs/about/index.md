@@ -55,7 +55,7 @@ Explore our [main website](https://unique.network/) for more details and updates
 
 
 ## Related Articles
-- [Our Networks](./neworks.md)
+- [Our Networks](./networks.md)
 - [Why we believe in NFT](./why-nft.md)
 - [Unique NFT capabilities](./token-types/nft.md)
 
