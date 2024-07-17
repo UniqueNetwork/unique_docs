@@ -22,10 +22,6 @@ First, the rate limit is checked. If everything is OK, then the network chooses 
 
 Then, when the transaction is being carried out, the network tries to withdraw the fee from the selected address.
 
-If collection sponsoring is enabled, the specified sponsor pays for a transaction in any case. If the sponsor address does not have enough money, then the error will occur, and the transaction will not be carried out. 
-
-> There is no way for another address to pay for the transaction when sponsoring is enabled.  
-
 The [Example](#example) section demonstrates how the collection sponsoring works in a sample scenario. 
 
 ## Smart contract sponsoring 
