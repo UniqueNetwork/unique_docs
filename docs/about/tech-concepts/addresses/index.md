@@ -39,7 +39,7 @@ Address.substrate.decode('yGJMj5z32dpBUigGVFgatC382Ti3FNVSKyfgi87UF7f786MJL')
 
 The result is the following. Please note that both calls give the same result since we receive a public key, which is the same in both addresses; they are equal, just presented in different formats (Unique and Quartz). 
 
-![public key](../images/array-address.png)
+![public key](../../images/array-address.png)
 
 Now, let's use another decoder that will provide not only a public key as a result. 
 
@@ -56,9 +56,9 @@ array will be 42). This depends on how many bites are needed to store a prefix v
 Checksum is calculated using both prefix and public key. Thus, these values depend
 on the chain prefix, as well. 
 
-![full address](../images/array-full.png)
+![full address](../../images/array-full.png)
 
-![prefix 42](../images/prefix42.png)
+![prefix 42](../../images/prefix42.png)
 
 The reverse operation will show that the encoding and decoding work in both directions. 
 
