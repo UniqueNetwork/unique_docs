@@ -153,6 +153,7 @@ export const sidebar: Record<string, SidebarConfig> = {
         text: 'How to',
         children: [
           // '/tutorials/createAccount.md', - how-to-accounts.md
+          '/tutorials/mass-transactions.md',
           '/tutorials/getNFTsAndTokens.md',
           '/tutorials/easy-market.md',
           // '/tutorials/how-to-use-nesting-and-bundling.md', -> moved to SDK nesting
