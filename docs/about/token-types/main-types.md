@@ -1,6 +1,9 @@
-# Token Types
+# Overview
 
-In the world of blockchain technology, there are various types of tokens that serve different purposes and functionalities. This section will explain the primary types of tokens: coins, NFTs (Non-Fungible Tokens), and Fractional NFTs, provide definitions, and clarify the differences between them.
+In the world of blockchain technology, there are various types of tokens that serve different purposes and functionalities. This section will explain the primary types of tokens, and clarify the differences between them: 
+- [Coins](#coins)
+- [NFTs (Non-Fungible Tokens)](#non-fungible-tokens-nfts)
+- [Fractional NFTs](#fractional-nfts-rfts)
 
 ## Coins
 

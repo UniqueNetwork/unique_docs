@@ -3,7 +3,7 @@
 An address represents an identity - usually of a person or an organization - capable of making transactions or holding funds. 
 Although addresses are most often used to represent a person, that doesn't have to be the case. An address can be used to perform operations 
 on behalf of a user or another entity or to perform operations autonomously. In addition, any single person or entity could have multiple
-addresses for different purposes. All [our networks](/networks/index.md) are Substrate-based blockchains, and you can have specialized addresses for holding funds that 
+addresses for different purposes. All [our networks](../../networks.md) are Substrate-based blockchains, and you can have specialized addresses for holding funds that 
 are separate from addresses used for making transactions.
 
 ### Substrate addresses

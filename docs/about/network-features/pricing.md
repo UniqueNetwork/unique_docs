@@ -16,20 +16,30 @@ By maintaining these affordable and predictable costs, we aim to make NFT creati
 
 ## Networks and Native Tokens
 
-Unique Network operates across several networks, each with its own native token. These tokens are used to facilitate transactions, including the creation and management of NFTs, RFTs, and fungible tokens.
+<div style="display: flex; align-items: center; margin-bottom: 10px;">
+  <img src="https://ipfs.unique.network/ipfs/QmbJ7CGZ2GxWMp7s6jy71UGzRsMe4w3KANKXDAExYWdaFR" alt="Unique Network Logo" width="20" height="20" style="margin-right: 10px;">
+  <strong>Unique Network (Polkadot Parachain)</strong>
+</div>
 
-### Unique Network (Polkadot Parachain)
 - **Currency**: UNQ 
-- **Obtain QTZ**: Visit our [Ecosystem page](https://unique.network/ecosystem/#dex) for the list of exchanges
-- **Tech info**: Visit [Network list](https://docs.unique.network/reference/#unique-polkadot-parachain)
+- **Obtain UNQ**: Visit our [Ecosystem page](https://unique.network/ecosystem/#dex) for the list of exchanges
+- **Tech info**: [Go to References](https://docs.unique.network/reference/#unique-polkadot-parachain)
 
-### Quartz (Kusama Parachain)
+<div style="display: flex; align-items: center; margin-bottom: 10px;">
+  <img src="https://ipfs.unique.network/ipfs/QmaGPdccULQEFcCGxzstnmE8THfac2kSiGwvWRAiaRq4dp" alt="Quartz logo" width="20" height="20" style="margin-right: 10px;">
+  <strong>Quartz (Kusama Parachain)</strong>
+</div>
+
 - **Currency**: QTZ
 - **Obtain QTZ**: Visit our [Ecosystem page](https://unique.network/ecosystem/#dex) for the list of exchanges
-- **Tech info**: Visit [Network list](https://docs.unique.network/reference/#unique-polkadot-parachain)
+- **Tech info**: [Go to References](https://docs.unique.network/reference/#unique-polkadot-parachain)
 
+<div style="display: flex; align-items: center; margin-bottom: 10px;">
+  <img src="https://ipfs.unique.network/ipfs/QmYJDpmWyjDa3H6BxweFmQXk4fU8b1GU7M9EqYcaUNvXzc" alt="Opal" width="20" height="20" style="margin-right: 10px;">
+  <strong>Opal (Testnet)</strong>
+</div>
 
-### Opal (Testnet)
 - **Currency**: OPL 
 - **Obtain OPL**: Use the Telegram faucet bot [@UniqueFaucetBot](https://t.me/UniqueFaucetBot)
-- **Tech info**: Visit [Network list](https://docs.unique.network/reference/#unique-polkadot-parachain)
+- **Tech info**: [Go to References](https://docs.unique.network/reference/#unique-polkadot-parachain)
+
