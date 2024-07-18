@@ -96,6 +96,6 @@ Unique Network's journey is marked by a series of strategic advancements and inn
 ---
 
 ## Related Articles
-- [Our Networks](./neworks.md)
+- [Our Networks](./networks.md)
 - [Our approach to NFT](./approach.md)
 - [Unique NFT capabilities](./token-types/nft.md)

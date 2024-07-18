@@ -51,6 +51,6 @@ We are excited to have you on board and can't wait to see what you will create w
 
 ---
 
-- [Our Networks](./neworks.md)
+- [Our Networks](./networks.md)
 - [Our approach to NFT](./approach.md)
 - [Unique NFT capabilities](./token-types/nft.md)

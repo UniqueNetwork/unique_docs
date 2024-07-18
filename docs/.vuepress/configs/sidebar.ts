@@ -7,9 +7,9 @@ export const sidebar: Record<string, SidebarConfig> = {
         text: 'Intro',
         children: [
           '/about',
-          '/approach.md',
-          '/timeline.md',
-          '/networks.md',
+          '/about/approach.md',
+          '/about/timeline.md',
+          '/about/networks.md',
         ],
       },
       {
