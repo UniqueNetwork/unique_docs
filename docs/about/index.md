@@ -1,13 +1,56 @@
-# What is Unique Network
+# About
 
-Unique Network is the next-generation NFT chain for advanced use cases and mass adoption.
+## What is Unique Network?
 
-We are in the very early stages of discovering use cases for NFTs. They are the Web3 component for managing any unique assets, having the potential for thousands of use cases and becoming the core technology everyone uses. 
+[Unique Network](https://unique.network/) is a next-generation blockchain platform specifically designed for NFTs. 
 
-The main direction we see is infrastructure development and support for the following points:
+Unique Network was the [first team on Polkadot dedicated to NFTs](timeline.md), established in 2020. Since then, we have continued to lead the way in NFT innovation. Unique Network offers unparalleled customization, scalability, and interoperability, making it the ideal platform for advanced and innovative NFT applications.
 
-- more advanced use cases;
-- scalability to serve billions of users;
-- tools to hide blockchain's complexity and barriers for Web2 users;
-- the biggest market for unique assets is Real Estate, but NFTs will be mainly focused on digital real estate in the next decade, as well as digital fashion, games, etc.;
-- additional point - developer ecosystem size, second only to Ethereum.
+## Our Mission
+
+We view NFTs as [flexible metadata containers](approach.md) that can store a wide range of information, making them powerful tools for various applications beyond simple trading. Our mission is to empower creators, developers, and users with innovative tools and technologies that enhance the NFT experience and unlock new possibilities.
+
+## Key Features
+
+### 🎨 Highly Customizable NFTs
+Our platform allows for the creation of highly customizable NFTs, offering new ways to interact with and utilize digital assets. Learn more about [all NFT capabilities](./token-types/nft.md).
+
+### 🛠️ Friendly Tools
+Our intuitive tools and comprehensive SDKs make it easy for anyone, from beginners to experienced developers, to create, manage, and innovate NFTs.
+
+### 🔗 Interoperability
+Unique Network ensures seamless interaction between Polkadot and EVM ecosystems, enhancing the reach and functionality of your NFTs across various platforms.
+
+## Why Choose Unique Network?
+
+Unique Network stands out in the crowded NFT space for several reasons:
+
+- **Versatility**: Our approach to NFTs opens up a wide range of applications and possibilities.
+- **Support**: We provide extensive guides and support to help you succeed.
+- **Sustainability**: Built on the Polkadot ecosystem, our platform is designed for sustainability and long-term growth.
+
+For detailed information visit our [Website](https://unique.network/developer/).
+
+## Join Unique Network Community
+
+- [Telegram](https://t.me/UniqueNetwork)
+- [Twitter](https://twitter.com/Unique_NFTchain)
+- [Discord](https://discord.com/invite/uniquenetwork)
+
+## Build with us!
+
+- GitHub: Contribute to our open-source projects on [GitHub](https://github.com/UniqueNetwork)
+- Grant Fund: Access the [NFTs 2.0 CODECRAFT ](https://unique.network/blog/your-access-to-nfts-2-0-codecraft-grant/)
+- Support Email: [support@unique.network](mailto:support@unique.network)
+- Developer Support: [Telegram for developers](https://t.me/unique_network_support)
+
+We are excited to have you on board and can't wait to see what you will create with Unique Network!
+
+<br>
+<br>
+
+---
+
+- [Our Networks](./networks.md)
+- [Our approach to NFT](./approach.md)
+- [Unique NFT capabilities](./token-types/nft.md)

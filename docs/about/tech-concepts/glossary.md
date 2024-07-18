@@ -30,11 +30,11 @@
 
 **NFT** (or Non-Fungible Token) is a unique indivisible token. It reflects some unique, indivisible essence of the real or virtual world. For example, a car, an apartment, a diamond, a cryptocurrency, a cryptobank, or any game item. The Ethereum blockchain has an NFT token standard known as ERC-721.
 
-**RFT** (or Re-Fungible Token) is a unique divisible token for proportional ownership of NFT. Also reflects some unique essence of the real or virtual world, but can be divided into several parts distributed separately. The Ethereum blockchain has a Fungible token standard known as EIP-1633.
+**Fractional NFT** (or Re-Fungible Token, RFT) is a unique divisible token for proportional ownership of NFT. Also reflects some unique essence of the real or virtual world, but can be divided into several parts distributed separately. The Ethereum blockchain has a Fungible token standard known as EIP-1633.
 
-**Fungible Token** is a divisible value. These tokens reflect the values of the real or virtual world that can be divided or added. For example, rubles, dollars, gold, wood, money in the game Monopoly, etc. The Ethereum blockchain has a Fungible token standard known as ERC-20.
+**Native Coin**. The blockchain usually has some kind of Fungible token for paying network fees, which is "stitched" in its code and cannot be changed (or it will be very difficult and expensive to change). It regulates the entire economy of the network. For example, KSM tokens for the Kusama network, DOT for the Polkadot network, and UNQ for the Unique Network.
 
-**Native Network Token**. The blockchain usually has some kind of Fungible token for paying network fees, which is "stitched" in its code and cannot be changed (or it will be very difficult and expensive to change). It regulates the entire economy of the network. For example, KSM tokens for the Kusama network, DOT for the Polkadot network, and UNQ for the Unique Network.
+**Coin** (or Fungible Token) is a divisible value. These tokens reflect the values of the real or virtual world that can be divided or added. For example, rubles, dollars, gold, wood, money in the game Monopoly, etc. The Ethereum blockchain has a Fungible token standard known as ERC-20.
 
 **Application Token** is a token created and managed by some specific application, for example, a game. The economy of the entire network does not depend on it, but only the economy of a particular application if the application author wants this.
 
