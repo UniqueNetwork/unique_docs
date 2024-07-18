@@ -1,24 +1,9 @@
 # Overview
 
 In the world of blockchain technology, there are various types of tokens that serve different purposes and functionalities. This section will explain the primary types of tokens, and clarify the differences between them: 
-- [Coins](#coins)
 - [NFTs (Non-Fungible Tokens)](#non-fungible-tokens-nfts)
 - [Fractional NFTs](#fractional-nfts-rfts)
-
-## Coins
-
-### Definition
-Coins, also known as cryptocurrencies, are digital currencies that operate independently of a central authority. They are used primarily as a medium of exchange, a store of value, and a unit of account.
-
-**Real-World Analogy**
-
-Think of coins like traditional currencies (e.g., USD, EUR). Each dollar bill is identical in value and can be used interchangeably for goods and services.
-
-### Characteristics
-- **Fungibility**: Coins are fungible, meaning each coin is identical in value and function to another. For example, one Bitcoin is equal in value to another Bitcoin.
-- **Use Cases**: Coins are typically used for transactions, investments, and as a means of transferring value. They can also be used to pay for goods and services.
-
-For more information visit the [Coins page](./coins.md).
+- [Coins](#coins)
 
 ## Non-Fungible Tokens (NFTs)
 
@@ -63,11 +48,26 @@ Fractional NFTs are like owning shares in a company. Instead of owning the entir
 
 For more information visit the [Frational NFT page](./rft.md).
 
+## Coins
+
+### Definition
+Coins, also known as cryptocurrencies, are digital currencies that operate independently of a central authority. They are used primarily as a medium of exchange, a store of value, and a unit of account.
+
+**Real-World Analogy**
+
+Think of coins like traditional currencies (e.g., USD, EUR). Each dollar bill is identical in value and can be used interchangeably for goods and services.
+
+### Characteristics
+- **Fungibility**: Coins are fungible, meaning each coin is identical in value and function to another. For example, one Bitcoin is equal in value to another Bitcoin.
+- **Use Cases**: Coins are typically used for transactions, investments, and as a means of transferring value. They can also be used to pay for goods and services.
+
+For more information visit the [Coins page](./coins.md).
 
 ## Related Articles
 
-- [Coins](./coins.md)
 - [NFTs](./nft.md)
 - [Frational NFTs](./rft.md)
+- [Coins](./coins.md)
+
 
 

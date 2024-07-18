@@ -16,6 +16,8 @@ By maintaining these affordable and predictable costs, we aim to make NFT creati
 
 ## Networks and Native Tokens
 
+<br>
+
 <div style="display: flex; align-items: center; margin-bottom: 10px;">
   <img src="https://ipfs.unique.network/ipfs/QmbJ7CGZ2GxWMp7s6jy71UGzRsMe4w3KANKXDAExYWdaFR" alt="Unique Network Logo" width="20" height="20" style="margin-right: 10px;">
   <strong>Unique Network (Polkadot Parachain)</strong>
