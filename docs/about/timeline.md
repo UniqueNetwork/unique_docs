@@ -66,7 +66,7 @@ Here are the key milestones that have shaped our journey from inception to the p
     - ✅ Built the first NFT XCM channel in the Polkadot ecosystem
     - ✅ Developed Ethereum API for native NFT, Fractional NFT, and Fungible collections
     - ✅ Launched SDKs for iOS, Android, and Unity
-    - ✅ Launch Customizable NFT Marketplace
+    - ✅ Launched Customizable NFT Marketplace
 
 - **Global Engagement**
     - ✅ Engaged in Polkadot Relayers Incubator 2023 and over 50 global events
@@ -75,11 +75,11 @@ Here are the key milestones that have shaped our journey from inception to the p
 ## 2024: The Future Look Ahead
 
 - **Recognition**
-    - ✅ Outpace Solana and Polygon in NFT minting speed, exceeding 5300 NFTs per minute
-    - ✅ Earn approval for the NFT XCM 'Cross Chain NFTs' proposal
+    - ✅ Outpaced Solana and Polygon in NFT minting speed, exceeding 5300 NFTs per minute
+    - ✅ Earned approval for the NFT XCM 'Cross Chain NFTs' proposal 
 
 - **Development**
-    - ✅ Release Unique NFT Metadata Standard 2.0
+    - ✅ Released Unique NFT Metadata Standard 2.0
     - ⏳ Launch a set of Customizable NFTs development tools
     - ⏳ Complete NFT XCM Milestones 2-4 - Integration Tools, New Asset Transactor integrations, XCM Asset Metadata Operations RFC
 

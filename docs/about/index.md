@@ -15,7 +15,7 @@ We view NFTs as [flexible metadata containers](approach.md) that can store a wid
 ### 🎨 Highly Customizable NFTs
 Our platform allows for the creation of highly customizable NFTs, offering new ways to interact with and utilize digital assets. Learn more about [all NFT capabilities](./token-types/nft.md).
 
-### 🛠️ Friendly Tools
+### 🛠️ User-Friendly Tools
 Our intuitive tools and comprehensive SDKs make it easy for anyone, from beginners to experienced developers, to create, manage, and innovate NFTs.
 
 ### 🔗 Interoperability

@@ -2,7 +2,7 @@
 
 The landscape of NFTs is evolving rapidly. While early iterations of NFTs focused primarily on digital art and collectibles, the future holds much more significant potential. NFTs are reshaping various industries by introducing verifiable ownership, scarcity, and interoperability in digital and physical assets. They are not just about owning a piece of art or a collectible; they represent a paradigm shift in how we perceive ownership and value in the digital age.
 
-## NFT is a How, not a What 
+## "NFT is a How, not a What"
 
 Think of NFTs as the plastic cards of the digital age. They can be anything: a membership card, a bank account, a coffee shop loyalty card, or your apartment ownership confirmation. It's not about what they are, but how they function. NFTs represent a powerful technology with specific technical features that provide substantial benefits across various industries.
 

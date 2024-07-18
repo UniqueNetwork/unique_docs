@@ -46,7 +46,7 @@ Fractional NFTs are like owning shares in a company. Instead of owning the entir
 - **Liquidity**: By dividing an NFT into fungible tokens, it becomes easier to buy, sell, and trade smaller portions of the asset, increasing its liquidity.
 - **Flexibility**: Fractional NFTs provide more flexibility in how digital assets can be owned, traded, and utilized.
 
-For more information visit the [Frational NFT page](./rft.md).
+For more information visit the [Fractional NFT page](./rft.md).
 
 ## Coins
 

@@ -6,7 +6,7 @@ Native NFTs on Unique Network represent a groundbreaking approach to creating an
 
 ## How Unique Native NFTs differs from Smart Contract NFTs (Old Approach)
 
-Smart Contract NFTs, also known as traditional NFTs, typically reside on blockchains like Ethereum and require smart contracts for their creation and management. These NFTs have become the standard by being the first to leverage existing blockchain infrastructure, even though it was not originally designed to store them. The majority of Smart 
+Smart Contract NFTs, also known as traditional NFTs, typically reside on blockchains like Ethereum and require smart contracts for their creation and management. These NFTs have become the standard by being the first to leverage existing blockchain infrastructure, even though it was not originally designed to store them. 
 
 **To put it simply** 
 Let's say need a car. And you decide to build it from scratch. You hire a team of designers and engineers, find a nearest manufacturer and make an order. After several months, you finally have a custom-built car, you send it for safety audit and it hopefully passes. However, any future repairs or upgrades will require going back to the original team, and if they missed something, like windshield wipers, you're stuck with the issue. This represents the traditional smart contract NFTs, which are complex and require experienced developers and ongoing expensive support.
