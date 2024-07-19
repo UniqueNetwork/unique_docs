@@ -27,7 +27,7 @@ export const sidebar: Record<string, SidebarConfig> = {
             ],
           },
           {
-            text: 'NFT Features ▾',
+            text: 'Advanced NFT Features ▾',
             link: '/about/nft-features/native.md',
             collapsible: true,
             children: [
@@ -39,11 +39,12 @@ export const sidebar: Record<string, SidebarConfig> = {
               '/about/nft-features/composable.md',
             ],
           },
-          //'/about/network-features/evm.md',
-          //'/about/network-features/smart-contracts.md',
+          '/about/network-features/evm.md',
           '/about/network-features/pricing.md',
-          //'/about/network-features/sponsoring.md',
+          '/about/network-features/sponsoring.md',
           '/about/network-features/staking.md',
+          '/about/network-features/sdk-indexer',
+          '/about/network-features/marketplace.md',
 
         ]
       },

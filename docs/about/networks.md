@@ -6,11 +6,13 @@ Unique Network operates across several blockchain networks, each tailored to spe
 - [Quartz (Kusama Parachain)](#quartz-kusama-parachain)
 - [Opal (Testnet)](#opal-testnet)
 
+---
+
 ## <img src="https://ipfs.unique.network/ipfs/QmbJ7CGZ2GxWMp7s6jy71UGzRsMe4w3KANKXDAExYWdaFR" alt="Unique Network Logo" width="20" height="20"> Unique Network (Polkadot Parachain)
 
 Unique Network is a next-generation blockchain platform specifically designed for NFTs. As a parachain within the Polkadot ecosystem since 2022, it offers unparalleled customization, scalability, and interoperability for digital assets.
 
-### Key Information:
+#### Key Information:
 - **Currency**: UNQ
   - **Max Supply**: 1,000,000,000 UNQ
   - **Inflation**: 10% in the first year, gradually decreasing to 4% by the 10th year
@@ -18,7 +20,7 @@ Unique Network is a next-generation blockchain platform specifically designed fo
 - **Obtain UNQ**: [List of exchanges](https://unique.network/ecosystem/#dex)
 - **Network Tech info**: [References](../reference/index.md#unique---polkadot-parachain)
 
-### Branding:
+#### Branding:
 - [Download SVG icon](https://ipfs.unique.network/ipfs/QmbJ7CGZ2GxWMp7s6jy71UGzRsMe4w3KANKXDAExYWdaFR)
 - [More logo variants](https://drive.google.com/drive/folders/1P43JMREgF4vrFsfBlbmPoivr_K9j7IBn)
 - Primary Color: #00BFFF 
@@ -26,21 +28,21 @@ Unique Network is a next-generation blockchain platform specifically designed fo
     <svg width="16" height="16" fill="none" stroke="#00BFFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-copy" viewBox="0 0 24 24"><rect width="13" height="13" x="9" y="9" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
   </button>
 
-
+---
 
 ## <img src="https://ipfs.unique.network/ipfs/QmaGPdccULQEFcCGxzstnmE8THfac2kSiGwvWRAiaRq4dp" alt="Quartz logo" width="20" height="20"> Quartz (Kusama Parachain)
 
 Quartz operates as a parachain within the Kusama network since 2021, Polkadot's canary network, which allows for more experimental and fast-paced development.
 
-### Key Information:
+#### Key Information:
 - **Currency**: QTZ
   - **Total Supply**: 1,000,000,000 QTZ
   - **Inflation**: 10% in the first year, decreasing consistently to 4% by the 10th year
   - **Utility**: Explore more on the [Website](https://unique.network/quartz/)
-- **Obtain QTZ**: [List of exchanges](https://unique.network/ecosystem/#dex) for the list of exchanges.
+- **Obtain QTZ**: [List of exchanges](https://unique.network/ecosystem/#dex)
 - **Network Tech info**:[References](../reference/index.md#quartz---kusama-parachain)
 
-### Branding:
+#### Branding:
 - [Download SVG icon](https://ipfs.unique.network/ipfs/QmaGPdccULQEFcCGxzstnmE8THfac2kSiGwvWRAiaRq4dp)
 - [More logo variants](https://drive.google.com/drive/folders/18DjgKAfeQFkhgBOVfywpv7PrstFWd-2W)
 - Primary Color: #FF4D6A 
@@ -48,19 +50,21 @@ Quartz operates as a parachain within the Kusama network since 2021, Polkadot's 
     <svg width="16" height="16" fill="none" stroke="#00BFFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-copy" viewBox="0 0 24 24"><rect width="13" height="13" x="9" y="9" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
   </button>
 
+---
+
 ## <img src="https://ipfs.unique.network/ipfs/QmYJDpmWyjDa3H6BxweFmQXk4fU8b1GU7M9EqYcaUNvXzc" alt="Opal" width="20" height="20"> Opal (Testnet)
 
 Unique Network provides an Opal Testnet for users to experiment with all blockchain features in a safe, fee-free environment. Opal is ideal for developers and users who want to test and refine their applications without the risk associated with real-value tokens.
 
-### Key Information:
+#### Key Information:
 - **Currency**: OPL
 - **Supply**: OPL tokens are freely available and have no real-world value
 - **Obtain OPL**: Use the Telegram faucet bot [@UniqueFaucetBot](https://t.me/UniqueFaucetBot)
 - **Network Tech info**: Visit [References](../reference/index.md#opal---testnet)
 
-### Branding:
+#### Branding:
 - [Download SVG icon](https://ipfs.unique.network/ipfs/QmYJDpmWyjDa3H6BxweFmQXk4fU8b1GU7M9EqYcaUNvXzc)
-- Primary Color: ##0CB6B8 
+- Primary Color: #0CB6B8 
   <button style="background-color:transparent;border:none;cursor:pointer;" onclick="navigator.clipboard.writeText('#0CB6B8')">
     <svg width="16" height="16" fill="none" stroke="#00BFFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-copy" viewBox="0 0 24 24"><rect width="13" height="13" x="9" y="9" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
   </button>

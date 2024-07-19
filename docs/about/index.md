@@ -4,7 +4,7 @@
 
 [Unique Network](https://unique.network/) is a next-generation blockchain platform specifically designed for NFTs. 
 
-Unique Network was the [first team on Polkadot dedicated to NFTs](timeline.md), established in 2020. Since then, we have continued to lead the way in NFT innovation. Unique Network offers unparalleled customization, scalability, and interoperability, making it the ideal platform for advanced and innovative NFT applications.
+Unique Network was the [first team on Polkadot dedicated to NFTs, established in 2020](timeline.md). Since then, we have continued to lead the way in NFT innovation. Unique Network offers unparalleled customization, scalability, and interoperability, making it the ideal platform for advanced and innovative NFT applications.
 
 ## Our Mission
 
@@ -15,7 +15,7 @@ We view NFTs as [flexible metadata containers](approach.md) that can store a wid
 ### 🎨 Highly Customizable NFTs
 Our platform allows for the creation of highly customizable NFTs, offering new ways to interact with and utilize digital assets. Learn more about [all NFT capabilities](./token-types/nft.md).
 
-### 🛠️ Friendly Tools
+### 🛠️ User-Friendly Tools
 Our intuitive tools and comprehensive SDKs make it easy for anyone, from beginners to experienced developers, to create, manage, and innovate NFTs.
 
 ### 🔗 Interoperability
@@ -29,7 +29,7 @@ Unique Network stands out in the crowded NFT space for several reasons:
 - **Support**: We provide extensive guides and support to help you succeed.
 - **Sustainability**: Built on the Polkadot ecosystem, our platform is designed for sustainability and long-term growth.
 
-For detailed information visit our [Website](https://unique.network/developer/).
+To see a detailed comparison of our network with others and some specific numbers please visit our [Website](https://unique.network/developer/).
 
 ## Join Unique Network Community
 
@@ -51,6 +51,7 @@ We are excited to have you on board and can't wait to see what you will create w
 
 ---
 
+## Related Articles
 - [Our Networks](./networks.md)
 - [Our approach to NFT](./approach.md)
-- [Unique NFT capabilities](./token-types/nft.md)
+- [Our NFT features](./token-types/nft.md)
