@@ -115,11 +115,11 @@ Focus on the use cases where users or industry can really benefit from using NFT
 
 ## Related Articles
 
-[NFT Features Overview](../token-types/nft.md)
+[NFT Features Overview](./token-types/nft.md)
 
-- [Native NFTs](../nft-features/native.md)
-- [Multimedia NFTs](../nft-features/multimedia.md)
-- [Nested NFTs](../nft-features/nested.md)
-- [Dynamic NFTs](../nft-features/dynamic.md)
-- [Customizable NFTs](../nft-features/customizable.md)
-- [Composable NFTs](../nft-features/composable.md)
+- [Native NFTs](./nft-features/native.md)
+- [Multimedia NFTs](./nft-features/multimedia.md)
+- [Nested NFTs](./nft-features/nested.md)
+- [Dynamic NFTs](./nft-features/dynamic.md)
+- [Customizable NFTs](./nft-features/customizable.md)
+- [Composable NFTs](./nft-features/composable.md)

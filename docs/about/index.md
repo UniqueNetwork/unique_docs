@@ -29,7 +29,7 @@ Unique Network stands out in the crowded NFT space for several reasons:
 - **Support**: We provide extensive guides and support to help you succeed.
 - **Sustainability**: Built on the Polkadot ecosystem, our platform is designed for sustainability and long-term growth.
 
-To see a detailed comparison of our network with others and some specific numbers plese visit our [Website](https://unique.network/developer/).
+To see a detailed comparison of our network with others and some specific numbers please visit our [Website](https://unique.network/developer/).
 
 ## Join Unique Network Community
 
