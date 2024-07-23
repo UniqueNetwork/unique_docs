@@ -35,5 +35,6 @@
     "vue-toastification": "^2.0.0-rc.5",
     "web3-provider-sponsoring": "^0.2.0"
   },
-  "repository": "https://github.com/UniqueNetwork/unique_docs.git"
+  "repository": "https://github.com/UniqueNetwork/unique_docs.git",
+  "packageManager": "yarn@1.22.21+sha1.1959a18351b811cdeedbd484a8f86c3cc3bbaf72"
 }
