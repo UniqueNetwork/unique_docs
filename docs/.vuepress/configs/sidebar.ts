@@ -77,6 +77,12 @@ export const sidebar: Record<string, SidebarConfig> = {
         ]
       },
       {
+        text: 'SDK V2 [Alpha]',
+        children: [
+            '/build/sdk/v2/quick-start.md',
+        ]
+      },
+      {
         text: 'EVM',
         children: [
           '/build/evm',
