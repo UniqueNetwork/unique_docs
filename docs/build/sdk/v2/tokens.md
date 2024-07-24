@@ -24,11 +24,11 @@ Let's start with a minimum example. At this point, we assume you already minted 
 
 ```ts:no-line-numbers
 const mintNftTx = await sdk.token.mintNFTs({
- collectionId,
- tokens: [
- {data: {image: 'https://gateway.pinata.cloud/ipfs/QmTkhTg5S5zrqJL3UsKtyiFi8fcMT3Cao9uKtadp3Ckh7m'}},
- {data: {image: 'https://gateway.pinata.cloud/ipfs/QmQRUMbyfvioTcYiJYorEK6vNT3iN4pM6Sci9A2gQBuwuA'}},
- ]
+  collectionId,
+  tokens: [
+    {data: {image: 'https://gateway.pinata.cloud/ipfs/QmTkhTg5S5zrqJL3UsKtyiFi8fcMT3Cao9uKtadp3Ckh7m'}},
+    {data: {image: 'https://gateway.pinata.cloud/ipfs/QmQRUMbyfvioTcYiJYorEK6vNT3iN4pM6Sci9A2gQBuwuA'}},
+  ]
 });
 
 const [nft1, nft2] = mintNftTx.result;
@@ -50,24 +50,24 @@ Now let's create a token and set its properties.
 ```ts:no-line-numbers
 // This is an example of a collection created in the collection section
 const {result} = await sdk.collection.create({
- name: "Test",
- description: "Test collection",
- symbol: "TST",
- info: {cover_image: {url: coverImage}},
- tokenPropertyPermissions: [ // <--- set token property permissions here 
- {key: 'A', permission: {mutable: true, collectionAdmin: true, tokenOwner: true}},
- {key: 'B', permission: {mutable: false, collectionAdmin: false, tokenOwner: false}},
- {key: 'C', permission: {mutable: false, collectionAdmin: false, tokenOwner: true}},
- ]
+  name: "Test",
+  description: "Test collection",
+  symbol: "TST",
+  info: {cover_image: {url: coverImage}},
+  tokenPropertyPermissions: [ // <--- set token property permissions here 
+    {key: 'A', permission: {mutable: true, collectionAdmin: true, tokenOwner: true}},
+    {key: 'B', permission: {mutable: false, collectionAdmin: false, tokenOwner: false}},
+    {key: 'C', permission: {mutable: false, collectionAdmin: false, tokenOwner: true}},
+  ]
 });
 
 const nftImage = "https://gateway.pinata.cloud/ipfs/QmTkhTg5S5zrqJL3UsKtyiFi8fcMT3Cao9uKtadp3Ckh7m";
 
 const mintNftTx = await sdk.token.mintNFTs({
- collectionId: result.collectionId,
- tokens: [
- {data: {image: nftImage}, properties: [{key: "A", value: "value A"}]},
- ]
+  collectionId: result.collectionId,
+  tokens: [
+    {data: {image: nftImage}, properties: [{key: "A", value: "value A"}]},
+  ]
 });
 ```
 
@@ -76,12 +76,12 @@ In the example above, we've created only one NFT and set only one property - `A`
 Later, the NFT owner can specify property `C`. 
 
 ```ts:no-line-numbers
-await unique.token.setProperties(
- {
- collectionId,
- tokenId: mintNftTx.result[0].tokenId,
- properties: [{key: "C", value: "value C"}]
- }
+await sdk.token.setProperties(
+  {
+    collectionId,
+    tokenId: mintNftTx.result[0].tokenId,
+    properties: [{key: "C", value: "value C"}]
+  }
 );
 ```
 
@@ -99,15 +99,15 @@ Let's mint some extra tokens with attributes.
 const mintNftTx = await sdk.token.mintNFTs({
  collectionId: result.collectionId,
  tokens: [
- {
- data: {
- image: nftImage,
- attributes: [ // <--- setting attributes
- {trait_type: "power", value: 50},
- {trait_type: "experience", value: 300}
- ]
- }
- },
+  {
+    data: {
+      image: nftImage,
+      attributes: [ // <--- setting attributes
+        {trait_type: "power", value: 50},
+        {trait_type: "experience", value: 300}
+      ]
+    }
+  },
  ]
 });
 ```
@@ -115,7 +115,7 @@ const mintNftTx = await sdk.token.mintNFTs({
 And now let's have a look at the newly created token.
 
 ```ts:no-line-numbers
-const nft = await unique.token.get({
+const nft = await sdk.token.get({
  collectionIdOrAddress: result.collectionId,
  tokenId: 1
 });
@@ -135,3 +135,27 @@ attributes: [
 And that is how your token will be displayed on [Unique Scan](https://uniquescan.io/opal/tokens) and other wallets.
 
 <img src="../images/token-attributes.png" alt="Token attributes" width="600"/>
+
+## Transfer
+
+The token owner can transfer its token if the [collection limits](./collections.md#understanding-collection-limits) do not restrict token transfer.
+
+```ts
+await sdk.token.transfer({
+  collectionId,
+  tokenId,
+  to: "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY"
+});
+```
+
+## Burn
+
+The token owner can destroy its token if the [collection limits](./collections.md#understanding-collection-limits) do not restrict token burn.
+
+```ts
+await sdk.token.burn({
+  collectionId,
+  tokenId,
+});
+```
+

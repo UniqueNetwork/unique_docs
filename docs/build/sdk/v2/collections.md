@@ -35,10 +35,10 @@ Collection coverage is a part of collection metadata and is not a mandatory fiel
 
 ```ts:no-line-numbers
 const collectionTx = await sdk.collection.create({
- name: "Test",
- description: "Test collection",
- symbol: "TST",
- info: {cover_image: {url: 'https://gateway.pinata.cloud/ipfs/QmTkhTg5S5zrqJL3UsKtyiFi8fcMT3Cao9uKtadp3Ckh7m'}},
+  name: "Test",
+  description: "Test collection",
+  symbol: "TST",
+  info: {cover_image: {url: 'https://gateway.pinata.cloud/ipfs/QmTkhTg5S5zrqJL3UsKtyiFi8fcMT3Cao9uKtadp3Ckh7m'}},
 });
 
 console.log("Collection ID:", collectionTx.result.collectionId);
@@ -59,11 +59,11 @@ You can specify the collection mode during the minting.
 
 ```ts:no-line-numbers
 await unique.collection.create({
- name: "Test",
- description: "Test collection",
- symbol: "TST",
- info: {cover_image: {url: coverImage}},
- mode: 'Fungible' // <--- set collection mode here 
+  name: "Test",
+  description: "Test collection",
+  symbol: "TST",
+  info: {cover_image: {url: coverImage}},
+  mode: 'Fungible' // <--- set collection mode here 
 });
 ```
 
@@ -78,14 +78,14 @@ During the collection creation, you can set collection limits as follows:
 
 ```ts:no-line-numbers
 const {result} = await unique.collection.create({
- name: "Test",
- description: "Test collection",
- symbol: "TST",
- info: {cover_image: {url: "https://gateway.pinata.cloud/ipfs/QmTkhTg5S5zrqJL3UsKtyiFi8fcMT3Cao9uKtadp3Ckh7m"}},
- properties: [ //  <--- set collection properties here 
- {key: "A", value: "value A"},
- {key: "B", value: "value B"},
- ]
+  name: "Test",
+  description: "Test collection",
+  symbol: "TST",
+  info: {cover_image: {url: "https://gateway.pinata.cloud/ipfs/QmTkhTg5S5zrqJL3UsKtyiFi8fcMT3Cao9uKtadp3Ckh7m"}},
+  properties: [ //  <--- set collection properties here 
+    {key: "A", value: "value A"},
+    {key: "B", value: "value B"},
+  ]
 });
 ```
 
@@ -95,8 +95,8 @@ Later you can set new properties or modify previously created ones.
 ...
 
 await unique.collection.setProperties({
- collectionId: result.collectionId,
- properties: [{key: "C", value: "value C"}]
+  collectionId: result.collectionId,
+  properties: [{key: "C", value: "value C"}]
 });
 ```
 
@@ -112,36 +112,36 @@ The result will be as follows, let's break it down.
 
 ```ts:no-line-numbers
 [
- {
- key: "A",
- value: "value A",
- valueHex: "0x76616c75652041",
- },
- {
- key: "B",
- value: "value B",
- valueHex: "0x76616c75652042",
- },
- {
- key: "C",
- value: "value C",
- valueHex: "0x76616c75652043",
- },
- {
- key: "collectionInfo",
- value: "{\"schemaName\":\"unique\",\"schemaVersion\":\"2.0.0\",\"cover_image\":{\"url\":\"https://gateway.pinata.cloud/ipfs/QmTkhTg5S5zrqJL3UsKtyiFi8fcMT3Cao9uKtadp3Ckh7m\"}}",
- valueHex: "0x7b22736368656d614e616d65223a22756e69717565222c22736368656d6156657273696f6e223a22322e302e30222c22636f7665725f696d616765223a7b2275726c223a2268747470733a2f2f676174657761792e70696e6174612e636c6f75642f697066732f516d546b6854673553357a72714a4c3355734b74796946693866634d543343616f39754b7461647033436b68376d227d7d",
- },
- {
- key: "schemaName",
- value: "unique",
- valueHex: "0x756e69717565",
- },
- {
- key: "schemaVersion",
- value: "2.0.0",
- valueHex: "0x322e302e30",
- },
+  {
+    key: "A",
+    value: "value A",
+    valueHex: "0x76616c75652041",
+  },
+  {
+    key: "B",
+    value: "value B",
+    valueHex: "0x76616c75652042",
+  },
+  {
+    key: "C",
+    value: "value C",
+    valueHex: "0x76616c75652043",
+  },
+  {
+  key: "collectionInfo",
+    value: "{\"schemaName\":\"unique\",\"schemaVersion\":\"2.0.0\",\"cover_image\":{\"url\":\"https://gateway.pinata.cloud/ipfs/QmTkhTg5S5zrqJL3UsKtyiFi8fcMT3Cao9uKtadp3Ckh7m\"}}",
+    valueHex: "0x7b22736368656d614e616d65223a22756e69717565222c22736368656d6156657273696f6e223a22322e302e30222c22636f7665725f696d616765223a7b2275726c223a2268747470733a2f2f676174657761792e70696e6174612e636c6f75642f697066732f516d546b6854673553357a72714a4c3355734b74796946693866634d543343616f39754b7461647033436b68376d227d7d",
+  },
+  {
+    key: "schemaName",
+    value: "unique",
+    valueHex: "0x756e69717565",
+  },
+  {
+    key: "schemaVersion",
+    value: "2.0.0",
+    valueHex: "0x322e302e30",
+  },
 ]
 ```
 
@@ -157,15 +157,15 @@ Let's look at how to specify them.
 
 ```ts:no-line-numbers
 await unique.collection.create({
- name: "Test",
- description: "Test collection",
- symbol: "TST",
- info: {cover_image: {url: coverImage}},
- tokenPropertyPermissions: [ // <--- set token property permissions here 
- {key: 'A', permission: {mutable: true, collectionAdmin: true, tokenOwner: true}},
- {key: 'B', permission: {mutable: false, collectionAdmin: false, tokenOwner: false}},
- {key: 'C', permission: {mutable: false, collectionAdmin: false, tokenOwner: true}},
- ]
+  name: "Test",
+  description: "Test collection",
+  symbol: "TST",
+  info: {cover_image: {url: coverImage}},
+  tokenPropertyPermissions: [ // <--- set token property permissions here 
+    {key: 'A', permission: {mutable: true, collectionAdmin: true, tokenOwner: true}},
+    {key: 'B', permission: {mutable: false, collectionAdmin: false, tokenOwner: false}},
+    {key: 'C', permission: {mutable: false, collectionAdmin: false, tokenOwner: true}},
+  ]
 });
 ```
 
@@ -186,3 +186,35 @@ console.log(colleciton.tokenPropertyPermissions);
 There are a lot of additional token properties, like `URI`, `customizing_overrides`, and so on. You can check more information about them in the [reference section](../../../reference/schemas/2.0.0.md).
 
 One of the most important token properties is `tokenData`, which will be a container for all token attributes. You will learn more about `attributes` in the [NFT section](./tokens.md).
+
+## Understanding collection limits
+
+It is possible to set some limitations such as:
+- maximum number of tokens in the collection, or
+- how many tokens a single account can hold
+- whether the token can be transferred or not
+- and many more
+
+You can read more about collection limits in the [reference section](../../../reference/blockchain/collections.md#limits).
+
+And that is how you can set such limits:
+
+```ts:no-line-numbers
+await unique.collection.create({
+  name: "Test",
+  description: "Test collection",
+  symbol: "TST",
+  info: {cover_image: {url: coverImage}},
+  limits: { // <--- set collection limits here 
+    accountTokenOwnershipLimit: 1,
+    ownerCanDestroy: true,
+    ownerCanTransfer: false,
+    sponsorApproveTimeout: 100,
+    sponsoredDataRateLimit: 100,
+    sponsoredDataSize: 2048,
+    sponsorTransferTimeout: 10,
+    tokenLimit: 300,
+    transfersEnabled: false
+  },
+});
+```
