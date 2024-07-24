@@ -171,7 +171,18 @@ await unique.collection.create({
 
 Every NFT token in the collection could have two properties:
 
-- `A`: this property is mutable, it could be set during the NFT minting. Later it could be rewritten by collection admin or NFT owner
+- `A`: this property is mutable, it could be set during the NFT minting. Later it could be rewritten by the collection admin or NFT owner
 - `B`: this property is immutable, and can be set only once during the minting
 - `C`: this property is immutable, and can be set only once during the minting or later by the token owner
 
+The SDK also specifies some additional token properties related to Unique Schema. Let's check them.
+
+```ts:no-line-numbers
+const colleciton = await unique.collection.get({idOrAddress: collectionId})
+
+console.log(colleciton.tokenPropertyPermissions);
+```
+
+There are a lot of additional token properties, like `URI`, `customizing_overrides`, and so on. You can check more information about them in the [reference section](../../../reference/schemas/2.0.0.md).
+
+One of the most important token properties is `tokenData`, which will be a container for all token attributes. You will learn more about `attributes` in the [NFT section](./tokens.md).
