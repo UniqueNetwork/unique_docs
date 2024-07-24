@@ -58,7 +58,7 @@ There are three different collection modes in Unique Network:
 You can specify the collection mode during the minting.
 
 ```ts:no-line-numbers
-await unique.collection.create({
+await sdk.collection.create({
   name: "Test",
   description: "Test collection",
   symbol: "TST",
@@ -77,7 +77,7 @@ Every collection in Unique Network can have up to 64 properties - a unique set o
 During the collection creation, you can set collection limits as follows:
 
 ```ts:no-line-numbers
-const {result} = await unique.collection.create({
+const {result} = await sdk.collection.create({
   name: "Test",
   description: "Test collection",
   symbol: "TST",
@@ -94,7 +94,7 @@ Later you can set new properties or modify previously created ones.
 ```ts:no-line-numbers
 ...
 
-await unique.collection.setProperties({
+await sdk.collection.setProperties({
   collectionId: result.collectionId,
   properties: [{key: "C", value: "value C"}]
 });
@@ -103,7 +103,7 @@ await unique.collection.setProperties({
 ### Now let's query our collection and check its properties
 
 ```ts:no-line-numbers
-const collection = await unique.collection.get({idOrAddress: result.collectionId});
+const collection = await sdk.collection.get({idOrAddress: result.collectionId});
 
 console.log(collection.properties);
 ```
@@ -156,7 +156,7 @@ Every NFT token inside the collection can have properties. The list of allowed p
 Let's look at how to specify them.
 
 ```ts:no-line-numbers
-await unique.collection.create({
+await sdk.collection.create({
   name: "Test",
   description: "Test collection",
   symbol: "TST",
@@ -178,7 +178,7 @@ Every NFT token in the collection could have two properties:
 The SDK also specifies some additional token properties related to Unique Schema. Let's check them.
 
 ```ts:no-line-numbers
-const colleciton = await unique.collection.get({idOrAddress: collectionId})
+const colleciton = await sdk.collection.get({idOrAddress: collectionId})
 
 console.log(colleciton.tokenPropertyPermissions);
 ```
@@ -200,7 +200,7 @@ You can read more about collection limits in the [reference section](../../../re
 And that is how you can set such limits:
 
 ```ts:no-line-numbers
-await unique.collection.create({
+await sdk.collection.create({
   name: "Test",
   description: "Test collection",
   symbol: "TST",
