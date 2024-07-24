@@ -83,6 +83,7 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/build/sdk/v2/balances.md',
           '/build/sdk/v2/collections.md',
           '/build/sdk/v2/tokens.md',
+          '/build/sdk/v2/sponsoring.md',
         ]
       },
       {
