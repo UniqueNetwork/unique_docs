@@ -80,6 +80,8 @@ export const sidebar: Record<string, SidebarConfig> = {
         text: 'SDK V2 [Alpha]',
         children: [
             '/build/sdk/v2/quick-start.md',
+            '/build/sdk/v2/collections.md',
+            '/build/sdk/v2/tokens.md',
         ]
       },
       {
