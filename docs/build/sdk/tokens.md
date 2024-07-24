@@ -4,8 +4,7 @@
 
 NFT means non-fungible token, and non-fungible means that this token is unique and can’t be replaced.
 
-NFTs can be everything. They can be a jpg image, music, or digital art. You can be an artist, 
-create a 3 minute short YouTube video by adding your images and music.  
+NFTs can be everything. They can be a jpg image, music, or digital art. You can be an artist, create a 3 minute short YouTube video by adding your images and music.  
 Cool! Now, you can sell this video as an NFT at an excellent price if it brings value to the rest of the community. 
 It’s just like getting paintings at an art gallery but much easier and more convenient.
 
