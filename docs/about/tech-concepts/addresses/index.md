@@ -25,16 +25,16 @@ demonstrates this in detail.
 <template v-slot:header>Example</template>
 <template v-slot:body>
 
-Let's take a Substrate address, e.g., `yGHGXr2qCKygrxFw16XXEYRLmQwQt8RN8eMN5UuuJ17ZFPosP`. We can decode the address using the [@unique-nft/api](https://www.npmjs.com/package/@unique-nft/api) library. 
+Let's take a Substrate address, e.g., `5HTC7UFtTbBkC7dWWFt6ec3db5LEahCHMqw6LBN5hXEeqDHm`. We can decode the address using the [@unique-nft/api](https://www.npmjs.com/package/@unique-nft/api) library. 
 
 ```ts:no-line-numbers
 import {UniqueUtils} from '@unique-nft/api'
 
 const Address = UniqueUtils.Address
   ...  
-Address.substrate.decode('unk9GwxLcJ7VHE75RgDYuRjuewZBGWHWvwgdVMSN3pPz9bY52')
+Address.substrate.decode('unjuYbCt4zchHzmr5vLFuFFCXRKAWLTMFPHEJJ3uyWsQ2VgEY')
 // or
-Address.substrate.decode('yGJMj5z32dpBUigGVFgatC382Ti3FNVSKyfgi87UF7f786MJL')
+Address.substrate.decode('yGJ7zjEaVLKPVVM39VoHt1YQtwU2VCfGeRGHX4j2Ap8WzzB6L')
 ```
 
 The result is the following. Please note that both calls give the same result since we receive a public key, which is the same in both addresses; they are equal, just presented in different formats (Unique and Quartz). 
@@ -47,7 +47,7 @@ Now, let's use another decoder that will provide not only a public key as a resu
 import {algorithms} from "@unique-nft/utils/address"
 
 ... 
-algorithms.base58.decode('unk9GwxLcJ7VHE75RgDYuRjuewZBGWHWvwgdVMSN3pPz9bY52')
+algorithms.base58.decode('unjuYbCt4zchHzmr5vLFuFFCXRKAWLTMFPHEJJ3uyWsQ2VgEY')
 ``` 
 
 The result below contains exactly the same public key (highlighted in red), a chain prefix, and a checksum. 
@@ -70,7 +70,7 @@ algorithms.base58.encode(new Uint8Array( [
     242,  51,  31, 180, 145,  35, 180,
     140, 235,  42, 125, 41, 181
   ]))
-// unk9GwxLcJ7VHE75RgDYuRjuewZBGWHWvwgdVMSN3pPz9bY52
+// unjuYbCt4zchHzmr5vLFuFFCXRKAWLTMFPHEJJ3uyWsQ2VgEY
 ```
 
 </template>
@@ -104,7 +104,7 @@ There are two types of addresses in Ethereum: Externally Owned Address (EOA) and
 
 Externally Owned Address refers to an account with a public and private key pair that holds your funds.
 
-An Ethereum address is a 42-character hexadecimal address derived from the last 20 bytes of the public key controlling the address with 0x appended in front. e.g. `0x71C7656EC7ab88b098defB751B7401B5f6d8976F`.
+An Ethereum address is a 42-character hexadecimal address derived from the last 20 bytes of the public key controlling the address with 0x appended in front. e.g. `0xee53Ae81b06Ed39Ac05B2cF2311F4b399E104Ba3`.
 
 The Ethereum address is the "public" address you would need to receive funds from another party. To access funds in the address, you must have its private key. 
 Kindly exercise a duty of care when handling your private key, as it can be used to access all the funds in an address.
