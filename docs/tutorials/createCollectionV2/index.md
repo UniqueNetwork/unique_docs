@@ -1,16 +1,16 @@
-# Mint an NFT using schema 2.0.0
+# Mint an NFT using Unique Schema v2
 
 Below is an example of creating a collection and generating a token. Upon executing this script, you will obtain a collection and token similar to the following:
  [Collection](https://unqnft.io/collection/654?filterState=)
  [NFT1](https://unqnft.io/unique/token/654/1).
  [NFT2](https://unqnft.io/unique/token/654/4).
 
- [Metadata description](/reference/schemas/2.0.0.html)
+ [Metadata description](/reference/schemas)
 
-```typescript
-import { Sr25519Account } from '@unique-nft/utils/sr25519';
-import Sdk from '@unique-nft/sdk';
-import * as dotenv from 'dotenv';
+```typescript:no-line-numbers
+import { Sr25519Account } from '@unique-nft/utils/sr25519'
+import Sdk from '@unique-nft/sdk'
+import * as dotenv from 'dotenv'
 
 const SUBSTRATE_MNEMONIC = PUT_YOUR_MNEMONIC_HERE;
 

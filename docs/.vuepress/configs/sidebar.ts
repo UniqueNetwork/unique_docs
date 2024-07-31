@@ -45,7 +45,6 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/about/network-features/staking.md',
           '/about/network-features/sdk-indexer',
           '/about/network-features/marketplace.md',
-
         ]
       },
       {
@@ -233,7 +232,7 @@ export const sidebar: Record<string, SidebarConfig> = {
       {
         text: 'Schemas',
         children: [
-          '/reference/schemas/2.0.0',
+          '/reference/schemas',
         ]
       }
     ],
