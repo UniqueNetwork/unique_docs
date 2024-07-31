@@ -27,7 +27,7 @@ NFTs created previously in schemaVersion v0 and v1 are returned in the new forma
 
 [Examples how to create collections NFTs in Schema V2](/tutorials/createCollectionV2)
 
-## Schema V2 Detailed Description
+## NFT Token Schema V2 Detailed Description
 
 First of all, [Schema V2 NFT Example](https://rest.unique.network/unique/v1/tokens/v2?collectionId=654&tokenId=1)
 
@@ -142,13 +142,15 @@ To ensure optimal compatibility and performance, it is important to adhere to ce
 
 ### Royalties field
 
-Royalty fields:
+The field `royalties` is an array of royalty recipients and their respective percentages. This field is used to define the royalty structure for the NFT, specifying the recipients who will receive a percentage of the sale price when the NFT is sold. The `royalties` field is an array of the `IV2Royalty` objects, where each object represents a royalty recipient and their respective percentage. The `royalties` field is optional and can be used to define the royalty structure for the NFT.
+
+Royalties item (`IV2Royalty`) fields:
 - **address**: `string` - The address of the royalty recipient. May be Substrate SS-58 encoded or Ethereum address.
 - **percent**: `number` - The percentage of the sale price that the recipient will receive. Valid values range is 0.00% - 99.99%.
 - **isPrimaryOnly**: `boolean` - Indicates whether the royalty should be paid only on the primary sale or on primary and secondary sales. Default value is `false` which means that the royalty will be paid on both primary and secondary sales.
 
 Example:
-```json5
+```json5:no-line-numbers
 {
   royalties: [
     {
@@ -165,114 +167,139 @@ Example:
 
 ### Customizable NFT Fields
 
-#### customizing: `Customizing`  
-  Customizing options for the NFT.
-  - **You need it if you want:** To allow users to visually enhance and modify base NFTs by equipping other NFTs, creating dynamic and interactive digital assets.
+NFTs in Unique can contain other NFTs through a process known as nesting. 
+This is achieved by transferring one NFT to the address of another NFT (each NFT in Unique has its own address). 
+In this way, one NFT owns another, and transitively, the owner of the root NFT owns the entire tree.  
+This allows the creation of an NFT tree where elements can customize each other.
+The leaves can influence the nodes, and so on, up to the root.
 
-  - **Use case:**
-    The process involves two types of collections:
-    - **Base Collection:** This is the primary collection.
-    - **Equip Collections:** These collections (one or more) are designed to interact with and modify the Base Collection.
+**Unique provides this functionality through the `customizing` field**
 
-    There are endless options for how Equip NFTs can customize a Base NFT:
-    - **Overlay Placement for the images:** Placing the equip image over a specific part of the base image while:
-      - **Layering:** Ordering and reordering layers.
-      - **Precise Placement:** Placing at the desired point or area (Offset).
-      - **Scaling:** Adjusting the size of both Base and Equip NFTs.
-      - **Rotation:** Rotating both Base and Equip NFTs.
-      - **Opacity Adjustment:** Adjusting the transparency of both Base and Equip NFTs.
-    - **Customizable Backgrounds:** Setting specific backgrounds for the NFTs.
-    - **Pattern or Texture Application:** Applying various patterns or textures.
-    - **Morphing or Transformation:** Changing the shape or form of the images and other media types. Examples include:
-      - Changing the character's hairstyle.
-      - Morphing facial features.
-      - Slowing the audio.
-    - **Audio/Video/3D Integration:** Adding multimedia elements to images and other media types. Examples include:
-      - Jingle sound with jewelry.
-      - Theme music with a heroic cape.
-      - Mixing audio tracks.
-      - Adding subtitles to videos.
+This field contains the customization image details of the NFT itself and "slots" for customization, which can be utilized by nested NFTs.
 
-  - **Tips and best practices:** When using equip collections to enhance base NFTs, consider how each modification adds value and interest. Ensure that modifications are meaningful and enhance the overall user experience without overwhelming the base NFT.
+For example, let's say we have an NFT "character" with customization slots like "hat" and "pet".  
+We can nest an NFT of a hat and an NFT of a pet within the character NFT, 
+thereby modifying the base character image to show the character wearing a hat and accompanied by a pet.
 
-  Interfaces for customizing:
-  ```typescript
-  interface Customizing {
-      self: CustomizingFileInfo;
-      slots?: CustomizingSlot[];
-      /** @example ["mutator1","mutator2"] */
-      mutators?: any[][];
-      mutator_reactions?: MutatorReaction[];
+
+
+All customizing NFT fields lay down inside the `customizing` field. This field consists of 4 subfields:
+
+```typescript:no-line-numbers
+interface IV2Customizing {
+  self: IV2CustomizingFileInfo
+  slots?: IV2CustomizingSlot[]
+  mutators?: Record<string, IV2CustomizingMutatorReaction>
+  mutator_reactions?: string[]
+}
+```
+
+- The `self` field is used to store and describe this NFT's customization file and settings.
+- The `slots` field is used to describe the customization slots available for nested NFTs.
+- The `mutators` field is used to describe the mutators available for the NFT.
+- The `mutator_reactions` field is used to describe how this NFT should react to descendant mutators.
+
+##### self
+
+The `self` field is used to describe the NFT's own customization file. It is separated from the main NFT image
+because it may differ significantly. For example, the main NFT image might be a showcase or ad-like image, while
+the actual overlaying image should be clear and well-suited for overlaying. Additionally, the `self` field contains
+not only the link to the image but also the overlaying specifications, such as the order of overlaying, offsets,
+and other relevant details.
+
+###### IV2CustomizingFileInfo
+
+```typescript:no-line-numbers
+interface IV2CustomizingFileInfo {
+  type: 'image' | 'animation' | 'video' | 'audio' | 'spatial' | 'pdf' | 'document' | 'other'
+  url: string
+  name?: string
+  details?: IV2MediaDetails
+  image_overlay_specs?: IV2CustomizingImageOverlaySpecs
+  placeholder?: {
+    url: string
+    details?: IV2ImageDetails
   }
+  tag?: string;
+}
+```
 
-  interface CustomizingFileInfo {
-      type: 'image' | 'animation' | 'video' | 'audio' | 'spatial' | 'pdf' | 'document' | 'other';
-      url: string;
-      name?: string;
-      details?: MediaDetails;
-      image_overlay_specs?: CustomizingImageOverlaySpecs;
-      placeholder?: ImageWithDetails;
-      tag?: string;
-  }
+Types used: [IV2MediaDetails](#iv2mediadetails), [IV2ImageDetails](#iv2imagedetails) and IV2CustomizingImageOverlaySpecs:
 
-  interface CustomizingSlot {
-      type: 'image' | 'animation' | 'video' | 'audio' | 'spatial' | 'pdf' | 'document' | 'other';
-      collections?: (string | number)[];
-      name?: string;
-      image_overlay_specs?: CustomizingImageOverlaySpecs;
-  }
+###### IV2CustomizingImageOverlaySpecs
 
-  interface MutatorReaction {
-      /** @example 1 */
-      layer?: number;
-      /** @example 1 */
-      order_in_layer?: number;
-      offset?: Coordinates;
-      opacity?: number;
-      rotation?: number;
-      scale?: Scale;
-      mount_point?: Coordinates;
-      parent_mount_point?: Coordinates;
-      url: string;
-      details?: ImageDetails;
-  }
+The type `IV2CustomizingImageOverlaySpecs` is used to define the overlay specifications for an image. This type includes the following fields:
 
-  interface Coordinates {
-      x: number;
-      y: number;
-  }
+*All fields are optional*
 
-  interface Scale {
-      x: number;
-      y: number;
-      unit?: 'px' | '%';
-  }
+```typescript:no-line-numbers
+type IV2CustomizingImageOverlaySpecs = {
+  layer?: number
+  order_in_layer?: number
+  offset?: { x: number, y: number }
+  opacity?: number
+  rotation?: number
+  scale?: { x: number, y: number, unit?: 'px' | '%' /* default - % */ }
+  anchor_point?: { x: number, y: number }
+  parent_anchor_point?: { x: number, y: number }
+}
+```
 
-  interface CustomizingImageOverlaySpecs {
-      /** @example 1 */
-      layer?: number;
-      /** @example 1 */
-      order_in_layer?: number;
-      offset?: Coordinates;
-      opacity?: number;
-      rotation?: number;
-      scale?: Scale;
-      mount_point?: Coordinates;
-      parent_mount_point?: Coordinates;
-  }
-  ```
+##### slots
 
-#### customizing_overrides: `CustomizingOverrides`  
-  Overrides for customizing options.
+The `slots` field is used to describe the customization slots available for nested NFTs.
+Each slot is described by the `IV2CustomizingSlot` type.
 
-  ```typescript
-  interface CustomizingOverrides {
-      self?: CustomizingFileInfo;
-      slots?: CustomizingSlot[];
-      mutators?: string[];
-      mutator_reactions?: MutatorReaction[];
-  }
-  ```
+```typescript:no-line-numbers
+interface IV2CustomizingSlot {
+  type: 'image' // now only 'image' type is supported
+  collections?: Array<string | number>
+  name?: string
+  image_overlay_specs?: IV2CustomizingImageOverlaySpecs
+}
+```
+
+`image_overlay_specs` has the type [IV2CustomizingImageOverlaySpecs](#iv2customizingimageoverlayspecs) which is the same as in the `self` field.
+
+##### mutator_reactions
+
+The `mutator_reactions` field is used to describe how this NFT should react to descendant mutators.
+It is used when the image needs to be modified based on ancestor or descendant NFTs.
+For example, the image's offset might change if an ancestor has a non-standard size,
+or the image might be replaced by another if the descendant has a significant power-up.
+
+This field is a dictionary where the key is the mutator name and the value is the reaction to it.
+
+The key should meet the requirements of regular JSON key.
+
+The value is the type `IV2CustomizingMutatorReaction` which is an extended type [IV2CustomizingImageOverlaySpecs](#iv2customizingimageoverlayspecs) with the `url` and `details` fields (alike the NFT first-level `media` field).
+
+```typescript:no-line-numbers
+interface IV2CustomizingMutatorReaction extends IV2CustomizingImageOverlaySpecs {
+  url: string
+  details?: IV2ImageDetails
+}
+```
+
+##### mutators
+
+Array of strings which are the names of mutators available for the NFT.
+
+### Customizing Overrides
+
+This field allows overriding the default customization options for the NFT. 
+It is rarely used and is typically reserved for specific cases where the main `customizing` field needs to be locked and set as readonly.
+
+The difference from the `IV2Customizing` type is that the requirements for this field are much more flexible.
+
+```typescript:no-line-numbers
+interface IV2CustomizingOverrides {
+  self?: Partial<IV2CustomizingFileInfo> & {tag?: string}
+  slots?: Partial<IV2CustomizingSlot>[]
+  mutators?: Record<string, Partial<IV2CustomizingMutatorReaction>>
+  mutator_reactions?: string[]
+}
+```
 
 ### Optional fields
 
@@ -291,6 +318,38 @@ Default value: `2.0.0`.
 Applicable only for old tokens (v0 an v1) in decoded format.**   
 The original version of the schema. This property indicates the schema under which the NFT was initially created.
 
+---
+
+## NFT Collection Schema V2
+
+Collection in Unique may contain such fields:
+
+- **cover_image**: [IV2ImageWithDetailsAndThumbnail](#iv2imagewithdetailsandthumbnail) - Cover image for the collection
+
+- **default_token_image**: [IV2ImageWithDetailsAndThumbnail](#iv2imagewithdetailsandthumbnail) - Default image for the tokens in the collection
+
+- **potential_attributes**: Array of [IV2Attribute](#iv2attribute) - Potential attributes for the collection. An instruction for the NFT generator/creator which attributes can be used for the NFTs in this collection. Just a hint, not a requirement.
+
+The structure of this field is similar to the NFT `attributes` field, with the key difference being that it does not include a `value` field. Instead, it has an optional `values` field, which is an array of potential values. 
+
+```typescript:no-line-numbers
+type IV2PotentialAttributeValues = {
+  trait_type: string
+  display_type?: string
+  values?: string[]
+}
+```
+
+- **royalties**: Array of [IV2Royalty](#iv2royalty) - Royalties for the collection. The same as for the NFTs.
+
+- **customizing**: Customization options for the collection. Defines the relationships between collections, specifying which NFTs can be customized by the NFTs in this collection.
+
+```typescript:no-line-numbers
+{
+  slots?: IV2CustomizingSlot[]
+  customizes?: Array<string | number>
+}
+```
 
 ## Types
 
@@ -321,6 +380,27 @@ type IV2ImageDetails = Partial<{
 }>
 ```
 
+#### IV2MediaDetails
+
+All fields from the [IV2ImageDetails](#iv2imagedetails) and additional fields: `duration`, `codecs`, `loop`.
+
+*All fields are optional as well*
+
+```typescript:no-line-numbers
+type IV2MediaDetails = Partial<{
+  name: string // name of the image (for captions, etc.)
+  type: 'image' | 'animation' | 'video' | 'audio' | 'spatial' | 'pdf' | 'document' | 'other'  // type of the 
+  bytes: number // size of the image file in bytes
+  format: string // format of the image file (e.g., PNG, JPEG)
+  sha256: string // SHA-256 hash of the image file
+  width: number // width of the image in pixels
+  height: number // height of the image in pixels
+  order: number // order of the image
+  duration: number // duration in seconds
+  codecs: string[] // codecs used in the media file
+  loop: boolean // whether the media should loop
+}>
+```
 
 #### IV2Media
 
@@ -329,11 +409,7 @@ type IV2Media = {
   type: 'image' | 'animation' | 'video' | 'audio' | 'spatial' | 'pdf' | 'document' | 'other'
   url: string
   name?: string // name of the media (for captions, etc.)
-  details?: IV2ImageDetails & Partial<{
-    duration: number // duration of the media in seconds (for videos, audio, etc - where applicable)
-    codecs: string[] // codecs used in the media file
-    loop: boolean // whether the media should loop
-  }>
+  details?: IV2MediaDetails
   thumbnail?: { // thumbnail image for the media
     url: string,
     details?: IV2ImageDetails
@@ -351,4 +427,25 @@ Tips:
 - The `thumbnail` field may be used for the thumbnail image of the media or as a cover image for an audio file.
 - The `poster` field is used for the poster image of a video.
 
----
+#### IV2ImageWithDetailsAndThumbnail
+
+```typescript:no-line-numbers
+type IV2ImageWithDetailsAndThumbnail = {
+  url: string
+  details?: IV2ImageDetails
+  thumbnail?: {
+    url: string
+    details?: IV2ImageDetails
+  }
+}
+```
+
+#### IV2Royalty
+
+```typescript:no-line-numbers
+type IV2Royalty = {
+  address: string
+  percent: number
+  isPrimaryOnly?: boolean
+}
+```
