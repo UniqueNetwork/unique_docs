@@ -21,3 +21,7 @@ const [signer] = await ethers.getSigners();
 const collectionHelpers = CollectionHelpers__factory
   .connect("0x6C4E9fE1AE37a41E93CEE429e8E1881aBdcbb54F", signer);
 ```
+
+## Next steps
+
+Learn how to manage [smart contracts sponsoring](./contract-helpers.md)

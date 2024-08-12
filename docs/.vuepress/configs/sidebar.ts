@@ -92,16 +92,16 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/build/evm/accounts.md',
           '/build/evm/evm-from-substrate.md',
           {
-            text: 'Precompiles',
-            link: '/build/evm/precompiles/index.md',
+            text: 'Smart contracts',
+            link: '/build/evm/smart-contracts/index.md',
             collapsible: true,
             children: [
-              '/build/evm/precompiles/index.md',
-              '/build/evm/precompiles/contract-helpers.md',
-              '/build/evm/precompiles/collection-helpers.md',
+              '/build/evm/smart-contracts/index.md',
+              '/build/evm/smart-contracts/collection-helpers.md',
+              '/build/evm/smart-contracts/contract-helpers.md',
+              '/build/evm/smart-contracts/writing-contracts.md',
             ],
           },
-          '/build/evm/smart-contracts.md',
           '/build/evm/UniqueNFT.md',
         ],
       }

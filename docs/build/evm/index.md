@@ -10,7 +10,7 @@ This documentation will guide you through deploying and interacting with NFTs vi
 
 1. To understand how compatibility between Substrate and Ethereum accounts is achieved, see the [Account mirrors](./accounts.md) section.
 2. To learn how Ethereum smart contracts can be called from Substrate, visit the [EVM from Substrate](./evm-from-substrate.md) section.
-3. If you're interested in advanced features like creating native NFTs, nesting, and providing a gasless experience, explore the [Precompiles](/build/evm/precompiles/index.md) section.
+3. If you're interested in advanced features like creating native NFTs, nesting, and providing a gasless experience, explore the [Smart contracts](/build/evm/smart-contracts/index.md) section.
 
 ## Connect to the EVM on Unique Network
 

@@ -224,4 +224,4 @@ if (owner !== sponsor.address) throw Error("Sponsor is not the owner of NFT");
 
 ## Contract sponsoring
 
-Review the [EVM section](/build/evm/precompiles/index.md) for contract sponsorship details.
+Review the [EVM section](/build/evm/smart-contracts/index.md) for contract sponsorship details.
