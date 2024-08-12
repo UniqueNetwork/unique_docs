@@ -1,6 +1,6 @@
 # Collection Helpers
 
-Address: **0x6c4e9fe1ae37a41e93cee429e8e1881abdcbb54f**
+Address: **0x6C4E9fE1AE37a41E93CEE429e8E1881aBdcbb54F**
 
 This precompiled contract enables the creation of native collections and tokens via the Ethereum interface.
 
@@ -19,5 +19,9 @@ import { CollectionHelpers__factory } from '@unique-nft/solidity-interfaces';
 const [signer] = await ethers.getSigners();
 
 const collectionHelpers = CollectionHelpers__factory
-  .connect("0x6c4e9fe1ae37a41e93cee429e8e1881abdcbb54f", signer);
+  .connect("0x6C4E9fE1AE37a41E93CEE429e8E1881aBdcbb54F", signer);
 ```
+
+## Next steps
+
+Learn how to manage [smart contracts sponsoring](./contract-helpers.md)

@@ -6,5 +6,5 @@ To integrate these capabilities into your application, use the [@unique-nft/soli
 
 |Precompile|Features|Address|
 |:-|:------|:---|
-|[Contract Helpers](./contract-helpers.md)|Manage contract sponsoring|0x842899ecf380553e8a4de75bf534cdf6fbf64049|
-|[Collection Helpers](./collection-helpers.md)|Create native collection and tokens|0x6c4e9fe1ae37a41e93cee429e8e1881abdcbb54f|
+|[Contract Helpers](./contract-helpers.md)|Manage contract sponsoring|0x842899ECF380553E8a4de75bF534cdf6fBF64049|
+|[Collection Helpers](./collection-helpers.md)|Create native collection and tokens|0x6C4E9fE1AE37a41E93CEE429e8E1881aBdcbb54F|

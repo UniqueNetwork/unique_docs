@@ -1,6 +1,6 @@
 # Contract Helpers
 
-Address: **0x842899ecf380553e8a4de75bf534cdf6fbf64049**
+Address: **0x842899ECF380553E8a4de75bF534cdf6fBF64049**
 
 This precompiled contract allows the owner to manage the sponsorship of their contract.
 
@@ -16,7 +16,11 @@ Check the [reference section](/reference/blockchain/contract-helpers.md) for the
 
 Below are examples of how to use this precompiled contract with ethers.js and hardhat.
 
-> If you're unfamiliar with setting up a Hardhat project, refer to the official documentation: https://hardhat.org/docs
+:::tip
+If you're unfamiliar with setting up a Hardhat project, refer to the [official documentation](https://hardhat.org/docs)
+:::
+
+You will also need to install [@unique-nft/solidity-interfaces](https://www.npmjs.com/package/@unique-nft/solidity-interfaces) library.
 
 ### Connect to contract
 
@@ -35,7 +39,7 @@ const myContract = await MyContractFactory.deploy();
 myContract.waitForDeployment();
 
 const contractHelpers = ContractHelpers__factory
-  .connect("0x842899ecf380553e8a4de75bf534cdf6fbf64049", signer);
+  .connect("0x842899ECF380553E8a4de75bF534cdf6fBF64049", signer);
 ```
 
 ## Choose sponsoring mode
@@ -93,6 +97,4 @@ const sponsoringEnabledAfter = await contractHelpers.sponsoringEnabled(myContrac
 console.log("Sponsoring enabled now:", sponsoringEnabledAfter);
 ```
 
-## Setting up Metamask
 
-When sending transactions through Metamask, it initially verifies if the user has sufficient balance to cover gas fees. To enable sponsoring with Metamask, we need to bypass this gas check. Use the following [library](https://github.com/UniqueNetwork/web3-provider-sponsoring).

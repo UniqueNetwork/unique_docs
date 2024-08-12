@@ -1,8 +1,8 @@
 # Unique SDK quick start
 
-<Highlight type="warning">
-The Unique SDK v2 is in alpha and may contain bugs or incomplete features. For production use or to access more stable functionality, please refer to the <a href="../getting-started">documentation for the previous version</a> of the SDK.
-</Highlight>
+::: warning
+The Unique SDK v2 is in alpha and may contain bugs or incomplete features. For production use or to access more stable functionality, please refer to the [documentation for the previous version](../getting-started.md) of the SDK.
+:::
 
 The SDK facilitates seamless integration of Unique Network's capabilities into the web3 application, bypassing the need for direct low-level API interaction. It enables you to effortlessly mint collections and tokens, manage account balances, and more.
 
