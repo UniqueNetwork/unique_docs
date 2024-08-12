@@ -1,8 +1,10 @@
-# Smart contracts
+# Writing smart contracts
 
 ## Static smart contracts
 
-::: warning Smart contract sponsoring
+<!-- ::: TODO: check this
+warning 
+Smart contract sponsoring
 Smart contract may be sponsored, but when web3 or ethers.js
 perform the transaction, they are using EIP1559 transactions
 and set gas price as double of default gas price.  
@@ -18,7 +20,7 @@ ethers: `await provider.getGasPrice()`
 web3: `await web3.eth.getGasPrice()`
 
 Otherwise, the caller will be charged for the transaction.
-:::
+::: -->
 
 Also can be interesting these two smart contract stubs:
 

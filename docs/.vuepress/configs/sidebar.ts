@@ -101,7 +101,7 @@ export const sidebar: Record<string, SidebarConfig> = {
               '/build/evm/precompiles/collection-helpers.md',
             ],
           },
-          '/build/evm/smart_contracts.md',
+          '/build/evm/smart-contracts.md',
           '/build/evm/UniqueNFT.md',
         ],
       }

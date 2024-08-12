@@ -1,6 +1,6 @@
 # Contract Helpers
 
-Address: **0x842899ecf380553e8a4de75bf534cdf6fbf64049**
+Address: **0x842899ECF380553E8a4de75bF534cdf6fBF64049**
 
 This precompiled contract allows the owner to manage the sponsorship of their contract.
 
@@ -35,7 +35,7 @@ const myContract = await MyContractFactory.deploy();
 myContract.waitForDeployment();
 
 const contractHelpers = ContractHelpers__factory
-  .connect("0x842899ecf380553e8a4de75bf534cdf6fbf64049", signer);
+  .connect("0x842899ECF380553E8a4de75bF534cdf6fBF64049", signer);
 ```
 
 ## Choose sponsoring mode
