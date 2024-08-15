@@ -1,4 +1,4 @@
-# Working with collections
+# Collections
 
 ::: warning
 The Unique SDK v2 is in alpha and may contain bugs or incomplete features. For production use or to access more stable functionality, please refer to the [documentation for the previous version](../getting-started.md) of the SDK.
@@ -169,7 +169,7 @@ await sdk.collection.create({
 });
 ```
 
-Every NFT token in the collection could have two properties:
+Every NFT token in the collection above could have three properties:
 
 - `A`: this property is mutable, it could be set during the NFT minting. Later it could be rewritten by the collection admin or NFT owner
 - `B`: this property is immutable, and can be set only once during the minting
@@ -178,9 +178,9 @@ Every NFT token in the collection could have two properties:
 The SDK also specifies some additional token properties related to Unique Schema. Let's check them.
 
 ```ts:no-line-numbers
-const colleciton = await sdk.collection.get({idOrAddress: collectionId})
+const collection = await sdk.collection.get({idOrAddress: collectionId})
 
-console.log(colleciton.tokenPropertyPermissions);
+console.log(collection.tokenPropertyPermissions);
 ```
 
 There are a lot of additional token properties, like `URI`, `customizing_overrides`, and so on. You can check more information about them in the [reference section](../../../reference/schemas/2.0.0.md).

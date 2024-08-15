@@ -1,8 +1,10 @@
-# Working with NFTs
+# NFTs
 
 ::: warning
 The Unique SDK v2 is in alpha and may contain bugs or incomplete features. For production use or to access more stable functionality, please refer to the [documentation for the previous version](../getting-started.md) of the SDK.
 :::
+
+[[toc]]
 
 ## Intro 
 
@@ -44,6 +46,10 @@ In the collections section, we've learned [basics about token properties](./coll
 
 1. Token property is a key/value pair
 2. The list of possible keys as well as their mutability are set on the collection level
+
+<!-- TODO intro about properties and attributes what is the difference -->
+
+### Properties
 
 Now let's create a token and set its properties.
 
@@ -87,7 +93,7 @@ await sdk.token.setProperties(
 
 But because of permissions of property `B` it could have been set only during the minting. So it will remain unset forever.
 
-### Understanding the difference between token properties and attributes
+### Attributes
 
 Properties are a part of a token on a core blockchain level. They can be set with arbitrary metadata, i.e. schema name and version, royalties, and so on.
 
@@ -136,11 +142,57 @@ And that is how your token will be displayed on [Unique Scan](https://uniquescan
 
 <img src="../images/token-attributes.png" alt="Token attributes" width="600"/>
 
+### Properties and attributes mutation
+
+In the collection section we've learned that [token properties can be set as mutable](./collections.md#understanding-token-property-permissions) by the collection admin or token owner.
+
+Let's make a quick recap how it can be done. Below we set mutability for token property `A`:
+
+```ts:no-line-numbers
+await sdk.collection.create({
+  ...
+  tokenPropertyPermissions: [
+    // This is how we specify token properties mutability during the collection creation
+    {key: 'A', permission: {mutable: true, collectionAdmin: true, tokenOwner: true}},
+
+  ...
+```
+
+If property set as mutable it can be set after the token has been created.
+
+```ts:no-line-numbers
+await sdk.token.setProperties({
+  collectionId,
+  tokenId,
+  properties: [{ key: "A", value: "New value" }],
+});
+```
+
+Attributes are part of `tokenData` property which is by default mutable for collection admin. You can override it during the collection creation.
+
+The SDK provides the following method for attributes mutation:
+
+```ts:no-line-numbers
+await sdk.token.updateNft({
+  collectionId,
+  tokenId,
+  data: {
+    attributes: [
+      {
+        trait_type: "Power",
+        value: 42,
+      },
+    ],
+    image: "https://your-new-image.here/image.png",
+  },
+});
+```
+
 ## Transfer
 
 The token owner can transfer its token if the [collection limits](./collections.md#understanding-collection-limits) do not restrict token transfer.
 
-```ts
+```ts:no-line-numbers
 await sdk.token.transfer({
   collectionId,
   tokenId,
@@ -152,7 +204,7 @@ await sdk.token.transfer({
 
 The token owner can destroy its token if the [collection limits](./collections.md#understanding-collection-limits) do not restrict token burn.
 
-```ts
+```ts:no-line-numbers
 await sdk.token.burn({
   collectionId,
   tokenId,

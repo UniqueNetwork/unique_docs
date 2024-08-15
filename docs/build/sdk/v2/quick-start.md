@@ -49,7 +49,7 @@ const account = Sr25519Account.fromUri(mnemonic);
 
 // set "account" as a default signer
 const sdk = UniqueChain({
- baseUrl: "https://rest.uniquenetwork.dev/v2/opal", 
+ baseUrl: "https://rest.unique.network/v2/opal", 
  account,
 });
 ```
