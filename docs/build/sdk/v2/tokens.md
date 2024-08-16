@@ -8,11 +8,7 @@ The Unique SDK v2 is in alpha and may contain bugs or incomplete features. For p
 
 ## Intro 
 
-NFT means non-fungible token and non-fungible means that this token is unique and can’t be replaced.
-
-NFTs can be everything. They can be a jpg image, music, or digital art. You can be an artist, and create a 3-minute short YouTube video by adding your images and music.  
-Cool! Now, you can sell this video as an NFT at an excellent price if it brings value to the rest of the community. 
-It’s like getting paintings at an art gallery but much easier and more convenient.
+An NFT, or non-fungible token, represents a unique digital asset that cannot be replaced or exchanged on a one-to-one basis. NFTs can take many forms, such as JPEG images, music, or digital artwork. For example, as an artist, you could create a 3-minute YouTube video by combining your images and music. Once created, you can sell this video as an NFT, potentially at a great price if it offers value to the community. It's similar to purchasing art at a gallery, but it's a much simpler and more accessible process.
 
 ## Prerequisite
 
@@ -22,7 +18,7 @@ At this point, you need to know how to manage collections. Learn how to do this 
 
 ## Getting started
 
-Let's start with a minimum example. At this point, we assume you already minted your NFT collection and you have its `collectionId`. 
+Let's start with a minimum example. At this point, we assume you already minted your NFT collection, and you have its `collection`. 
 
 ```ts:no-line-numbers
 const mintNftTx = await sdk.token.mintNFTs({
@@ -42,16 +38,16 @@ Check your newly created tokens on [Unique Scan](https://uniquescan.io/opal/toke
 
 ## Token properties and attributes
 
-In the collections section, we've learned [basics about token properties](./collections.md#understanding-token-property-permissions). Let's do a quick recap.
+In the collections section, we've learned [basics about token properties](./collections.md#token-property-permissions). Let's do a quick recap.
 
 1. Token property is a key/value pair
-2. The list of possible keys as well as their mutability are set on the collection level
+2. The list of possible keys, as well as their mutability, are set on the collection level
 
 <!-- TODO intro about properties and attributes what is the difference -->
 
 ### Properties
 
-Now let's create a token and set its properties.
+Now, let's create a token and set its properties.
 
 ```ts:no-line-numbers
 // This is an example of a collection created in the collection section
@@ -77,9 +73,9 @@ const mintNftTx = await sdk.token.mintNFTs({
 });
 ```
 
-In the example above, we've created only one NFT and set only one property - `A`.
+In the example above, we created only one NFT and set only one property—`A`.
 
-Later, the NFT owner can specify property `C`. 
+Later, the NFT owner can specify property `C`.
 
 ```ts:no-line-numbers
 await sdk.token.setProperties(
@@ -95,7 +91,7 @@ But because of permissions of property `B` it could have been set only during th
 
 ### Attributes
 
-Properties are a part of a token on a core blockchain level. They can be set with arbitrary metadata, i.e. schema name and version, royalties, and so on.
+Properties are a part of a token on a core blockchain level. They can be set with arbitrary metadata, i.e., schema name and version, royalties, etc.
 
 Attributes define token traits and are not a part of a blockchain core. Examples of attributes could be a `power` or `experience` for a gaming character. In Unique Schema, attributes are stored in `tokenData` property of an NFT.
 
@@ -118,7 +114,7 @@ const mintNftTx = await sdk.token.mintNFTs({
 });
 ```
 
-And now let's have a look at the newly created token.
+Now, let's have a look at the newly created token.
 
 ```ts:no-line-numbers
 const nft = await sdk.token.get({
@@ -144,9 +140,9 @@ And that is how your token will be displayed on [Unique Scan](https://uniquescan
 
 ### Properties and attributes mutation
 
-In the collection section we've learned that [token properties can be set as mutable](./collections.md#understanding-token-property-permissions) by the collection admin or token owner.
+In the collection section, we've learned that [token properties can be set as mutable](./collections.md#token-property-permissions) by the collection admin or token owner.
 
-Let's make a quick recap how it can be done. Below we set mutability for token property `A`:
+Let's make a quick recap of how it can be done. Below, we set mutability for token property `A`:
 
 ```ts:no-line-numbers
 await sdk.collection.create({
@@ -158,7 +154,7 @@ await sdk.collection.create({
   ...
 ```
 
-If property set as mutable it can be set after the token has been created.
+If the property is specified as mutable, it can be set after the token has been created.
 
 ```ts:no-line-numbers
 await sdk.token.setProperties({
@@ -170,7 +166,7 @@ await sdk.token.setProperties({
 
 Attributes are part of `tokenData` property which is by default mutable for collection admin. You can override it during the collection creation.
 
-The SDK provides the following method for attributes mutation:
+The SDK provides the following method for attribute mutation:
 
 ```ts:no-line-numbers
 await sdk.token.updateNft({
@@ -190,7 +186,7 @@ await sdk.token.updateNft({
 
 ## Transfer
 
-The token owner can transfer its token if the [collection limits](./collections.md#understanding-collection-limits) do not restrict token transfer.
+The token owner can transfer its token if the [collection limits](./collections.md#collection-limits) do not restrict token transfer.
 
 ```ts:no-line-numbers
 await sdk.token.transfer({
@@ -200,9 +196,35 @@ await sdk.token.transfer({
 });
 ```
 
+It is also possible to approve the transfer for another account.
+
+```ts:no-line-numbers
+// SDK's default account approves NFT for Alice
+const approvalTx = await sdk.token.approve({
+  collectionId,
+  tokenId,
+  spender: alice.address,
+});
+
+// Now, Alice can transfer approved token
+const transferFromTx = await sdk.token.transfer(
+  {
+    to: alice.address,
+    collectionId,
+    tokenId: token1.tokenId,
+    from: account.address,
+  },
+  {
+    signerAddress: alice.address,
+  },
+  // This transaction performed by Alice
+  alice,
+);
+```
+
 ## Burn
 
-The token owner can destroy its token if the [collection limits](./collections.md#understanding-collection-limits) do not restrict token burn.
+The token owner can destroy its token if the [collection limits](./collections.md#collection-limits) do not restrict token burn.
 
 ```ts:no-line-numbers
 await sdk.token.burn({
@@ -210,4 +232,40 @@ await sdk.token.burn({
   tokenId,
 });
 ```
+
+<!-- TODO add burn from docs -->
+
+## Nesting
+
+In Unique Network token can own other tokens, this mechanism called nesting. In the [collection section](./collections.md#nesting-configuration) you've learned how nesting can be configured on the collection level.
+
+Now, let's see how tokens can be nested.
+
+```ts:no-line-numbers
+await sdk.token.nest({
+  nested: { collectionId, tokenId: token1.tokenId },
+  parent: { collectionId, tokenId: token2.tokenId },
+});
+```
+
+In the example above, `token1` will be nested to `token2`. This means:
+
+- `token2` is the owner of `token1`. 
+- Topmost token owner (real owner) of `token2` will be the owner of `token1`
+- if `token2` is transferred to a different account, this new account becomes the topmost owner for `token1`
+
+The topmost token owner can `unnest` tokens. In the example below, `token1` will be transferred from the `token2` address back to the topmost owner.
+
+```ts:no-line-numbers
+await sdk.token.unnest({ nested: { collectionId, tokenId: token1.tokenId } });
+```
+
+:::tip Understanding token address
+
+In Unique Network every collection and token have unique ID. At the same time these IDs can be mapped to EVM address. So nesting is a simple transfer of a token to the address of other token.
+
+The concept of collections and token addresses is particularly useful when working with [smart contracts](../../evm/index.md).
+:::
+  
+<!-- TODO Add docs regarding getting topmostOwner -->
 

@@ -35,10 +35,12 @@ With this code, only one transaction will succeed, while the second will fail wi
 
 The `Priority is too low` error occurs because both transactions are sent with the same nonce.
 
-> In blockchain networks, particularly in transaction validation, a nonce serves several critical purposes:
->
-> Preventing Replay Attacks: By ensuring that each transaction has a unique nonce, the system prevents attackers from reusing a previously valid transaction to deceive the network.
-> Ensuring Transaction Uniqueness and Order: Nonces ensure that each transaction is unique and help maintain the correct sequence of transactions, preserving the integrity and order of the blockchain.
+:::tip
+In blockchain networks, particularly in transaction validation, a nonce serves several critical purposes:
+
+Preventing Replay Attacks: By ensuring that each transaction has a unique nonce, the system prevents attackers from reusing a previously valid transaction to deceive the network.
+Ensuring Transaction Uniqueness and Order: Nonces ensure that each transaction is unique and help maintain the correct sequence of transactions, preserving the integrity and order of the blockchain.
+:::
 
 Each account in the network maintains a nonce. The nonce value in a transaction increments by 1 upon the transaction's execution, regardless of whether the transaction succeeds or fails. If a transaction is executed without specifying a nonce, it will be requested before signing the transaction. In the above example, since both transactions are executed almost simultaneously, the network doesn't have time to increment the nonce, resulting in both transactions being sent with the same nonce.
 
@@ -56,10 +58,10 @@ const [token1, token2, ...other] = await Promise.all([
 ]);
 ```
 
-> **Why doesn't the SDK handle the nonce automatically?**
-> 
-> There is no universally reliable way to manage the nonce implicitly. Such attempts can lead to unintended consequences and still may not fully resolve the issue.
+:::tip Why doesn't the SDK handle the nonce automatically?
 
+There is no universally reliable way to manage the nonce implicitly. Such attempts can lead to unintended consequences and still may not fully resolve the issue.
+:::
 
 ### Alternative methods
 
