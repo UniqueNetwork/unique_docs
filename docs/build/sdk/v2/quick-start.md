@@ -49,7 +49,7 @@ const account = Sr25519Account.fromUri(mnemonic);
 
 // set "account" as a default signer
 const sdk = UniqueChain({
- baseUrl: "https://rest.uniquenetwork.dev/v2/opal", 
+ baseUrl: "https://rest.unique.network/v2/opal", 
  account,
 });
 ```
@@ -76,20 +76,20 @@ The Unique SDK currently supports the following modules:
 Instead of using public SDK endpoints, you can easily run your own HTTP proxy. Create a docker-compose.yml with the following content, and run `docker compose up`.
 
 ```yml:no-line-numbers
-version: '3.8'
+version: "3.8"
 
 services:
   substrate-proxy:
-    image: uniquenetwork/substrate-proxy:http-proxy-latest
+    image: uniquenetwork/substrate-proxy-http-proxy:master
     ports:
- - "3000:3000"
+      - "3000:3000"
     environment:
- - PORT=3000
- - CHAIN=unique
- - MIN_LOG_LEVEL=info
- - EXTRINSIC_MORTAL_BLOCK_LENGTH=32
- - OPENAPI_SERVER_URL=http://localhost:3000
- - OPENAPI_SERVER_DESCRIPTION="Local development server"
- - EXTRINSICS_STORAGE_MAX_BLOCKS_COUNT=100
+      - PORT=3000
+      - CHAIN=unique
+      - MIN_LOG_LEVEL=info
+      - EXTRINSIC_MORTAL_BLOCK_LENGTH=32
+      - OPENAPI_SERVER_URL=http://localhost:3000
+      - OPENAPI_SERVER_DESCRIPTION="Local development server"
+      - EXTRINSICS_STORAGE_MAX_BLOCKS_COUNT=100
 ```
 
