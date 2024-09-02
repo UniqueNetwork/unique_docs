@@ -38,6 +38,8 @@ yarn add @unique-nft/sdk@alpha @unique-nft/sr25519
 
 To begin using the Unique SDK, you need to import the required modules, set the base URL for the API, and optionally configure the default signer account.
 
+You can find the list of public endpoints in the [reference section](../../../reference/sdk-endpoints.md).
+
 <!-- TODO set production baseUrl -->
 ```typescript:no-line-numbers
 import { UniqueChain } from "@unique-nft/sdk";

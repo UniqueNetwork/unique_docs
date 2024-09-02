@@ -73,6 +73,7 @@ export const sidebar: Record<string, SidebarConfig> = {
             '/build/sdk/examples-nesting.md',
             '/build/sdk/refungible.md',
             '/build/sdk/sponsoring.md',
+            '/build/sdk/migration.md'
         ]
       },
       {
