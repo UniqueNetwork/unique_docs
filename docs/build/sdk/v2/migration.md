@@ -37,6 +37,9 @@ sdkV1.balance.transfer({ amount: 2.3, destination: alice });
 
 // V2
 sdkV2.balance.transfer({ amount: "2300000000000000000", to: alice });
+
+// or
+sdkV2.balance.transfer({ amount: 2.3, to: alice, isAmountInCoins: true });
 ```
 
 ## Working with Collections and Tokens
@@ -51,22 +54,26 @@ There are only minor changes in how collections are retrieved.
 const collectionV1 = await sdkV1.collection.get({ collectionId: 665 });
 
 // V2
-const collectionV2 = await sdkV2.collection.get({ idOrAddress: 665 });
+const collectionV2 = await sdkV2.collection.get({ collectionId: 665 });
+
+// or collection may be retrieved by address
+const collectionV2_ = await sdkV2.collection.get({ collectionId: '0x17C4E6453cc49aaAAeaCA894E6D9683E00000299' });
+
 ```
 
 ### Reading Tokens
 
-The method signature for retrieving tokens has also seen minimal changes.
+The method signature for retrieving tokens has no changes.
 
 ```ts
 // V1
 const tokenV1 = await sdkV1.token.get({ collectionId: 1, tokenId: 1 });
 
 // V2
-const tokenV2 = await sdkV2.token.get({
- collectionIdOrAddress: 1,
- tokenId: 1,
-});
+const tokenV2 = await sdkV2.token.get({ collectionId: 1, tokenId: 1 });
+
+// collectionId may be replaced with collection address
+const tokenV2_ = await sdkV2.token.get({ collectionId: '0x17C4e6453cC49AAaaEaCA894E6D9683e00000001', tokenId: 1 });
 ```
 
 However, the response format has changed significantly. SDK V2 returns attributes in the Unique Schema V2 format, even for tokens created using Unique Schema V1.
