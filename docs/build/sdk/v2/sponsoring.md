@@ -84,7 +84,7 @@ await sdk.token.transfer(
 
 // Check alice is the new owner
 const { owner } = await sdk.token.get({
-  collectionIdOrAddress: collectionId,
+  collectionId: collectionId,
   tokenId: token.tokenId,
 });
 ```

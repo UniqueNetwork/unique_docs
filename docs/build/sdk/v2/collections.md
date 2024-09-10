@@ -103,7 +103,7 @@ await sdk.collection.setProperties({
 ### Now, let's query our collection and check its properties
 
 ```ts:no-line-numbers
-const collection = await sdk.collection.get({idOrAddress: result.collectionId});
+const collection = await sdk.collection.get({collectionId: result.collectionId});
 
 console.log(collection.properties);
 ```
@@ -178,7 +178,7 @@ Every NFT token in the collection above could have three properties:
 The SDK also specifies some additional token properties related to Unique Schema. Let's check them.
 
 ```ts:no-line-numbers
-const collection = await sdk.collection.get({idOrAddress: collectionId})
+const collection = await sdk.collection.get({collectionId})
 
 console.log(collection.tokenPropertyPermissions);
 ```

@@ -118,7 +118,7 @@ Now, let's have a look at the newly created token.
 
 ```ts:no-line-numbers
 const nft = await sdk.token.get({
- collectionIdOrAddress: result.collectionId,
+ collectionId: result.collectionId,
  tokenId: 1
 });
 
@@ -300,7 +300,7 @@ Let's get token's topmost owner:
 
 ```ts:no-line-numbers
 const { topmostOwner } = await sdk.token.get({
-  collectionIdOrAddress: collectionId,
+  collectionId: collectionId,
   tokenId: token1.tokenId,
 });
 ```
