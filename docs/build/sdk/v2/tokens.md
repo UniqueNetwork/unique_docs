@@ -118,7 +118,7 @@ Now, let's have a look at the newly created token.
 
 ```ts:no-line-numbers
 const nft = await sdk.token.get({
- collectionIdOrAddress: result.collectionId,
+ collectionId: result.collectionId,
  tokenId: 1
 });
 
@@ -148,7 +148,7 @@ Let's make a quick recap of how it can be done. Below, we set mutability for tok
 await sdk.collection.create({
   ...
   tokenPropertyPermissions: [
-    // This is how we specify token properties mutability during the collection creation
+    // This is how we specify token properties' mutability during the collection creation
     {key: 'A', permission: {mutable: true, collectionAdmin: true, tokenOwner: true}},
 
   ...
@@ -161,6 +161,16 @@ await sdk.token.setProperties({
   collectionId,
   tokenId,
   properties: [{ key: "A", value: "New value" }],
+});
+```
+
+As far as deleted:
+
+```ts:no-line-numbers
+await sdk.token.deleteProperties({
+  collectionId,
+  tokenId,
+  keys: ['A'],
 });
 ```
 
@@ -206,6 +216,13 @@ const approvalTx = await sdk.token.approve({
   spender: alice.address,
 });
 
+// Let's check token is approved
+const { isApproved } = await sdk.token.getApproved({
+  collectionId,
+  tokenId,
+  spender: alice.address,
+});
+
 // Now, Alice can transfer approved token
 const transferFromTx = await sdk.token.transfer(
   {
@@ -217,7 +234,7 @@ const transferFromTx = await sdk.token.transfer(
   {
     signerAddress: alice.address,
   },
-  // This transaction performed by Alice
+  // This transaction made by Alice
   alice,
 );
 ```
@@ -232,6 +249,31 @@ await sdk.token.burn({
   tokenId,
 });
 ```
+
+If token is approved for account this account can be burn token from:
+
+```ts:no-line-numbers
+// Approve token for alice
+const approvalTx = await sdk.token.approve({
+  collectionId,
+  tokenId,
+  spender: alice.address,
+});
+
+// alice burns token directly without transfer
+await sdk.token.burn(
+  {
+    collectionId,
+    tokenId: token1.tokenId,
+    amount: 1,
+    from: account.address,
+  },
+  { signerAddress: alice.address },
+  alice,
+);
+```
+
+
 
 <!-- TODO add burn from docs -->
 
@@ -254,6 +296,15 @@ In the example above, `token1` will be nested to `token2`. This means:
 - Topmost token owner (real owner) of `token2` will be the owner of `token1`
 - if `token2` is transferred to a different account, this new account becomes the topmost owner for `token1`
 
+Let's get token's topmost owner:
+
+```ts:no-line-numbers
+const { topmostOwner } = await sdk.token.get({
+  collectionId: collectionId,
+  tokenId: token1.tokenId,
+});
+```
+
 The topmost token owner can `unnest` tokens. In the example below, `token1` will be transferred from the `token2` address back to the topmost owner.
 
 ```ts:no-line-numbers
@@ -267,5 +318,3 @@ In Unique Network every collection and token have unique ID. At the same time th
 The concept of collections and token addresses is particularly useful when working with [smart contracts](../../evm/index.md).
 :::
   
-<!-- TODO Add docs regarding getting topmostOwner -->
-
