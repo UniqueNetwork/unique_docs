@@ -21,7 +21,6 @@ In Unique Network, the collection has the following entities:
 - **limits** - a set that defines the rules for a collection, e.g., whether it can be transferred or how many tokens you can mint in it; 
 - **owner** - an address that created a collection (or if the collection was transferred, the address that owns the collection at the moment);  
 - **admins** - a collection can be controlled by multiple admin addresses. Admins can issue and burn NFTs, as well as add and remove other admins, but they cannot change NFT or collection ownership; 
-- **allow list** - a list of addresses collected that allow certain community members a guaranteed spot for minting a new NFT. 
 
 ## Prerequisite
 

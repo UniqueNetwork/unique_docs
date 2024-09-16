@@ -17,10 +17,9 @@ Unique Network supports sponsoring various types of transactions to enhance user
 
 ## Preventing Attacks
 
-One potential risk with sponsoring transactions is the possibility of DOS attacks, where malicious actors deplete sponsor funds by sending numerous "free" transactions. Unique Network addresses this issue by implementing rate limits. Rate Limiting Strategies:
+One potential risk with sponsoring transactions is the possibility of DOS attacks, where malicious actors deplete sponsor funds by sending numerous "free" transactions. Unique Network addresses this issue by implementing rate limits:
 
-1. **Time limits**: Set a rate limit where an NFT transferred will be sponsored only once every X block. This prevents excessive transactions in a short period.
-2. **Allow Lists**: Implement a rate limit based on an allow list, ensuring only trusted transactions are processed frequently.
+**Time limits**: Set a rate limit where an NFT transferred will be sponsored only once every X block. This prevents excessive transactions in a short period.
 
 ## Learn More
 
