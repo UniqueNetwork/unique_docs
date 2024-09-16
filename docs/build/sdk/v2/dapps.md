@@ -4,6 +4,8 @@ This guide provides a walkthrough of how to get started building decentralized a
 
 Check out the live [demo](https://plate.uniquenetwork.dev).
 
+[[toc]]
+
 ## Quick Start
 To get started with the boilerplate, follow these steps:
 
@@ -15,19 +17,19 @@ To get started with the boilerplate, follow these steps:
 
 ... or just clone the repo with the following command:
 
-```sh
+```sh:no-line-numbers
 git clone [<repository-url>](https://github.com/UniqueNetwork/unique-react-template)
 ```
 
 2. Install dependencies:
 
-```sh
+```sh:no-line-numbers
 yarn
 ```
 
 3. Run the development server:
 
-```sh
+```sh:no-line-numbers
 yarn start
 ```
 
@@ -40,7 +42,7 @@ The Unique SDK (@unique-nft/sdk) is designed to abstract complexities when worki
 
 The boilerplate already integrates the SDK through a global context provider. Let's break down how to configure and interact with the SDK.
 
-##### Step 1: Initialization of the SDK
+#### Step 1: Initialization of the SDK
 
 The SDK is initialized within the boilerplate in the `src/sdk/SdkContext.tsx` file. This context is used to provide access to the SDK throughout the application.
 
@@ -84,7 +86,7 @@ export const useSdk = () => useContext(SdkContext);
 - Provider Component: The SdkProvider component initializes the SDK and stores it in the global state using React.Context. This allows other components to easily access the SDK through the `useSdk` hook.
 
 
-##### Step 2: Accessing the SDK in Components
+#### Step 2: Accessing the SDK in Components
 
 Once the SDK is initialized, you can access it in any component using the useSdk hook. This enables you to perform operations like querying NFTs, creating collections, or transferring tokens.
 
@@ -117,15 +119,15 @@ const MyComponent = () => {
 export default MyComponent;
 ```
 
-### Connecting Accounts
+## Connecting Accounts
 
 The boilerplate comes preconfigured to support multiple wallet providers, including Polkadot-based wallets and WalletConnect (for EVM-based wallets). This section explains how to connect these wallets and manage user accounts in your dApp.
 
-#### Connecting Polkadot wallets
+### Connecting Polkadot wallets
 
 This section explains how to integrate Polkadot-based wallets into your dApp using the boilerplate provided. It supports a variety of wallets, such as Polkadot.js, SubWallet, Talisman, Enkrypt, and NovaWallet. By using the Polkadot Wallet class, users can easily connect their wallets, manage accounts, and sign transactions on the Unique Network.
 
-##### Step-1. Polkadot Wallet Setup
+#### Step-1. Polkadot Wallet Setup
 
 The boilerplate provides a PolkadotWallet class that handles interaction with various Polkadot-based wallets. This class can be instantiated with the name of the wallet the user wants to connect to, and it provides methods for managing accounts and signing transactions.
 
@@ -140,7 +142,7 @@ const polkadotWallet = new PolkadotWallet('polkadot-js');  // Instantiate with t
 - PolkadotWallet: This class supports all Polkadot-compatible wallets like Polkadot.js, Subwallet, Talisman, etc.
 - Wallet name: Pass the wallet name when instantiating the PolkadotWallet class. The following options are available: `polkadot-js` `subwallet-js` `talisman` `enkrypt` `novawallet`
 
-##### Step-2. Connecting to a Polkadot Wallet
+#### Step-2. Connecting to a Polkadot Wallet
 
 Once the wallet instance is created, you can request the user to connect their wallet and retrieve their accounts. The _accounts property within the class stores the accounts associated with the connected wallet.
 
@@ -161,7 +163,7 @@ const connectAndFetchAccounts = async () => {
 - `polkadotWallet.connect()`: Initiates the connection to the wallet. If the user approves, this method connects the wallet and prepares it for account management.
 - `polkadotWallet.getAccounts()`: After the connection is established, this method retrieves the user's accounts from the wallet extension.
 
-##### Step-3. Connecting to EVM wallets
+#### Step-3. Connecting to EVM wallets
 
 The provided code integrates WalletConnect with the Unique Network boilerplate, allowing users to connect Ethereum-compatible wallets like MetaMask, to the dApp. Here's a breakdown of the key elements involved in this process, followed by a guide on how to use WalletConnect in your dApp.
 
@@ -218,7 +220,7 @@ const AccountDetails = () => {
 export default AccountDetails;
 ```
 
-#### Using Connected Account with SDK
+### Using Connected Account with SDK
 
 To use the connected Polkadot account, you need to access it from the `AccountsContext`. This gives you the currently selected account, which you can then use in the SDK.
 
@@ -242,7 +244,7 @@ export const connectSdk = async (
 };
 ```
 
-Putting all together:
+Putting it all together:
 
 ```ts
 import { useContext } from 'react';
