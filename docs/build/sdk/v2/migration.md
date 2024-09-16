@@ -1,4 +1,4 @@
-# Migration from SDK V1 to SDK V2
+# Migration to SDK-2.0
 
 This guide provides instructions on migrating from SDK V1 to SDK V2, highlighting key changes and improvements.
 
@@ -116,7 +116,7 @@ Attributes in SDK V2:
 The extrinsic methods for transferring, burning, and nesting tokens remain unchanged.
 
 
-## What If the Application Create Tokens in SDK-V1 Collections
+## Application Creates Tokens in the V1 Collection
 
 If your application creates tokens in collections originally created with SDK-V1, you should continue using SDK-V1 for this purpose.
 
