@@ -46,14 +46,6 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/about/network-features/sdk-indexer',
           '/about/network-features/marketplace.md',
         ]
-      },
-      {
-        text: 'Tech Concepts',
-        children: [
-          '/about/tech-concepts/addresses',
-          '/about/tech-concepts/balances/index.md',
-          //'/about/tech-concepts/glossary.md',
-        ]
       }
     ],
     '/build': [
@@ -77,7 +69,7 @@ export const sidebar: Record<string, SidebarConfig> = {
         ]
       },
       {
-        text: 'SDK V2 [Alpha]',
+        text: 'SDK-2.0 [Alpha]',
         children: [
           '/build/sdk/v2/quick-start.md',
           '/build/sdk/v2/balances.md',
@@ -107,6 +99,13 @@ export const sidebar: Record<string, SidebarConfig> = {
           },
           '/build/evm/UniqueNFT.md',
         ],
+      },
+      {
+        text: 'Tech Concepts',
+        children: [
+          '/about/tech-concepts/addresses',
+          '/about/tech-concepts/balances/index.md',
+        ]
       }
     ],
     '/tutorials': [
