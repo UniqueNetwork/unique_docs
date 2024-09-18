@@ -51,8 +51,8 @@ const account = Sr25519Account.fromUri(mnemonic);
 
 // set "account" as a default signer
 const sdk = UniqueChain({
- baseUrl: "https://rest.unique.network/v2/opal", 
- account,
+  baseUrl: "https://rest.unique.network/v2/opal", 
+  account,
 });
 ```
 
@@ -62,7 +62,7 @@ const sdk = UniqueChain({
 ...
 
 const balanceQuery = await sdk.balance.get({address: account.address});
-console.log("Account's total balance:", balanceRequest.total);
+console.log("Account's total balance:", balanceQuery.total);
 ```
 
 The Unique SDK currently supports the following modules:
