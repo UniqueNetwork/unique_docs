@@ -317,4 +317,5 @@ In Unique Network every collection and token have unique ID. At the same time th
 
 The concept of collections and token addresses is particularly useful when working with [smart contracts](../../evm/index.md).
 :::
-  
+
+Under the hood all nested tokens are allowed to transferFrom for the topmost token owner. So the `unnest` is just a synthetic sugar, and you can transfer nested tokens directly to whatever address you want. See [transfer](#transfer)

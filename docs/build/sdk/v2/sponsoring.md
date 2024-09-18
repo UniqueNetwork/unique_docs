@@ -37,7 +37,7 @@ At this point, every action with tokens of this collection, such as transfer or 
 
 ## Setting limits
 
-You may want to set limits on sponsorship to prevent your sponsorship account from being drained. We already discussed how to set limits in the [collection section](collections.md#collection-limits). Let's take a closet look on sponsorship-related limits.
+You may want to set limits on sponsorship to prevent your sponsorship account from being drained. We already discussed how to set limits in the [collection section](collections.md#collection-limits). Let's take a closer look on sponsorship-related limits.
 
 <!-- TODO setVariableMetadata is not the case anymore -->
 

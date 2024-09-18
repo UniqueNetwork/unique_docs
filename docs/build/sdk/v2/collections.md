@@ -244,11 +244,26 @@ Setting sponsorship of a collection should be done in several steps.
 
 ### Setting collection sponsor
 
-First, we need to specify an account that will pay transaction fees.
+Firstly, we need to specify an account that will pay transaction fees.
 
 ```ts:no-line-numbers
 await sdk.collection.setSponsor({ collectionId, sponsor: alice.address });
 ```
 
-<!-- TODO add confirm sponsorship -->
-<!-- TODO add setting limits -->
+Secondly, the specified account should confirm sponsorship
+
+```ts:no-line-numbers
+await sdk.collection.confirmSponsorship({ collectionId });
+```
+
+Finally, set sponsoring rate limits 
+
+```ts:no-line-numbers
+  await sdk.collection.setLimits({
+    collectionId,
+    limits: {
+      sponsorApproveTimeout: 0,
+      sponsorTransferTimeout: 0,
+    },
+  });
+```
