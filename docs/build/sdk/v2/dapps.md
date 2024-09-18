@@ -18,7 +18,7 @@ To get started with the boilerplate, follow these steps:
 ... or just clone the repo with the following command:
 
 ```sh:no-line-numbers
-git clone [<repository-url>](https://github.com/UniqueNetwork/unique-react-template)
+git clone git@github.com:UniqueNetwork/unique-react-template.git
 ```
 
 2. Install dependencies:
