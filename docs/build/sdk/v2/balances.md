@@ -1,9 +1,5 @@
 # Balances
 
-::: warning
-The Unique SDK v2 is in alpha and may contain bugs or incomplete features. For production use or to access more stable functionality, please refer to the [documentation for the previous version](../getting-started.md) of the SDK.
-:::
-
 ## Prerequisite
 
 Follow the [Getting started guide](./quick-start.md) to install required libraries, receive test network OPL tokens, and initialize SDK.

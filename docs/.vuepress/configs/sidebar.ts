@@ -77,15 +77,15 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/build/sdk/v2/tokens.md',
           '/build/sdk/v2/sponsoring.md',
           '/build/sdk/v2/indexer.md',
+          '/build/sdk/v2/evm.md',
           '/build/sdk/v2/dapps.md',
         ]
       },
       {
         text: 'EVM',
         children: [
-          '/build/evm',
+          '/build/evm/',
           '/build/evm/accounts.md',
-          '/build/evm/evm-from-substrate.md',
           {
             text: 'Smart contracts',
             link: '/build/evm/smart-contracts/index.md',

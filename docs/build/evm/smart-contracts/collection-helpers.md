@@ -8,7 +8,9 @@ This precompiled contract enables the creation of native collections and tokens 
 
 Below are examples of how to use this precompiled contract with ethers.js and hardhat.
 
-> If you're unfamiliar with setting up a Hardhat project, refer to the official documentation: https://hardhat.org/docs
+:::tip
+If you're unfamiliar with setting up a Hardhat project, refer to the official documentation: [https://hardhat.org/docs](https://hardhat.org/docs)
+:::
 
 ### Connect to contract
 

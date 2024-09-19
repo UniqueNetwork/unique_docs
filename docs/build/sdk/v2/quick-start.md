@@ -1,9 +1,5 @@
 # Unique SDK quick start
 
-::: warning
-The Unique SDK v2 is in alpha and may contain bugs or incomplete features. For production use or to access more stable functionality, please refer to the [documentation for the previous version](../getting-started.md) of the SDK.
-:::
-
 The SDK facilitates seamless integration of Unique Network's capabilities into the web3 application, bypassing the need for direct low-level API interaction. It enables you to effortlessly mint collections and tokens, manage account balances, and more.
 
 All transactions require a fee so that you can use Opal tokens for test purposes. You can get them free in [Telegram faucet bot](https://t.me/unique2faucet_opal_bot).
