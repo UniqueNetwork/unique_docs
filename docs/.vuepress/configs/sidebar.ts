@@ -56,20 +56,7 @@ export const sidebar: Record<string, SidebarConfig> = {
         ]
       },
       {
-        text: 'SDK',
-        children: [
-            '/build/sdk/getting-started.md',
-            '/build/sdk/accounts.md',
-            '/build/sdk/collections.md',
-            '/build/sdk/tokens.md',
-            '/build/sdk/examples-nesting.md',
-            '/build/sdk/refungible.md',
-            '/build/sdk/sponsoring.md',
-            '/build/sdk/v2/migration.md'
-        ]
-      },
-      {
-        text: 'SDK-2.0 [Alpha]',
+        text: 'SDK-2.0',
         children: [
           '/build/sdk/v2/quick-start.md',
           '/build/sdk/v2/balances.md',
@@ -79,6 +66,19 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/build/sdk/v2/indexer.md',
           '/build/sdk/v2/evm.md',
           '/build/sdk/v2/dapps.md',
+        ]
+      },
+      {
+        text: 'SDK-1.0',
+        children: [
+            '/build/sdk/getting-started.md',
+            '/build/sdk/accounts.md',
+            '/build/sdk/collections.md',
+            '/build/sdk/tokens.md',
+            '/build/sdk/examples-nesting.md',
+            '/build/sdk/refungible.md',
+            '/build/sdk/sponsoring.md',
+            '/build/sdk/v2/migration.md'
         ]
       },
       {
@@ -103,8 +103,8 @@ export const sidebar: Record<string, SidebarConfig> = {
       {
         text: 'Tech Concepts',
         children: [
-          '/about/tech-concepts/addresses',
-          '/about/tech-concepts/balances/index.md',
+          '/build/tech-concepts/addresses',
+          '/build/tech-concepts/balances/index.md',
         ]
       }
     ],

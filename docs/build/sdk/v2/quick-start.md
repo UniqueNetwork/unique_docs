@@ -12,19 +12,18 @@ All transactions require a fee so that you can use Opal tokens for test purposes
 
 Install `@unique-nft/sdk` for Unique Network interaction and `@unique-nft/sr25519` for account management.
 
-<!-- TODO remove alpha after release -->
 <CodeGroup>
  <CodeGroupItem title="NPM"  active>
 
 ```bash:no-line-numbers
-npm install @unique-nft/sdk@alpha @unique-nft/sr25519
+npm install @unique-nft/sdk @unique-nft/sr25519
 ```
 
  </CodeGroupItem>
  <CodeGroupItem title="YARN">
 
 ```bash:no-line-numbers
-yarn add @unique-nft/sdk@alpha @unique-nft/sr25519
+yarn add @unique-nft/sdk @unique-nft/sr25519
 ```
 
  </CodeGroupItem>

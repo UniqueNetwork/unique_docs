@@ -3,7 +3,7 @@
 An address represents an identity - usually of a person or an organization - capable of making transactions or holding funds. 
 Although addresses are most often used to represent a person, that doesn't have to be the case. An address can be used to perform operations 
 on behalf of a user or another entity or to perform operations autonomously. In addition, any single person or entity could have multiple
-addresses for different purposes. All [our networks](../../networks.md) are Substrate-based blockchains, and you can have specialized addresses for holding funds that 
+addresses for different purposes. All [our networks](../../../about/networks.md) are Substrate-based blockchains, and you can have specialized addresses for holding funds that 
 are separate from addresses used for making transactions.
 
 ### Substrate addresses
@@ -39,7 +39,7 @@ Address.substrate.decode('yGJ7zjEaVLKPVVM39VoHt1YQtwU2VCfGeRGHX4j2Ap8WzzB6L')
 
 The result is the following. Please note that both calls give the same result since we receive a public key, which is the same in both addresses; they are equal, just presented in different formats (Unique and Quartz). 
 
-![public key](../../images/array-address.png)
+![public key](../../../about/images/array-address.png)
 
 Now, let's use another decoder that will provide not only a public key as a result. 
 
@@ -56,9 +56,9 @@ array will be 42). This depends on how many bites are needed to store a prefix v
 Checksum is calculated using both prefix and public key. Thus, these values depend
 on the chain prefix, as well. 
 
-![full address](../../images/array-full.png)
+![full address](../../../about/images/array-full.png)
 
-![prefix 42](../../images/prefix42.png)
+![prefix 42](../../../about/images/prefix42.png)
 
 The reverse operation will show that the encoding and decoding work in both directions. 
 
