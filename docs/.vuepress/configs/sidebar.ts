@@ -116,26 +116,6 @@ export const sidebar: Record<string, SidebarConfig> = {
         ]
       },
       {
-        text: 'SDK guides',
-        children: [
-          '/tutorials/work-with-accounts.md',
-          // '/tutorials/accounts/create-account.md', - how-to-accounts.md
-          // '/tutorials/getAccountAndBalance.md', - how-to-accounts.md
-          // '/tutorials/create-collection-token.md', - exists in how-to-collections.md + how-to-tokens.md
-          // '/tutorials/accounts/integrate-creating-into-UI.md', - how-to-accounts.md
-          '/tutorials/nfts-how-to-create-and-tune-collection.md',
-          '/tutorials/nfts-how-to-mint.md',
-          '/tutorials/createCollectionV2',
-          // '/tutorials/store-files.md',  - duplicate
-          // '/tutorials/nfts-ways-to-create.md', - duplicate
-          // '/tutorials/destroyCollection.md', - how-to-collections.md
-          // '/tutorials/burnNFT.md', - how-to-tokens.md
-          '/tutorials/work-with-evm-via-sdk.md',
-          // '/tutorials/live-nft-example.md', -> moved to SDK life nft
-          '/tutorials/websocket-subscriptions.md',
-        ]
-      },
-      {
         text: 'Minting guides',
         children: [
           '/tutorials/minting/main.md',
@@ -158,30 +138,15 @@ export const sidebar: Record<string, SidebarConfig> = {
           // '/tutorials/evm/how-to-ethereum.md', - disassembled
         ],
       },
-      {
-        text: 'REST API',
-        children: [
-          '/tutorials/examplesREST.md',
-        ]
-      },
-      {
-        text: 'GraphQL',
-        children: [
-          '/tutorials/graph-node-docker.md',
-          '/tutorials/subquery-indexer.md',
-          '/tutorials/wallet-integration.md',
-          '/tutorials/how-to-get-collections-tokens.md',
-          '/tutorials/nfts-fetching.md',
-        ],
-      },
+      // {
+      //   text: 'REST API',
+      //   children: [
+      //   ]
+      // },
       {
         text: 'How to',
         children: [
-          // '/tutorials/createAccount.md', - how-to-accounts.md
           '/tutorials/mass-transactions.md',
-          '/tutorials/getNFTsAndTokens.md',
-          '/tutorials/easy-market.md',
-          // '/tutorials/how-to-use-nesting-and-bundling.md', -> moved to SDK nesting
         ]
       },
       {
