@@ -14,9 +14,9 @@
 
 |  | Endpoint |
 |----------|----------|
-| Polkadot | https://rest.unique.network/v2/polkadot-asset-hub/documentation |
-| Kusama | https://rest.unique.network/v2/kusama-asset-hub/documentation |
-| Westend | https://rest.unique.network/v2/westend-asset-hub/documentation |
+| Polkadot | https://rest.unique.network/v2/polkadot-asset-hub |
+| Kusama | https://rest.unique.network/v2/kusama-asset-hub |
+| Westend | https://rest.unique.network/v2/westend-asset-hub |
 
 ## SDK-1.0 (Legacy)
 
