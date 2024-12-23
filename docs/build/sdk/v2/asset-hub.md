@@ -1,6 +1,6 @@
 # Asset Hub
 
-The Unique SDK supports the Asset Hub, as well as the uniques and nfts pallets. You can use a publicly available endpoint to interact with the Asset Hub:
+The Unique SDK supports the Asset Hub, as well as the `uniques` and `nfts` pallets. You can use a [publicly available endpoint](../../../reference/sdk-endpoints.md) to interact with the Asset Hub:
 
 ```ts:no-line-numbers
 import { AssetHub } from "@unique-nft/sdk";

@@ -1,6 +1,8 @@
-# Public endpoints
+# Public SDK endpoints
 
-## SDK-V2
+## SDK-2.0
+
+### Unique
 
 |  | Endpoint |
 |----------|----------|
@@ -8,7 +10,15 @@
 | Quartz | https://rest.unique.network/v2/quartz |
 | Opal | https://rest.unique.network/v2/opal |
 
-## SDK-V1
+### Asset Hub
+
+|  | Endpoint |
+|----------|----------|
+| Polkadot | https://rest.unique.network/v2/polkadot-asset-hub/documentation |
+| Kusama | https://rest.unique.network/v2/kusama-asset-hub/documentation |
+| Westend | https://rest.unique.network/v2/westend-asset-hub/documentation |
+
+## SDK-1.0 (Legacy)
 
 |  | Endpoint |
 |----------|----------|
