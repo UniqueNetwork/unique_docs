@@ -15,7 +15,7 @@ The premise of this document is as follows (for whom this document is intended):
 Since your core functionality is provided via Solidity contracts, we have taken care to provide you with as much examples and instructions as possible to help you navigate the transition from the existing ERC-721 tokens to the Unique native model.
 
 :::tip
-One note to be mindful of is: the most efficient way of accomplishing this goal is by using the Unique SDK 2.0. It will provide you with the framework, the tools and the methods to make this fast and easy, so do brush up on your Typescript if you have been away from it for a while. It will save you an enormous amount of time. To make it as real-world as possible, we have implemented our SDK calls in a React framework so you can gauge how the SDK functions in a UI context and you can see it all in the video listed below.
+One note to be mindful of is: the most efficient way of accomplishing this goal is by using the Unique SDK 2.0. It will provide you with the framework, the tools and the methods to make this fast and easy, so do brush up on your Typescript if you have been away from it for a while. It will save you an enormous amount of time. To make it as real-world as possible, we have implemented our SDK calls in a [React framework](https://github.com/UniqueNetwork/unique-react-template) so you can gauge how the SDK functions in a UI context and you can see it all in the video listed below.
 :::
 
 That said...
@@ -29,18 +29,18 @@ Once you read through this document, we propose that you attempt to replicate th
 5. Call that contract from the SDK
 6. Nest a token
 
-ALL the examples for this except point 6 are shown in this video: https://youtu.be/Cid_Ui5e0rk
+ALL the examples for this except point 6 are shown in [this video](https://youtu.be/Cid_Ui5e0rk).
 
 To nest, you just send a native token to a native token address as though it is a wallet using a simple send call via the SDK. That's all. Nesting doesn't even have a dedicated method. It is a simple send of a token to another tokens address.
 
 Read on...
 
 
-# 1. EVM and Substrate
+## EVM and Substrate
 
 There are two types of accounts – Substrate (5Grw...) and EVM (0x...)
 In terms of calling contracts:
-- EVM accounts operate the same way as in Ethereum, nothing special
+- EVM accounts operate the same way as in Ethereum
 - Substrate accounts cannot call EVM contracts directly because EVM works only with EVM accounts. But they can do it through the `evm.call` extrinsic (in SDK - `sdk.evm.send` method). For contract, `msg.sender` will be Substrate's account mirror – EVM account. To calculate the Substrate account mirror, use the `Address` utility from `@unique-nft/utils`
 
 ```ts
@@ -50,7 +50,7 @@ const ethMirror = Address.mirror.SubstrateToEthereum('5GrwvaEF5zXb26Fz9rcQpDWS57
 // 0xd43593c715Fdd31c61141ABd04a99FD6822c8558
 ```
 
-or play with the converter in the documentation – https://docs.unique.network/reference/tools.html
+or play with the [converter](https://docs.unique.network/reference/tools.html) in the documentation.
 
 It is essential to understand that mirror calculation is a one-way operation. You cannot calculate the origin address from its mirror.
 
@@ -99,21 +99,20 @@ or convert the address to CrossAccount directly:
 ```
 
 A lot of examples of how to use CrossAddress with EVM and Substrate accounts can be found in recipes of unique-contracts repo. For example:
-- minter contract: https://github.com/UniqueNetwork/unique-contracts/blob/main/contracts/recipes/Minter.sol#L100
-- test: how to call the minter contract with EVM account https://github.com/UniqueNetwork/unique-contracts/blob/main/test/minter.spec.ts
-- test: how to call the minter contract with Substrate account: https://github.com/UniqueNetwork/unique-contracts/blob/main/test/minter.spec.ts
+- [minter contract](https://github.com/UniqueNetwork/unique-contracts/blob/main/contracts/recipes/Minter.sol#L100)
+- how to [call the minter contract with EVM account](https://github.com/UniqueNetwork/unique-contracts/blob/main/test/minter.spec.ts)
+- how to [call the minter contract with Substrate account](https://github.com/UniqueNetwork/unique-contracts/blob/main/test/minter.spec.ts)
 
 ## Signers and Wallets
 
-Documentation section on how to build applications, and specifically connecting accounts
-https://docs.unique.network/build/sdk/v2/dapps.html#connecting-accounts
+Documentation section on how to build applications, and specifically [connecting accounts](https://docs.unique.network/build/sdk/v2/dapps.html#connecting-accounts)
 
-It could be much easier to understand playing with code. Here is a react template: https://github.com/UniqueNetwork/unique-react-template
+It could be much easier to understand playing with code. Here is a [react template](https://github.com/UniqueNetwork/unique-react-template) you can use.
 
 ## SDK
 
 SDK is only for Substrate accounts (remember that Substrate accounts can invoke contracts).
-The build section of the documentation explains all the needed concepts - https://docs.unique.network/build/sdk/v2/quick-start.html
+The [build](https://docs.unique.network/build/sdk/v2/quick-start.html) section of the documentation explains all the needed concepts.
 
 ## Why it makes sense to use the schema 2.0 and why you don't have to if you do not need it.
 
@@ -125,20 +124,20 @@ We support Unique Schema 2.0, an OpenSea compatible, on-chain metadata format, t
 
 However, there is good news—if you use SDK or unique contracts, you don't need to understand this format in detail. You only need to understand its features. Everything else is handled for you.
 
-The reference section in the documentation explaining all the features of unique schema – https://docs.unique.network/reference/schemas
-The js library for the unique schema. You don't need it if you use SDK https://github.com/UniqueNetwork/unique_schemas 
+The [reference section](https://docs.unique.network/reference/schemas) in the documentation explaining all the features of unique schema.
 
-# How to call EVM contracts using Substrate account and SDK
+The [js library for the unique schema](https://github.com/UniqueNetwork/unique_schemas ). You don't need it if you use SDK.
 
-docs – https://docs.unique.network/build/sdk/v2/evm.html
+## How to call EVM contracts using Substrate account and SDK
 
-EVM workshop – https://github.com/UniqueNetwork/unique-react-template/tree/workshop-EVM
+- [Documentation](https://docs.unique.network/build/sdk/v2/evm.html)
+- [EVM workshop](https://github.com/UniqueNetwork/unique-react-template/tree/workshop-EVM)
 - [This function](https://github.com/UniqueNetwork/unique-react-template/blob/ab923457ece54f6ac6d1f2f47fc08ea52363dad1/src/pages/BreedingPage.tsx#L58-L107) covers how to invoke contracts 
 
 Long story short:
 
 - You save the contract's ABI as JSON file and import it
-- You call sdk.evm.send and pass abi, contract address, function name, and params
+- You call `sdk.evm.send` and pass abi, contract address, function name, and params
 
 ## To change a schema 2.0 compliant data attribute from EVM
 
@@ -151,4 +150,4 @@ EVM workhop demonstrates how to do this.
 - [How do we call these solidity functions on the UI](https://github.com/UniqueNetwork/unique-react-template/blob/ab923457ece54f6ac6d1f2f47fc08ea52363dad1/src/pages/BreedingPage.tsx#L138-L173)
 
 
-Please remember to view this video:  https://youtu.be/Cid_Ui5e0rk
+Please remember to view [this video](https://youtu.be/Cid_Ui5e0rk).
