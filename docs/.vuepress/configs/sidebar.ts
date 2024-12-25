@@ -65,8 +65,8 @@ export const sidebar: Record<string, SidebarConfig> = {
           '/build/sdk/v2/sponsoring.md',
           '/build/sdk/v2/indexer.md',
           '/build/sdk/v2/evm.md',
-          '/build/sdk/v2/dapps.md',
           '/build/sdk/v2/asset-hub.md',
+          '/build/sdk/v2/dapps.md',
         ]
       },
       {
