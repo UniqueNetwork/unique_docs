@@ -62,18 +62,21 @@ const item = await assetHub.nftsPallet.item.mint({
   collectionId,
   itemId: 10,
   mintTo: bob.address,
-  witnessData: {},
 });
 ```
 
-This code mints an NFT with itemId 10 and assigns it to `bob.address`.
+This code mints an NFT with `itemId` 10 and assigns it to `bob.address`.
 
 #### Setting metadata and attributes
 
 Enhance your NFTs by adding metadata and attributes.
 
 ```ts:no-line-numbers
-await assetHub.nftsPallet.metadata.setForItem({ collectionId, itemId: 10, data: "QmRKs2ZfuwvmZA3QAWmCqrGUjV9pxtBUDP3wuc6iVGnjA2" });
+await unq.nftsPallet.item.setMetadata({
+  collectionId,
+  itemId,
+  data: "metadata",
+});
 
 await assetHub.nftsPallet.attributes.set({
   collectionId,
@@ -156,7 +159,7 @@ const metadataTx = await assetHub.uniquesPallet.attributes.setAssetMetadata({
 Note that the asset's metadata is mutable until the asset is frozen.
 
 ```ts:no-line-numbers
-const attributeTx = await assetHub.uniquesPallet.attributes.setAssetAttribute(
+const attributeTx = await assetHub.uniquesPallet.asset.setAttribute(
   {
     collectionId,
     assetId,
