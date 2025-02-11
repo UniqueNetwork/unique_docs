@@ -17,6 +17,7 @@
 | Polkadot | https://rest.unique.network/v2/polkadot-asset-hub |
 | Kusama | https://rest.unique.network/v2/kusama-asset-hub |
 | Westend | https://rest.unique.network/v2/westend-asset-hub |
+| Paseo | https://rest.unique.network/v2/paseo-asset-hub |
 
 ## SDK-1.0 (Legacy)
 
