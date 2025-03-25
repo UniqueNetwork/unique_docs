@@ -238,3 +238,22 @@ const searchEvents = async () => {
   console.log('Events', events);
 };
 ```
+
+## Staking
+
+Retrieve extrinsic operations related to staking, filtered by the signer's address and the `stake` method.
+
+```typescript
+const getStakingExtrinsics = async (signerAddress: string) => {
+  const indexerClient = UniqueIndexer({
+    baseUrl: "https://api-unique.uniquescan.io/v2",
+  });
+
+  const extrinsics = await indexerClient.extrinsics({
+    signerIn: [signerAddress],
+    methodIn: ["stake"],
+    sectionIn: ["appPromotion"],
+  });
+
+  console.log('Staking Extrinsics', extrinsics);
+};
