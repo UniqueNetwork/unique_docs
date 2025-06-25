@@ -6,7 +6,7 @@ The Unique SDK supports the Asset Hub, as well as the `uniques` and `nfts` palle
 import { AssetHub } from "@unique-nft/sdk";
 
 const assetHub = AssetHub({
-  baseUrl: "https://rest.unique.network/v2/westend-asset-hub",
+  baseUrl: "https://rest.unique.network/v2/paseo-asset-hub",
   account,
 });
 ```
