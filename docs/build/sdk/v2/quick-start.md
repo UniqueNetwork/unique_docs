@@ -115,7 +115,6 @@ services:
     environment:
       - DB_URL=postgres://db_user:db_password@postgres:5432/scan_db
       - CHAIN=ws://chain:9833
-    command: "yarn workspace scan-crawler start"
 
   scan-api:
     image: uniquenetwork/substrate-proxy-scan-api:master
