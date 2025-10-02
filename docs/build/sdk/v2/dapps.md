@@ -7,6 +7,7 @@ Check out the live [demo](https://plate.uniquenetwork.dev).
 [[toc]]
 
 ## Quick Start
+
 To get started with the boilerplate, follow these steps:
 
 1. Create your repository with a GitHub template:
@@ -38,6 +39,7 @@ yarn start
 The Unique SDK enables you to interact with Substrate-based networks, particularly focusing on NFT operations and tokenized assets. This section will cover the basic setup, configuration, and common operations using the SDK within the context of the provided boilerplate.
 
 ### SDK Overview
+
 The Unique SDK (@unique-nft/sdk) is designed to abstract complexities when working with the blockchain and provides high-level functionality to create, manage, and query NFTs on the Unique Network.
 
 The boilerplate already integrates the SDK through a global context provider. Let's break down how to configure and interact with the SDK.
@@ -49,8 +51,14 @@ The SDK is initialized within the boilerplate in the `src/sdk/SdkContext.tsx` fi
 Example of SDK Initialization:
 
 ```ts
-import { Sdk } from '@unique-nft/sdk';
-import { createContext, ReactNode, useContext, useState, useEffect } from 'react';
+import { Sdk } from "@unique-nft/sdk";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useState,
+  useEffect,
+} from "react";
 
 interface ISdkContext {
   sdk: Sdk | null;
@@ -64,7 +72,7 @@ export const SdkProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const initializeSdk = async () => {
       const sdkInstance = await Sdk.create({
-        baseUrl: 'https://rest.unique.network/v2/opal', // Example URL for testnet
+        baseUrl: "https://rest.unique.network/v2/unique",
       });
       setSdk(sdkInstance);
     };
@@ -72,19 +80,14 @@ export const SdkProvider = ({ children }: { children: ReactNode }) => {
     initializeSdk();
   }, []);
 
-  return (
-    <SdkContext.Provider value={{ sdk }}>
-      {children}
-    </SdkContext.Provider>
-  );
+  return <SdkContext.Provider value={{ sdk }}>{children}</SdkContext.Provider>;
 };
 
 export const useSdk = () => useContext(SdkContext);
 ```
 
-- Base URL: This is the endpoint to which the SDK will connect. In this example, it connects to the Opal testnet, but you can change this URL to point to the mainnet or other environments. You can find the list of endpoints in the [reference section](../../../reference/sdk-endpoints.md).
+- Base URL: This is the endpoint to which the SDK will connect. In this example, it connects to the Unique mainnet.
 - Provider Component: The SdkProvider component initializes the SDK and stores it in the global state using React.Context. This allows other components to easily access the SDK through the `useSdk` hook.
-
 
 #### Step 2: Accessing the SDK in Components
 
@@ -93,7 +96,7 @@ Once the SDK is initialized, you can access it in any component using the useSdk
 Example Usage of SDK in a Component:
 
 ```ts
-import { useSdk } from '../sdk/SdkContext';
+import { useSdk } from "../sdk/SdkContext";
 
 const MyComponent = () => {
   const { sdk } = useSdk();
@@ -103,9 +106,9 @@ const MyComponent = () => {
 
     try {
       const nft = await sdk.token.get({ collectionId: 123, tokenId });
-      console.log('NFT Data:', nft);
+      console.log("NFT Data:", nft);
     } catch (error) {
-      console.error('Error fetching NFT:', error);
+      console.error("Error fetching NFT:", error);
     }
   };
 
@@ -134,9 +137,9 @@ The boilerplate provides a PolkadotWallet class that handles interaction with va
 Example of Polkadot Wallet Setup
 
 ```ts
-import { PolkadotWallet } from './PolkadotWallet';
+import { PolkadotWallet } from "./PolkadotWallet";
 
-const polkadotWallet = new PolkadotWallet('polkadot-js');  // Instantiate with the wallet of choice
+const polkadotWallet = new PolkadotWallet("polkadot-js"); // Instantiate with the wallet of choice
 ```
 
 - PolkadotWallet: This class supports all Polkadot-compatible wallets like Polkadot.js, Subwallet, Talisman, etc.
@@ -144,18 +147,18 @@ const polkadotWallet = new PolkadotWallet('polkadot-js');  // Instantiate with t
 
 #### Step-2. Connecting to a Polkadot Wallet
 
-Once the wallet instance is created, you can request the user to connect their wallet and retrieve their accounts. The _accounts property within the class stores the accounts associated with the connected wallet.
+Once the wallet instance is created, you can request the user to connect their wallet and retrieve their accounts. The \_accounts property within the class stores the accounts associated with the connected wallet.
 
 Example: Connecting to Wallet and Retrieving Accounts
 
 ```ts
 const connectAndFetchAccounts = async () => {
   try {
-    await polkadotWallet.connect();  // Initiates connection
-    const accounts = await polkadotWallet.getAccounts();  // Retrieves wallet accounts
-    console.log('Connected accounts:', accounts);
+    await polkadotWallet.connect(); // Initiates connection
+    const accounts = await polkadotWallet.getAccounts(); // Retrieves wallet accounts
+    console.log("Connected accounts:", accounts);
   } catch (error) {
-    console.error('Error connecting to wallet:', error);
+    console.error("Error connecting to wallet:", error);
   }
 };
 ```
@@ -232,7 +235,7 @@ import { Account, WalletsType } from "../accounts/types";
 
 export const connectSdk = async (
   sdkEndpoint: string,
-  account?: Account<WalletsType> 
+  account?: Account<WalletsType>
 ) => {
   const uniqueChain = UniqueChain({
     baseUrl: sdkEndpoint,
@@ -247,8 +250,8 @@ export const connectSdk = async (
 Putting it all together:
 
 ```ts
-import { useContext } from 'react';
-import { AccountsContext } from '../accounts/AccountsContext';
+import { useContext } from "react";
+import { AccountsContext } from "../accounts/AccountsContext";
 
 const MyComponent = () => {
   const { selectedAccount } = useContext(AccountsContext);
@@ -257,9 +260,8 @@ const MyComponent = () => {
     const sdk = await connectSdk(baseUrl, selectedAccount);
 
     // ...
-  }
+  };
 
   // ...
 };
 ```
-

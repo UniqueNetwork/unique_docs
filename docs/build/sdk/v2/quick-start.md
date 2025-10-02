@@ -2,8 +2,6 @@
 
 The SDK facilitates seamless integration of Unique Network's capabilities into the web3 application, bypassing the need for direct low-level API interaction. It enables you to effortlessly mint collections and tokens, manage account balances, and more.
 
-All transactions require a fee so that you can use Opal tokens for test purposes. You can get them free in [Telegram faucet bot](https://t.me/unique2faucet_opal_bot).
-
 [[toc]]
 
 ## Getting started
@@ -36,6 +34,7 @@ To begin using the Unique SDK, you need to import the required modules, set the 
 You can find the list of public endpoints in the [reference section](../../../reference/sdk-endpoints.md).
 
 <!-- TODO set production baseUrl -->
+
 ```typescript:no-line-numbers
 import { UniqueChain } from "@unique-nft/sdk";
 import { Sr25519Account } from "@unique-nft/sr25519";
@@ -46,7 +45,7 @@ const account = Sr25519Account.fromUri(mnemonic);
 
 // set "account" as a default signer
 const sdk = UniqueChain({
-  baseUrl: "https://rest.unique.network/v2/opal", 
+  baseUrl: "https://rest.unique.network/v2/unique",
   account,
 });
 ```
@@ -64,7 +63,12 @@ The Unique SDK currently supports the following modules:
 
 - `collection`: create, update, and manage NFT collections.
 - `token`: mint, transfer, and manage individual NFTs.
+- `fungible`: mint, transfer, and manage fungible tokens.
+- `refungible`: mint, transfer, and manage refungible tokens.
 - `balance`: manage and query account balances.
+- `account`: get account info.
+- `utility`: utility methods.
+- `evm`: deploy and invoke smart contracts, call precompiles.
 - `extrinsic`: build, sign, submit any extrinsic.
 - `options`: configure SDK options.
 
@@ -89,4 +93,3 @@ services:
       - OPENAPI_SERVER_DESCRIPTION="Local development server"
       - EXTRINSICS_STORAGE_MAX_BLOCKS_COUNT=100
 ```
-

@@ -49,7 +49,6 @@ When nesting, the accessories NFT will overlay onto the base NFT. To ensure corr
 - Accessory images should have a transparent background – use the .png format.
 - Accessory images should not overlap with each other.
 
-
 ## 🧸 3. Creating the Base Collection
 
 ### 3.1 Prepare Collection Images and Metadata
@@ -64,7 +63,7 @@ If you haven't yet created a config.js file in the project root, do so now and c
 
 Make sure the following fields are filled:
 
-- ownerSeed - find out [how to generate an address and obtain tokens](./prepare-account.md).
+- ownerSeed - mnemonic seed phrase.
 - name - the name of the upcoming collection.
 - description - a brief about the collection.
 - symbol - ensure that image names match the format {symbol}{id}.png. For instance, we set the symbol to `HEAD` for the base collection of heads, and the images are named head1.png, head2.png, and so on.
@@ -77,6 +76,7 @@ Make sure the following fields are filled:
 External services, such as a wallet or marketplace, retrieve the token's image link from the `image` property stored on-chain. In its simplest form, this is a direct link to IPFS.
 
 The `image` property stores a link to an off-chain service that modifies images for customizable collections. In our case, it's https://nesting.unique.network. This service searches for nested tokens and merges the images. Meanwhile, the link to the original image is stored on-chain in the `file` property.
+
 </details>
 
 At this stage, your config.js file should resemble `customization/heads/config.example.js`.
@@ -84,50 +84,48 @@ At this stage, your config.js file should resemble `customization/heads/config.e
 <details>
   <summary style="color:#0095D4; cursor:pointer;">Check your config file looks like...</summary>
 
-  ```js
-  const config = {
-    endpoint: 'https://rest.unique.network/opal/v1',
-    // Set your secret mnemonic phrase. Keep it safe!
-    ownerSeed: 'set your seed...',
-    
-    // Set desired collection attributes
-    collection: {
-        collectionId: '', // you will get the collection id after the step 2-create-collection.js
-        fileUrl: '', // link to IPFS, you will get it after the step 1-upload-images.js
-        
-        name: 'Heads collection',
-        description: 'This collection demonstrates how to create customizable NFTs',
-        // It is required that all NFT image names begin with the symbol, e.g. sa1.png, sa2.png ...
-        symbol: 'HEAD',
+```js
+const config = {
+  endpoint: "https://rest.unique.network/opal/v1",
+  // Set your secret mnemonic phrase. Keep it safe!
+  ownerSeed: "set your seed...",
 
-        customizableUrl: true, // set true only for the base customizable collection
-        
-        // To enable nesting set these properties:
-        nesting: {
-            tokenOwner: true,
-            collectionAdmin: true,    
-        }
+  // Set desired collection attributes
+  collection: {
+    collectionId: "", // you will get the collection id after the step 2-create-collection.js
+    fileUrl: "", // link to IPFS, you will get it after the step 1-upload-images.js
+
+    name: "Heads collection",
+    description: "This collection demonstrates how to create customizable NFTs",
+    // It is required that all NFT image names begin with the symbol, e.g. sa1.png, sa2.png ...
+    symbol: "HEAD",
+
+    customizableUrl: true, // set true only for the base customizable collection
+
+    // To enable nesting set these properties:
+    nesting: {
+      tokenOwner: true,
+      collectionAdmin: true,
     },
+  },
 
-    // Extra configuration
+  // Extra configuration
 
-    desiredCount: 30, // How many NFTs to generate. Used only for 0-generate-nfts.js
-    coverFileName: 'cover.png', // Your cover should have this name. Save it in ./data folder
-    numberOfTokensGeneratedAtOnce: 25,
-    dataDir: './data',
-    tokensCSV: 'nfts.csv',
-    generationDir: './generate',
-    attributesCsv: 'attributes.csv',
-    nestingUrl: 'https://nesting.unique.network/common',
-    imagesInParallel: require('os').cpus().length,
-}
+  desiredCount: 30, // How many NFTs to generate. Used only for 0-generate-nfts.js
+  coverFileName: "cover.png", // Your cover should have this name. Save it in ./data folder
+  numberOfTokensGeneratedAtOnce: 25,
+  dataDir: "./data",
+  tokensCSV: "nfts.csv",
+  generationDir: "./generate",
+  attributesCsv: "attributes.csv",
+  nestingUrl: "https://nesting.unique.network/common",
+  imagesInParallel: require("os").cpus().length,
+};
 
 module.exports = config;
-
-  ```
+```
 
 </details>
-
 
 ## 💎 4. Mint base collection and NFTs
 
@@ -145,7 +143,7 @@ After a short time, you will see the result of executing the command:
 
 This script will pack all the images into a zip archive and save it as `data/archive.zip`. Then, it will upload it to IPFS. Ensure all your files are successfully uploaded by visiting the link provided in the console output.
 
-> ✏️ In the `config.js` file, fill in the `fileUrl` set provided link. 
+> ✏️ In the `config.js` file, fill in the `fileUrl` set provided link.
 
 ### 4.2 Create a collection
 
@@ -166,7 +164,6 @@ After a short time, you will see the result of executing the command:
 
 Your collection has been created, and you can check it on your [wallet](https://wallet.unique.network/) or on [uniquescan.io](https://uniquescan.io/). Your collection has no NFTs yet, so let's create some.
 
-
 ### 4.3 Create NFTs
 
 We have set the token metadata in the previous steps in the nfts.csv file. Check again if it exists. After that, execute the following script.
@@ -185,7 +182,7 @@ Token Ids: 1, 2, 3, 4, 5
 🔗 You can find your collection and tokens here: https://uniquescan.io/opal/collections/2015
 ```
 
-Your base collection and tokens have been successfully created! You can find it in your [wallet](https://wallet.unique.network/). Make sure that your tokens are successfully displayed in the wallet or on the scan. 
+Your base collection and tokens have been successfully created! You can find it in your [wallet](https://wallet.unique.network/). Make sure that your tokens are successfully displayed in the wallet or on the scan.
 
 ## 👕 5. Creating the Accessories Collection
 
@@ -209,46 +206,46 @@ At this stage, your `config.js` file should remind `customization/accessories/co
 <details>
   <summary style="color:#0095D4; cursor:pointer;">Check your config file looks like...</summary>
 
-  ```js
+```js
 const config = {
-    endpoint: 'https://rest.unique.network/opal/v1',
-    // Set your secret mnemonic phrase. Keep it safe!
-    ownerSeed: 'set your seed...',
-    
-    // Set desired collection attributes
-    collection: {
-        collectionId: '', // you will get the collection id after the step 2-create-collection.js
-        fileUrl: '', // link to IPFS, you will get it after the step 1-upload-images.js
-        
-        name: 'Accessories collection',
-        description: 'This collection demonstrates how to create customizable NFTs',
-        // It is required that all NFT image names begin with the symbol, e.g. sa1.png, sa2.png ...
-        symbol: 'ACC',
+  endpoint: "https://rest.unique.network/opal/v1",
+  // Set your secret mnemonic phrase. Keep it safe!
+  ownerSeed: "set your seed...",
 
-        customizableUrl: false, // set true only for the base customizable collection
-        
-        // To enable nesting set these properties:
-        nesting: {
-            tokenOwner: true,
-            collectionAdmin: true,    
-        }
+  // Set desired collection attributes
+  collection: {
+    collectionId: "", // you will get the collection id after the step 2-create-collection.js
+    fileUrl: "", // link to IPFS, you will get it after the step 1-upload-images.js
+
+    name: "Accessories collection",
+    description: "This collection demonstrates how to create customizable NFTs",
+    // It is required that all NFT image names begin with the symbol, e.g. sa1.png, sa2.png ...
+    symbol: "ACC",
+
+    customizableUrl: false, // set true only for the base customizable collection
+
+    // To enable nesting set these properties:
+    nesting: {
+      tokenOwner: true,
+      collectionAdmin: true,
     },
+  },
 
-    // Extra configuration
+  // Extra configuration
 
-    desiredCount: 30, // How many NFTs to generate. Used only for 0-generate-nfts.js
-    coverFileName: 'cover.png', // Your cover should have this name. Save it in ./data folder
-    numberOfTokensGeneratedAtOnce: 25,
-    dataDir: './data',
-    tokensCSV: 'nfts.csv',
-    generationDir: './generate',
-    attributesCsv: 'attributes.csv',
-    nestingUrl: 'https://nesting.unique.network/common',
-    imagesInParallel: require('os').cpus().length,
-}
+  desiredCount: 30, // How many NFTs to generate. Used only for 0-generate-nfts.js
+  coverFileName: "cover.png", // Your cover should have this name. Save it in ./data folder
+  numberOfTokensGeneratedAtOnce: 25,
+  dataDir: "./data",
+  tokensCSV: "nfts.csv",
+  generationDir: "./generate",
+  attributesCsv: "attributes.csv",
+  nestingUrl: "https://nesting.unique.network/common",
+  imagesInParallel: require("os").cpus().length,
+};
 
 module.exports = config;
-  ```
+```
 
 </details>
 
@@ -269,8 +266,7 @@ After a short time, you will see the result of executing the command:
 
 ![Upload](./images/upload.png)
 
-
-> ✏️ In the `config.js` file, fill in the `fileUrl` set provided link. 
+> ✏️ In the `config.js` file, fill in the `fileUrl` set provided link.
 
 ### 6.2 Create a collection
 
@@ -307,7 +303,7 @@ Token Ids: 1, 2, 3, 4, 5
 
 ## 😎 7. Check how customization works
 
-At this stage, you should have created two collections with tokens. 
+At this stage, you should have created two collections with tokens.
 
 1. Log into your [wallet](https://wallet.unique.network/OPAL), connect the address used for minting, and check if the tokens are displayed.
 

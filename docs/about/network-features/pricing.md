@@ -6,9 +6,8 @@ At Unique Network, we have optimized all actions with NFTs to ensure cost-effici
 
 - **Unique Network**: 2 UNQ
 - **Quartz**: 2 QTZ
-- **Opal**: 2 OPL
 
-This fixed pricing model makes it straightforward to understand the costs associated with creating and managing your digital assets on our platforms. 
+This fixed pricing model makes it straightforward to understand the costs associated with creating and managing your digital assets on our platforms.
 
 The estimated minting price on our mainnet (Unique) is approximately $0.001. For example, minting an NFT collection with 1000 items would only cost about $1, one of the lowest prices on the market.
 
@@ -23,7 +22,7 @@ By maintaining these affordable and predictable costs, we aim to make NFT creati
   <strong>Unique Network (Polkadot Parachain)</strong>
 </div>
 
-- **Currency**: UNQ 
+- **Currency**: UNQ
 - **Obtain UNQ**: Visit our [Ecosystem page](https://unique.network/ecosystem/#dex) for the list of exchanges
 - **Tech info**: [Go to References](https://docs.unique.network/reference/#unique-polkadot-parachain)
 
@@ -35,13 +34,3 @@ By maintaining these affordable and predictable costs, we aim to make NFT creati
 - **Currency**: QTZ
 - **Obtain QTZ**: Visit our [Ecosystem page](https://unique.network/ecosystem/#dex) for the list of exchanges
 - **Tech info**: [Go to References](https://docs.unique.network/reference/#unique-polkadot-parachain)
-
-<div style="display: flex; align-items: center; margin-bottom: 10px;">
-  <img src="https://ipfs.unique.network/ipfs/QmYJDpmWyjDa3H6BxweFmQXk4fU8b1GU7M9EqYcaUNvXzc" alt="Opal" width="20" height="20" style="margin-right: 10px;">
-  <strong>Opal (Testnet)</strong>
-</div>
-
-- **Currency**: OPL 
-- **Obtain OPL**: Use the Telegram faucet bot [@UniqueFaucetBot](https://t.me/UniqueFaucetBot)
-- **Tech info**: [Go to References](https://docs.unique.network/reference/#unique-polkadot-parachain)
-

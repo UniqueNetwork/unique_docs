@@ -2,21 +2,21 @@
 
 [[toc]]
 
-## Intro 
+## Intro
 
 NFTs have become much easier to issue, and we're seeing increasing amounts minted daily, mainly through NFT collections. This article will dive into NFT collection minting and some popular examples of how to work with NFT collections in Unique Network.
 
 As the name implies, an NFT collection is a unique collection of NFTs. NFT artworks are generally created on a smaller scale with the involvement of concerned content creators or digital artists. In addition, you would also notice that individual NFT artworks are available for sale on different NFT marketplaces.
 
-In Unique Network, the collection has the following entities: 
+In Unique Network, the collection has the following entities:
 
-- **name** - a collection name that defines it in the global scope; 
+- **name** - a collection name that defines it in the global scope;
 - **description** - some additional details about the collection;
 - **token prefix** - short string value that will be added to token IDs.
-- **properties** - a unique set of keys and values which defines collection specifics; 
-- **limits** - a set that defines the rules for a collection, e.g., whether it can be transferred or how many tokens you can mint in it; 
-- **owner** - an address that created a collection (or if the collection was transferred, the address that owns the collection at the moment);  
-- **admins** - a collection can be controlled by multiple admin addresses. Admins can issue and burn NFTs, as well as add and remove other admins, but they cannot change NFT or collection ownership; 
+- **properties** - a unique set of keys and values which defines collection specifics;
+- **limits** - a set that defines the rules for a collection, e.g., whether it can be transferred or how many tokens you can mint in it;
+- **owner** - an address that created a collection (or if the collection was transferred, the address that owns the collection at the moment);
+- **admins** - a collection can be controlled by multiple admin addresses. Admins can issue and burn NFTs, as well as add and remove other admins, but they cannot change NFT or collection ownership;
 
 ## Prerequisite
 
@@ -46,30 +46,32 @@ You can check your collection successfully created on [Unique Scan](https://uniq
 ## Collection modes
 
 There are three different collection modes in Unique Network:
-- NFT (default)
-- Fungible
-- ReFungible
+
+- **NFT (default)** - Non-Fungible Tokens are unique digital assets with distinct properties and metadata. Each token is one-of-a-kind and cannot be replaced with another token.
+- **Fungible** - Fungible tokens are identical and interchangeable, like traditional currencies. Each token has the same value and properties as any other token in the collection.
+- **ReFungible** - Re-Fungible Tokens allow fractional ownership by dividing a single NFT into multiple fungible shares, enabling multiple people to own portions of the same unique asset.
 
 You can specify the mode of collection during minting.
 
 ```ts:no-line-numbers
 await sdk.collection.create({
- name: "Test",
- description: "Test collection",
- symbol: "TST",
- info: {cover_image: {url: coverImage}},
- mode: 'Fungible' // <--- set collection mode here 
+  name: "Test",
+  description: "Test collection",
+  symbol: "TST",
+  info: {cover_image: {url: coverImage}},
+  mode: 'Fungible' // <--- set collection mode here
 });
 ```
 
 ## Collection properties
 
 <!-- TODO 64 properties, is this correct? -->
+
 Every collection in Unique Network can have up to 64 properties—a unique set of keys and values that define collection specifics. Some of them relate to NFT metadata and are set automatically by SDK.
 
 ### Setting collection properties
 
-During the collection creation, you can set collection limits as follows:
+During the collection creation, you can set collection properties as follows:
 
 ```ts:no-line-numbers
 const {result} = await sdk.collection.create({
@@ -77,9 +79,9 @@ const {result} = await sdk.collection.create({
   description: "Test collection",
   symbol: "TST",
   info: {cover_image: {url: "https://gateway.pinata.cloud/ipfs/QmTkhTg5S5zrqJL3UsKtyiFi8fcMT3Cao9uKtadp3Ckh7m"}},
-  properties: [ //  <--- set collection properties here 
-  {key: "A", value: "value A"},
-  {key: "B", value: "value B"},
+  properties: [ //  <--- set collection properties here
+    {key: "A", value: "value A"},
+    {key: "B", value: "value B"},
   ]
 });
 ```
@@ -143,7 +145,6 @@ The result will be as follows, let's break it down.
 - Properties `A`, `B`, and `C` has been manually set during the collection creation and modifying collection with `setCollectionLimits`
 - The SDK sets' properties `schemaName`, `schemaVersion`, and `collectionInfo` and relate to the Unique metadata. You can read more about [Unique Schema](../../../reference/schemas/2.0.0.md) in the reference section.
 
-
 ## Token property permissions
 
 Every NFT token inside the collection can have properties. The list of allowed properties and their mutability permissions are handled on the collection level.
@@ -156,7 +157,7 @@ await sdk.collection.create({
   description: "Test collection",
   symbol: "TST",
   info: {cover_image: {url: coverImage}},
-  tokenPropertyPermissions: [ // <--- set token property permissions here 
+  tokenPropertyPermissions: [ // <--- set token property permissions here
     {key: 'A', permission: {mutable: true, collectionAdmin: true, tokenOwner: true}},
     {key: 'B', permission: {mutable: false, collectionAdmin: false, tokenOwner: false}},
     {key: 'C', permission: {mutable: false, collectionAdmin: false, tokenOwner: true}},
@@ -195,7 +196,7 @@ const { result } = await sdk.collection.create({
   nesting: {
       collectionAdmin: true,
       tokenOwner: true,
-      restricted: [1, 2],  // <--- restrict nesting for specific collections 
+      restricted: [1, 2],  // <--- restrict nesting for specific collections
     },
   },
 });
@@ -204,6 +205,7 @@ const { result } = await sdk.collection.create({
 ## Collection limits
 
 It is possible to set some limitations, such as:
+
 - maximum number of tokens in the collection or
 - how many tokens a single account can hold
 - whether the token can be transferred or not
@@ -218,7 +220,7 @@ await sdk.collection.create({
   name: "Test",
   description: "Test collection",
   symbol: "TST",
-  limits: { // <--- set collection limits here 
+  limits: { // <--- set collection limits here
     accountTokenOwnershipLimit: 1,
     ownerCanDestroy: true,
     ownerCanTransfer: false,
@@ -252,7 +254,7 @@ Secondly, the specified account should confirm sponsorship
 await sdk.collection.confirmSponsorship({ collectionId });
 ```
 
-Finally, set sponsoring rate limits 
+Finally, set sponsoring rate limits
 
 ```ts:no-line-numbers
   await sdk.collection.setLimits({

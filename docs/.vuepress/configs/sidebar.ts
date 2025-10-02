@@ -65,6 +65,7 @@ export const sidebar: Record<string, SidebarConfig> = {
           "/build/sdk/v2/evm.md",
           "/build/sdk/v2/asset-hub.md",
           "/build/sdk/v2/dapps.md",
+          "/build/sdk/v2/migration.md",
         ],
       },
       // {
@@ -77,7 +78,6 @@ export const sidebar: Record<string, SidebarConfig> = {
       //       '/build/sdk/examples-nesting.md',
       //       '/build/sdk/refungible.md',
       //       '/build/sdk/sponsoring.md',
-      //       '/build/sdk/v2/migration.md'
       //   ]
       // },
       {
@@ -119,23 +119,24 @@ export const sidebar: Record<string, SidebarConfig> = {
           "/tutorials/minting/main.md",
           "/tutorials/minting/setup-environment.md",
           "/tutorials/minting/prepare-scripts.md",
-          "/tutorials/minting/prepare-account.md",
+          // remove OPL: "/tutorials/minting/prepare-account.md",
           "/tutorials/minting/generative-nft.md",
           "/tutorials/minting/mass-minting.md",
           "/tutorials/minting/customizable-nfts.md",
           "/tutorials/minting/mass-listing.md",
         ],
       },
-      {
-        text: "EVM",
-        children: [
-          "/tutorials/evm/eth-general.md",
-          "/tutorials/evm/using-contracts.md",
-          "/tutorials/evm/using-sol-interfaces.md",
-          "/tutorials/evm/ready-samples.md",
-          // '/tutorials/evm/how-to-ethereum.md', - disassembled
-        ],
-      },
+      // TODO: we need to improve build/EVM section instead of this one:
+      // {
+      //   text: "EVM",
+      //   children: [
+      //     "/tutorials/evm/eth-general.md",
+      //     "/tutorials/evm/using-contracts.md",
+      //     "/tutorials/evm/using-sol-interfaces.md",
+      //     "/tutorials/evm/ready-samples.md",
+      //     // '/tutorials/evm/how-to-ethereum.md', - disassembled
+      //   ],
+      // },
       // {
       //   text: 'REST API',
       //   children: [
