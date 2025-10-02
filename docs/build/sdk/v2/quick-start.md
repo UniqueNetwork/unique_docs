@@ -2,8 +2,6 @@
 
 The SDK facilitates seamless integration of Unique Network's capabilities into the web3 application, bypassing the need for direct low-level API interaction. It enables you to effortlessly mint collections and tokens, manage account balances, and more.
 
-All transactions require a fee so that you can use Opal tokens for test purposes. You can get them free in [Telegram faucet bot](https://t.me/unique2faucet_opal_bot).
-
 [[toc]]
 
 ## Getting started
@@ -36,6 +34,7 @@ To begin using the Unique SDK, you need to import the required modules, set the 
 You can find the list of public endpoints in the [reference section](../../../reference/sdk-endpoints.md).
 
 <!-- TODO set production baseUrl -->
+
 ```typescript:no-line-numbers
 import { UniqueChain } from "@unique-nft/sdk";
 import { Sr25519Account } from "@unique-nft/sr25519";
@@ -46,7 +45,7 @@ const account = Sr25519Account.fromUri(mnemonic);
 
 // set "account" as a default signer
 const sdk = UniqueChain({
-  baseUrl: "https://rest.unique.network/v2/opal", 
+  baseUrl: "https://rest.unique.network/v2/unique",
   account,
 });
 ```
@@ -64,14 +63,18 @@ The Unique SDK currently supports the following modules:
 
 - `collection`: create, update, and manage NFT collections.
 - `token`: mint, transfer, and manage individual NFTs.
+- `fungible`: mint, transfer, and manage fungible tokens.
+- `refungible`: mint, transfer, and manage refungible tokens.
 - `balance`: manage and query account balances.
+- `account`: get account info.
+- `utility`: utility methods.
+- `evm`: deploy and invoke smart contracts, call precompiles.
 - `extrinsic`: build, sign, submit any extrinsic.
 - `options`: configure SDK options.
 
 ## Run your own HTTP proxy
 
 Instead of using public SDK endpoints, you can easily run your own HTTP proxy. Create a docker-compose.yml with the following content, and run `docker compose up`.
-
 
 ### Sample HTTP proxy configuration for Unique Network mainnet
 
@@ -98,12 +101,12 @@ Or you even can run all services including dev blockchain node, indexer, and HTT
 This is the recommended way for local development and testing.
 
 List of services:
+
 - `scan-crawler`: Indexer that syncs data from the chain to the database.
 - `scan-api`: Indexer API that provides read-only access to the indexed data.
 - `http-proxy`: HTTP proxy that provides access to the chain and indexer via REST API.
 - `postgres`: PostgreSQL database for the indexer.
 - `chain`: Unique Network node in dev mode.
-
 
 Create a docker-compose.yml with the following content, and run `docker compose up`.
 

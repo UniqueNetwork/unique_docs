@@ -2,7 +2,6 @@
 
 [[toc]]
 
-
 This SDK provides a typed wrapper around Axios to interact with the Unique Network blockchain indexer API. Below are some real-world use cases to help you get started.
 
 ## API Endpoints
@@ -12,19 +11,16 @@ This SDK provides a typed wrapper around Axios to interact with the Unique Netwo
   - [Swagger UI](https://api-unique.uniquescan.io/v2/documentation)
   - [Scalar UI](https://api-unique.uniquescan.io/v2/reference)
 
-- **Opal Network**
-  - endpoint: `https://api-opal.uniquescan.io/v2`
-  - [Swagger UI](https://api-opal.uniquescan.io/v2/documentation)
-  - [Scalar UI](https://api-opal.uniquescan.io/v2/reference)
-
 ## SDK Initialization
 
 To start using the SDK, initialize the `UniqueIndexer` client with the desired base URL:
 
 ```typescript
-import { UniqueIndexer } from '@unique-nft/sdk';
+import { UniqueIndexer } from "@unique-nft/sdk";
 
-const indexerClient = UniqueIndexer({ baseUrl: 'https://api-unique.uniquescan.io/v2' });
+const indexerClient = UniqueIndexer({
+  baseUrl: "https://api-unique.uniquescan.io/v2",
+});
 ```
 
 ## Examples
@@ -37,11 +33,16 @@ Retrieve the last 5 blocks from the blockchain in descending order by block numb
 
 ```typescript
 const getLastBlocks = async () => {
-  const indexerClient = UniqueIndexer({baseUrl: 'https://api-unique.uniquescan.io/v2'});
+  const indexerClient = UniqueIndexer({
+    baseUrl: "https://api-unique.uniquescan.io/v2",
+  });
 
-  const blocks = await indexerClient.blocks({limit: 5, orderByNumber: 'desc'});
+  const blocks = await indexerClient.blocks({
+    limit: 5,
+    orderByNumber: "desc",
+  });
 
-  console.log('Last blocks', blocks);
+  console.log("Last blocks", blocks);
 };
 ```
 
@@ -51,12 +52,18 @@ Retrieve the first 5 blocks from the blockchain in ascending order by block numb
 
 ```typescript
 const getFirstBlocksInThisYear = async () => {
-  const indexerClient = UniqueIndexer({baseUrl: 'https://api-unique.uniquescan.io/v2'});
+  const indexerClient = UniqueIndexer({
+    baseUrl: "https://api-unique.uniquescan.io/v2",
+  });
   const startDate = new Date(`${new Date().getFullYear()}-01-01`);
 
-  const blocks = await indexerClient.blocks({limit: 5, orderByNumber: 'asc', timestampFrom: startDate});
+  const blocks = await indexerClient.blocks({
+    limit: 5,
+    orderByNumber: "asc",
+    timestampFrom: startDate,
+  });
 
-  console.log('First blocks in this year', blocks);
+  console.log("First blocks in this year", blocks);
 };
 ```
 
@@ -66,11 +73,16 @@ Retrieve a single block from the blockchain using its hash.
 
 ```typescript
 const getSingleBlockByHash = async () => {
-  const indexerClient = UniqueIndexer({baseUrl: 'https://api-unique.uniquescan.io/v2'});
+  const indexerClient = UniqueIndexer({
+    baseUrl: "https://api-unique.uniquescan.io/v2",
+  });
 
-  const block = await indexerClient.block({hashOrNumber: '0xd2fcbc0a3be6a34e93d4201ca9ffbeae18931471d62a2dcb3b1c4f4da180a6d0'});
+  const block = await indexerClient.block({
+    hashOrNumber:
+      "0xd2fcbc0a3be6a34e93d4201ca9ffbeae18931471d62a2dcb3b1c4f4da180a6d0",
+  });
 
-  console.log('Single block by hash', block);
+  console.log("Single block by hash", block);
 };
 ```
 
@@ -80,11 +92,13 @@ Retrieve a single block from the blockchain using its number.
 
 ```typescript
 const getSingleBlockByNumber = async () => {
-  const indexerClient = UniqueIndexer({baseUrl: 'https://api-unique.uniquescan.io/v2'});
+  const indexerClient = UniqueIndexer({
+    baseUrl: "https://api-unique.uniquescan.io/v2",
+  });
 
-  const block = await indexerClient.block({hashOrNumber: 333});
+  const block = await indexerClient.block({ hashOrNumber: 333 });
 
-  console.log('Single block by number', block);
+  console.log("Single block by number", block);
 };
 ```
 
@@ -94,11 +108,13 @@ Retrieve all available extrinsic sections and methods from the blockchain. This 
 
 ```typescript
 const getAllExtrinsicSectionsAndMethods = async () => {
-  const indexerClient = UniqueIndexer({baseUrl: 'https://api-unique.uniquescan.io/v2'});
+  const indexerClient = UniqueIndexer({
+    baseUrl: "https://api-unique.uniquescan.io/v2",
+  });
 
   const extrinsics = await indexerClient.extrinsicSections();
 
-  console.log('All extrinsic sections and methods', extrinsics);
+  console.log("All extrinsic sections and methods", extrinsics);
 };
 ```
 
@@ -108,14 +124,21 @@ Retrieve extrinsics filtered by specific sections and methods.
 
 ```typescript
 const getExtrinsicsBySectionAndMethod = async () => {
-  const indexerClient = UniqueIndexer({ baseUrl: 'https://api-unique.uniquescan.io/v2' });
-
-  const balanceTransfers = await indexerClient.extrinsics({
-    sectionIn: ['balances'],
-    methodIn: ['transfer', 'transferAll', 'transferKeepAlive', 'transferAllowDeath'],
+  const indexerClient = UniqueIndexer({
+    baseUrl: "https://api-unique.uniquescan.io/v2",
   });
 
-  console.log('Extrinsics by section and method', balanceTransfers);
+  const balanceTransfers = await indexerClient.extrinsics({
+    sectionIn: ["balances"],
+    methodIn: [
+      "transfer",
+      "transferAll",
+      "transferKeepAlive",
+      "transferAllowDeath",
+    ],
+  });
+
+  console.log("Extrinsics by section and method", balanceTransfers);
 };
 ```
 
@@ -125,11 +148,15 @@ Retrieve extrinsics filtered by the signer's address.
 
 ```typescript
 const getExtrinsicsBySigner = async () => {
-  const indexerClient = UniqueIndexer({baseUrl: 'https://api-unique.uniquescan.io/v2'});
+  const indexerClient = UniqueIndexer({
+    baseUrl: "https://api-unique.uniquescan.io/v2",
+  });
 
-  const balanceTransfers = await indexerClient.extrinsics({ signerIn: ['5H684Wa69GpbgwQ7w9nZyzVpDmEDCTexhRNmZ7mkqM1Rt7dH'] });
+  const balanceTransfers = await indexerClient.extrinsics({
+    signerIn: ["5H684Wa69GpbgwQ7w9nZyzVpDmEDCTexhRNmZ7mkqM1Rt7dH"],
+  });
 
-  console.log('Extrinsics by signer', balanceTransfers);
+  console.log("Extrinsics by signer", balanceTransfers);
 };
 ```
 
@@ -139,23 +166,25 @@ Retrieve collections based on multiple search criteria such as name, description
 
 ```typescript
 const searchCollections = async () => {
-  const indexerClient = UniqueIndexer({ baseUrl: 'https://api-unique.uniquescan.io/v2' });
-
-  const collections = await indexerClient.collections({
-    nameLike: '%substra%',
-    descriptionLike: '%First NFT collection%',
-    adminIn: ['5F6TPxrxZBhhpvRA8Lu1PWjcpoeoEkAQ4TVALpaxgenTU3sM'],
-    ownerIn: ['5H684Wa69GpbgwQ7w9nZyzVpDmEDCTexhRNmZ7mkqM1Rt7dH'],
-    sponsorIn: ['5H684Wa69GpbgwQ7w9nZyzVpDmEDCTexhRNmZ7mkqM1Rt7dH'],
-    isBurned: false,
-    orderByCollectionId: 'asc',
-    orderByLastTokenId: 'desc',
-    orderByName: 'asc',
-    orderByCreatedAtBlockNumber: 'asc',
-    orderByUpdatedAtBlockNumber: 'asc',
+  const indexerClient = UniqueIndexer({
+    baseUrl: "https://api-unique.uniquescan.io/v2",
   });
 
-  console.log('Collections', collections);
+  const collections = await indexerClient.collections({
+    nameLike: "%substra%",
+    descriptionLike: "%First NFT collection%",
+    adminIn: ["5F6TPxrxZBhhpvRA8Lu1PWjcpoeoEkAQ4TVALpaxgenTU3sM"],
+    ownerIn: ["5H684Wa69GpbgwQ7w9nZyzVpDmEDCTexhRNmZ7mkqM1Rt7dH"],
+    sponsorIn: ["5H684Wa69GpbgwQ7w9nZyzVpDmEDCTexhRNmZ7mkqM1Rt7dH"],
+    isBurned: false,
+    orderByCollectionId: "asc",
+    orderByLastTokenId: "desc",
+    orderByName: "asc",
+    orderByCreatedAtBlockNumber: "asc",
+    orderByUpdatedAtBlockNumber: "asc",
+  });
+
+  console.log("Collections", collections);
 };
 ```
 
@@ -165,23 +194,25 @@ Retrieve NFTs based on various search criteria such as collection ID, token ID, 
 
 ```typescript
 const searchNfts = async () => {
-  const indexerClient = UniqueIndexer({ baseUrl: 'https://api-unique.uniquescan.io/v2' });
-
-  const nfts = await indexerClient.nfts({
-    collectionIdIn: ['1', '0x17C4e6453cC49AAaaEaCA894E6D9683e00000001'],
-    tokenIdIn: [1],
-    isBurned: false,
-    royaltyRecipientIn: ['5Gus5r7HSZv9ScdaTNVbFMBEsxMtc4cZBPTLfJJbLXQK8m9d'],
-    attributeTraitTypeIn: ['traits'],
-    attributeValueIn: ['Up Hair', 'Teeth Smile'],
-    isBundle: false,
-    ownerIn: ['5FZeTmbZQZsJcyEevjGVK1HHkcKfWBYxWpbgEffQ2M1SqAnP'],
-    orderByCollectionId: 'asc',
-    orderByTokenId: 'asc',
-    orderByCreatedAtBlockNumber: 'asc',
+  const indexerClient = UniqueIndexer({
+    baseUrl: "https://api-unique.uniquescan.io/v2",
   });
 
-  console.log('NFTs', nfts);
+  const nfts = await indexerClient.nfts({
+    collectionIdIn: ["1", "0x17C4e6453cC49AAaaEaCA894E6D9683e00000001"],
+    tokenIdIn: [1],
+    isBurned: false,
+    royaltyRecipientIn: ["5Gus5r7HSZv9ScdaTNVbFMBEsxMtc4cZBPTLfJJbLXQK8m9d"],
+    attributeTraitTypeIn: ["traits"],
+    attributeValueIn: ["Up Hair", "Teeth Smile"],
+    isBundle: false,
+    ownerIn: ["5FZeTmbZQZsJcyEevjGVK1HHkcKfWBYxWpbgEffQ2M1SqAnP"],
+    orderByCollectionId: "asc",
+    orderByTokenId: "asc",
+    orderByCreatedAtBlockNumber: "asc",
+  });
+
+  console.log("NFTs", nfts);
 };
 ```
 
@@ -191,20 +222,21 @@ Retrieve accounts based on various search criteria such as address, mirror addre
 
 ```typescript
 const searchAccounts = async () => {
-  const indexerClient = UniqueIndexer({ baseUrl: 'https://api-unique.uniquescan.io/v2' });
+  const indexerClient = UniqueIndexer({
+    baseUrl: "https://api-unique.uniquescan.io/v2",
+  });
 
   const accounts = await indexerClient.accounts({
-    addressIn: ['5H1La78VqPKMeyzL129N2E5PBeS8rdLqoKhsM5LGxS2Y8xtR'],
-    mirrorIn: ['0xdA9bC709172FD24505D356000BF6524065E86B57'],
+    addressIn: ["5H1La78VqPKMeyzL129N2E5PBeS8rdLqoKhsM5LGxS2Y8xtR"],
+    mirrorIn: ["0xdA9bC709172FD24505D356000BF6524065E86B57"],
     isSmartContract: false,
     isSigner: true,
     isEthereum: false,
   });
 
-  console.log('Accounts', accounts);
+  console.log("Accounts", accounts);
 };
 ```
-
 
 ### Fetch Event Sections
 
@@ -212,13 +244,14 @@ Retrieve all available event sections from the blockchain.
 
 ```typescript
 const eventsSections = async () => {
-  const indexerClient = UniqueIndexer({ baseUrl: 'https://api-unique.uniquescan.io/v2' });
+  const indexerClient = UniqueIndexer({
+    baseUrl: "https://api-unique.uniquescan.io/v2",
+  });
   const sections = await indexerClient.eventSections();
 
-  console.log('Event sections', sections);
+  console.log("Event sections", sections);
 };
 ```
-
 
 ### Search Events
 
@@ -226,16 +259,18 @@ Retrieve events from the blockchain based on specific criteria such as section, 
 
 ```typescript
 const searchEvents = async () => {
-  const indexerClient = UniqueIndexer({ baseUrl: 'https://api-unique.uniquescan.io/v2' });
+  const indexerClient = UniqueIndexer({
+    baseUrl: "https://api-unique.uniquescan.io/v2",
+  });
 
   const events = await indexerClient.events({
-    sectionIn: ['balances'],
-    methodIn: ['Transfer'],
+    sectionIn: ["balances"],
+    methodIn: ["Transfer"],
     blockNumberFrom: 1000000,
     blockNumberTo: 2000000,
   });
 
-  console.log('Events', events);
+  console.log("Events", events);
 };
 ```
 
@@ -255,5 +290,6 @@ const getStakingExtrinsics = async (signerAddress: string) => {
     sectionIn: ["appPromotion"],
   });
 
-  console.log('Staking Extrinsics', extrinsics);
+  console.log("Staking Extrinsics", extrinsics);
 };
+```
