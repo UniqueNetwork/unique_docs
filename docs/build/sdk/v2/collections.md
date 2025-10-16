@@ -143,7 +143,7 @@ The result will be as follows, let's break it down.
 ```
 
 - Properties `A`, `B`, and `C` has been manually set during the collection creation and modifying collection with `setCollectionLimits`
-- The SDK sets' properties `schemaName`, `schemaVersion`, and `collectionInfo` and relate to the Unique metadata. You can read more about [Unique Schema](../../../reference/schemas/index.md) in the reference section.
+- The SDK sets' properties `schemaName`, `schemaVersion`, and `collectionInfo` and relate to the Unique metadata. You can read more about [Unique Metadata Format](../../../reference/schemas/index.md) in the reference section.
 
 ## Token property permissions
 
@@ -171,7 +171,7 @@ Every NFT token in the collection above could have three properties:
 - `B`: this property is immutable and can be set only once during the minting
 - `C`: this property is immutable and can be set only once during the minting or later by the token owner
 
-The SDK also specifies some additional token properties related to Unique Schema. Let's check them.
+The SDK also specifies some additional token properties related to Unique Metadata Format. Let's check them.
 
 ```ts:no-line-numbers
 const collection = await sdk.collection.get({collectionId})

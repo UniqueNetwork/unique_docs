@@ -2,7 +2,7 @@
 
 ## Overview
 
-Unique is an NFT-oriented blockchain built on Substrate, featuring both Substrate and EVM (Ethereum Virtual Machine) capabilities. Unique emphasizes its NFT functionality, with collections and NFTs as first-class entities within the blockchain. The latest metadata schema, Unique V2, offers a modern and enhanced way to handle NFT metadata, drawing inspiration from industry standards.
+Unique is an NFT-oriented blockchain built on Substrate, featuring both Substrate and EVM (Ethereum Virtual Machine) capabilities. Unique emphasizes its NFT functionality, with collections and NFTs as first-class entities within the blockchain. The latest metadata format, Unique 2.0, offers a modern and enhanced way to handle NFT metadata, drawing inspiration from industry standards.
 
 [[toc]]
 
@@ -12,32 +12,32 @@ Unlike other blockchains that rely on off-chain storage for metadata, Unique sto
 
 So, the Collection and NFT metadata are stored directly on the blockchain, not externally on IPFS or elsewhere. Storing metadata on-chain enhances decentralization, which is highly valued in the crypto community. On-chain storage ensures data immutability and greater security, aligning with the ethos of blockchain technology.
 
-## Unique Metadata Schema V2
+## Unique Metadata Metadata 2.0
 
-Unique Schema V2 is an evolution from previous binary and compact encoding versions (v0 and v1), adopting a human-readable format similar to the widely accepted Ethereum NFT metadata standards. This new schema is completely compatible with the OpenSea metadata format and includes several enhancements.
+Unique Metadata 2.0 is an evolution from previous binary and compact encoding versions (v0 and v1), adopting a human-readable format similar to the widely accepted Ethereum NFT metadata standards. This new metadata format is completely compatible with the OpenSea metadata format and includes several enhancements.
 
 #### Enhancements in Unique V2
 
-1. **Improved Media Handling**: The new schema properly supports media files, eliminating the misuse of fields like `animation_url`. This includes fields for various media types such as images, videos, and audio.
+1. **Improved Media Handling**: The new metadata format properly supports media files, eliminating the misuse of fields like `animation_url`. This includes fields for various media types such as images, videos, and audio.
 2. **Customizable NFTs**: Unique V2 introduces customization capabilities, where one NFT can own and modify another NFT. For example, a character NFT can wear a hat NFT, with detailed instructions on how to overlay images and other content types.
 
-The Unique Metadata Schema V2 offers a robust and flexible way to handle NFT metadata, aligning with industry standards while providing significant enhancements. This schema ensures compatibility and ease of use, making it a powerful tool for developers and users in the NFT space.
+The Unique Metadata Format 2.0 offers a robust and flexible way to handle NFT metadata, aligning with industry standards while providing significant enhancements. This metadata format ensures compatibility and ease of use, making it a powerful tool for developers and users in the NFT space.
 
 NFTs created previously in schemaVersion v0 and v1 are returned in the new format.
 
 <!-- [Examples how to create collections NFTs in Schema V2](/tutorials/createCollectionV2) -->
 
-## NFT Token Schema V2 Detailed Description
+## NFT Token Metadata Format 2.0 Detailed Description
 
-First of all, [Schema V2 NFT Example](https://rest.unique.network/unique/v1/tokens/v2?collectionId=654&tokenId=1)
+First of all, [Metadata 2.0 NFT Example](https://rest.unique.network/unique/v1/tokens/v2?collectionId=654&tokenId=1)
 
-For using the Unique Schema V2, you may find this official library useful: [unique-nft/schemas](https://www.npmjs.com/package/@unique-nft/schemas/v/2.1.6)
+For using the Unique Metadata 2.0, you may find this official library useful: [unique-nft/schemas](https://www.npmjs.com/package/@unique-nft/schemas/v/2.1.6)
 
-Next, let's take a detailed look at all the fields of the schema.
+Next, let's take a detailed look at all the fields of the meatadata.
 
 ::: tip Tip: All fields are optional
 
-Of course, it doesn't make sense to create NFT without, for example, `image` field but the schema doesn't require any field to present.
+Of course, it doesn't make sense to create NFT without, for example, `image` field but the metadata doesn't require any field to present.
 
 This rule applies only to the top-level fields. Some nested fields may be required. For example, when providing the image details, specifying the image length implies that you also need to provide the image width.
 

@@ -140,7 +140,10 @@ export const sidebar: Record<string, SidebarConfig> = {
       },
       {
         text: "EVM",
-        children: ["/reference/tools.md"],
+        children: [
+          "/reference/tools.md",
+          "/reference/blockchain/contract-helpers.md",
+        ],
       },
       {
         text: "Blockchain API",
@@ -152,11 +155,10 @@ export const sidebar: Record<string, SidebarConfig> = {
           "/reference/blockchain/rpc.md",
           "/reference/blockchain/extrinsics.md",
           "/reference/blockchain/events.md",
-          "/reference/blockchain/contract-helpers.md",
         ],
       },
       {
-        text: "Schemas",
+        text: "Metadata",
         children: ["/reference/schemas"],
       },
     ],

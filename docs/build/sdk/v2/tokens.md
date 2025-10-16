@@ -2,7 +2,7 @@
 
 [[toc]]
 
-## Intro 
+## Intro
 
 An NFT, or non-fungible token, represents a unique digital asset that cannot be replaced or exchanged on a one-to-one basis. NFTs can take many forms, such as JPEG images, music, or digital artwork. For example, as an artist, you could create a 3-minute YouTube video by combining your images and music. Once created, you can sell this video as an NFT, potentially at a great price if it offers value to the community. It's similar to purchasing art at a gallery, but it's a much simpler and more accessible process.
 
@@ -14,7 +14,7 @@ At this point, you need to know how to manage collections. Learn how to do this 
 
 ## Getting started
 
-Let's start with a minimum example. At this point, we assume you already minted your NFT collection, and you have its `collection`. 
+Let's start with a minimum example. At this point, we assume you already minted your NFT collection, and you have its `collection`.
 
 ```ts:no-line-numbers
 const mintNftTx = await sdk.token.mintNFTs({
@@ -52,7 +52,7 @@ const {result} = await sdk.collection.create({
   description: "Test collection",
   symbol: "TST",
   info: {cover_image: {url: coverImage}},
-  tokenPropertyPermissions: [ // <--- set token property permissions here 
+  tokenPropertyPermissions: [ // <--- set token property permissions here
     {key: 'A', permission: {mutable: true, collectionAdmin: true, tokenOwner: true}},
     {key: 'B', permission: {mutable: false, collectionAdmin: false, tokenOwner: false}},
     {key: 'C', permission: {mutable: false, collectionAdmin: false, tokenOwner: true}},
@@ -89,7 +89,7 @@ But because of permissions of property `B` it could have been set only during th
 
 Properties are a part of a token on a core blockchain level. They can be set with arbitrary metadata, i.e., schema name and version, royalties, etc.
 
-Attributes define token traits and are not a part of a blockchain core. Examples of attributes could be a `power` or `experience` for a gaming character. In Unique Schema, attributes are stored in `tokenData` property of an NFT.
+Attributes define token traits and are not a part of a blockchain core. Examples of attributes could be a `power` or `experience` for a gaming character. In Unique Metadata, attributes are stored in `tokenData` property of an NFT.
 
 Let's mint some extra tokens with attributes.
 
@@ -269,8 +269,6 @@ await sdk.token.burn(
 );
 ```
 
-
-
 <!-- TODO add burn from docs -->
 
 ## Nesting
@@ -288,7 +286,7 @@ await sdk.token.nest({
 
 In the example above, `token1` will be nested to `token2`. This means:
 
-- `token2` is the owner of `token1`. 
+- `token2` is the owner of `token1`.
 - Topmost token owner (real owner) of `token2` will be the owner of `token1`
 - if `token2` is transferred to a different account, this new account becomes the topmost owner for `token1`
 

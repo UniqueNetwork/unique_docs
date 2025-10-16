@@ -30,8 +30,8 @@ Additional examples can be found in the [recipes section](https://github.com/Uni
 
 There are two primary contracts you can use to enhance your application:
 
-- `UniqueV2CollectionMinter.sol` - Create collections compatible with the Unique Schema.
-- `UniqueV2TokenMinter.sol` - Create tokens compatible with the Unique Schema.
+- `UniqueV2CollectionMinter.sol` - Create collections compatible with the Unique Metadata Format.
+- `UniqueV2TokenMinter.sol` - Create tokens compatible with the Unique Metadata Format.
 
 ### Creating a Collection
 
