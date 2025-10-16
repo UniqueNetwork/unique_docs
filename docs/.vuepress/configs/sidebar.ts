@@ -65,8 +65,8 @@ export const sidebar: Record<string, SidebarConfig> = {
           "/build/sdk/v2/mass-transactions.md",
           "/build/sdk/v2/indexer.md",
           "/build/sdk/v2/evm.md",
+          "/build/sdk/v2/advanced-usage.md",
           "/build/sdk/v2/asset-hub.md",
-          "/build/sdk/v2/dapps.md",
           "/build/sdk/v2/migration.md",
         ],
       },
@@ -105,6 +105,7 @@ export const sidebar: Record<string, SidebarConfig> = {
       {
         text: "Tutorials",
         children: [
+          "/build/sdk/v2/dapps.md",
           {
             text: "Minting NFTs",
             link: "/build/guides/minting/main.md",
@@ -148,9 +149,6 @@ export const sidebar: Record<string, SidebarConfig> = {
       {
         text: "Blockchain API",
         children: [
-          "/reference/blockchain/collections.md",
-          "/reference/blockchain/properties.md",
-          "/reference/blockchain/nesting.md",
           "/reference/blockchain/owner-admin-roles.md",
           "/reference/blockchain/rpc.md",
           "/reference/blockchain/extrinsics.md",

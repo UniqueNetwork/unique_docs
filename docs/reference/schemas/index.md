@@ -29,7 +29,7 @@ NFTs created previously in schemaVersion v0 and v1 are returned in the new forma
 
 ## NFT Token Metadata Format 2.0 Detailed Description
 
-First of all, [Metadata 2.0 NFT Example](https://rest.unique.network/unique/v1/tokens/v2?collectionId=654&tokenId=1)
+First of all, [Metadata 2.0 NFT Example](https://rest.unique.network/v2/unique/token?collectionId=654&tokenId=1&withChildren=false)
 
 For using the Unique Metadata 2.0, you may find this official library useful: [unique-nft/schemas](https://www.npmjs.com/package/@unique-nft/schemas/v/2.1.6)
 

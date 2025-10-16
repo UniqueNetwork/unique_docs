@@ -33,11 +33,9 @@ import {UniqueUtils} from '@unique-nft/api'
 const Address = UniqueUtils.Address
   ...
 Address.substrate.decode('unjuYbCt4zchHzmr5vLFuFFCXRKAWLTMFPHEJJ3uyWsQ2VgEY')
-// or
-Address.substrate.decode('yGJ7zjEaVLKPVVM39VoHt1YQtwU2VCfGeRGHX4j2Ap8WzzB6L')
 ```
 
-The result is the following. Please note that both calls give the same result since we receive a public key, which is the same in both addresses; they are equal, just presented in different formats (Unique and Quartz).
+The result is the following.
 
 ![public key](../../../about/images/array-address.png)
 
@@ -93,7 +91,6 @@ Each Substrate blockchain can register a custom prefix to create a chain-specifi
 The prefixes that Unique Network uses:
 
 - For Unique - **7391**, gives "**un**" at the beginning of the encoded address.
-- For Quartz - **255**, gives "**yG**" at the beginning of the encoded address.
 
 ### Ethereum addresses
 

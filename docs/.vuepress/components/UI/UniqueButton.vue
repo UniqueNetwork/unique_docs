@@ -23,10 +23,28 @@ const props = defineProps<{
   border: 1px solid var(--c-brand-secondary);
   color: var(--c-brand-secondary);
   background-color: var(--c-bg);
+  white-space: nowrap;
+  transition: all 0.2s ease;
 
   &.blue {
     color: var(--c-bg);
     background-color: var(--c-brand-secondary);
+    border-color: var(--c-brand-secondary);
+
+    &:hover:not(:disabled) {
+      opacity: 0.85;
+      background-color: var(--c-brand-secondary);
+    }
+  }
+
+  &.white {
+    color: var(--c-brand-secondary);
+    background-color: var(--c-bg);
+    border-color: var(--c-brand-secondary);
+
+    &:hover:not(:disabled) {
+      background-color: var(--c-bg-light, rgba(0, 0, 0, 0.05));
+    }
   }
 
   &:disabled {
@@ -37,9 +55,8 @@ const props = defineProps<{
     border-color: var(--c-text-disabled-button);
   }
 
-  &:hover:not(:disabled) {
-    size: 1.1ch;
-    background-color: var(--c-bg-hover-button);
+  &:hover:not(:disabled):not(.blue):not(.white) {
+    background-color: var(--c-bg-hover-button, rgba(0, 0, 0, 0.05));
   }
 }
 </style>

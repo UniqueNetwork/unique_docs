@@ -7,7 +7,6 @@
 |        | Endpoint                              |
 | ------ | ------------------------------------- |
 | Unique | https://rest.unique.network/v2/unique |
-| Quartz | https://rest.unique.network/v2/quartz |
 
 ### Asset Hub
 
