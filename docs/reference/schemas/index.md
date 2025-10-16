@@ -25,7 +25,7 @@ The Unique Metadata Schema V2 offers a robust and flexible way to handle NFT met
 
 NFTs created previously in schemaVersion v0 and v1 are returned in the new format.
 
-[Examples how to create collections NFTs in Schema V2](/tutorials/createCollectionV2)
+<!-- [Examples how to create collections NFTs in Schema V2](/tutorials/createCollectionV2) -->
 
 ## NFT Token Schema V2 Detailed Description
 

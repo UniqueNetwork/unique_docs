@@ -62,6 +62,7 @@ export const sidebar: Record<string, SidebarConfig> = {
           "/build/sdk/v2/collections.md",
           "/build/sdk/v2/tokens.md",
           "/build/sdk/v2/sponsoring.md",
+          "/build/sdk/v2/mass-transactions.md",
           "/build/sdk/v2/indexer.md",
           "/build/sdk/v2/evm.md",
           "/build/sdk/v2/asset-hub.md",
@@ -102,50 +103,30 @@ export const sidebar: Record<string, SidebarConfig> = {
         ],
       },
       {
+        text: "Tutorials",
+        children: [
+          {
+            text: "Minting NFTs",
+            link: "/build/guides/minting/main.md",
+            collapsible: true,
+            children: [
+              "/build/guides/minting/main.md",
+              "/build/guides/minting/setup-environment.md",
+              "/build/guides/minting/prepare-scripts.md",
+              "/build/guides/minting/generative-nft.md",
+              "/build/guides/minting/mass-minting.md",
+              "/build/guides/minting/customizable-nfts.md",
+              "/build/guides/minting/mass-listing.md",
+            ],
+          },
+        ],
+      },
+      {
         text: "Tech Concepts",
         children: [
           "/build/tech-concepts/addresses",
           "/build/tech-concepts/balances/index.md",
         ],
-      },
-    ],
-    "/tutorials": [
-      {
-        text: "Intro",
-        children: ["/tutorials"],
-      },
-      {
-        text: "Minting guides",
-        children: [
-          "/tutorials/minting/main.md",
-          "/tutorials/minting/setup-environment.md",
-          "/tutorials/minting/prepare-scripts.md",
-          // remove OPL: '/tutorials/minting/prepare-account.md',
-          "/tutorials/minting/generative-nft.md",
-          "/tutorials/minting/mass-minting.md",
-          "/tutorials/minting/customizable-nfts.md",
-          "/tutorials/minting/mass-listing.md",
-        ],
-      },
-      // TODO: we need to improve build/EVM section instead of this one:
-      // {
-      //   text: 'EVM',
-      //   children: [
-      //     '/tutorials/evm/eth-general.md',
-      //     '/tutorials/evm/using-contracts.md',
-      //     '/tutorials/evm/using-sol-interfaces.md',
-      //     '/tutorials/evm/ready-samples.md',
-      //     // '/tutorials/evm/how-to-ethereum.md', - disassembled
-      //   ],
-      // },
-      // {
-      //   text: 'REST API',
-      //   children: [
-      //   ]
-      // },
-      {
-        text: "How to",
-        children: ["/tutorials/mass-transactions.md"],
       },
     ],
     "/reference": [
