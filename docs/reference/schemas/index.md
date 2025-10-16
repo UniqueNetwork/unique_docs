@@ -1,8 +1,8 @@
-# Unique Schema
+# Unique Metadata Format
 
 ## Overview
 
-Unique is an NFT-oriented blockchain built on Substrate, featuring both Substrate and EVM (Ethereum Virtual Machine) capabilities. Unique emphasizes its NFT functionality, with collections and NFTs as first-class entities within the blockchain. The latest metadata schema, Unique V2, offers a modern and enhanced way to handle NFT metadata, drawing inspiration from industry standards.
+Unique is an NFT-oriented blockchain built on Substrate, featuring both Substrate and EVM (Ethereum Virtual Machine) capabilities. Unique emphasizes its NFT functionality, with collections and NFTs as first-class entities within the blockchain. The latest metadata format, Unique 2.0, offers a modern and enhanced way to handle NFT metadata, drawing inspiration from industry standards.
 
 [[toc]]
 
@@ -10,34 +10,34 @@ Unique is an NFT-oriented blockchain built on Substrate, featuring both Substrat
 
 Unlike other blockchains that rely on off-chain storage for metadata, Unique stores metadata directly on-chain using a key-value storage system called properties.
 
-So, the Collection and NFT metadata are stored directly on the blockchain, not externally on IPFS or elsewhere.  Storing metadata on-chain enhances decentralization, which is highly valued in the crypto community. On-chain storage ensures data immutability and greater security, aligning with the ethos of blockchain technology.
+So, the Collection and NFT metadata are stored directly on the blockchain, not externally on IPFS or elsewhere. Storing metadata on-chain enhances decentralization, which is highly valued in the crypto community. On-chain storage ensures data immutability and greater security, aligning with the ethos of blockchain technology.
 
-## Unique Metadata Schema V2
+## Unique Metadata Metadata 2.0
 
-Unique Schema V2 is an evolution from previous binary and compact encoding versions (v0 and v1), adopting a human-readable format similar to the widely accepted Ethereum NFT metadata standards. This new schema is completely compatible with the OpenSea metadata format and includes several enhancements.
+Unique Metadata 2.0 is an evolution from previous binary and compact encoding versions (v0 and v1), adopting a human-readable format similar to the widely accepted Ethereum NFT metadata standards. This new metadata format is completely compatible with the OpenSea metadata format and includes several enhancements.
 
 #### Enhancements in Unique V2
 
-1. **Improved Media Handling**: The new schema properly supports media files, eliminating the misuse of fields like `animation_url`. This includes fields for various media types such as images, videos, and audio.
+1. **Improved Media Handling**: The new metadata format properly supports media files, eliminating the misuse of fields like `animation_url`. This includes fields for various media types such as images, videos, and audio.
 2. **Customizable NFTs**: Unique V2 introduces customization capabilities, where one NFT can own and modify another NFT. For example, a character NFT can wear a hat NFT, with detailed instructions on how to overlay images and other content types.
 
-The Unique Metadata Schema V2 offers a robust and flexible way to handle NFT metadata, aligning with industry standards while providing significant enhancements. This schema ensures compatibility and ease of use, making it a powerful tool for developers and users in the NFT space.
+The Unique Metadata Format 2.0 offers a robust and flexible way to handle NFT metadata, aligning with industry standards while providing significant enhancements. This metadata format ensures compatibility and ease of use, making it a powerful tool for developers and users in the NFT space.
 
 NFTs created previously in schemaVersion v0 and v1 are returned in the new format.
 
-[Examples how to create collections NFTs in Schema V2](/tutorials/createCollectionV2)
+<!-- [Examples how to create collections NFTs in Schema V2](/tutorials/createCollectionV2) -->
 
-## NFT Token Schema V2 Detailed Description
+## NFT Token Metadata Format 2.0 Detailed Description
 
-First of all, [Schema V2 NFT Example](https://rest.unique.network/unique/v1/tokens/v2?collectionId=654&tokenId=1)
+First of all, [Metadata 2.0 NFT Example](https://rest.unique.network/unique/v1/tokens/v2?collectionId=654&tokenId=1)
 
-For using the Unique Schema V2, you may find this official library useful: [unique-nft/schemas](https://www.npmjs.com/package/@unique-nft/schemas/v/2.1.6)
+For using the Unique Metadata 2.0, you may find this official library useful: [unique-nft/schemas](https://www.npmjs.com/package/@unique-nft/schemas/v/2.1.6)
 
-Next, let's take a detailed look at all the fields of the schema.
+Next, let's take a detailed look at all the fields of the meatadata.
 
 ::: tip Tip: All fields are optional
 
-Of course, it doesn't make sense to create NFT without, for example, `image` field but the schema doesn't require any field to present.
+Of course, it doesn't make sense to create NFT without, for example, `image` field but the metadata doesn't require any field to present.
 
 This rule applies only to the top-level fields. Some nested fields may be required. For example, when providing the image details, specifying the image length implies that you also need to provide the image width.
 
@@ -46,16 +46,17 @@ This rule applies only to the top-level fields. Some nested fields may be requir
 ### Common fields
 
 - **name** `string` - NFT token name.  
-Example: `{image: "Substrapunk #1234"}`
+  Example: `{image: "Substrapunk #1234"}`
 
 - **description** `string` - NFT token description.  
-Example: `{description: "A unique Substrapunk character with a rare hat."}`
+  Example: `{description: "A unique Substrapunk character with a rare hat."}`
 
 - **image** `string` - URL to the main image associated with the NFT.  
-Example: `{image: "https://example.com/artwork.png"}`
+  Example: `{image: "https://example.com/artwork.png"}`
 
 - **image_details**: [IV2ImageDetails](#iv2imagedetails) - Additional details about the main image.  
-Example:
+  Example:
+
 ```json5:no-line-numbers
 {
   image_details: {
@@ -71,7 +72,8 @@ Example:
 ```
 
 - **attributes**: Array of [IV2Attribute](#iv2attribute) - Array of attributes associated with the NFT.  
-Example:  
+  Example:
+
 ```json5:no-line-numbers
 {
   attributes: [
@@ -93,7 +95,7 @@ Example:
 Since it's widely used for attaching files of any format (audio, video, etc), we recommend using the `media` field instead of `animation_url`.
 
 - **animation_details**: [IV2ImageDetails](#iv2imagedetails) - Additional details about the animation from the `animation_url` field.
-Example is the same as in the `image_details` field.
+  Example is the same as in the `image_details` field.
 
 - **youtube_url**: `string` - URL to a YouTube video associated with the NFT.  
   Example: `{youtube_url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"}`
@@ -104,24 +106,24 @@ Example is the same as in the `image_details` field.
 - **external_url**: `string` - URL to an external resource providing more information about the NFT.  
   Example: `{external_url: "https://example.com/nft"}`
 
-- **background_color**: `string` - Background color of the NFT.    
-Example: `{background_color: "#00BFFF"}`
+- **background_color**: `string` - Background color of the NFT.  
+  Example: `{background_color: "#00BFFF"}`
 
 - **locale**: `string` - Locale of the NFT.  
-Example: `{locale: "en"}`
+  Example: `{locale: "en"}`
 
 ### Media field
 
-- **media**: Dictionary of [IV2Media](#iv2media) - Media elements associated with the NFT.  
+- **media**: Dictionary of [IV2Media](#iv2media) - Media elements associated with the NFT.
 
 The `media` property is a dictionary that allows the storage of multiple media elements associated with the NFT. Each media element is represented by a key-value pair, where the key is a string identifier and the value is an instance of the [IV2Media](#iv2media) interface. This type of storage allows extremely simple control over complex media stacks within the collection. When you need to mint NFTs automatically, you can use any key for media elements, for example, `media_1`, `media_2`, etc.
-
 
 ::: tip Media key naming
 Media keys can be any string that fits the JSON key requirements. For example, `media_1`, `media_2`, `cat`, `dog`, `hat`, etc. The key should be unique within the `media` dictionary.
 :::
 
 Example:
+
 ```json5:no-line-numbers
 {
   media: {
@@ -133,11 +135,11 @@ Example:
       type: "video",
       url: "https://example.com/meow.mp4",
       // additional media details...
-    },   
+    },
   }
 }
 ```
- 
+
 To ensure optimal compatibility and performance, it is important to adhere to certain best practices and formats for both browser and mobile device support. For example, when incorporating video files, please consider using the MP4 format for broad compatibility across platforms. Similarly, when including images, it is advisable to use widely supported formats such as PNG or JPEG.
 
 ### Royalties field
@@ -145,11 +147,13 @@ To ensure optimal compatibility and performance, it is important to adhere to ce
 The field `royalties` is an array of royalty recipients and their respective percentages. This field is used to define the royalty structure for the NFT, specifying the recipients who will receive a percentage of the sale price when the NFT is sold. The `royalties` field is an array of the `IV2Royalty` objects, where each object represents a royalty recipient and their respective percentage. The `royalties` field is optional and can be used to define the royalty structure for the NFT.
 
 Royalties item (`IV2Royalty`) fields:
+
 - **address**: `string` - The address of the royalty recipient. May be Substrate SS-58 encoded or Ethereum address.
 - **percent**: `number` - The percentage of the sale price that the recipient will receive. Valid values range is 0.00% - 99.99%.
 - **isPrimaryOnly**: `boolean` - Indicates whether the royalty should be paid only on the primary sale or on primary and secondary sales. Default value is `false` which means that the royalty will be paid on both primary and secondary sales.
 
 Example:
+
 ```json5:no-line-numbers
 {
   royalties: [
@@ -159,7 +163,7 @@ Example:
     },
     {
       address: "0xee53Ae81b06Ed39Ac05B2cF2311F4b399E104Ba3",
-      percent: 10 // 10% 
+      percent: 10 // 10%
     }
   ]
 }
@@ -167,8 +171,8 @@ Example:
 
 ### Customizable NFT Fields
 
-NFTs in Unique can contain other NFTs through a process known as nesting. 
-This is achieved by transferring one NFT to the address of another NFT (each NFT in Unique has its own address). 
+NFTs in Unique can contain other NFTs through a process known as nesting.
+This is achieved by transferring one NFT to the address of another NFT (each NFT in Unique has its own address).
 In this way, one NFT owns another, and transitively, the owner of the root NFT owns the entire tree.  
 This allows the creation of an NFT tree where elements can customize each other.
 The leaves can influence the nodes, and so on, up to the root.
@@ -178,10 +182,8 @@ The leaves can influence the nodes, and so on, up to the root.
 This field contains the customization image details of the NFT itself and "slots" for customization, which can be utilized by nested NFTs.
 
 For example, let's say we have an NFT "character" with customization slots like "hat" and "pet".  
-We can nest an NFT of a hat and an NFT of a pet within the character NFT, 
+We can nest an NFT of a hat and an NFT of a pet within the character NFT,
 thereby modifying the base character image to show the character wearing a hat and accompanied by a pet.
-
-
 
 All customizing NFT fields lay down inside the `customizing` field. This field consists of 4 subfields:
 
@@ -230,7 +232,7 @@ Types used: [IV2MediaDetails](#iv2mediadetails), [IV2ImageDetails](#iv2imagedeta
 
 The type `IV2CustomizingImageOverlaySpecs` is used to define the overlay specifications for an image. This type includes the following fields:
 
-*All fields are optional*
+_All fields are optional_
 
 ```typescript:no-line-numbers
 type IV2CustomizingImageOverlaySpecs = {
@@ -287,7 +289,7 @@ Array of strings which are the names of mutators available for the NFT.
 
 ### Customizing Overrides
 
-This field allows overriding the default customization options for the NFT. 
+This field allows overriding the default customization options for the NFT.
 It is rarely used and is typically reserved for specific cases where the main `customizing` field needs to be locked and set as readonly.
 
 The difference from the `IV2Customizing` type is that the requirements for this field are much more flexible.
@@ -304,18 +306,21 @@ interface IV2CustomizingOverrides {
 ### Optional fields
 
 #### schemaName `string` - optional
-Default value: `unique`.   
-*Should be omitted when encoding tokens via Library `@unique-nft/schemas`.*
+
+Default value: `unique`.  
+_Should be omitted when encoding tokens via Library `@unique-nft/schemas`._
 
 The name of the schema used for the metadata. When creating new NFTs, this should be 'unique'. This property defines the specific set of rules and attributes that the NFT adheres to. For older NFTs, created before the implementation of the 'unique' schema. This ensures backward compatibility and helps in identifying the origin and structure of the metadata associated with the NFT.
 
 #### schemaVersion: `string` - optional
+
 Default value: `2.0.0`.  
-*Should be omitted when encoding tokens via Library `@unique-nft/schemas`.*
+_Should be omitted when encoding tokens via Library `@unique-nft/schemas`._
 
 #### originalSchemaVersion: `string` - readonly
-**Readonly field.   
-Applicable only for old tokens (v0 an v1) in decoded format.**   
+
+**Readonly field.  
+Applicable only for old tokens (v0 an v1) in decoded format.**  
 The original version of the schema. This property indicates the schema under which the NFT was initially created.
 
 ---
@@ -330,7 +335,7 @@ Collection in Unique may contain such fields:
 
 - **potential_attributes**: Array of [IV2Attribute](#iv2attribute) - Potential attributes for the collection. An instruction for the NFT generator/creator which attributes can be used for the NFTs in this collection. Just a hint, not a requirement.
 
-The structure of this field is similar to the NFT `attributes` field, with the key difference being that it does not include a `value` field. Instead, it has an optional `values` field, which is an array of potential values. 
+The structure of this field is similar to the NFT `attributes` field, with the key difference being that it does not include a `value` field. Instead, it has an optional `values` field, which is an array of potential values.
 
 ```typescript:no-line-numbers
 type IV2PotentialAttributeValues = {
@@ -365,12 +370,12 @@ type IV2Attribute = {
 
 #### IV2ImageDetails
 
-*All fields are optional*
+_All fields are optional_
 
 ```typescript:no-line-numbers
 type IV2ImageDetails = Partial<{
   name: string // name of the image (for captions, etc.)
-  type: 'image' | 'animation' | 'video' | 'audio' | 'spatial' | 'pdf' | 'document' | 'other'  // type of the 
+  type: 'image' | 'animation' | 'video' | 'audio' | 'spatial' | 'pdf' | 'document' | 'other'  // type of the
   bytes: number // size of the image file in bytes
   format: string // format of the image file (e.g., PNG, JPEG)
   sha256: string // SHA-256 hash of the image file
@@ -384,12 +389,12 @@ type IV2ImageDetails = Partial<{
 
 All fields from the [IV2ImageDetails](#iv2imagedetails) and additional fields: `duration`, `codecs`, `loop`.
 
-*All fields are optional as well*
+_All fields are optional as well_
 
 ```typescript:no-line-numbers
 type IV2MediaDetails = Partial<{
   name: string // name of the image (for captions, etc.)
-  type: 'image' | 'animation' | 'video' | 'audio' | 'spatial' | 'pdf' | 'document' | 'other'  // type of the 
+  type: 'image' | 'animation' | 'video' | 'audio' | 'spatial' | 'pdf' | 'document' | 'other'  // type of the
   bytes: number // size of the image file in bytes
   format: string // format of the image file (e.g., PNG, JPEG)
   sha256: string // SHA-256 hash of the image file
@@ -422,6 +427,7 @@ type IV2Media = {
 ```
 
 Tips:
+
 - The `type` and `url` fields are required.
 - The `details` field extends the base type [IV2ImageDetails](#iv2imagedetails) and provides additional information about the media, such as duration, codecs, and whether the animation/video/audio should be looped in the player.
 - The `thumbnail` field may be used for the thumbnail image of the media or as a cover image for an audio file.

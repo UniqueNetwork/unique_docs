@@ -76,7 +76,7 @@ const tokenV2_ = await sdkV2.token.get({
 });
 ```
 
-However, the response format has changed significantly. SDK V2 returns attributes in the Unique Schema V2 format, even for tokens created using Unique Schema V1.
+However, the response format has changed significantly. SDK V2 returns attributes in the Unique Metadata Format 2.0 format, even for tokens created using Unique Metadata Format 1.0.
 
 Attributes in SDK V1:
 

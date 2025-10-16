@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "vuepress dev docs",
     "build": "vuepress build docs",
-    "serve": "serve dist -p 3000 -n"
+    "serve": "serve dist -p 3000 -n",
+    "check-links": "remark docs -u validate-links --frail --quiet"
   },
   "license": "UNLICENSED",
   "private": true,
@@ -19,6 +20,8 @@
     "@vuepress/theme-default": "2.0.0-beta.60",
     "autoprefixer": "^10.4.4",
     "postcss": "^8.4.12",
+    "remark-cli": "^12.0.1",
+    "remark-validate-links": "^13.1.0",
     "serve": "^14.1.1",
     "typescript": "^4.9.4",
     "vite": "^2.9.15",

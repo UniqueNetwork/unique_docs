@@ -1,47 +1,47 @@
 <template>
   <div :class="$style.welcome">
-    <h1>Welcome to the <span style="white-space: nowrap">Unique Network</span><br>documentation</h1>
+    <h1>
+      Welcome to the <span style="white-space: nowrap">Unique Network</span
+      ><br />documentation
+    </h1>
     <p>Take the first step by choosing your path</p>
   </div>
   <div :class="$style.root">
     <div v-for="item in menu" :class="$style.item">
       <RouterLink :to="item.path">
-        <img :src="withBase(`/images/icons/${item.iconName}.svg`)" :class="$style.icon"/>
-        <div :class="$style.title" v-html="item.title"/>
-        <div :class="$style.subtitle" v-html="item.subtitle"/>
+        <img
+          :src="withBase(`/images/icons/${item.iconName}.svg`)"
+          :class="$style.icon"
+        />
+        <div :class="$style.title" v-html="item.title" />
+        <div :class="$style.subtitle" v-html="item.subtitle" />
       </RouterLink>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import {withBase} from '@vuepress/client';
+import { withBase } from "@vuepress/client";
 
 interface MenuItem {
-  title: string
-  path: string
-  subtitle: string
-  iconName: string
+  title: string;
+  path: string;
+  subtitle: string;
+  iconName: string;
 }
 
 const menu: MenuItem[] = [
   {
-    title: 'Learn',
-    path: '/about',
-    subtitle: 'The basic concepts and what can you do',
-    iconName: 'Palette',
+    title: "Learn",
+    path: "/about",
+    subtitle: "The basic concepts and what can you do",
+    iconName: "Palette",
   },
   {
-    title: 'Build',
-    path: '/build',
-    subtitle: 'Build applications using JavaScript SDK and EVM tools',
-    iconName: 'Monitor',
-  },
-  {
-    title: 'Tutorials',
-    path: '/tutorials',
-    subtitle: 'Learn with Real-life Examples',
-    iconName: 'MonitorPlay',
+    title: "Build",
+    path: "/build",
+    subtitle: "Build applications using JavaScript SDK and EVM tools",
+    iconName: "Monitor",
   },
 ];
 </script>
@@ -70,7 +70,6 @@ a {
   align-items: center;
   min-height: 35vh;
 }
-
 
 .welcome h1 {
   font-size: 48px;

@@ -8,7 +8,7 @@ Our SDK provides straightforward methods to perform common NFT operations. Here 
 
 - Create a Collection
 - Mint, Burn, Transfer an NFTs
-- Fetch Collection Schema
+- Fetch Collection Metadata
 - Estimate Transaction Fees
 
 ## Indexer
@@ -39,6 +39,7 @@ We are excited to have you on board and can't wait to see what you will create w
 ---
 
 ## Related Articles
+
 - [Our approach to NFTs](../approach.md)
 - [NFT Features Overview](../token-types/nft.md)
 - [Marketplace](./marketplace.md)

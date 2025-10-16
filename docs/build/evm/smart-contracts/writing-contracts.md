@@ -7,14 +7,14 @@ New Scenarios: Create gasless experiences for users or charge transaction fees i
 Application Rule Enforcement: Establish strict, unbreakable rules for minting collections, tokens, and modifying attributes, ensuring your application operates as intended.
 
 ::: tip
-In the Unique Network, you don't have to choose between Substrate and Ethereum; they complement each other. Contracts can interact with Substrate accounts, allowing users to call contracts using Substrate wallets. Learn more in the [EVM from Substrate](./evm-from-substrate.md) section.
+In the Unique Network, you don't have to choose between Substrate and Ethereum; they complement each other. Contracts can interact with Substrate accounts, allowing users to call contracts using Substrate wallets. Learn more in the [EVM from Substrate](../../sdk/v2/evm.md) section.
 :::
 
-In previous sections, we covered creating collections and managing contract sponsorship. This section will guide you through creating collections and tokens compatible with the [Unique Schema](../../reference/schemas/index.md).
+In previous sections, we covered creating collections and managing contract sponsorship. This section will guide you through creating collections and tokens compatible with the [Unique Metadata Format](../../../reference/schemas/index.md).
 
-## Making Your Assets Compatible with the Unique Schema
+## Making Your Assets Compatible with the Unique Metadata Format
 
-We’ve previously discussed creating collections and tokens using the [CollectionHelpers](./smart-contracts/collection-helpers.md) precompile and the UniqueNFT interface. To ensure your assets display correctly in wallets and marketplaces, you must maintain compatible metadata. This process can be complex, so we provide [contracts that handle this for you](https://github.com/UniqueNetwork/unique-contracts).
+We’ve previously discussed creating collections and tokens using the [CollectionHelpers](./collection-helpers.md) precompile and the UniqueNFT interface. To ensure your assets display correctly in wallets and marketplaces, you must maintain compatible metadata. This process can be complex, so we provide [contracts that handle this for you](https://github.com/UniqueNetwork/unique-contracts).
 
 ::: tip
 For this section, we’ll use [unique-contracts](https://github.com/UniqueNetwork/unique-contracts)which is actively being developed but is already usable with [Foundry](https://book.getfoundry.sh/)
@@ -30,8 +30,8 @@ Additional examples can be found in the [recipes section](https://github.com/Uni
 
 There are two primary contracts you can use to enhance your application:
 
-- `UniqueV2CollectionMinter.sol` - Create collections compatible with the Unique Schema.
-- `UniqueV2TokenMinter.sol` - Create tokens compatible with the Unique Schema.
+- `UniqueV2CollectionMinter.sol` - Create collections compatible with the Unique Metadata Format.
+- `UniqueV2TokenMinter.sol` - Create tokens compatible with the Unique Metadata Format.
 
 ### Creating a Collection
 
@@ -39,7 +39,7 @@ Start by importing `"unique-contracts/UniqueV2CollectionMinter.sol"` and inherit
 
 - true: mutable properties
 - false: token owner cannot mutate
-- true: collection admin can mutate 
+- true: collection admin can mutate
 
 ```solidity:no-line-numbers
 // SPDX-License-Identifier: MIT
@@ -92,7 +92,6 @@ Let’s enhance the contract to:
 - Transfer ownership to a specified account.
 - Add the contract to the admin list, allowing it to mint tokens in the created collection.
 
-
 Here’s the updated `mintCollection` function.
 
 ```solidity:no-line-numbers
@@ -101,7 +100,7 @@ function mintCollection(
     string memory _description,
     string memory _symbol,
     string memory _collectionCover,
-    // 1. We use CrossAddress for new owner. 
+    // 1. We use CrossAddress for new owner.
     // This struct will allow us to set not only evm but also substrate accounts as a new owner
     CrossAddress memory newOwner
 ) external payable returns (address) {
@@ -230,7 +229,6 @@ contract MyMinter is UniqueV2CollectionMinter, UniqueV2TokenMinter {
 ```
 
 Explore more examples in the [recipes](https://github.com/UniqueNetwork/unique-contracts/tree/main/contracts/recipes) section
-
 
 ## Setting up Metamask
 

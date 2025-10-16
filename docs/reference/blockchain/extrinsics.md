@@ -148,7 +148,7 @@ await result.sign(keyring)
 
 **Description**
 
-_Deprecated_. Please use the [createCollectionEx](#createCollectionEx) method. 
+_Deprecated_. Please use the `createCollectionEx` method. 
 
 ### :small_orange_diamond:**_createCollectionEx_**
 
@@ -234,7 +234,7 @@ api.tx.unique.createItem(1, {Substrate: '5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPc
 
 **Description**
 
-_Deprecated_. Please use the [createMultipleItemsEx](#createMultipleItemsEx) method. 
+_Deprecated_. Please use the `createMultipleItemsEx` method. 
 
 ### :small_orange_diamond:**_createMultipleItemsEx_**
 

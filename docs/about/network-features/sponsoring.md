@@ -1,4 +1,4 @@
-# Sponsoring 
+# Sponsoring
 
 In Unique Network, transactions can be sponsored. This allows shielding end-users from the hassles of fee processing. For example, in the Unique Marketplace, users do not have to pay fees for listing NFTs. This eliminates the need for users to obtain or own any native fungible tokens to participate in the market.
 
@@ -23,7 +23,7 @@ One potential risk with sponsoring transactions is the possibility of DOS attack
 
 ## Learn More
 
-To discover more about the benefits of sponsoring transactions on Unique Network and how to implement it, visit our [Build section](../../build/sdk/sponsoring.md). Here, you'll find comprehensive guides and documentation to help you make the most of our platform.
+To discover more about the benefits of sponsoring transactions on Unique Network and how to implement it, visit our [Build section](../../build/sdk/v2/sponsoring.md). Here, you'll find comprehensive guides and documentation to help you make the most of our platform.
 
 <br>
 <br>
@@ -31,6 +31,7 @@ To discover more about the benefits of sponsoring transactions on Unique Network
 ---
 
 ## Related Articles
+
 - [Our approach to NFTs](../approach.md)
 - [NFT Features Overview](../token-types/nft.md)
 - [Marketplace](./marketplace.md)

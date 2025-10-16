@@ -8,3 +8,6 @@ dist
 package-lock.json
 .vscode
 .DS_Store
+
+# Substrate proxy
+substrate-proxy

@@ -143,7 +143,7 @@ The result will be as follows, let's break it down.
 ```
 
 - Properties `A`, `B`, and `C` has been manually set during the collection creation and modifying collection with `setCollectionLimits`
-- The SDK sets' properties `schemaName`, `schemaVersion`, and `collectionInfo` and relate to the Unique metadata. You can read more about [Unique Schema](../../../reference/schemas/2.0.0.md) in the reference section.
+- The SDK sets' properties `schemaName`, `schemaVersion`, and `collectionInfo` and relate to the Unique metadata. You can read more about [Unique Metadata Format](../../../reference/schemas/index.md) in the reference section.
 
 ## Token property permissions
 
@@ -171,7 +171,7 @@ Every NFT token in the collection above could have three properties:
 - `B`: this property is immutable and can be set only once during the minting
 - `C`: this property is immutable and can be set only once during the minting or later by the token owner
 
-The SDK also specifies some additional token properties related to Unique Schema. Let's check them.
+The SDK also specifies some additional token properties related to Unique Metadata Format. Let's check them.
 
 ```ts:no-line-numbers
 const collection = await sdk.collection.get({collectionId})
@@ -179,7 +179,7 @@ const collection = await sdk.collection.get({collectionId})
 console.log(collection.tokenPropertyPermissions);
 ```
 
-There are a lot of additional token properties, like `URI`, `customizing_overrides`, and so on. You can check more information about them in the [reference section](../../../reference/schemas/2.0.0.md).
+There are a lot of additional token properties, like `URI`, `customizing_overrides`, and so on. You can check more information about them in the [reference section](../../../reference/schemas/index.md).
 
 One of the most important token properties is `tokenData`, which will be a container for all token attributes. You will learn more about `attributes` in the [NFT section](./tokens.md).
 
