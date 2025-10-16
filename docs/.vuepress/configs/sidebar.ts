@@ -147,19 +147,6 @@ export const sidebar: Record<string, SidebarConfig> = {
         text: "How to",
         children: ["/tutorials/mass-transactions.md"],
       },
-      {
-        text: "User guides",
-        children: [
-          {
-            text: "Choose your wallet",
-            link: "/tutorials/user-guides/wallets.md",
-            children: [
-              "/tutorials/user-guides/polkadotjs.md",
-              "/tutorials/user-guides/ledger-connect.md",
-            ],
-          },
-        ],
-      },
     ],
     "/reference": [
       {
