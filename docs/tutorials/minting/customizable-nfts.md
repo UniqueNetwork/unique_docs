@@ -20,7 +20,7 @@ Now, let's get started with the implementation.
 
 ## 🏁 1. Before we start
 
-1. For this tutorial, you will need node.js, git, and Visual Studio Code installed on your computer. If you haven't worked with git, node, and npm before, we recommend reading our [brief guide](./setup-environment) to configure your environment correctly.
+1. For this tutorial, you will need node.js, git, and Visual Studio Code installed on your computer. If you haven't worked with git, node, and npm before, we recommend reading our [brief guide](./setup-environment.md) to configure your environment correctly.
 2. Prepare minting scripts according to [this instruction](./prepare-scripts.md)
 
 ### 1.1 Prepare images and metadata

@@ -3,6 +3,7 @@
 ![Types of balances](../balances/types.png)
 
 ## Total
+
 All tokens that the user owns.
 
 > Not all tokens included in the total are available to the user for transfers or extrinsic calls. Some of them may be [reserved](#_2-reserved), and some may be [frozen](#_1-2-frozen) (previously locked).
@@ -29,6 +30,7 @@ All tokens that the user owns.
 > then add the fields `data.free` and `data.reserved`. In the example above, the total balance equals `1,000,000,000,133,637,366,777,247,975,283`
 
 ## 1. Free
+
 The balance of the user that they can use to perform operations on the network. Some operations (such as staking) may not decrease this balance but may impose some restrictions on a part of it (see frozen).
 
 **How to get:**
@@ -53,9 +55,10 @@ This is the balance locked by the logic of some pallets.
 Freezes are imposed on the free balance and do not reduce it; they only impose restrictions on transfer and payment of fees, reducing the transferable balance.
 
 Every freeze has an ID. Possible reasons for the freeze:
-- staking (`id: appstakeappstake`) 
+
+- staking (`id: appstakeappstake`)
 - vesting (`id: ormlvest`) ❗️ Temporarily operates based on lock mechanisms. More about it is in the [vesting](#_1-2-1-vesting) section.
-- democracy (in upcoming releases) 
+- democracy (in upcoming releases)
 
 Freezes with different IDs are not summed up - the total frozen balance is determined by the biggest freeze.
 A balance frozen under any freeze ID can be frozen under another ID. For example, a balance frozen in vesting can be frozen in staking, provided the user has enough tokens to pay the transaction fee. In fact, there may be cases where the sum (for different IDs) of frozen balances exceeds the value of the free balance.
@@ -64,7 +67,7 @@ A balance frozen under any freeze ID can be frozen under another ID. For example
 
 `api.query.balances.freezes`
 
-``` json
+```json
 [
   {
     id: appstakeappstake
@@ -87,7 +90,7 @@ To find out the vesting schedule, execute:
 
 `api.query.vesting.vestingSchedules`
 
-``` json
+```json
 [
   {
     start: 13,710,000
@@ -99,15 +102,14 @@ To find out the vesting schedule, execute:
 ```
 
 > start: the block from which tokens begin to vest (unlock)
-> 
+>
 > period: the duration of one vesting period in blocks
-> 
+>
 > periodCount: the number of vesting periods
-> 
+>
 > perPeriod: the number of tokens available for claim per period
 
->Starting from block `13,710,000`, each subsequent block for a period of `1,000,000` blocks makes available `1,000,000,000,000,000,000`, what equals 1 token (18 decimals), become available for vesting. One million tokens in total.
-
+> Starting from block `13,710,000`, each subsequent block for a period of `1,000,000` blocks makes available `1,000,000,000,000,000,000`, what equals 1 token (18 decimals), become available for vesting. One million tokens in total.
 
 Unlocking does not happen automatically. The user must call `api.extrinsic.vesting.claim`. The amount of unlocked tokens will be calculated on the block when the transaction is made. In the example above, if the user makes a claim at block `#14,000,000`, then `290,000` tokens will be unlocked - one for each block since the start.
 
@@ -119,7 +121,7 @@ The tokens enter this state when executing `api.extrinsic.appPromotion.stake`. T
 
 `api.query.appPromotion.staked`
 
-``` json
+```json
 [
   [
     [
@@ -144,7 +146,7 @@ To unlock tokens, execute `api.extrinsic.appPromotion.unstakeAll` or `api.extrin
 
 `api.rpc.appPromotion.pendingUnstakePerBlock`
 
-``` json
+```json
 [
   [
     2,182,233
@@ -158,13 +160,14 @@ To unlock tokens, execute `api.extrinsic.appPromotion.unstakeAll` or `api.extrin
 The user will not receive rewards for tokens waiting to be unfrozen.
 
 ## 2. Reserved
+
 Reserved balance is a portion of the user's balance that is not available for any operations involving the user's funds. In Unique Network, funds are placed in this state when a user purchases a collator license.
- 
+
 **How to get:**
 
 `api.query.system.account`
 
-``` json
+```json
 {
   nonce: 90
   consumers: 0
@@ -205,6 +208,7 @@ After:
 <img src="../balances/claim-after.png" alt="Claim of vested tokens. After" width="600"/>
 
 ### 2. Vested tokens staking
+
 - Alice has 1000 tokens, 500 of which are locked by vesting.
 - Alice stakes 700 tokens. This is possible because the free balance, not the transferable balance, is important for a new lock/freeze (staking).
 
@@ -231,7 +235,7 @@ After:
 
 - The total and free balances have increased by 100 tokens.
 - Rewards have been automatically frozen, so the staking freeze has increased to 800. When calculating subsequent rewards, the earned tokens will be taken into account. As a result, each reward will be slightly larger than the previous one.
-- Since the staking freeze is the largest, the total frozen balance also increases to 800. 
+- Since the staking freeze is the largest, the total frozen balance also increases to 800.
 - The transferable balance remains unchanged
 
 Before:

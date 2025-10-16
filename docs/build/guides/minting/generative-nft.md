@@ -14,7 +14,7 @@ By completing this tutorial, you will have a clear understanding of how to use s
 
 ## Before we start
 
-1. For this tutorial, you will need node.js, git, and Visual Studio Code installed on your computer. If you haven't worked with git, node, and npm before, we recommend reading our [brief guide](./setup.md) to configure your environment correctly.
+1. For this tutorial, you will need node.js, git, and Visual Studio Code installed on your computer. If you haven't worked with git, node, and npm before, we recommend reading our [brief guide](./setup-environment.md) to configure your environment correctly.
 2. Prepare minting scripts according to [this instruction](./prepare-scripts.md)
 
 ## 🖼 Step-1: Prepare the images
@@ -42,7 +42,7 @@ Place an image named `cover.png` in the `generate` folder, which will serve as t
 
 ### 2.1 Encode attributes
 
-Generally, combinable parts produce NFT traits. For example, if the `eye2.png` image is used to generate the NFT image, it will have `joy` trait. 
+Generally, combinable parts produce NFT traits. For example, if the `eye2.png` image is used to generate the NFT image, it will have `joy` trait.
 
 It is also essential to consider the rarity of attributes. For example, we want every token to have a `head` trait, but `head2.png` should be rare and appear on only about 10% of the tokens. The `jewelry` trait should be present in only 20% of the NFTs, with `jewelry1.png` appearing in 5% and `jewelry2.png` occurring in the remaining 15%.
 
@@ -75,6 +75,7 @@ Export the table to CSV format by clicking on `File - Download - Comma Separated
 ![Export CSV](./images/export-csv.png)
 
 > ✏️ Rename the exported file to `attributes.csv` and save it in the `generate` folder near the images' parts.
+
 ### 2.2 Set the collection metadata
 
 ![Collection metadata](./images/collection-metadata.png)
@@ -101,7 +102,6 @@ Each row in the spreadsheet should correspond to a generated image with the same
 
 ![Generated](./images/generated.png)
 
-
 ## ⛓ Step-3: Prepare Substrate Account
 
 ### 3.1 Generate address and seed phrase
@@ -116,20 +116,18 @@ You will need an address with a balance to create the collection and tokens. If 
 ![Extension](./images/extension.png)
 
 > ✏️ In the `config.js` file, fill in the `ownerSeed` field.
-> 
+>
 > ❗️ Do not commit your secrets, such as `ownerSeed`, to version control! We have added `config.js` to the `.gitignore` file for this purpose.
 
 ### 3.2 Get some tokens
 
 For this guide, we are using Opal Network, and you can obtain OPL tokens for free by using [Telegram faucet bot](https://t.me/unique2faucet_opal_bot). You will have to provide your address (not a mnemonic phrase!). Click on the circle icon next to your account in the Polkadot extension to copy it.
 
-
 > 💡 If you are ready to mint tokens on the mainnet (Quartz or Unique), change the endpoint variable in the config.js file. Set it to `https://rest.unique.network/quartz/v1` for Quartz or `https://rest.unique.network/unique/v1` for Unique.
 >
 > - Quartz Network tokens (QTZ) are available on [MEXC](https://www.mexc.com/ru-RU/exchange/QTZ_USDT?_from=search)
-> 
+>
 > - For Unique Network tokens (UNQ), you can visit [Huobi](https://www.huobi.com/en-us/trade/unq_usdt?type=spot)
-
 
 Now everything is ready to create a collection and tokens.
 
@@ -149,7 +147,7 @@ After a short time, you will see the result of executing the command:
 
 This script will pack all the images into a zip archive and save it as data/archive.zip. Then it will upload it to IPFS. Ensure all your files are successfully uploaded by visiting the link provided in the console output.
 
-> ✏️ In the `config.js` file, fill in the `fileUrl` set provided link. 
+> ✏️ In the `config.js` file, fill in the `fileUrl` set provided link.
 
 ### 4.2 Create a collection
 
@@ -169,7 +167,6 @@ After a short time, you will see the result of executing the command:
 > ✏️ In the `config.js` file, fill in the `collectionId` set provided value.
 
 Your collection has been created, and you can check it on your [wallet](https://wallet.unique.network/) or on [uniquescan.io](https://uniquescan.io/). Your collection doesn't have any NFTs yet, so let's create some.
-
 
 ### 4.3 Create NFTs
 

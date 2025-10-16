@@ -136,7 +136,7 @@ export const sidebar: Record<string, SidebarConfig> = {
       },
       {
         text: "SDK",
-        children: ["/reference/sdk-endpoints.md", "/reference/sdk-methods.md"],
+        children: ["/reference/sdk-endpoints.md"],
       },
       {
         text: "EVM",

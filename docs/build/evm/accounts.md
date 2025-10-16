@@ -1,4 +1,4 @@
-# Account 
+# Account
 
 There are two types of accounts in Unique Network:
 
@@ -11,7 +11,7 @@ Because of different formats, substrate and ethereum addresses cannot interact d
 
 Mirroring is a mechanism that allows you to get address representation in a different format—substrate for ethereum address and ethereum for substrate.
 
-You can play around with the address converter in the [reference section](../../../../reference/tools.md).
+You can play around with the address converter in the [reference section](../../reference/tools.md).
 
 For example:
 
@@ -33,7 +33,7 @@ The other question appears here. If the caller is a mirror, the beneficiary of a
 #### Substrate account can transfer from its mirror
 
 - Native tokens, such as `UNQ` or `OPL`, can be withdrawn with `evm::withdraw` extrinsic
-- All native `NFTs`, `Fungible`, and `ReFungible` can be transferred using [transferFrom](./tokens.md#transfer).
+- All native `NFTs`, `Fungible`, and `ReFungible` can be transferred using [transferFrom](../sdk/v2/tokens.md#transfer).
 
 However, this is not a great experience, so Unique provides a `CrossAddress` structure for Solidity.
 
@@ -58,11 +58,15 @@ To get an accounts mirror, use `Address` util from `@unique-nft/utils.`
 ```ts
 import { Address } from "@unique-nft/utils";
 
-const ethMirror = Address.mirror.substrateToEthereum('5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY');
+const ethMirror = Address.mirror.substrateToEthereum(
+  "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY"
+);
 // 0xd43593c715Fdd31c61141ABd04a99FD6822c8558
 
-const subMirror = Address.mirror.ethereumToSubstrate('0x1B8EeEC6eD7e9C6B98291A8274c006e251902Ef3');
+const subMirror = Address.mirror.ethereumToSubstrate(
+  "0x1B8EeEC6eD7e9C6B98291A8274c006e251902Ef3"
+);
 // 5FkhL2YH6rZD2AspxMBoUfFnA4GwWVKHVTbL1kChhYMvSq7B
 ```
 
-The following articles will teach you more advanced concepts that make the developer and user experience smoother. 
+The following articles will teach you more advanced concepts that make the developer and user experience smoother.

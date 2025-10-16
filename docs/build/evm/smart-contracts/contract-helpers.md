@@ -10,7 +10,9 @@ In Unique Network, transactions can be sponsored, allowing for a gasless experie
 
 ## Interface
 
-Check the [reference section](/reference/blockchain/contract-helpers.md) for the complete interface details
+<!-- TODO move this doc to build section: -->
+
+Check the [reference section](../../../reference/blockchain/contract-helpers.md) for the complete interface details
 
 ## Code examples
 
@@ -27,19 +29,21 @@ You will also need to install [@unique-nft/solidity-interfaces](https://www.npmj
 First, let's deploy the smart contract to be sponsored and connect to ContractHelpers precompile. We assume you have developed a contract called MyContract.sol and want to sponsor its calls.
 
 ```ts
-import { ethers } from 'hardhat';
-import { ContractHelpers__factory } from '@unique-nft/solidity-interfaces';
+import { ethers } from "hardhat";
+import { ContractHelpers__factory } from "@unique-nft/solidity-interfaces";
 
 const [signer] = await ethers.getSigners();
 
-const MyContractFactory = await ethers.getContractFactory('MyContract', seller);
+const MyContractFactory = await ethers.getContractFactory("MyContract", seller);
 
 // Contract to be sponsored
 const myContract = await MyContractFactory.deploy();
 myContract.waitForDeployment();
 
-const contractHelpers = ContractHelpers__factory
-  .connect("0x842899ECF380553E8a4de75bF534cdf6fBF64049", signer);
+const contractHelpers = ContractHelpers__factory.connect(
+  "0x842899ECF380553E8a4de75bF534cdf6fBF64049",
+  signer
+);
 ```
 
 ## Choose sponsoring mode
@@ -82,7 +86,9 @@ Let's configure the contract to sponsor transactions for all users.
 
 ```ts
 // Sponsoring is Disabled by default:
-const sponsoringEnabled = await contractHelpers.sponsoringEnabled(myContract.getAddress());
+const sponsoringEnabled = await contractHelpers.sponsoringEnabled(
+  myContract.getAddress()
+);
 console.log("Is sponsoring enabled?", sponsoringEnabled);
 
 // Set to 2 - Generous mode
@@ -93,8 +99,8 @@ await contractHelpers.setSponsoringRateLimit(myContract.getAddress(), 0);
 // Optionally, you can limit the maximum fee amount you want to sponsor
 // await contractHelpers.setSponsoringFeeLimit(myContract.getAddress(), ...);
 
-const sponsoringEnabledAfter = await contractHelpers.sponsoringEnabled(myContract.getAddress());
+const sponsoringEnabledAfter = await contractHelpers.sponsoringEnabled(
+  myContract.getAddress()
+);
 console.log("Sponsoring enabled now:", sponsoringEnabledAfter);
 ```
-
-
