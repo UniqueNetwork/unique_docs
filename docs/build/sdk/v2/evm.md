@@ -1,8 +1,8 @@
-# EVM and Smart Contracts
+# Introduction to Smart Contracts
 
-Unique Network supports EVM tools and provides interfaces for native Collections and NFTs. In this article, you will learn how to interact with smart contracts using Unique SDK and Substrate accounts.
+Unique Network supports EVM smart contracts, allowing you to interact with them using the SDK and Substrate accounts. This guide shows you how to call smart contracts from the SDK.
 
-Learn [EVM section](../../evm/index.md) to better understand how EVM and substrate work together.
+For comprehensive EVM documentation, including account mirroring, writing contracts, and advanced features, see the [EVM section](../../evm/index.md).
 
 ## How does it work
 

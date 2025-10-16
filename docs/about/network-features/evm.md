@@ -29,6 +29,7 @@ To discover more about building with Unique Network and to access comprehensive 
 ---
 
 ## Related Articles
+
 - [Our approach to NFTs](../approach.md)
 - [NFT Features Overview](../token-types/nft.md)
 - [SDK and Indexer](./sdk-indexer.md)
