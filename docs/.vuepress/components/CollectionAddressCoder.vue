@@ -8,7 +8,7 @@
 
   <div class="inputContainer">
     <UniqueInput placeholder="Collection address" v-model="addressInputRef" class="input"/>
-    <UniqueButton @click="convertAddressToCollectionId">
+    <UniqueButton color="blue" @click="convertAddressToCollectionId">
       Address to Collection Id
     </UniqueButton>
   </div>

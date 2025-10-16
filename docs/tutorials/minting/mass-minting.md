@@ -88,11 +88,9 @@ You will need an address with a balance to create the collection and tokens. If 
 
 For this guide, we are using Opal Network, and you can obtain OPL tokens for free by using [Telegram faucet bot](https://t.me/unique2faucet_opal_bot). You will have to provide your address (not a mnemonic phrase!). Click on the circle icon next to your account in the Polkadot extension to copy it.
 
-> 💡 If you are ready to mint tokens on the mainnet (Quartz or Unique), make sure to change the endpoint variable in the config.js file. Set it to `https://rest.unique.network/quartz/v1` for Quartz or `https://rest.unique.network/unique/v1` for Unique.
+> 💡 If you are ready to mint tokens on the mainnet, make sure to change the endpoint variable in the config.js file. Set it to `https://rest.unique.network/v2/unique`.
 >
-> - Quartz Network tokens (QTZ) are available on [MEXC](https://www.mexc.com/ru-RU/exchange/QTZ_USDT?_from=search)
->
-> - For Unique Network tokens (UNQ) you can visit [Huobi](https://www.huobi.com/en-us/trade/unq_usdt?type=spot)
+> - Unique Network tokens (UNQ) are available on [Hydration](https://app.hydration.net/trade/swap?assetIn=10&assetOut=25)
 
 ## 💎 Step-5: Create Collection and NFTs
 

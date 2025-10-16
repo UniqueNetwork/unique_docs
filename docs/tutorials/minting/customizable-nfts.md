@@ -86,7 +86,7 @@ At this stage, your config.js file should resemble `customization/heads/config.e
 
 ```js
 const config = {
-  endpoint: "https://rest.unique.network/opal/v1",
+  endpoint: "https://rest.unique.network/v2/unique",
   // Set your secret mnemonic phrase. Keep it safe!
   ownerSeed: "set your seed...",
 
@@ -208,7 +208,7 @@ At this stage, your `config.js` file should remind `customization/accessories/co
 
 ```js
 const config = {
-  endpoint: "https://rest.unique.network/opal/v1",
+  endpoint: "https://rest.unique.network/v2/unique",
   // Set your secret mnemonic phrase. Keep it safe!
   ownerSeed: "set your seed...",
 

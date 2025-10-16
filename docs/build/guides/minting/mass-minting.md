@@ -27,7 +27,7 @@ We have already prepared ten images stored in the `data` folder. Feel free to us
 
 ![Images](./images/images.png)
 
-> ✏️  In the `config.js` file, specify the prefix for your collection by setting the value of the `symbol` property (max 4 symbols).
+> ✏️ In the `config.js` file, specify the prefix for your collection by setting the value of the `symbol` property (max 4 symbols).
 
 ## 📇 Step-2: Prepare collection metadata
 
@@ -44,19 +44,18 @@ After the creation of the collection metadata file, we need to create metadata o
 We will encode NFT properties in CSV format. The first value in the header should be id, representing the sequential number of each token. Following that, list all the existing properties of the collection that were set in the previous step.
 
 **Example**
+
 ```csv:no-line-numbers
 id,creature,description
 1,Bear,"A bear perched in the sky, amid a sea of stars"
-2,Elephant,A skyward elephant 
+2,Elephant,A skyward elephant
 3,Giraffe,A blue giraffe that fascinates the eye.
 ...
 ```
 
 The simplest way to create such a structure is to use [Google Sheets](https://docs.google.com/spreadsheets/d/1712bCiuCKYJOXsN9rIGW_QKJbMt312mw-2WQlSpXMzE/edit#gid=1148781766).
 
-
 Complete the table by listing all the properties of your collection in the header. On each subsequent row, list the properties that will be added to the token with the corresponding id (max 32768 symbols). Export the filled values by clicking on `File - Download - Comma Separated Values (.csv)`
-
 
 ![Google sheets](./images/sheets.png)
 
@@ -82,20 +81,16 @@ You will need an address with a balance to create the collection and tokens. If 
 ![Chrome extension](./images/extension.png)
 
 > ✏️ In the `config.js` file, fill in the `ownerSeed` field.
-> 
+>
 > ❗️ Do not commit your secrets, such as `ownerSeed`, to version control! We have added `config.js` to the `.gitignore` file for this purpose.
 
 ### 4.2 Get some tokens
 
 For this guide, we are using Opal Network, and you can obtain OPL tokens for free by using [Telegram faucet bot](https://t.me/unique2faucet_opal_bot). You will have to provide your address (not a mnemonic phrase!). Click on the circle icon next to your account in the Polkadot extension to copy it.
 
-
-> 💡 If you are ready to mint tokens on the mainnet (Quartz or Unique), make sure to change the endpoint variable in the config.js file. Set it to `https://rest.unique.network/quartz/v1` for Quartz or `https://rest.unique.network/unique/v1` for Unique.
+> 💡 If you are ready to mint tokens on the mainnet, make sure to change the endpoint variable in the config.js file. Set it to `https://rest.unique.network/v2/unique`.
 >
-> - Quartz Network tokens (QTZ) are available on [MEXC](https://www.mexc.com/ru-RU/exchange/QTZ_USDT?_from=search)
-> 
-> - For Unique Network tokens (UNQ) you can visit [Huobi](https://www.huobi.com/en-us/trade/unq_usdt?type=spot)
-
+> - Unique Network tokens (UNQ) are available on [Hydration](https://app.hydration.net/trade/swap?assetIn=10&assetOut=25)
 
 ## 💎 Step-5: Create Collection and NFTs
 
@@ -115,7 +110,7 @@ After a short time, you will see the result of executing the command:
 
 This script will pack all the images into a zip archive and save it as data/archive.zip. Then it will upload it to IPFS. Ensure that all your files are successfully uploaded by visiting the link provided in the console output.
 
-> ✏️ In the `config.js` file, fill in the `fileUrl` set provided link. 
+> ✏️ In the `config.js` file, fill in the `fileUrl` set provided link.
 
 ### 5.2 Create a collection
 
@@ -135,7 +130,6 @@ After a short time, you will see the result of executing the command:
 > ✏️ In the `config.js` file, fill in the `collectionId` set provided value.
 
 Your collection has been created, and you can check it on your [wallet](https://wallet.unique.network/) or on [uniquescan.io](https://uniquescan.io/). Your collection doesn't have any NFTs yet, so let's create some.
-
 
 ### 5.3 Create NFTs
 
