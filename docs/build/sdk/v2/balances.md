@@ -1,12 +1,8 @@
 # Balances
 
-## Prerequisite
-
-Follow the [Getting started guide](./quick-start.md) to install required libraries, receive test network OPL tokens, and initialize SDK.
-
 ## Get balance
 
-After receiving OPL tokens you can check your account's balance using SDK.
+You can check your account's balance using SDK.
 
 ```ts:no-line-numbers
 const balances = await unique.balance.get({
@@ -30,7 +26,7 @@ The output will resemble the following:
   canstake: '270171775322286038926',
   vested: [],
   decimals: 18,
-  tokenSymbol: 'OPL'
+  tokenSymbol: 'UNQ'
 }
 ```
 

@@ -121,7 +121,7 @@ You will need an address with a balance to create the collection and tokens. If 
 
 ### 3.2 Get some tokens
 
-For this guide, we are using Opal Network, and you can obtain OPL tokens for free by using [Telegram faucet bot](https://t.me/unique2faucet_opal_bot). You will have to provide your address (not a mnemonic phrase!). Click on the circle icon next to your account in the Polkadot extension to copy it.
+You can obtain UNQ tokens on . You will have to provide your address (not a mnemonic phrase!). Click on the circle icon next to your account in the Polkadot extension to copy it.
 
 > 💡 If you are ready to mint tokens on the mainnet, change the endpoint variable in the config.js file. Set it to `https://rest.unique.network/v2/unique`.
 >

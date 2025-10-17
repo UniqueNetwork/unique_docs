@@ -32,7 +32,7 @@ The other question appears here. If the caller is a mirror, the beneficiary of a
 
 #### Substrate account can transfer from its mirror
 
-- Native tokens, such as `UNQ` or `OPL`, can be withdrawn with `evm::withdraw` extrinsic
+- Native tokens, such as `UNQ`, can be withdrawn with `evm::withdraw` extrinsic
 - All native `NFTs`, `Fungible`, and `ReFungible` can be transferred using [transferFrom](../sdk/v2/tokens.md#transfer).
 
 However, this is not a great experience, so Unique provides a `CrossAddress` structure for Solidity.
