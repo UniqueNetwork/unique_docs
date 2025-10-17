@@ -62,7 +62,6 @@ export const sidebar: Record<string, SidebarConfig> = {
           "/build/sdk/v2/collections.md",
           "/build/sdk/v2/tokens.md",
           "/build/sdk/v2/sponsoring.md",
-          "/build/sdk/v2/mass-transactions.md",
           "/build/sdk/v2/indexer.md",
           "/build/sdk/v2/evm.md",
           "/build/sdk/v2/advanced-usage.md",
@@ -105,7 +104,8 @@ export const sidebar: Record<string, SidebarConfig> = {
       {
         text: "Tutorials",
         children: [
-          "/build/sdk/v2/dapps.md",
+          "/build/guides/dapps.md",
+          "/build/guides/mass-transactions.md",
           {
             text: "Minting NFTs",
             link: "/build/guides/minting/main.md",
