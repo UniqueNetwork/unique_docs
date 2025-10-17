@@ -61,8 +61,16 @@ export const sidebar: Record<string, SidebarConfig> = {
           "/build/sdk/v2/balances.md",
           "/build/sdk/v2/collections.md",
           "/build/sdk/v2/tokens.md",
+          {
+            text: "Unique Metadata Format",
+            link: "/build/sdk/v2/metadata.md",
+            collapsible: true,
+            children: [
+              "/build/sdk/v2/metadata.md",
+              "/build/sdk/v2/metadata-reference.md",
+            ],
+          },
           "/build/sdk/v2/sponsoring.md",
-          "/build/sdk/v2/mass-transactions.md",
           "/build/sdk/v2/indexer.md",
           "/build/sdk/v2/evm.md",
           "/build/sdk/v2/advanced-usage.md",
@@ -105,7 +113,8 @@ export const sidebar: Record<string, SidebarConfig> = {
       {
         text: "Tutorials",
         children: [
-          "/build/sdk/v2/dapps.md",
+          "/build/guides/dapps.md",
+          "/build/guides/mass-transactions.md",
           {
             text: "Minting NFTs",
             link: "/build/guides/minting/main.md",
@@ -154,10 +163,6 @@ export const sidebar: Record<string, SidebarConfig> = {
           "/reference/blockchain/extrinsics.md",
           "/reference/blockchain/events.md",
         ],
-      },
-      {
-        text: "Metadata",
-        children: ["/reference/schemas"],
       },
     ],
   },
