@@ -88,6 +88,7 @@ services:
 
   chain:
     image: uniquenetwork/unique-node-public:latest
+    platform: linux/amd64
     restart: unless-stopped
     command:  >
       --dev
