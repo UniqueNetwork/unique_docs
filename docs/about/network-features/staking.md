@@ -4,11 +4,11 @@ Staking is a process that allows users to participate in the operation and secur
 
 ## Staking on Unique Network
 
-Unique Network offers a straightforward staking process for its native tokens, UNQ and QTZ. By staking these tokens, users can earn rewards and support the Unique Network ecosystem. The staking process is designed to be user-friendly and accessible through the Unique Staking Hub.
+Unique Network offers a straightforward staking process for its native tokens, UNQ. By staking these tokens, users can earn rewards and support the Unique Network ecosystem. The staking process is designed to be user-friendly and accessible through the Unique Staking Hub.
 
 ### Key Benefits:
 
-- **Earn Rewards**: Participants can earn APY rewards by staking their UNQ and QTZ tokens.
+- **Earn Rewards**: Participants can earn APY rewards by staking their UNQ tokens.
 - **Support the Ecosystem**: Staking helps secure the network and supports its ongoing operations.
 - **User-Friendly Interface**: The Unique Staking Hub provides an easy-to-use platform for staking.
 
@@ -17,7 +17,7 @@ Unique Network offers a straightforward staking process for its native tokens, U
 ### Step-by-Step Guide:
 
 1. **Access the Staking Hub**: Visit the [Unique Staking Hub](https://unique.network/staking/) to get started.
-2. **Connect Your Wallet**: Connect your wallet that holds UNQ or QTZ tokens.
+2. **Connect Your Wallet**: Connect your wallet that holds UNQ tokens.
 3. **Select the Amount to Stake**: Choose the amount of tokens you wish to stake.
 4. **Confirm the Transaction**: Confirm the staking transaction in your wallet.
 5. **Earn Rewards**: Start earning rewards as your tokens contribute to the network's security and operations.

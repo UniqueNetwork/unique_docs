@@ -8,7 +8,7 @@ An NFT, or non-fungible token, represents a unique digital asset that cannot be 
 
 ## Prerequisite
 
-Follow the [Getting started guide](./quick-start.md) to install required libraries, receive test network OPL tokens, and initialize SDK.
+Follow the [Getting started guide](./quick-start.md) to install required libraries, receive test network UNQ tokens, and initialize SDK.
 
 At this point, you need to know how to manage collections. Learn how to do this in the [Working with collections](./collections.md) guide.
 

@@ -111,8 +111,6 @@ This is the critical distinction:
 | **What**            | Raw blockchain key-value storage | Structured data in `tokenData` property |
 | **Level**           | Blockchain core                  | Application-level agreement             |
 | **Format**          | Any string value                 | Standardized JSON (Unique 2.0)          |
-| **Limit**           | 64 properties, 40kB total        | Part of the 64-property limit           |
-| **SDK handling**    | Manual (setProperties)           | Automatic (data parameter)              |
 | **Third-party UIs** | Won't interpret custom keys      | Automatically parsed and displayed      |
 | **Use case**        | Application-specific logic       | Cross-platform NFT display              |
 

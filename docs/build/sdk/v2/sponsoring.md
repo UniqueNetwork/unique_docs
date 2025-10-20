@@ -6,7 +6,7 @@ In Unique Network, transactions can be sponsored, allowing for a gasless experie
 
 ## What is sponsoring?
 
-Sponsoring allows one account (the sponsor) to pay transaction fees on behalf of other users. This creates a gasless user experience where token holders can transfer NFTs, mint tokens, or interact with smart contracts without needing native blockchain tokens (OPL/UNQ).
+Sponsoring allows one account (the sponsor) to pay transaction fees on behalf of other users. This creates a gasless user experience where token holders can transfer NFTs, mint tokens, or interact with smart contracts without needing native blockchain tokens (UNQ).
 
 **Key benefits:**
 
@@ -15,8 +15,6 @@ Sponsoring allows one account (the sponsor) to pay transaction fees on behalf of
 - **Business models**: Enable free-to-use applications while controlling costs through rate limits
 
 ## Prerequisite
-
-Follow the [Getting started guide](./quick-start.md) to install required libraries, receive test network OPL tokens, and initialize SDK.
 
 At this point, you need to know how to manage collections. Learn how to do this in the [Working with collections](./collections.md) guide.
 
@@ -183,7 +181,7 @@ const emptyAccount = await Sr25519Account.fromUri(
   Sr25519Account.generateMnemonic()
 );
 
-console.log('Empty account has 0 OPL tokens');
+console.log('Empty account has 0 UNQ tokens');
 
 // Step 4: Mint token to the empty account
 const { result: [token] } = await sdk.token.mintNFTs({
@@ -278,7 +276,7 @@ const { availableBalance } = await sdk.balance.get({
   address: sponsorAccount.address
 });
 
-const minBalance = 100_000_000_000_000n; // 100 OPL minimum
+const minBalance = 100_000_000_000_000n; // 100 UNQ minimum
 
 if (BigInt(availableBalance.amount) < minBalance) {
   console.warn('⚠️  Sponsor balance low! Top up soon.');

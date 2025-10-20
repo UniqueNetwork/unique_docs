@@ -18,10 +18,6 @@ In Unique Network, the collection has the following entities:
 - **owner** - an address that created a collection (or if the collection was transferred, the address that owns the collection at the moment);
 - **admins** - a collection can be controlled by multiple admin addresses. Admins can issue and burn NFTs, as well as add and remove other admins, but they cannot change NFT or collection ownership;
 
-## Prerequisite
-
-Follow the [Getting started guide](./quick-start.md) to install required libraries, receive test network OPL tokens, and initialize SDK.
-
 ## Creating a collection
 
 Below is an (almost) minimum example. Only collection `name`, `description`, and `symbol` are mandatory fields. They exist at the collection level and cannot be overridden.
@@ -149,7 +145,7 @@ The result will be as follows, let's break it down.
 ```
 
 - Properties `A`, `B`, and `C` has been manually set during the collection creation and modifying collection with `setCollectionLimits`
-- The SDK sets' properties `schemaName`, `schemaVersion`, and `collectionInfo` and relate to the Unique metadata. You can read more about [Unique Metadata Format](../../../reference/schemas/index.md) in the reference section.
+- The SDK sets' properties `schemaName`, `schemaVersion`, and `collectionInfo` and relate to the Unique metadata. You can read more about [Unique Metadata Format](./metadata-reference.md) in the reference section.
 
 ## Token property permissions
 
@@ -218,7 +214,7 @@ await sdk.collection.create({
 
 ### Metadata properties
 
-The SDK automatically adds properties related to the [Unique Metadata Format](../../../reference/schemas/index.md):
+The SDK automatically adds properties related to the [Unique Metadata Format](./metadata-reference.md):
 
 ```ts:no-line-numbers
 const collection = await sdk.collection.get({collectionId})
@@ -233,7 +229,7 @@ Important metadata properties include:
 - **`customizing_overrides`** - Customization data
 - And others defined in the metadata schema
 
-You can check more information about metadata properties in the [reference section](../../../reference/schemas/index.md).
+You can check more information about metadata properties in the [reference section](./metadata-reference.md).
 
 ## Nesting configuration
 

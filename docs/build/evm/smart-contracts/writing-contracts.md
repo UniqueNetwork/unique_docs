@@ -10,7 +10,7 @@ Application Rule Enforcement: Establish strict, unbreakable rules for minting co
 In the Unique Network, you don't have to choose between Substrate and Ethereum; they complement each other. Contracts can interact with Substrate accounts, allowing users to call contracts using Substrate wallets. Learn more in the [EVM from Substrate](../../sdk/v2/evm.md) section.
 :::
 
-In previous sections, we covered creating collections and managing contract sponsorship. This section will guide you through creating collections and tokens compatible with the [Unique Metadata Format](../../../reference/schemas/index.md).
+In previous sections, we covered creating collections and managing contract sponsorship. This section will guide you through creating collections and tokens compatible with the [Unique Metadata Format](../../sdk/v2/metadata-reference.md).
 
 ## Making Your Assets Compatible with the Unique Metadata Format
 

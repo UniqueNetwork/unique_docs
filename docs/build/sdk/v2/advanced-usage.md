@@ -504,7 +504,7 @@ const feeInCoins = Number(fees.totalFee) / Math.pow(10, decimals);
 
 // Show confirmation dialog
 const confirmed = await showConfirmation(
-  `This operation will cost approximately ${feeInCoins} OPL. Continue?`
+  `This operation will cost approximately ${feeInCoins} UNQ. Continue?`
 );
 
 if (confirmed) {

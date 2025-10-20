@@ -140,7 +140,7 @@ The code below demonstrates how to create a new collection using our library.
 The code looks shorter and cleaner comparing to the previous section where we used the manual created smart contract.
 
 :exclamation: We would like to draw your attention to the fact that the collection creation at Unique chains costs some price,
-and additional collection creation price is 2 UNQ or QTZ. Via Substrate API
+and additional collection creation price is 2 UNQ. Via Substrate API
 this sum is being hold automatically, while via Eth RPC API it is required to pass
 this value manually. But in order not to pass this constant manually (because it may change somewhen later)
 there is a useful helper `collectionHelpers.collectionCreationFee()` which returns

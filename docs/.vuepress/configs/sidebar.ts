@@ -115,20 +115,21 @@ export const sidebar: Record<string, SidebarConfig> = {
         children: [
           "/build/guides/dapps.md",
           "/build/guides/mass-transactions.md",
-          {
-            text: "Minting NFTs",
-            link: "/build/guides/minting/main.md",
-            collapsible: true,
-            children: [
-              "/build/guides/minting/main.md",
-              "/build/guides/minting/setup-environment.md",
-              "/build/guides/minting/prepare-scripts.md",
-              "/build/guides/minting/generative-nft.md",
-              "/build/guides/minting/mass-minting.md",
-              "/build/guides/minting/customizable-nfts.md",
-              "/build/guides/minting/mass-listing.md",
-            ],
-          },
+          // {
+          // NOTE: These guides should be updated to use a local docker environment
+          //   text: "Minting NFTs",
+          //   link: "/build/guides/minting/main.md",
+          //   collapsible: true,
+          //   children: [
+          //     "/build/guides/minting/main.md",
+          //     "/build/guides/minting/setup-environment.md",
+          //     "/build/guides/minting/prepare-scripts.md",
+          //     "/build/guides/minting/generative-nft.md",
+          //     "/build/guides/minting/mass-minting.md",
+          //     "/build/guides/minting/customizable-nfts.md",
+          //     "/build/guides/minting/mass-listing.md",
+          //   ],
+          // },
         ],
       },
       {
