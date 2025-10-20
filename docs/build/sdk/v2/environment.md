@@ -36,12 +36,19 @@ services:
 
   scan-crawler:
     image: uniquenetwork/substrate-proxy-scan-crawler:master
+    restart: unless-stopped
+    depends_on:
+      - postgres
+      - chain
     environment:
       - DB_URL=postgres://db_user:db_password@postgres:5432/scan_db
       - CHAIN=ws://chain:9833
 
   scan-api:
     image: uniquenetwork/substrate-proxy-scan-api:master
+    restart: unless-stopped
+    depends_on:
+      - postgres
     ports:
       - 3001:3001
     environment:
@@ -53,6 +60,9 @@ services:
 
   http-proxy:
     image: uniquenetwork/substrate-proxy-http-proxy:master
+    restart: unless-stopped
+    depends_on:
+      - chain
     ports:
       - 3000:3000
     environment:
@@ -66,6 +76,7 @@ services:
 
   postgres:
     image: postgres:17
+    restart: unless-stopped
     environment:
       POSTGRES_USER: db_user
       POSTGRES_PASSWORD: db_password
@@ -77,6 +88,7 @@ services:
 
   chain:
     image: uniquenetwork/unique-node-public:latest
+    restart: unless-stopped
     command:  >
       --dev
       --idle-autoseal-interval 2000
