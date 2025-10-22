@@ -34,8 +34,24 @@ Create a `docker-compose.yml` file with the following content:
 ```yml:no-line-numbers
 services:
 
+  explorer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    platform: linux/amd64
+    restart: unless-stopped
+    depends_on:
+      - scan-api
+      - http-proxy
+    ports:
+      - 3002:3002
+    environment:
+      - NEXT_PUBLIC_REST_URL=http://localhost:3000
+      - NEXT_PUBLIC_INDEXER_URL=http://localhost:3001
+
   scan-crawler:
     image: uniquenetwork/substrate-proxy-scan-crawler:master
+    platform: linux/amd64
     restart: unless-stopped
     depends_on:
       - postgres
@@ -46,6 +62,7 @@ services:
 
   scan-api:
     image: uniquenetwork/substrate-proxy-scan-api:master
+    platform: linux/amd64
     restart: unless-stopped
     depends_on:
       - postgres
@@ -60,6 +77,7 @@ services:
 
   http-proxy:
     image: uniquenetwork/substrate-proxy-http-proxy:master
+    platform: linux/amd64
     restart: unless-stopped
     depends_on:
       - chain
@@ -115,7 +133,6 @@ services:
 volumes:
   chain-data:
   scan-postgres:
-
 ```
 
 ### Starting the Stack
