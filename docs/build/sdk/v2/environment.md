@@ -94,7 +94,7 @@ services:
       --dev
       --idle-autoseal-interval 2000
       --disable-autoseal-on-tx
-      --autoseal-finalization-delay 2000
+      --autoseal-finalization-delay 1
       --state-pruning archive
       --blocks-pruning archive
       --base-path /unique/data
