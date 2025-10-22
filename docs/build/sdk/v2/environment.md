@@ -133,7 +133,6 @@ services:
 volumes:
   chain-data:
   scan-postgres:
-
 ```
 
 ### Starting the Stack
