@@ -147,8 +147,14 @@ After starting the full development stack, you can access:
 
 - **HTTP Proxy (SDK endpoint)**: http://localhost:3000
 - **Indexer API**: http://localhost:3001
+- **Simple explorer UI**: http://localhost:3002
 - **Chain RPC**: ws://localhost:9833
-<!-- TODO: UI -->
+
+Run the following command to remove containers:
+
+```bash:no-line-numbers
+docker compose down --volumes
+```
 
 ## Next Steps
 
