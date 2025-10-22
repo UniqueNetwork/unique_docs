@@ -36,7 +36,7 @@ services:
 
   explorer:
     build:
-      context: .
+      context: https://github.com/UniqueNetwork/unique-template.git#explorer
       dockerfile: Dockerfile
     platform: linux/amd64
     restart: unless-stopped
@@ -133,6 +133,7 @@ services:
 volumes:
   chain-data:
   scan-postgres:
+
 ```
 
 ### Starting the Stack
