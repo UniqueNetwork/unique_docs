@@ -13,3 +13,5 @@ Start here to learn Unique Network fundamentals. The SDK provides a simple REST 
 **Read the Development section first** to understand how Unique Network works. Then use this section to learn how to deploy Solidity contracts and integrate custom logic into your applications.
 
 [Explore EVM →](./evm/)
+
+<BubbleArena />
